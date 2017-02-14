@@ -1,0 +1,17 @@
+{
+  "name": "odeum-codejs",
+  "version": "1.0.0",
+  "description": "<odeum-codejs /> is a library of React JavaScript Components, which is an open source Web Application Frontend Framework available to all ODEUM Apps and other interested parties."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odeum/odeum-codejs.git"
+  },
+  "author": "Christian Broberg",
+  "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3",
+  "bugs": {
+    "url": "https://github.com/odeum/odeum-codejs/issues"
+  },
+  "homepage": "https://github.com/odeum/odeum-codejs#readme"
+  }
+}

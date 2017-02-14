@@ -1,8 +1,9 @@
 node_modules/
 dist
 build
+bundle.js
 .DS_Store
 *.tgz
 npm-debug.log
 run.log
-tutorials.md
+/.idea
