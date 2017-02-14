@@ -1,6 +1,6 @@
 {
   "name": "odeum-codejs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "<odeum-codejs /> is an open source Web Application Frontend Framework based upon React Components.",
   "main": "",
   "scripts": {
@@ -10,7 +10,7 @@
     "url": "git+https://github.com/odeum/odeum-codejs.git"
   },
   "author": "Christian Broberg",
-  "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3",
+  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://github.com/odeum/odeum-codejs/issues"
   },
