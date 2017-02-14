@@ -7,3 +7,4 @@ bundle.js
 npm-debug.log
 run.log
 /.idea
+/.case
