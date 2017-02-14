@@ -1,6 +1,6 @@
 # odeum-codejs
 
-**odeum-codejs** ```<odeum-codejs />``` is a library of React JavaScript Components. **odeum-codejs** is an open source web application frontend framework available to all ODEUM Apps and other interested web app developers.
+**odeum-codejs** ```<odeum-codejs />``` is an open source Web Application Frontend Framework based upon React Components.
 
 ## CASE: New ODEUM frontend design
 
