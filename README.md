@@ -4,6 +4,8 @@
 
 ## CASE: New ODEUM frontend design
 
+### Checkout the Google presentation for the case/problem:
+
 * “Our existing App frontend is deprecated”.
 * “We want a new design with better UX, faster and easier to use and understand”.
 * “Single-Page-Application (SPA) design”.
@@ -24,6 +26,10 @@
 ## Contact
 
 ```ReactDOM.render(<Contact mail="cb@webhouse.dk" phone=”22680880” github="odeum-codejs" />, document.getElementById("odeum-codejs"));```
+
+### Checkout the Google presentation for the case/problem:
+
+<a href="http://bit.ly/2kt6mpR" target="_blank">Decomposing a new design into odeum-codejs</a>
 
 **ODEUM**: <a href="http://www.odeum.com" target="_blank">odeum.com</a>
 
