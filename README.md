@@ -1,3 +1,5 @@
+![odeum-codejs logo] http://www.odeum.com/images/odeum_codejs_logo_2.png
+
 # odeum-codejs
 
 **odeum-codejs** ```<odeum-codejs />``` is an open source Web Application Frontend Framework based upon React Components.
