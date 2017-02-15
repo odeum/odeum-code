@@ -32,7 +32,3 @@
 ### Checkout the Google presentation for the case/problem:
 
 <a href="http://bit.ly/2kt6mpR" target="_blank">Decomposing a new design into odeum-codejs</a>
-
-**ODEUM**: <a href="http://www.odeum.com" target="_blank">odeum.com</a>
-
-![ODEUM Logo](http://www.odeum.com/images/odeum_2013_logo_white_pl_copy.png)
