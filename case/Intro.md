@@ -9,3 +9,30 @@ The first render should be on the server, and give the user some content if that
 
 ### Ofline first approach
 Offline-first – hence treating the network as an enhancement with JS tools like Service Worker and IndexedDB – has become the new standard for building fast, resilient websites. It is possible to do both traditional progressive enhancement and offline-first, but it's not easy. We should prioritize offline-first over works-without-JS."
+
+## Basic Components
+
+* Drawer (Panel open/close)
+* Navigation / Routing (Memory Navigation History => DB)
+* Button
+  *  Flat style
+  *  Raised style
+  *  Icon Button
+  *  Tooltip
+
+* Text Input Component
+  *  Field Error
+  *  Hint
+  *  Multi-line
+  *  Number, currency, date/time masking
+  *  Tooltip
+
+* Radio
+* Slider
+* Popover
+* Snackbar
+* Picker Components
+  *  Datetime picker
+  *  Scroll Picker
+* Table
+* Tabs
