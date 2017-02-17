@@ -27,7 +27,7 @@
 
 ## Contact
 
-```ReactDOM.render(<Contact mail="cb@webhouse.dk" phone=”22680880” github="odeum-codejs" />, document.getElementById("odeum-codejs"));```
+```ReactDOM.render(<Contact mail="cb@webhouse.dk" phone=”+45 22 68 08 80” github="odeum-codejs" />, document.getElementById("odeum-codejs"));```
 
 ### Checkout the Google presentation for the case/problem:
 
