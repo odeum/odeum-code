@@ -32,30 +32,3 @@
 ### Checkout the Google presentation for the case/problem:
 
 <a href="http://bit.ly/2kt6mpR" target="_blank">Decomposing a new design into odeum-codejs</a>
-
-## Basic Components
-
-* Drawer (Panel open/close)
-* Navigation / Routing (Memory Navigation History => DB)
-* Button
-  *  Flat style
-  *  Raised style
-  *  Icon Button
-  *  Tooltip
-
-* Text Input Component
-  *  Field Error
-  *  Hint
-  *  Multi-line
-  *  Number, currency, date/time masking
-  *  Tooltip
-
-* Radio
-* Slider
-* Popover
-* Snackbar
-* Picker Components
-  *  Datetime picker
-  *  Scroll Picker
-* Table
-* Tabs
