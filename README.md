@@ -27,7 +27,7 @@ and developers to create innovative solutions.
 * “Component based model with encapsulation of design and functionality - write once - use everywhere”.
 * “Exciting community with tons of eye-balling free stuff”.
 * “Possibility to reuse new technical knowledge with React Native for mobile apps”.
-* “Top tier company approval (FB, Instagram, Netflix, AirBnB)”.
+* “Top tier company approval (FB, Instagram, Netflix, AirBnB, Microsoft)”.
 * “… and probably much more!”.
 
 ## Contact
