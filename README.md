@@ -8,7 +8,9 @@
 ## CASE: New ODEUM frontend design
 
 ````
-ODEUM is a cloud-based development platform for designing and developing mobile and web applications / services that help professional designers and developers to create innovative solutions.
+ODEUM is a cloud-based development platform for designing and developing 
+mobile and web applications / services that help professional designers 
+and developers to create innovative solutions.
 ```
 
 * “Our existing Web App frontend is UX deprecated”.
@@ -31,7 +33,9 @@ ODEUM is a cloud-based development platform for designing and developing mobile 
 ## Contact
 
 ```
-ReactDOM.render(<Contact mail="cb@webhouse.dk" phone=”+45 22 68 08 80” github="odeum-codejs" />, document.getElementById("odeum-codejs"))
+ReactDOM.render(<Contact mail="cb@webhouse.dk" 
+phone=”+45 22 68 08 80” github="odeum-codejs" />, 
+document.getElementById("odeum-codejs"))
 ```
 
 ### Checkout the Google presentation for the case/problem:
