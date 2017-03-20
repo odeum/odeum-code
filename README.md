@@ -1,5 +1,7 @@
-![odeum-codejs logo] 
-(http://www.odeum.com/images/odeum_codejs_logo_2.png)
+<a href="https://github.com/odeum/odeum-codejs">
+  <img alt="ODEUM CodeJS" src="./docs/assets/codejs_logo.png" />
+</a>
+<br />
 
 # odeum-codejs
 
