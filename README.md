@@ -1,4 +1,5 @@
-![odeum-codejs logo] (http://www.odeum.com/images/odeum_codejs_logo_2.png)
+![odeum-codejs logo] 
+(http://www.odeum.com/images/odeum_codejs_logo_2.png)
 
 # odeum-codejs
 
