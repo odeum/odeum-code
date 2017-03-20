@@ -3,9 +3,13 @@
 </a>
 <br />
 
-**odeum-codejs** ```<odeum-codejs />``` is an open source Web Application Frontend Framework based upon React Components.
+**odeum-codejs** is an open source Web Application Frontend Framework based upon React.
 
 ## CASE: New ODEUM frontend design
+
+````
+ODEUM is a cloud-based development platform for designing and developing mobile and web applications / services that help professional designers and developers to create innovative solutions.
+```
 
 * “Our existing Web App frontend is UX deprecated”.
 * “We want a new design with better UX, faster and easier to use and understand”.
