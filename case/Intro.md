@@ -12,7 +12,7 @@ Offline-first – hence treating the network as an enhancement with JS tools lik
 
 # React and JS libraries to look at
 
-React, ReactDOM, Redux, React Router, Immutable, Relay, GraphQL, Google Maps (react-google-maps) ... (more to come)
+React, ReactDOM, Redux, React Router, DraftJS, Immutable, Relay, GraphQL, Google Maps (react-google-maps) ... (more to come)
 
 # Components
 
@@ -73,18 +73,20 @@ React, ReactDOM, Redux, React Router, Immutable, Relay, GraphQL, Google Maps (re
   *  Toggle
 
 
-
 ## App Components
 
 # Folder Structure
 
+## Source files 
 ./
 ./src
 ./src/components
+./src/components/
 ./src/views
 ./src/models
 ./src/routes
 
+## Public static source files 
 ./public
 ./public/index.html
 ./public/favicon.ico
