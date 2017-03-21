@@ -19,6 +19,6 @@ NodeJS, Google Maps (react-google-maps), Docker ... (more to come)
 
 * <a href="./Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>
 
-* <a href="./AppComponents.md" target="_blank">ODEUM CodeJS App Components reference guide</a>
+* <a href="./AppComponents.md" target="_blank">ODEUM CodeJS App Components Reference Guide</a>
 
-* <a href="./BasicUIComponents.md" target="_blank">ODEUM CodeJS Basic UI Components reference guide</a>
+* <a href="./BasicUIComponents.md" target="_blank">ODEUM CodeJS Basic UI Components Reference Guide</a>
