@@ -14,6 +14,7 @@
 ```
 /
 /src
+/src/containers
 /src/components
 /src/components/Header
 /src/components/Header/HeaderLogo
@@ -38,15 +39,13 @@
   /src
   /App.js
   /index.js
-      /components
-          /Header
+      /containers
+          /HeaderNotifications
           /index.js
           /actions.js
           /reducer.js
           /styles.js
-              /HeaderLogo
-              /index.js
-
+          /actiontypes.js
 ```
 
 ## Example scene structure for ODEUM Report Web App
@@ -59,6 +58,7 @@
       /scenes
         /Dashboard
         /Create
+            /containers
             /components
         /Tasks
         /Registrations

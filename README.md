@@ -5,7 +5,7 @@
 </a>
 <br />
 
-**ODEUM CodeJS** is an open source Web Application Frontend Framework based on React.
+**ODEUM CodeJS** is a Web Application Frontend Framework based on React.
 
 ## CASE: New ODEUM frontend design
 
