@@ -13,7 +13,8 @@ Offline-first – hence treating the network as an enhancement with JS tools lik
 ## React and JS libraries and technology used in ODEUM CodeJS:
 
 ```
-React, ReactDOM, Styled-Components, Redux, React Router, DraftJS, Immutable, (Relay), GraphQL, NodeJS, Google Maps (react-google-maps), Docker ... (more to come)
+React, ReactDOM, Styled-Components, Redux, React Router, DraftJS, Immutable, (Relay), GraphQL, 
+NodeJS, Google Maps (react-google-maps), Docker ... (more to come)
 ```
 
 * <a href="./Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>
