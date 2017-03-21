@@ -3,7 +3,7 @@
 </a>
 <br />
 
-**odeum-codejs** is an open source Web Application Frontend Framework based upon React.
+**ODEUM CodeJS** is an open source Web Application Frontend Framework based upon React.
 
 ## CASE: New ODEUM frontend design
 
@@ -40,31 +40,8 @@ document.getElementById("odeum-codejs"))
 
 ### Checkout the Google presentation for the case/problem:
 
-<a href="http://bit.ly/2kt6mpR" target="_blank">Decomposing a new design into odeum-codejs</a>
+* <a href="http://bit.ly/2kt6mpR" target="_blank">Decomposing a new design into ODEUM CodeJS</a>
 
-## Basic UI Components
+### Read our docs:
 
-* Drawer (Panel open/close)
-* Navigation / Routing (Memory Navigation History => DB)
-* Button
-  *  Flat style
-  *  Raised style
-  *  Icon Button
-  *  Tooltip
-
-* Text Input Component
-  *  Field Error
-  *  Hint
-  *  Multi-line
-  *  Number, currency, date/time masking
-  *  Tooltip
-
-* Radio
-* Slider
-* Popover
-* Snackbar
-* Picker Components
-  *  Datetime picker
-  *  Scroll Picker
-* Table
-* Tabs
+* <a href="./docs/Intro.md" target="_blank">ODEUM CodeJS documentation and reference guides</a>

@@ -1,7 +1,7 @@
 {
   "name": "odeum-codejs",
   "version": "1.0.1",
-  "description": "<odeum-codejs /> is an open source Web Application Frontend Framework based upon React Components.",
+  "description": "odeum-codejs is an open source Web Application Frontend Framework based upon React.",
   "main": "",
   "scripts": {
   },

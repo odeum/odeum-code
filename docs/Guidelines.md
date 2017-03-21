@@ -3,10 +3,10 @@
 ## Components
 
 ## Basic UI Components
-<a href="./BasicUIComponents.md" target="_blank">Check Basic UI Components</a>
+* <a href="./BasicUIComponents.md" target="_blank">ODEUM CodeJS Basic UI Components</a>
 
 ## App Components
-<a href="./AppComponents.md" target="_blank">Check App Components</a>
+* <a href="./AppComponents.md" target="_blank">ODEUM CodeJS App Components</a>
 
 ## Folder structure
 
