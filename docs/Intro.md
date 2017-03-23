@@ -10,11 +10,11 @@ The first render should be on the server, and give the user some content if that
 ## Offline-first approach
 Offline-first – hence treating the network as an enhancement with JS tools like Service Worker and IndexedDB – has become the new standard for building fast, resilient websites. It is possible to do both traditional progressive enhancement and offline-first, but it's not easy. We should prioritize offline-first over works-without-JS."
 
-## React and JS libraries and technology used in ODEUM CodeJS:
+## ODEUM CodeJS Basic Stack includes:
 
 ```
-React, ReactDOM, Styled-Components, Redux, React Router, DraftJS, Immutable, (Relay), GraphQL, 
-NodeJS, Google Maps (react-google-maps), Docker ... (more to come)
+React, Styled-Components, Redux, React Router, DraftJS, WebPack, Immutable, (Relay), GraphQL, 
+NodeJS, Google Maps (react-google-maps), Docker ... (and probably much more ...)
 ```
 
 * <a href="./Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>
