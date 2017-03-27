@@ -15,9 +15,3 @@ The Hub facilitates the following services in-a-box:
 
 ODEUM 2GO is designed and build with ODEUM CodeJS
 
-<<<<<<< HEAD
-
-Test fra CB ... 
-=======
-Test
->>>>>>> d075015e72e88221e79e7e7cce2df5862c07e7e1
