@@ -26,6 +26,6 @@ AT:
 Experiment with React Component boilerplate for Tabs in the workspace. Tabs are the main control for all App Scenes.
 Components should be styled with Styled-Components to see if CSS with Styled-Components is a suitable path for ODEUM CodeJS.
 
-## Github and versioning
+## 7: Github and versioning
 MHK:
 Experiment with, how to tag (label) different versions of experiments in which branches. For now we only have the MASTER branch which obviously is not enough when actual functionel code will be delivered. Andrei might have proposals to this as well. 
