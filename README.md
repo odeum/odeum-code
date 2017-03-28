@@ -7,7 +7,7 @@
 
 **ODEUM CodeJS** is a Web Application Frontend Framework based on React.
 
-## <a href="./docs/Mission-stetement.md" target="_blank">Please read the ODEUM CodeJS Mission Statement</a>
+## <a href="./docs/Mission-statement.md" target="_blank">Please read the ODEUM CodeJS Mission Statement</a>
 
 ## CASE: New ODEUM frontend design
 
@@ -50,3 +50,5 @@ document.getElementById("odeum-codejs"))
 ### Read our docs and reference guides:
 
 * <a href="./docs/Intro.md" target="_blank">ODEUM CodeJS documentation and reference guides</a>
+
+* <a href="./docs/Mission-stetement.md" target="_blank">Please read the ODEUM CodeJS Mission Statement</a>
