@@ -3,7 +3,7 @@
 ## 1: Codesplitting / routing
 CB
 Should React be used from a CDN or is it preferable to use it inline?
-CB will do some initial research and propose 2-3 different technology paths
+CB will do some initial research and propose 2-3 different technology paths. 
 
 ## 2: Component App framework
 MB (real code) + CB (pseudo code)
