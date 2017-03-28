@@ -7,6 +7,8 @@
 
 **ODEUM CodeJS** is a Web Application Frontend Framework based on React.
 
+## <a href="./docs/Mission-stetement.md" target="_blank">Please read the ODEUM CodeJS Mission Statement</a>
+
 ## CASE: New ODEUM frontend design
 
 ```
@@ -33,9 +35,7 @@ and developers to create innovative solutions.
 * “Top tier company approval (FB, Instagram, Netflix, AirBnB, Microsoft)”
 * “… and probably much more!”
 
-* <a href="./docs/Mission-stetement.md" target="_blank">Please read the ODEUM CodeJS Mission Stetement</a>
-
-## Contact
+## For more details please contact: 
 
 ```
 ReactDOM.render(<Contact mail="cb@webhouse.dk" 
@@ -43,7 +43,7 @@ phone=”+45 22 68 08 80” github="odeum-codejs" />,
 document.getElementById("odeum-codejs"))
 ```
 
-### Checkout the Google presentation for the case/problem:
+### Check out the Google presentation for the case/problem:
 
 * <a href="http://bit.ly/2kt6mpR" target="_blank">Decomposing a new design into ODEUM CodeJS</a>
 
