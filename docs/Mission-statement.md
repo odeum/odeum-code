@@ -17,9 +17,17 @@ So the idea of open sourcing our work began to evolve. And the ideas just kept f
 
 So the mission was to make a kick-ass Web Application Frontend Framework based on React. 
 
-Made with Love for JavaScript and React, made with Love and help from our friends.
+Made with Love for JavaScript and React, made with Love and help from our friends in Aalborg.
 
 Made in Aalborg.
+
+So if you are a passionate ReactJS or JavaScript developer and would like to contribute to the first React open source Web Apps UI/UX framework project in Aalborg please let us know @ <a href="mailto:cb@webhouse.dk" target="_blank">cb@webhouse.dk</a> 
+
+More on how to contribute later ... 
+
+Thanks
+
+The ODEUM CodeJS Team
 
 
 
