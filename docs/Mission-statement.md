@@ -15,9 +15,9 @@ So the idea of open sourcing our work began to evolve. And the ideas just kept f
 - We Love Aalborg, the city we live and thrive in
 - We Love ... React
 
-So the mission was to make a kick-ass Web Application Frontend Framework based on React. 
+So the mission is to make a kick-ass Web Application Frontend Framework based on React. 
 
-Made with Love for JavaScript and React, made with Love and help from our friends in Aalborg.
+Made with Love for JavaScript and React, made with passion and help from our friends in Aalborg.
 
 Made in Aalborg.
 
