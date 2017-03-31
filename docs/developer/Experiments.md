@@ -28,4 +28,8 @@ Components should be styled with Styled-Components to see if CSS with Styled-Com
 
 ## 7: Github and versioning
 MHK:
-Experiment with, how to tag (label) different versions of experiments in which branches. For now we only have the MASTER branch which obviously is not enough when actual functionel code will be delivered. Andrei might have proposals to this as well. 
+Experiment with, how to tag (label) different versions of experiments in which branches. For now we only have the MASTER branch which obviously is not enough when actual functionel code will be delivered. Andrei might have proposals for this as well. 
+
+## 8: ODEUM CodeJS experiments site in production
+How to set up a React website in production in a real world hosting environment. Which webserver to run, NodeJS is probably required, which version, and do we want to use Express web server or what? 
+

@@ -35,6 +35,7 @@ class App extends Component {
             <MenuPanel>
                 <MenuPanelMessages />
                 <MenuPanelList />
+                  <MenuPanelListItem>
                 <MenuPanelUserList />
                 <MenuPanelAppMarket />
             </MenuPanel>
