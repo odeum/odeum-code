@@ -43,4 +43,6 @@ How to set up a React website in production in a real world hosting environment.
 How to deploy updates to different customer servers and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
 
 ## 10: Naming Conventions
-CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to cal ANYTHING, ask CB. 
+CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to cal ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
+
+
