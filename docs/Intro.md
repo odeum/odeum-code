@@ -13,8 +13,8 @@ Offline-first – hence treating the network as an enhancement with JS tools lik
 ## ODEUM CodeJS Basic Stack includes:
 
 ```
-React, Styled-Components, Redux, React Router, DraftJS, WebPack, Immutable, (Relay), GraphQL, 
-NodeJS, Google Maps (react-google-maps), Docker ... (and probably much more ...)
+React, Styled-Components, Redux, React Router, DraftJS, WebPack, NodeJS, 
+Google Maps (react-google-maps), Docker ... (and probably much more ...)
 ```
 
 * <a href="./Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>

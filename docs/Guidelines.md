@@ -9,7 +9,7 @@
 * <a href="./AppComponents.md" target="_blank">ODEUM CodeJS App Components</a>
 
 ##PropTypes
-Is is critical that all component development is declared with PropTypes everywhere possible. PropTypes will work both as typechecking security and as an API overview for other developers on which props the component agregates. 
+It is critical that all component development is declared with PropTypes everywhere possible. PropTypes will work both as typechecking security and as an API overview for other developers on which props the component agregates. 
 
 https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 
@@ -23,7 +23,6 @@ Initially we pull and commit work to 3 branches:
 - MASTER
 
 * <a href="./developer/odeum-codejs-branching-strategy.png" target="_blank">ODEUM CodeJS Branching Strategy</a>
-
 
 ## Folder structure
 
