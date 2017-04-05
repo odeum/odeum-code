@@ -15,6 +15,15 @@ https://facebook.github.io/react/docs/typechecking-with-proptypes.html
 
 https://wecodetheweb.com/2015/06/02/why-react-proptypes-are-important/
 
+## Github branching and versioning
+Initially we pull and commit work to 3 branches:
+
+- development/alpha
+- development/beta
+- MASTER
+
+* <a href="./developer/odeum-codejs-branching-strategy.png" target="_blank">ODEUM CodeJS Branching Strategy</a>
+
 
 ## Folder structure
 
