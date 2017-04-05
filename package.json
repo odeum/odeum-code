@@ -2,9 +2,7 @@
   "name": "odeum-codejs",
   "version": "1.0.1",
   "description": "ODEUM CodeJS is an open source Web Application Frontend Framework based on React.",
-  "main": "",
-  "scripts": {
-  },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/odeum/odeum-codejs.git"
@@ -14,5 +12,18 @@
   "bugs": {
     "url": "https://github.com/odeum/odeum-codejs/issues"
   },
-  "homepage": "https://github.com/odeum/odeum-codejs#readme"
+  "homepage": "https://github.com/odeum/odeum-codejs#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
 }
