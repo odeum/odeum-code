@@ -1,11 +1,16 @@
 # Experiments (initial developer experiments)
 
-Contributors:
-HH:     Henrik Hansen - hh@webhouse.dk
-AT:     Andrei Tudor - andrei@webhouse.dk
-MB:     Mikkel Broberg - mb@webhouse.dk
-MHK:    Martin Kristiansen - mhk@webhouse.dk
-CB:     Christian Broberg - cb@webhouse.dk
+### Contributors:
+- HH:     Henrik Hansen - hh@webhouse.dk
+- AT:     Andrei Tudor - andrei@webhouse.dk
+- MB:     Mikkel Broberg - mb@webhouse.dk
+- MHK:    Martin Kristiansen - mhk@webhouse.dk
+- CB:     Christian Broberg - cb@webhouse.dk
+
+### Experiments location
+- All code experiments must be located in ./experiments/... 
+- Only code reviewed and accepted components and scripts will be populated to ./src folder
+
 
 ## Codesplitting / routing (IDLE)
 Should React be used from a CDN or is it preferable to use it inline?
