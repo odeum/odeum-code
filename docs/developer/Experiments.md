@@ -17,7 +17,8 @@ Should React be used from a CDN or is it preferable to use it inline?
 WeB will do some initial research and propose 2-3 different technology paths. 
 
 ## Redux
-Redux will be used for State Management throughout ODEUM CodeJS and it would be a requirement for developers to obtain skilled knowledge on how to use Redux with all container/statefull (clever) components. 
+Redux will be used for State Management throughout ODEUM CodeJS and it would be a requirement for developers to obtain skilled knowledge on how to use Redux with all container/statefull (smart) components.
+Read the book, "The Complete Redux Book" it is located in the ./docs/developer folder. 
 
 ## General Component App framework (DOING)
 MB + AT (real code) + CB (pseudo code)
