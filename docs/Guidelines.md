@@ -8,6 +8,11 @@
 ## App Components
 * <a href="./AppComponents.md" target="_blank">ODEUM CodeJS App Components</a>
 
+## JavaScript Style Guide
+We will try to refer to Airbnb's style guide which is pretty strict and solid. We will produce an eslintrc with all the rules that apply for ODEUM CodeJS. 
+
+* https://github.com/airbnb/javascript 
+
 ##PropTypes
 It is critical that all component development is declared with PropTypes everywhere possible. PropTypes will work both as typechecking security and as an API overview for other developers on which props the component agregates. 
 

@@ -18,7 +18,8 @@ WeB will do some initial research and propose 2-3 different technology paths.
 
 ## Redux
 Redux will be used for State Management throughout ODEUM CodeJS and it would be a requirement for developers to obtain skilled knowledge on how to use Redux with all container/statefull (smart) components.
-Read the book, "The Complete Redux Book" it is located in the ./docs/developer folder. 
+Read the book, "The Complete Redux Book" it is located in the ./docs/developer folder and check the book code examples here:
+https://github.com/redux-book/code-samples
 
 ## General Component App framework (DOING)
 MB + AT (real code) + CB (pseudo code)
@@ -36,7 +37,7 @@ Experiment is branching the mobile license server model from odeummobile.com out
 which will become the "Global User Registry" on odeum.com. Today this solution takes "customerID", "userID", 
 and "password" to resolve which server to communicate with. In the finalized model all users will only have one account on odeum.com which will resolve to numerous apps and installations (sites). ODEUM CodeJS Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM CodeJS specific experiment)). 
 
-## Tabs with Styled-Components
+## Tabs with Styled-Components (IN ALPHA)
 AT:
 Experiment with React Component boilerplate for Tabs in the workspace. Tabs are the main control for all App Scenes.
 Components must be styled with Styled-Components to see if CSS with Styled-Components is a suitable path for ODEUM CodeJS.
@@ -49,3 +50,6 @@ How to deploy updates to different customer servers and locations. We PULL with 
 
 ## Naming Conventions
 CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
+
+## JavaScript Style Guide
+As proposed in the Guidelines we will create a JavaScript Style Guide and linter based upon Airbnb's guidance. 
