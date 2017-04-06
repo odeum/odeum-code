@@ -11,6 +11,9 @@ CB:     Christian Broberg - cb@webhouse.dk
 Should React be used from a CDN or is it preferable to use it inline?
 WeB will do some initial research and propose 2-3 different technology paths. 
 
+## Redux
+Redux will be used for State Management throughout ODEUM CodeJS and it would be a requirement for developers to obtain skilled knowledge on how to use Redux with all container/statefull (clever) components. 
+
 ## General Component App framework (DOING)
 MB + AT (real code) + CB (pseudo code)
 Experiment is setting up the core app framework in ODEUM CodeJS with Routes, Redux and Styled-Components. This means the Playground, Header, MenuPanel, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
@@ -39,4 +42,4 @@ How to set up a React website in production in a real world hosting environment.
 How to deploy updates to different customer servers and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
 
 ## Naming Conventions
-CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to cal ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
+CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
