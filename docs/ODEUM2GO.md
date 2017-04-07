@@ -9,8 +9,10 @@ The Hub facilitates the following services in-a-box:
 - App Database Manager
 - Document Storage (x GB per month)
 - Database (x GB per month)
-- Themes
+- Themes (ThemeProvider)
 - Hotline and chat support from developers
 ```
 
 ODEUM 2GO is designed and build with ODEUM CodeJS
+
+https://www.reindex.io

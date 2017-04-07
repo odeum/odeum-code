@@ -1,11 +1,11 @@
 # Experiments (initial developer experiments)
 
-### Contributors:
-- HH:     Henrik Hansen - hh@webhouse.dk
-- AT:     Andrei Tudor - andrei@webhouse.dk
-- MB:     Mikkel Broberg - mb@webhouse.dk
-- MHK:    Martin Kristiansen - mhk@webhouse.dk
-- CB:     Christian Broberg - cb@webhouse.dk
+## Contributors:
+- HH:     Henrik Hansen - <a href="mailto:hh@webhouse.dk" target="_blank">hh@webhouse.dk</a>
+- AT:     Andrei Tudor - <a href="mailto:at@webhouse.dk" target="_blank">at@webhouse.dk</a>
+- MB:     Mikkel Broberg - <a href="mailto:mb@webhouse.dk" target="_blank">mb@webhouse.dk</a>
+- MHK:    Martin Kristiansen - <a href="mailto:mhk@webhouse.dk" target="_blank">mhk@webhouse.dk</a>
+- CB:     Christian Broberg - <a href="mailto:cb@webhouse.dk" target="_blank">cb@webhouse.dk</a>
 
 ### Experiments location
 - All code experiments must be located in ./experiments/... 
@@ -14,7 +14,16 @@
 
 ## Codesplitting / routing (IDLE)
 Should React be used from a CDN or is it preferable to use it inline?
-WeB will do some initial research and propose 2-3 different technology paths. 
+We will do some initial research and propose 2-3 different technology paths and architectures.
+The PRPL pattern looks promising. (ServiceWorker, IndexedDB, Web App Install Banners, Web Push Notifications)
+
+``` 
+https://www.slideshare.net/grgur/prpl-pattern-with-webpack-and-react
+
+https://github.com/ModusCreateOrg/react-dynamic-route-loading-es6
+
+https://developers.google.com/web/fundamentals/performance/prpl-pattern/
+``` 
 
 ## Redux
 Redux will be used for State Management throughout ODEUM CodeJS and it would be a requirement for developers to obtain skilled knowledge on how to use Redux with all container/statefull (smart) components.

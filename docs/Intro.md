@@ -14,7 +14,7 @@ Offline-first – hence treating the network as an enhancement with JS tools lik
 
 ```
 React, Styled-Components, Redux, React Router, DraftJS, WebPack, NodeJS, 
-Google Maps (react-google-maps), Docker ... (and probably much more ...)
+Google Maps (react-google-maps), Docker ... (and much more which will be described later ...)
 ```
 
 * <a href="./Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>
