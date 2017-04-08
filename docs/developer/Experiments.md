@@ -22,7 +22,12 @@ https://www.slideshare.net/grgur/prpl-pattern-with-webpack-and-react
 
 https://github.com/ModusCreateOrg/react-dynamic-route-loading-es6
 
+https://www.polymer-project.org/1.0/toolbox/server
+
 https://developers.google.com/web/fundamentals/performance/prpl-pattern/
+
+https://blog.twitter.com/2017/how-we-built-twitter-lite
+
 ``` 
 
 ## Redux
