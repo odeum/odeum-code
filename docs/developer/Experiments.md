@@ -31,13 +31,16 @@ https://blog.twitter.com/2017/how-we-built-twitter-lite
 ``` 
 
 ## Redux
-Redux will be used for State Management throughout ODEUM CodeJS and it would be a requirement for developers to obtain skilled knowledge on how to use Redux with all container/statefull (smart) components.
+Redux will be used for State Management throughout ODEUM CodeJS and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer folder and check the book code examples here:
 https://github.com/redux-book/code-samples
 
 ## General Component App framework (DOING)
 MB + AT (real code) + CB (pseudo code)
 Experiment is setting up the core app framework in ODEUM CodeJS with Routes, Redux and Styled-Components. This means the Playground, Header, MenuPanel, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
+
+## Demo App to Connect to the ODEUM CodeJS framework
+ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems, helpitems, login, routes etc. We need a simple Demo App to test this symbiotic connection. Who manages the state (Redux store, the framework or the app? 
 
 ## Login
 MHK will build the first OAuth experiment up against ODEUM Server
@@ -60,10 +63,16 @@ Components must be styled with Styled-Components to see if CSS with Styled-Compo
 How to set up a React website in production in a real world hosting environment. Which webserver to run, NodeJS is probably required, which version, and do we want to use Express web server or Apache? 
 
 ## Deployment
-How to deploy updates to different customer servers and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
+How to deploy ODEUM CodeJS client updates to different customer clients and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
 
 ## Naming Conventions
 CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
 
 ## JavaScript Style Guide
 As proposed in the Guidelines we will create a JavaScript Style Guide and linter based upon Airbnb's guidance. 
+
+## Debugging with Chrome in VS Code
+We need to create a boilerplate method to setup debugging with Chrome in VS Code. 
+
+## Test setup scenarios
+Setting up and performing automated tests of components and complete framework
