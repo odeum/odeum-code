@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Playground from './containers/Playground'
 import { Header, HeaderLogo, HeaderSearchBar, HeaderNotifications, HeaderUserProfile } from './components/Header'
-import { MenuPanel, MenuPanelMessages, MenuPanelList, MenuPanelUserList, MenuPanelAppMarket } from './containers/MenuPanel'
+import { Menu, MenuMessages, MenuList, MenuUserList, MenuAppMarket } from './containers/Menu'
 import Workspace from './components/Workspace'
 import { Footer, FooterLabel, FooterHelp } from './components/Footer'
 
@@ -32,13 +32,13 @@ class App extends Component {
                 <HeaderUserProfile />
             </Header>
 
-            <MenuPanel>
-                <MenuPanelMessages />
-                <MenuPanelList />
-                    <MenuPanelListItem />
-                <MenuPanelUserList />
-                <MenuPanelAppMarket />
-            </MenuPanel>
+            <Menu>
+                <MenuMessages />
+                <MenuList />
+                    <MenuListItem />
+                <MenuUserList />
+                <AppMarket />
+            </Menu>
             
             <Footer>
                 <FooterLabel />
