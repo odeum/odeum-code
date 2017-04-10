@@ -19,7 +19,12 @@
         "no-unused-vars": "warn",
         "constructor-super": "warn",
         "valid-typeof": "warn",
-        "semi": ["error", "never"]
+        "semi": ["error", "never"],
+
+        "react/display-name": 0
     },
-    "extends": "react-app"
+       "extends": [
+        "react-app"
+        // ,"eslint:recommended"
+    ]
 }

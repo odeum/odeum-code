@@ -1,7 +1,5 @@
 # ODEUM CodeJS [![Build Status](https://travis-ci.org/odeum/odeum-codejs.svg?branch=master)](https://travis-ci.org/odeum/odeum-codejs)
 
-ODEUM CodeJS is a React framework build on create-react-app, so you can create apps with no build configuration. 
-
 * [Getting Started](#getting-started) – How to create a new app.
 * [User Guide](https://github.com/odeum/odeum-codejs/blob/master/docs/Guidelines.md) – How to develop apps bootstrapped with ODEUM CodeJS.
 
