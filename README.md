@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/odeum/odeum-codejs.svg?branch=master)](https://travis-ci.org/odeum/odeum-codejs)
 # ODEUM CodeJS
 
 <a href="https://github.com/odeum/odeum-codejs">
