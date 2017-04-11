@@ -76,18 +76,38 @@ Initially we pull and commit work to 3 branches:
 
 ```
 /src
-  /scenes
+  /assets/
+  /containers/
+  /components/
+  /scenes/
     /Login 
     /Home
       /scenes
         /Dashboard
-        /Create
-            /containers
-            /components
         /Tasks
-        /Registrations
+            /containers
+              Smart1/
+                /actions/
+                /reducers/
+                /assets/
+                index.js
+            /components/
+              Dumb1/
+                /assets/
+                /styles/
+                index.js
+              Dumb2/index.js
+            /actions/actiontypes.js
+            /reducers
+            /styles
+        /Forms
+        /Reports
         /Organisation
         /Settings
         /AddMenu
-        /AppMarket          
+        /AppMarket
+  /store/
+    /reducers/
+  /services/
+    /api/          
 ```
