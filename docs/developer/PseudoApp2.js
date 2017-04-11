@@ -3,6 +3,7 @@ import { AppFramework, StateManager } from 'odeum-codejs'
 import Playground from 'odeum-playground'
 import connectAPI from 'odeum-api'
 import APIConnector from 'odeum-connect'
+import SomeComponent from './src/scenes/Dashboard/containers/SomeComponent'
 
 /*
 odeum-codejs
