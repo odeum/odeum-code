@@ -2,7 +2,7 @@
 
 At WebHouse we set out on a mission in 2016. 
 
-A mission, not just to renew our existing web UI and UX of our long product-line of ODEUM Web Apps, 
+A mission, not just to renew our existing Web UI and UX of our long product-line of ODEUM Web Apps, 
 but a mission to do something amazing. Something new, something exiting, and through that mission give something back 
 to a development community we have been a part of since 1995. 
 
@@ -28,6 +28,3 @@ More on how to contribute later ...
 Thanks
 
 The ODEUM CodeJS Team
-
-
-

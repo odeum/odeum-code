@@ -8,71 +8,18 @@
 ## App Components
 * <a href="./AppComponents.md" target="_blank">ODEUM CodeJS App Components</a>
 
-##PropTypes
-Is is critical that all component development is declared with PropTypes everywhere possible. PropTypes will work both as typechecking security and as an API overview for other developers on which props the component agregates. 
+## Github branching and versioning
+Initially we pull and commit work to 3 branches:
 
-https://facebook.github.io/react/docs/typechecking-with-proptypes.html
+- development/alpha
+- development/beta
+- MASTER
 
-https://wecodetheweb.com/2015/06/02/why-react-proptypes-are-important/
+* <a href="./developer/odeum-codejs-branching-strategy.png" target="_blank">ODEUM CodeJS Branching Strategy</a>
 
-
-## Folder structure
-
-## Source files 
-
-```
-/
-/src
-/src/containers
-/src/components
-/src/components/Header
-/src/components/Header/HeaderLogo
-/src/data    (/models)
-/src/scenes  (/routes)
-/src/services
-/src/services/api
-/src/services/geolocation
-````
-
-## Public static source files 
-```
-/public
-/public/index.html
-/public/favicon.ico
-```
-
-## Example component structure 
+## ODEUM CodeJS Basic Stack includes:
 
 ```
-/
-  /src
-  /App.js
-  /index.js
-      /containers
-          /HeaderNotifications
-          /index.js
-          /actions.js
-          /reducer.js
-          /styles.js
-          /actiontypes.js
-```
-
-## Example scene structure for ODEUM Report Web App
-
-```
-/src
-  /scenes
-    /Login 
-    /Home
-      /scenes
-        /Dashboard
-        /Create
-            /containers
-            /components
-        /Tasks
-        /Registrations
-        /Organisation
-        /Settings
-        /AddMenu
-        /AppMarket          
+React, Styled-Components, Redux, React Router, DraftJS, Babel, WebPack, NodeJS, NPM, Travis CI, 
+Google Maps (react-google-maps), Docker ... (and much more which will be described later ...)
 ```
