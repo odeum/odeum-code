@@ -12,7 +12,7 @@ A system to remotely record the client app state history so you will be able to 
 Check NPM (redux-state-history, redux-dev-tools, redux-test-recorder)
 
 ## Data Branching (SS)
-We need to be able to branch (versioning) data in our databases so we have the ability to work with "DEVDATA" and "MASTERDATA" during development and test. Users will be able to "check-out" data from the MASTERDATA into the DEVDATA branch and work with the data from there. When done working with a "record" or "structure" the user can commit the DEVDATA data to the MASTERDATA branch. The different data-branches need to be accesible to our data-synchronizers in ODEUM Sync Manager (OSM). 
+We need to be able to branch data in our databases so we have the ability to work with "DEVDATA", "TESTDATA" and "PRODDATA" during development, test and production. Users will be able to "check-out/pull" data from the PRODDATA into the DEVDATA or TRSTDATA branches and work with our tools on the data from there. When done working with a "record" or "structure" or queries, the user can commit the DEVDATA/TESTDATA data to the PRODDATA branch. The different data-branches need to be accesible to our data-synchronizers in ODEUM Sync Manager (OSM) as well. 
 
 ## Point of failure:
 When delivering the entire app in one render-blocking package, you might run into JS code loading errors. Don't make JS your app's single point of failure."

@@ -1,6 +1,7 @@
 # Experiments (initial developer experiments)
 
-## Contributors:
+## Contributors (primary):
+
 - HH:     Henrik Hansen - <a href="mailto:hh@webhouse.dk" target="_blank">hh@webhouse.dk</a>
 - AT:     Andrei Tudor - <a href="mailto:at@webhouse.dk" target="_blank">at@webhouse.dk</a>
 - MB:     Mikkel Broberg - <a href="mailto:mb@webhouse.dk" target="_blank">mb@webhouse.dk</a>
@@ -8,7 +9,9 @@
 - CB:     Christian Broberg - <a href="mailto:cb@webhouse.dk" target="_blank">cb@webhouse.dk</a>
 
 ### Experiments location
-- All code experiments must be located in ./experiments/... 
+
+- All code experiments must be located in ./experiments/... All experiments should be a full stack CRA implementation which can be installed seperately from within the experiments own folder
+
 - Only code reviewed and accepted components and scripts will be populated to ./src folder
 
 
@@ -31,12 +34,12 @@ https://blog.twitter.com/2017/how-we-built-twitter-lite
 ``` 
 
 ## Redux
-Redux will be used for State Management throughout ODEUM CodeJS and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
-Read the book, "The Complete Redux Book" it is located in the ./docs/developer folder and check the book code examples here:
+Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
+Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ folder and check the book code examples here:
 https://github.com/redux-book/code-samples
 
 ## General Component App framework (DOING)
-MB + AT (real code) + CB (pseudo code)
+MB + AT (real code)
 Experiment is setting up the core app framework in ODEUM CodeJS with Routes, Redux and Styled-Components. This means the Playground, Header, MenuPanel, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
 
 ## Demo App to Connect to the ODEUM CodeJS framework
@@ -47,6 +50,9 @@ MHK will build the first OAuth experiment up against ODEUM Server
 
 ## REST and components API documentation platform/style
 CB will research and propose API documentation platform and style
+
+## REST API implementation experiments
+All available forces
 
 ## Global User Registry (odeum.com)
 HH + MHK
@@ -72,7 +78,10 @@ CB will be in charge of all naming conventions so refactoring can be at a minimu
 As proposed in the Guidelines we will create a JavaScript Style Guide and linter based upon Airbnb's guidance. 
 
 ## Debugging with Chrome in VS Code
-We need to create a boilerplate method to setup debugging with Chrome in VS Code. 
+We need to create a boilerplate method to setup debugging with Chrome in VS Code on both Mac and WIndows PC. 
 
 ## Test setup scenarios
-Setting up and performing automated tests of components and complete framework
+Setting up and performing automated tests of components and complete framework through CRA.
+
+## Themes in ODEUM CodeJS
+How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC)

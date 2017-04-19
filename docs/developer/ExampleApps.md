@@ -14,3 +14,8 @@ The following Example Apps will be developed with ODEUM CodeJS for the repositor
 - **ComponentBuilder**
     - Build an App to construct a JavaScript file with a new component
     - Use dropdown menues and checkboxes to select type and default values and innerworkings
+
+- **Geocloud2 porting**
+    - Support Mapcentia in porting GC2 to ODEUM CodeJS
+
+
