@@ -21,6 +21,8 @@ We will do some initial research and propose 2-3 different technology paths and 
 The PRPL pattern looks promising. (ServiceWorker, IndexedDB, Web App Install Banners, Web Push Notifications)
 
 ``` 
+https://medium.com/@sejoker/code-splitting-with-webpack-on-the-component-level-ac50748d80de
+
 https://www.slideshare.net/grgur/prpl-pattern-with-webpack-and-react
 
 https://github.com/ModusCreateOrg/react-dynamic-route-loading-es6
@@ -40,7 +42,7 @@ https://github.com/redux-book/code-samples
 
 ## General Component App framework (DOING)
 MB + AT (real code)
-Experiment is setting up the core app framework in ODEUM CodeJS with Routes, Redux and Styled-Components. This means the Playground, Header, MenuPanel, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
+Experiment is setting up the core app framework in ODEUM CodeJS with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
 
 ## Demo App to Connect to the ODEUM CodeJS framework
 ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems, helpitems, login, routes etc. We need a simple Demo App to test this symbiotic connection. Who manages the state (Redux store, the framework or the app? 
@@ -84,4 +86,8 @@ We need to create a boilerplate method to setup debugging with Chrome in VS Code
 Setting up and performing automated tests of components and complete framework through CRA.
 
 ## Themes in ODEUM CodeJS
-How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC)
+How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
+
+## Help System (Help Items)
+The App platform for displaying context-sensitive helpitems based upon views in scenes. 
+Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. Helpitems should be indexed and very easy to localize.

@@ -6,6 +6,9 @@ The following Example Apps will be developed with ODEUM CodeJS for the repositor
     - Examples of different themes
     - Publish theme components to NPM
 
+- **HelpBuilder**
+    - Build an App to construct an indexed localized help file for an App using ODEUM CodeJS
+
 - **AppBuilder**
     - Build an App to invoke a boilerplate to set up scenes (menus) for an app
     - Import a theme from ThemeBuilder
@@ -17,5 +20,10 @@ The following Example Apps will be developed with ODEUM CodeJS for the repositor
 
 - **Geocloud2 porting**
     - Support Mapcentia in porting GC2 to ODEUM CodeJS
+
+- **ODEUM Connect**
+    - Demo of creating and managing a React component as an NPM module + Travis CI deployment
+
+
 
 

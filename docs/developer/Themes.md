@@ -6,11 +6,11 @@ https://github.com/styled-components/styled-components
 
 
 https://www.npmjs.com/package/styled-theme
-https://github.com/diegohaz/styled-theme
-
+https://github.com/diegohaz/styled-theme (39 *)
+http://jxnblk.com
 
 Erik Rasmussen (Redux-Forms)
-https://github.com/erikras/styled-components-theme
+https://github.com/erikras/styled-components-theme (125 *)
 https://www.npmjs.com/package/styled-components-theme
 
 ```js
