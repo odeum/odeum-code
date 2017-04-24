@@ -7,7 +7,7 @@ The following Example Apps will be developed with ODEUM CodeJS for the repositor
     - Publish theme components to NPM
 
 - **HelpBuilder**
-    - Build an App to construct an indexed localized help file for an App using ODEUM CodeJS
+    - Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS. App should obviously be multilingual in terms of creating localization of help files 
 
 - **AppBuilder**
     - Build an App to invoke a boilerplate to set up scenes (menus) for an app
