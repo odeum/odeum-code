@@ -25,10 +25,10 @@
             /containers/
               Smart1/
                 /actions/
-                smart1actiontypes.js
-                smart1action.js
+                  smart1actiontypes.js
+                  smart1action.js
                 /reducers/
-                smart1reducer.js
+                  smart1reducer.js
                 /assets/
                 Smart1.js
             /components/
