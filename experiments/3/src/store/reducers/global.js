@@ -31,19 +31,13 @@ const global = (state=initialState, action)=>{
          // push(action.payload)
           if(action.payload.includes('/scenes/dashboard'))
           return {...state,
-          comp:Dashboard};
+          comp:Dashboard}
           else
           return{...state,
           comp:Organisation}
         }
-        case actions.CHANGE_TAB:
-        {
-            console.log('changeTabReducer:'+action.payload)
-            return{...state,
-            tab:action.payload}
-        }
         default:
-        return state;
+        return state
 
     }
 

@@ -1,11 +1,20 @@
+//@ React imports
 import PropTypes from 'prop-types'
-import React, { Component} from 'react';
+import React, { Component} from 'react'
+
+//@ Redux imports
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as TabsActions from './tabsActions.js'
+
+//@ Import icons & styles
+import {renderIcons} from './styled/icons'
 import * as s from './styled'
-import {renderIcons} from './styled/icons';
+
 class Tab extends Component {
       handleClick(index, event)
     {
-        event.preventDefault();
+        event.preventDefault()
         //@dispatch action to change index in state
         this.props.changeTab(index)
     }
@@ -73,6 +82,13 @@ Tab.propTypes = {
 Tab.childContextTypes={
     reactIconBase: PropTypes.object
 }
+//TODO get ownProps(url params) and change tab accordingly
+const mapStateToProps = (state) =>( {
+    selected: state.tabs.tab
+})
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(TabsActions,dispatch)
+}
 
-export default Tab
+export default connect(mapStateToProps,mapDispatchToProps)(Tab)
 

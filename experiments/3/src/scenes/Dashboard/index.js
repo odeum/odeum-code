@@ -10,7 +10,7 @@ const Dashboard = props => {
         <DashboardDiv>
             {/* <h2>Dashboard</h2>*/}
            
-            <Tab selected={props.tab} changeTab={props.changeTab}>
+            <Tab>
                    <Panel label='Generelt' icon="generelt">
                         <div>Lorem ipsum1</div>
                     </Panel>
