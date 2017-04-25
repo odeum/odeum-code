@@ -9,7 +9,7 @@ const DrawerWrapper = ({ScenesDrawer}) => {
         <s.DrawerWrapperDiv>
             {ScenesDrawer.map((scene,index)=>(<DrawerItem name={scene.name} location={scene.location} onPush={scene.onPush} key={index}/>))}
         </s.DrawerWrapperDiv>
-    );
-};
+    )
+}
 
-export default DrawerWrapper;
+export default DrawerWrapper

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {HeaderSearchBarInput,HeaderSearchBarDiv,HeaderSearchBarButton} from '../styled'
+import React, { Component } from 'react'
+import {HeaderSearchBarInput,HeaderSearchBarDiv,HeaderSearchBarButton} from '../styled/HeaderStyle'
 
 class HeaderSearch extends Component {
     render() {
@@ -8,8 +8,8 @@ class HeaderSearch extends Component {
                 <HeaderSearchBarInput placeholder="Searchbar" />
                 <HeaderSearchBarButton>SIco</HeaderSearchBarButton>
             </HeaderSearchBarDiv>
-        );
+        )
     }
 }
 
-export default HeaderSearch;
+export default HeaderSearch

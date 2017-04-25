@@ -6,4 +6,4 @@ export const HomeDiv = styled.div`
     margin: 0px;
     padding: 0px;
     background-color: #ecf0f1;
-`;
+`

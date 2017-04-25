@@ -60,7 +60,7 @@ class Tab extends Component {
             {this._renderTitles()}
             {this._renderContent()}
             </s.Tabss>
-        );
+        )
     }
 }
 
@@ -69,10 +69,10 @@ Tab.propTypes = {
     changeTab:PropTypes.func,
     children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]).isRequired,
 
-};
+}
 Tab.childContextTypes={
     reactIconBase: PropTypes.object
 }
 
-export default Tab;
+export default Tab
 

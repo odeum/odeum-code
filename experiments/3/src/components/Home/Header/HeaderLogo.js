@@ -1,6 +1,6 @@
 import React from 'react';
 import ODEUMLogo from '../../../assets/codejs_logo.png'
-import {HeaderLogoDiv,HeaderLogoImg} from '../styled/index.js'
+import {HeaderLogoDiv,HeaderLogoImg} from '../styled/HeaderStyle'
 import PropTypes from 'prop-types'
 const HeaderLogo = ({onPush}) => {
     return (
@@ -15,9 +15,9 @@ const HeaderLogo = ({onPush}) => {
            </a>
           
         </HeaderLogoDiv>
-    );
-};
+    )
+}
 HeaderLogo.propTypes= {
     onPush:PropTypes.func.isRequired
 }
-export default HeaderLogo;
+export default HeaderLogo

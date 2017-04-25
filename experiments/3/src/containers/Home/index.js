@@ -55,4 +55,4 @@ const mapStateToProps = (state,ownProps) =>({
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(HomeContainer)
