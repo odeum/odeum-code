@@ -5,7 +5,7 @@ const Button = styled.button`
   /* Adjust the Button styling based on the theme */
   background: ${(props) => props.theme.background || 'lightblue'}
   border: 2px solid ${(props) => props.theme.background || 'lightblue'}
-  color: ${(props) => props.theme.color || 'white'}
+  color: ${(props) => props.theme.button.color || 'white'}
   font-family: ${(props) => props.theme.font || 'sans-serif'}
 /*  color: white; */
   border-radius: 3px
