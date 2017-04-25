@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Home = (scene) => {
   console.log('Home')
@@ -9,7 +9,7 @@ const Home = (scene) => {
             <scene.comp tab={scene.tab} changeTab={scene.changeTab}/>
             
         </div>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home
