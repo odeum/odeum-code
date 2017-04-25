@@ -18,7 +18,7 @@ export const HeaderLogoDiv = styled.div`
   float: left;
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-left: 3%;
+  padding-left: 20px;
   height: 40px;
 `
 
@@ -33,29 +33,29 @@ export const HeaderSearchBarDiv = styled.div`
 export const HeaderSearchBarInput = styled.input`
   border-radius: 3px 0px 0px 3px;
   border-color: #34495d;
-  border-style:solid;
+  border-style: solid;
   width: 400px;
   height: 30px;
-  text-align:center;
-  background:#34495d;
-  color:white;
+  text-align: center;
+  background: #34495d;
+  color: #fff;
 `
 
 export const HeaderSearchBarButton= styled.button`
-  width:36px;
-  height:36px;
+  width: 36px;
+  height: 36px;
   border: 1px solid #36695d;
   border-radius: 0px 5px 5px 0px;
-  background:#3b97d3;
-  color:White;
+  background: #3b97d3;
+  color: #fff;
 `
 
 export const HeaderNotificationDiv = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
-  color:white;
+  color: #fff;
   background: #2c3e50;
-  border:0px;
+  border: none;
 `
 
 export default HeaderDiv
