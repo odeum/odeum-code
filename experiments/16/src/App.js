@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from './components/theme'
-import Button, { Crazy } from './components/Button'
+import Button from './components/Button'
 
 const Text = styled.p`
   margin: 1em 1em
@@ -21,7 +21,6 @@ class App extends Component {
         <div>
           <Text>See how the Button below is following the theme even though the code for the button hasn't changed?</Text>
           <Button>Themed Button</Button>
-          <Crazy>Click me ></Crazy>
         </div>
       </Layout>     
     )
