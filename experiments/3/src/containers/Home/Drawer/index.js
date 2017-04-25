@@ -12,11 +12,8 @@ import * as GlobalActions from '../../../store/actions/global'
 
 class DrawerContainer extends Component {
     render() {
-    //INFO Just a demo of the Scenes
 
-    //REMOVE this unused variable
-    // var Scenes=
-    var _this = this.props;
+    var _this = this.props
         return (
             <s.DrawerWrapperDiv>
                 {/*<DrawerItem name='Dashboard' location='/scenes/dashboard' onPush={this.props.onPush}>
@@ -32,13 +29,13 @@ class DrawerContainer extends Component {
                    {this.props.scenes.map((scene,index)=>(<DrawerItem name={scene.name} location={scene.location} onPush={_this.changeScene} key={index}/>))}
                 {/*<DrawerWrapper ScenesDrawer={Scenes}/>*/}
             </s.DrawerWrapperDiv>
-        );
+        )
     }
 }
 DrawerContainer.propTypes = {
        changeScene: PropTypes.func.isRequired,
        scenes:PropTypes.array
-};
+}
 const mapStateToProps = (state) =>({
      scenes: state.global.scenes
 })

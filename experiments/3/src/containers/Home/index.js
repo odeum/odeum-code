@@ -21,7 +21,7 @@ class HomeContainer extends Component {
             <HomeDiv>
                 <HeaderContainer />
                 <DrawerContainer Scenes={this.props.scenes}/>
-                <Home scene={this.props.scene} comp={this.props.comp} tab={this.props.tab} changeTab={this.props.changeTab}/>
+                <Home scene={this.props.scene} comp={this.props.comp} />
                
             </HomeDiv>
            
@@ -33,24 +33,10 @@ HomeContainer.propTypes = {
     onPush:PropTypes.func.isRequired,
     scene:PropTypes.any
 }
-function tabs (index,url,state){ 
-    //console.log(url)
-    if(url!=null)
-    {
-    //console.log(url)
-    return url
-    }
-    else
-    {
-        console.log(index)
-        return index
-    }
-}
+
 const mapStateToProps = (state,ownProps) =>({
     scene: ownProps.match.params.scene,
-    comp: state.global.comp,
-    user: ownProps.match.params.user,
-    tab: parseInt(tabs(0,ownProps.match.params.tab),10)
+    comp: state.global.comp
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)

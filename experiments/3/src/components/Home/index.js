@@ -6,7 +6,7 @@ const Home = (scene) => {
     return (
         <div>
            
-            <scene.comp tab={scene.tab} changeTab={scene.changeTab}/>
+            <scene.comp />
             
         </div>
     )

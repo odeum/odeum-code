@@ -4,12 +4,10 @@ import Tab from '../../components/Tabs/Tab'
 import Panel from '../../components/Tabs/Panel'
 import {DashboardDiv} from './style'
 const Dashboard = props => {
-    console.log('Dashboard')
-    console.log(props)
+    // console.log('Dashboard')
+    // console.log(props)
     return (
-        <DashboardDiv>
-            {/* <h2>Dashboard</h2>*/}
-           
+        <DashboardDiv>  
             <Tab>
                    <Panel label='Generelt' icon="generelt">
                         <div>Lorem ipsum1</div>
@@ -36,10 +34,10 @@ const Dashboard = props => {
            
         </DashboardDiv>
     )
-};
+}
 
 Dashboard.propTypes = {
-    user:PropTypes.string
-};
+   
+}
 
-export default Dashboard;
+export default Dashboard

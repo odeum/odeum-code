@@ -83,8 +83,25 @@ Tab.childContextTypes={
     reactIconBase: PropTypes.object
 }
 //TODO get ownProps(url params) and change tab accordingly
-const mapStateToProps = (state) =>( {
-    selected: state.tabs.tab
+//@ compare ownProps(aka URL params) to state,
+//@ if url is empty get default state
+//@ as of now ownProps will not works without defining a route to tabs to receive url
+//@ ownProps params can be passed from the HomeContainer here though
+/*function tabCompare (index,url){ 
+    //console.log(url)
+    if(url!=null)
+    {
+    //console.log(url)
+    return url
+    }
+    else
+    {
+        console.log(index)
+        return index
+    }
+}*/
+const mapStateToProps = (state,ownProps) =>( {
+    selected: /*parseInt(tabCompare(*/state.tabs.tab/*),10)*/
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(TabsActions,dispatch)
