@@ -25,11 +25,12 @@
             /containers/
               Smart1/
                 /actions/
+                smart1actiontypes.js
                 smart1action.js
                 /reducers/
                 smart1reducer.js
                 /assets/
-                index.js
+                Smart1.js
             /components/
               Dumb1/
                 /assets/
@@ -50,7 +51,7 @@
   /store/
     store.js
     /reducers/
-    reducers.js
+    combinedreducers.js
   /services/
     /api/
     /geolocation/           

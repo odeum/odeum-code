@@ -30,7 +30,7 @@ class Tab extends Component {
         function labels(child, index) {
             let active = (this.props.selected === index ? 'active' : '');
             return (
-                <s.TabLabel key={index}>
+                <s.TabLabel key={index} className={active}>
                     <s.TabLink href="#"
                         className={active}
                         onClick={this.handleClick.bind(this, index)}>

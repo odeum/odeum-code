@@ -26,13 +26,13 @@ class HomeContainer extends Component {
             </HomeDiv>
            
             </div>
-        );
+        )
     }
 }
 HomeContainer.propTypes = {
     onPush:PropTypes.func.isRequired,
     scene:PropTypes.any
-};
+}
 function tabs (index,url,state){ 
     //console.log(url)
     if(url!=null)

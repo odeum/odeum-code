@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Organisation extends Component {
     render() {
@@ -6,7 +6,7 @@ class Organisation extends Component {
             <div>
                 <h2>Organisation</h2>
             </div>
-        );
+        )
     }
 }
 
@@ -14,4 +14,4 @@ class Organisation extends Component {
 
 // };
 
-export default Organisation;
+export default Organisation

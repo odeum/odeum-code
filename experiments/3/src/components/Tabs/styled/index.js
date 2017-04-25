@@ -10,14 +10,14 @@ export const PanelDiv = styled.div`
     font-weight: 400;
     font-size: 14px;
     background-color: #fff;
-`;
+`
 
 export const TabList = styled.ul`
     margin: 0;
     padding: 0;
     margin-top: 30px;
     height: 60px;
-`;
+`
 
 export const TabLabel = styled.li`
     display: inline-block;
@@ -32,7 +32,7 @@ export const TabLabel = styled.li`
     ${props => props.className === 'active' && css`
         background-color: #3b97d3;
     `}
-`;
+`
     
 export const TabLink = styled.a`
     // padding: 10px 12px;
@@ -46,7 +46,7 @@ export const TabLink = styled.a`
     ${props => props.className === 'active' && css`
         color: white;
     `}
-`;
+`
 
 export const Ico = styled.div`
     margin: 0;
@@ -55,11 +55,11 @@ export const Ico = styled.div`
     ${props => props.className === 'active' && css`
         color: white;
     `}
-`;
+`
 
 export const Tabss = styled.div`
     float: left;
     width: calc(100% - 300px);
     margin-left: 20px;
     background: #ecf0f1;
-`;
+`

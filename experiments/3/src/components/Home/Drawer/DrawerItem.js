@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import * as s from '../styled/DrawerStyle'
 const DrawerItem = ({name,location,onPush}) => {
     //  console.log(name)
@@ -19,7 +19,7 @@ const DrawerItem = ({name,location,onPush}) => {
                 </div>
             </s.DrawerBlueBar>
         
-    );
-};
+    )
+}
 
-export default DrawerItem;
+export default DrawerItem

@@ -21,13 +21,9 @@ export function renderIcons(icon,active) {
 
                    <Icons.MdInput color={color(active)}/>
                 );
-            // case 'felter':
-            //     return (
-            //            <Icons.MdCode color={color(active)}/>
-            //     );
             case 'felter':
                 return (
-                       <Icons.MdTimeline color={color(active)}/>
+                       <Icons.MdCode color={color(active)}/>
                 );
             case 'generelt':
                 return (
