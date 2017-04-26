@@ -6,7 +6,7 @@ const theme = {
   color: colors.CLOUDY_LIGHT,
   font: fonts.PRIMARY,
   button: {
-    color: colors.ASPHALT_DARK,
+    color: colors.DREAMY_BLUE,
   }
 }
 export default theme
