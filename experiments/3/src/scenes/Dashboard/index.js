@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Tab from '../../components/Tabs/Tab'
 import Panel from '../../components/Tabs/Panel'
 import {DashboardDiv} from './style'

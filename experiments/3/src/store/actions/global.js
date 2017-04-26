@@ -14,14 +14,5 @@ export function changeTab(index){
         dispatch(push('/scenes/dashboard/'+index))
     }
 }
-export function changeScene(location){
-    return(dispatch) =>
-    {
-        console.log('changeScene:'+location)
-        //Logging Purposes
-        dispatch({type:actions.CHANGE_SCENE, payload:location})
 
-        dispatch(push(location))
-    }
-}
 

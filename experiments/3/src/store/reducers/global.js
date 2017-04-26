@@ -1,22 +1,37 @@
-import * as actions from '../actions/action_types'
+// import * as actions from '../actions/action_types'
 // import {push} from 'react-router-redux'
 import Dashboard from '../../scenes/Dashboard'
-import Organisation from '../../scenes/Organisation'
+// import Organisation from '../../scenes/Organisation'
 const initialState={
     scenes:[
             {
+                id:0,
                 name:'Dashboard',
-                location:'/scenes/dashboard',
-                onPush:''
+                location:'/dashboard',
+                
             },{
-                name:'Dashboard 3rd Tab',
-                location:'/scenes/dashboard/2',
-                onPush:''
+                id:1,
+                name:'Opgaver',
+                location:'/tasks',
+                
             },
             {
+                id:2,
+                name:'Registreringer',
+                location:'/registreringer',
+                
+            },
+            {
+                id:3,
                 name:'Organisation',
-                location:'/scenes/organisation',
-                onPush:''
+                location:'/organisation',
+                
+            },
+            {
+                id:4,
+                name:'Indstillinger',
+                location:'/settings',
+                
             }], 
     comp:Dashboard,
     tab:0
@@ -25,17 +40,7 @@ const initialState={
 
 const global = (state=initialState, action)=>{
     switch(action.type)
-    {   case actions.CHANGE_SCENE:
-        {
-          console.log('changeSceneReducer:'+action.payload)
-         // push(action.payload)
-          if(action.payload.includes('/scenes/dashboard'))
-          return {...state,
-          comp:Dashboard}
-          else
-          return{...state,
-          comp:Organisation}
-        }
+    {  
         default:
         return state
 

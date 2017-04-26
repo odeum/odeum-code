@@ -6,13 +6,13 @@ const Panel = props => {
         <PanelDiv>
             {props.children}
         </PanelDiv>
-    );
-};
+    )
+}
 
 Panel.propTypes = {
     label: PropTypes.string.isRequired,
     icon:PropTypes.string,
     children:PropTypes.element
-};
+}
 
-export default Panel;
+export default Panel

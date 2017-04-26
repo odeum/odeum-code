@@ -4,6 +4,7 @@ const DrawerItem = ({name,location,onPush}) => {
     //  console.log(name)
     // console.log(location)
     //  console.log(onPush)
+    
     return (
        
             <s.DrawerBlueBar>

@@ -1,3 +1,5 @@
+//TODO Move ---> Containers
+
 //@ React imports
 import PropTypes from 'prop-types'
 import React, { Component} from 'react'
@@ -37,11 +39,11 @@ class Tab extends Component {
     _renderTitles()
     {
         function labels(child, index) {
-            let active = (this.props.selected === index ? 'active' : '');
+            let active = (this.props.selected === index ? 'active' : '')
             return (
                 <s.TabLabel key={index} className={active}>
                     <s.TabLink href="#"
-                        className={active}
+            	         className={active}
                         onClick={this.handleClick.bind(this, index)}>
                        <s.Ico>{renderIcons(child.props.icon,active)}</s.Ico>
                         {child.props.label}

@@ -20,9 +20,9 @@ class HomeContainer extends Component {
             <div>
             <HomeDiv>
                 <HeaderContainer />
-                <DrawerContainer Scenes={this.props.scenes}/>
-                <Home scene={this.props.scene} comp={this.props.comp} />
-               
+                <DrawerContainer />
+                {/*<Home scene={this.props.scene} comp={this.props.comp} />*/}
+               {this.props.children}
             </HomeDiv>
            
             </div>
@@ -31,12 +31,12 @@ class HomeContainer extends Component {
 }
 HomeContainer.propTypes = {
     onPush:PropTypes.func.isRequired,
-    scene:PropTypes.any
+
 }
 
 const mapStateToProps = (state,ownProps) =>({
-    scene: ownProps.match.params.scene,
-    comp: state.global.comp
+
+    comp: state.drawer.comp
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)

@@ -6,13 +6,14 @@ import * as s from '../../../components/Home/styled/DrawerStyle'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
  
-import * as GlobalActions from '../../../store/actions/global'
+// import * as GlobalActions from '../../../store/actions/global'
+import * as DrawerActions from './drawerActions'
 
 
 
 class DrawerContainer extends Component {
     render() {
-
+    console.log(this.props)
     var _this = this.props
         return (
             <s.DrawerWrapperDiv>
@@ -34,12 +35,15 @@ class DrawerContainer extends Component {
 }
 DrawerContainer.propTypes = {
        changeScene: PropTypes.func.isRequired,
-       scenes:PropTypes.array
+       scenes:PropTypes.array,
+       activeScene:PropTypes.number
 }
 const mapStateToProps = (state) =>({
-     scenes: state.global.scenes
+     scenes: state.global.scenes,
+     activeScene: state.drawer.activeScene
 })
 function mapDispatchToProps(dispatch){
-    return bindActionCreators(GlobalActions,dispatch)
+    return bindActionCreators(DrawerActions,dispatch)
+
 }
 export default connect(mapStateToProps,mapDispatchToProps)(DrawerContainer);
