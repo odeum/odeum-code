@@ -91,3 +91,18 @@ How to create a dynamic theme in OCJS which can be used for the example app "The
 ## 17 - Help System (Help Items)
 The App platform for displaying context-sensitive helpitems based upon views in scenes. 
 Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. Helpitems should be indexed and very easy to localize.
+
+## 18 - Drawer
+Find suitable React based drawer component (no jQuery) that can be styled with SC and redux'ed.
+
+Semantic UI:
+http://react.semantic-ui.com/introduction
+https://www.youtube.com/watch?v=5Bytq6LNDO4
+https://github.com/styled-components/styled-components/issues/501
+
+Other stuff:
+https://github.com/atom2ueki/react-drawer
+http://jsfiddle.net/agongdai/kb3gN/16072/
+http://stackoverflow.com/questions/40320410/how-to-make-a-drawer-like-in-google-inbox-with-material-ui
+http://codepen.io/ianmcnally/pen/YXXxMy
+
