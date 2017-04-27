@@ -7,13 +7,10 @@ const HeaderLogo = ({onPush}) => {
         <HeaderLogoDiv>
         <a href='#' onClick={e=>{
             e.preventDefault()
-            console.log(onPush)
-           
-           onPush('/')
+            onPush('/')
             }}>
            <HeaderLogoImg src={ODEUMLogo} alt="Logo"/> 
            </a>
-          
         </HeaderLogoDiv>
     )
 }

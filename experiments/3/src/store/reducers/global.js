@@ -1,6 +1,6 @@
 // import * as actions from '../actions/action_types'
 // import {push} from 'react-router-redux'
-import Dashboard from '../../scenes/Dashboard'
+//@TODO Remove Global state and individualise everything else
 // import Organisation from '../../scenes/Organisation'
 const initialState={
     scenes:[
@@ -32,8 +32,7 @@ const initialState={
                 name:'Indstillinger',
                 location:'/settings',
                 
-            }], 
-    comp:Dashboard,
+            }],
     tab:0
         }
 

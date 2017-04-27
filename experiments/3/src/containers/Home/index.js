@@ -1,12 +1,15 @@
-import React, { Component } from 'react'
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
+
+//Header+Drawer
+
 //import * as s from './styled'
 import {HomeDiv} from './styled'
-// eslint-disable-next-line
-import Home from '../../components/Home'
+
 import HeaderContainer from './Header'
 import DrawerContainer from './Drawer'
-import PropTypes from 'prop-types'
-//import Header from '../../components/Home/Header'
+
 //Redux+Router
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -22,7 +25,7 @@ class HomeContainer extends Component {
             <HomeDiv>
                 <HeaderContainer />
                 <DrawerContainer />
-                {/*<Home scene={this.props.scene} comp={this.props.comp} />*/}
+           
                {this.props.children}
             </HomeDiv>
            

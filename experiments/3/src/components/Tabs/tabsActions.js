@@ -6,7 +6,10 @@ export function changeTab(index){
     {
         console.log('changeNewActionTab:'+index)
         dispatch({type:actions.CHANGE_TAB, payload:index})
-        dispatch(push('/dashboard/'+index))
+        if(index===0)
+        {dispatch(push('/dashboard/test'/*+index*/))}
+        else
+        {dispatch(push('/dashboard/'+index))}
     }
 }
 

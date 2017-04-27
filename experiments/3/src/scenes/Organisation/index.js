@@ -4,7 +4,7 @@ class Organisation extends Component {
     render() {
         return (
             <div>
-                <h2>Organisation</h2>
+               Organisation
             </div>
         )
     }
