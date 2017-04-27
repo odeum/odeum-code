@@ -37,6 +37,10 @@ export function renderIcons(icon,active) {
             return(
                 <Icons.MdTimeline color={color(active)}/>
             )
+            case 'add':
+            return(
+                <Icons.MdAdd color={color(active)}/>
+            )
             default:
                 return (null)
             // Add more icons here

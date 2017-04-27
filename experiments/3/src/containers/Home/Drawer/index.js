@@ -13,7 +13,7 @@ import * as DrawerActions from './drawerActions'
 
 class DrawerContainer extends Component {
     render() {
-    console.log(this.props)
+    // console.log(this.props)
     var _this = this.props
         return (
             <s.DrawerWrapperDiv>

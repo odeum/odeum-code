@@ -53,7 +53,7 @@ ReactDOM.render(
             {/*@ Demo for Nesting further*/}
         
             <Route path="/dashboard/" component={scenes.dashboard}/>
-            <Route path='/dashboard/test' component={scenes.settings}/>
+            {/*<Route path='/dashboard/test' component={scenes.settings}/>*/}
             
             <Route path="/registreringer" component={scenes.registreringer}/>
             <Route path="/organisation" component={scenes.organisation}/>

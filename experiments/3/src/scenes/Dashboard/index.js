@@ -1,43 +1,34 @@
-import React from 'react';
-// import PropTypes from 'prop-types'
-import Tab from '../../components/Tabs/Tab'
-import Panel from '../../components/Tabs/Panel'
-import {DashboardDiv} from './style'
-const Dashboard = props => {
-    // console.log('Dashboard')
-   console.log(props)
-    return (
-        <DashboardDiv>  
-            <Tab>
-                   <Panel label='Generelt' icon="generelt">
-                        {props.children}
-                    </Panel>
-                    <Panel label='Felter' icon='felter'>
-                        <div>Lorem ipsum2</div>
-                    </Panel>
-                    <Panel label='Arbejdsgang' icon='arbejdsgang'>
-                        <div>Lorem ipsum3</div>
-                    </Panel>
-                     <Panel label='Brugere' icon='brugere'>
-                        <div>Lorem ipsum4</div>
-                    </Panel>
-                     <Panel label='Handlinger' icon='handlinger'>
-                        <div>Lorem ipsum5</div>
-                    </Panel>
-                      <Panel label='Konfiguration' icon='settings'>
-                        <div>Lorem ipsum6</div>
-                    </Panel>
-                      <Panel label='Design' icon='design'>
-                        <div>Lorem ipsum7</div>
-                    </Panel>
-            </Tab>
-           
-        </DashboardDiv>
-    )
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as dashboardActions from './dashboardActions'
+import Dashboard from './Dashboard'
+class DashboardContainer extends Component {
+    render() {
+        console.log(this.props)
+        return (
+            <div>
+              <Dashboard 
+              changeTabs={this.props.changeTab} 
+              tabs={this.props.tabs} 
+              selected={this.props.selected}
+              RemoveTab={this.props.closeTab}
+              AddTab={this.props.openTab}/>
+            </div>
+        );
+    }
 }
 
-Dashboard.propTypes = {
-   
+DashboardContainer.propTypes = {
+ tabs:PropTypes.array,
+ selected: PropTypes.number
+};
+const mapStateToProps = (state) =>({
+    tabs: state.dashboard.tabs,
+    selected : state.dashboard.selected
+})
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(dashboardActions,dispatch)
 }
-
-export default Dashboard
+export default connect(mapStateToProps,mapDispatchToProps)(DashboardContainer);

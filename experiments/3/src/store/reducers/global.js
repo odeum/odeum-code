@@ -2,33 +2,34 @@
 // import {push} from 'react-router-redux'
 //@TODO Remove Global state and individualise everything else
 // import Organisation from '../../scenes/Organisation'
+let nextTabId = 0;
 const initialState={
     scenes:[
             {
-                id:0,
+                id:nextTabId++,
                 name:'Dashboard',
                 location:'/dashboard',
                 
             },{
-                id:1,
+                id:nextTabId++,
                 name:'Opgaver',
                 location:'/tasks',
                 
             },
             {
-                id:2,
+                id:nextTabId++,
                 name:'Registreringer',
                 location:'/registreringer',
                 
             },
             {
-                id:3,
+                id:nextTabId++,
                 name:'Organisation',
                 location:'/organisation',
                 
             },
             {
-                id:4,
+                id:nextTabId++,
                 name:'Indstillinger',
                 location:'/settings',
                 

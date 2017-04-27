@@ -12,7 +12,7 @@ const Panel = props => {
 Panel.propTypes = {
     label: PropTypes.string.isRequired,
     icon:PropTypes.string,
-    children:PropTypes.element
+    // children:PropTypes.oneOfType(PropTypes.element,PropTypes.array)
 }
 
 export default Panel

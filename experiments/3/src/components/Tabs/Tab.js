@@ -1,13 +1,11 @@
-//TODO Move ---> Containers
-
 //@ React imports
 import PropTypes from 'prop-types'
 import React, { Component} from 'react'
-
-//@ Redux imports
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
-import * as TabsActions from './tabsActions.js'
+// //REMOVE
+// //@ Redux imports
+// import {bindActionCreators} from 'redux'
+// import {connect} from 'react-redux'
+// import * as TabsActions from './tabsActions.js'
 
 //@ Import icons & styles
 import {renderIcons} from './styled/icons'
@@ -102,12 +100,12 @@ Tab.childContextTypes={
         return index
     }
 }*/
-const mapStateToProps = (state,ownProps) =>( {
-    selected: /*parseInt(tabCompare(*/state.tabs.tab/*),10)*/
-})
-function mapDispatchToProps(dispatch){
-    return bindActionCreators(TabsActions,dispatch)
-}
+// const mapStateToProps = (state,ownProps) =>( {
+//     selected: /*parseInt(tabCompare(*/state.tabs.tab/*),10)*/
+// })
+// function mapDispatchToProps(dispatch){
+//     return bindActionCreators(TabsActions,dispatch)
+// }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Tab)
+export default /*connect(mapStateToProps,mapDispatchToProps)*/Tab
 
