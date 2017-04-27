@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-//import * as s from './styled'
+import PropTypes from 'prop-types'
 import {HomeDiv} from './styled'
-import Home from '../../components/Home'
+
+//Header+Drawer
 import HeaderContainer from './Header'
 import DrawerContainer from './Drawer'
-import PropTypes from 'prop-types'
-//import Header from '../../components/Home/Header'
+
 //Redux+Router
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
@@ -21,7 +21,7 @@ class HomeContainer extends Component {
             <HomeDiv>
                 <HeaderContainer />
                 <DrawerContainer />
-                {/*<Home scene={this.props.scene} comp={this.props.comp} />*/}
+           
                {this.props.children}
             </HomeDiv>
            

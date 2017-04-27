@@ -8,14 +8,12 @@ import * as styled from '../../../components/Home/styled/HeaderStyle'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as GlobalActions from '../../../store/actions/global'
-
+//@TODO Move to Drawer/Home reducer
 class HeaderContainer extends Component {
 
         render() {
-                //console.log(this.onPushTest)
                 return (
                         <styled.HeaderDiv>
-                                
                                 <HeaderLogo onPush={this.props.onPush}/>
                                 <HeaderSearch/>
                                 <HeaderNotification/>

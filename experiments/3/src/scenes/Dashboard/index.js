@@ -5,12 +5,12 @@ import Panel from '../../components/Tabs/Panel'
 import {DashboardDiv} from './style'
 const Dashboard = props => {
     // console.log('Dashboard')
-    // console.log(props)
+   console.log(props)
     return (
         <DashboardDiv>  
             <Tab>
                    <Panel label='Generelt' icon="generelt">
-                        <div>Lorem ipsum1</div>
+                        {props.children}
                     </Panel>
                     <Panel label='Felter' icon='felter'>
                         <div>Lorem ipsum2</div>
