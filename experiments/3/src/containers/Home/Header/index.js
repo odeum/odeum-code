@@ -8,7 +8,7 @@ import * as styled from '../../../components/Home/styled/HeaderStyle'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as GlobalActions from '../../../store/actions/global'
-//@TODO Move to Drawer/Home reducer
+
 class HeaderContainer extends Component {
 
         render() {
@@ -25,6 +25,7 @@ HeaderContainer.propTypes = {
         onPush: PropTypes.func.isRequired
 }
 const mapStateToProps = (state) =>({
+
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)

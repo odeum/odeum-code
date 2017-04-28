@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types'
-import Tab from '../../components/Tabs/Tab'
-import Panel from '../../components/Tabs/Panel'
+// import Tab from '../../components/Tabs/Tab'
+// import Panel from '../../components/Tabs/Panel'
 import { DashboardDiv } from './style'
 // import * as scenes from '../scenes'
 
@@ -11,7 +11,8 @@ const Dashboard = props => {
 
     return (
         <DashboardDiv>
-            <button onClick={e=>{
+            {/*            
+        {/*<button onClick={e=>{
                 e.preventDefault()
                 props.RemoveTab(5)}
                 }>
@@ -20,9 +21,9 @@ const Dashboard = props => {
             <button onClick={e=>{
                 e.preventDefault()
                 props.AddTab('text','add')
-                }}>Add </button>
-            <Tab changeTab={props.changeTabs} selected={props.selected}>
-                {/*<Panel label='Generelt' icon="generelt">
+                }}>Add </button>*/}
+            {/*<Tab changeTab={props.changeTabs} selected={props.selected}>*/}
+            {/*<Panel label='Generelt' icon="generelt">
                         {props.children}
                     </Panel>
                     <Panel label='Felter' icon='felter'>
@@ -43,11 +44,20 @@ const Dashboard = props => {
                       <Panel label='Design' icon='design'>
                         <div>Lorem ipsum7</div>
                     </Panel>*/}
-                {/*Another comment*/}
-                {props.tabs.map((tab) => (
+            {/*Another comment*/}
+            {/*{props.tabs.map((tab) => (
                     <Panel label={tab.label} icon={tab.icon} key={tab.id}>Lorem Ipsum {tab.id} </Panel>
-                ))}
-            </Tab>
+                ))}*/}
+            {/*</Tab>*/}
+        
+        
+        
+        {/*@ Oldcode up*/}
+
+        {/*New code*/}
+        {/*@<General />
+        @<Tasks />
+        @<Forms />*/}
         </DashboardDiv>
     )
 }
