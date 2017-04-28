@@ -9,12 +9,12 @@ class DashboardContainer extends Component {
         console.log(this.props)
         return (
             <div>
-              <Dashboard 
+              {/*<Dashboard 
               changeTabs={this.props.changeTab} 
               tabs={this.props.tabs} 
               selected={this.props.selected}
               RemoveTab={this.props.closeTab}
-              AddTab={this.props.openTab}/>
+              AddTab={this.props.openTab}/>*/}
             </div>
         );
     }
@@ -22,7 +22,7 @@ class DashboardContainer extends Component {
 
 DashboardContainer.propTypes = {
  tabs:PropTypes.array,
- selected: PropTypes.number
+ 
 };
 const mapStateToProps = (state) =>({
     tabs: state.dashboard.tabs,

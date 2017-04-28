@@ -12,7 +12,8 @@
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-thunk": "^2.2.0",
-    "styled-components": "^1.4.5"
+    "styled-components": "^1.4.5",
+    "styled-normalize": "^1.0.0"
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.24.1",

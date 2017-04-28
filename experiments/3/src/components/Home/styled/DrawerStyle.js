@@ -4,7 +4,7 @@ export const DrawerWrapperDiv = styled.div`
   clear: both;
   background-color: #3b97d3;
   width: 250px;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 180px);
   float: left;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -21,7 +21,7 @@ export const DrawerBlueBar = styled.div`
 `
 
 export const DrawerItemLink = styled.a`
-  color: white;
+  color: #fff;
   font-family: 'Source Sans Pro';
   font-size: 1rem;
   font-weight: 300;

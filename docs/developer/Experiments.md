@@ -93,7 +93,7 @@ The App platform for displaying context-sensitive helpitems based upon views in 
 Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. Helpitems should be indexed and very easy to localize.
 
 ## 18 - Drawer
-Find suitable React based drawer component (no jQuery) that can be styled with SC and redux'ed.
+Find suitable React based drawer component (JQuery free thanks) that can be styled with SC and redux'ed.
 
 Semantic UI:
 http://react.semantic-ui.com/introduction

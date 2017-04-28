@@ -42,26 +42,26 @@ const dashboard = (state=initialState,action) =>{
         return {...state,
         tabs: state.tabs.concat({id:nextIntId++,label:'text',icon:'add',children:[],fixed:false})}
       
-        case actions.CLOSE_TAB:
-        console.log('------------------------------------');
-        console.log('CLOSE_TAB');
-        console.log(action.payload);
-        console.log('------------------------------------');
-        // if(tabToBeRem.fixed === false)
-        // {
-        //     state.tabs.splice(5, 1)
-        // }
-        nextIntId--
-        return {...state,
-        tabs: state.tabs.filter(item => item.id !== action.payload.id)}
-            case actions.CHANGE_TAB:
-            {
-                console.log('changeTabReducer:' + action.payload)
-                return {
-                    ...state,
-                    selected: action.payload
-                }
-            }
+        // case actions.CLOSE_TAB:
+        // console.log('------------------------------------');
+        // console.log('CLOSE_TAB');
+        // console.log(action.payload);
+        // console.log('------------------------------------');
+        // // if(tabToBeRem.fixed === false)
+        // // {
+        // //     state.tabs.splice(5, 1)
+        // // }
+        // nextIntId--
+        // return {...state,
+        // tabs: state.tabs.filter(item => item.id !== action.payload.id)}
+        //     case actions.CHANGE_TAB:
+        //     {
+        //         console.log('changeTabReducer:' + action.payload)
+        //         return {
+        //             ...state,
+        //             selected: action.payload
+        //         }
+        //     }
         default:
         return state;
     }

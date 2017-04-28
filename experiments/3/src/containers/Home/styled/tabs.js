@@ -1,7 +1,7 @@
 import styled,{css} from 'styled-components'
 
 export const PanelDiv = styled.div`
-    height: calc(100vh - 225px);
+    height: calc(100vh - 240px);
     padding: 20px;
     font-family: 'Source Sans Pro';
     font-style: normal;
@@ -9,12 +9,14 @@ export const PanelDiv = styled.div`
     font-size: 14px;
     background-color: #fff;
     border-radius: 0px 5px 5px 5px;
+    overflow: scroll;
 `
 
 export const TabList = styled.ul`
     margin: 0;
     padding: 0;
     height: 40px;
+    padding-top:20px;
 `
 
 export const TabLabel = styled.li`

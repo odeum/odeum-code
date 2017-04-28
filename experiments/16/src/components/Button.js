@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 const Button = styled.button`
   /* Adjust the Button styling based on the theme */
+  &&& {
+    
   background: ${(props) => props.theme.background || 'lightblue'}
   border: 2px solid ${(props) => props.theme.background || 'lightblue'}
   color: ${(props) => props.theme.button.color || 'white'}
@@ -26,5 +28,6 @@ const Button = styled.button`
           -moz-box-shadow: 0 2px 6px black; 
           -webkit-box-shadow: 0 2px 6px black; 
       }
+  }
 `
 export default Button

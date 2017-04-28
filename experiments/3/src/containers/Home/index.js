@@ -8,9 +8,12 @@ import {HomeDiv} from './styled'
 //Header+Drawer
 import HeaderContainer from './Header'
 import DrawerContainer from './Drawer'
+
 //@ TabsWrapper should be moved to Containers 
 //@ IT IS A CONTAINER FFS
-import TabsWrapper from '../../components/Tabs/TabsWrapper'
+import TabsWrapper from './Tabs/TabsWrapper'
+import FooterContainer from './Footer'
+
 
 //Redux+Router
 import {bindActionCreators} from 'redux'
@@ -27,8 +30,11 @@ class HomeContainer extends Component {
             <HomeDiv>
                 <HeaderContainer />
                 <DrawerContainer />
-                <TabsWrapper />
+                {/*@ Add static tabs as children*/}
+                <TabsWrapper children={[{label:'General', location:'/dashboard/general'},{label:'text',location:'/dashboard/text'}]}/>
                {this.props.children}
+
+               <FooterContainer />
             </HomeDiv>
            
             </div>

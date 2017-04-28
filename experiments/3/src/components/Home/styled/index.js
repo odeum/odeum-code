@@ -5,13 +5,13 @@ import styled from 'styled-components'
 export const HeaderDiv = styled.div`
   height: 100px;
   width: 100%;
-  background: #2c3e50;
+  background-color: #2c3e50;
   display: block;
-`; 
+`
 
 export const HeaderLogoImg = styled.img`
 
-`;
+`
 
 export const HeaderLogoDiv = styled.div`
   float: left;
@@ -19,7 +19,7 @@ export const HeaderLogoDiv = styled.div`
   padding-bottom: 30px;
   padding-left: 3%;
   height: 40px;
-`;
+`
 
 export const HeaderSearchBarDiv = styled.div`
   float: left;
@@ -27,7 +27,7 @@ export const HeaderSearchBarDiv = styled.div`
   width: 500px;
   padding-top: 30px;
   padding-bottom: 30px;
-`;
+`
 
 export const HeaderSearchBarInput = styled.input`
   border-radius: 3px 0px 0px 3px;
@@ -38,23 +38,23 @@ export const HeaderSearchBarInput = styled.input`
   text-align:center;
   background:#34495d;
   color:white;
-`;
+`
 
 export const HeaderSearchBarButton= styled.button`
   width:36px;
   height:36px;
   border: 1px solid #36695d;
   border-radius: 0px 5px 5px 0px;
-  background:#3b97d3;
-  color:White;
-`;
+  background: #3b97d3;
+  color: #fff;
+`
 
 export const HeaderNotificationDiv = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
-  color:white;
-  background: #2c3e50;
-  border:0px;
-`;
+  color: #fff;
+  background-color: #2c3e50;
+  border: none;
+`
 
-export default HeaderDiv;
+export default HeaderDiv
