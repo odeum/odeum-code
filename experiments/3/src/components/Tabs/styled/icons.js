@@ -37,6 +37,22 @@ export function renderIcons(icon,active) {
             return(
                 <Icons.MdTimeline color={color(active)}/>
             )
+            case 'dashboard':
+            return(
+                <Icons.MdHome color={color(active)}/>
+            )
+            case 'organisation':
+            return(
+                <Icons.MdPerson color={color(active)}/>
+            )
+            case 'registrations':
+            return(
+                <Icons.MdStorage color={color(active)}/>
+            )
+            case 'tasks':
+            return(
+                <Icons.MdLayers color={color(active)}/>
+            )
             default:
                 return (null)
             // Add more icons here

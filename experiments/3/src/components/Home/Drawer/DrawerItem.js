@@ -1,18 +1,21 @@
 import React from 'react'
+import {renderIcons} from '../../Tabs/styled/icons'
 import * as s from '../styled/DrawerStyle'
-const DrawerItem = ({ name, location, onPush }) => {
+import * as Icons from 'react-icons/lib/md'
+
+const DrawerItem = ({ name, icon, location, onPush }) => {
     //  console.log(name)
     // console.log(location)
     //  console.log(onPush)
 
+    let active = 'active'
+
     return (
         <s.DrawerBlueBar>
-            <div>
-                <s.DrawerItemLink href='#' 
-                onClick={e => {e.preventDefault()
-                                 onPush(location)}}>
-                    {name}
-                </s.DrawerItemLink>
+            <div class="MdKeyboardArrowRight" onClick={e => {e.preventDefault(); onPush(location)}}>
+                <s.Ico>{renderIcons(icon,active)}</s.Ico>
+                {name}
+                <s.Arrow><Icons.MdKeyboardArrowRight /></s.Arrow>
             </div>
         </s.DrawerBlueBar>
     )

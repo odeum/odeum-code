@@ -8,30 +8,30 @@ const initialState={
                 id:0,
                 name:'Dashboard',
                 location:'/dashboard',
-                
+                icon: 'dashboard'
             },{
                 id:1,
                 name:'Opgaver',
                 location:'/tasks',
-                
+                icon: 'tasks'
             },
             {
                 id:2,
                 name:'Registreringer',
                 location:'/registreringer',
-                
+                icon: 'registrations'
             },
             {
                 id:3,
                 name:'Organisation',
                 location:'/organisation',
-                
+                icon: 'organisation'
             },
             {
                 id:4,
                 name:'Indstillinger',
                 location:'/settings',
-                
+                icon: 'settings'
             }],
     tab:0
         }

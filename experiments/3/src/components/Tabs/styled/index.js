@@ -46,9 +46,10 @@ export const TabLink = styled.a`
 `
 
 export const Ico = styled.div`
+    font-size: 20px;
     margin: 0;
-    margin-top: -1px;
-    margin-right: 3px;
+    margin-top: -2px;
+    margin-right: 5px;
     padding: 0;
     ${props => props.className === 'active' && css`
         color: white;
