@@ -9,6 +9,7 @@ import {HomeDiv} from './styled'
 
 import HeaderContainer from './Header'
 import DrawerContainer from './Drawer'
+import FooterContainer from './Footer'
 
 //Redux+Router
 import {bindActionCreators} from 'redux'
@@ -27,6 +28,8 @@ class HomeContainer extends Component {
                 <DrawerContainer />
            
                {this.props.children}
+
+               <FooterContainer />
             </HomeDiv>
            
             </div>
