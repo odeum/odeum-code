@@ -30,8 +30,8 @@ class HomeContainer extends Component {
             <HomeDiv>
                 <HeaderContainer />
                 <DrawerContainer />
-                {/*@ Add static tabs as children*/}
-                <TabsWrapper children={[{label:'General', location:'/dashboard/general'},{label:'text',location:'/dashboard/text'}]}/>
+                
+                <TabsWrapper children={this.props.tabChildren}/>
                {this.props.children}
 
                <FooterContainer />
@@ -43,11 +43,11 @@ class HomeContainer extends Component {
 }
 HomeContainer.propTypes = {
     onPush:PropTypes.func.isRequired,
-
+    tabChildren: PropTypes.array
 }
 
 const mapStateToProps = (state,ownProps) =>({
-
+    tabChildren: state.global.tabChildren,
     comp: state.drawer.comp
 })
 function mapDispatchToProps(dispatch){

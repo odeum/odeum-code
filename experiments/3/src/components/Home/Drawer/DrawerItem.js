@@ -7,13 +7,11 @@ const DrawerItem = ({ name, location, onPush }) => {
 
     return (
         <s.DrawerBlueBar>
-            <div>
                 <s.DrawerItemLink href='#' 
                 onClick={e => {e.preventDefault()
                                  onPush(location)}}>
                     {name}
-                </s.DrawerItemLink>
-            </div>
+                </s.DrawerItemLink>          
         </s.DrawerBlueBar>
     )
 }

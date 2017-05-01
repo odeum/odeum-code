@@ -4,6 +4,8 @@ import * as s from '../styled/tabs'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as tabsActions from './tabsActions'
+import {renderIcons} from '../styled/icons'
+
 class TabsWrapper extends Component {
     static propTypes = {
         children:PropTypes.array,
@@ -24,10 +26,8 @@ class TabsWrapper extends Component {
             <s.TabList >
                 {/*<h4 > Here will be tabs linking to individual components, to each individual drawer satisfying the routes </h4>*/}
                 {/*<h4> * PLACEHOLDER *</h4>*/}
-                {/*@ come up with a selected IDEA that doesn't involve numbers or id's, maybe use the labels 
-                
+                {/*@ 
                 @(state.activeLabel === tab.label ? 'active':'')
-                
                 @*/}
                 { this.props.children.map((tab,index) =>(
                     <s.TabLabel key={index} className={(tab.label === this.props.activeLabel ? 'active' : '')}>
@@ -35,7 +35,7 @@ class TabsWrapper extends Component {
                             e.preventDefault()
                             this.props.changeTab(tab.location,tab.label)}}
                              className={(tab.label === this.props.activeLabel ? 'active' : '')}>
-                            <s.Ico></s.Ico>
+                            <s.Ico>{renderIcons(tab.icon,(tab.label === this.props.activeLabel ? 'active' : ''))}</s.Ico>
                             {tab.label}
                             </s.TabLink>
                             </s.TabLabel>))}
@@ -44,7 +44,7 @@ class TabsWrapper extends Component {
     }
 }
 const mapStateToProps = (state)=>({
-    activeLabel: state.tabs.activeLabel
+    activeLabel: state.global.activeLabel
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(tabsActions,dispatch)

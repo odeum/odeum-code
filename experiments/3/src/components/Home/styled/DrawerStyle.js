@@ -31,8 +31,3 @@ export const DrawerItemLink = styled.a`
   //   color:black;
   // }
 `
-
-export const DrawerContentDiv= styled.div`
-  background: red;
-  color: black;
-`

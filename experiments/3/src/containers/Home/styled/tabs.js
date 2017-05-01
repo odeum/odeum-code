@@ -13,10 +13,11 @@ export const PanelDiv = styled.div`
 `
 
 export const TabList = styled.ul`
+    height: 40px;
     margin: 0;
     padding: 0;
-    height: 40px;
-    padding-top:20px;
+    padding:20px 0px 20px 10px;
+    overflow:hidden;
 `
 
 export const TabLabel = styled.li`

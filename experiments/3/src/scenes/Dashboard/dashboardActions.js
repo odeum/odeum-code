@@ -1,4 +1,4 @@
-import * as actions from './dashboardActionTypes'
+// import * as actions from './dashboardActionTypes'
 import {push} from 'react-router-redux'
 // export function openTab(label, icon) {
 //     return (dispatch) => {
@@ -13,14 +13,14 @@ import {push} from 'react-router-redux'
 //         dispatch({ type: actions.CLOSE_TAB, payload: { id } })
 //     }
 // }
-// export function changeTab(index){
-//     return (dispatch)=>
-//     {
-//         console.log('changeNewActionTab:'+index)
-//         dispatch({type:actions.CHANGE_TAB, payload:index})
-//         if(index===0)
-//         {dispatch(push('/dashboard/test'/*+index*/))}
-//         else
-//         {dispatch(push('/dashboard/'+index))}
-//     }
-// }
+export function changeTab(location, label){
+    return (dispatch) => {
+        dispatch({type:'CHANGE_TAB',payload:label})
+        dispatch(push(location))
+    }
+}
+export function loadTabs(){
+    return (dispatch) => {
+        dispatch({type:'LOAD_TABS_DASHBOARD'})
+    }
+}

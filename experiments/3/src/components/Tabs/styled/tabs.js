@@ -1,5 +1,6 @@
 import styled,{css} from 'styled-components'
 
+//@PanelDiv is the wrapper for the "workspace"
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
