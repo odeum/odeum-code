@@ -1,6 +1,7 @@
 /*Import Section*/
 //@ New tabs
-import General from './components/Tabs/General';
+import General from './components/Tabs/General'
+import Users from './components/Tabs/Users'
 
 //React
 import React from 'react';
@@ -57,6 +58,7 @@ ReactDOM.render(
             <Route path="/dashboard/" component={scenes.dashboard}/>
             {/*<Route path='/dashboard/test' component={scenes.settings}/>*/}
             <Route path="/dashboard/general" component={General}/>
+            <Route path="/dashboard/users" component={Users}/>
             <Route path="/registreringer" component={scenes.registreringer}/>
             <Route path="/organisation" component={scenes.organisation}/>
             <Route path="/settings" component={scenes.settings}/>

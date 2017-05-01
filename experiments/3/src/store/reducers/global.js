@@ -53,7 +53,7 @@ const global = (state=initialState, action)=>{
     switch(action.type)
     {  
         case 'LOAD_TABS_DASHBOARD':
-       
+       //TODO Get the matchURL and send it as payload and set the activelabel as the payload
         return {...state,
             activeLabel:tabs.defaultTabs[0].label,
             tabChildren:tabs.defaultTabs}

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 
-class General extends Component {
-    componentWillMount(){
-    }
+class Users extends Component {
     render() {
         return (
             <div>
-                General
+                Users
             </div>
         );
     }
 }
 
-export default General;
+export default Users;

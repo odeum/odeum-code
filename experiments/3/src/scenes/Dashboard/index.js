@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as dashboardActions from './dashboardActions'
@@ -11,6 +11,7 @@ class DashboardContainer extends Component {
     
     //    this.props.dispatch(push('/dashboard/general'))
     //@ TODO Notify TabsWrapper with default tabs / Add default tab links in the tabs wrapper
+    //DONE HACK
     this.props.loadTabs()
     //@DONE change to default tab
     //   this.props.changeTab('/dashboard/general','General')
