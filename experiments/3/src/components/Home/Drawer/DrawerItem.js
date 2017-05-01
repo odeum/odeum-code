@@ -12,7 +12,7 @@ const DrawerItem = ({ name, icon, location, onPush }) => {
 
     return (
         <s.DrawerBlueBar>
-            <div class="MdKeyboardArrowRight" onClick={e => {e.preventDefault(); onPush(location)}}>
+            <div className="MdKeyboardArrowRight" onClick={e => {e.preventDefault(); onPush(location)}}>
                 <s.Ico>{renderIcons(icon,active)}</s.Ico>
                 {name}
                 <s.Arrow><Icons.MdKeyboardArrowRight /></s.Arrow>

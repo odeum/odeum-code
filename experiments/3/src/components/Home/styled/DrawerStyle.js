@@ -48,7 +48,8 @@ export const Ico = styled.div`
 
 export const Arrow = styled.div`
   float: right;
-  color: #297cb2;
+  // color: #297cb2;
+  color: #fff;
   font-size: 25px;
   margin: 0;
   margin-top: -3px;

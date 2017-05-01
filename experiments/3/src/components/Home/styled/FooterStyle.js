@@ -18,6 +18,7 @@ export const FooterDiv = styled.div`
     font-size: 13px;
     font-weight: 300;
     text-align: center;
+    user-select: none;
 `
 
 

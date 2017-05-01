@@ -53,6 +53,14 @@ export function renderIcons(icon,active) {
             return(
                 <Icons.MdLayers color={color(active)}/>
             )
+            case 'search':
+            return(
+                <Icons.MdSearch color={color(active)}/>
+            )
+            case 'notifications':
+            return(
+                <Icons.MdNotificationsNone color={color(active)}/>
+            )
             default:
                 return (null)
             // Add more icons here
