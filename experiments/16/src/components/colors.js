@@ -33,7 +33,7 @@ export const GAUGE_BACKGROUND = '#D5D5D5'
 export const HEART = '#D42027'
 export const CARD_HEADER = '#2C3E50'
 export const CARD_FOOTER = '#EEEDED'
-
+export const LIST_HEADER = '#2C3E50'
 
 // ODEUM COLORSCHEME (OLD NAMING CONVENTION)
 export const PRIMARY_BLUE = '#3B97D3'
