@@ -9,8 +9,8 @@ import {HomeDiv} from './styled'
 import HeaderContainer from './Header'
 import DrawerContainer from './Drawer'
 
-//@ TabsWrapper should be moved to Containers 
-//@ IT IS A CONTAINER FFS
+//@TODO TabsWrapper should be moved to Containers 
+//@ It is a container
 import TabsWrapper from './Tabs/TabsWrapper'
 import FooterContainer from './Footer'
 
@@ -23,8 +23,6 @@ import * as GlobalActions from '../../store/actions/global'
 class HomeContainer extends Component {
 
     render() {
-      
-     // console.log(this.props)
         return (
             <div>
             <HomeDiv>

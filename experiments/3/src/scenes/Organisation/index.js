@@ -10,8 +10,4 @@ class Organisation extends Component {
     }
 }
 
-// Organisation.propTypes = {
-
-// };
-
 export default Organisation

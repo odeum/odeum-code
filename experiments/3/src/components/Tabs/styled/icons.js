@@ -43,6 +43,5 @@ export function renderIcons(icon,active) {
             )
             default:
                 return (null)
-            // Add more icons here
         }
     };

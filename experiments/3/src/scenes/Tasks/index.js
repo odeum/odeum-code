@@ -10,7 +10,8 @@ class Tasks extends Component {
     render() {
         return (
             <div>
-                Tasks
+                {/*Tasks*/}
+                <button onClick={e=>{e.preventDefault(); this.props.addTab()}}>Add new tab</button>
             </div>
         );
     }

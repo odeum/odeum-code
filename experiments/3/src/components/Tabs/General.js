@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 class General extends Component {
-    componentWillMount(){
-    }
     render() {
         return (
             <div>

@@ -1,10 +1,6 @@
 import React from 'react'
 import * as s from '../styled/DrawerStyle'
 const DrawerItem = ({ name, location, onPush }) => {
-    //  console.log(name)
-    // console.log(location)
-    //  console.log(onPush)
-
     return (
         <s.DrawerBlueBar>
                 <s.DrawerItemLink href='#' 

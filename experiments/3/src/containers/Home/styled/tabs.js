@@ -19,7 +19,15 @@ export const TabList = styled.ul`
     padding:20px 0px 20px 10px;
     overflow:hidden;
 `
-
+export const TabClose = styled.div`
+    position: absolute;
+    top:-15px;
+    right:5px;
+    font-size:12px;
+    ${props => props.className === 'active' && css`
+      color:white;
+    `}
+`
 export const TabLabel = styled.li`
     display: inline-block;
     height: 40px;
@@ -32,11 +40,13 @@ export const TabLabel = styled.li`
     ${props => props.className === 'active' && css`
         background-color: #3b97d3;
     `}
+    position:relative;
 `
     
 export const TabLink = styled.a`
     display: inline-flex;
     text-decoration: none;
+    outline: 0;
     color: #5e5e5e;
     font-family: 'Source Sans Pro';
     font-style: normal;
