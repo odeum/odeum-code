@@ -1,7 +1,4 @@
 import * as actions from './drawerActiontypes'
-import Dashboard from '../../../scenes/Dashboard'
-import Organisation from '../../../scenes/Organisation'
-
 
 const initialState = {
     activeScene: 0

@@ -27,7 +27,7 @@ class DrawerContainer extends Component {
                 <div></div>
                 </DrawerItem>*/}
                 
-                   {this.props.scenes.map((scene,index)=>(<DrawerItem name={scene.name} location={scene.location} onPush={_this.changeScene} key={index}/>))}
+                   {this.props.scenes.map((scene,index)=>(<DrawerItem name={scene.name} icon={scene.icon} location={scene.location} onPush={_this.changeScene} key={index}/>))}
                 {/*<DrawerWrapper ScenesDrawer={Scenes}/>*/}
             </s.DrawerWrapperDiv>
         )

@@ -15,9 +15,10 @@ export const FooterDiv = styled.div`
 
     color: #5e5e5e;
     font-family: 'Source Sans Pro';
-    font-size: 1rem;
+    font-size: 13px;
     font-weight: 300;
     text-align: center;
+    user-select: none;
 `
 
 

@@ -1,7 +1,7 @@
 
 export const defaultTabs = [{
     label: 'General',
-    location: '/general',
+    location: '/dashboard/general',
     icon: 'generelt',
     fixed: true
 }, {

@@ -22,7 +22,7 @@ class Tab extends Component {
               
         return {
             reactIconBase: {               
-                size: 15,
+                // size: 15,
             }
         }
     }

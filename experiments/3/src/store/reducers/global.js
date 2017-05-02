@@ -1,44 +1,40 @@
 import { CHANGE_TAB, CLOSE_TAB, ADD_TAB } from '../actions/action_types'
-// import {push} from 'react-router-redux'
-// import Organisation from '../../scenes/Organisation'
-// import {LOCATION_CHANGE} from 'react-router-redux'
 
 import * as tabs from './tabConstants'
-let nextTabId = 0;
-const initialState = {
-    scenes: [
-        {
-            id: nextTabId++,
-            name: 'Dashboard',
-            location: '/dashboard/general',
+const initialState={
+    scenes:[
+            {
+                id:0,
+                name:'Dashboard',
+                location:'/dashboard',
+                icon: 'dashboard'
+            },{
+                id:1,
+                name:'Opgaver',
+                location:'/tasks',
+                icon: 'tasks'
+            },
+            {
+                id:2,
+                name:'Registreringer',
+                location:'/registreringer',
+                icon: 'registrations'
+            },
+            {
+                id:3,
+                name:'Organisation',
+                location:'/organisation',
+                icon: 'organisation'
+            },
+            {
+                id:4,
+                name:'Indstillinger',
+                location:'/settings',
+                icon: 'settings'
+            }],
 
-        }, {
-            id: nextTabId++,
-            name: 'Opgaver',
-            location: '/tasks',
-
-        },
-        {
-            id: nextTabId++,
-            name: 'Registreringer',
-            location: '/registreringer',
-
-        },
-        {
-            id: nextTabId++,
-            name: 'Organisation',
-            location: '/organisation',
-
-        },
-        {
-            id: nextTabId++,
-            name: 'Indstillinger',
-            location: '/settings',
-
-        }],
-    tabChildren: [],
-    activeLabel: '',
-}
+    tabChildren:[]
+        }
 
 //TODO Get the matchURL and send it as payload and set the activelabel as the payload
 // For Example if you go to /dashboards/users, it should load users component
@@ -46,12 +42,9 @@ const initialState = {
 // Make a generalized ACTION LOAD_DEFAULT_TABS that receive a payload:{scene,urlMatch}
 // Maybe https://blog.marvelapp.com/managing-the-url-in-a-redux-app/
 
-const global = (state = initialState, action) => {
-    switch (action.type) {
-        // case LOCATION_CHANGE:
-        //  console.log(action)
-        //     return state;
-
+const global = (state=initialState, action)=>{
+    switch(action.type)
+    {  
         case 'LOAD_TABS_DASHBOARD':
             return {
                 ...state,

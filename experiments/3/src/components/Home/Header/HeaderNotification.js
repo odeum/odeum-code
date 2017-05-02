@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import {HeaderNotificationDiv} from '../styled/HeaderStyle'
+import {HeaderNotificationDiv,HeaderNotificationIcon,HeaderNotificationBadgeSpan} from '../styled/HeaderStyle'
+import {renderIcons} from '../../Tabs/styled/icons'
+
 class HeaderNotification extends Component {
     render() {
         return (
             <HeaderNotificationDiv>
-                NTF-ICO
+                <HeaderNotificationIcon>
+                    {renderIcons('notifications','active')}
+                    <HeaderNotificationBadgeSpan>12</HeaderNotificationBadgeSpan>
+                </HeaderNotificationIcon>
             </HeaderNotificationDiv>
         )
     }
