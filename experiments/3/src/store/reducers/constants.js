@@ -1,5 +1,35 @@
-
-export const defaultTabs = [{
+export const scenes= [
+        {
+            id: 0,
+            name: 'Dashboard',
+            location: '/dashboard/general',
+            icon: 'dashboard'
+        }, {
+            id: 1,
+            name: 'Opgaver',
+            location: '/dashboard/tasks',
+            icon: 'tasks'
+        },
+        {
+            id: 2,
+            name: 'Registreringer',
+            location: '/registreringer',
+            icon: 'registrations'
+        },
+        {
+            id: 3,
+            name: 'Organisation',
+            location: '/organisation',
+            icon: 'organisation'
+        },
+        {
+            id: 4,
+            name: 'Indstillinger',
+            location: '/settings',
+            icon: 'settings'
+        }]
+export const defaultTabs = [
+    {
     label: 'General',
     location: '/dashboard/general',
     icon: 'generelt',
@@ -54,5 +84,5 @@ export const registreringerTabs = [{
     icon: 'placeholder',
     fixed: true
 }]
-//TODO Add the scenes here and rename the file Constants
-export default defaultTabs;
+
+export default scenes;

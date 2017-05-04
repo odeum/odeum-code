@@ -1,37 +1,8 @@
 import { CHANGE_TAB, CLOSE_TAB, ADD_TAB } from '../actions/action_types'
 import { LOCATION_CHANGE } from 'react-router-redux'
-import * as tabs from './tabConstants'
+import * as constant from './constants'
 const initialState = {
-    scenes: [
-        {
-            id: 0,
-            name: 'Dashboard',
-            location: '/dashboard',
-            icon: 'dashboard'
-        }, {
-            id: 1,
-            name: 'Opgaver',
-            location: '/tasks',
-            icon: 'tasks'
-        },
-        {
-            id: 2,
-            name: 'Registreringer',
-            location: '/registreringer',
-            icon: 'registrations'
-        },
-        {
-            id: 3,
-            name: 'Organisation',
-            location: '/organisation',
-            icon: 'organisation'
-        },
-        {
-            id: 4,
-            name: 'Indstillinger',
-            location: '/settings',
-            icon: 'settings'
-        }],
+    scenes:constant.scenes,
 
     tabChildren: []
 }
@@ -63,20 +34,20 @@ const global = (state = initialState, action) => {
                 // let locationVar = state.routing.location.pathname.split('/').pop()
                 // let activeLbl = locationVar.charAt(0).toUpperCase() + locationVar.slice(1)
                 console.log('------------------------------------');
-                console.log(tabs.defaultTabs.filter((item) => item.label === state.activeLabel));
+                console.log(constant.defaultTabs.filter((item) => item.label === state.activeLabel));
                 console.log(state.activeLabel)
                 console.log('------------------------------------');
                 // if(state.tabChildren.)
-                if (tabs.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
+                if (constant.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
                 {
                 return {
                     ...state,
-                    tabChildren: tabs.defaultTabs.concat({label:'Tasks',icon:'felter',location:'/dashboard/tasks',fixed:false})
+                    tabChildren: constant.defaultTabs.concat({label:'Tasks',icon:'tasks',location:'/dashboard/tasks',fixed:false})
                 }}
                 else
                 return{
                     ...state,
-                    tabChildren: tabs.defaultTabs
+                    tabChildren: constant.defaultTabs
                 }
             }
         // case 'LOAD_TABS_TASKS':

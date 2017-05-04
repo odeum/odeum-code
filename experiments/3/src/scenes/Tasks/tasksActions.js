@@ -3,7 +3,7 @@
 
 export function loadTabs(){
     return(dispatch)=>{
-        dispatch({type:'LOAD_TABS_TASKS'})
+        dispatch({type:'LOAD_TABS_DASHBOARD'})
     }
 }
 export function addTab(){

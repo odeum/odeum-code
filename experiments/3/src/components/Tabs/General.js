@@ -5,7 +5,7 @@ class General extends Component {
         return (
             <div>
                 <h2>General</h2>
-                <h2> Andrei </h2>
+               
             </div>
         );
     }
