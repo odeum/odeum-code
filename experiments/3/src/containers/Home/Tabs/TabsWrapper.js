@@ -22,17 +22,21 @@ class TabsWrapper extends Component {
     render() {
         let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '');
         var _this = this.props;
+        function isFixed(tab) {
+            if (!tab.fixed)
+            { return <s.TabClose className={active(tab)}>x</s.TabClose> }
+        }
         return (
             <s.TabList >
                 {_this.children.map((tab, index) => (
                     <s.TabLabel key={index} className={active(tab)}>
-                        <s.TabLink href="#" onClick={e => { e.preventDefault(); _this.changeTab(tab.location, tab.label) }} 
+                        <s.TabLink href="#" onClick={e => { e.preventDefault(); _this.changeTab(tab.location, tab.label) }}
                             className={active(tab)}>
                             <s.Ico>{renderIcons(tab.icon, active(tab))}</s.Ico>
                             {tab.label}
                         </s.TabLink>
-                        <s.TabLink href="#" onClick={e => {e.preventDefault(); _this.closeTab(tab)}}>
-                            <s.TabClose className={active(tab)}>x</s.TabClose>
+                        <s.TabLink href="#" onClick={e => { e.preventDefault(); _this.closeTab(tab) }}>
+                            {isFixed(tab)}
                         </s.TabLink>
                     </s.TabLabel>))}
             </s.TabList>

@@ -46,7 +46,7 @@ export const tasksTabs = [{
     label: 'Tasks',
     location: '/tasks',
     icon: 'placeholder',
-    fixed: true
+    fixed: false
 }]
 export const registreringerTabs = [{
     label: 'Regisreringer',
