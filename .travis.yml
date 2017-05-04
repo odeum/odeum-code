@@ -9,11 +9,12 @@ notifications:
 script:
   - yarn build ./experiments/3/
   - pwd
-  # - cp -r ./experiments/3/build ./
+  - ls -al
+  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ./
 
 deploy:
   provider: surge
-  project: /home/travis/build/odeum/odeum-codejs/build/
+  project: ./build/
   domain: odeum-codejs-exp3.surge.sh
   skip_cleanup: true
   on:
