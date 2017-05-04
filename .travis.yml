@@ -9,7 +9,7 @@ notifications:
 script:
   - yarn build ./experiments/3/
   - pwd
-  - ls -al
+  - ls -al ./experiments/3
   - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ./
 
 deploy:
