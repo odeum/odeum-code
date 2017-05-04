@@ -7,10 +7,11 @@ notifications:
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
 script:
-  - yarn build ./experiments/3/
-  - pwd
-  - ls -al ./experiments/3
-  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ./
+  - cd ./experiments/3/
+  - yarn build
+  #- pwd
+  - ls -al
+  #- cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ./
 
 deploy:
   provider: surge
