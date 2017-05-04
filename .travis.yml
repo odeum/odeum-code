@@ -7,4 +7,5 @@ notifications:
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
 script:
-  - yarn build
+  - yarn build ./experiments/3/build
+

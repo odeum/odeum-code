@@ -1,3 +1,5 @@
+// https://www.sitepoint.com/understanding-and-using-rem-units-in-css/ 
+
 export const MAIN = 'sans-serif'
 export const PRIMARY = 'menlo'
 
