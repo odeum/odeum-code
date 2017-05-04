@@ -20,7 +20,6 @@ const global = (state = initialState, action) => {
         //@ This is done by loading default tabs BUT they need to check for a special route
         //TODO Check if any tabs exists
         //TODO if not => create a new one
-        //@ This action type will be a monster and a pain in the neck to implement
         //@ Oh boy...
 
         let locationVar = action.payload.pathname.split('/').pop()
@@ -31,13 +30,13 @@ const global = (state = initialState, action) => {
     switch (action.type) {
         case 'LOAD_TABS_DASHBOARD':
             {
-                // let locationVar = state.routing.location.pathname.split('/').pop()
-                // let activeLbl = locationVar.charAt(0).toUpperCase() + locationVar.slice(1)
+               
                 console.log('------------------------------------');
                 console.log(constant.defaultTabs.filter((item) => item.label === state.activeLabel));
                 console.log(state.activeLabel)
                 console.log('------------------------------------');
                 // if(state.tabChildren.)
+                //@ Example of adding a tab that isn't part of the default ones, instead of giving it fixed values, it can be passed as payload
                 if (constant.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
                 {
                 return {
