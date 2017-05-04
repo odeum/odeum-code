@@ -8,6 +8,7 @@ notifications:
 
 script:
   - cd ./experiments/3/
+  - yarn
   - yarn build
   #- pwd
   - ls -al
