@@ -9,3 +9,12 @@ notifications:
 script:
   - yarn build ./experiments/3/build
 
+deploy:
+  provider: surge
+  project: ./build/
+  domain: odeum-codejs-exp3.surge.sh
+  skip_cleanup: true
+  on:
+    all_branches: true
+
+
