@@ -19,9 +19,8 @@ const initialState = {
         //TODO if not => create a new one
         //@ Oh boy...
 const global = (state = initialState, action) => {
+   
     if (action.type === LOCATION_CHANGE) {
-
-
         let locationVar = action.payload.pathname.split('/').pop()
         let activeLbl = locationVar.charAt(0).toUpperCase() + locationVar.slice(1)
         console.log(state)
