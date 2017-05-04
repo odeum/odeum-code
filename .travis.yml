@@ -7,7 +7,7 @@ notifications:
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
 script:
-  - yarn build ./experiments/3/build
+  - yarn build ./experiments/3/
 
 deploy:
   provider: surge
@@ -16,5 +16,3 @@ deploy:
   skip_cleanup: true
   on:
     all_branches: true
-
-
