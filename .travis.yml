@@ -8,7 +8,8 @@ notifications:
 
 script:
   - yarn build ./experiments/3/
-  - cp -r ./experiments/3/build ./
+  - pwd
+  # - cp -r ./experiments/3/build ./
 
 deploy:
   provider: surge
