@@ -13,7 +13,7 @@ script:
 
 deploy:
   provider: surge
-  project: ./build/
+  project: /home/travis/build/odeum/odeum-codejs/build/
   domain: odeum-codejs-exp3.surge.sh
   skip_cleanup: true
   on:
