@@ -66,6 +66,6 @@ export function renderIcons(icon,active) {
                 <Icons.MdNotificationsNone color={color(active)}/>
             )
             default:
-                return (null)
+                break;
         }
     };

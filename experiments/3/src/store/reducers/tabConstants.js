@@ -5,32 +5,32 @@ export const defaultTabs = [{
     icon: 'generelt',
     fixed: true
 }, {
-    label: 'Felter',
+    label: 'Fields',
     location: '/dashboard/fields',
     icon: 'felter',
     fixed: true
 },
 {
-    label: 'Arbejdsgang',
+    label: 'Workflow',
     location: '/dashboard/workflow',
     icon: 'arbejdsgang',
     fixed: true
 },
 {
-    label: 'Brugere',
+    label: 'Users',
     location: '/dashboard/users',
     icon: 'brugere',
     fixed: true
 },
 {
-    label: 'Handlinger',
+    label: 'Actions',
     location: '/dashboard/actions',
     icon: 'handlinger',
     fixed: true
 },
 {
-    label: 'Konfiguration',
-    location: '/dashboard/config',
+    label: 'Configuration',
+    location: '/dashboard/configuration',
     icon: 'settings',
     fixed: true
 },

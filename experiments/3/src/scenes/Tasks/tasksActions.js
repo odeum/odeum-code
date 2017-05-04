@@ -8,7 +8,7 @@ export function loadTabs(){
 }
 export function addTab(){
     return(dispatch)=>{
-        dispatch({type:'ADD_TAB', payload:{label:'Users',location:'/tasks/users',icon:'generelt'}})
+        dispatch({type:'ADD_TAB', payload:{label:'Test',location:'/dashboard/test',icon:'generelt'}})
     }
 }
 export default loadTabs

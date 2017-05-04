@@ -41,6 +41,8 @@ const reducer = combineReducers({
   ...reducers,
   routing: routerReducer
 })
+  /**/
+  //@ ^ As we issue navigation events via Redux we will not use the default Reducers for Routing, instead we will make our own.
 //Store
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, middleware)))
 
@@ -58,7 +60,7 @@ ReactDOM.render(
             <Route path="/registreringer" component={scenes.registreringer}/>
             <Route path="/organisation" component={scenes.organisation}/>
             <Route path="/settings" component={scenes.settings}/>
-            <Route path="/tasks" component={scenes.tasks}/>
+            <Route path="/:dashboard/tasks" component={scenes.tasks}/>
             
             </HomeContainer>
             </Switch>

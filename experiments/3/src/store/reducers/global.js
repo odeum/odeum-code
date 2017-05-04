@@ -1,40 +1,40 @@
 import { CHANGE_TAB, CLOSE_TAB, ADD_TAB } from '../actions/action_types'
-
+import { LOCATION_CHANGE } from 'react-router-redux'
 import * as tabs from './tabConstants'
-const initialState={
-    scenes:[
-            {
-                id:0,
-                name:'Dashboard',
-                location:'/dashboard',
-                icon: 'dashboard'
-            },{
-                id:1,
-                name:'Opgaver',
-                location:'/tasks',
-                icon: 'tasks'
-            },
-            {
-                id:2,
-                name:'Registreringer',
-                location:'/registreringer',
-                icon: 'registrations'
-            },
-            {
-                id:3,
-                name:'Organisation',
-                location:'/organisation',
-                icon: 'organisation'
-            },
-            {
-                id:4,
-                name:'Indstillinger',
-                location:'/settings',
-                icon: 'settings'
-            }],
+const initialState = {
+    scenes: [
+        {
+            id: 0,
+            name: 'Dashboard',
+            location: '/dashboard',
+            icon: 'dashboard'
+        }, {
+            id: 1,
+            name: 'Opgaver',
+            location: '/tasks',
+            icon: 'tasks'
+        },
+        {
+            id: 2,
+            name: 'Registreringer',
+            location: '/registreringer',
+            icon: 'registrations'
+        },
+        {
+            id: 3,
+            name: 'Organisation',
+            location: '/organisation',
+            icon: 'organisation'
+        },
+        {
+            id: 4,
+            name: 'Indstillinger',
+            location: '/settings',
+            icon: 'settings'
+        }],
 
-    tabChildren:[]
-        }
+    tabChildren: []
+}
 
 //TODO Get the matchURL and send it as payload and set the activelabel as the payload
 // For Example if you go to /dashboards/users, it should load users component
@@ -42,23 +42,52 @@ const initialState={
 // Make a generalized ACTION LOAD_DEFAULT_TABS that receive a payload:{scene,urlMatch}
 // Maybe https://blog.marvelapp.com/managing-the-url-in-a-redux-app/
 
-const global = (state=initialState, action)=>{
-    switch(action.type)
-    {  
+const global = (state = initialState, action) => {
+    if (action.type === LOCATION_CHANGE) {
+        //TODO Check if the route exists, if it doesn't redirect to 404?
+        //TODO Check for the scenes and load the appropiate fixed tabs scenes
+        //@ This is done by loading default tabs BUT they need to check for a special route
+        //TODO Check if any tabs exists
+        //TODO if not => create a new one
+        //@ This action type will be a monster and a pain in the neck to implement
+        //@ Oh boy...
+
+        let locationVar = action.payload.pathname.split('/').pop()
+        let activeLbl = locationVar.charAt(0).toUpperCase() + locationVar.slice(1)
+        console.log(state)
+        return { ...state, activeLabel: activeLbl }
+    }
+    switch (action.type) {
         case 'LOAD_TABS_DASHBOARD':
-            return {
-                ...state,
-                activeLabel: tabs.defaultTabs[0].label,
-                tabChildren: tabs.defaultTabs
+            {
+                // let locationVar = state.routing.location.pathname.split('/').pop()
+                // let activeLbl = locationVar.charAt(0).toUpperCase() + locationVar.slice(1)
+                console.log('------------------------------------');
+                console.log(tabs.defaultTabs.filter((item) => item.label === state.activeLabel));
+                console.log(state.activeLabel)
+                console.log('------------------------------------');
+                // if(state.tabChildren.)
+                if (tabs.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
+                {
+                return {
+                    ...state,
+                    tabChildren: tabs.defaultTabs.concat({label:'Tasks',icon:'felter',location:'/dashboard/tasks',fixed:false})
+                }}
+                else
+                return{
+                    ...state,
+                    tabChildren: tabs.defaultTabs
+                }
             }
-
-        case 'LOAD_TABS_TASKS':
-            return {
-                ...state,
-                activeLabel: tabs.tasksTabs[0].label,
-                tabChildren: tabs.tasksTabs
-            }
-
+        // case 'LOAD_TABS_TASKS':
+        //     {
+               
+        //         return {
+        //             ...state,
+        //             activeLabel: tabs.tasksTabs[0].label,
+        //             tabChildren: tabs.tasksTabs
+        //         }
+        //     }
         case CHANGE_TAB:
             {
 
@@ -70,7 +99,7 @@ const global = (state=initialState, action)=>{
 
         case CLOSE_TAB:
             {
-
+                //Open last tab
                 return {
                     ...state,
                     tabChildren: state.tabChildren.filter((item) => item.label !== action.payload.label)
@@ -85,9 +114,10 @@ const global = (state=initialState, action)=>{
                 }
             }
         default:
-            return state
-
-    }
+                return state;
+            
+          
+   }
 
 }
 export default global

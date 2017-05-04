@@ -4,7 +4,8 @@ class General extends Component {
     render() {
         return (
             <div>
-                General
+                <h2>General</h2>
+                <h2> Andrei </h2>
             </div>
         );
     }
