@@ -12,15 +12,15 @@ const initialState = {
 // you need an if(action.payload==!''), a find string/match label in defaultTabs and then return the label
 // Make a generalized ACTION LOAD_DEFAULT_TABS that receive a payload:{scene,urlMatch}
 // Maybe https://blog.marvelapp.com/managing-the-url-in-a-redux-app/
-
-const global = (state = initialState, action) => {
-    if (action.type === LOCATION_CHANGE) {
         //TODO Check if the route exists, if it doesn't redirect to 404?
         //TODO Check for the scenes and load the appropiate fixed tabs scenes
         //@ This is done by loading default tabs BUT they need to check for a special route
         //TODO Check if any tabs exists
         //TODO if not => create a new one
         //@ Oh boy...
+const global = (state = initialState, action) => {
+    if (action.type === LOCATION_CHANGE) {
+
 
         let locationVar = action.payload.pathname.split('/').pop()
         let activeLbl = locationVar.charAt(0).toUpperCase() + locationVar.slice(1)

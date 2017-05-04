@@ -10,5 +10,7 @@ export function changeTab(location, label){
 export function closeTab(tab){
     return (dispatch) =>{
         dispatch({type:'CLOSE_TAB',payload:tab})
+        //@TODO Add a push to the last location somehow?
+        dispatch(push('/dashboard/general'))
     }
 }
