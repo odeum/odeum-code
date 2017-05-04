@@ -10,9 +10,8 @@ script:
   - cd ./experiments/3/
   - yarn
   - yarn build
-  - pwd
-  - ls -al
-  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ../../
+  - cp ./build/index.html ./build/200.html
+#  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ../../
 
 deploy:
   provider: surge
