@@ -7,14 +7,17 @@ notifications:
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
 script:
-  - yarn build ./experiments/3/
-  - pwd
-  # - cp -r ./experiments/3/build ./
+  - cd ./experiments/3/
+  - yarn
+  - yarn build
+  - cp ./build/index.html ./build/200.html
+#  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ../../
 
 deploy:
   provider: surge
-  project: ./build/
-  domain: odeum-codejs-exp3.surge.sh
+  project: ./experiments/3/build/
+  #domain: odeum-codejs-exp3.surge.sh
+  domain: odeum-codejs.surge.sh
   skip_cleanup: true
   on:
     all_branches: true
