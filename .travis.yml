@@ -10,13 +10,13 @@ script:
   - cd ./experiments/3/
   - yarn
   - yarn build
-  #- pwd
+  - pwd
   - ls -al
-  #- cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ./
+  - cp -r /home/travis/build/odeum/odeum-codejs/experiments/3/build ./
 
 deploy:
   provider: surge
-  project: /home/travis/build/odeum/odeum-codejs/experiments/3/build/
+  project: ./build/
   domain: odeum-codejs-exp3.surge.sh
   skip_cleanup: true
   on:
