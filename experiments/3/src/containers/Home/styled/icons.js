@@ -65,7 +65,11 @@ export function renderIcons(icon,active) {
             return(
                 <Icons.MdNotificationsNone color={color(active)}/>
             )
-            default:
-                break;
+        
+              default:
+            {console.log(icon)
+                return (
+                    <Icons.MdInfo color={color(active)}/>
+                )}
         }
     };

@@ -40,7 +40,7 @@ const global = (state = initialState, action) => {
                 {
                 return {
                     ...state,
-                    tabChildren: constant.defaultTabs.concat({label:'Tasks',icon:'tasks',location:'/dashboard/tasks',fixed:false})
+                    tabChildren: constant.defaultTabs.concat({label:action.payload.label,icon:action.payload.icon,location:'/dashboard/'+action.payload.label,fixed:false})
                 }}
                 else
                 return{
