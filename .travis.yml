@@ -7,5 +7,12 @@ notifications:
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
 script:
-  - yarn build ./experiments/3/build
+  - yarn build ./experiments/3/
 
+deploy:
+  provider: surge
+  project: ./experiments/3/build/
+  domain: odeum-codejs-exp3.surge.sh
+  skip_cleanup: true
+  on:
+    all_branches: true
