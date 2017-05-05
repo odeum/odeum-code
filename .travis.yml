@@ -17,7 +17,8 @@ deploy:
   provider: surge
   project: ./experiments/3/build/
   #domain: odeum-codejs-exp3.surge.sh
-  domain: odeum-codejs.surge.sh
+  #domain: odeum-codejs.surge.sh
+  domain: odeum-codejs.com
   skip_cleanup: true
   on:
     all_branches: true
