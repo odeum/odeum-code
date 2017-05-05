@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as dashboardActions from './dashboardActions'
-
+import General from '../../components/Tabs/General'
+import Users from '../../components/Tabs/Users'
+import { Route } from 'react-router'
+import {DashboardDiv} from './style'
+import tabs from './Tabs/tabs'
 class DashboardContainer extends Component {
     componentWillMount() {
 
@@ -13,8 +17,16 @@ class DashboardContainer extends Component {
     }
     render() {
         return (
-            <div>
-            </div>
+            <DashboardDiv>
+            <Route path="/dashboard/general" component={tabs.General}/>
+            <Route path="/dashboard/fields" component={tabs.Fields}/>
+            <Route path="/dashboard/workflow" component={tabs.Workflow}/>
+            <Route path="/:dashboard/users" component={tabs.Users}/>
+            <Route path="/dashboard/operations" component={tabs.Operations}/>
+            <Route path="/dashboard/configuration" component={tabs.Configuration}/>
+            <Route path="/dashboard/design" component={tabs.Design}/>
+            
+            </DashboardDiv>
         );
     }
 }

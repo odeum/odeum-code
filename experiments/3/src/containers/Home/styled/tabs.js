@@ -16,7 +16,7 @@ export const TabList = styled.ul`
     height: 40px;
     margin: 0;
     padding: 0;
-    padding:20px 0px 20px 10px;
+    padding:20px 0px 0px 10px;
     overflow:hidden;
 `
 export const TabClose = styled.div`

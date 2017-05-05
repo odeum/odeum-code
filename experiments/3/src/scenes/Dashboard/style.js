@@ -7,5 +7,5 @@ export const DashboardDiv = styled.div`
     padding-left: 20px;
     padding-right: 20px;
     background: #ecf0f1;
-    margin-top: 20px;
+    margin-top: 10px;
 `

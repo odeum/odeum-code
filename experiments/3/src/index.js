@@ -1,7 +1,7 @@
 /*Import Section*/
 //@ New tabs
-import General from './components/Tabs/General'
-import Users from './components/Tabs/Users'
+// import General from './components/Tabs/General'
+// import Users from './components/Tabs/Users'
 import Dynamic from './components/Tabs/Dynamic'
 //React
 import React from 'react';
@@ -54,13 +54,14 @@ ReactDOM.render(
       <div>
         <Switch>
           <HomeContainer>
-            <Route path="/dashboard/:name" component={scenes.dashboard}/>
-            <Route path="/dashboard/general" component={General}/>
-            <Route path="/:dashboard/users" component={Users}/>
-            <Route path="/registreringer" component={scenes.registreringer}/>
-            <Route path="/organisation" component={scenes.organisation}/>
-            <Route path="/settings" component={scenes.settings}/>
-            <Route path="/:dashboard/tasks" component={scenes.tasks}/>
+            <Route path="/dashboard/:name" component={scenes.Dashboard}/>
+            {/*//@Moved to their respective component*/}
+            {/*<Route path="/dashboard/general" component={General}/>
+            <Route path="/:dashboard/users" component={Users}/>*/}
+            <Route path="/registreringer" component={scenes.Registreringer}/>
+            <Route path="/organisation" component={scenes.Organisation}/>
+            <Route path="/settings" component={scenes.Settings}/>
+            <Route path="/:dashboard/tasks" component={scenes.Tasks}/>
             <Route path="/dashboard/dynamic" component={Dynamic}/>
             </HomeContainer>
             </Switch>

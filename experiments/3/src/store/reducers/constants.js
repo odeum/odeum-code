@@ -53,8 +53,8 @@ export const defaultTabs = [
     fixed: true
 },
 {
-    label: 'Actions',
-    location: '/dashboard/actions',
+    label: 'Operations',
+    location: '/dashboard/operations',
     icon: 'handlinger',
     fixed: true
 },
