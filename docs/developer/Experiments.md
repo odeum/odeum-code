@@ -56,11 +56,12 @@ CB will research and propose API documentation platform and style
 ## 7 - REST API implementation experiments
 All available forces
 
-## 8 - Global User Registry (odeum.com)
+## 8 - IAM - Identity and Access Management
+- Global User Registry (odeum.com)
 HH + MHK
 Experiment is branching the mobile license server model from odeummobile.com out into a Rest API based server 
-which will become the "Global User Registry" on odeum.com. Today this solution takes "customerID", "userID", 
-and "password" to resolve which server to communicate with. In the finalized model all users will only have one account on odeum.com which will resolve to numerous apps and installations (sites). ODEUM CodeJS Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM CodeJS specific experiment)). 
+which will become our global IAM on odeum.com. Today this solution takes "customerID", "userID", 
+and "password" to resolve which server to communicate with. In the finalized model all users will only have one account on odeum.com which will resolve to numerous apps and installations (sites). Our own ODEUM CodeJS Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM CodeJS specific experiment)). 
 
 ## 9 - Tabs with Styled-Components (IN ALPHA)
 AT:
@@ -106,3 +107,8 @@ http://jsfiddle.net/agongdai/kb3gN/16072/
 http://stackoverflow.com/questions/40320410/how-to-make-a-drawer-like-in-google-inbox-with-material-ui
 http://codepen.io/ianmcnally/pen/YXXxMy
 
+## 19 - Responsiveness
+With Styled-Components:
+- http://jxnblk.com/grid-styled/ (https://github.com/jxnblk/grid-styled)
+- https://github.com/jxnblk/react-css-grid
+- https://github.com/jameslnewell/styled-components-grid
