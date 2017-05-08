@@ -17,12 +17,16 @@ const Layout = ({children}) => (
 class App extends Component {
   render() {
     return (
+      <div>
       <Layout>
         <div>
           <Text>See how the Button below is following the theme even though the code for the button hasn't changed?</Text>
           <Button>Themed Button</Button>
+          <Button>Themed Button 2</Button>
         </div>
       </Layout>     
+      {/*<Button>Themed Button 3</Button>*/}
+      </div>
     )
   }
 }
