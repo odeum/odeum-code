@@ -4,7 +4,7 @@ import theme from './components/theme'
 import Button from './components/Button'
 
 const Text = styled.p`
-  margin: 1em 1em
+  margin: 1rem 1rem
   font-family: ${(props) => props.theme.font || 'sans-serif'}
 `
 
@@ -24,10 +24,11 @@ class App extends Component {
         <div>
           <Text>See how the Button below is following the theme even though the code for the button hasn't changed?</Text>
           <Button>Themed Button</Button>
+          <Button>Themed Button 2</Button>
         </div>
-      </Layout>   
-                <Button>Themed Button</Button>
-      </div>  
+      </Layout>     
+      {/*<Button>Themed Button 3</Button>*/}
+      </div>
     )
   }
 }

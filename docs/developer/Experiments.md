@@ -78,7 +78,7 @@ How to deploy ODEUM CodeJS client updates to different customer clients and loca
 CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
 
 ## 13 - JavaScript Style Guide
-As proposed in the Guidelines we will create a JavaScript Style Guide and linter based upon Airbnb's guidance. 
+As proposed in the Guidelines we will create a JavaScript Style Guide and linter. 
 
 ## 14 - Debugging with Chrome in VS Code
 We need to create a boilerplate method to setup debugging with Chrome in VS Code on both Mac and Windows PC. 
@@ -89,7 +89,7 @@ Setting up and performing automated tests of components and complete framework t
 ## 16 - Themes in ODEUM CodeJS
 How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
 
-## 17 - Help System (Help Items)
+## 17 - Help Server (Help Items)
 The App platform for displaying context-sensitive helpitems based upon views in scenes. 
 Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. Helpitems should be indexed and very easy to localize.
 
@@ -109,6 +109,9 @@ http://codepen.io/ianmcnally/pen/YXXxMy
 
 ## 19 - Responsiveness
 With Styled-Components:
-- http://jxnblk.com/grid-styled/ (https://github.com/jxnblk/grid-styled)
-- https://github.com/jxnblk/react-css-grid
-- https://github.com/jameslnewell/styled-components-grid
+- http://jxnblk.com/grid-styled/ 
+- https://github.com/jxnblk/grid-styled
+
+## 20 - Search Server
+The App platform for displaying context-sensitive helpitems based upon views in scenes. 
+Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. Helpitems should be indexed and very easy to localize.

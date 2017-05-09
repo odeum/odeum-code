@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-//import * as s from './styled'
+//import * as s from './styles'
 import {HomeDiv} from './styled'
 
-//Header+Drawer
+//Header+Menu
 import HeaderContainer from './Header'
 import DrawerContainer from './Drawer'
 
