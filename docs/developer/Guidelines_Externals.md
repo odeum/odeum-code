@@ -71,7 +71,7 @@ The following technology areas and articles are all must-reads for newcommers to
 - [Article from Mapbox](https://www.mapbox.com/blog/redux-for-state-management-in-large-web-apps/)
 
 ### 2.5.3. Video tutorials
-- [Redux Getting Started](https://egghead.io/courses/getting-started-with-redux)
+- [Getting Started with Redux - Dan Abramov](https://egghead.io/courses/getting-started-with-redux)
 
 ## 2.6. Hackathons
 All interns and freelancers are incited to attend our hackathons which is held at WebHouse every second Monday from 17.00 - 21.30. 
