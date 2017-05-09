@@ -27,16 +27,16 @@ class DashboardContainer extends Component {
             <Route path="/dashboard/design" component={tabs.Design}/>
             
             </DashboardDiv>
-        );
+        )
     }
 }
 
 DashboardContainer.propTypes = {
-};
+}
 const mapStateToProps = (state,ownProps) => ({
     specialTab: {label:ownProps.match.params.name.charAt(0).toUpperCase()+ownProps.match.params.name.slice(1),icon:ownProps.match.params.name}
 })
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(dashboardActions, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)

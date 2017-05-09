@@ -1,8 +1,5 @@
 import styled from 'styled-components'
 
-//TODO Rename file to to HeaderStyles
-//DONE 
-
 export const HeaderDiv = styled.div`
   height: 100px;
   width: 100%;

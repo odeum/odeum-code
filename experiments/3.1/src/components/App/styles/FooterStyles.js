@@ -21,5 +21,4 @@ export const FooterDiv = styled.div`
     user-select: none;
 `
 
-
 export default FooterDiv
