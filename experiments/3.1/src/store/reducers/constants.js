@@ -6,7 +6,7 @@ export const scenes= [
             icon: 'dashboard'
         }, {
             id: 1,
-            name: 'Opgaver',
+            name: 'Forms',
             location: '/dashboard/tasks',
             icon: 'tasks'
         },
@@ -24,7 +24,7 @@ export const scenes= [
         },
         {
             id: 4,
-            name: 'Indstillinger',
+            name: 'Settings',
             location: '/settings',
             icon: 'settings'
         }]
@@ -53,7 +53,7 @@ export const defaultTabs = [
     fixed: true
 },
 {
-    label: 'Operations',
+    label: 'Actions',
     location: '/dashboard/operations',
     icon: 'handlinger',
     fixed: true
