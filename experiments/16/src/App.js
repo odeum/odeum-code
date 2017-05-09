@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from './components/theme'
 import Button from './components/Button'
+import Legends from './components/applegends'
 
 const Text = styled.p`
-  margin: 1em 1em
+  margin: 1rem 1rem
   font-family: ${(props) => props.theme.font || 'sans-serif'}
 `
 

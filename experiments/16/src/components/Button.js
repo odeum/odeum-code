@@ -11,10 +11,10 @@ const Button = styled.button`
   font-family: ${(props) => props.theme.font || 'sans-serif'}
 
   border-radius: 4px
-  padding: 0.5em 1em
+  padding: 0.5rem 1rem
   text-decoration: none
-  font-size: 1em
-  margin: 0 1em
+  font-size: 1rem
+  margin: 0 1rem
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 3px 10px 0 rgba(0,0,0,0.19);
 
   &:hover { 
