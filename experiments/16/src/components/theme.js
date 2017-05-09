@@ -2,11 +2,11 @@ import * as colors from './colors'
 import * as fonts from './fonts'
 
 const theme = {
-  background: colors.PRIMARY_BLUE,
-  color: colors.TAB_COLOR_10,
+  background: colors.TAB_COLOR_3,
+  color: colors.TAB_COLOR_2,
   font: fonts.PRIMARY,
   button: {
-    color: colors.DREAMY_BLUE,
+    color: colors.TAB_COLOR_6,
   }
 }
 export default theme
