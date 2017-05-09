@@ -40,7 +40,7 @@ Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ folder and check the book code examples here:
 https://github.com/redux-book/code-samples
 
-## 3 - General Component App framework (DOING)
+## 3 - General Component App framework (DOING - 3.1)
 MB + AT (real code)
 Experiment is setting up the core app framework in ODEUM CodeJS with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
 
