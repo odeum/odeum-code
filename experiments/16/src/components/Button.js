@@ -7,7 +7,7 @@ const Button = styled.button`
     
   background: ${(props) => props.theme.background || 'lightblue'}
   border: 2px solid ${(props) => props.theme.background || 'lightblue'}
-  color: ${(props) => props.theme.button.color || 'white'}
+  color: ${(props) => props.theme.button || 'white'}
   font-family: ${(props) => props.theme.font || 'sans-serif'}
 
   border-radius: 4px

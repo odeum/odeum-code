@@ -3,12 +3,12 @@
 
 export function loadTabs(){
     return(dispatch)=>{
-        dispatch({type:'LOAD_TABS_DASHBOARD',payload:{label:'Tasks',location:'/dashboard/tasks',icon:'tasks'}})
+        dispatch({type:'LOAD_TABS_TASKS'})
     }
 }
-export function addTab(){
+export function addTab(tab){
     return(dispatch)=>{
-        dispatch({type:'ADD_TAB', payload:{label:'Dynamic',location:'/dashboard/dynamic',icon:'generelt'}})
+        dispatch({type:'ADD_TAB', payload:tab})
     }
 }
 export default loadTabs

@@ -7,7 +7,7 @@ export const scenes= [
         }, {
             id: 1,
             name: 'Opgaver',
-            location: '/dashboard/tasks',
+            location: '/tasks/list',
             icon: 'tasks'
         },
         {
@@ -74,9 +74,9 @@ export const defaultTabs = [
 
 export const tasksTabs = [{
     label: 'Tasks',
-    location: '/tasks',
+    location: '/tasks/list',
     icon: 'placeholder',
-    fixed: false
+    fixed: true
 }]
 export const registreringerTabs = [{
     label: 'Regisreringer',

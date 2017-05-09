@@ -7,6 +7,7 @@ import * as dashboardActions from './dashboardActions'
 import { Route } from 'react-router'
 import {DashboardDiv} from './style'
 import tabs from './Tabs/tabs'
+import Dynamic from '../../components/Tabs/Dynamic'
 class DashboardContainer extends Component {
     componentWillMount() {
 
@@ -21,11 +22,11 @@ class DashboardContainer extends Component {
             <Route path="/dashboard/general" component={tabs.General}/>
             <Route path="/dashboard/fields" component={tabs.Fields}/>
             <Route path="/dashboard/workflow" component={tabs.Workflow}/>
-            <Route path="/:dashboard/users" component={tabs.Users}/>
+            <Route path="/dashboard/users" component={tabs.Users}/>
             <Route path="/dashboard/operations" component={tabs.Operations}/>
             <Route path="/dashboard/configuration" component={tabs.Configuration}/>
             <Route path="/dashboard/design" component={tabs.Design}/>
-            
+            <Route path="/dashboard/dynamic" component={Dynamic}/>
             </DashboardDiv>
         );
     }

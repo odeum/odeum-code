@@ -2,7 +2,8 @@
 //@ New tabs
 // import General from './components/Tabs/General'
 // import Users from './components/Tabs/Users'
-import Dynamic from './components/Tabs/Dynamic'
+// import Dashboard from './scenes/Dashboard'
+// import Dynamic from './components/Tabs/Dynamic'
 //React
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -41,8 +42,7 @@ const reducer = combineReducers({
   ...reducers,
   routing: routerReducer
 })
-  /**/
-  //@ ^ As we issue navigation events via Redux we will not use the default Reducers for Routing, instead we will make our own.
+/**/
 //Store
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, middleware)))
 
@@ -54,18 +54,22 @@ ReactDOM.render(
       <div>
         <Switch>
           <HomeContainer>
-            <Route path="/dashboard/:name" component={scenes.Dashboard}/>
-            {/*//@Moved to their respective component*/}
-            {/*<Route path="/dashboard/general" component={General}/>
-            <Route path="/:dashboard/users" component={Users}/>*/}
-            <Route path="/registreringer" component={scenes.Registreringer}/>
-            <Route path="/organisation" component={scenes.Organisation}/>
-            <Route path="/settings" component={scenes.Settings}/>
-            <Route path="/:dashboard/tasks" component={scenes.Tasks}/>
-            <Route path="/dashboard/dynamic" component={Dynamic}/>
-            </HomeContainer>
-            </Switch>
-</div>
+            <Route path="/dashboard/:name" component={scenes.Dashboard} />
+            {/*<Route path="/dashboard/dynamic" component={Dynamic}/>*/}
+            <Route path="/tasks" component={scenes.Tasks}/>
+            <Route path="/registreringer" component={scenes.Registreringer} />
+            {/*<Route path="/organisation" component={scenes.Organisation} />*/}
+            <Route path="/settings" component={scenes.Settings} />
+            <Route path='/organisation' getComponent={(location, callback) => {
+              console.log(location)
+              require.ensure([], require => {
+                console.log('Splittest required');
+                callback(null, require('./scenes/Organisation/index.js').Organisation)
+              }, 'Organisation')
+            }} />
+          </HomeContainer>
+        </Switch>
+      </div>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')

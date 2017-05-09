@@ -8,21 +8,26 @@ const Text = styled.p`
   font-family: ${(props) => props.theme.font || 'sans-serif'}
 `
 
-const Layout = ({children}) => (
+const Layout = ({children}) => {
+  console.log(children)
+  return(
   <ThemeProvider theme={theme}>
     { children }
   </ThemeProvider>
-)
+)}
 
 class App extends Component {
   render() {
     return (
+      <div>
       <Layout>
         <div>
           <Text>See how the Button below is following the theme even though the code for the button hasn't changed?</Text>
           <Button>Themed Button</Button>
         </div>
-      </Layout>     
+      </Layout>   
+                <Button>Themed Button</Button>
+      </div>  
     )
   }
 }

@@ -28,8 +28,9 @@ class HomeContainer extends Component {
             <HomeDiv>
                 <HeaderContainer />
                 <DrawerContainer />
-                
+              
                 <TabsWrapper children={this.props.tabChildren}/>
+              
                {this.props.children}
 
                <FooterContainer />
