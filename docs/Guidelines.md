@@ -1,5 +1,16 @@
 # Guidelines
 
+<!-- TOC -->
+
+- [Guidelines](#guidelines)
+    - [Components](#components)
+    - [Basic UI Components](#basic-ui-components)
+    - [App Components](#app-components)
+    - [Github branching and versioning](#github-branching-and-versioning)
+    - [ODEUM CodeJS Basic Stack includes:](#odeum-codejs-basic-stack-includes)
+
+<!-- /TOC -->
+
 ## Components
 
 ## Basic UI Components

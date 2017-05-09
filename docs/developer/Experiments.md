@@ -12,7 +12,7 @@
 
 - All code experiments must be located in ./experiments/... All experiments should be a full stack CRA implementation which can be installed seperately from within the experiments own folder
 
-- Only code reviewed and accepted components and scripts will be populated to ./src folder
+- Only code reviewed and accepted components and scripts will be populated to the main ./src folder
 
 
 ## 1 - Codesplitting / routing (IDLE)
@@ -93,8 +93,8 @@ How to create a dynamic theme in OCJS which can be used for the example app "The
 The App platform for displaying context-sensitive helpitems based upon views in scenes. 
 Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. Helpitems should be indexed and very easy to localize.
 
-## 18 - Drawer
-Find suitable React based drawer component (JQuery free thanks) that can be styled with SC and redux'ed.
+## 18 - Menu
+Find suitable React based menu component (JQuery free thanks) that can be styled with SC and redux'ed.
 
 Semantic UI:
 http://react.semantic-ui.com/introduction
