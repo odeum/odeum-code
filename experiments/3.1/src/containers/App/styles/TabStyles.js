@@ -1,4 +1,4 @@
-import styled,{css} from 'styles-components'
+import styled,{css} from 'styled-components'
 
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 // import DrawerWrapper from '../../../components/App/Menu/DrawerWrapper'
-import DrawerItem from '../../../components/App/Menu/MenuItem'
+import MenuItem from '../../../components/App/Menu/MenuItem'
 import PropTypes from 'prop-types'
-import * as s from '../../../components/App/styles/MenuStyle'
+import * as styled from '../../../components/App/styles/MenuStyle'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
  
@@ -33,7 +33,7 @@ class MenuContainer extends Component {
         )
     }
 }
-DrawerContainer.propTypes = {
+MenuContainer.propTypes = {
        changeScene: PropTypes.func.isRequired,
        scenes:PropTypes.array,
        activeScene:PropTypes.number
@@ -46,4 +46,4 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators(DrawerActions,dispatch)
 
 }
-export default connect(mapStateToProps,mapDispatchToProps)(MenuContainer);
+export default connect(mapStateToProps,mapDispatchToProps)(MenuContainer)

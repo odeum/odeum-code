@@ -1,4 +1,4 @@
-import styled from 'styles-components'
+import styled from 'styled-components'
 
 //REMOVE file
 

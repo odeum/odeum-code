@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 //import * as styled from './styles'
@@ -7,7 +7,7 @@ import {AppDiv} from './styles/AppStyles'
 
 //Header+Menu
 import HeaderContainer from './Header/Header'
-import DrawerContainer from './Menu/Menu'
+import MenuContainer from './Menu/Menu'
 
 //@TODO TabsWrapper should be moved to Containers 
 //@ It is a container
