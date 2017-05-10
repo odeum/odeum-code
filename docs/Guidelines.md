@@ -59,7 +59,14 @@
         - [8.3.1. Stateless components (presentational components)](#831-stateless-components-presentational-components)
         - [8.3.2. Stateful components (container components)](#832-stateful-components-container-components)
 - [9. Visual Studio Code Extensions](#9-visual-studio-code-extensions)
-    - [9.1. Extension 1](#91-extension-1)
+    - [9.1. Atom Keymap](#91-atom-keymap)
+    - [9.2. Babel ES6/ES7](#92-babel-es6es7)
+    - [9.3. Debugger for Chrome](#93-debugger-for-chrome)
+    - [9.4. ESLint](#94-eslint)
+    - [9.5. NPM Intellisense](#95-npm-intellisense)
+    - [9.6. React Native Tools](#96-react-native-tools)
+    - [9.7. Reactjs code snippets](#97-reactjs-code-snippets)
+    - [9.8. vscode-styled-components](#98-vscode-styled-components)
 - [10. ODEUM API](#10-odeum-api)
 - [11. ODEUM 2GO!](#11-odeum-2go)
 
@@ -467,8 +474,32 @@ export default HelloWorld;
 ```
 
 # 9. Visual Studio Code Extensions
+We suggest that you install the following VSCode Extensions to get the optimal environment for your React development and ODUEM CodeJS contribution. 
 
-## 9.1. Extension 1
+## 9.1. Atom Keymap
+Popular Atom keybindings for Visual Studio Code (by Microsoft)
+[Atom Keymap](https://marketplace.visualstudio.com/items?itemName=ms-vscode.atom-keybindings)
+
+## 9.2. Babel ES6/ES7
+[Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring)
+
+## 9.3. Debugger for Chrome
+[Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+
+## 9.4. ESLint
+[ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+## 9.5. NPM Intellisense
+[NPM Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense)
+
+## 9.6. React Native Tools
+[React Native Tools](https://marketplace.visualstudio.com/items?itemName=vsmobile.vscode-react-native)
+
+## 9.7. Reactjs code snippets
+[Reactjs code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets)
+
+## 9.8. vscode-styled-components
+[vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
 # 10. ODEUM API
 - Location of future ODEUM API (under construction)
