@@ -39,8 +39,8 @@ MenuContainer.propTypes = {
        activeScene:PropTypes.number
 }
 const mapStateToProps = (state) =>({
-     scenes: state.global.scenes,
-     activeScene: state.drawer.activeScene
+    //  scenes: state.global.scenes,
+    //  activeScene: state.drawer.activeScene
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(DrawerActions,dispatch)

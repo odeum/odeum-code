@@ -1,72 +1,50 @@
-/*Import Section*/
-//@ New tabs
-// import General from './components/Tabs/General'
-// import Users from './components/Tabs/Users'
-import Dynamic from './components/Tabs/Dynamic'
-//React
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-//Redux
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
+import AppContainer from './containers/App/App'
+import scenes from './scenes/scenesCombiner'
+import reducers from './store/reducer'
+//Redux Dev Tools
+// import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
-//Redux Dev Tools
-import { composeWithDevTools } from 'redux-devtools-extension'
+const middlewares = [thunk, routerMiddleware(browserHistory)]
 
-//Redux Router
-import createHistory from 'history/createBrowserHistory'
-import { Route, Switch } from 'react-router'
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux'
+const composeEnhancers =
+  (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
+    global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    })) || compose
 
-//Reducers
-import * as reducers from './store/reducer'
-
-//Containers
-import HomeContainer from './containers/App/App'
-
-//Scenes
-import scenes from './scenes/scenesCombiner.js'
-/*End Imports*/
-
-/*Constants*/
-
-//Router History
-const history = createHistory()
-//Router Middleware
-const middleware = routerMiddleware(history)
-//Reducers + Router
+const enhancer = composeEnhancers(
+  applyMiddleware(...middlewares)
+)
 const reducer = combineReducers({
   ...reducers,
   routing: routerReducer
 })
-  /**/
-  //@ ^ As we issue navigation events via Redux we will not use the default Reducers for Routing, instead we will make our own.
-//Store
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk, middleware)))
+// Add the reducer to your store on the `routing` key
+const store = createStore(
+  reducer, enhancer
+)
 
-/*End Constants*/
-
+// Create an enhanced history that syncs navigation events with the store
+const history = syncHistoryWithStore(browserHistory, store)
+console.log(store)
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <Switch>
-          <HomeContainer>
-            <Route path="/dashboard/:name" component={scenes.Dashboard}/>
-            {/*//@Moved to their respective component*/}
-            {/*<Route path="/dashboard/general" component={General}/>
-            <Route path="/:dashboard/users" component={Users}/>*/}
-            <Route path="/registreringer" component={scenes.Reports}/>
-            <Route path="/organisation" component={scenes.Organisation}/>
-            <Route path="/settings" component={scenes.Settings}/>
-            <Route path="/:dashboard/tasks" component={scenes.Tasks}/>
-            <Route path="/dashboard/dynamic" component={Dynamic}/>
-            </HomeContainer>
-            </Switch>
-</div>
-    </ConnectedRouter>
+    { /* Tell the Router to use our enhanced history */}
+    <Router history={history}>
+      <Route path="/" component={AppContainer}>
+        <Route path="/dashboard" component={scenes.Dashboard} />
+        <Route path="/reports" component={scenes.Reports} />
+        <Route path="/organisation" component={scenes.Organisation} />
+        <Route path="/settings" component={scenes.Settings} />
+        <Route path="/forms" component={scenes.Forms} />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('root')
-);
+)

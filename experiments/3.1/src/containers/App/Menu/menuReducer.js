@@ -9,11 +9,11 @@ export const menu = (state = initialState, action) => {
         case actions.changeActiveDrItem:
             {
                 console.log(action.payload)
-                return state;
+                return state
             }
 
         default:
-            return state;
+            return state
     }
 }
 

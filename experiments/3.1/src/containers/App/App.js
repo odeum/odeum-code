@@ -9,8 +9,6 @@ import {AppDiv} from './styles/AppStyles'
 import HeaderContainer from './Header/Header'
 import MenuContainer from './Menu/Menu'
 
-//@TODO TabsWrapper should be moved to Containers 
-//@ It is a container
 import TabsWrapper from './Tabs/TabsWrapper'
 import FooterContainer from './Footer/Footer'
 
@@ -21,8 +19,9 @@ import {connect} from 'react-redux'
 import * as GlobalActions from '../../store/actions/global'
 
 class AppContainer extends Component {
-
+    
     render() {
+        console.log(this.props)
         return (
             <div>
             <AppDiv>
@@ -30,7 +29,8 @@ class AppContainer extends Component {
                 <MenuContainer />
                 
                 <TabsWrapper children={this.props.tabChildren}/>
-               {this.props.children}
+               
+                {this.props.children}
 
                <FooterContainer />
             </AppDiv>
@@ -41,7 +41,7 @@ class AppContainer extends Component {
 }
 AppContainer.propTypes = {
     onPush:PropTypes.func.isRequired,
-    tabChildren: PropTypes.array
+     tabChildren: PropTypes.array
 }
 
 const mapStateToProps = (state,ownProps) =>({

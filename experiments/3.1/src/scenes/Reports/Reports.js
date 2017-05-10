@@ -1,11 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-const Reports = () => {
+const Reports = (children) => {
+    console.log(children)
     return (
         <div>
             Reports
+           
         </div>
-    );
-};
+    )
+}
 
-export default Reports;
+export default Reports
