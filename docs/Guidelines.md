@@ -406,17 +406,17 @@ We will try to refer to Airbnb's style guide which is pretty strict and solid. W
 
 ## 8.1. Inspiration
 
-* https://github.com/airbnb/javascript 
-* http://eslint.org/docs/rules
-* https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
-* https://github.com/styled-components/stylelint-processor-styled-components
+- [Airbnb guidelines](https://github.com/airbnb/javascript)
+- [ESLint rules](http://eslint.org/docs/rules)
+- [ESLint react plugin](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
+- [Styled Components linter](https://github.com/styled-components/stylelint-processor-styled-components)
 
 ## 8.2. PropTypes
 It is critical that all component development is declared with PropTypes everywhere possible. PropTypes will work both as typechecking security and as an API overview for other developers on which props the component agregates. 
 
-https://facebook.github.io/react/docs/typechecking-with-proptypes.html
+- [Typechecking with PropTypes](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
 
-https://wecodetheweb.com/2015/06/02/why-react-proptypes-are-important/
+- [Why PropTypes are important](https://wecodetheweb.com/2015/06/02/why-react-proptypes-are-important/)
 
 ## 8.3. Components
 
@@ -471,7 +471,7 @@ export default HelloWorld;
 ## 9.1. Extension 1
 
 # 10. ODEUM API
-
+- Location of future ODEUM API (under construction)
 - https://api.odeum.com/api/v1/...
 
 # 11. ODEUM 2GO!
