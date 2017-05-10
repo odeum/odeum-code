@@ -11,6 +11,9 @@ Attendees: AT, CB, HH, MB, MHK
 
 ### Takeaways and milestones:
 
+- Ad 1:
+- Ad 2:
+- Ad 3:
 
 ## Hacknight #3 - Maj 8 2017
 Attendees: AT, CB, HH, MB, MHK
@@ -31,7 +34,7 @@ Attendees: AT, CB, HH, MB, MHK
 - Ad 3: Showcase of responsive examples. Decided to try-out https://github.com/jxnblk/grid-styled - HH will create exp. 19.
 - Ad 4: Working with ThemeProvider from Styled-Components was accepted - carry on!!!
 - Ad 5: AT (RRR4 and filename refactoring), HH experiment 19
-- Ad 6: TBA
+- Ad 6: Interns given initial instructions and cloning of repository ... new briefing primo June
 
 
 ## Hacknight #2 - April 24 2017
