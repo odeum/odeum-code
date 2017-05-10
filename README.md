@@ -21,6 +21,7 @@ ODEUM CodeJS
         - [1.3.2. Read our Guidelines and reference guides:](#132-read-our-guidelines-and-reference-guides)
 - [2. Mission Statement](#2-mission-statement)
         - [<a href="./docs/Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>](#a-hrefdocsguidelinesmd-target_blankodeum-codejs-guidelinesa)
+        - [<a href="http://odeum-codejs.com/" target="_blank">Follow current ODEUM CodeJS Experiments</a>](#a-hrefhttpodeum-codejscom-target_blankfollow-current-odeum-codejs-experimentsa)
 
 <!-- /TOC -->
 
@@ -99,7 +100,8 @@ Thanks
 
 **The ODEUM CodeJS Team**
 
-
 Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
 
 ### <a href="./docs/Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>
+
+### <a href="http://odeum-codejs.com/" target="_blank">Follow current ODEUM CodeJS Experiments</a>

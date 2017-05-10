@@ -26,12 +26,12 @@
     - [3.19. Menu](#319-menu)
     - [3.20. Responsiveness](#320-responsiveness)
     - [3.21. Search Server](#321-search-server)
-- [4. Example Apps](#4-example-apps)
+- [4. Apps](#4-apps)
     - [4.1. ThemeBuilder](#41-themebuilder)
     - [4.2. HelpBuilder](#42-helpbuilder)
     - [4.3. AppBuilder](#43-appbuilder)
     - [4.4. ComponentBuilder](#44-componentbuilder)
-    - [4.5. Geocloud2 porting](#45-geocloud2-porting)
+    - [4.5. GeoCloud2 (GC2) porting](#45-geocloud2-gc2-porting)
     - [4.6. ODEUM Connect](#46-odeum-connect)
     - [4.7. ODEUM Dashboard](#47-odeum-dashboard)
     - [4.8. ODEUM Help Server](#48-odeum-help-server)
@@ -168,8 +168,8 @@ With Styled-Components:
 - The App platform for displaying helpitems based upon connected views in scenes and components 
 - Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework
 
-# 4. Example Apps
-- The following Apps will be developed with ODEUM CodeJS for the repository examples.
+# 4. Apps
+- The following Apps will be developed with ODEUM CodeJS for the repository examples and/or production.
 
 ## 4.1. ThemeBuilder
 - Build an App to create a theme for an ODEUM CodeJS App
@@ -190,7 +190,7 @@ With Styled-Components:
 - Build an App to construct a JavaScript file with a new component
 - Use dropdown menues and checkboxes to select type and default values and innerworkings
 
-## 4.5. Geocloud2 porting
+## 4.5. GeoCloud2 (GC2) porting
 - Support Mapcentia in porting GC2 to ODEUM CodeJS
 
 ## 4.6. ODEUM Connect
