@@ -7,9 +7,9 @@
 - [3. Experiments (initial developer experiments)](#3-experiments-initial-developer-experiments)
     - [3.1. Contributors (primary):](#31-contributors-primary)
     - [3.2. Experiments location](#32-experiments-location)
-    - [3.3. Codesplitting / PRPL](#33-codesplitting--prpl)
+    - [3.3. Codesplitting / PRPL (former experiment 1)](#33-codesplitting--prpl-former-experiment-1)
     - [3.4. Redux](#34-redux)
-    - [3.5. Basic Framework (Experiment 3.1)](#35-basic-framework-experiment-31)
+    - [3.5. Framework (former experiment 3.1)](#35-framework-former-experiment-31)
     - [3.6. Demo App to Connect to the ODEUM CodeJS framework](#36-demo-app-to-connect-to-the-odeum-codejs-framework)
     - [3.7. Login](#37-login)
     - [3.8. REST and components API documentation platform/style](#38-rest-and-components-api-documentation-platformstyle)
@@ -21,7 +21,7 @@
     - [3.14. JavaScript Style Guide](#314-javascript-style-guide)
     - [3.15. Debugging with Chrome in VS Code](#315-debugging-with-chrome-in-vs-code)
     - [3.16. Test setup scenarios](#316-test-setup-scenarios)
-    - [3.17. Themes in ODEUM CodeJS](#317-themes-in-odeum-codejs)
+    - [3.17. Themes in ODEUM CodeJS (former experiment 16)](#317-themes-in-odeum-codejs-former-experiment-16)
     - [3.18. Help Server (Help Items)](#318-help-server-help-items)
     - [3.19. Menu](#319-menu)
     - [3.20. Responsiveness](#320-responsiveness)
@@ -84,7 +84,7 @@
 - All code experiments must be located in ./experiments/... All experiments should be a full stack Creat-React-App implementation which can be installed seperately from within the experiments own folder
 - Only reviewed and refactored code (components and scripts) will be accepted and populated to the main ./src folder
 
-## 3.3. Codesplitting / PRPL
+## 3.3. Codesplitting / PRPL (former experiment 1)
 - We will do some initial research and propose 2-3 different technology paths and architectures.
 - The PRPL pattern looks promising. (ServiceWorker, IndexedDB, Web App Install Banners, Web Push Notifications)
 - Codesplitting with WebPack
@@ -100,7 +100,7 @@
 - Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ and check the book code examples here: [Redux Book](https://github.com/redux-book/code-samples)
 
-## 3.5. Basic Framework (Experiment 3.1)
+## 3.5. Framework (former experiment 3.1)
 - Setting up the core app framework in ODEUM CodeJS with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
 
 ## 3.6. Demo App to Connect to the ODEUM CodeJS framework
@@ -141,7 +141,7 @@ and "password" to resolve which server to communicate with.
 ## 3.16. Test setup scenarios
 - Setting up and performing automated tests of components and complete framework through CRA.
 
-## 3.17. Themes in ODEUM CodeJS
+## 3.17. Themes in ODEUM CodeJS (former experiment 16)
 - How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
 
 ## 3.18. Help Server (Help Items)
