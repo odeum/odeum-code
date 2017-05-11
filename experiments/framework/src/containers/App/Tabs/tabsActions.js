@@ -1,9 +1,9 @@
 import {push} from 'react-router-redux'
 //@Import actiontypes 
-export function changeTab(location, label){
+export function changeTab (label){
     return (dispatch) => {
-       // dispatch({type:'CHANGE_TAB',payload:label})
-        dispatch(push(location))
+        dispatch({type:'CHANGE_TAB',payload:label})
+        // dispatch(push(location))
     }
 }
 

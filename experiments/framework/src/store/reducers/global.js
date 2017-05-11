@@ -4,7 +4,8 @@ import { CHANGE_TAB, CLOSE_TAB, ADD_TAB } from '../actions/action_types'
 import * as constant from './constants'
 const initialState = {
     scenes:constant.scenes,
-    tabChildren: []
+    tabChildren: [],
+    activeLabel:''
 }
 
 //TODO Get the matchURL and send it as payload and set the activelabel as the payload
@@ -30,33 +31,33 @@ export default function global(state = initialState, action) {
         case 'LOAD_TABS_DASHBOARD':
             {
                
-                console.log('------------------------------------');
-                console.log(constant.defaultTabs.filter((item) => item.label === state.activeLabel));
+                console.log('------------------------------------')
+                console.log(constant.defaultTabs.filter((item) => item.label === state.activeLabel))
                 console.log(state.activeLabel)
-                console.log('------------------------------------');
+                console.log('------------------------------------')
                 // if(state.tabChildren.)
                 //@ Example of adding a tab that isn't part of the default ones, instead of giving it fixed values, it can be passed as payload
-                if (constant.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
-                {
-                return {
-                    ...state,
-                    tabChildren: constant.defaultTabs.concat({label:action.payload.label,icon:action.payload.icon,location:'/dashboard/'+action.payload.label,fixed:false})
-                }}
-                else
+                // if (constant.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
+                // {
+                // return {
+                //     ...state,
+                //     tabChildren: constant.defaultTabs.concat({label:action.payload.label,icon:action.payload.icon,location:'/dashboard/'+action.payload.label,fixed:false})
+                // }}
+                // else
                 return{
                     ...state,
                     tabChildren: constant.defaultTabs
                 }
             }
-        // case 'LOAD_TABS_TASKS':
-        //     {
+/*        case 'LOAD_TABS_TASKS':
+            {
                
-        //         return {
-        //             ...state,
-        //             activeLabel: tabs.tasksTabs[0].label,
-        //             tabChildren: tabs.tasksTabs
-        //         }
-        //     }
+                return {
+                    ...state,
+                    activeLabel: tabs.tasksTabs[0].label,
+                    tabChildren: tabs.tasksTabs
+                }
+            }*/
         case CHANGE_TAB:
             {
 

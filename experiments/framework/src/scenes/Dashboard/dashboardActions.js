@@ -9,6 +9,6 @@ export function changeTab(location, label){
 }
 export function loadTabs(specialTab){
     return (dispatch) => {
-        dispatch({type:'LOAD_TABS_DASHBOARD',payload:specialTab})
+        dispatch({type:'LOAD_TABS_DASHBOARD'})
     }
 }

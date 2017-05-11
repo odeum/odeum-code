@@ -1,5 +1,5 @@
 import styled,{css} from 'styled-components'
-
+import {Link} from 'react-router'
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
@@ -11,7 +11,19 @@ export const PanelDiv = styled.div`
     border-radius: 0px 5px 5px 5px;
     overflow: scroll;
 `
-
+export const TabLink = styled(Link)`
+    display:inline-flex;
+    text-decoration: none;
+    outline: 0;
+    color: #5e5e5e;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 300;
+    ${props => props.className === 'active' && css`
+        color: white;
+    `}
+`
 export const TabList = styled.ul`
     height: 40px;
     margin: 0;
@@ -42,21 +54,10 @@ export const TabLabel = styled.li`
     `}
     position:relative;
 `
-    
-export const TabLink = styled.a`
-    display: inline-flex;
-    text-decoration: none;
-    outline: 0;
-    color: #5e5e5e;
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-size: 15px;
-    font-weight: 300;
-    ${props => props.className === 'active' && css`
-        color: white;
-    `}
-`
 
+export const TabName = styled.p`
+margin-top:0px;
+`
 export const Icon = styled.div`
     margin: 0;
     margin-top: -1px;

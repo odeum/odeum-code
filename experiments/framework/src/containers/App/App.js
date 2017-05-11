@@ -40,13 +40,13 @@ class AppContainer extends Component {
     }
 }
 AppContainer.propTypes = {
-    onPush:PropTypes.func.isRequired,
+    // onPush:PropTypes.func.isRequired,
      tabChildren: PropTypes.array
 }
 
 const mapStateToProps = (state,ownProps) =>({
     tabChildren: state.global.tabChildren,
-    comp: state.drawer.comp
+    comp: state.menu.comp
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)
