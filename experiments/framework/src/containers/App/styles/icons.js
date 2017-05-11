@@ -11,7 +11,7 @@ function color(active){
     else
     {return(ICON_DEFAULT)}
 }
-function renderIcons(icon,active) {
+export function renderIcons(icon,active) {
         switch (icon) {
             case 'settings':
                 return (
@@ -77,4 +77,4 @@ function renderIcons(icon,active) {
                     <Icons.MdInfo color={color(active)}/>
                 )}
         }
-    };
+    }
