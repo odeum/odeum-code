@@ -7,11 +7,12 @@ const ICON_DEFAULT = '#34495D'
 
 function color(active){
     if(active.includes('active'))
-    {return(ICON_ACTIVE)}
+        {return(ICON_ACTIVE)}
     else
-    {return(ICON_DEFAULT)}
+        {return(ICON_DEFAULT)}
 }
-export function renderIcons(icon,active) {
+
+export function renderIcons(icon, active) {
         switch (icon) {
             case 'settings':
                 return (
@@ -72,6 +73,7 @@ export function renderIcons(icon,active) {
             )
         
               default:
+// eslint-disable-next-line              
             {console.log(icon)
                 return (
                     <Icons.MdInfo color={color(active)}/>

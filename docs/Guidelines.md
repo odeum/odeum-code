@@ -261,6 +261,11 @@ With Styled-Components:
 - Build an App to create a theme for an ODEUM CodeJS App
 - Examples of different themes
 - Publish theme components to NPM
+- Icon components selected runtime through constants from the theme (of available icons)
+http://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
+
+The ThemeBuilder (or an AppChecker) needs to have an available Material Design Icon name checker so you do not overwrite the created constants from the ThemeBuilder with invalid icon names.
+
 
 ## 6.2. HelpBuilder
 - Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS. App should obviously be multilingual in terms of creating localization of help files 

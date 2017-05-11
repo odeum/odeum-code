@@ -5,6 +5,8 @@
   "dependencies": {
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
+    "react-icons": "^2.2.5",
+    "react-scripts": "^0.9.5",
     "styled-components": "^1.4.4"
   },
   "devDependencies": {
