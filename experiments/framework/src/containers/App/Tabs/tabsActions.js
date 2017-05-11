@@ -1,5 +1,4 @@
-import {push} from 'react-router-redux'
-//@Import actiontypes 
+//TODO import actionTypes
 export function changeTab (label){
     return (dispatch) => {
         dispatch({type:'CHANGE_TAB',payload:label})
@@ -10,7 +9,6 @@ export function changeTab (label){
 export function closeTab(tab){
     return (dispatch) =>{
         dispatch({type:'CLOSE_TAB',payload:tab})
-        //@TODO Add a push to the last location somehow?
-        dispatch(push('/dashboard/general'))
+        // dispatch(push('/dashboard/general'))
     }
 }

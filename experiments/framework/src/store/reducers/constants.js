@@ -7,13 +7,13 @@ export const scenes= [
         }, {
             id: 1,
             name: 'Forms',
-            location: '/dashboard/tasks',
+            location: '/forms',
             icon: 'tasks'
         },
         {
             id: 2,
             name: 'Reports',
-            location: '/registreringer',
+            location: '/reports',
             icon: 'registrations'
         },
         {
@@ -53,7 +53,7 @@ export const defaultTabs = [
     fixed: true
 },
 {
-    label: 'Actions',
+    label: 'Operations',
     location: '/dashboard/operations',
     icon: 'handlinger',
     fixed: true
@@ -72,17 +72,17 @@ export const defaultTabs = [
 }
 ]
 
-export const tasksTabs = [{
+export const formsTabs = [{
     label: 'Forms',
-    location: '/tasks',
-    icon: 'placeholder',
-    fixed: false
+    location: '/forms',
+    icon: 'generelt',
+    fixed: true
 }]
-export const registreringerTabs = [{
-    label: 'Regisreringer',
-    location: '/regisreringer',
+export const reportsTabs = [{
+    label: 'Reports',
+    location: '/reports',
     icon: 'placeholder',
     fixed: true
 }]
 
-export default scenes;
+export default scenes

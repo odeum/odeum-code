@@ -11,12 +11,12 @@ import dashboardTabs from './scenes/Dashboard/Tabs/tabs.js'
 //Redux Dev Tools
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import logger from 'redux-logger'
+// import logger from 'redux-logger'
 //Reducers
 // import global from './store/reducers/global.js'
 // import menu from './containers/App/Menu/menuReducer'
 
-const middlewares = [thunk, routerMiddleware(browserHistory), logger]
+const middlewares = [thunk, routerMiddleware(browserHistory)/*, logger*/]
 
 // const composeEnhancers =
 //   (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
@@ -42,14 +42,20 @@ ReactDOM.render(
         <Route path="dashboard" component={scenes.Dashboard} >
           <Route path="general" component={dashboardTabs.General} />
           <Route path="fields" component={dashboardTabs.Fields} />
-          <Route path="general" component={dashboardTabs.General} />
-          <Route path="general" component={dashboardTabs.General} />
-          <Route path="general" component={dashboardTabs.General} />
+          <Route path="workflow" component={dashboardTabs.Workflow} />
+          <Route path="users" component={dashboardTabs.Users} />
+          <Route path="operations" component={dashboardTabs.Operations} />
+          <Route path="configuration" component={dashboardTabs.Configuration} />
+          <Route path="design" component={dashboardTabs.Design} />
         </Route>
-        <Route path="/reports" component={scenes.Reports} />
-        <Route path="/organisation" component={scenes.Organisation} />
-        <Route path="/settings" component={scenes.Settings} />
-        <Route path="/forms" component={scenes.Forms} />
+        <Route path="/reports" component={scenes.Reports}>
+        </Route>
+        <Route path="/organisation" component={scenes.Organisation}>
+        </Route>
+        <Route path="/settings" component={scenes.Settings}>
+        </Route>
+        <Route path="/forms" component={scenes.Forms}>
+        </Route>
       </Route>
     </Router>
   </Provider>,

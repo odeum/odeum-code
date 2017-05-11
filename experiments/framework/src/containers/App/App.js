@@ -21,7 +21,7 @@ import * as GlobalActions from '../../store/actions/global'
 class AppContainer extends Component {
     
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div>
             <AppDiv>

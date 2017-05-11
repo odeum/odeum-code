@@ -6,8 +6,8 @@ class Configuration extends Component {
             <div>
                 Configuration
             </div>
-        );
+        )
     }
 }
 
-export default Configuration;
+export default Configuration

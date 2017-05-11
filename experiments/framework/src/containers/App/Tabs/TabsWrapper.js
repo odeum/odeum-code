@@ -31,8 +31,6 @@ class TabsWrapper extends Component {
             <styled.TabList >
                 {_this.children.map((tab, index) => (
                     <styled.TabLabel key={index} className={active(tab)}>
-                        {/*<styled.TabLink href="#" onClick={e => { e.preventDefault(); _this.changeTab(tab.location, tab.label) }}
-                            className={active(tab)}>*/}
                         <div onClick={e => { _this.changeTab(tab.label) }}>
                             <styled.TabLink to={tab.location} className={active(tab)}>
                                 <styled.Icon>{renderIcons(tab.icon, active(tab))}</styled.Icon>
