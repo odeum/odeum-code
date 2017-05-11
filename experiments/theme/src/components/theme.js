@@ -1,4 +1,6 @@
 import * as colors from './colors'
+// import { FOOTER } from './colors'
+// named import
 import * as fonts from './fonts'
 
 const theme = {
