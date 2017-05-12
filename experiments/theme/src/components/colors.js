@@ -16,8 +16,8 @@ export const TAB_SELECTED = '#3B97D3'
 export const SEARCHBAR = '#34495D'
 
 // ICON COLORS
-export const ICON_ACTIVE = '#FFFFFF'
-export const ICON_DEFAULT = '#34495D'
+export const ICON_ACTIVE_COLOR = '#FFFFFF'
+export const ICON_DEFAULT_COLOR = '#34495D'
 
 // ODEUM REPORT APP SPECIFIC (WORKFLOW) TAB COLORS
 export const TAB_COLOR_1 = '#81C1EA'
