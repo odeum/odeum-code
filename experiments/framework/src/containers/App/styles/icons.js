@@ -5,7 +5,7 @@ import React from 'react'
 const ICON_ACTIVE = '#FFFFFF'
 const ICON_DEFAULT = '#34495D'
 
-function color(active){
+function color(active) {
     if(active.includes('active'))
         {return(ICON_ACTIVE)}
     else

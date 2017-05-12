@@ -5,5 +5,5 @@ export const ICON_MESSAGES = 'chat'
 
 export const ICON_DASHBOARD = 'dashboard'
 
-export const ICON_SETTINGS = 'Settings'
+export const ICON_SETTINGS = 'settings'
 
