@@ -40,7 +40,7 @@ Guidelines (Getting started with ODEUM CodeJS)
         - [5.4.20. Redux Forms](#5420-redux-forms)
         - [5.4.21. Filename Refactoring (VSCode Extension)](#5421-filename-refactoring-vscode-extension)
         - [5.4.22. ODEUM Slack Service](#5422-odeum-slack-service)
-        - [ODEUM CodeJS Tutorial Site](#odeum-codejs-tutorial-site)
+        - [5.4.23. ODEUM CodeJS Tutorial Site](#5423-odeum-codejs-tutorial-site)
 - [6. Apps](#6-apps)
     - [6.1. ThemeBuilder](#61-themebuilder)
     - [6.2. HelpBuilder](#62-helpbuilder)
@@ -71,8 +71,8 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [10.1. Guidelines](#101-guidelines)
     - [10.2. PropTypes](#102-proptypes)
     - [10.3. Components](#103-components)
-        - [10.3.23. Stateless components (presentational components)](#10323-stateless-components-presentational-components)
-        - [10.3.24. Stateful components (container components)](#10324-stateful-components-container-components)
+        - [10.3.24. Stateless components (presentational components)](#10324-stateless-components-presentational-components)
+        - [10.3.25. Stateful components (container components)](#10325-stateful-components-container-components)
 - [11. Visual Studio Code Extensions](#11-visual-studio-code-extensions)
     - [11.1. Atom Keymap](#111-atom-keymap)
     - [11.2. Babel ES6/ES7](#112-babel-es6es7)
@@ -255,7 +255,7 @@ With Styled-Components:
 - Creating a Slack App for posting messages from ODEUM Apps to a team slach channel
 - [Slack API](https://api.slack.com)
 
-### ODEUM CodeJS Tutorial Site
+### 5.4.23. ODEUM CodeJS Tutorial Site
 - An App that can display simple markdown files from the ODEUM CodeJS repo and run as a tutorial site
 - Convert markdown to HTML
 - [Example 1 in React](https://github.com/acdlite/react-remarkable)
@@ -528,7 +528,7 @@ It is critical that all component development is declared with PropTypes everywh
 
 ## 10.3. Components
 
-### 10.3.23. Stateless components (presentational components)
+### 10.3.24. Stateless components (presentational components)
 For stateless class components use PureComponent 
 
 ```javascript 
@@ -568,7 +568,7 @@ const HelloWorld = ({name}) => (
 export default HelloWorld;
 ```
 
-### 10.3.24. Stateful components (container components)
+### 10.3.25. Stateful components (container components)
 
 ```javascript 
 
