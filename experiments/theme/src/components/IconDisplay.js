@@ -28,7 +28,7 @@ export function IconDisplay() {
 class ShowIcon extends React.Component {
     
     getSubComponent(name) {
-
+    // All theme available icons must be in this switch
     switch (name) {
       case IconNames.ICON_SETTINGS: return <Icons.MdSettings color={colors.ICON_DEFAULT_COLOR} />
       case IconNames.ICON_MENU: return <Icons.MdMenu color={colors.ICON_DEFAULT_COLOR} />
