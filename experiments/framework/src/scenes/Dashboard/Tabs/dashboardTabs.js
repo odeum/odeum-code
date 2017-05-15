@@ -5,5 +5,5 @@ import Fields from './Fields/fields'
 import General from './General/general'
 import Users from './Users/users'
 import Workflow from './Workflow/workflow'
-const tabs = {Operations,Configuration,Design,Fields,General,Users,Workflow};
-export default tabs;
+const dashboardTabs = {Operations,Configuration,Design,Fields,General,Users,Workflow};
+export default dashboardTabs

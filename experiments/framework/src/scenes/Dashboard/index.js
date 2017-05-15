@@ -13,7 +13,7 @@ class DashboardContainer extends Component {
         //@ TODO Notify TabsWrapper with default tabs / Add default tab links in the tabs wrapper
         //INFO Temporary Proof of Concept
         this.props.loadTabs()
-      //  console.log(this.props.specialTab)
+        console.log(this.props.children)
     }
     render() {
         return (

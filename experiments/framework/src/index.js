@@ -7,7 +7,7 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import AppContainer from './containers/App/App'
 import scenes from './scenes/scenesCombiner'
 import reducers from './store/reducer'
-import dashboardTabs from './scenes/Dashboard/Tabs/tabs.js'
+import dashboardTabs from './scenes/Dashboard/Tabs/dashboardTabs.js'
 //Redux Dev Tools
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
