@@ -8,17 +8,7 @@ const initialState = {
     activeLabel: ''
 }
 var _ = require('lodash')
-//TODO Get the matchURL and send it as payload and set the activelabel as the payload
-// For Example if you go to /dashboards/users, it should load users component
-// you need an if(action.payload==!''), a find string/match label in defaultTabs and then return the label
-// Make a generalized ACTION LOAD_DEFAULT_TABS that receive a payload:{scene,urlMatch}
-// Maybe https://blog.marvelapp.com/managing-the-url-in-a-redux-app/
-//TODO Check if the route exists, if it doesn't redirect to 404?
-//TODO Check for the scenes and load the appropiate fixed tabs scenes
-//@ This is done by loading default tabs BUT they need to check for a special route
-//TODO Check if any tabs exists
-//TODO if not => create a new one
-//@ Oh boy...
+
 export default function global(state = initialState, action) {
 
     switch (action.type) {
@@ -37,12 +27,9 @@ export default function global(state = initialState, action) {
                 //     tabChildren: constant.defaultTabs.concat({label:action.payload.label,icon:action.payload.icon,location:'/dashboard/'+action.payload.label,fixed:false})
                 // }}
                 // else
-                //TODO
-                //@ Load the default tabs in front of the array => Array.unshift()
-                //@
-                //@
+
                 if (state.tabChildren.length === 0) {
-                    console.log('Empty')
+                    // console.log('Empty')
                     return {
                         ...state,
                         tabChildren: constant.defaultTabs
@@ -51,11 +38,11 @@ export default function global(state = initialState, action) {
                 else {
 
                     let newArray2 = _.reduce(state.tabChildren, function (result, value, key) {
-                         console.log(value)
-                         console.log(value.fixed)
-                         return value.fixed ? result : result.concat(state.tabChildren[key])
+                        //  console.log(value)
+                        //  console.log(value.fixed)
+                        return value.fixed ? result : result.concat(state.tabChildren[key])
                     }, [])
-                    console.log(newArray2)
+                    // console.log(newArray2)
                     return {
                         ...state,
                         tabChildren: constant.defaultTabs.concat(newArray2)
@@ -69,7 +56,7 @@ export default function global(state = initialState, action) {
         case 'LOAD_TABS_FORMS':
             {
                 if (state.tabChildren.length === 0) {
-                    console.log('Forms Tab Empty, Loading default tabs')
+                    // console.log('Forms Tab Empty, Loading default tabs')
                     return {
                         ...state,
                         tabChildren: constant.formsTabs
@@ -77,10 +64,10 @@ export default function global(state = initialState, action) {
                 }
                 else {
                     let formsArray = _.reduce(state.tabChildren, function (result, value, key) {
-                        console.log(_.isEqual(value, constant.formsTabs[key]))
+                        // console.log(_.isEqual(value, constant.formsTabs[key]))
                         return value.fixed ? result : result.concat(state.tabChildren[key])
                     }, [])
-                    console.log(formsArray)
+                    // console.log(formsArray)
                     return {
                         ...state,
                         tabChildren: constant.formsTabs.concat(formsArray)
