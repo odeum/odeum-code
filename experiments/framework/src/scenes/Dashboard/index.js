@@ -13,12 +13,14 @@ class DashboardContainer extends Component {
         //@ TODO Notify TabsWrapper with default tabs / Add default tab links in the tabs wrapper
         //INFO Temporary Proof of Concept
         this.props.loadTabs()
-        console.log(this.props.children)
+         console.log(this.props)
     }
     render() {
+        const childWithProps = React.Children.map(this.props.children,
+        (child)=> React.cloneElement(child,{updateTabWrapper:this.props.updateTab}))
         return (
             <DashboardDiv>
-            {this.props.children}
+            {childWithProps}
             </DashboardDiv>
         )
     }
