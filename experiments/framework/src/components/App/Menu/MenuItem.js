@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderIcons } from '../../Tabs/styled/icons'
+import { renderIcons } from '../../../assets/icons'
 import * as s from '../styles/MenuStyle'
 import * as Icons from 'react-icons/lib/md'
 const MenuItem = ({ name, icon, location, onPush }) => {

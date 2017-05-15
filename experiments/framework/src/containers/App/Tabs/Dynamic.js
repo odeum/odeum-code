@@ -1,5 +1,4 @@
 import React from 'react'
-import {PanelDiv} from '../styles/TabStyles'
 import styled from 'styled-components'
 
 export const DashboardDiv = styled.div`

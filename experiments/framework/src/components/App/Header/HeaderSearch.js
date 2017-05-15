@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {HeaderSearchBarInput,HeaderSearchBarDiv,HeaderSearchBarButtonDiv,HeaderSearchBarInputWrapper} from '../styles/HeaderStyles'
-import {renderIcons} from '../../Tabs/styled/icons'
+import {renderIcons} from '../../../assets/icons'
 
 class HeaderSearch extends Component {
     render() {

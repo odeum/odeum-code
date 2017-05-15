@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {HeaderNotificationDiv,HeaderNotificationIcon,HeaderNotificationBadgeSpan} from '../styles/HeaderStyles'
-import {renderIcons} from '../../Tabs/styled/icons'
+import {renderIcons} from '../../../assets/icons'
 
 class HeaderNotification extends Component {
     render() {

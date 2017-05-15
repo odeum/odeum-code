@@ -1,12 +1,18 @@
 import * as Icons from 'react-icons/lib/md'
 import React from 'react'
-function color(active){
+
+// Colors will be imported from the theme but tested here ... 
+const ICON_ACTIVE = '#FFFFFF'
+const ICON_DEFAULT = '#34495D'
+
+function color(active) {
     if(active.includes('active'))
-    {return('white')}
+        {return(ICON_ACTIVE)}
     else
-    {return('#34495d')}
+        {return(ICON_DEFAULT)}
 }
-export function renderIcons(icon,active) {
+
+export function renderIcons(icon, active) {
         switch (icon) {
             case 'settings':
                 return (
@@ -65,11 +71,12 @@ export function renderIcons(icon,active) {
             return(
                 <Icons.MdNotificationsNone color={color(active)}/>
             )
-            default:
+        
+              default:
+// eslint-disable-next-line              
             {console.log(icon)
                 return (
                     <Icons.MdInfo color={color(active)}/>
                 )}
-            
         }
-    };
+    }

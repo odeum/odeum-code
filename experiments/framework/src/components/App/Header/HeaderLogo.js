@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import ODEUMLogo from '../../../assets/codejs_logo.png'
 import {HeaderLogoDiv,HeaderLogoImg} from '../styles/HeaderStyles'
 // import PropTypes from 'prop-types'

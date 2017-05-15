@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import * as styled from '../styles/TabStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as tabsActions from './tabsActions'
 import { renderIcons } from '../styles/icons'
+
 class TabsWrapper extends Component {
-    static propTypes = {
-        children: PropTypes.array,
-        activeLabel: PropTypes.string
-    }
     icoColor(className) {
         if (className.includes('active'))
         { return ('white') }
@@ -45,6 +42,10 @@ class TabsWrapper extends Component {
             </styled.TabList>
         )
     }
+}
+TabsWrapper.propTypes ={
+        children: PropTypes.array,
+        activeLabel: PropTypes.string
 }
 const mapStateToProps = (state) => ({
     activeLabel: state.global.activeLabel
