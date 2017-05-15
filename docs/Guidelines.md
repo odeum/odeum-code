@@ -40,6 +40,7 @@ Guidelines (Getting started with ODEUM CodeJS)
         - [5.4.20. Redux Forms](#5420-redux-forms)
         - [5.4.21. Filename Refactoring (VSCode Extension)](#5421-filename-refactoring-vscode-extension)
         - [5.4.22. ODEUM Slack Service](#5422-odeum-slack-service)
+        - [ODEUM CodeJS Tutorial Site](#odeum-codejs-tutorial-site)
 - [6. Apps](#6-apps)
     - [6.1. ThemeBuilder](#61-themebuilder)
     - [6.2. HelpBuilder](#62-helpbuilder)
@@ -253,6 +254,14 @@ With Styled-Components:
 ### 5.4.22. ODEUM Slack Service
 - Creating a Slack App for posting messages from ODEUM Apps to a team slach channel
 - [Slack API](https://api.slack.com)
+
+### ODEUM CodeJS Tutorial Site
+- An App that can display simple markdown files from the ODEUM CodeJS repo and run as a tutorial site
+- Convert markdown to HTML
+- [Example 1 in React](https://github.com/acdlite/react-remarkable)
+- [Example 2 in React](https://github.com/rexxars/react-markdown)
+- [Example 1](https://github.com/showdownjs/showdown)
+- [Example 2](https://github.com/evilstreak/markdown-js)
 
 # 6. Apps
 - The following Apps will be developed with ODEUM CodeJS for the repository examples and/or production.
