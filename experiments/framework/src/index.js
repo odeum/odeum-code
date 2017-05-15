@@ -11,10 +11,9 @@ import dashboardTabs from './scenes/Dashboard/Tabs/dashboardTabs.js'
 //Redux Dev Tools
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-// import logger from 'redux-logger'
-//Reducers
-// import global from './store/reducers/global.js'
-// import menu from './containers/App/Menu/menuReducer'
+
+import Dynamic from './containers/App/Tabs/Dynamic'
+
 
 const middlewares = [thunk, routerMiddleware(browserHistory)/*, logger*/]
 
@@ -34,7 +33,6 @@ const store = createStore(
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
-console.log(store)
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
@@ -56,6 +54,7 @@ ReactDOM.render(
         </Route>
         <Route path="/forms" component={scenes.Forms}>
         </Route>
+        <Route path="/:dynamic/dynamic" component={Dynamic}/>
       </Route>
     </Router>
   </Provider>,
