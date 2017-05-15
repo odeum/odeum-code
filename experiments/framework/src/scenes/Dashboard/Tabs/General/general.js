@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
-// import generalActions from './generalActions.js'
-// import { bindActionCreators } from 'redux'
-// import { connect } from 'react-redux'
+import * as generalActions from './generalActions.js'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 class General extends Component {
     componentWillMount(){
-        // console.log("Test")
-        // this.props.updateTab('General')
-        // 
-        // console.log(generalActions)
+        this.props.updateTabWrapper({
+    label: 'General',
+    location: '/dashboard/general',
+    icon: 'generelt',
+    fixed: true
+})
+        // console.log('------------------------------------')
+        // console.log(this.props)
+        // console.log('------------------------------------')
     }
     render() {
-        /*eslint-*/
-        console.log(this.props)
+       
         return (
             <div>
                 General
@@ -20,10 +24,10 @@ class General extends Component {
     }
 }
 
-// const mapStateToProps = (state) => ({
-
-// })
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators(generalActions, dispatch)
-// }
-export default General
+const mapStateToProps = (state) => ({
+    
+})
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(generalActions, dispatch)
+}
+export default connect(mapStateToProps,mapDispatchToProps)(General)

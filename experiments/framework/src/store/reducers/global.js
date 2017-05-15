@@ -59,7 +59,8 @@ export default function global(state = initialState, action) {
                     // console.log('Forms Tab Empty, Loading default tabs')
                     return {
                         ...state,
-                        tabChildren: constant.formsTabs
+                        tabChildren: constant.formsTabs,
+                        activeLabel: 'Forms'
                     }
                 }
                 else {
@@ -70,7 +71,8 @@ export default function global(state = initialState, action) {
                     // console.log(formsArray)
                     return {
                         ...state,
-                        tabChildren: constant.formsTabs.concat(formsArray)
+                        tabChildren: constant.formsTabs.concat(formsArray),
+                        activeLabel: 'Forms'
                     }
                 }
             }
@@ -99,6 +101,23 @@ export default function global(state = initialState, action) {
                     tabChildren: state.tabChildren.concat(action.payload)
                 }
             }
+        case 'LOAD_LABEL':
+        {    let formsArray = _.find(state.tabChildren,action.payload)
+            console.log(formsArray)
+            if(formsArray!==undefined)
+            return {
+                ...state,
+                activeLabel:action.payload.label
+            }
+            else
+            {
+                return{
+                    ...state,
+                    tabChildren:state.tabChildren.concat(action.payload),
+                    activeLabel:action.payload.label
+                }
+            }
+        }
         default:
             return state
 

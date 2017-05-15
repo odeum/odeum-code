@@ -27,7 +27,7 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 // Add the reducer to your store on the `routing` key
-const store = createStore(
+export const store = createStore(
   reducer, composeWithDevTools(applyMiddleware(...middlewares))
 )
 
@@ -37,7 +37,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={AppContainer}>
-        <Route path="dashboard" component={scenes.Dashboard} >
+        <Route path="dashboard/" component={scenes.Dashboard} >
           <Route path="general" component={dashboardTabs.General} />
           <Route path="fields" component={dashboardTabs.Fields} />
           <Route path="workflow" component={dashboardTabs.Workflow} />

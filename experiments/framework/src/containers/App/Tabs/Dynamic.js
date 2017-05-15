@@ -1,5 +1,9 @@
-import React from 'react'
+import React,{Component} from 'react'
 import styled from 'styled-components'
+import {store} from '../../../index'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as tabsActions from './tabsActions'
 
 export const DashboardDiv = styled.div`
     float: left;
@@ -11,12 +15,25 @@ export const DashboardDiv = styled.div`
     margin-top: 10px;
 `
 
-const Dynamic = () => {
-    return (
-        <DashboardDiv>
-            Dynamic
-        </DashboardDiv>
-    )
+
+class Dynamic extends Component {
+    componentWillMount(){
+        store.dispatch({type:'LOAD_LABEL',payload:{label:'Dynamic',icon:'generelt',location:this.props.location.pathname,fixed:false}})
+       // console.log(store)
+    }
+    render() {
+        return (
+            <DashboardDiv>
+                Dynamic
+            </DashboardDiv>
+        )
+    }
 }
 
-export default Dynamic
+const mapStateToProps = (state) => ({
+    activeLabel: state.global.activeLabel
+})
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(tabsActions, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dynamic)

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as tasksActions from './formsActions'
-import {FormsDiv} from './style'
+import {FormsDiv} from './styles'
 class Forms extends Component {
     componentWillMount(){
         this.props.loadTabs()

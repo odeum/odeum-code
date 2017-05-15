@@ -1,4 +1,4 @@
-import Dashboard from './Dashboard'
+import Dashboard from './Dashboard/Dashboard'
 import Organisation from './Organisation/Organisation'
 import Reports from './Reports/Reports'
 import Settings from './Settings/Settings'

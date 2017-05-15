@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class Actions extends Component {
+class Operations extends Component {
+    componentWillMount() {
+        this.props.updateTabWrapper({
+    label: 'Operations',
+    location: '/dashboard/operations',
+    icon: 'handlinger',
+    fixed: true
+})
+    }
     render() {
         return (
             <div>
                 Operations
             </div>
-        );
+        )
     }
 }
 
-export default Actions;
+export default Operations

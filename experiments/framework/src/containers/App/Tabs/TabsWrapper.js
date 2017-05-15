@@ -15,12 +15,14 @@ class TabsWrapper extends Component {
         }
     }
     onLinkClick(tab) {
-        this.props.changeTab(tab)
+        // this.props.changeTab(tab)
     }
     render() {
         let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '')
         var _this = this.props
         function isFixed(tab) {
+            if(tab.fixed===undefined)
+            {return null}
             if (!tab.fixed)
             { return <styled.TabClose className={active(tab)}>x</styled.TabClose> }
         }
@@ -28,12 +30,10 @@ class TabsWrapper extends Component {
             <styled.TabList >
                 {_this.children.map((tab, index) => (
                     <styled.TabLabel key={index} className={active(tab)}>
-                        <div onClick={e => { _this.changeTab(tab.label) }}>
                             <styled.TabLink to={tab.location} className={active(tab)}>
                                 <styled.Icon>{renderIcons(tab.icon, active(tab))}</styled.Icon>
                                 {tab.label}
                             </styled.TabLink>
-                        </div>
                         {/*@TODO if isFixed() call the anchor and the x*/}
                         <styled.TabLink href="#" onClick={e => { e.preventDefault(); _this.closeTab(tab) }}>
                             {isFixed(tab)}
