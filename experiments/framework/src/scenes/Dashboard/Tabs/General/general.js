@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import generalActions from './generalActions.js'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+// import generalActions from './generalActions.js'
+// import { bindActionCreators } from 'redux'
+// import { connect } from 'react-redux'
 class General extends Component {
     componentWillMount(){
         // console.log("Test")
