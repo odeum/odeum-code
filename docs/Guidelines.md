@@ -318,7 +318,8 @@ Icons for ODEUM CodeJS will use Material Design (MD) icons.
 - lock outline
 - lock open
 - close
-- check circle / check
+- check circle
+- check
 
 ## 7.2. App
 
