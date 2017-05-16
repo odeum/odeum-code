@@ -4,7 +4,7 @@ import * as colors from './colors'
 import * as fonts from './fonts'
 
 const theme = {
-  background: colors.TAB_COLOR_3,
+  background: colors.EMERALD_LIGHT,
   color: colors.TAB_COLOR_2,
   font: fonts.PRIMARY,
   button: {

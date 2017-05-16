@@ -24,18 +24,23 @@ class App extends Component {
       <div>
       <Layout>
         <div>
-          <Text>See how the Button below is following the theme even though the code for the button hasn't changed?</Text>
+          <Text>See how the Button below is following the theme!</Text>
           <Button>Themed Button</Button>
-          <Button>Themed Button 2</Button>    
-          <Icon icon={iconnames.ICON_MENU} size={50} />
-          <Icon icon={iconnames.ICON_DASHBOARD} size={50} />
-          <Icon icon={iconnames.ICON_SEARCH} size={50} />
-          <Icon icon={iconnames.ICON_MESSAGES} size={50} color={colors.EMERALD_LIGHT} />
-          <Icon icon={iconnames.ICON_LOCK} size={50} color={colors.DREAMY_BLUE} />
-          <Icon icon='info' size={50} color={colors.DREAMY_BLUE} />
+          <br /><br />
+          <Text>And now the icons with mixed sizes and colors</Text>
+          <Icon icon={iconnames.ICON_MENU} size={75} color={colors.GAUGE} active={true} />
+          <Icon icon={iconnames.ICON_DASHBOARD} size={50} color={colors.TAB_COLOR_6} active={true} />
+          <Icon icon={iconnames.ICON_SEARCH} size={50} active={true} />
+          <Icon icon={iconnames.ICON_MESSAGES} size={50} color={colors.EMERALD_LIGHT} active={true} />
+          <Icon icon={iconnames.ICON_LOCK} size={50} color={colors.DREAMY_BLUE} active={true} />
+          <Icon icon={iconnames.ICON_LOCK} color={colors.DREAMY_BLUE} active={false} />
+          <Icon icon='info' size={50} color={colors.DREAMY_BLUE} active={true} />
+          <Icon icon='info' active={true} />
+          <Icon />
         </div>
-      </Layout>     
-      {/*<Button>Themed Button 3</Button>*/}
+      </Layout>
+      <br /><br />
+      <Button>Themed Button outside layout</Button>
       </div>
     )
   }
