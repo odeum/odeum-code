@@ -13,7 +13,7 @@ export const FooterLabelDiv = styled.div`
     -moz-box-shadow: 0 0 10px 0 #ccc;
     box-shadow: 0 0 10px 0 #ccc;
 
-    color: #5e5e5e;
+    color: #FFFFFF;
     font-family: 'Source Sans Pro';
     font-size: 13px;
     font-weight: 300;
@@ -22,10 +22,13 @@ export const FooterLabelDiv = styled.div`
 `
 
 export const FooterLabelLink = styled.a`
+    color: #34495D;
     text-decoration: none;
     &:active {
-        color: #5e5e5e
+        color: #34495D
     }
 `
 
 export default FooterLabelDiv
+
+// #5e5e5e

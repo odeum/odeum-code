@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <FooterLabel />
+        <FooterLabel open={true} />
       </div>
     )
   }
