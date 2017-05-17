@@ -84,6 +84,10 @@ export const ICON_MOOD = 'mood'
 export const ICON_CHECK_BOX = 'check_box'
 export const ICON_RADIO_BUTTON_CHECKED = 'radio_button_checked'
 export const ICON_GRID_ON = 'grid_on'
+export const ICON_LAYERS = 'layers'
+export const ICON_SYNC = 'sync'
+export const ICON_SYNC_DISABLED = 'sync_disabled'
+export const ICON_SYNC_PROBLEM = 'sync_problem'
 
 // Login icons
 export const ICON_LOCK = 'lock_outline'
@@ -96,6 +100,7 @@ export const ICON_KEYBOARD_ARROW_DOWN = 'keyboard_arrow_down'
 export const ICON_KEYBOARD_ARROW_UP = 'keyboard_arrow_up'
 export const ICON_KEYBOARD_ARROW_LEFT = 'keyboard_arrow_left'
 export const ICON_KEYBOARD_ARROW_RIGHT = 'keyboard_arrow_right'
+export const ICON_REFRESH = 'refresh'
 
 // Action icons
 export const ICON_CHECK_CIRCLE = 'check_circle'
