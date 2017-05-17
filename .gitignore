@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/.idea
 
 # testing
 /coverage
@@ -12,7 +13,7 @@
 # misc
 .DS_Store
 .env
-/.idea
+/.vscode
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

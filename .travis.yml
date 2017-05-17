@@ -7,7 +7,7 @@ notifications:
     slack: webhouseteam:82qu1PX5R5wkYNCW5x6fVlhu
 
 script:
-  - cd ./experiments/3/
+  - cd ./experiments/framework/
   - yarn
   - yarn build
   - cp ./build/index.html ./build/200.html
@@ -15,7 +15,7 @@ script:
 
 deploy:
   provider: surge
-  project: ./experiments/3/build/
+  project: ./experiments/framework/build/
   #domain: odeum-codejs-exp3.surge.sh
   #domain: odeum-codejs.surge.sh
   domain: odeum-codejs.com
