@@ -41,6 +41,7 @@ Guidelines (Getting started with ODEUM CodeJS)
         - [5.4.21. Filename Refactoring (VSCode Extension)](#5421-filename-refactoring-vscode-extension)
         - [5.4.22. ODEUM Slack Service](#5422-odeum-slack-service)
         - [5.4.23. ODEUM CodeJS Tutorial Site](#5423-odeum-codejs-tutorial-site)
+        - [5.4.24. Footerlabel](#5424-footerlabel)
 - [6. Apps](#6-apps)
     - [6.1. ThemeBuilder](#61-themebuilder)
     - [6.2. HelpBuilder](#62-helpbuilder)
@@ -68,8 +69,8 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [10.1. Guidelines](#101-guidelines)
     - [10.2. PropTypes](#102-proptypes)
     - [10.3. Components](#103-components)
-        - [10.3.24. Stateless components (presentational components)](#10324-stateless-components-presentational-components)
-        - [10.3.25. Stateful components (container components)](#10325-stateful-components-container-components)
+        - [10.3.25. Stateless components (presentational components)](#10325-stateless-components-presentational-components)
+        - [10.3.26. Stateful components (container components)](#10326-stateful-components-container-components)
 - [11. Visual Studio Code Extensions](#11-visual-studio-code-extensions)
     - [11.1. Atom Keymap](#111-atom-keymap)
     - [11.2. Babel ES6/ES7](#112-babel-es6es7)
@@ -260,6 +261,10 @@ With Styled-Components:
 - [Example 1](https://github.com/showdownjs/showdown)
 - [Example 2](https://github.com/evilstreak/markdown-js)
 
+### 5.4.24. Footerlabel
+- Simple component to print the app title and copyright and include a url (link) to some external or in-app resource (/about)
+- Get data from applegends.js from the theme  
+
 # 6. Apps
 - The following Apps will be developed with ODEUM CodeJS for the repository examples and/or production.
 
@@ -421,7 +426,7 @@ It is critical that all component development is declared with PropTypes everywh
 
 ## 10.3. Components
 
-### 10.3.24. Stateless components (presentational components)
+### 10.3.25. Stateless components (presentational components)
 For stateless class components use PureComponent 
 
 ```javascript 
@@ -461,7 +466,7 @@ const HelloWorld = ({name}) => (
 export default HelloWorld;
 ```
 
-### 10.3.25. Stateful components (container components)
+### 10.3.26. Stateful components (container components)
 
 ```javascript 
 

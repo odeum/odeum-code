@@ -156,7 +156,7 @@ class App extends Component {
           <Icon icon='' color={colors.DREAMY_BLUE} active={true} />
 
           <br /><br />
-          <Text>Provoking PropTypes errors in the console ...</Text>
+          <Text>Provoking prop type errors in the console ...</Text>
           <Icon icon='' size={'50'} active={true} />
           <Icon />
 
