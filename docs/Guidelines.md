@@ -271,7 +271,7 @@ http://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
 The ThemeBuilder (or an AppChecker) needs to have an available Material Design Icon name checker so you do not overwrite the created constants from the ThemeBuilder with invalid icon names.
 
 ## 6.2. HelpBuilder
-- Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS. App should obviously be multilingual in terms of creating localization of help files 
+- Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
 
 ## 6.3. AppBuilder
 - Build an App to invoke a boilerplate to set up scenes (menus) for an app
@@ -298,6 +298,8 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 
 ## 6.8. ODEUM Help Server
 - Global Help Index for all connected apps
+- Should have own ticketing system (issue tracker)
+- Ability to integrate with Slack through ODEUM Slack Service 
 
 ## 6.9. ODEUM Search Server
 - Global Search Index for all connected apps
