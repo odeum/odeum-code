@@ -30,5 +30,3 @@ export const FooterLabelLink = styled.a`
 `
 
 export default FooterLabelDiv
-
-// #5e5e5e

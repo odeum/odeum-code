@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import FooterLabelDiv, { FooterLabelLink } from './FooterLabelStyles'
-import { APP_TITLE, APP_VERSION, APP_COPYRIGHT } from './applegends'
+import { FooterLabelLink } from './FooterLabelStyles'
+import { APP_WEBSITE, APP_TITLE, APP_VERSION, APP_COPYRIGHT } from './applegends'
 
 class FooterLabel extends Component {
 
@@ -10,32 +10,46 @@ class FooterLabel extends Component {
         super(props)
         this.handleClick = this.handleClick.bind(this) 
         this.defaultProps = {
-            url: 'http://report.odeum.com/',
+            url: APP_WEBSITE,
             open: false
         }    
     }
 
     handleOpen(open) {
-    if(open === true)
-        return '_new'
-    // else
-    //     {return ''}
-    }
-    
-    handleClick(url) {
-        // alert(`Hi ${this.props.url}`)
-        console.log(`Sending you off to ${url}`)
-        console.log(url)
+    if(open)
+        return '_new'    
     }
 
-    render() {        
+//  TODO: State Management of some sort and clean up.
+
+    handleClick(event) {
+
+        if(typeof this.props.url === 'undefined') {
+            /*eslint-disable*/
+            console.log(`Elvis has left the building for ${this.defaultProps.url}`)
+            /*eslint-enable*/
+        }
+        else {
+            /*eslint-disable*/
+            console.log(`Elvis has left the building for ${this.props.url}`)
+            /*eslint-enable*/
+        }
+    }
+
+// This syntax ensures `this` is bound within handleClick.
+// Warning: this is *experimental* property initializer syntax.
+//     handleClick = () => {
+//     console.log('this is:', this);
+//   }
+
+    render() {
         return (
-            <FooterLabelDiv>
-                <FooterLabelLink target={this.handleOpen(this.props.open || this.defaultProps.open)} href={this.props.url || this.defaultProps.url} onClick={this.handleClick(this.props.url)}>
-                    <b>{APP_TITLE}</b> {'v'}{APP_VERSION} {APP_COPYRIGHT}    
-                </FooterLabelLink>
-                
-            </FooterLabelDiv>
+            <FooterLabelLink 
+                target={this.handleOpen(this.props.open || this.defaultProps.open)} 
+                href={this.props.url || this.defaultProps.url} 
+                onClick={this.handleClick}>
+                <b>{APP_TITLE}</b> {APP_VERSION} {APP_COPYRIGHT}
+            </FooterLabelLink>                
         )
     }
 }
@@ -47,4 +61,3 @@ FooterLabel.propTypes = {
 
 export default FooterLabel
 
-// {this.props.open || this.defaultProps.open} '_new'
