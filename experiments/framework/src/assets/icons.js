@@ -14,7 +14,7 @@ function color(active) {
 
 export function renderIcons(icon, active) {
         switch (icon) {
-            case 'settings':
+            case 'configuration':
                 return (
                    <Icons.MdSettings color={color(active)}/>
                 )
@@ -22,24 +22,24 @@ export function renderIcons(icon, active) {
                 return (
                    <Icons.MdOpacity color={color(active)}/>
                 )
-            case 'handlinger':
+            case 'operations':
                 return (
 
                    <Icons.MdInput color={color(active)}/>
                 )
-            case 'felter':
+            case 'fields':
                 return (
                        <Icons.MdCode color={color(active)}/>
                 )
-            case 'generelt':
+            case 'general':
                 return (
                     <Icons.MdInfo color={color(active)}/>
                 )
-            case 'brugere':
+            case 'users':
             return(
                 <Icons.MdPeople color={color(active)}/>
             )
-            case 'arbejdsgang':
+            case 'workflow':
             return(
                 <Icons.MdTimeline color={color(active)}/>
             )

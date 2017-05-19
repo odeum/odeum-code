@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Workflow extends Component {
     componentWillMount() {
-        this.props.updateTabWrapper({
+        this.props.updateTab({
     label: 'Workflow',
     location: '/dashboard/workflow',
     icon: 'arbejdsgang',

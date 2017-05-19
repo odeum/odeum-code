@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Operations extends Component {
     componentWillMount() {
-        this.props.updateTabWrapper({
+        this.props.updateTab({
     label: 'Operations',
     location: '/dashboard/operations',
     icon: 'handlinger',

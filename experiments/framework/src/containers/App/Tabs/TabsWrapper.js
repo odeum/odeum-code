@@ -4,7 +4,7 @@ import * as styled from '../styles/TabStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as tabsActions from './tabsActions'
-import { renderIcons } from '../styles/icons'
+import { renderIcons } from '../../../assets/icons'
 
 class TabsWrapper extends Component {
 

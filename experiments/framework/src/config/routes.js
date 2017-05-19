@@ -1,3 +1,6 @@
+//DEPRECATED
+//REMOVE
+
 import React from 'react'
 import {Route} from 'react-router'
 import * as scenes from '../scenes/scenesCombiner'

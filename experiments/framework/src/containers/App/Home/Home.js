@@ -20,8 +20,9 @@ import * as GlobalActions from '../../../store/actions/global'
 
 class Home extends Component {
     
+    
     render() {
-        // console.log(this.props)
+        //  console.log(this.props)
         return (
             <div>
             <HomeDiv>
@@ -46,9 +47,9 @@ Home.propTypes = {
 
 const mapStateToProps = (state,ownProps) =>({
     tabChildren: state.global.tabChildren,
-    comp: state.menu.comp
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Home)
+ export default connect(mapStateToProps,mapDispatchToProps)(Home)
+module.export=Home

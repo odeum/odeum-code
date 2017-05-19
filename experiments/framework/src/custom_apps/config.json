@@ -1,0 +1,63 @@
+{
+    "scenes": [
+        {
+            "name": "Dashboard",
+            "location": "/dashboard",
+            "icon": "dashboard",
+            "tabs": [
+                {
+                    "label": "General",
+                    "location": "/dashboard/general",
+                    "icon": "general",
+                    "fixed": true
+                },
+                {
+                    "label": "Fields",
+                    "location": "/dashboard/fields",
+                    "icon": "fields",
+                    "fixed": true
+                },
+                {
+                    "label":"Workflow",
+                    "location":"/dashboard/workflow",
+                    "icon":"workflow",
+                    "fixed":true
+                },                {
+                    "label":"Users",
+                    "location":"/dashboard/users",
+                    "icon":"users",
+                    "fixed":true
+                },                {
+                    "label":"Operations",
+                    "location":"/dashboard/operations",
+                    "icon":"operations",
+                    "fixed":true
+                },                {
+                    "label":"Configuration",
+                    "location":"/dashboard/configuration",
+                    "icon":"configuration",
+                    "fixed":true
+                },
+                {
+                    "label":"Design",
+                    "location":"/dashboard/design",
+                    "icon":"design",
+                    "fixed":true
+                }
+            ]
+        },
+        {
+            "name": "Forms",
+            "location":"/forms",
+            "icon": "tasks",
+            "tabs": [
+                {
+                    "label": "Forms",
+                    "location": "/forms/forms",
+                    "icon": "generelt",
+                    "fixed": true
+                }
+            ]
+        }
+    ]
+}

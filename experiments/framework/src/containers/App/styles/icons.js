@@ -1,3 +1,6 @@
+//DEPRECATED
+//REMOVE
+
 import * as Icons from 'react-icons/lib/md'
 import React from 'react'
 
