@@ -11,11 +11,15 @@
 
 # misc
 .DS_Store
+/.idea
+/.vscode
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+run.log
+*.tgz
