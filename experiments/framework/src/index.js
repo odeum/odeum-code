@@ -16,29 +16,19 @@ import AppContainer from './containers/App/App'
 
 const middlewares = [thunk, routerMiddleware(browserHistory)/*, logger*/]
 
-// const composeEnhancers =
-//   (global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &&
-//     global.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-//     })) || compose
 
 const reducer = combineReducers({
   ...reducers,
   routing: routerReducer
 })
-// Add the reducer to your store on the `routing` key
+
 export const store = createStore(
   reducer, composeWithDevTools(applyMiddleware(...middlewares))
 )
 
-// Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(browserHistory, store)
+export const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
-  /*<Provider store={store}>
-    <div>
-    <Router history={history} routes={routes}/>
-    </div>
-  </Provider>,*/
   <AppContainer store={store} history={history}/>,
   document.getElementById('root')
 )
