@@ -26,4 +26,4 @@ export const APP_ISSUES = 'https://github.com/odeum/odeum-codejs/issues'
 
 export const APP_SUPPORT = 'http://support.report.odeum.com'
 
-export const APP_WEBSITE = 'http://odeum-codejs.com/'
+export const APP_WEBSITE = 'http://report.odeum.com/'
