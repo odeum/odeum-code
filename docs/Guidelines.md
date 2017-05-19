@@ -19,27 +19,29 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [5.2. Contributors (primary):](#52-contributors-primary)
     - [5.3. Experiments location](#53-experiments-location)
     - [5.4. Experiments List](#54-experiments-list)
-        - [5.4.2. Codesplitting / PRPL (former experiment 1)](#542-codesplitting--prpl-former-experiment-1)
-        - [5.4.3. Framework (former experiment 3.1 and rrr5)](#543-framework-former-experiment-31-and-rrr5)
-        - [5.4.4. Demo App to Connect to the ODEUM CodeJS framework](#544-demo-app-to-connect-to-the-odeum-codejs-framework)
-        - [5.4.5. Login](#545-login)
-        - [5.4.6. REST and components API documentation platform/style](#546-rest-and-components-api-documentation-platformstyle)
-        - [5.4.7. REST API implementation experiments](#547-rest-api-implementation-experiments)
-        - [5.4.8. IAM - Identity and Access Management](#548-iam---identity-and-access-management)
-        - [5.4.9. ODEUM CodeJS experiments site in production](#549-odeum-codejs-experiments-site-in-production)
-        - [5.4.10. Deployment](#5410-deployment)
-        - [5.4.11. JavaScript Style Guide](#5411-javascript-style-guide)
-        - [5.4.12. Debugging with Chrome in VS Code](#5412-debugging-with-chrome-in-vs-code)
-        - [5.4.13. Test setup scenarios](#5413-test-setup-scenarios)
-        - [5.4.14. Themes in ODEUM CodeJS (former experiment 16)](#5414-themes-in-odeum-codejs-former-experiment-16)
-        - [5.4.15. Help Server (Help Items)](#5415-help-server-help-items)
-        - [5.4.16. Responsiveness](#5416-responsiveness)
-        - [5.4.17. Search Server](#5417-search-server)
-        - [5.4.18. Redux Forms](#5418-redux-forms)
-        - [5.4.19. Filename Refactoring (VSCode Extension)](#5419-filename-refactoring-vscode-extension)
-        - [5.4.20. ODEUM Slack Service](#5420-odeum-slack-service)
-        - [5.4.21. ODEUM CodeJS Tutorial Site](#5421-odeum-codejs-tutorial-site)
-        - [5.4.22. Footerlabel](#5422-footerlabel)
+        - [5.4.2. Codesplitting / PRPL (codesplitting)](#542-codesplitting--prpl-codesplitting)
+        - [5.4.3. Framework (framework)](#543-framework-framework)
+        - [5.4.4. Themes in ODEUM CodeJS (theme)](#544-themes-in-odeum-codejs-theme)
+        - [5.4.5. Footerlabel](#545-footerlabel)
+        - [5.4.6. Redux Forms (redux-form)](#546-redux-forms-redux-form)
+        - [5.4.7. Demo App to Connect to the ODEUM CodeJS framework](#547-demo-app-to-connect-to-the-odeum-codejs-framework)
+        - [5.4.8. Client State Recorder (CS)](#548-client-state-recorder-cs)
+        - [5.4.9. Client State Player (Time Travel) (SS)](#549-client-state-player-time-travel-ss)
+        - [5.4.10. Login](#5410-login)
+        - [5.4.11. REST and components API documentation platform/style](#5411-rest-and-components-api-documentation-platformstyle)
+        - [5.4.12. REST API implementation experiments](#5412-rest-api-implementation-experiments)
+        - [5.4.13. IAM - Identity and Access Management](#5413-iam---identity-and-access-management)
+        - [5.4.14. ODEUM CodeJS experiments site in production](#5414-odeum-codejs-experiments-site-in-production)
+        - [5.4.15. Deployment](#5415-deployment)
+        - [5.4.16. JavaScript Style Guide](#5416-javascript-style-guide)
+        - [5.4.17. Debugging with Chrome in VS Code](#5417-debugging-with-chrome-in-vs-code)
+        - [5.4.18. Test setup scenarios](#5418-test-setup-scenarios)
+        - [5.4.19. Help Server (Help Items)](#5419-help-server-help-items)
+        - [5.4.20. Responsiveness](#5420-responsiveness)
+        - [5.4.21. Search Server](#5421-search-server)
+        - [5.4.22. Filename Refactoring (VSCode Extension)](#5422-filename-refactoring-vscode-extension)
+        - [5.4.23. ODEUM Slack Service](#5423-odeum-slack-service)
+        - [5.4.24. ODEUM CodeJS Tutorial Site](#5424-odeum-codejs-tutorial-site)
 - [6. Apps](#6-apps)
     - [6.1. ThemeBuilder](#61-themebuilder)
     - [6.2. HelpBuilder](#62-helpbuilder)
@@ -54,11 +56,10 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [7.1. Icons location](#71-icons-location)
 - [8. Future Technology ideas](#8-future-technology-ideas)
     - [8.1. GraphQL](#81-graphql)
-    - [8.2. State Recorder (Time Travel) (SS/CS)](#82-state-recorder-time-travel-sscs)
-    - [8.3. Data Branching (SS)](#83-data-branching-ss)
-    - [8.4. Point of failure:](#84-point-of-failure)
-    - [8.5. Using a failover loader](#85-using-a-failover-loader)
-    - [8.6. Offline-first approach](#86-offline-first-approach)
+    - [8.2. Data Branching (SS)](#82-data-branching-ss)
+    - [8.3. Point of failure:](#83-point-of-failure)
+    - [8.4. Using a failover loader](#84-using-a-failover-loader)
+    - [8.5. Offline-first approach](#85-offline-first-approach)
 - [9. Folder Structure Convention](#9-folder-structure-convention)
     - [9.1. Source files](#91-source-files)
     - [9.2. Public static source files](#92-public-static-source-files)
@@ -67,8 +68,8 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [10.1. Guidelines](#101-guidelines)
     - [10.2. PropTypes](#102-proptypes)
     - [10.3. Components](#103-components)
-        - [10.3.23. Stateless components (presentational components)](#10323-stateless-components-presentational-components)
-        - [10.3.24. Stateful components (container components)](#10324-stateful-components-container-components)
+        - [10.3.25. Stateless components (presentational components)](#10325-stateless-components-presentational-components)
+        - [10.3.26. Stateful components (container components)](#10326-stateful-components-container-components)
 - [11. Visual Studio Code Extensions](#11-visual-studio-code-extensions)
     - [11.1. Atom Keymap](#111-atom-keymap)
     - [11.2. Babel ES6/ES7](#112-babel-es6es7)
@@ -159,7 +160,7 @@ All initial work is done through experiments. The experiments will facilitate an
 
 ## 5.4. Experiments List
 
-### 5.4.2. Codesplitting / PRPL (former experiment 1)
+### 5.4.2. Codesplitting / PRPL (codesplitting)
 - Experiment title: ./experiments/codesplitting
 
 - We will do some initial research and propose 2-3 different technology paths and architectures.
@@ -173,25 +174,48 @@ All initial work is done through experiments. The experiments will facilitate an
 - [PRPL pattern - Google](https://developers.google.com/web/fundamentals/performance/prpl-pattern/)
 - [How we build Twitter Lite](https://blog.twitter.com/2017/how-we-built-twitter-lite)
 
-### 5.4.3. Framework (former experiment 3.1 and rrr5)
+### 5.4.3. Framework (framework)
 - Experiment title: ./experiments/framework
 - Setting up the core app framework in ODEUM CodeJS with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
 - Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ and check the book code examples here: [Redux Book](https://github.com/redux-book/code-samples)
 
-### 5.4.4. Demo App to Connect to the ODEUM CodeJS framework
+### 5.4.4. Themes in ODEUM CodeJS (theme)
+- Experiment title: ./experiments/theme
+- How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
+- Includes production ready <Icon /> component
+
+### 5.4.5. Footerlabel
+- Simple component to print the app title and copyright and include a url (link) to some external or in-app resource (/about)
+- Get data from applegends.js from the theme  
+
+### 5.4.6. Redux Forms (redux-form)
+- Experiment with Redux Forms.
+- [Redux Forms](http://redux-form.com/)
+
+### 5.4.7. Demo App to Connect to the ODEUM CodeJS framework
 - ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems, helpitems, login, routes etc. We need a simple Demo App to test this symbiotic connection. Who manages the state (Redux store, the framework or the app? 
 
-### 5.4.5. Login
+### 5.4.8. Client State Recorder (CS)
+- A system to remotely record the client app state history (Redux) and send it to a server, so you will be able to time travel the client solution (like Redux Dev Tools) in a support/error finding prespective
+- The state history should be stored in a client app database or localstorage with easy submission to the Client State Player (Replay / Time Travel)
+- Check NPM (redux-state-history, redux-dev-tools, redux-test-recorder)
+
+### 5.4.9. Client State Player (Time Travel) (SS)
+- An App that can replay (time travel) any client app's recorde state history and display it in either:
+    - Redux Dev Tools
+    - Custom Time Travel Player (own React view component)
+
+### 5.4.10. Login
 - OAuth experiment up against ODEUM Server
 
-### 5.4.6. REST and components API documentation platform/style
+### 5.4.11. REST and components API documentation platform/style
 - Research and propose API documentation platform and style
 
-### 5.4.7. REST API implementation experiments
+### 5.4.12. REST API implementation experiments
 - All available forces
 
-### 5.4.8. IAM - Identity and Access Management
+### 5.4.13. IAM - Identity and Access Management
 - Global User Registry (odeum.com)
 - Experiment is branching the mobile license server model from odeummobile.com out into a Rest API based server 
 which will become our global IAM on odeum.com. Today this solution takes "customerID", "userID", 
@@ -199,64 +223,51 @@ and "password" to resolve which server to communicate with.
 - In the finalized model all users will only have one account on odeum.com which will resolve to numerous apps and installations (sites). 
 - Our own ODEUM CodeJS Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM CodeJS specific experiment)). 
 
-### 5.4.9. ODEUM CodeJS experiments site in production
+### 5.4.14. ODEUM CodeJS experiments site in production
 - How to set up a React website in production in a real world hosting environment. Which webserver to run, NodeJS is probably required, which version, and do we want to use Express web server or Apache? 
 - Experiment "framework" is running at www.odeum-codejs.com
 
-### 5.4.10. Deployment
+### 5.4.15. Deployment
 - How to deploy ODEUM CodeJS client updates to different customer clients and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
 
-### 5.4.11. JavaScript Style Guide
+### 5.4.16. JavaScript Style Guide
 - We will create a JavaScript Style Guide and linter. 
 
-### 5.4.12. Debugging with Chrome in VS Code
+### 5.4.17. Debugging with Chrome in VS Code
 - We need to create a standardized method to setup debugging with Chrome in VS Code on both Mac and Windows PC. 
 
-### 5.4.13. Test setup scenarios
+### 5.4.18. Test setup scenarios
 - Setting up and performing automated tests of components and complete framework through CRA.
 
-### 5.4.14. Themes in ODEUM CodeJS (former experiment 16)
-- Experiment title: ./experiments/theme
-- How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
-- Includes production ready <Icon /> component
-
-### 5.4.15. Help Server (Help Items)
+### 5.4.19. Help Server (Help Items)
 - The App platform for displaying context-sensitive helpitems based upon views in scenes. 
 - Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. 
 - Helpitems should be indexed and very easy to localize.
 
-### 5.4.16. Responsiveness
+### 5.4.20. Responsiveness
 With Styled-Components:
 - [Grid Styled](http://jxnblk.com/grid-styled/)
 - [Grid Styled Github](https://github.com/jxnblk/grid-styled)
 
-### 5.4.17. Search Server
+### 5.4.21. Search Server
 - The App platform for displaying helpitems based upon connected views in scenes and components 
 - Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework
 
-### 5.4.18. Redux Forms
-- Experiment with Redux Forms.
-- [Redux Forms](http://redux-form.com/)
-
-### 5.4.19. Filename Refactoring (VSCode Extension)
+### 5.4.22. Filename Refactoring (VSCode Extension)
 - A VSCode extension made in NodeJS and follwoing the Microsoft instructions set out here:
 - [Extending Visual Studio Code](https://code.visualstudio.com/docs/extensions/overview)
 
-### 5.4.20. ODEUM Slack Service
+### 5.4.23. ODEUM Slack Service
 - Creating a Slack App for posting messages from ODEUM Apps to a team slach channel
 - [Slack API](https://api.slack.com)
 
-### 5.4.21. ODEUM CodeJS Tutorial Site
+### 5.4.24. ODEUM CodeJS Tutorial Site
 - An App that can display simple markdown files from the ODEUM CodeJS repo and run as a tutorial site
 - Convert markdown to HTML
 - [Example 1 in React](https://github.com/acdlite/react-remarkable)
 - [Example 2 in React](https://github.com/rexxars/react-markdown)
 - [Example 1](https://github.com/showdownjs/showdown)
 - [Example 2](https://github.com/evilstreak/markdown-js)
-
-### 5.4.22. Footerlabel
-- Simple component to print the app title and copyright and include a url (link) to some external or in-app resource (/about)
-- Get data from applegends.js from the theme  
 
 # 6. Apps
 - The following Apps will be developed with ODEUM CodeJS for the repository examples and/or production.
@@ -271,7 +282,7 @@ http://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
 The ThemeBuilder (or an AppChecker) needs to have an available Material Design Icon name checker so you do not overwrite the created constants from the ThemeBuilder with invalid icon names.
 
 ## 6.2. HelpBuilder
-- Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS. App should obviously be multilingual in terms of creating localization of help files 
+- Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
 
 ## 6.3. AppBuilder
 - Build an App to invoke a boilerplate to set up scenes (menus) for an app
@@ -298,6 +309,8 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 
 ## 6.8. ODEUM Help Server
 - Global Help Index for all connected apps
+- Should have own ticketing system (issue tracker)
+- Ability to integrate with Slack through ODEUM Slack Service 
 
 ## 6.9. ODEUM Search Server
 - Global Search Index for all connected apps
@@ -319,24 +332,18 @@ Icons for ODEUM CodeJS will use Material Design (MD) icons.
 ## 8.1. GraphQL
 - GraphQL as a REST API wrapper.
 
-## 8.2. State Recorder (Time Travel) (SS/CS)
-- A system to remotely record the client app state history so you will be able to time travel the client solution in a support/error finding prespective
-- The state history should be stored in a client app database
-
-- Check NPM (redux-state-history, redux-dev-tools, redux-test-recorder)
-
-## 8.3. Data Branching (SS)
+## 8.2. Data Branching (SS)
 - We need to be able to branch data in our databases so we have the ability to work with "DEVDATA", "TESTDATA" and "PRODDATA" during development, test and production. 
 - Users will be able to "check-out/pull" data from the PRODDATA into the DEVDATA or TESTDATA branches and work with our tools on the data from there. When done working with a "record" or "structure" or queries, the user can commit the DEVDATA/TESTDATA data to the PRODDATA branch. 
 - The different data-branches need to be accesible to our data-synchronizers in ODEUM Sync Manager (OSM) as well. 
 
-## 8.4. Point of failure:
+## 8.3. Point of failure:
 - When delivering the entire app in one render-blocking package, you might run into JS code loading errors. Don't make JS your app's single point of failure."
 
-## 8.5. Using a failover loader
+## 8.4. Using a failover loader
 - The first render should be on the server, and give the user some content if that JS fails to load. The code that loads the “App” (odeum-codejs) container should be an HTML file which loads a container to control whether our JS code is actually running and is accessible on the server. If not, there should be static HTML package loading a temporary app setup displaying the errors and tries to reload the main app container until no errors are reported.
 
-## 8.6. Offline-first approach
+## 8.5. Offline-first approach
 - Offline-first – hence treating the network as an enhancement with JS tools like Service Worker and IndexedDB – has become the new standard for building fast, resilient websites. It is possible to do both traditional progressive enhancement and offline-first, but it's not easy. We should prioritize offline-first over works-without-JS."
 
 # 9. Folder Structure Convention
@@ -418,7 +425,7 @@ It is critical that all component development is declared with PropTypes everywh
 
 ## 10.3. Components
 
-### 10.3.23. Stateless components (presentational components)
+### 10.3.25. Stateless components (presentational components)
 For stateless class components use PureComponent 
 
 ```javascript 
@@ -458,7 +465,7 @@ const HelloWorld = ({name}) => (
 export default HelloWorld;
 ```
 
-### 10.3.24. Stateful components (container components)
+### 10.3.26. Stateful components (container components)
 
 ```javascript 
 
