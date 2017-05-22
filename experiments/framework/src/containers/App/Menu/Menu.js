@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import DrawerWrapper from '../../../components/App/Menu/DrawerWrapper'
 import MenuItem from '../../../components/App/Menu/MenuItem'
 import PropTypes from 'prop-types'
 import * as styled from '../../../components/App/styles/MenuStyle'
@@ -13,7 +12,6 @@ import * as MenuActions from './menuActions'
 
 class MenuContainer extends Component {
     render() {
-    // console.log(this.props)
     var _this = this.props
         return (
             <styled.MenuWrapperDiv>

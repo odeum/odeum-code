@@ -15,23 +15,7 @@ class TabsWrapper extends Component {
             return ('#34495d')
         }
     }
-    componentDidUpdate() {
 
-        // const element = this.element
-        // console.log(element)
-        // console.log(element.offsetWidth)
-        // console.log(element.scrollWidth)
-
-        // // Things involving accessing DOM properties on element
-        // // In the case of what this question actually asks:
-        // const hasOverflowingChildren = element.offsetHeight < element.scrollHeight ||
-        //     element.offsetWidth < element.scrollWidth
-        //     console.log(hasOverflowingChildren)
-    }
-
-    onLinkClick(tab) {
-        // this.props.changeTab(tab)
-    }
     render() {
         let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '')
         var _this = this.props

@@ -1,4 +1,4 @@
-import { CHANGE_TAB, CLOSE_TAB, ADD_TAB } from '../actions/action_types'
+import { CHANGE_TAB, CLOSE_TAB, ADD_TAB, LOAD_DEFAULT_TABS } from '../actions/action_types'
 var config = require('../../custom_apps/config.json')
 // import { LOCATION_CHANGE } from 'react-router-redux'
 
@@ -11,14 +11,11 @@ const initialState = {
 var _ = require('lodash')
 
 export default function global(state = initialState, action) {
-// var config = require('../../custom_apps/config.json')
     switch (action.type) {
         case 'LOAD_TABS_DASHBOARD':
             {
 
                 if (state.tabChildren.length === 0) {
-                    // console.log(config.scenes[0].tabs)
-                    // console.log(state.tabChildren)
                     return {
                         ...state,
                         tabChildren: config.scenes[0].tabs
@@ -27,25 +24,17 @@ export default function global(state = initialState, action) {
                 else {
 
                     let newArray2 = _.reduce(state.tabChildren, function (result, value, key) {
-                        //  console.log(value)
-                        //  console.log(value.fixed)
                         return value.fixed ? result : result.concat(state.tabChildren[key])
                     }, [])
-                    // console.log(newArray2)
                     return {
                         ...state,
                         tabChildren: config.scenes[0].tabs.concat(newArray2)
                     }
                 }
-                // return {
-                //     ...state,
-                //     tabChildren: state.tabChildren
-                // }
             }
         case 'LOAD_TABS_FORMS':
             {
                 if (state.tabChildren.length === 0) {
-                    // console.log('Forms Tab Empty, Loading default tabs')
                     return {
                         ...state,
                         tabChildren: constant.formsTabs,
@@ -54,10 +43,7 @@ export default function global(state = initialState, action) {
                 }
                 else {
                     let formsArray = _.reduce(state.tabChildren, function (result, value, key) {
-                        // console.log(_.isEqual(value, constant.formsTabs[key]))
-                        return value.fixed ? result : result.concat(state.tabChildren[key])
-                    }, [])
-                    // console.log(formsArray)
+                        return value.fixed ? result : result.concat(state.tabChildren[key])}, [])
                     return {
                         ...state,
                         tabChildren: constant.formsTabs.concat(formsArray),
@@ -66,8 +52,7 @@ export default function global(state = initialState, action) {
                 }
             }
         case CHANGE_TAB:
-            {
-
+            {//DEPRECATED
                 return {
                     ...state,
                     activeLabel: action.payload
@@ -83,16 +68,15 @@ export default function global(state = initialState, action) {
                 }
             }
         case ADD_TAB:
-            {
-                //TODO check if the tab is already open
+            {//DEPRECATED
                 return {
                     ...state,
                     tabChildren: state.tabChildren.concat(action.payload)
                 }
             }
+            //TODO Rename LOAD_LABEL as ADD_TAB
         case 'LOAD_LABEL':
         {    let formsArray = _.find(state.tabChildren,action.payload)
-             console.log(formsArray)
             if(formsArray!==undefined)
             return {
                 ...state,

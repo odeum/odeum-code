@@ -22,7 +22,6 @@ class Home extends Component {
     
     
     render() {
-        //  console.log(this.props)
         return (
             <div>
             <HomeDiv>
@@ -41,15 +40,15 @@ class Home extends Component {
     }
 }
 Home.propTypes = {
-    // onPush:PropTypes.func.isRequired,
      tabChildren: PropTypes.array
 }
 
 const mapStateToProps = (state,ownProps) =>({
-    tabChildren: state.global.tabChildren,
+    tabChildren: state.global.tabChildren
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(GlobalActions,dispatch)
 }
  export default connect(mapStateToProps,mapDispatchToProps)(Home)
-module.export=Home
+
+//module.export=Home

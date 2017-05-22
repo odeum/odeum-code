@@ -1,3 +1,4 @@
+//NOT_USED
 const initialState = {
     activeLabel: 'General'
 }

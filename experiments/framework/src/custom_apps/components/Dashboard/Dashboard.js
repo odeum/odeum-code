@@ -2,16 +2,12 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as dashboardActions from './dashboardActions'
-// import General from '../../components/Tabs/General'
-// import Users from '../../components/Tabs/Users'
-// import { Route } from 'react-router'
 import {DashboardDiv} from './styles'
-// import tabs from './Tabs/tabs'
+
 class DashboardContainer extends Component {
 
     componentWillMount() {
         this.props.loadTabs()
-
         //DEMO Function for REDUCER
         this.props.DEMO()
     }
@@ -34,5 +30,4 @@ const mapStateToProps = (state,ownProps) => ({
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(dashboardActions, dispatch)
 }
-export default  connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
-module.export = DashboardContainer
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer)
