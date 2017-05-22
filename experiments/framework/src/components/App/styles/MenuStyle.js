@@ -1,5 +1,5 @@
-import styled,{css} from 'styled-components'
-import {Link} from 'react-router'
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router'
 export const MenuWrapperDiv = styled.div`
   clear: both;
   background-color: #3b97d3;
@@ -34,7 +34,7 @@ export const MenuPanelDiv = styled.div`
   }
  
 `
-export const MenuLink = styled(Link)`
+export const MenuLink = styled(Link) `
 text-decoration:none;
 outline:0;
 color:white;
@@ -52,7 +52,6 @@ export const Icon = styled.div`
   margin-top: -3px;
   margin-right: 10px;
   padding: 0;
-  color:white;
 `
 
 export const Arrow = styled.div`
