@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import {Link} from 'react-router'
 export const HeaderDiv = styled.div`
   height: 100px;
   width: 100%;
@@ -8,7 +8,11 @@ export const HeaderDiv = styled.div`
 ` 
 
 export const HeaderLogoImg = styled.img`
+`
 
+export const LogoLink = styled(Link) `
+text-decoration:none;
+outline:0;
 `
 
 export const HeaderLogoDiv = styled.div`

@@ -35,7 +35,7 @@ export const MenuPanelDiv = styled.div`
  
 `
 export const MenuLink = styled(Link)`
-text-decoration:none !important;
+text-decoration:none;
 outline:0;
 color:white;
 `
@@ -52,6 +52,7 @@ export const Icon = styled.div`
   margin-top: -3px;
   margin-right: 10px;
   padding: 0;
+  color:white;
 `
 
 export const Arrow = styled.div`

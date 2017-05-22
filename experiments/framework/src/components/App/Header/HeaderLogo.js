@@ -1,17 +1,15 @@
 import React from 'react'
 import ODEUMLogo from '../../../assets/codejs_logo.png'
-import {HeaderLogoDiv,HeaderLogoImg} from '../styles/HeaderStyles'
+import * as styled from '../styles/HeaderStyles'
 
-const HeaderLogo = ({onPush}) => {
+const HeaderLogo = () => {
     return (
-        <HeaderLogoDiv>
-     <a href="/">
-           <HeaderLogoImg src={ODEUMLogo} alt="Logo"/> 
-           </a>
-        </HeaderLogoDiv>
+        <styled.HeaderLogoDiv>
+            <styled.LogoLink to="/">
+                <styled.HeaderLogoImg src={ODEUMLogo} alt="Logo" />
+            </styled.LogoLink>
+        </styled.HeaderLogoDiv>
     )
 }
-HeaderLogo.propTypes= {
-    // onPush:PropTypes.func.isRequired
-}
+
 export default HeaderLogo
