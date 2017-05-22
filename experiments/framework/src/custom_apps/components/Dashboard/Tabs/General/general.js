@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import * as generalActions from './generalActions.js'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import showResults from './showResults'
+import SimpleForm from './SimpleForm'
+import { Values } from 'redux-form-website-template'
 class General extends Component {
     componentWillMount(){
         this.props.updateTab({
@@ -19,6 +22,8 @@ class General extends Component {
         return (
             <div>
                 General
+                 <SimpleForm onSubmit={showResults} />
+                 <Values form="simple" />
             </div>
         )
     }
