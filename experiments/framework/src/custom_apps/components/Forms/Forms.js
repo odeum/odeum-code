@@ -5,7 +5,13 @@ import * as tasksActions from './formsActions'
 import {FormsDiv} from './styles'
 class Forms extends Component {
     componentWillMount(){
-        this.props.loadTabs()
+        this.props.loadTabs("Forms")
+        this.props.updateTab({
+            label: 'Forms',
+            location: '/forms',
+            icon: 'tasks',
+            fixed: true
+        })
     }
     render() {
         return (

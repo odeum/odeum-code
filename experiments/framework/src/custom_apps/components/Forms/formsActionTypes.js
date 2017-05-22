@@ -1,0 +1,3 @@
+export const LOAD_DEFAULT_TABS = 'LOAD_DEFAULT_TABS'
+
+export default LOAD_DEFAULT_TABS

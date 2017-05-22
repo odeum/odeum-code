@@ -12,6 +12,16 @@ var _ = require('lodash')
 
 export default function global(state = initialState, action) {
     switch (action.type) {
+        case LOAD_DEFAULT_TABS:{
+            let sceneFind = _.find(config.scenes,function(scene){
+                return scene.name=== action.payload
+            })
+            console.log(sceneFind)
+            return {
+                ...state,
+                tabChildren:sceneFind.tabs
+            }
+        }
         case 'LOAD_TABS_DASHBOARD':
             {
 

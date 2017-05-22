@@ -1,8 +1,8 @@
 {
     "scenes": [
-        {
+        {   
             "name": "Dashboard",
-            "location": "/dashboard",
+            "location": "/dashboard/general",
             "icon": "dashboard",
             "tabs": [
                 {
@@ -53,8 +53,8 @@
             "tabs": [
                 {
                     "label": "Forms",
-                    "location": "/forms/forms",
-                    "icon": "generelt",
+                    "location": "/forms",
+                    "icon": "tasks",
                     "fixed": true
                 }
             ]

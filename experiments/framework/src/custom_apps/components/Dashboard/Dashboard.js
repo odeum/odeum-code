@@ -7,9 +7,7 @@ import {DashboardDiv} from './styles'
 class DashboardContainer extends Component {
 
     componentWillMount() {
-        this.props.loadTabs()
-        //DEMO Function for REDUCER
-        this.props.DEMO()
+        this.props.loadTabs('Dashboard')
     }
     render() {
         const childWithProps = React.Children.map(this.props.children,
