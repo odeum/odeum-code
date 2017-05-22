@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
-import { reducer as formReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form'
 // import logger from 'redux-logger'
 import reducers from './store/reducer'
 import AppContainer from './containers/App/App'
