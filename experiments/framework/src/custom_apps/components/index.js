@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-class Custom extends Component {
+
+//INFO: This is mandatory for the moment to get to render all the apps
+class index extends Component {
     render() {
         return (
             <div>
@@ -10,4 +12,4 @@ class Custom extends Component {
     }
 }
 
-export default Custom
+export default index

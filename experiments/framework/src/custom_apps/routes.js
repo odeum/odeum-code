@@ -10,7 +10,7 @@ module.exports={
   },
   getComponent(location, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/custom.js').default)
+      cb(null, require('./components/index.js').default)
     })
   }
 }

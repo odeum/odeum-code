@@ -1,15 +1,14 @@
-//import * as actions from './dashboardActionTypes'
+import * as actions from './dashboardActionTypes'
 // import {push} from 'react-router-redux'
 
-export function changeTab(location, label){
-    return (dispatch) => {
-        dispatch({type:'CHANGE_TAB',payload:label})
-        // dispatch(push(location))
-    }
-}
 export function loadTabs(){
     return (dispatch) => {
-        dispatch({type:'LOAD_TABS_DASHBOARD'})
+        dispatch({type:actions.LOAD_DASHBOARD})
     }
 }
 
+export function DEMO(){
+    return (dispatch) =>{
+        dispatch({type:actions.DEMO})
+    }
+}

@@ -11,6 +11,9 @@ class DashboardContainer extends Component {
 
     componentWillMount() {
         this.props.loadTabs()
+
+        //DEMO Function for REDUCER
+        this.props.DEMO()
     }
     render() {
         const childWithProps = React.Children.map(this.props.children,
