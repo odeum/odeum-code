@@ -1,19 +1,25 @@
 # ODEUM CodeJS Hackathons
 
 ## Hacknight #4 - Maj 22 2017
-Attendees: AT, CB, HH, MB, MHK
+Attendees: AT, CB, HH, MB, MHK, KN (Kasper Nielsen)
 
 ### Agenda
 
-1. TBA
-2. TBA
-3. TBA
+1. AT will present a simple App and its configuration and how it is decoupled from the framework
+2. AT will present scematics (illustration) of the innerworkings of the framework/app
+3. Getting theme and standards integrated in framework and demo App
+4. If enough time CB will present <Footerlabel /> and <Icon /> and discuss Redux-Form (worth a look)
+5. How and when will others contribute? (COWI App deadline is closing up)
+6. Next steps ... 
 
 ### Takeaways and milestones:
 
 - Ad 1:
 - Ad 2:
 - Ad 3:
+- Ad 4:
+- Ad 5:
+- Ad 6: 
 
 ## Hacknight #3 - Maj 8 2017
 Attendees: AT, CB, HH, MB, MHK

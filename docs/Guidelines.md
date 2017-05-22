@@ -143,15 +143,16 @@ All experiments is based upon the Create-React-App (CRA) boilerplate (and zero-c
 # 5. Experiments (initial developer experiments)
 
 ## 5.1. Working with the ODEUM CodeJS framework (evolution)
-All initial work is done through experiments. The experiments will facilitate and test different JavaScript libraries and technology and create examples to check-out prosumtions and evaluate the viability of different choices made during our [hackathons](#26-hackathons)
+All initial work is done through experiments. The experiments will facilitate and test different JavaScript libraries and technology and create examples to check-out prosumtions and evaluate the viability of different choices made during our hackathons.
 
 ## 5.2. Contributors (primary):
 
-- HH:     Henrik Hansen - [hh@webhouse.dk](hh@webhouse.dk)
 - AT:     Andrei Tudor - [at@webhouse.dk](at@webhouse.dk)
+- CB:     Christian Broberg - [cb@webhouse.dk](cb@webhouse.dk)
+- HH:     Henrik Hansen - [hh@webhouse.dk](hh@webhouse.dk)
 - MB:     Mikkel Broberg - [mb@webhouse.dk](mb@webhouse.dk)
 - MHK:    Martin Kristiansen - [mhk@webhouse.dk](mhk@webhouse.dk)
-- CB:     Christian Broberg - [cb@webhouse.dk](cb@webhouse.dk)
+
 
 ## 5.3. Experiments location
 
