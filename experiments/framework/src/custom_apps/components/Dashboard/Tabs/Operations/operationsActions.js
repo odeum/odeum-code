@@ -1,7 +1,8 @@
+import {ADD_TAB} from '../tabsActionTypes'
 export function updateTab(label)
 {
   return (dispatch) => {
-        dispatch({type:'LOAD_LABEL',payload:label})
+        dispatch({type:ADD_TAB,payload:label})
     }
 }
 

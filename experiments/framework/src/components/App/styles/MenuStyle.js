@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled,{css} from 'styled-components'
 
 export const MenuWrapperDiv = styled.div`
   clear: both;
@@ -23,13 +23,16 @@ export const MenuPanelDiv = styled.div`
   text-decoration: none;
   padding-left: 20px;
   user-select: none;
-
+  ${props => props.active === true && css`
+    background-color: #81c1ea;
+  `}
   &:first-of-type {
     border-top: 1px solid #3087bf;
   }
   &:hover {
     background-color: #81c1ea;
   }
+ 
 `
 
 

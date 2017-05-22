@@ -1,8 +1,7 @@
-import { CHANGE_TAB, CLOSE_TAB, ADD_TAB, LOAD_DEFAULT_TABS } from '../actions/action_types'
+import { CLOSE_TAB, ADD_TAB, LOAD_DEFAULT_TABS } from '../actions/action_types'
 var config = require('../../custom_apps/config.json')
-// import { LOCATION_CHANGE } from 'react-router-redux'
 
-import * as constant from './constants'
+
 const initialState = {
     scenes: config.scenes,
     tabChildren: [],
@@ -16,13 +15,12 @@ export default function global(state = initialState, action) {
             let sceneFind = _.find(config.scenes,function(scene){
                 return scene.name=== action.payload
             })
-            console.log(sceneFind)
             return {
                 ...state,
                 tabChildren:sceneFind.tabs
             }
         }
-        case 'LOAD_TABS_DASHBOARD':
+     /*   case 'LOAD_TABS_DASHBOARD':
             {
 
                 if (state.tabChildren.length === 0) {
@@ -68,24 +66,18 @@ export default function global(state = initialState, action) {
                     activeLabel: action.payload
                 }
             }
-
+*/
         case CLOSE_TAB:
             {
-                //Open last tab
+               
                 return {
                     ...state,
                     tabChildren: state.tabChildren.filter((item) => item.label !== action.payload.label)
                 }
             }
-        case ADD_TAB:
-            {//DEPRECATED
-                return {
-                    ...state,
-                    tabChildren: state.tabChildren.concat(action.payload)
-                }
-            }
+
             //TODO Rename LOAD_LABEL as ADD_TAB
-        case 'LOAD_LABEL':
+        case ADD_TAB:
         {    let formsArray = _.find(state.tabChildren,action.payload)
             if(formsArray!==undefined)
             return {

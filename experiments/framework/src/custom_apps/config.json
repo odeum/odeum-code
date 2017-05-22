@@ -56,6 +56,18 @@
                     "location": "/forms",
                     "icon": "tasks",
                     "fixed": true
+                },
+                                {
+                    "label": "*No Route Tab*",
+                    "location": "/forms",
+                    "icon": "general",
+                    "fixed": false
+                },
+                                                {
+                    "label": "*No Route Tab 2*",
+                    "location": "/forms",
+                    "icon": "general",
+                    "fixed": false
                 }
             ]
         }

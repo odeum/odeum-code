@@ -17,7 +17,8 @@ class Forms extends Component {
         return (
             <FormsDiv>
                 {/*Tasks*/}
-                <button onClick={e=>{e.preventDefault(); this.props.addTab()}}>Add new tab</button>
+                {/*<button onClick={e=>{e.preventDefault(); this.props.addTab()}}>Add new tab</button>*/}
+                Forms
             </FormsDiv>
         )
     }
