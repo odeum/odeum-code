@@ -1,6 +1,10 @@
 export const APP_TITLE = 'ODEUM Report'
 // The title of the app
 
+export const APP_ID = 'some_unique_app_id'
+
+export const APP_TOKEN = 'some_unique_app_token'
+
 export const APP_VERSION = 'v2.0.0'
 // The version of the app, should correlate with the GitHub version if the app is committed to GitHub
 
