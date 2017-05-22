@@ -48,18 +48,12 @@
         },
         {
             "name": "Forms",
-            "location":"/forms",
+            "location":"/forms/simple",
             "icon": "tasks",
             "tabs": [
-                {
-                    "label": "Forms",
-                    "location": "/forms",
-                    "icon": "tasks",
-                    "fixed": true
-                },
-                                {
-                    "label": "*No Route Tab*",
-                    "location": "/forms",
+  {
+                    "label": "Simple Form Submit",
+                    "location": "/forms/simple",
                     "icon": "general",
                     "fixed": false
                 },

@@ -1,24 +1,19 @@
 import React, { Component } from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import * as tasksActions from './formsActions'
+import * as formsActions from './formsActions'
 import {FormsDiv} from './styles'
 class Forms extends Component {
     componentWillMount(){
-        this.props.loadTabs("Forms")
-        this.props.updateTab({
-            label: 'Forms',
-            location: '/forms',
-            icon: 'tasks',
-            fixed: true
-        })
+        console.log(this.props)
+        this.props.loadTabs('Forms')
     }
     render() {
+      //  const childWithProps = React.Children.map(this.props.children,
+        //(child)=> React.cloneElement(child,{updateTabWrapper:this.props.updateTab}))
         return (
             <FormsDiv>
-                {/*Tasks*/}
-                {/*<button onClick={e=>{e.preventDefault(); this.props.addTab()}}>Add new tab</button>*/}
-                Forms
+              {this.props.children}
             </FormsDiv>
         )
     }
@@ -27,7 +22,7 @@ const mapStateToProps = (state) =>({
 
 })
 function mapDispatchToProps(dispatch){
-    return bindActionCreators(tasksActions,dispatch)
+    return bindActionCreators(formsActions,dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Forms)

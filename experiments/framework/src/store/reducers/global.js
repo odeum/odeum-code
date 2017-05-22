@@ -81,6 +81,7 @@ export default function global(state = initialState, action) {
             //TODO Rename LOAD_LABEL as ADD_TAB
         case ADD_TAB:
         {    let formsArray = _.find(state.tabChildren,action.payload)
+            console.log(formsArray)
             if(formsArray!==undefined)
             return {
                 ...state,
