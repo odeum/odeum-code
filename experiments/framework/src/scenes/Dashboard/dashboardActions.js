@@ -1,6 +1,6 @@
 //import * as actions from './dashboardActionTypes'
 // import {push} from 'react-router-redux'
-import {ADD_TAB} from './tabs/tabsActionTypes'
+
 export function changeTab(location, label){
     return (dispatch) => {
         dispatch({type:'CHANGE_TAB',payload:label})
@@ -14,6 +14,6 @@ export function loadTabs(){
 }
 export function updateTab(label){
   return (dispatch) => {
-        dispatch({type:ADD_TAB,payload:label})
+        dispatch({type:'LOAD_LABEL',payload:label})
     }
 }

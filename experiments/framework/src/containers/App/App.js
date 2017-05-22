@@ -1,34 +1,54 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
 
-import { Router } from 'react-router'
+//import * as styled from './styles'
+import {AppDiv} from './styles/AppStyles'
 
-const rootRoute={
-    childRoutes:[{
-        path:'/',
-        component: require('./Home/Home').default,
-        childRoutes:[
-            require('../../custom_apps/routes.js')
-        ]
-    }]
-}
+//Header+Menu
+import HeaderContainer from './Header/Header'
+import MenuContainer from './Menu/Menu'
+
+import TabsWrapper from './Tabs/TabsWrapper'
+import FooterContainer from './Footer/Footer'
+
+
+//Redux+Router
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import * as GlobalActions from '../../store/actions/global'
+
 class AppContainer extends Component {
     
     render() {
+        // console.log(this.props)
         return (
-            <Provider store={this.props.store}>
-                <Router history={this.props.history} routes={rootRoute}/>
-                </Provider>
+            <div>
+            <AppDiv>
+                <HeaderContainer />
+                <MenuContainer />
+                
+                <TabsWrapper children={this.props.tabChildren}/>
+               
+                {this.props.children}
 
+               <FooterContainer />
+            </AppDiv>
+           
+            </div>
         )
     }
 }
 AppContainer.propTypes = {
-    history:PropTypes.object.isRequired,
-    store:PropTypes.object.isRequired
+    // onPush:PropTypes.func.isRequired,
+     tabChildren: PropTypes.array
 }
 
-
-export default AppContainer
+const mapStateToProps = (state,ownProps) =>({
+    tabChildren: state.global.tabChildren,
+    comp: state.menu.comp
+})
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(GlobalActions,dispatch)
+}
+export default connect(mapStateToProps,mapDispatchToProps)(AppContainer)

@@ -12,8 +12,6 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.2",
-    "redux-form": "^6.7.0",
-    "redux-form-website-template": "^0.0.41",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
     "styled-components": "^1.4.5",

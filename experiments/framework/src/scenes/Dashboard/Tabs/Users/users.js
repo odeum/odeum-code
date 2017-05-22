@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Users extends Component {
     componentWillMount() {
-        this.props.updateTab({
+        this.props.updateTabWrapper({
     label: 'Users',
     location: '/dashboard/users',
     icon: 'brugere',

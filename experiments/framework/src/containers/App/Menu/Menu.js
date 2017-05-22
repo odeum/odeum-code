@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import DrawerWrapper from '../../../components/App/Menu/DrawerWrapper'
 import MenuItem from '../../../components/App/Menu/MenuItem'
 import PropTypes from 'prop-types'
 import * as styled from '../../../components/App/styles/MenuStyle'
@@ -11,28 +12,24 @@ import * as MenuActions from './menuActions'
 
 
 class MenuContainer extends Component {
-    active(sceneName){
-        if(sceneName===this.props.active)
-        return 'active'
-        else
-        return ''
-    }
     render() {
+    // console.log(this.props)
     var _this = this.props
         return (
             <styled.MenuWrapperDiv>
-                   {this.props.scenes.map((scene,index)=>(<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index}/>))}
+                   {this.props.scenes.map((scene,index)=>(<MenuItem name={scene.name} icon={scene.icon} location={scene.location} onPush={_this.changeScene} key={index}/>))}
             </styled.MenuWrapperDiv>
         )
     }
 }
 MenuContainer.propTypes = {
+       changeScene: PropTypes.func.isRequired,
        scenes:PropTypes.array,
-       active:PropTypes.string
+       activeScene:PropTypes.number
 }
 const mapStateToProps = (state) =>({
      scenes: state.global.scenes,
-     active: state.global.activeScene
+     activeScene: state.menu.activeScene
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(MenuActions,dispatch)

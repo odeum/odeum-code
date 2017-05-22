@@ -29,7 +29,7 @@ export const TabList = styled.ul`
     margin: 0;
     padding: 0;
     padding:20px 0px 0px 10px;
-    overflow-y: hidden;
+    overflow:hidden;
 `
 export const TabClose = styled.div`
     position: absolute;

@@ -1,5 +1,3 @@
-//DEPRECATED
-//NOT_USED
 import React,{Component} from 'react'
 import styled from 'styled-components'
 import {store} from '../../../index'
@@ -20,7 +18,7 @@ export const DashboardDiv = styled.div`
 
 class Dynamic extends Component {
     componentWillMount(){
-        // store.dispatch({type:'LOAD_LABEL',payload:{label:'Dynamic',icon:'generelt',location:this.props.location.pathname,fixed:false}})
+        store.dispatch({type:'LOAD_LABEL',payload:{label:'Dynamic',icon:'generelt',location:this.props.location.pathname,fixed:false}})
        // console.log(store)
     }
     render() {

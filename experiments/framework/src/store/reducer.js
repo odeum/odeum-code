@@ -1,10 +1,6 @@
-//Framework Reducers
 import global from './reducers/global'
 import menu from '../containers/App/Menu/menuReducer'
-
-//Import all custom Reducers from reducer.js inside custom_apps folder
-import * as custom from '../custom_apps/reducer'
-
-const reducer = {global,menu,...custom}
-
+import tabs from '../containers/App/Tabs/tabsReducer'
+import dashboard from '../scenes/Dashboard/dashboardReducer'
+const reducer = {global,menu,tabs,dashboard}
 export default reducer

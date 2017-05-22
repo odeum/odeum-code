@@ -1,50 +1,62 @@
-import { CLOSE_TAB, ADD_TAB, LOAD_DEFAULT_TABS } from '../actions/action_types'
-var config = require('../../custom_apps/config.json')
+import { CHANGE_TAB, CLOSE_TAB, ADD_TAB } from '../actions/action_types'
+// import { LOCATION_CHANGE } from 'react-router-redux'
 
-
+import * as constant from './constants'
 const initialState = {
-    scenes: config.scenes,
+    scenes: constant.scenes,
     tabChildren: [],
-    activeLabel: '',
-    activeScene:''
+    activeLabel: ''
 }
 var _ = require('lodash')
 
 export default function global(state = initialState, action) {
+
     switch (action.type) {
-        case LOAD_DEFAULT_TABS:{
-            let sceneFind = _.find(config.scenes,function(scene){
-                return scene.name=== action.payload
-            })
-            return {
-                ...state,
-                tabChildren:sceneFind.tabs,
-                activeScene:sceneFind.name
-            }
-        }
-     /*   case 'LOAD_TABS_DASHBOARD':
+        case 'LOAD_TABS_DASHBOARD':
             {
 
+                // console.log('------------------------------------')
+                // console.log(constant.defaultTabs.filter((item) => item.label === state.activeLabel))
+                // console.log(state.activeLabel)
+                // console.log('------------------------------------')
+                // Example of adding a tab that isn't part of the default ones, instead of giving it fixed values, it can be passed as payload
+                // if (constant.defaultTabs.filter((item) => item.label === state.activeLabel).length===0&&state.activeLabel!=='Dashboard')
+                // {
+                // return {
+                //     ...state,
+                //     tabChildren: constant.defaultTabs.concat({label:action.payload.label,icon:action.payload.icon,location:'/dashboard/'+action.payload.label,fixed:false})
+                // }}
+                // else
+
                 if (state.tabChildren.length === 0) {
+                    // console.log('Empty')
                     return {
                         ...state,
-                        tabChildren: config.scenes[0].tabs
+                        tabChildren: constant.defaultTabs
                     }
                 }
                 else {
 
                     let newArray2 = _.reduce(state.tabChildren, function (result, value, key) {
+                        //  console.log(value)
+                        //  console.log(value.fixed)
                         return value.fixed ? result : result.concat(state.tabChildren[key])
                     }, [])
+                    // console.log(newArray2)
                     return {
                         ...state,
-                        tabChildren: config.scenes[0].tabs.concat(newArray2)
+                        tabChildren: constant.defaultTabs.concat(newArray2)
                     }
                 }
+                // return {
+                //     ...state,
+                //     tabChildren: state.tabChildren
+                // }
             }
         case 'LOAD_TABS_FORMS':
             {
                 if (state.tabChildren.length === 0) {
+                    // console.log('Forms Tab Empty, Loading default tabs')
                     return {
                         ...state,
                         tabChildren: constant.formsTabs,
@@ -53,7 +65,10 @@ export default function global(state = initialState, action) {
                 }
                 else {
                     let formsArray = _.reduce(state.tabChildren, function (result, value, key) {
-                        return value.fixed ? result : result.concat(state.tabChildren[key])}, [])
+                        // console.log(_.isEqual(value, constant.formsTabs[key]))
+                        return value.fixed ? result : result.concat(state.tabChildren[key])
+                    }, [])
+                    // console.log(formsArray)
                     return {
                         ...state,
                         tabChildren: constant.formsTabs.concat(formsArray),
@@ -62,24 +77,31 @@ export default function global(state = initialState, action) {
                 }
             }
         case CHANGE_TAB:
-            {//DEPRECATED
+            {
+
                 return {
                     ...state,
                     activeLabel: action.payload
                 }
             }
-*/
+
         case CLOSE_TAB:
             {
-               
+                //Open last tab
                 return {
                     ...state,
                     tabChildren: state.tabChildren.filter((item) => item.label !== action.payload.label)
                 }
             }
-
-            //TODO Rename LOAD_LABEL as ADD_TAB
         case ADD_TAB:
+            {
+                //TODO check if the tab is already open
+                return {
+                    ...state,
+                    tabChildren: state.tabChildren.concat(action.payload)
+                }
+            }
+        case 'LOAD_LABEL':
         {    let formsArray = _.find(state.tabChildren,action.payload)
             console.log(formsArray)
             if(formsArray!==undefined)

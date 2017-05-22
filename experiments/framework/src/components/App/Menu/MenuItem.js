@@ -1,19 +1,17 @@
 import React from 'react'
 import { renderIcons } from '../../../assets/icons'
-import * as styled from '../styles/MenuStyle'
+import * as s from '../styles/MenuStyle'
 import * as Icons from 'react-icons/lib/md'
-// import {Link} from 'react-router'
-const MenuItem = ({ name, icon, location, active }) => {
-    //let active = 'active'
+const MenuItem = ({ name, icon, location, onPush }) => {
+    let active = 'active'
     return (
-        <styled.MenuPanelDiv className={active}>
-           <styled.MenuLink to={location}> <div>
-                <styled.Icon>{renderIcons(icon, active)}</styled.Icon>
+        <s.MenuPanelDiv>
+            <div className="MdKeyboardArrowRight" onClick={e => {e.preventDefault(); onPush(location)}}>
+                <s.Icon>{renderIcons(icon, active)}</s.Icon>
                 {name}
-                <styled.Arrow><Icons.MdKeyboardArrowRight /></styled.Arrow>
+                <s.Arrow><Icons.MdKeyboardArrowRight /></s.Arrow>
             </div>
-            </styled.MenuLink>
-        </styled.MenuPanelDiv>
+        </s.MenuPanelDiv>
     )
 }
 

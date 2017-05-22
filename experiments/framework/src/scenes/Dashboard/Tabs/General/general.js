@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 class General extends Component {
     componentWillMount(){
-        this.props.updateTab({
+        this.props.updateTabWrapper({
     label: 'General',
     location: '/dashboard/general',
     icon: 'generelt',

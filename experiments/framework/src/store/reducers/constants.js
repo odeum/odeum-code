@@ -1,5 +1,3 @@
-//DEPRECATED
-//REMOVE
 export const scenes= [
         {
             id: 0,
