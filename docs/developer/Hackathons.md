@@ -1,11 +1,32 @@
-# ODEUM CodeJS Hackathons
+# ODEUM CodeJS Hackathons (log)
+
+## Hacknight #5 - June 6 2017
+Attendees: AT, CB, HH, MB, MHK, KN
+
+### Agenda (tentative)
+
+1. Presentation of real world ODEUM CodeJS App "BWF App" 
+2. Presentation of dynamic tabs
+3. Theme included in framework
+4. Refactoring stuff (Prop Types, Naming, Code Style)
+5. Coding Dojo (Setting up framework and building a simple app)
+6. Next steps ... 
+
+### Takeaways and milestones:
+- Ad 1:
+- Ad 2: 
+- Ad 3:
+- Ad 4: 
+- Ad 5:
+- Ad 6: 
+
 
 ## Hacknight #4 - Maj 22 2017
 Attendees: AT, CB, HH, MB, MHK, KN (Kasper Nielsen)
 
 ### Agenda
 
-1. AT will present a simple App and its configuration and how it is decoupled from the framework
+1. AT will present a simple App and its configuration and how it is decoupled from the framework (new experiment: "framework_decoupled")
 2. AT will present scematics (illustration) of the innerworkings of the framework/app
 3. Getting theme and standards integrated in framework and demo App
 4. If enough time CB will present <Footerlabel /> and <Icon /> and discuss Redux-Form (worth a look)
@@ -14,12 +35,15 @@ Attendees: AT, CB, HH, MB, MHK, KN (Kasper Nielsen)
 
 ### Takeaways and milestones:
 
-- Ad 1:
-- Ad 2:
-- Ad 3:
-- Ad 4:
-- Ad 5:
-- Ad 6: 
+We had the pleasure of introducing UCN intern Kasper Nielsen to the group who would participate and contribute closer primo June 2017. 
+
+- Ad 1: AT did a fast paced presentation of the decoupling of the framework and the "custom_app" 
+- Ad 2: Scematics for the framework and app are uploaded to /docs/architecture/ODEUM_CodeJS_flow.png
+- Ad 3: No comments 
+- Ad 4: Redux-Form was introduced and accepted as a trial technology for BWF App (real world example) a simple CRUD app for managing users, products and posts for the BWF mobile app. The finished app will be showcased at the next hackathon.
+- Ad 5: No comments
+- Ad 6: Dynamic Tabs, Login Providers, Login, Web Token, JSON endpoint for very simple login
+
 
 ## Hacknight #3 - Maj 8 2017
 Attendees: AT, CB, HH, MB, MHK
