@@ -5,7 +5,8 @@ var config = require('../../custom_apps/config.json')
 const initialState = {
     scenes: config.scenes,
     tabChildren: [],
-    activeLabel: ''
+    activeLabel: '',
+    activeScene:''
 }
 var _ = require('lodash')
 
@@ -17,7 +18,8 @@ export default function global(state = initialState, action) {
             })
             return {
                 ...state,
-                tabChildren:sceneFind.tabs
+                tabChildren:sceneFind.tabs,
+                activeScene:sceneFind.name
             }
         }
      /*   case 'LOAD_TABS_DASHBOARD':

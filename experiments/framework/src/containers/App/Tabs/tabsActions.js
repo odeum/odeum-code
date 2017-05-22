@@ -1,8 +1,7 @@
-//TODO import actionTypes
+import {CLOSE_TAB} from './tabsActionTypes'
 
 export function closeTab(tab){
     return (dispatch) =>{
-        dispatch({type:'CLOSE_TAB',payload:tab})
-        // dispatch(push('/dashboard/general'))
+        dispatch({type:CLOSE_TAB,payload:tab})
     }
 }

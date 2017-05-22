@@ -1,5 +1,5 @@
 import styled,{css} from 'styled-components'
-
+import {Link} from 'react-router'
 export const MenuWrapperDiv = styled.div`
   clear: both;
   background-color: #3b97d3;
@@ -23,7 +23,7 @@ export const MenuPanelDiv = styled.div`
   text-decoration: none;
   padding-left: 20px;
   user-select: none;
-  ${props => props.active === true && css`
+  ${props => props.className === "active" && css`
     background-color: #81c1ea;
   `}
   &:first-of-type {
@@ -34,7 +34,11 @@ export const MenuPanelDiv = styled.div`
   }
  
 `
-
+export const MenuLink = styled(Link)`
+text-decoration:none !important;
+outline:0;
+color:white;
+`
 
 export const MenuContentDiv = styled.div`
   background: red;

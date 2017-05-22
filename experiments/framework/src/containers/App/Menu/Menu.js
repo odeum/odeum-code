@@ -11,23 +11,28 @@ import * as MenuActions from './menuActions'
 
 
 class MenuContainer extends Component {
+    active(sceneName){
+        if(sceneName===this.props.active)
+        return 'active'
+        else
+        return ''
+    }
     render() {
     var _this = this.props
         return (
             <styled.MenuWrapperDiv>
-                   {this.props.scenes.map((scene,index)=>(<MenuItem name={scene.name} icon={scene.icon} location={scene.location} onPush={_this.changeScene} key={index}/>))}
+                   {this.props.scenes.map((scene,index)=>(<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index}/>))}
             </styled.MenuWrapperDiv>
         )
     }
 }
 MenuContainer.propTypes = {
-       changeScene: PropTypes.func.isRequired,
        scenes:PropTypes.array,
-       activeScene:PropTypes.number
+       active:PropTypes.string
 }
 const mapStateToProps = (state) =>({
      scenes: state.global.scenes,
-     activeScene: state.menu.activeScene
+     active: state.global.activeScene
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(MenuActions,dispatch)
