@@ -19,11 +19,12 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [5.2. Contributors (primary):](#52-contributors-primary)
     - [5.3. Experiments location](#53-experiments-location)
     - [5.4. Experiments List](#54-experiments-list)
-        - [5.4.2. Codesplitting / PRPL (codesplitting)](#542-codesplitting--prpl-codesplitting)
-        - [5.4.3. Framework (framework)](#543-framework-framework)
-        - [5.4.4. Themes in ODEUM CodeJS (theme)](#544-themes-in-odeum-codejs-theme)
-        - [5.4.5. Footerlabel](#545-footerlabel)
-        - [5.4.6. Redux Forms (redux-form)](#546-redux-forms-redux-form)
+        - [5.4.1. Codesplitting / PRPL (codesplitting)](#541-codesplitting--prpl-codesplitting)
+        - [5.4.2. Framework (framework)](#542-framework-framework)
+        - [5.4.3. Themes in ODEUM CodeJS (theme)](#543-themes-in-odeum-codejs-theme)
+        - [5.4.4. Footerlabel](#544-footerlabel)
+        - [5.4.5. Redux Forms (redux-form)](#545-redux-forms-redux-form)
+        - [5.4.6. React Drag and Drop (react-dnd)](#546-react-drag-and-drop-react-dnd)
         - [5.4.7. Demo App to Connect to the ODEUM CodeJS framework](#547-demo-app-to-connect-to-the-odeum-codejs-framework)
         - [5.4.8. Client State Recorder (CS)](#548-client-state-recorder-cs)
         - [5.4.9. Client State Player (Time Travel) (SS)](#549-client-state-player-time-travel-ss)
@@ -68,8 +69,8 @@ Guidelines (Getting started with ODEUM CodeJS)
     - [10.1. Guidelines](#101-guidelines)
     - [10.2. PropTypes](#102-proptypes)
     - [10.3. Components](#103-components)
-        - [10.3.25. Stateless components (presentational components)](#10325-stateless-components-presentational-components)
-        - [10.3.26. Stateful components (container components)](#10326-stateful-components-container-components)
+        - [10.3.1. Stateless components (presentational components)](#1031-stateless-components-presentational-components)
+        - [10.3.2. Stateful components (container components)](#1032-stateful-components-container-components)
 - [11. Visual Studio Code Extensions](#11-visual-studio-code-extensions)
     - [11.1. Atom Keymap](#111-atom-keymap)
     - [11.2. Babel ES6/ES7](#112-babel-es6es7)
@@ -161,7 +162,7 @@ All initial work is done through experiments. The experiments will facilitate an
 
 ## 5.4. Experiments List
 
-### 5.4.2. Codesplitting / PRPL (codesplitting)
+### 5.4.1. Codesplitting / PRPL (codesplitting)
 - Experiment title: ./experiments/codesplitting
 
 - We will do some initial research and propose 2-3 different technology paths and architectures.
@@ -175,24 +176,31 @@ All initial work is done through experiments. The experiments will facilitate an
 - [PRPL pattern - Google](https://developers.google.com/web/fundamentals/performance/prpl-pattern/)
 - [How we build Twitter Lite](https://blog.twitter.com/2017/how-we-built-twitter-lite)
 
-### 5.4.3. Framework (framework)
+### 5.4.2. Framework (framework)
 - Experiment title: ./experiments/framework
 - Setting up the core app framework in ODEUM CodeJS with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
 - Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ and check the book code examples here: [Redux Book](https://github.com/redux-book/code-samples)
 
-### 5.4.4. Themes in ODEUM CodeJS (theme)
+### 5.4.3. Themes in ODEUM CodeJS (theme)
 - Experiment title: ./experiments/theme
 - How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
 - Includes production ready <Icon /> component
+- [Example of ThemeProvider used in a similar framework](https://github.com/zksailor534/react-adminlte-dash)
 
-### 5.4.5. Footerlabel
-- Simple component to print the app title and copyright and include a url (link) to some external or in-app resource (/about)
+### 5.4.4. Footerlabel
+- Simple component to print the app title and copyright and include a URL (link) to some external or in-app resource (/about)
 - Get data from applegends.js from the theme  
 
-### 5.4.6. Redux Forms (redux-form)
+### 5.4.5. Redux Forms (redux-form)
 - Experiment with Redux Forms.
 - [Redux Forms](http://redux-form.com/)
+
+### 5.4.6. React Drag and Drop (react-dnd)
+- Experiment to test Dan Abramovs (Redux) React DnD module
+- Should be connected to Redux as anything else
+- [React DnD](https://react-dnd.github.io/react-dnd/)
+- [Tutorial chess sample with Redux](https://github.com/jcolemorrison/react-dnd-redux-example)
 
 ### 5.4.7. Demo App to Connect to the ODEUM CodeJS framework
 - ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems, helpitems, login, routes etc. We need a simple Demo App to test this symbiotic connection. Who manages the state (Redux store, the framework or the app? 
@@ -426,7 +434,7 @@ It is critical that all component development is declared with PropTypes everywh
 
 ## 10.3. Components
 
-### 10.3.25. Stateless components (presentational components)
+### 10.3.1. Stateless components (presentational components)
 For stateless class components use PureComponent 
 
 ```javascript 
@@ -466,7 +474,7 @@ const HelloWorld = ({name}) => (
 export default HelloWorld;
 ```
 
-### 10.3.26. Stateful components (container components)
+### 10.3.2. Stateful components (container components)
 
 ```javascript 
 
