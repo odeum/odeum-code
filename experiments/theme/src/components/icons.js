@@ -1,6 +1,6 @@
-// All available icons are listed in this file. Constant value are in small caps and 
+// All available icons are listed in this file. Constant values are in small caps and 
 // follow the Material Design icon font name specification.  
-// Component names uses MdSettings where settings has a caps initial letter
+// Component names use MdSettings where settings have a caps initial letter
 
 // Framework icons
 export const ICON_SEARCH = 'search'
