@@ -17,6 +17,7 @@ class TabsWrapper extends Component {
     }
 
     render() {
+       
         let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '')
         var _this = this.props
         function isFixed(tab) {

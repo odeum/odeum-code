@@ -15,7 +15,7 @@ export const TabLink = styled(Link)`
     display:inline-flex;
     text-decoration: none;
     outline: 0;
-    color: #5e5e5e;
+    color: ${(props)=> props.theme.button.color};
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-size: 15px;

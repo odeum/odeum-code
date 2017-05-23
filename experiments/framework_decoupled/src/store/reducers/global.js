@@ -19,8 +19,6 @@ export default function global(state = initialState, action) {
             let dynamicTabList= _.filter(state.tabChildren,function(tab){
                  return tab.fixed===true? null : tab
                 })
-               //eslint-disable-next-line
-             //  console.log(finder)
             return {
                 ...state,
                 tabChildren:sceneFind.tabs.concat(dynamicTabList),

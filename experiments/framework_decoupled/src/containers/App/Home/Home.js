@@ -12,17 +12,30 @@ import MenuContainer from '../Menu/Menu'
 import TabsWrapper from '../Tabs/TabsWrapper'
 import FooterContainer from '../Footer/Footer'
 
+import * as colors from '../../../assets/colors'
+import * as fonts from '../../../assets/fonts'
+import {ThemeProvider} from 'styled-components'
 
 //Redux+Router
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as GlobalActions from '../../../store/actions/global'
 
+const theme = {
+  background: colors.EMERALD_LIGHT,
+  color: colors.TAB_COLOR_2,
+  font: fonts.PRIMARY,
+  button: {
+    color: colors.TAB_COLOR_1,
+  }
+}
 class Home extends Component {
     
     
     render() {
+        console.log(this.props)
         return (
+            <ThemeProvider theme={theme}>
             <div>
             <HomeDiv>
                 <HeaderContainer />
@@ -36,6 +49,7 @@ class Home extends Component {
             </HomeDiv>
            
             </div>
+            </ThemeProvider>
         )
     }
 }

@@ -26,6 +26,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.prettifyIconName(iconname.ICON_MENU))
     return (
       <div>
       <Layout>

@@ -2,8 +2,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-
 import { Router } from 'react-router'
+
 
 const rootRoute={
     childRoutes:[{
@@ -14,14 +14,15 @@ const rootRoute={
         ]
     }]
 }
+
 class AppContainer extends Component {
     
     render() {
         return (
+            
             <Provider store={this.props.store}>
                 <Router history={this.props.history} routes={rootRoute}/>
                 </Provider>
-
         )
     }
 }
