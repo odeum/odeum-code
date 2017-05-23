@@ -16,12 +16,20 @@ export default function global(state = initialState, action) {
             let sceneFind = _.find(config.scenes,function(scene){
                 return scene.name=== action.payload
             })
+            let dynamicTabList=[]
+ 
+                 var test= _.find(state.tabChildren,function(tab){
+                    tab.fixed===true? dynamicTabList : dynamicTabList=dynamicTabList.concat(tab)
+                 })
+          
+             console.log(test)
             return {
                 ...state,
-                tabChildren:sceneFind.tabs,
+                tabChildren:sceneFind.tabs.concat(dynamicTabList),
                 activeScene:sceneFind.name
             }
         }
+        
      /*   case 'LOAD_TABS_DASHBOARD':
             {
 
@@ -78,10 +86,9 @@ export default function global(state = initialState, action) {
                 }
             }
 
-            //TODO Rename LOAD_LABEL as ADD_TAB
         case ADD_TAB:
         {    let formsArray = _.find(state.tabChildren,action.payload)
-            console.log(formsArray)
+            // console.log(formsArray)
             if(formsArray!==undefined)
             return {
                 ...state,

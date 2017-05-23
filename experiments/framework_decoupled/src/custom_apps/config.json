@@ -55,13 +55,13 @@
                     "label": "Simple Form Submit",
                     "location": "/forms/simple",
                     "icon": "general",
-                    "fixed": false
+                    "fixed": true
                 },
                                                 {
-                    "label": "*No Route Tab 2*",
-                    "location": "/forms",
+                    "label": "Dynamic Tab Opener",
+                    "location": "/forms/dynamictabopener",
                     "icon": "general",
-                    "fixed": false
+                    "fixed": true
                 }
             ]
         }

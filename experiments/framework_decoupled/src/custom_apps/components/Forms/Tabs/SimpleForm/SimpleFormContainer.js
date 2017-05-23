@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import showResults from './showResults'
 import SimpleForm from './SimpleForm'
-import { Values } from 'redux-form-website-template'
+
 class SimpleFormContainer extends Component {
     componentWillMount(){
         this.props.updateTab({
     label: 'Simple Form Submit',
     location: '/forms/simple',
     icon: 'general',
-    fixed: false
+    fixed: true
 })
         // console.log('------------------------------------')
       //   console.log(this.props)
@@ -22,7 +22,7 @@ class SimpleFormContainer extends Component {
         return (
             <div>
                 <SimpleForm onSubmit={showResults} />
-                 <Values form="simple" />
+               
                 
             </div>
         )
