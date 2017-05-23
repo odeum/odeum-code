@@ -46,10 +46,18 @@ export default function global(state = initialState, action) {
             }
             else
             {
+                if(state.tabChildren.length===0)
                 return{
                     ...state,
                     tabChildren:state.tabChildren.concat(action.payload),
                     activeLabel:action.payload.label
+                }
+                else
+                {
+                    return{
+                     ...state,
+                    tabChildren:state.tabChildren.concat(action.payload)
+                    }
                 }
             }
         }
