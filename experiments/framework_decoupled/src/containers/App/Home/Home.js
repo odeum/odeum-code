@@ -25,6 +25,12 @@ const theme = {
   background: colors.EMERALD_LIGHT,
   color: colors.TAB_COLOR_2,
   font: fonts.PRIMARY,
+  tabs:{
+      tab_text:colors.TAB_TEXT,
+      tab_text_selected: colors.TAB_TEXT_SELECTED,
+      tab:colors.TAB,
+      tab_selected:colors.TAB_SELECTED
+  },
   button: {
     color: colors.TAB_COLOR_1,
   }
@@ -33,7 +39,6 @@ class Home extends Component {
     
     
     render() {
-        console.log(this.props)
         return (
             <ThemeProvider theme={theme}>
             <div>

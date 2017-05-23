@@ -3,7 +3,7 @@ import {Link} from 'react-router'
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
-    font-family: 'Source Sans Pro';
+    font-family: ${(props)=> props.theme.font};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -15,8 +15,8 @@ export const TabLink = styled(Link)`
     display:inline-flex;
     text-decoration: none;
     outline: 0;
-    color: ${(props)=> props.theme.button.color};
-    font-family: 'Source Sans Pro';
+    color: ${(props)=> props.theme.tabs.tab_text};
+    font-family:  ${(props)=> props.theme.font};
     font-style: normal;
     font-size: 15px;
     font-weight: 300;
@@ -44,13 +44,13 @@ export const TabLabel = styled.li`
     display: inline-block;
     height: 40px;
     line-height: 40px;
-    background-color: #e3e5e5;
+    background-color:${(props)=> props.theme.tabs.tab};
     border-radius: 5px 5px 0px 0px;
     padding-left: 20px;
     padding-right: 20px;
     margin-right: 1px;
     ${props => props.className === 'active' && css`
-        background-color: #3b97d3;
+        background-color: ${(props)=> props.theme.tabs.tab_selected};
     `}
     position:relative;
 `
