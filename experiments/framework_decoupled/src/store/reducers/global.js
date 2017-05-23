@@ -16,67 +16,17 @@ export default function global(state = initialState, action) {
             let sceneFind = _.find(config.scenes,function(scene){
                 return scene.name=== action.payload
             })
-            let dynamicTabList=[]
- 
-                 var test= _.find(state.tabChildren,function(tab){
-                    tab.fixed===true? dynamicTabList : dynamicTabList=dynamicTabList.concat(tab)
-                 })
-          
-             console.log(test)
+            let dynamicTabList= _.filter(state.tabChildren,function(tab){
+                 return tab.fixed===true? null : tab
+                })
+               //eslint-disable-next-line
+             //  console.log(finder)
             return {
                 ...state,
                 tabChildren:sceneFind.tabs.concat(dynamicTabList),
                 activeScene:sceneFind.name
             }
         }
-        
-     /*   case 'LOAD_TABS_DASHBOARD':
-            {
-
-                if (state.tabChildren.length === 0) {
-                    return {
-                        ...state,
-                        tabChildren: config.scenes[0].tabs
-                    }
-                }
-                else {
-
-                    let newArray2 = _.reduce(state.tabChildren, function (result, value, key) {
-                        return value.fixed ? result : result.concat(state.tabChildren[key])
-                    }, [])
-                    return {
-                        ...state,
-                        tabChildren: config.scenes[0].tabs.concat(newArray2)
-                    }
-                }
-            }
-        case 'LOAD_TABS_FORMS':
-            {
-                if (state.tabChildren.length === 0) {
-                    return {
-                        ...state,
-                        tabChildren: constant.formsTabs,
-                        activeLabel: 'Forms'
-                    }
-                }
-                else {
-                    let formsArray = _.reduce(state.tabChildren, function (result, value, key) {
-                        return value.fixed ? result : result.concat(state.tabChildren[key])}, [])
-                    return {
-                        ...state,
-                        tabChildren: constant.formsTabs.concat(formsArray),
-                        activeLabel: 'Forms'
-                    }
-                }
-            }
-        case CHANGE_TAB:
-            {//DEPRECATED
-                return {
-                    ...state,
-                    activeLabel: action.payload
-                }
-            }
-*/
         case CLOSE_TAB:
             {
                

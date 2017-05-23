@@ -30,6 +30,15 @@ class DynamicTabOpener extends Component {
                             fixed: false
                         })
                     }}>DO THE MAGIC TRICK </button>
+                      <button onClick={e => {
+                        e.preventDefault()
+                        this.props.updateTab({
+                            label: 'Dynamic2',
+                            location: '/forms/dynamic2',
+                            icon: 'general',
+                            fixed: false
+                        })
+                    }}>DO THE MAGIC TRICK 2</button>
                 </div>
             </div>
         )

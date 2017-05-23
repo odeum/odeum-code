@@ -5,7 +5,8 @@ module.exports={
           cb(null,[
               require('./components/Dashboard/route.js'),
               require('./components/Forms/route.js'),
-              require('./components/Dynamic/route.js')
+              require('./components/Dynamic/route.js'),
+              require('./components/Dynamic/route2.js')
           ])
       })
   },
