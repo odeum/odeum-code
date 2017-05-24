@@ -63,6 +63,7 @@ export const Icon = styled.div`
     margin-top: -1px;
     margin-right: 3px;
     padding: 0;
+    font-size: 18px;
     ${props => props.className === 'active' && css`
         color: white;
     `}
