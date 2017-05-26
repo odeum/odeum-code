@@ -2,7 +2,7 @@ import React from 'react'
 import { reduxForm } from 'redux-form'
 import { Label, Input } from './components/Styles'
 
-let App= () => {
+let App = () => {
   return (
     <div>
       <h1>Live Redux-Form Coding</h1>
