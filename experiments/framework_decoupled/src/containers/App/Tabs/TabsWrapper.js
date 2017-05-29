@@ -36,7 +36,9 @@ class TabsWrapper extends Component {
                             {tab.label}
                         </styled.TabLink>
                         {/*@TODO if isFixed() call the anchor and the x*/}
-                        <styled.TabLink href="#" onClick={e => { e.preventDefault(); _this.closeTab(tab) }}>
+                        <styled.TabLink href="#" onClick={e => { e.preventDefault()
+                            _this.closeTab(tab) 
+                        }}>
                             {isFixed(tab)}
                         </styled.TabLink>
                     </styled.TabLabel>))}

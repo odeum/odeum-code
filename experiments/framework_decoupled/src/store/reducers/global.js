@@ -1,4 +1,5 @@
 import { CLOSE_TAB, ADD_TAB, LOAD_DEFAULT_TABS } from '../actions/action_types'
+
 var config = require('../../custom_apps/config.json')
 
 
@@ -25,9 +26,10 @@ export default function global(state = initialState, action) {
                 activeScene: sceneFind.name
             }
         }
+        //TODO Go Back on 
         case CLOSE_TAB:
             {
-
+               
                 return {
                     ...state,
                     tabChildren: state.tabChildren.filter((item) => item.label !== action.payload.label)
