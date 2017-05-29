@@ -1,7 +1,7 @@
 {
   "name": "odeum-codejs",
   "version": "1.0.2",
-  "description": "ODEUM CodeJS is an open source Web Application Frontend Framework based on React.",
+  "description": "ODEUM CodeJS is a React-based UI framework for building Web & Mobile Applications.",
   "private": true,
   "repository": {
     "type": "git",

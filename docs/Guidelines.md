@@ -1,6 +1,8 @@
 Guidelines (Getting started with ODEUM CodeJS)
 ==============================================
 
+ODEUM CodeJS is a React-based UI framework for building Web & Mobile Applications.
+
 <!-- TOC -->
 
 - [1. ODEUM CodeJS Github repository](#1-odeum-codejs-github-repository)
