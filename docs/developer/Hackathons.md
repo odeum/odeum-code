@@ -1,16 +1,17 @@
 # ODEUM CodeJS Hackathons (log)
 
 ## Hacknight #5 - June 6 2017
-Attendees: AT, CB, HH, MB, MHK, KN
+Attendees: Andrei Tudor (AT), Christian Broberg (CB), Mikkel Broberg (MB), Martin H. Kristiansen (MHK) (and hopefully others)
 
 ### Agenda (tentative)
 
-1. Presentation of real world ODEUM CodeJS App "BWF App" 
-2. Presentation of dynamic tabs
-3. Theme included in framework
-4. Refactoring stuff (Prop Types, Naming, Code Style)
-5. Coding Dojo (Setting up framework and building a simple app)
-6. Next steps ... 
+1. Presentation of real world ODEUM CodeJS App "BWF App" (or initial workings)
+2. Presentation of dynamic tabs and current project state (AT)
+3. Initial theming with icons included in framework (AT, CB)
+4. Refactoring stuff (theming, colors, styles, Prop Types, Naming, Code Style)
+5. Coding Dojo (Setting up framework and building a simple app or adding your own experiment with Create-React-App to the repo)
+6. Onboarding of new interns and contributing (our repo and how we work)
+7. Next steps ... 
 
 ### Takeaways and milestones:
 - Ad 1:
@@ -19,7 +20,7 @@ Attendees: AT, CB, HH, MB, MHK, KN
 - Ad 4: 
 - Ad 5:
 - Ad 6: 
-
+- Ad 7: 
 
 ## Hacknight #4 - Maj 22 2017
 Attendees: AT, CB, HH, MB, MHK, KN (Kasper Nielsen)
