@@ -9,6 +9,9 @@
 # production
 /build
 
+# debugging
+/.chrome
+
 # misc
 .DS_Store
 /.idea

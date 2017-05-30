@@ -11,6 +11,9 @@ node_modules
 /build
 build
 
+# debugging
+/.chrome
+
 # misc
 .DS_Store
 .env
