@@ -1,16 +1,26 @@
 # ODEUM CodeJS Hackathons (log)
 
 ## Hacknight #5 - June 6 2017
-Attendees: Andrei Tudor (AT), Christian Broberg (CB), Mikkel Broberg (MB), Martin H. Kristiansen (MHK) (and hopefully others)
+
+### Attendees: 
+- AT:   Andrei Tudor - [at@webhouse.dk](at@webhouse.dk)
+- CB:   Christian Broberg - [cb@webhouse.dk](cb@webhouse.dk)
+- MB:   Mikkel Broberg - [mb@webhouse.dk](mb@webhouse.dk)
+- MHK:  Martin Kristiansen - [mhk@webhouse.dk](mhk@webhouse.dk)
+- FJ:   Frida Jakobsen - [frida.jakobsen@hotmail.com](frida.jakobsen@hotmail.com)
+- KN:   Kasper Nielsen - [kasper8791@gmail.com](kasper8791@gmail.com)
+- AJL:  Anders Juel Lichon - [lichondk@gmail.com](lichondk@gmail.com)
+- LZ:   Leonid Zorin - [leonid9.021@gmail.com](leonid9.021@gmail.com)
+- ELG:  Elena-Luminia Gavrilovici - [luminita.gavrilovici@yahoo.com](luminita.gavrilovici@yahoo.com)
 
 ### Agenda (tentative)
 
-1. Presentation of real world ODEUM CodeJS App "BWF App" (or initial workings)
-2. Presentation of dynamic tabs and current project state (AT)
-3. Initial theming with icons included in framework (AT, CB)
-4. Refactoring stuff (theming, colors, styles, Prop Types, Naming, Code Style)
-5. Coding Dojo (Setting up framework and building a simple app or adding your own experiment with Create-React-App to the repo)
-6. Onboarding of new interns and contributing (our repo and how we work)
+1. Onboarding of new interns and contributing (our repo and how we work)
+2. Presentation of real world ODEUM CodeJS App "BWF App" (or initial workings)
+3. Presentation of dynamic tabs and current project state (AT)
+4. Initial theming with icons and footerlabel included in framework (AT, CB)
+5. Refactoring stuff (theming, colors, styles, Prop Types, Naming, Code Style)
+6. Coding Dojo (Setting up framework and building a simple app or adding your own experiment with Create-React-App to the repo)
 7. Next steps ... 
 
 ### Takeaways and milestones:
@@ -23,7 +33,14 @@ Attendees: Andrei Tudor (AT), Christian Broberg (CB), Mikkel Broberg (MB), Marti
 - Ad 7: 
 
 ## Hacknight #4 - Maj 22 2017
-Attendees: AT, CB, HH, MB, MHK, KN (Kasper Nielsen)
+
+### Attendees: 
+- AT:     Andrei Tudor - [at@webhouse.dk](at@webhouse.dk)
+- CB:     Christian Broberg - [cb@webhouse.dk](cb@webhouse.dk)
+- HH:     Henrik Hansen - [hh@webhouse.dk](hh@webhouse.dk)
+- MB:     Mikkel Broberg - [mb@webhouse.dk](mb@webhouse.dk)
+- MHK:    Martin Kristiansen - [mhk@webhouse.dk](mhk@webhouse.dk)
+- KN:     Kasper Nielsen - [kasper8791@gmail.com](kasper8791@gmail.com)
 
 ### Agenda
 
@@ -47,7 +64,8 @@ We had the pleasure of introducing UCN intern Kasper Nielsen to the group who wo
 
 
 ## Hacknight #3 - Maj 8 2017
-Attendees: AT, CB, HH, MB, MHK
+
+###Attendees: AT, CB, HH, MB, MHK
 
 ### Agenda
 
@@ -69,7 +87,8 @@ Attendees: AT, CB, HH, MB, MHK
 
 
 ## Hacknight #2 - April 24 2017
-Attendees: AT, CB, HH, MB, MHK
+
+### Attendees: AT, CB, HH, MB, MHK
 
 ### Agenda
 - Setting up our coding setup/editor/Github etc. so we can make AT's experiment run locally 

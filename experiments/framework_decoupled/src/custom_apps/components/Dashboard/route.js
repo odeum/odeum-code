@@ -1,8 +1,8 @@
 module.exports = {
   path: 'dashboard',
-  getChildRoutes(location,cb){
-      require.ensure([],(require)=>{
-          cb(null,[
+  getChildRoutes(location, cb) {
+      require.ensure([], (require) => {
+          cb(null, [
               require('./Tabs/General/route.js'),
               require('./Tabs/Fields/route.js'),
               require('./Tabs/Workflow/route.js'),

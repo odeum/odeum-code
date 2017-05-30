@@ -47,7 +47,6 @@ switch (name) {
             color={this.setColor(this.props.active) || this.defaultProps.color} 
             style={this.defaultProps.style} />
     }
-    case iconname.ICON_FORMS: return <Icons.MdLayers size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} />
     case iconname.ICON_SETTINGS: return <Icons.MdSettings size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} />
     case iconname.ICON_INPUT: return <Icons.MdInput size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} />
     case iconname.ICON_TIMELINE: return <Icons.MdTimeline size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} />

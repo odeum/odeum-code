@@ -8,8 +8,6 @@ import {connect} from 'react-redux'
 // import * as GlobalActions from '../../../store/actions/global'
 import * as MenuActions from './menuActions'
 
-
-
 class MenuContainer extends Component {
     active(sceneName){
         if(sceneName===this.props.active)
@@ -18,10 +16,13 @@ class MenuContainer extends Component {
         return ''
     }
     render() {
+
+// (_this is not used should it be a const?)
+// eslint-disable-next-line 
     var _this = this.props
         return (
             <styled.MenuWrapperDiv>
-                   {this.props.scenes.map((scene,index)=>(<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index}/>))}
+                   {this.props.scenes.map((scene, index) => (<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index}/>))}
             </styled.MenuWrapperDiv>
         )
     }

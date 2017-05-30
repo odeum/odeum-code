@@ -1,7 +1,7 @@
 Guidelines (Getting started with ODEUM CodeJS)
 ==============================================
 
-ODEUM CodeJS is a React-based UI framework for building Web & Mobile Applications.
+ODEUM CodeJS is a React-based UI framework for building Web & Mobile Applications. 
 
 <!-- TOC -->
 
@@ -35,21 +35,23 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
         - [5.4.12. Full-screen presentations (COWI/ODEUM Sales Manager/ODEUM Report)](#5412-full-screen-presentations-cowiodeum-sales-managerodeum-report)
         - [5.4.13. Client State Recorder (CS)](#5413-client-state-recorder-cs)
         - [5.4.14. Client State Player (Time Travel) (SS)](#5414-client-state-player-time-travel-ss)
-        - [5.4.15. Login](#5415-login)
-        - [5.4.16. REST and components API documentation platform/style](#5416-rest-and-components-api-documentation-platformstyle)
-        - [5.4.17. REST API implementation experiments](#5417-rest-api-implementation-experiments)
-        - [5.4.18. IAM - Identity and Access Management](#5418-iam---identity-and-access-management)
-        - [5.4.19. ODEUM CodeJS experiments site in production](#5419-odeum-codejs-experiments-site-in-production)
-        - [5.4.20. Deployment](#5420-deployment)
-        - [5.4.21. JavaScript Style Guide](#5421-javascript-style-guide)
-        - [5.4.22. Debugging with Chrome in VS Code](#5422-debugging-with-chrome-in-vs-code)
-        - [5.4.23. Test setup scenarios](#5423-test-setup-scenarios)
-        - [5.4.24. Help Server (Help Items)](#5424-help-server-help-items)
-        - [5.4.25. Responsiveness](#5425-responsiveness)
-        - [5.4.26. Search Server](#5426-search-server)
-        - [5.4.27. Filename Refactoring (VSCode Extension)](#5427-filename-refactoring-vscode-extension)
-        - [5.4.28. ODEUM Slack Service](#5428-odeum-slack-service)
-        - [5.4.29. ODEUM CodeJS Tutorial Site](#5429-odeum-codejs-tutorial-site)
+        - [5.4.15. Telemetry Services](#5415-telemetry-services)
+        - [5.4.16. Login](#5416-login)
+        - [5.4.17. REST and components API documentation platform/style](#5417-rest-and-components-api-documentation-platformstyle)
+        - [5.4.18. REST API implementation experiments](#5418-rest-api-implementation-experiments)
+        - [5.4.19. IAM - Identity and Access Management](#5419-iam---identity-and-access-management)
+        - [5.4.20. App ID + Token Creator](#5420-app-id--token-creator)
+        - [5.4.21. ODEUM CodeJS website](#5421-odeum-codejs-website)
+        - [5.4.22. Deployment](#5422-deployment)
+        - [5.4.23. JavaScript Style Guide](#5423-javascript-style-guide)
+        - [5.4.24. Debugging with Chrome in VS Code](#5424-debugging-with-chrome-in-vs-code)
+        - [5.4.25. Test setup scenarios](#5425-test-setup-scenarios)
+        - [5.4.26. Help Server (Help Items)](#5426-help-server-help-items)
+        - [5.4.27. Responsiveness](#5427-responsiveness)
+        - [5.4.28. Search Server](#5428-search-server)
+        - [5.4.29. Filename Refactoring (VSCode Extension)](#5429-filename-refactoring-vscode-extension)
+        - [5.4.30. ODEUM Slack Service](#5430-odeum-slack-service)
+        - [5.4.31. ODEUM CodeJS Tutorial Site](#5431-odeum-codejs-tutorial-site)
 - [6. Apps](#6-apps)
     - [6.1. ThemeBuilder](#61-themebuilder)
     - [6.2. HelpBuilder](#62-helpbuilder)
@@ -220,6 +222,8 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
     - Image Preview (sizeable)
     - Map (pinable, sizeable (fixed/flow), source (Google, OpenStreepMap))
     - Comments (item comments)
+    - Image Carousel/Slider
+    - Tourist Guide (Intro Guide) 
 
 ### 5.4.4. Footerlabel
 - Simple component to print the app title and copyright and include a URL (link) to some external or in-app resource (/about)
@@ -256,7 +260,8 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 [Example 1](https://github.com/RyanCCollins/corporate-dashboard)
 
 ### 5.4.10. Creating NPM packages containing our framework
-- This is just an idea that using NPM might be another path to follow for making easier updates to our development of ODEUM CodeJS Apps and deployment builds.
+A big question is whether ODEUM CodeJS UI framework should transform into an NPM modulized solution or remain a documented templating/boilerplate platform. NPM might be another path to follow for making easier updates to both internal and external development of ODEUM CodeJS Apps and hence deployment builds. 
+
 - Which parts if not all can be packaged?
 - NPM package naming convention (if not just all in one package)
     - odeum-codejs
@@ -276,6 +281,14 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 import App from 'odeum-ui/components/App'
 import Icon from 'odeum-ui/components/Icon'
 import Tabs from 'odeum-ui/components/Tabs'
+import Search from 'odeum-ui/components/Search'
+import Help from 'odeum-ui/components/Help'
+import Header from 'odeum-ui/components/Header'
+import Notifications from 'odeum-ui/components/Notifications'
+
+<App>
+  {contents}
+</App>
 ```
 
 ### 5.4.11. Demo App to Connect to the ODEUM CodeJS framework
@@ -289,27 +302,33 @@ import Tabs from 'odeum-ui/components/Tabs'
 
 ### 5.4.13. Client State Recorder (CS)
 - ODEUM StateRecorder
-- A system to remotely record the client app state history (Redux) and send it to a server, so you will be able to time travel the client solution (like Redux Dev Tools) in a support/error finding prespective
+- A system to locally record the client app state history (Redux) and send it to a server, so we will be able to time travel the client solution (like Redux Dev Tools) in a support/error finding prespective
 - The state history should be stored in a client app database or localstorage with easy submission to the Client State Player (Replay / Time Travel)
-- The state recorder shoul be able to record and server store each keystroke and replay this in another client for true "continuity" experience (just like a live chat)
+- The state recorder should be able to record and server store each keystroke and replay this in another client for true "continuity" experience (just like a live chat)
 - Check NPM (redux-state-history, redux-dev-tools, redux-test-recorder)
 
 ### 5.4.14. Client State Player (Time Travel) (SS)
 - ODEUM StatePlayer
-- An App that can replay (time travel) any client app's recorde state history and display it in either:
+- An App that can replay (time travel) any client app's recorded state history and display it in either:
     - Redux Dev Tools
     - Custom Time Travel Player (own React view component)
 
-### 5.4.15. Login
+### 5.4.15. Telemetry Services
+- Enable usage data and errors to be sent to App owner
+- export const APP_ENABLE_TELEMETRY = true
+- Enable crash reports to be sent to App owner
+- export const APP_ENABLE_CRASH_REPORTS = true
+
+### 5.4.16. Login
 - OAuth experiment up against ODEUM Server
 
-### 5.4.16. REST and components API documentation platform/style
+### 5.4.17. REST and components API documentation platform/style
 - Research and propose API documentation platform and style
 
-### 5.4.17. REST API implementation experiments
+### 5.4.18. REST API implementation experiments
 - All available forces
 
-### 5.4.18. IAM - Identity and Access Management
+### 5.4.19. IAM - Identity and Access Management
 - Global User Registry (odeum.com)
 - Experiment is branching the mobile license server model from odeummobile.com out into a Rest API based server 
 which will become our global IAM on odeum.com. Today this solution takes "customerID", "userID", 
@@ -317,45 +336,48 @@ and "password" to resolve which server to communicate with.
 - In the finalized model all users will only have one account on odeum.com which will resolve to numerous apps and installations (sites). 
 - Our own ODEUM CodeJS Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM CodeJS specific experiment)). 
 
-### 5.4.19. ODEUM CodeJS experiments site in production
-- How to set up a React website in production in a real world hosting environment. Which webserver to run, NodeJS is probably required, which version, and do we want to use Express web server or Apache? 
-- Experiment "framework" is running at www.odeum-codejs.com
+### 5.4.20. App ID + Token Creator
+- Experiment with web service to create and obtain a unique App ID and TOKEN for an App that wants to be listed in the ODEUM AppMarket
 
-### 5.4.20. Deployment
+### 5.4.21. ODEUM CodeJS website
+- Design and setup the ODEUM CodeJS website
+- Experiment "framework" is currently running at www.odeum-codejs.com
+
+### 5.4.22. Deployment
 - How to deploy ODEUM CodeJS client updates to different customer clients and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
 
-### 5.4.21. JavaScript Style Guide
+### 5.4.23. JavaScript Style Guide
 - We will create a JavaScript Style Guide and linter. 
 
-### 5.4.22. Debugging with Chrome in VS Code
+### 5.4.24. Debugging with Chrome in VS Code
 - We need to create a standardized method to setup debugging with Chrome in VS Code on both Mac and Windows PC. 
 
-### 5.4.23. Test setup scenarios
+### 5.4.25. Test setup scenarios
 - Setting up and performing automated tests of components and complete framework through CRA.
 
-### 5.4.24. Help Server (Help Items)
+### 5.4.26. Help Server (Help Items)
 - The App platform for displaying context-sensitive helpitems based upon views in scenes. 
 - Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. 
 - Helpitems should be indexed and very easy to localize.
 
-### 5.4.25. Responsiveness
+### 5.4.27. Responsiveness
 With Styled-Components:
 - [Grid Styled](http://jxnblk.com/grid-styled/)
 - [Grid Styled Github](https://github.com/jxnblk/grid-styled)
 
-### 5.4.26. Search Server
+### 5.4.28. Search Server
 - The App platform for displaying helpitems based upon connected views in scenes and components 
 - Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework
 
-### 5.4.27. Filename Refactoring (VSCode Extension)
+### 5.4.29. Filename Refactoring (VSCode Extension)
 - A VSCode extension made in NodeJS and follwoing the Microsoft instructions set out here:
 - [Extending Visual Studio Code](https://code.visualstudio.com/docs/extensions/overview)
 
-### 5.4.28. ODEUM Slack Service
+### 5.4.30. ODEUM Slack Service
 - Creating a Slack App for posting messages from ODEUM Apps to a team slach channel
 - [Slack API](https://api.slack.com)
 
-### 5.4.29. ODEUM CodeJS Tutorial Site
+### 5.4.31. ODEUM CodeJS Tutorial Site
 - An App that can display simple markdown files from the ODEUM CodeJS repo and run as a tutorial site
 - Convert markdown to HTML
 - [Example 1 in React](https://github.com/acdlite/react-remarkable)

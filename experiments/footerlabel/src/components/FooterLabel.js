@@ -4,9 +4,7 @@ import { FooterLabelLink } from './FooterLabelStyles'
 import { APP_WEBSITE, APP_TITLE, APP_VERSION, APP_COPYRIGHT } from './applegends'
 
 class FooterLabel extends Component {
-
     constructor(props) {
-
         super(props)
         this.handleClick = this.handleClick.bind(this) 
         this.defaultProps = {
@@ -17,12 +15,11 @@ class FooterLabel extends Component {
 
     handleOpen(open) {
     if(open)
-        return '_new'    
+        return '_new'
     }
 
-//  TODO: State Management of some sort and clean up.
-
     handleClick(event) {
+//  TODO: State Management of some sort and clean up.
 
         if(typeof this.props.url === 'undefined') {
             /*eslint-disable*/
