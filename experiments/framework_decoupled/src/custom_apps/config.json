@@ -8,40 +8,40 @@
                 {
                     "label": "General",
                     "location": "/dashboard/general",
-                    "icon": "general",
+                    "icon": "info",
                     "fixed": true
                 },
                 {
                     "label": "Fields",
                     "location": "/dashboard/fields",
-                    "icon": "fields",
+                    "icon": "input",
                     "fixed": true
                 },
                 {
                     "label":"Workflow",
                     "location":"/dashboard/workflow",
-                    "icon":"workflow",
+                    "icon":"timeline",
                     "fixed":true
                 },                {
                     "label":"Users",
                     "location":"/dashboard/users",
-                    "icon":"users",
+                    "icon":"people",
                     "fixed":true
                 },                {
                     "label":"Operations",
                     "location":"/dashboard/operations",
-                    "icon":"operations",
+                    "icon":"code",
                     "fixed":true
                 },                {
                     "label":"Configuration",
                     "location":"/dashboard/configuration",
-                    "icon":"configuration",
+                    "icon":"settings",
                     "fixed":true
                 },
                 {
                     "label":"Design",
                     "location":"/dashboard/design",
-                    "icon":"design",
+                    "icon":"opacity",
                     "fixed":true
                 }
             ]
@@ -49,18 +49,18 @@
         {
             "name": "Forms",
             "location":"/forms/simple",
-            "icon": "tasks",
+            "icon": "layers",
             "tabs": [
   {
                     "label": "Simple Form Submit",
                     "location": "/forms/simple",
-                    "icon": "general",
+                    "icon": "info",
                     "fixed": true
                 },
                                                 {
                     "label": "Dynamic Tab Opener",
                     "location": "/forms/dynamictabopener",
-                    "icon": "general",
+                    "icon": "info",
                     "fixed": true
                 }
             ]

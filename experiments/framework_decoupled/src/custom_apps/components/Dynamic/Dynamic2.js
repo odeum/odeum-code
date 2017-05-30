@@ -17,13 +17,13 @@ export const DashboardDiv = styled.div`
 
 class Dynamic2 extends Component {
     componentWillMount(){
-this.props.updateTab(    
-    {
-        label:'Dynamic2',
-    icon:'general',
-    location:this.props.location.pathname,
-    fixed:false}
-)
+// this.props.updateTab(    
+//     {
+//         label:'Dynamic2',
+//     icon:'general',
+//     location:this.props.location.pathname,
+//     fixed:false}
+// )
 
     }
     render() {

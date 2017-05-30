@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class DynamicTabOpener extends Component {
     componentWillMount() {
-        this.props.updateTab({
-            label: 'Dynamic Tab Opener',
-            location: '/forms/dynamictabopener',
-            icon: 'general',
-            fixed: true
-        })
+        // this.props.updateTab({
+        //     label: 'Dynamic Tab Opener',
+        //     location: '/forms/dynamictabopener',
+        //     icon: 'general',
+        //     fixed: true
+        // })
         // console.log('------------------------------------')
         // console.log(this.props)
         // console.log('------------------------------------')

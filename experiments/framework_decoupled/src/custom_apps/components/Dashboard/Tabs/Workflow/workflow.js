@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class Workflow extends Component {
     componentWillMount() {
-        this.props.updateTab({
-    label: 'Workflow',
-    location: '/dashboard/workflow',
-    icon: 'workflow',
-    fixed: true
-})
+//         this.props.updateTab({
+//     label: 'Workflow',
+//     location: '/dashboard/workflow',
+//     icon: 'workflow',
+//     fixed: true
+// })
     }
     render() {
         return (

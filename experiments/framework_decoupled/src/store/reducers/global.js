@@ -29,7 +29,6 @@ export default function global(state = initialState, action) {
         //TODO Go Back on 
         case CLOSE_TAB:
             {
-               
                 return {
                     ...state,
                     tabChildren: state.tabChildren.filter((item) => item.label !== action.payload.label)

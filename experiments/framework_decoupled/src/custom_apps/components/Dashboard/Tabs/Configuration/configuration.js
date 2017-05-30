@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class Configuration extends Component {
     componentWillMount() {
-        this.props.updateTab({
-    label: 'Configuration',
-    location: '/dashboard/configuration',
-    icon: 'configuration',
-    fixed: true
-})
+//         this.props.updateTab({
+//     label: 'Configuration',
+//     location: '/dashboard/configuration',
+//     icon: 'configuration',
+//     fixed: true
+// })
     }
     render() {
         return (

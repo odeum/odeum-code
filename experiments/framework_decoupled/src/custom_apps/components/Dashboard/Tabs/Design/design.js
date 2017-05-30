@@ -4,12 +4,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 class Design extends Component {
     componentWillMount() {
-        this.props.updateTab({
-    label: 'Design',
-    location: '/dashboard/design',
-    icon: 'design',
-    fixed: true
-})
+//         this.props.updateTab({
+//     label: 'Design',
+//     location: '/dashboard/design',
+//     icon: 'design',
+//     fixed: true
+// })
     }
     render() {
         return (
