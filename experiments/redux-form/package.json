@@ -12,10 +12,11 @@
     "styled-components": "^2.0.0"
   },
   "devDependencies": {
+    "cross-env": "^5.0.0",
     "react-scripts": "1.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env NODE_PATH=src:src/components:src/containers react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
