@@ -49,12 +49,12 @@
         {
             "name": "Forms",
             "location":"/forms/simple",
-            "icon": "layers",
+            "icon": "assignment",
             "tabs": [
   {
-                    "label": "Simple Form Submit",
+                    "label": "Simple Form",
                     "location": "/forms/simple",
-                    "icon": "info",
+                    "icon": "assignment_turned_in",
                     "fixed": true
                 },
                                                 {

@@ -14,8 +14,10 @@ export const PanelDiv = styled.div`
     overflow: scroll;
 `
 export const TabLink = styled(Link)`
-    display:inline-flex;
+    display:inline-block;
     text-decoration: none;
+    width:100%;
+    height:100%;
     outline: 0;
     color: ${(props)=> props.theme.tabs.TAB_TEXT};
     font-family:  ${(props)=> props.theme.font};
@@ -25,13 +27,20 @@ export const TabLink = styled(Link)`
     ${props => props.className === 'active' && css`
         color: white;
     `}
+    padding-left: 20px;
+    padding-right: 20px;
+  
+`
+
+export const TabDiv=styled.div`
+display:inline-flex;
 `
 export const TabList = styled.ul`
     height: 40px;
     margin: 0;
     padding: 0;
     padding:20px 0px 0px 10px;
-    overflow-y: hidden;
+    overflow-y:hidden;
 `
 export const TabClose = styled.div`
     position: absolute;
@@ -48,19 +57,14 @@ export const TabLabel = styled.li`
     line-height: 40px;
     background-color:${(props)=> props.theme.tabs.TAB};
     border-radius: 5px 5px 0px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-right: 1px;
     ${props => props.className === 'active' && css`
         background-color: ${(props)=> props.theme.tabs.TAB_SELECTED};
         color: ${(props)=> props.theme.tabs.TAB_TEXT_SELECTED};
     `}
     position:relative;
+    margin-right: 1px;
 `
 
-export const TabName = styled.p`
-margin-top:0px;
-`
 export const TabIconDiv = styled.div`
    margin: 0;
     margin-top: -1px;

@@ -42,6 +42,7 @@ outline:0;
 color:white;
 width:100%;
 height:100%;
+display:block;
 `
 
 export const StyledIconDiv = styled.div`

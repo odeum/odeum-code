@@ -24,25 +24,30 @@ class TabsWrapper extends Component {
             if (tab.fixed === undefined)
             { return null }
             if (!tab.fixed)
-            { return <styled.TabClose className={active(tab)}>x</styled.TabClose> }
+            { return <styled.TabLink to="/"><styled.TabClose className={active(tab)} onClick={e => { e.preventDefault()
+                            _this.closeTab(tab) 
+                        }}>x</styled.TabClose></styled.TabLink> }
         }
         return (
             <div ref={(element) => {this.element = element}}>
             <styled.TabList >
                 {_this.children.map((tab, index) => (
-                    //TODO Fix the annoying click/load/do nothing thing by wrapping the whole TabLabel inside the TabLink
                     //TODO Notify the wrapper when entered directly to a component to properly display the activeLabel
-                    <styled.TabLabel key={index} className={active(tab)} onClick={(e)=>{e.preventDefault();this.props.updateTab(tab)}} >
-                        <styled.TabLink to={tab.location} className={active(tab)}>
-                         <styled.TabIconDiv> <styled.TabIcon icon={tab.icon} active={active(tab)}/></styled.TabIconDiv>
+                    <styled.TabLabel key={index} className={active(tab)} >
+                        <div onClick={(e)=>{e.preventDefault();this.props.updateTab(tab)}}>
+                        <styled.TabLink to={tab.location} className={active(tab)} >
+                            <styled.TabDiv>
+                         <styled.TabIconDiv> <styled.TabIcon icon={tab.icon} active={active(tab)}/> </styled.TabIconDiv>
                         {tab.label}
-                        </styled.TabLink>
+                         </styled.TabDiv>
+                        {/*</styled.TabLink>*/}
                         {/*@TODO if isFixed() call the anchor and the x*/}
-                        <styled.TabLink href="#" onClick={e => { e.preventDefault()
-                            _this.closeTab(tab) 
-                        }}>
-                            {isFixed(tab)}
+                    
                         </styled.TabLink>
+                        </div>
+                      
+                            {isFixed(tab)}
+                        
                     </styled.TabLabel>))}
             </styled.TabList>
             </div>
