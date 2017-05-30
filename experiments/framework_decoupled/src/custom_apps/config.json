@@ -28,7 +28,7 @@
                     "icon":"people",
                     "fixed":true
                 },                {
-                    "label":"Operations",
+                    "label":"Actions",
                     "location":"/dashboard/operations",
                     "icon":"code",
                     "fixed":true

@@ -23,14 +23,14 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
     - [5.4. Experiments List](#54-experiments-list)
         - [5.4.1. Codesplitting / PRPL (codesplitting)](#541-codesplitting--prpl-codesplitting)
         - [5.4.2. Framework (framework)](#542-framework-framework)
-        - [5.4.3. Themes in ODEUM CodeJS (theme)](#543-themes-in-odeum-codejs-theme)
+        - [5.4.3. Themes and themable components in ODEUM CodeJS (theme)](#543-themes-and-themable-components-in-odeum-codejs-theme)
         - [5.4.4. Footerlabel](#544-footerlabel)
         - [5.4.5. Redux Forms (redux-form)](#545-redux-forms-redux-form)
         - [5.4.6. Datagrid/Datatables](#546-datagriddatatables)
         - [5.4.7. React Drag and Drop (react-dnd)](#547-react-drag-and-drop-react-dnd)
         - [5.4.8. WYSIWYG editor (draftjs)](#548-wysiwyg-editor-draftjs)
         - [5.4.9. GraphQL + Redux](#549-graphql--redux)
-        - [5.4.10. Creating an NPM package containing our framework](#5410-creating-an-npm-package-containing-our-framework)
+        - [5.4.10. Creating NPM packages containing our framework](#5410-creating-npm-packages-containing-our-framework)
         - [5.4.11. Demo App to Connect to the ODEUM CodeJS framework](#5411-demo-app-to-connect-to-the-odeum-codejs-framework)
         - [5.4.12. Full-screen presentations (COWI/ODEUM Sales Manager/ODEUM Report)](#5412-full-screen-presentations-cowiodeum-sales-managerodeum-report)
         - [5.4.13. Client State Recorder (CS)](#5413-client-state-recorder-cs)
@@ -189,11 +189,37 @@ All initial work is done through experiments. The experiments will facilitate an
 - Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ and check the book code examples here: [Redux Book](https://github.com/redux-book/code-samples)
 
-### 5.4.3. Themes in ODEUM CodeJS (theme)
+### 5.4.3. Themes and themable components in ODEUM CodeJS (theme)
 - Experiment title: ./experiments/theme
 - How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
 - Includes production ready <Icon /> component
 - [Example of ThemeProvider used in a similar framework](https://github.com/zksailor534/react-adminlte-dash)
+- [Grommet - Example of complete design system and framework made in ReactJS](https://grommet.github.io)
+- [Ant Design - Yet another UI framework](https://ant.design)
+    - Icons
+    - Buttons
+    - Popup Windows
+    - Dropdown (text, color, font, icons, avatars)
+    - Group-Avatar (disabled - greyed out)
+    - User-Avatar (disabled - greyed out)
+    - Panel-lists (header, drag-zone, scrollable, open/close)
+    - AppMarket (AppSwitcher)
+    - Image Upload (DnD)
+    - Color palette viewer/selector
+    - Font palette viewer/selector
+    - Device Example Renderer (Phone, Tablet, Desktop)
+    - Checkbox, Radio button, On/Off
+    - Scale (two-sided handles)
+    - Editor (WYSIWYG/Code with insertable fields/actions)
+    - Date range picker (AirBnb)
+    - Language picker (multiselect)
+    - Field-Avatar (available/selected)
+    - Card (dragable, attachable (menu))
+    - Gauge (sizeable, themable)
+    - Paginator (Paging og lists and card views)
+    - Image Preview (sizeable)
+    - Map (pinable, sizeable (fixed/flow), source (Google, OpenStreepMap))
+    - Comments (item comments)
 
 ### 5.4.4. Footerlabel
 - Simple component to print the app title and copyright and include a URL (link) to some external or in-app resource (/about)
@@ -232,7 +258,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 ### 5.4.10. Creating NPM packages containing our framework
 - This is just an idea that using NPM might be another path to follow for making easier updates to our development of ODEUM CodeJS Apps and deployment builds.
 - Which parts if not all can be packaged?
-- NPM package naming convention
+- NPM package naming convention (if not just all in one package)
     - odeum-codejs
     - odeum-connect
     - odeum-api
@@ -245,6 +271,12 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
     - odeum-store
     - odeum-login
     - odeum-apps
+
+```js
+import App from 'odeum-ui/components/App'
+import Icon from 'odeum-ui/components/Icon'
+import Tabs from 'odeum-ui/components/Tabs'
+```
 
 ### 5.4.11. Demo App to Connect to the ODEUM CodeJS framework
 - ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems (schenes), search items, help items, login, routes (schenes) etc. We need a simple Demo App to test this symbiotic connection. The framework manages the state for the app 
@@ -352,6 +384,8 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Import help from HelpBuilder
 - Import search from Search Server
 - Insert developer scene in framework
+- Hot Reload in developer mode
+- Workspace Page Templates (Design system guidelines - see Grommet templates examples [Grommet templates](https://grommet.github.io/aruba/docs/templates))
 
 ## 6.4. ComponentBuilder
 - Build an App to construct a JavaScript file with a new component
@@ -473,6 +507,7 @@ We will refer to Airbnb's JavaScript style guide which is pretty strict and soli
 ## 10.1. Guidelines
 
 - [Airbnb guidelines](https://github.com/airbnb/javascript)
+- [Airbnb JSX guidelines](https://github.com/airbnb/javascript/tree/master/react)
 - [ESLint rules](http://eslint.org/docs/rules)
 - [ESLint react plugin](https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules)
 - [Styled Components linter](https://github.com/styled-components/stylelint-processor-styled-components)

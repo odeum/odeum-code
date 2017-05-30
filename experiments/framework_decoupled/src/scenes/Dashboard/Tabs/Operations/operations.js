@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Operations extends Component {
     componentWillMount() {
         this.props.updateTab({
-    label: 'Operations',
+    label: 'Actions',
     location: '/dashboard/operations',
     icon: 'handlinger',
     fixed: true
@@ -12,7 +12,7 @@ class Operations extends Component {
     render() {
         return (
             <div>
-                Operations
+                Actions
             </div>
         )
     }
