@@ -5,6 +5,7 @@ import Icon from '../../../assets/Icon'
 import { ICON_SEARCH } from '../../../assets/icons'
 
 // TODO: Use redux-form for search input
+// TODO: SearchBarInput placeholder text needs other color that bright white
 
 class HeaderSearch extends Component {
     render() {
@@ -13,7 +14,7 @@ class HeaderSearch extends Component {
             <HeaderSearchBarDiv>
                 <form>
                     <HeaderSearchBarInputWrapper>
-                        <HeaderSearchBarInput placeholder="SearchBar" />
+                        <HeaderSearchBarInput placeholder="Search for forms, reports, fields, users or comments ..." />
                     </HeaderSearchBarInputWrapper>
                 </form>
                 <HeaderSearchBarButtonDiv>
