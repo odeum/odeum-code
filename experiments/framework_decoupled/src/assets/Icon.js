@@ -5,6 +5,7 @@ import * as Icons from 'react-icons/lib/md'
 import * as iconname from './icons'
 import { ICON_DEFAULT_COLOR,ICON_ACTIVE_COLOR } from './colors'
 
+// TODO: Why is defaultProps.active changed from bool to string?
 
 class Icon extends React.Component {
 

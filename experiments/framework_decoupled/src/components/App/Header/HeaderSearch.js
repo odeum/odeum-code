@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import {HeaderSearchBarInput,HeaderSearchBarDiv,HeaderSearchBarButtonDiv,HeaderSearchBarInputWrapper} from '../styles/HeaderStyles'
+import { HeaderSearchBarInput, HeaderSearchBarDiv, HeaderSearchBarButtonDiv, HeaderSearchBarInputWrapper } from '../styles/HeaderStyles'
+
 // import {renderIcons} from '../../../assets/icons'
 import Icon from '../../../assets/Icon'
-import {ICON_SEARCH} from '../../../assets/icons'
+import { ICON_SEARCH } from '../../../assets/icons'
 // import * as colors from '../../../assets/colors'
+
 class HeaderSearch extends Component {
     render() {
         const active = 'active'
@@ -11,7 +13,7 @@ class HeaderSearch extends Component {
             <HeaderSearchBarDiv>
                 <form>
                     <HeaderSearchBarInputWrapper>
-                        <HeaderSearchBarInput placeholder="Searchbar" />
+                        <HeaderSearchBarInput placeholder="SearchBar" />
                     </HeaderSearchBarInputWrapper>
                 </form>
                 <HeaderSearchBarButtonDiv>

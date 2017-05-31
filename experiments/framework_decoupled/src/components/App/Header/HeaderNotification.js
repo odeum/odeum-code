@@ -3,7 +3,8 @@ import {HeaderNotificationDiv, HeaderNotificationIcon, HeaderNotificationBadgeSp
 // import {renderIcons} from '../../../assets/icons'
 
 import Icon from '../../../assets/Icon'
-import {ICON_NOTIFICATIONS} from '../../../assets/icons'
+import { ICON_NOTIFICATIONS_NONE } from '../../../assets/icons'
+// ICON_NOTIFICATIONS, ICON_NOTIFICATIONS_ACTIVE
 // import * as colors from '../../../assets/colors'
 
 class HeaderNotification extends Component {
@@ -12,8 +13,8 @@ class HeaderNotification extends Component {
             <HeaderNotificationDiv>
                 <HeaderNotificationIcon>
                     {/*{renderIcons('notifications','active')}*/}
-                    <Icon icon={ICON_NOTIFICATIONS} size={25} active={'no'}/>
-                    <HeaderNotificationBadgeSpan>12</HeaderNotificationBadgeSpan>
+                    <Icon icon={ICON_NOTIFICATIONS_NONE} size={35} active={'active'}/>
+                    <HeaderNotificationBadgeSpan>42</HeaderNotificationBadgeSpan>
                 </HeaderNotificationIcon>
             </HeaderNotificationDiv>
         )
