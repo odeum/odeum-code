@@ -13,7 +13,7 @@ class HeaderNotification extends Component {
             <HeaderNotificationDiv>
                 <HeaderNotificationIcon>
                     {/*{renderIcons('notifications','active')}*/}
-                    <Icon icon={ICON_NOTIFICATIONS_NONE} size={35} active={'active'}/>
+                    <Icon icon={ICON_NOTIFICATIONS_NONE} size={35} active={true}/>
                     <HeaderNotificationBadgeSpan>42</HeaderNotificationBadgeSpan>
                 </HeaderNotificationIcon>
             </HeaderNotificationDiv>

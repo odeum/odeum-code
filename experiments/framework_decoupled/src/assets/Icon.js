@@ -5,7 +5,7 @@ import * as Icons from 'react-icons/lib/md'
 import * as iconname from './icons'
 import { ICON_DEFAULT_COLOR,ICON_ACTIVE_COLOR } from './colors'
 
-// TODO: Why is defaultProps.active changed from bool to string?
+// TODO Why is defaultProps.active changed from bool to string?
 
 class Icon extends React.Component {
 
@@ -16,7 +16,7 @@ constructor(props) {
         icon: 'info',
         size: 15,
         color: ICON_DEFAULT_COLOR,
-        active: '',
+        active: false,
         style: {
        
         }
@@ -25,7 +25,7 @@ constructor(props) {
   
 setColor(active) {
     // console.log(active)
-    if(active.includes('active'))
+    if(active===true)
         {return(ICON_ACTIVE_COLOR)}
     else
         {return(this.defaultProps.color)}
@@ -168,7 +168,7 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   size: PropTypes.number,
   color: PropTypes.string, 
-  active: PropTypes.string,
+  active: PropTypes.bool,
   style: PropTypes.shape({
     verticalAlign: PropTypes.string
   })

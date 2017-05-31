@@ -23,7 +23,8 @@ export default function global(state = initialState, action) {
             return {
                 ...state,
                 tabChildren: sceneFind.tabs.concat(dynamicTabList),
-                activeScene: sceneFind.name
+                activeScene: sceneFind.name,
+                activeLabel: sceneFind.tabs[0].label
             }
         }
         //TODO Go Back on 

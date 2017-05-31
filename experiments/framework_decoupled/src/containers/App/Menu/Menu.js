@@ -22,7 +22,14 @@ class MenuContainer extends Component {
     var _this = this.props
         return (
             <styled.MenuWrapperDiv>
-                   {this.props.scenes.map((scene, index) => (<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index}/>))}
+                   {this.props.scenes.map((scene, index) => (
+                       <MenuItem 
+                       name={scene.name} 
+                       icon={scene.icon} 
+                       location={scene.location} 
+                       active={this.active(scene.name)}
+                       key={index} 
+                       onLoad={this.props.loadTabs}/>))}
             </styled.MenuWrapperDiv>
         )
     }

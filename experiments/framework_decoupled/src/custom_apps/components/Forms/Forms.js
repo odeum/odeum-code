@@ -5,8 +5,8 @@ import * as formsActions from './formsActions'
 import {FormsDiv} from './styles'
 class Forms extends Component {
     componentWillMount(){
-        console.log(this.props)
-        this.props.loadTabs('Forms')
+        // console.log(this.props)
+         this.props.loadTabs('Forms')
     }
     render() {
       //  const childWithProps = React.Children.map(this.props.children,

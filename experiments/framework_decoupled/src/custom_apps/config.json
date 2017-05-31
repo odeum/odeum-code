@@ -29,7 +29,7 @@
                     "fixed":true
                 },                {
                     "label":"Actions",
-                    "location":"/dashboard/operations",
+                    "location":"/dashboard/actions",
                     "icon":"code",
                     "fixed":true
                 },                {
@@ -54,7 +54,7 @@
   {
                     "label": "Simple Form",
                     "location": "/forms/simple",
-                    "icon": "assignment_turned_in",
+                    "icon": "assignment",
                     "fixed": true
                 },
                                                 {

@@ -8,7 +8,7 @@ import { ICON_SEARCH } from '../../../assets/icons'
 
 class HeaderSearch extends Component {
     render() {
-        const active = 'active'
+       
         return (
             <HeaderSearchBarDiv>
                 <form>
@@ -17,7 +17,7 @@ class HeaderSearch extends Component {
                     </HeaderSearchBarInputWrapper>
                 </form>
                 <HeaderSearchBarButtonDiv>
-                    <Icon icon={ICON_SEARCH} size={20} active={active}/>
+                    <Icon icon={ICON_SEARCH} size={20} active={true}/>
                 </HeaderSearchBarButtonDiv>
             </HeaderSearchBarDiv>
         )

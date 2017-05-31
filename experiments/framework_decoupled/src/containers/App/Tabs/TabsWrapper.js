@@ -19,6 +19,7 @@ class TabsWrapper extends Component {
     render() {
        
         let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '')
+        const act=(tab)=>{ return active(tab).includes('active')? true:false}
         var _this = this.props
         function isFixed(tab) {
             if (tab.fixed === undefined)
@@ -29,7 +30,7 @@ class TabsWrapper extends Component {
                         }}>x</styled.TabClose></styled.TabLink> }
         }
         return (
-            <div ref={(element) => {this.element = element}}>
+          
             <styled.TabList >
                 {_this.children.map((tab, index) => (
                     //TODO Notify the wrapper when entered directly to a component to properly display the activeLabel
@@ -37,12 +38,10 @@ class TabsWrapper extends Component {
                         <div onClick={(e)=>{e.preventDefault();this.props.updateTab(tab)}}>
                         <styled.TabLink to={tab.location} className={active(tab)} >
                             <styled.TabDiv>
-                         <styled.TabIconDiv> <styled.TabIcon icon={tab.icon} active={active(tab)}/> </styled.TabIconDiv>
+                         <styled.TabIconDiv> <styled.TabIcon icon={tab.icon} active={act(tab)}/> </styled.TabIconDiv>
                         {tab.label}
                          </styled.TabDiv>
-                        {/*</styled.TabLink>*/}
-                        {/*@TODO if isFixed() call the anchor and the x*/}
-                    
+                
                         </styled.TabLink>
                         </div>
                       
@@ -50,7 +49,7 @@ class TabsWrapper extends Component {
                         
                     </styled.TabLabel>))}
             </styled.TabList>
-            </div>
+            
         )
     }
 }
