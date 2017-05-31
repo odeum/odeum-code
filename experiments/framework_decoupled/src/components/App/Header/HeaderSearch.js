@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { HeaderSearchBarInput, HeaderSearchBarDiv, HeaderSearchBarButtonDiv, HeaderSearchBarInputWrapper } from '../styles/HeaderStyles'
 
-// import {renderIcons} from '../../../assets/icons'
 import Icon from '../../../assets/Icon'
 import { ICON_SEARCH } from '../../../assets/icons'
-// import * as colors from '../../../assets/colors'
+
+// TODO: Use redux-form for search input
 
 class HeaderSearch extends Component {
     render() {

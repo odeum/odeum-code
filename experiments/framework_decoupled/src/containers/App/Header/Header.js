@@ -9,7 +9,6 @@ import { connect } from 'react-redux'
 import * as GlobalActions from '../../../store/actions/global'
 
 class HeaderContainer extends Component {
-
         render() {
                 return (
                         <styled.HeaderDiv>
@@ -21,12 +20,13 @@ class HeaderContainer extends Component {
         }
 }
 HeaderContainer.propTypes = {
-       
 }
-const mapStateToProps = (state) => ({
 
+const mapStateToProps = (state) => ({
 })
+
 function mapDispatchToProps(dispatch) {
-        return bindActionCreators(GlobalActions, dispatch)
+    return bindActionCreators(GlobalActions, dispatch)
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)

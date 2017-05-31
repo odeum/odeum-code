@@ -1,7 +1,8 @@
-import styled,{css} from 'styled-components'
-import {Link} from 'react-router'
+import styled, { css } from 'styled-components'
+import { Link } from 'react-router'
 import Icon from '../../../assets/Icon'
 
+// TODO: Refactor active to bool
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
