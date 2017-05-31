@@ -4,19 +4,18 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class General extends Component {
-    componentWillMount(){
-//         this.props.updateTab({
+    componentWillMount() {
+//     this.props.updateTab({
 //     label: 'General',
 //     location: '/dashboard/general',
 //     icon: 'general',
 //     fixed: true
 // })
-        // console.log('------------------------------------')
-        // console.log(this.props)
-        // console.log('------------------------------------')
+// console.log('------------------------------------')
+// console.log(this.props)
+// console.log('------------------------------------')
     }
     render() {
-       
         return (
             <div>
                 General
@@ -25,10 +24,8 @@ class General extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = state => ({})
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(generalActions, dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(General)
+export default connect(mapStateToProps, mapDispatchToProps)(General)

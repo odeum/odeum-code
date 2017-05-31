@@ -26,10 +26,10 @@ class AppContainer extends Component {
         )
     }
 }
+
 AppContainer.propTypes = {
     history:PropTypes.object.isRequired,
     store:PropTypes.object.isRequired
 }
-
 
 export default AppContainer
