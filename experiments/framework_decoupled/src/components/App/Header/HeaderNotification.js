@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {HeaderNotificationDiv,HeaderNotificationIcon,HeaderNotificationBadgeSpan} from '../styles/HeaderStyles'
+import {HeaderNotificationDiv, HeaderNotificationIcon, HeaderNotificationBadgeSpan} from '../styles/HeaderStyles'
 // import {renderIcons} from '../../../assets/icons'
 
 import Icon from '../../../assets/Icon'
