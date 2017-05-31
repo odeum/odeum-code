@@ -198,6 +198,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 - [Example of ThemeProvider used in a similar framework](https://github.com/zksailor534/react-adminlte-dash)
 - [Grommet - Example of complete design system and framework made in ReactJS](https://grommet.github.io)
 - [Ant Design - Yet another UI framework](https://ant.design)
+- [Material Desifn UI - not React edition](http://www.material-ui.com/#/)
     - Icons
     - Buttons
     - Popup Windows
