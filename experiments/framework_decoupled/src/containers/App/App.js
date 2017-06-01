@@ -12,6 +12,10 @@ const rootRoute={
         childRoutes:[
             require('../../custom_apps/routes.js')
         ]
+    },
+    {
+        path:'*',
+        component: require('./NotFound').default
     }]
 }
 
@@ -21,7 +25,9 @@ class AppContainer extends Component {
         return (
             
             <Provider store={this.props.store}>
-                <Router history={this.props.history} routes={rootRoute}/>
+                <Router history={this.props.history} routes={rootRoute}>
+                
+                    </Router>
                 </Provider>
         )
     }
