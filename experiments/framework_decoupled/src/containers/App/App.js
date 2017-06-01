@@ -25,9 +25,7 @@ class AppContainer extends Component {
         return (
             
             <Provider store={this.props.store}>
-                <Router history={this.props.history} routes={rootRoute}>
-                
-                    </Router>
+                <Router history={this.props.history} routes={rootRoute}/>
                 </Provider>
         )
     }
