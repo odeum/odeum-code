@@ -8,7 +8,7 @@
                 {
                     "label": "General",
                     "location": "/dashboard/general",
-                    "icon": "info",
+                    "icon": "assignment_turned_in",
                     "fixed": true
                 },
                 {

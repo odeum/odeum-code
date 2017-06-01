@@ -1,14 +1,15 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
+import { Input, Label } from './SimpleFormStyles' 
 
 const SimpleForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>First Name</label>
+        {/*<Label>First Name</Label>*/}
         <div>
-          <Field
+          <Input
             name="firstName"
             component="input"
             type="text"
@@ -17,9 +18,9 @@ const SimpleForm = props => {
         </div>
       </div>
       <div>
-        <label>Last Name</label>
+        {/*<Label>Last Name</Label>*/}
         <div>
-          <Field
+          <Input
             name="lastName"
             component="input"
             type="text"
@@ -28,9 +29,9 @@ const SimpleForm = props => {
         </div>
       </div>
       <div>
-        <label>Email</label>
+        {/*<Label>Email</Label>*/}
         <div>
-          <Field
+          <Input
             name="email"
             component="input"
             type="email"
@@ -39,35 +40,36 @@ const SimpleForm = props => {
         </div>
       </div>
       <div>
-        <label>Sex</label>
+        {/*<Label>Sex</Label>*/}
         <div>
-          <label>
-            <Field name="sex" component="input" type="radio" value="male" />
+          <Label>
+            <Input name="sex" component="input" type="radio" value="male" />
             {' '}
             Male
-          </label>
-          <label>
-            <Field name="sex" component="input" type="radio" value="female" />
+          </Label>
+          <Label>
+            <Input name="sex" component="input" type="radio" value="female" />
             {' '}
             Female
-          </label>
+          </Label>
         </div>
       </div>
       <div>
-        <label>Favorite Color</label>
+        <br />
+        <Label>Favorite Color</Label>
         <div>
-          <Field name="favoriteColor" component="select">
-            <option />
+          <Input name="favoriteColor" component="select">
+            {/*<option />*/}
             <option value="ff0000">Red</option>
             <option value="00ff00">Green</option>
             <option value="0000ff">Blue</option>
-          </Field>
+          </Input>
         </div>
       </div>
       <div>
-        <label htmlFor="employed">Employed</label>
+        <Label htmlFor="employed">Employed</Label>
         <div>
-          <Field
+          <Input
             name="employed"
             id="employed"
             component="input"
@@ -76,9 +78,9 @@ const SimpleForm = props => {
         </div>
       </div>
       <div>
-        <label>Notes</label>
+        <Label>Notes</Label>
         <div>
-          <Field name="notes" component="textarea" />
+          <Input name="notes" component="textarea" />
         </div>
       </div>
       <div>

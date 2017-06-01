@@ -224,7 +224,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
     - Image Preview (sizeable)
     - Map (pinable, sizeable (fixed/flow), source (Google, OpenStreepMap))
     - Comments (item comments)
-    - Image Carousel/Slider
+    - Image Carousel/Slider (single image + multiple images)
     - Tourist Guide (Intro Guide) 
 
 ### 5.4.4. Footerlabel
@@ -236,7 +236,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 - [Redux Forms](http://redux-form.com/)
 
 ### 5.4.6. Datagrid/Datatables
-- Experiment with lists with large data payloads and footprints
+- Experiment with lists with large data payloads
 - Dragable / sortable / stylable
 - Redux
 - [React Virtualized](https://github.com/bvaughn/react-virtualized)
