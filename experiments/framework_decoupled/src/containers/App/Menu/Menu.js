@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import MenuItem from '../../../components/App/Menu/MenuItem'
 import PropTypes from 'prop-types'
 import * as styled from '../../../components/App/styles/MenuStyle'
-import {bindActionCreators} from 'redux'
-import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
  
 // import * as GlobalActions from '../../../store/actions/global'
 import * as MenuActions from './menuActions'
@@ -35,15 +35,19 @@ class MenuContainer extends Component {
     }
 }
 MenuContainer.propTypes = {
-       scenes:PropTypes.array,
-       active:PropTypes.string
+    scenes:PropTypes.array,
+    // TODO: active should be bool
+    active:PropTypes.string
 }
+
 const mapStateToProps = (state) =>({
-     scenes: state.global.scenes,
-     active: state.global.activeScene
+    scenes: state.global.scenes,
+    active: state.global.activeScene
 })
+
 function mapDispatchToProps(dispatch){
-    return bindActionCreators(MenuActions,dispatch)
+    return bindActionCreators(MenuActions, dispatch)
 
 }
+
 export default connect(mapStateToProps,mapDispatchToProps)(MenuContainer)

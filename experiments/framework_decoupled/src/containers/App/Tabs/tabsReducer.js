@@ -2,7 +2,7 @@
 const initialState = {
     activeLabel: 'General'
 }
-const tabs =(state=initialState, action) =>{
+const tabs = (state = initialState, action) => {
     switch(action.type)
     {
         default:

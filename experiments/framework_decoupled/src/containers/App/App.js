@@ -1,11 +1,9 @@
-
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 
-
-const rootRoute={
+const rootRoute = {
     childRoutes:[{
         path:'/',
         component: require('./Home/Home').default,
@@ -19,14 +17,12 @@ const rootRoute={
     }]
 }
 
-class AppContainer extends Component {
-    
+class AppContainer extends Component {    
     render() {
-        return (
-            
+        return (            
             <Provider store={this.props.store}>
-                <Router history={this.props.history} routes={rootRoute}/>
-                </Provider>
+                <Router history={this.props.history} routes={rootRoute} />
+            </Provider>
         )
     }
 }
