@@ -31,7 +31,7 @@ class TabsWrapper extends Component {
             if (!tab.fixed)
             { return <styled.TabCloseLink to="/"><styled.TabClose className={active(tab)} onClick={e => { e.preventDefault()
                             _this.closeTab(tab) 
-                        }}><Icon icon={ICON_CLOSE} size={12}/></styled.TabClose></styled.TabCloseLink> }
+                        }}><Icon icon={ICON_CLOSE} active={act(tab)} size={12}/></styled.TabClose></styled.TabCloseLink> }
 // DONE refactor x to real small icon for close
         }
         return (          
