@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class Operations extends Component {
     componentWillMount() {
-//         this.props.updateTab({
-//     label: 'Operations',
-//     location: '/dashboard/operations',
-//     icon: 'operations',
-//     fixed: true
-// })
+        this.props.updateTab({
+    label: 'Actions',
+    location: '/dashboard/actions',
+    icon: 'code',
+    fixed: true
+})
     }
     render() {
         return (

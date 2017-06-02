@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class Users extends Component {
     componentWillMount() {
-//         this.props.updateTab({
-//     label: 'Users',
-//     location: '/dashboard/users',
-//     icon: 'users',
-//     fixed: true
-// })
+        this.props.updateTab({
+    label: 'Users',
+    location: '/dashboard/users',
+    icon: 'people',
+    fixed: true
+})
     }
     render() {
         return (

@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import {Link} from 'react-router'
+import * as colors from '../../../assets/colors'
 export const HeaderDiv = styled.div`
   height: 100px;
   width: 100%;
-  background-color: #2c3e50;
+  background-color: ${colors.CARD_HEADER};
   display: block;
 ` 
 
