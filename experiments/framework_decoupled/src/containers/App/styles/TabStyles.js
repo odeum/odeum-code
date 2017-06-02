@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
 import Icon from '../../../assets/Icon'
 
-// TODO: Refactor active to bool
+// TODO Refactor active to bool
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
@@ -45,9 +45,8 @@ export const TabList = styled.ul`
 `
 export const TabClose = styled.div`
     position: absolute;
-    top:-15px;
-    right:5px;
-    font-size:12px;
+    top:-13px;
+    right:3px;
     ${props => props.className === 'active' && css`
       color:white;
     `}
