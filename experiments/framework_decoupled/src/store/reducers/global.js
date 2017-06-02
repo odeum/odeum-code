@@ -14,6 +14,7 @@ var _ = require('lodash')
 export default function global(state = initialState, action) {
     switch (action.type) {
         case LOAD_DEFAULT_TABS: {
+            //TODO Refactor to ADD_TAB accomodation
             let sceneFind = _.find(config.scenes, function (scene) {
                 return scene.name === action.payload
             })
@@ -24,7 +25,7 @@ export default function global(state = initialState, action) {
                 ...state,
                 tabChildren: sceneFind.tabs.concat(dynamicTabList),
                 activeScene: sceneFind.name,
-                activeLabel: sceneFind.tabs[0].label
+               // activeLabel: sceneFind.tabs[0].label
             }
         }
         //TODO Go Back on 

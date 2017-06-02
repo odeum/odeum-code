@@ -30,7 +30,21 @@ export const TabLink = styled(Link)`
     `}
     padding-left: 20px;
     padding-right: 20px;
-  
+`
+export const TabCloseLink = styled(Link)`
+    display:inline-block;
+    text-decoration: none;
+    width:100%;
+    height:100%;
+    outline: 0;
+    color: ${(props)=> props.theme.tabs.TAB_TEXT};
+    font-family:  ${(props)=> props.theme.font};
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 300;
+    ${props => props.className === 'active' && css`
+        color: white;
+    `}
 `
 
 export const TabDiv=styled.div`
