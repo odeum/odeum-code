@@ -4,9 +4,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ODEUMTab from './ODEUMTab'
 class Configuration extends ODEUMTab {
-    constructor(props) {
-        super(props)
-    }
+    // constructor(props) {
+    //     super(props)
+    // }
     componentWillMount() {
         this.props.updateTab({
     label: 'Configuration',

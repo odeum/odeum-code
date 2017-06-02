@@ -8,13 +8,14 @@ class DashboardContainer extends Component {
 
     componentWillMount() {
         this.props.loadTabs('Dashboard')
+
     }
     render() {
-        const childWithProps = React.Children.map(this.props.children,
-        (child)=> React.cloneElement(child,{updateTabWrapper:this.props.updateTab}))
+        // const childWithProps = React.Children.map(this.props.children,
+        // (child)=> React.cloneElement(child,{updateTabWrapper:this.props.updateTab}))
         return (
             <DashboardDiv>
-            {childWithProps}
+            {this.props.children}
             </DashboardDiv>
         )
     }
