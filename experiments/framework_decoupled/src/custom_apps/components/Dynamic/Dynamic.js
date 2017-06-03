@@ -19,11 +19,7 @@ class Dynamic extends Component {
     componentWillMount(){
 this.props.updateTab(    
     {label:'Dynamic',
-<<<<<<< HEAD
     icon:'assignment',
-=======
-    icon:'info',
->>>>>>> 520fc6cfba21787886652e7fa4d54d8a9ebeb151
     location:this.props.location.pathname,
     fixed:false}
 )
