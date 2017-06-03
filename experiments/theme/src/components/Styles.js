@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import * as colors from './colors'
 
-export const Section = styled.p`
+export const Wrapper = styled.section`
 color: ${colors.TAB_SELECTED};
-padding: 4rem;
+padding: 0rem;
 width: 100%;
-height: 50px;
+height: 100px;
 background: ${colors.WORKSPACE};
 `

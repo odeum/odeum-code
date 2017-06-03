@@ -15,6 +15,10 @@ export const TAB_SELECTED = '#3B97D3'
 
 export const SEARCHBAR = '#34495D'
 
+// BUTTON COLORS
+export const BUTTON_PRIMARY = '#3B97D3'
+export const BUTTON_PRIMARY_HOVER = '81C1EA'
+
 // ICON COLORS
 export const ICON_ACTIVE_COLOR = '#FFFFFF'
 export const ICON_DEFAULT_COLOR = '#34495D'

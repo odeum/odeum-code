@@ -86,7 +86,7 @@ export const Button2 = styled.button`
   text-decoration: none;
 
 &:focus {
-    outline-color: ${colors.CLOUDY_LIGHT}; /* transparent */
+    outline-color: ${colors.DREAMY_BLUE}; /* transparent */
     outline-style: solid; /* none, solid */
     /*outline: 10px;*/
     border-radius: 4px;
