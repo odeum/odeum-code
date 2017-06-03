@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class General extends Component {
     componentWillMount() {
-//     this.props.updateTab({
-//     label: 'General',
-//     location: '/dashboard/general',
-//     icon: 'general',
-//     fixed: true
-// })
+    this.props.updateTab({
+    label: 'General',
+    location: '/dashboard/general',
+    icon: 'assignment_turned_in',
+    fixed: true
+})
 // console.log('------------------------------------')
 // console.log(this.props)
 // console.log('------------------------------------')

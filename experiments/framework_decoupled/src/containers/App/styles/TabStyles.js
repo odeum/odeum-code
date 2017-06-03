@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
 import Icon from '../../../assets/Icon'
 
-// TODO: Refactor active to bool
+// TODO Refactor active to bool
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
@@ -30,7 +30,21 @@ export const TabLink = styled(Link)`
     `}
     padding-left: 20px;
     padding-right: 20px;
-  
+`
+export const TabCloseLink = styled(Link)`
+    display:inline-block;
+    text-decoration: none;
+    width:100%;
+    height:100%;
+    outline: 0;
+    color: ${(props)=> props.theme.tabs.TAB_TEXT};
+    font-family:  ${(props)=> props.theme.font};
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 300;
+    ${props => props.className === 'active' && css`
+        color: white;
+    `}
 `
 
 export const TabDiv=styled.div`
@@ -45,9 +59,8 @@ export const TabList = styled.ul`
 `
 export const TabClose = styled.div`
     position: absolute;
-    top:-15px;
-    right:5px;
-    font-size:12px;
+    top:-13px;
+    right:3px;
     ${props => props.className === 'active' && css`
       color:white;
     `}

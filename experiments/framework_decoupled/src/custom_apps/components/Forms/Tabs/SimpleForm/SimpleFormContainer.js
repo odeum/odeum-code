@@ -7,12 +7,12 @@ import SimpleForm from './SimpleForm'
 
 class SimpleFormContainer extends Component {
     componentWillMount(){
-//         this.props.updateTab({
-//     label: 'Simple Form Submit',
-//     location: '/forms/simple',
-//     icon: 'general',
-//     fixed: true
-// })
+        this.props.updateTab({
+    label: 'Simple Form',
+    location: '/forms/simple',
+    icon: 'assignment',
+    fixed: true
+})
         // console.log('------------------------------------')
       //   console.log(this.props)
         // console.log('------------------------------------')

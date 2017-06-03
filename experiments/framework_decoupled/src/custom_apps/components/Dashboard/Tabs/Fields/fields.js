@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class Fields extends Component {
     componentWillMount() {
-//         this.props.updateTab({
-//     label: 'Fields',
-//     location: '/dashboard/fields',
-//     icon: 'fields',
-//     fixed: true
-// })
+        this.props.updateTab({
+    label: 'Fields',
+    location: '/dashboard/fields',
+    icon: 'input',
+    fixed: true
+})
     }
     render() {
         return (

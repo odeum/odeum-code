@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 
 class DynamicTabOpener extends Component {
     componentWillMount() {
-        // this.props.updateTab({
-        //     label: 'Dynamic Tab Opener',
-        //     location: '/forms/dynamictabopener',
-        //     icon: 'general',
-        //     fixed: true
-        // })
+        this.props.updateTab({
+            label: 'Dynamic Tab Opener',
+            location: '/forms/dynamictabopener',
+            icon: 'info',
+            fixed: true
+        })
         // console.log('------------------------------------')
         // console.log(this.props)
         // console.log('------------------------------------')
@@ -26,7 +26,11 @@ class DynamicTabOpener extends Component {
                         this.props.updateTab({
                             label: 'Dynamic',
                             location: '/forms/dynamic',
+<<<<<<< HEAD
                             icon: 'assignment',
+=======
+                            icon: 'info',
+>>>>>>> 520fc6cfba21787886652e7fa4d54d8a9ebeb151
                             fixed: false
                         })
                     }}>DO THE MAGIC TRICK </button>
@@ -35,7 +39,11 @@ class DynamicTabOpener extends Component {
                         this.props.updateTab({
                             label: 'Dynamic2',
                             location: '/forms/dynamic2',
+<<<<<<< HEAD
                             icon: 'assignment',
+=======
+                            icon: 'info',
+>>>>>>> 520fc6cfba21787886652e7fa4d54d8a9ebeb151
                             fixed: false
                         })
                     }}>DO THE MAGIC TRICK 2</button>

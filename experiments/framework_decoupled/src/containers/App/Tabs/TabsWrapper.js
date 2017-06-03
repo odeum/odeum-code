@@ -4,19 +4,24 @@ import * as styled from '../styles/TabStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as tabsActions from './tabsActions'
+import * as colors from '../../../assets/colors'
+import {ICON_CLOSE} from  '../../../assets/icons'
+import Icon from '../../../assets/Icon'
 // import { renderIcons } from '../../../assets/icons'
 
-// TODO: Refactor active to bool and use consts for colors
+// TODO Refactor active to bool and use consts for colors
+
 class TabsWrapper extends Component {
     icoColor(className) {
         if (className.includes('active'))
-        { return ('white') }
+        { return (colors.ICON_ACTIVE_COLOR) }
         else {
-            return ('#34495d')
+            return (colors.ICON_DEFAULT_COLOR)
         }
     }
 
-    render() {       
+    render() { 
+     
         let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '')
         const act = (tab) => { return active(tab).includes('active')? true:false}
         var _this = this.props
@@ -24,15 +29,15 @@ class TabsWrapper extends Component {
             if (tab.fixed === undefined)
             { return null }
             if (!tab.fixed)
-            { return <styled.TabLink to="/"><styled.TabClose className={active(tab)} onClick={e => { e.preventDefault()
+            { return <styled.TabCloseLink to="/"><styled.TabClose className={active(tab)} onClick={e => { e.preventDefault()
                             _this.closeTab(tab) 
-                        }}>x</styled.TabClose></styled.TabLink> }
-// TODO: refactor x to real small icon for close
+                        }}><Icon icon={ICON_CLOSE} active={act(tab)} size={12}/></styled.TabClose></styled.TabCloseLink> }
+// DONE refactor x to real small icon for close
         }
         return (          
             <styled.TabList>
                 {_this.children.map((tab, index) => (
-//TODO: Notify the wrapper when entered directly to a component to properly display the activeLabel
+//TODO Notify the wrapper when entered directly to a component to properly display the activeLabel
                     <styled.TabLabel key={index} className={active(tab)}>
                         <div onClick={(e) => {e.preventDefault();this.props.updateTab(tab)}}>
                         <styled.TabLink to={tab.location} className={active(tab)}>
