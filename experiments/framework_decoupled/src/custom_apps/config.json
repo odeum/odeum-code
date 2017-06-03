@@ -60,7 +60,7 @@
                                                 {
                     "label": "Dynamic Tab Opener",
                     "location": "/forms/dynamictabopener",
-                    "icon": "info",
+                    "icon": "assignment",
                     "fixed": true
                 }
             ]

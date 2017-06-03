@@ -1,5 +1,6 @@
 // Button.js
 import styled from 'styled-components'
+import * as colors from './colors'
 
 const Button = styled.button`
   /* Adjust the Button styling based on the theme */
@@ -30,4 +31,77 @@ const Button = styled.button`
       }
   }
 `
+
+export const Button1 = styled.button`
+
+    background: ${(props) => props.theme.background || 'lightblue'}
+	border: 1px solid ${(props) => props.theme.background || 'lightblue'}
+	border-radius: 4px;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	line-height: 2.3em;
+	height: 25px;
+	margin-bottom: 0;
+	overflow: hidden; 
+	padding: 10px 20px;
+	text-align: center;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+	-webkit-appearance: none;
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&.is-focus {
+		color: ${(props) => props.theme.button || 'white'}
+		text-decoration: none;
+	}
+
+	&:active,
+	&.active,
+	&.is-active {
+		background-image: none;
+		outline: 0;
+	}
+
+	&.disabled,
+	&[disabled] {
+		opacity: .4;
+		pointer-events: none;
+	}
+`
+
+export const Button2 = styled.button`
+ -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  font-family: Arial;
+  color: ${(props) => props.theme.button || 'white'}
+  font-size: 34px;
+  background: ${(props) => props.theme.background || 'lightblue'}
+  padding: 10px 20px 10px 20px;
+  border: none;
+  text-decoration: none;
+
+&:focus {
+    outline-color: ${colors.CLOUDY_LIGHT}; /* transparent */
+    outline-style: solid; /* none, solid */
+    /*outline: 10px;*/
+    border-radius: 4px;
+  }
+
+&:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+`
+
+
 export default Button

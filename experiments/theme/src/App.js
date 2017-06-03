@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from './components/theme'
-import Button from './components/Button'
+import Button, { Button1, Button2 } from './components/Button'
+import { Section } from './components/Styles'
 import Icon from './components/Icon'
 import * as iconname from './components/icons'
 import * as colors from './components/colors'
@@ -26,9 +27,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.prettifyIconName(iconname.ICON_MENU))
+    // console.log(this.prettifyIconName(iconname.ICON_MENU))
     return (
       <div>
+        <Section />
+            <Button1>Hello World</Button1>
+            <Button2>Hello World 2</Button2>      
+     
       <Layout>
 
         <div>

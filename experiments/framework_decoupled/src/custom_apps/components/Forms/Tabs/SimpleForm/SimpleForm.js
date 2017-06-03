@@ -7,41 +7,39 @@ const SimpleForm = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        {/*<Label>First Name</Label>*/}
-        <div>
+        <Label>First Name:</Label>
+        {/*<div>*/}
           <Input
             name="firstName"
             component="input"
             type="text"
-            placeholder="First Name"
-          />
-        </div>
+            placeholder="First Name" />
+        {/*</div>*/}
       </div>
       <div>
-        {/*<Label>Last Name</Label>*/}
-        <div>
+        <Label>Last Name:</Label>
+        {/*<div>*/}
           <Input
             name="lastName"
             component="input"
             type="text"
             placeholder="Last Name"
           />
-        </div>
+        {/*</div>*/}
       </div>
       <div>
-        {/*<Label>Email</Label>*/}
-        <div>
+        <Label>Email:</Label>
+        {/*<div>*/}
           <Input
             name="email"
             component="input"
             type="email"
-            placeholder="Email"
-          />
-        </div>
+            placeholder="Email" />
+        {/*</div>*/}
       </div>
       <div>
-        {/*<Label>Sex</Label>*/}
-        <div>
+        <Label>Sex</Label>
+        {/*<div>*/}
           <Label>
             <Input name="sex" component="input" type="radio" value="male" />
             {' '}
@@ -52,32 +50,27 @@ const SimpleForm = props => {
             {' '}
             Female
           </Label>
-        </div>
+        {/*</div>*/}
       </div>
       <div>
         <br />
         <Label>Favorite Color</Label>
-        <div>
+        {/*<div>*/}
           <Input name="favoriteColor" component="select">
             {/*<option />*/}
             <option value="ff0000">Red</option>
             <option value="00ff00">Green</option>
             <option value="0000ff">Blue</option>
           </Input>
-        </div>
-      </div>
+        {/*</div>*/}
+      </div><br />
       <div>
         <Label htmlFor="employed">Employed</Label>
-        <div>
-          <Input
-            name="employed"
-            id="employed"
-            component="input"
-            type="checkbox"
-          />
-        </div>
+        {/*<div>*/}
+          <Input name="employed" id="employed" component="input" type="checkbox" />
+        {/*</div>*/}
       </div>
-      <div>
+      <div><br />
         <Label>Notes</Label>
         <div>
           <Input name="notes" component="textarea" />
@@ -94,5 +87,5 @@ const SimpleForm = props => {
 }
 
 export default reduxForm({
-  form: 'simple', // a unique identifier for this form
+  form: 'simpleForm', // a unique identifier for this form
 })(SimpleForm)

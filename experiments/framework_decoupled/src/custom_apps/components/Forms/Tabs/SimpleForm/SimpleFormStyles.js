@@ -5,9 +5,9 @@ import styled from 'styled-components'
 
 export const Input = styled(Field)`
     font-family: 'Source Sans Pro';
-    font-size: 1.20em;
-    padding: 0.5em;
-    margin: 0.5em;
+    font-size: 1.05rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
     color: #2C3E50;
     background: #E3E5E5;
     border: none;
@@ -20,11 +20,11 @@ export const Input = styled(Field)`
 
 export const Label = styled.label`
     font-family: 'Source Sans Pro';
-    font-size: 1.20em;
-    padding: 0.5em;
-    margin: 0.5em;
+    font-size: 1.05rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
     color: #2C3E50;
-    background: #E3E5E5;
+    background: #ECF0F1;
     border: 1px;
     border-radius: 0px;
 `

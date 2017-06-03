@@ -26,7 +26,7 @@ class DynamicTabOpener extends Component {
                         this.props.updateTab({
                             label: 'Dynamic',
                             location: '/forms/dynamic',
-                            icon: 'general',
+                            icon: 'assignment',
                             fixed: false
                         })
                     }}>DO THE MAGIC TRICK </button>
@@ -35,7 +35,7 @@ class DynamicTabOpener extends Component {
                         this.props.updateTab({
                             label: 'Dynamic2',
                             location: '/forms/dynamic2',
-                            icon: 'general',
+                            icon: 'assignment',
                             fixed: false
                         })
                     }}>DO THE MAGIC TRICK 2</button>
