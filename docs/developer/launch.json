@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach Chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "name": "Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/experiments/footerlabel/src",
+            "userDataDir": "${workspaceRoot}/.vscode/chrome",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        }
+    ]
+}
