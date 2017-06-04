@@ -11,10 +11,18 @@ export const WORKSPACE = '#ECF0F1'
 export const MENUBAR_SELECTED = '#81C1EA' 
 
 export const TAB = '#E3E5E5'
+export const TAB_HOVER = '#81C1EA'
 export const TAB_SELECTED = '#3B97D3'
 export const TAB_TEXT ='#5E5E5E'
 export const TAB_TEXT_SELECTED = '#FFFFFF'
+
+// SEARCH COLORS
 export const SEARCHBAR = '#34495D'
+
+// BUTTON COLORS
+export const BUTTON_PRIMARY = '#3B97D3'
+export const BUTTON_PRIMARY_HOVER = '#81C1EA'
+export const BUTTON_PRIMARY_FOCUS = '#81C1EA'
 
 // ICON COLORS
 export const ICON_ACTIVE_COLOR = '#FFFFFF'

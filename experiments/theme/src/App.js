@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import theme from './components/theme'
-import Button, { Button1, Button2 } from './components/Button'
+import Button from './components/Button'
 import { Wrapper } from './components/Styles'
 import Icon from './components/Icon'
 import * as iconname from './components/icons'
@@ -31,7 +31,9 @@ class App extends Component {
     return (
       <div>
         <Wrapper>
-            <Button2>Hello World 2</Button2>
+            <Button>Hello World</Button>
+            <Button>Hello World 2</Button>
+            <Button>Hello World 3</Button>
         </Wrapper>
       <Layout>
 
