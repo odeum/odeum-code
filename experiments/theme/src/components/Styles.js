@@ -3,7 +3,7 @@ import * as colors from './colors'
 
 export const Wrapper = styled.section`
     color: ${colors.TAB_SELECTED};
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
     height: 100px;
     background: ${colors.WORKSPACE};
