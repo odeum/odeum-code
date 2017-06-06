@@ -17,7 +17,7 @@ constructor(props) {
         active: false,
         style: {
             verticalAlign: '-5px',           
-            paddingRight: '10px'
+            paddingRight: '8px'
         }
     }    
   }
@@ -150,9 +150,16 @@ switch (name) {
     }
 }
 
-// Icon.defaultProps = {
-//   name: 'info'
-// }
+Icon.defaultProps = {
+        name: 'info',
+        size: 75,
+        color: ICON_DEFAULT_COLOR,
+        active: false,
+        style: {
+            verticalAlign: '-5px',           
+            paddingRight: '8px'
+        }
+    }
 
 Icon.propTypes = {
   name: PropTypes.string.isRequired,

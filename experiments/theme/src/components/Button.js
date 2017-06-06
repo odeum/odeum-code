@@ -8,10 +8,10 @@ const Button = styled.button`
     border-radius: 4px;
     font-family: Source Sans Pro;
     font-weight: 300;
-    color: ${(props) => props.theme.button.color || 'white'}
-    font-size: 34px;
-    background: ${(props) => props.theme.button.background || colors.BUTTON_PRIMARY}
-    padding: 10px 20px 10px 20px;
+    color: ${(props) => props.theme.buttoncolor || 'white'}
+    font-size: 18px;
+    background: ${(props) => props.theme.buttonbackground || colors.BUTTON_PRIMARY}
+    padding: 10px 20px 10px 15px; /* top, right, buttom, left */
     margin-right: 0.7rem;
     border: none;
     text-decoration: none;
@@ -24,7 +24,7 @@ const Button = styled.button`
 
     /*&.is-active,
     &.active,*/
-    &:active {        
+    &&:active {        
         background: ${darken(0.1, colors.BUTTON_PRIMARY)};
         border-color: ${darken(0.1, colors.BUTTON_PRIMARY)};
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -42,7 +42,7 @@ export const ButtonGreen = styled.button`
     border-radius: 4px;
     font-family: Source Sans Pro;
     color: ${(props) => props.theme.buttoncolor || 'white'}
-    font-size: 34px;
+    font-size: 18px;
     background: ${(props) => props.theme.buttonbackground || colors.BUTTON_ALTERNATIVE}
     padding: 10px 20px 10px 20px;
     margin-right: 0.7rem;
@@ -55,8 +55,8 @@ export const ButtonGreen = styled.button`
         outline: none;
     }
 
-    &.is-active,
-    &:active {
+    &&.is-active,
+    &&:active {
         background: #e6e6e6; /*${darken(0.1, colors.BUTTON_ALTERNATIVE)};*/
         border-color: ${darken(0.1, colors.BUTTON_ALTERNATIVE)};
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);

@@ -19,8 +19,8 @@ const theme = {
 //  style={{verticalAlign: '-6px', paddingRight: '20px'}} 
 
   iconstyle: {
-      verticalAlign: '-6px',
-      paddingRight: '10px'
+      verticalAlign: '-3px', /* -10% */
+      paddingRight: '6px'
     }
 }
 
