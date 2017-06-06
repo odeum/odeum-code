@@ -33,13 +33,7 @@ getSubComponent(name, size) {
 // All theme available icons must be in this switch
 
 switch (name) {    
-    case iconname.ICON_MENU: {
-        return <Icons.MdMenu 
-            size={size || this.defaultProps.size} 
-            color={this.setColor(this.props.active) || this.defaultProps.color} 
-            style={this.props.style || this.defaultProps.style} />
-    }
-    
+    case iconname.ICON_MENU: return <Icons.MdMenu size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />    
     case iconname.ICON_SETTINGS: return <Icons.MdSettings size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
     case iconname.ICON_INPUT: return <Icons.MdInput size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
     case iconname.ICON_TIMELINE: return <Icons.MdTimeline size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
@@ -156,6 +150,10 @@ switch (name) {
     }
 }
 
+// Icon.defaultProps = {
+//   name: 'info'
+// }
+
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
@@ -166,7 +164,6 @@ Icon.propTypes = {
     paddingRight: PropTypes.string
   })
 }
-
 export default Icon
 
 

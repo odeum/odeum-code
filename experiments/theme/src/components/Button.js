@@ -8,9 +8,9 @@ const Button = styled.button`
     border-radius: 4px;
     font-family: Source Sans Pro;
     font-weight: 300;
-    color: ${(props) => props.theme.buttoncolor || 'white'}
+    color: ${(props) => props.theme.button.color || 'white'}
     font-size: 34px;
-    background: ${(props) => props.theme.buttonbackground || colors.BUTTON_PRIMARY}
+    background: ${(props) => props.theme.button.background || colors.BUTTON_PRIMARY}
     padding: 10px 20px 10px 20px;
     margin-right: 0.7rem;
     border: none;

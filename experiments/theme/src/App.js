@@ -8,6 +8,7 @@ import * as iconname from './components/icons'
 import * as colors from './components/colors'
 
 class Button2 extends Component {
+
     render() {        
         return (
             <Button>
@@ -42,9 +43,9 @@ class App extends Component {
     return (
       <div>
         <Wrapper>
-            {/*<Button><Icon icon='dashboard' size={34} color={colors.TAB_COLOR_6} active={true} />Dashboard</Button>
+            <Button><Icon icon='dashboard' size={34} color={colors.TAB_COLOR_6} active={true} />Dashboard</Button>
             <Button><Icon icon={iconname.ICON_MAIL_OUTLINE} size={34} color={colors.BUTTON_TEXT} active={true} style={theme.iconstyle} />Task New Meeting</Button>
-            <Button><Icon icon={iconname.ICON_ASSIGNMENT} size={34} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-6px', paddingRight: '20px'}} />Forms</Button>*/}
+            <Button><Icon icon={iconname.ICON_ASSIGNMENT} size={34} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-6px', paddingRight: '20px'}} />Forms</Button>
             <Button2 icon={iconname.ICON_MAIL_OUTLINE} size={34}>Button 2</Button2>
             <ButtonGreen>Green Button</ButtonGreen>
         </Wrapper>
@@ -54,7 +55,7 @@ class App extends Component {
           <Text>See how the Button below is following the theme!</Text>
           
           <Button>Themed Button</Button>
-          <Button2 icon={iconname.ICON_MAIL_OUTLINE} size={34}>Child prop</Button2>
+          <Button2 icon={iconname.ICON_ASSIGNMENT_TURNED_IN} size={34}>Child prop</Button2>
  {/*         
           <br /><br />
           
