@@ -20,9 +20,14 @@ export const TAB_TEXT_SELECTED = '#FFFFFF'
 export const SEARCHBAR = '#34495D'
 
 // BUTTON COLORS
+export const BUTTON_TEXT = '#FFFFFF'
 export const BUTTON_PRIMARY = '#3B97D3'
 export const BUTTON_PRIMARY_HOVER = '#81C1EA'
 export const BUTTON_PRIMARY_FOCUS = '#81C1EA'
+
+export const BUTTON_ALTERNATIVE = '#13A085'
+export const BUTTON_ALTERNATIVE_HOVER = '#25B89A'
+export const BUTTON_ALTERNATIVE_FOCUS = '#25B89A'
 
 // ICON COLORS
 export const ICON_ACTIVE_COLOR = '#FFFFFF'

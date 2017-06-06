@@ -7,10 +7,21 @@ import Icon from './components/Icon'
 import * as iconname from './components/icons'
 import * as colors from './components/colors'
 
+class Button2 extends Component {
+    render() {        
+        return (
+            <Button>
+                <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconstyle} />{this.props.children}
+            </Button>
+        )
+    }
+}
+
 const Text = styled.p`
   margin: 0rem 0.38rem
   font-size: 1rem
   font-family: ${(props) => props.theme.font || 'sans-serif'}
+  padding: 10px 10px 10px 10px
 `
 
 const Layout = ({children}) => {  
@@ -31,17 +42,22 @@ class App extends Component {
     return (
       <div>
         <Wrapper>
-            <Button>Hello World</Button>
-            <Button alternative>Hello World 2</Button>
-            <Button>Hello World 3</Button>
-            <ButtonGreen>Green World</ButtonGreen>
+            {/*<Button><Icon icon='dashboard' size={34} color={colors.TAB_COLOR_6} active={true} />Dashboard</Button>
+            <Button><Icon icon={iconname.ICON_MAIL_OUTLINE} size={34} color={colors.BUTTON_TEXT} active={true} style={theme.iconstyle} />Task New Meeting</Button>
+            <Button><Icon icon={iconname.ICON_ASSIGNMENT} size={34} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-6px', paddingRight: '20px'}} />Forms</Button>*/}
+            <Button2 icon={iconname.ICON_MAIL_OUTLINE} size={34}>Button 2</Button2>
+            <ButtonGreen>Green Button</ButtonGreen>
         </Wrapper>
       <Layout>
 
         <div>
           <Text>See how the Button below is following the theme!</Text>
+          
           <Button>Themed Button</Button>
+          <Button2 icon={iconname.ICON_MAIL_OUTLINE} size={34}>Child prop</Button2>
+ {/*         
           <br /><br />
+          
           <Text>And now the icons with mixed sizes and colors (props)</Text>
     
           <Icon icon={iconname.ICON_MENU} size={50} color={colors.GAUGE} active={true} />
@@ -161,13 +177,13 @@ class App extends Component {
 
           <Icon icon='close' size={50} color={colors.DREAMY_BLUE} active={true} />
           <Icon icon='notifications' active={true} />          
-          <Icon icon='' color={colors.DREAMY_BLUE} active={true} />
+          <Icon icon='' color={colors.DREAMY_BLUE} active={true} /> 
 
           <br /><br />
           <Text>Provoking prop type errors in the console ...</Text>
           <Icon icon='' size={'50'} active={true} />
           <Icon />
-
+*/}
         </div>
       </Layout>
       <br /><br />

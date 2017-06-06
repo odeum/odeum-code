@@ -6,10 +6,11 @@ const Button = styled.button`
     -webkit-border-radius: 4;
     -moz-border-radius: 4;
     border-radius: 4px;
-    font-family: Arial;
-    color: ${(props) => props.theme.button.color || 'white'}
+    font-family: Source Sans Pro;
+    font-weight: 300;
+    color: ${(props) => props.theme.buttoncolor || 'white'}
     font-size: 34px;
-    background: ${(props) => props.theme.button.background || colors.BUTTON_PRIMARY}
+    background: ${(props) => props.theme.buttonbackground || colors.BUTTON_PRIMARY}
     padding: 10px 20px 10px 20px;
     margin-right: 0.7rem;
     border: none;
@@ -21,8 +22,9 @@ const Button = styled.button`
         outline: none;
     }
 
-    &.is-active,
-    &:active {
+    /*&.is-active,
+    &.active,*/
+    &:active {        
         background: ${darken(0.1, colors.BUTTON_PRIMARY)};
         border-color: ${darken(0.1, colors.BUTTON_PRIMARY)};
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -31,13 +33,6 @@ const Button = styled.button`
 
     &:hover {
     background: ${colors.BUTTON_PRIMARY_HOVER};
-    /*box-shadow: 0 1px 0 rgba(0,0,0,0.1);*/
-    /*  background-image: -webkit-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: -moz-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: -ms-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: -o-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: linear-gradient(to bottom, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    */  text-decoration: none;
     }
 `
 
@@ -45,10 +40,10 @@ export const ButtonGreen = styled.button`
     -webkit-border-radius: 4;
     -moz-border-radius: 4;
     border-radius: 4px;
-    font-family: Arial;
-    color: ${(props) => props.theme.button || 'white'}
+    font-family: Source Sans Pro;
+    color: ${(props) => props.theme.buttoncolor || 'white'}
     font-size: 34px;
-    background: ${(props) => props.theme.background || colors.BUTTON_ALTERNATIVE}
+    background: ${(props) => props.theme.buttonbackground || colors.BUTTON_ALTERNATIVE}
     padding: 10px 20px 10px 20px;
     margin-right: 0.7rem;
     border: none;
@@ -75,17 +70,7 @@ export const ButtonGreen = styled.button`
 
     &:hover {
     background: ${colors.BUTTON_ALTERNATIVE_HOVER};
-    /*box-shadow: 0 1px 0 rgba(0,0,0,0.1);*/
-    /*  background-image: -webkit-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: -moz-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: -ms-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: -o-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    background-image: linear-gradient(to bottom, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
-    */  text-decoration: none;
     }
-`
-
-export const ButtonStyled = styled.button`
 
 `
 

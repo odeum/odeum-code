@@ -69,3 +69,15 @@ export const Button1 = styled.button`
 		pointer-events: none;
 	}
 `
+
+
+
+    /*box-shadow: 0 1px 0 rgba(0,0,0,0.1);*/
+    /*  background-image: -webkit-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
+    background-image: -moz-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
+    background-image: -ms-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
+    background-image: -o-linear-gradient(top, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
+    background-image: linear-gradient(to bottom, ${colors.BUTTON_PRIMARY_HOVER}, #3498db);
+    */  
+
+    
