@@ -27,9 +27,9 @@ class ButtonTest extends Component {
                 <Button><Icon icon={iconname.ICON_ASSIGNMENT} size={18} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-3px', paddingRight: '6px'}} />Forms</Button>
                 
                 <Button2 icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button2>
-                <Button2 icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button2>                
+                <Button2 icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button2>
                 <Button2 icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button2>
-                <Button2 icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button2>                
+                <Button2 icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button2>
             </div>
         )
     }

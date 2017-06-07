@@ -5,11 +5,11 @@ const theme = {
     background: colors.EMERALD_LIGHT,
     color: colors.TAB_COLOR_2,
     font: fonts.PRIMARY,
-    
+
     button: {
         color: colors.BUTTON_TEXT,
         background: colors.BUTTON_PRIMARY,
-    },  
+    },
 
     //  iconstyle can be overridden in the JSX call with:
     //  style={{verticalAlign: '-6px', paddingRight: '20px'}} 

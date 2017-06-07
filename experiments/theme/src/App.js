@@ -9,14 +9,14 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Wrapper>                
+                <Wrapper>
                 <Layout>
-                    <div>                        
+                    <div>
                         <ButtonTest />
                         {/*<IconTest />*/}
                     </div>
                 </Layout>
-                </Wrapper>            
+                </Wrapper>
             </div>
     )    
   }

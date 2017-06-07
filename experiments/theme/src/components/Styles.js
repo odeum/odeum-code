@@ -12,15 +12,15 @@ export const Wrapper = styled.section`
 `
 
 export const Text = styled.p`
-  margin: 0rem 0.38rem
-  font-size: 1rem
-  font-family: ${(props) => props.theme.font || 'sans-serif'}
-  padding: 10px 10px 10px 10px
+    margin: 0rem 0.38rem
+    font-size: 1rem
+    font-family: ${(props) => props.theme.font || 'sans-serif'}
+    padding: 10px 10px 10px 10px
 `
 
-export const Layout = ({children}) => {  
-  return(
-  <ThemeProvider theme={theme}>
-    { children }
-  </ThemeProvider>
+export const Layout = ({children}) => {
+    return(
+        <ThemeProvider theme={theme}>
+            { children }
+        </ThemeProvider>
 )}

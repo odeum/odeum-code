@@ -24,15 +24,15 @@ const Button = styled.button`
 
     /*&.is-active,
     &.active,*/
-    &&:active {        
+    &&:active {
         background: ${darken(0.1, colors.BUTTON_PRIMARY)};
         border-color: ${darken(0.1, colors.BUTTON_PRIMARY)};
         box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-        transform: translateY(2px);        
+        transform: translateY(2px);
     }
 
     &:hover {
-    background: ${colors.BUTTON_PRIMARY_HOVER};
+        background: ${colors.BUTTON_PRIMARY_HOVER};
     }
 `
 
