@@ -152,13 +152,13 @@ switch (name) {
 
 Icon.defaultProps = {
         name: 'info',
-        size: 75,
+        /*size: 75,
         color: ICON_DEFAULT_COLOR,
         active: false,
         style: {
             verticalAlign: '-5px',           
             paddingRight: '8px'
-        }
+        }*/
     }
 
 Icon.propTypes = {
