@@ -4,11 +4,11 @@ import * as fonts from './fonts'
 const theme = {
     background: colors.EMERALD_LIGHT,
     color: colors.TAB_COLOR_2,
-    font: fonts.PRIMARY,
+    font: fonts.DEFAULT,
 
     button: {
         color: colors.BUTTON_TEXT,
-        background: colors.BUTTON_PRIMARY,
+        background: colors.BUTTON_DEFAULT,
     },
 
     //  iconstyle can be overridden in the JSX call with:
@@ -22,22 +22,22 @@ const theme = {
     buttonSize: {
         large: {
             size: fonts.SIZE_LARGE,
-            padding: '10px 20px 10px 15px',
+            padding: '9px 20px 9px 15px', /* top, right, buttom, left */
             lineHeight: 1.9
         },
-        normal: {
-            size: fonts.SIZE_NORMAL,
-            padding: '10px 20px 10px 15px',
+        default: {
+            size: fonts.SIZE_DEFAULT,
+            padding: '9px 20px 9px 15px', /* top, right, buttom, left */
             lineHeight: 1.9
         },
         small: {
             size: fonts.SIZE_SMALL,
-            padding: '10px 20px 10px 15px',
+            padding: '9px 20px 9px 15px', /* top, right, buttom, left */
             lineHeight: 1.9
         },
         xsmall: {
             size: fonts.SIZE_EXTRA_SMALL,
-            padding: '10px 20px 10px 15px',
+            padding: '9px 20px 9px 15px', /* top, right, buttom, left */
             lineHeight: 1.9
         }
     }

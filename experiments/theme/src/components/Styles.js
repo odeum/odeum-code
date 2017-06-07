@@ -11,6 +11,13 @@ export const Wrapper = styled.section`
     background: ${colors.WORKSPACE};
 `
 
+export const Spacer = styled.section`
+    padding: ${(props) => props.space || '0.2rem' } 0.2rem 0.2rem 0.2rem;
+    width: 100%;
+    /*height: 5px;*/
+    background: ${colors.WORKSPACE};
+`
+
 export const Text = styled.p`
     margin: 0rem 0.38rem
     font-size: 1rem
@@ -23,4 +30,5 @@ export const Layout = ({children}) => {
         <ThemeProvider theme={theme}>
             { children }
         </ThemeProvider>
-)}
+    )
+}

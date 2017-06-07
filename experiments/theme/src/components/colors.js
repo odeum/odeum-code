@@ -1,4 +1,4 @@
-// PRIMARY COLORS
+// DEFAULT COLORS
 export const HEADER = '#2C3E50'
 
 export const MENUBAR = '#3B97D3'
@@ -21,9 +21,9 @@ export const SEARCHBAR = '#34495D'
 
 // BUTTON COLORS
 export const BUTTON_TEXT = '#FFFFFF'
-export const BUTTON_PRIMARY = '#3B97D3'
-export const BUTTON_PRIMARY_HOVER = '#81C1EA'
-export const BUTTON_PRIMARY_FOCUS = '#81C1EA'
+export const BUTTON_DEFAULT = '#3B97D3'
+export const BUTTON_DEFAULT_HOVER = '#81C1EA'
+export const BUTTON_DEFAULT_FOCUS = '#81C1EA'
 
 export const BUTTON_ALTERNATIVE = '#13A085'
 export const BUTTON_ALTERNATIVE_HOVER = '#25B89A'

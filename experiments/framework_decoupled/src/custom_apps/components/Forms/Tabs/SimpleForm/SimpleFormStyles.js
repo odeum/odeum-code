@@ -6,7 +6,7 @@ import styled from 'styled-components'
 export const Input = styled(Field)`
     font-family: 'Source Sans Pro';
     font-size: 1.05rem;
-    padding: 0.5rem;
+    padding: 0.6rem;
     margin: 0.5rem;
     color: #2C3E50;
     background: #E3E5E5;

@@ -151,26 +151,25 @@ switch (name) {
 }
 
 Icon.defaultProps = {
-        name: 'info',
-        /*size: 75,
-        color: ICON_DEFAULT_COLOR,
-        active: false,
-        style: {
-            verticalAlign: '-5px',           
-            paddingRight: '8px'
-        }*/
+    name: 'info',
+    size: 75,
+    color: ICON_DEFAULT_COLOR,
+    active: false,
+    style: {
+        verticalAlign: '-5px',           
+        paddingRight: '8px'
     }
+}
 
 Icon.propTypes = {
-  name: PropTypes.string.isRequired,
-  size: PropTypes.number,
-  color: PropTypes.string, 
-  active: PropTypes.bool,
-  style: PropTypes.shape({
-    verticalAlign: PropTypes.string,
-    paddingRight: PropTypes.string
-  })
+    name: PropTypes.string.isRequired,
+    size: PropTypes.number,
+    color: PropTypes.string, 
+    active: PropTypes.bool,
+    style: PropTypes.shape({
+        verticalAlign: PropTypes.string,
+        paddingRight: PropTypes.string
+    })
 }
+
 export default Icon
-
-
