@@ -11,10 +11,19 @@ import StyledButton from './ButtonStyles'
 
 //TODO: constructor, switch buttonType, sizes, fonts!!!
 class Button extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {message: this.props.children}
+    }
+
+    handleClick = (e) => {
+        alert(this.state.message)
+        console.log(e)
+    }
 
     render() {
         return (
-            <StyledButton>
+            <StyledButton onClick={(e) => this.handleClick(e)}>  {/*onClick={this.handleClick*/}
                 <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />{this.props.children}
             </StyledButton>
         )

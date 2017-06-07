@@ -18,11 +18,11 @@ export const Spacer = styled.section`
     background: ${colors.WORKSPACE};
 `
 
-export const Text = styled.p`
-    margin: 0rem 0.38rem
-    font-size: 1rem
-    font-family: ${(props) => props.theme.font || 'sans-serif'}
-    padding: 10px 10px 10px 10px
+export const Text = styled.a`
+    font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
+    font-size: ${(props) => props.theme.buttonSize.default.size || '18px'};
+    font-weight: ${(props) => props.theme.fontWeight || 300};
+    /*padding: 10px 10px 10px 10px*/
 `
 
 export const Layout = ({children}) => {

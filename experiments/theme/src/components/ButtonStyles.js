@@ -3,15 +3,15 @@ import { transparentize, darken } from 'polished'
 import * as colors from './colors'
 
 const StyledButton = styled.button`
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
+    /*-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;*/
     border-radius: 4px;
-    font-family: ${(props) => props.theme.font || 'Source Sans Pro'}
-    font-size: ${(props) => props.theme.buttonSize.default.size || '18px'}
-    font-weight: 300;
-    color: ${(props) => props.theme.button.color || colors.BUTTON_TEXT}    
-    background: ${(props) => props.theme.button.background || colors.BUTTON_DEFAULT}
-    padding: 9px 20px 9px 15px; /* top, right, buttom, left */
+    font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
+    font-size: ${(props) => props.theme.buttonSize.default.size || '18px'};
+    font-weight: ${(props) => props.theme.fontWeight || 300};
+    color: ${(props) => props.theme.button.color || colors.BUTTON_TEXT};
+    background: ${(props) => props.theme.button.background || colors.BUTTON_DEFAULT};
+    padding: ${(props) => props.theme.buttonSize.default.padding || '9px 20px 9px 15px'}; /*9px 20px 9px 15px; *//* top, right, buttom, left */
     margin-right: 0.7rem;
     border: none;
     text-decoration: none;

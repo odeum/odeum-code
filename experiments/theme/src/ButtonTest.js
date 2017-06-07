@@ -7,15 +7,16 @@ import theme from './components/theme'
 import Icon from './components/Icon'
 import Button from './components/Button'
 import StyledButton from './components/ButtonStyles'
+import { Text } from './components/Styles'
 
 
-class ButtonTest extends PureComponent {
+export class ButtonTest extends PureComponent {
     render() {
         return (
             <div>
                 <StyledButton><Icon icon='dashboard' size={18} color={colors.TAB_COLOR_6} active={true} style={theme.iconStyle} />Dashboard</StyledButton>
                 <StyledButton><Icon icon={iconname.ICON_MAIL_OUTLINE} size={18} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />Task New Meeting</StyledButton>
-                <StyledButton><Icon icon={iconname.ICON_ASSIGNMENT} size={18} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-3px', paddingRight: '6px'}} />Forms</StyledButton>
+                <StyledButton><Icon icon={iconname.ICON_ASSIGNMENT} size={18} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-3px', paddingRight: '16px'}} />Styles overridden</StyledButton>
                 
                 <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button>
                 <Button icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button>
@@ -27,8 +28,6 @@ class ButtonTest extends PureComponent {
     }
 }
 
-export default ButtonTest
-
 export const ButtonTest2 = () => {
     return (
         <div>
@@ -36,11 +35,10 @@ export const ButtonTest2 = () => {
             <StyledButton><Icon icon={iconname.ICON_MAIL_OUTLINE} size={18} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />Task New Meeting</StyledButton>
             <StyledButton><Icon icon={iconname.ICON_ASSIGNMENT} size={18} color={colors.TAB_COLOR_5} active={true} style={{verticalAlign: '-3px', paddingRight: '6px'}} />Forms</StyledButton>
             
-            <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button>
+            <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}><Text>Styled text</Text></Button>
             <Button icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button>
             <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button>
             <Button icon={iconname.ICON_CLOUD} size={18}>Stateless component</Button>
         </div>
     )
 }
-

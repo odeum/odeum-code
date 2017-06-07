@@ -25,6 +25,6 @@
     },
        "extends": [
         "react-app"
-        ,"eslint:recommended"
+        /*",eslint:recommended"*/
     ]
 }

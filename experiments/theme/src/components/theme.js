@@ -5,6 +5,7 @@ const theme = {
     background: colors.EMERALD_LIGHT,
     color: colors.TAB_COLOR_2,
     font: fonts.DEFAULT,
+    fontWeight: 300,
 
     button: {
         color: colors.BUTTON_TEXT,

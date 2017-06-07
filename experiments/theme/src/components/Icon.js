@@ -17,7 +17,7 @@ constructor(props) {
         active: false,
         style: {
             verticalAlign: '-5px',           
-            paddingRight: '8px'
+            paddingRight: '8px',
         }
     }    
   }
