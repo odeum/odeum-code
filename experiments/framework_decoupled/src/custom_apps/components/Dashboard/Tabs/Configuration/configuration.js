@@ -9,12 +9,12 @@ class Configuration extends ODEUMTab {
     // }
     componentWillMount() {
         this.props.updateTab({
-    label: 'Configuration',
-    location: '/dashboard/configuration',
-    icon: 'settings',
-    fixed: true
-})
-    this.updateTab(this)
+            label: 'Configuration',
+            location: '/dashboard/configuration',
+            icon: 'settings',
+            fixed: true
+        })
+      //  this.updateTab(this)
     }
     render() {
         return (
@@ -26,9 +26,9 @@ class Configuration extends ODEUMTab {
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 function mapDispatchToProps(dispatch) {
     return bindActionCreators(configurationActions, dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Configuration)
+export default connect(mapStateToProps, mapDispatchToProps)(Configuration)

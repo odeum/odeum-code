@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
-
+//TODO redirect from / to /first_scene/first_component
 const rootRoute = {
     childRoutes:[{
         path:'/',
