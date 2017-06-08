@@ -3,6 +3,7 @@ import { CLOSE_TAB, ADD_TAB, LOAD_DEFAULT_TABS } from '../actions/action_types'
 var config = require('../../custom_apps/config.json')
 
 
+//TODO Classnames for actions
 const initialState = {
     scenes: config.scenes,
     tabChildren: [],
@@ -14,7 +15,7 @@ var _ = require('lodash')
 export default function global(state = initialState, action) {
     switch (action.type) {
         case LOAD_DEFAULT_TABS: {
-            //TODO Refactor to ADD_TAB accomodation
+        
             let sceneFind = _.find(config.scenes, function (scene) {
                 return scene.name === action.payload
             })
