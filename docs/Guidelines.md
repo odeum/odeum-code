@@ -209,7 +209,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
     - Panel-lists (header, drag-zone, scrollable, open/close)
     - AppMarket (AppSwitcher)
     - Image Upload (DnD)
-    - Color palette viewer/selector
+    - Color palette viewer/selector/picker [React-color](https://casesandberg.github.io/react-color/)
     - Font palette viewer/selector
     - Device Example Renderer (Phone, Tablet, Desktop)
     - Checkbox, Radio button, On/Off
@@ -224,7 +224,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
     - Image Preview (sizeable)
     - Map (pinable, sizeable (fixed/flow), source (Google, OpenStreepMap))
     - Comments (item comments)
-    - Image Carousel/Slider (single image + multiple images)[React-slider](https://github.com/react-component/slider)
+    - Image Carousel/Slider (single image + multiple images) [React-slider](https://github.com/react-component/slider)
     - Tourist Guide (Intro Guide) 
 
 ### 5.4.4. Footerlabel
@@ -344,6 +344,9 @@ import Telemetry from 'odeum-telemetry'
 
 ### 5.4.17. REST API implementation experiments
 - All available forces
+- [Axios](https://github.com/mzabriskie/axios)
+- [Redux-Axios-middelware](https://github.com/svrcekmichal/redux-axios-middleware)
+- [Logux](https://github.com/logux)
 
 ### 5.4.18. IAM - Identity and Access Management
 - Global User Registry (odeum.com)
@@ -370,7 +373,12 @@ and "password" to resolve which server to communicate with.
 - We need to create a standardized method to setup debugging with Chrome in VS Code on both Mac and Windows PC. 
 
 ### 5.4.24. Test setup scenarios
-- Setting up and performing automated tests of components and complete framework through CRA.
+- Setting up and performing automated unit tests of components and complete framework through CRA.
+- [Jest](https://facebook.github.io/jest/)
+- [Enzyme](http://airbnb.io/enzyme/)
+- [Mocha](https://mochajs.org/)
+- [Chai](http://chaijs.com/)
+
 
 ### 5.4.25. Help Server (Help Items)
 - The App platform for displaying context-sensitive helpitems based upon views in scenes. 
@@ -425,6 +433,7 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Insert developer scene in framework
 - Hot Reload in developer mode
 - Workspace Page Templates (Design system guidelines - see Grommet templates examples [Grommet templates](https://grommet.github.io/aruba/docs/templates))
+- [Inspiration from Structor](https://hackernoon.com/creating-react-components-in-structor-react-ui-builder-f7c5026edfbd)
 
 ## 6.4. ComponentBuilder
 - Build an App to construct a JavaScript file with a new component
