@@ -15,7 +15,8 @@ class App extends Component {
                         <ButtonTest />
                         <Spacer space={'0.8rem'} />
                         <ButtonTest2 />
-                        {/*<IconTest />*/}
+                        <Spacer space={'0.8rem'} />
+                        <IconTest />
                     </div>
                 </Layout>
                 </Wrapper>

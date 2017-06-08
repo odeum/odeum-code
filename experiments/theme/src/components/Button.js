@@ -9,21 +9,24 @@ import Icon from './Icon'
 import StyledButton from './ButtonStyles'
 
 
-//TODO: constructor, switch buttonType, sizes, fonts!!!
+//TODO: constructor, switch buttonType, sizes, fonts, and colors from theme!!!
 class Button extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {message: this.props.children}
     }
 
-    handleClick = (e) => {
-        alert(this.state.message)
-        console.log(e)
+    handleClick = (event) => {
+        /*event.preventDefault()*/
+        /*event.persist()*/
+        console.log(event.type)
+        console.log(this.state.message)
+        console.log(this.props.children)
     }
 
     render() {
         return (
-            <StyledButton onClick={(e) => this.handleClick(e)}>  {/*onClick={this.handleClick*/}
+            <StyledButton onClickCapture={(event) => this.handleClick(event)}>  {/*onClick={this.handleClick*/}
                 <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />{this.props.children}
             </StyledButton>
         )

@@ -2,10 +2,9 @@ import * as colors from './colors'
 import * as fonts from './fonts'
 
 const theme = {
-    background: colors.EMERALD_LIGHT,
-    color: colors.TAB_COLOR_2,
     font: fonts.DEFAULT,
-    fontWeight: 300,
+    fontWeight: fonts.FONT_WEIGHT,
+    fontStyle: fonts.FONT_STYLE, 
 
     button: {
         color: colors.BUTTON_TEXT,
@@ -28,7 +27,7 @@ const theme = {
         },
         default: {
             size: fonts.SIZE_DEFAULT,
-            padding: '9px 20px 9px 15px', /* top, right, buttom, left */
+            padding: '9px 20px 9px 15px', /*9px 20px 9px 15px; *//* top, right, buttom, left */
             lineHeight: 1.9
         },
         small: {

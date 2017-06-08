@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Text } from './components/Styles'
+import { Text, Header, Spacer } from './components/Styles'
 import Icon from './components/Icon'
 import * as iconname from './components/icons'
 import * as colors from './components/colors'
 
 class IconTest extends Component {
+    
     prettifyIconName(name) { 
         return name.replace(/_/g, ' ')
     }
@@ -12,9 +13,12 @@ class IconTest extends Component {
     render() {
         return (
             <div>
-                <Text>And now the icons with mixed sizes and colors (props)</Text>
+                <Header>And now the icons with mixed sizes and colors (props)</Header>
+                
                 <Icon icon={iconname.ICON_MENU} size={50} color={colors.GAUGE} active={true} />
+                <Spacer space={'0.8rem'} />
                 <Text>{this.prettifyIconName(iconname.ICON_MENU)}</Text>
+                <Spacer space={'0.8rem'} />
     
                 <Icon icon={iconname.ICON_DASHBOARD} size={50} color={colors.TAB_COLOR_6} active={true} />
                 <Icon icon={iconname.ICON_HOME} size={50} color={colors.TAB_COLOR_5} active={true} />
@@ -117,10 +121,9 @@ class IconTest extends Component {
                 <Icon icon={iconname.ICON_CHECK_CIRCLE} size={50} color={colors.TAB_COLOR_4} active={true} />
                 <Icon icon={iconname.ICON_ADD_CIRCLE} size={50} color={colors.TAB_COLOR_5} active={true} />
                 <Icon icon={iconname.ICON_ADD_CIRCLE_OUTLINE} size={50} color={colors.EMERALD_DARK} active={true} />
-                
-                <br /><br />
-                <Text>Testing default props ... </Text>
-                
+              
+                <Header>Testing default props ... </Header>
+
                 <Icon icon={iconname.ICON_SEARCH} size={50} active={true} />
                 <Icon icon={iconname.ICON_LOCK_OPEN} color={colors.DREAMY_BLUE} active={false} />
                 <Icon icon={iconname.ICON_CLOSE} color={colors.PRIMARY_BLUE} active={true} />
@@ -132,9 +135,8 @@ class IconTest extends Component {
                 <Icon icon='notifications' active={true} />          
                 <Icon icon='' color={colors.DREAMY_BLUE} active={true} /> 
 
-                <br /><br />
-                <Text>Provoking prop type errors in the console ...</Text>
-                <Icon icon='' size={'50'} active={true} />
+                <Header>Provoking prop type errors in the console ...</Header>
+                {/*<Icon icon='' size={'50'} active={true} />*/}
                 <Icon />                
             </div>
         )

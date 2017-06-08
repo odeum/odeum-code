@@ -3,6 +3,14 @@ import styled, { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import * as colors from './colors'
 
+export const Layout = ({children}) => {
+    return(
+        <ThemeProvider theme={theme}>
+            { children }
+        </ThemeProvider>
+    )
+}
+
 export const Wrapper = styled.section`
     color: ${colors.WORKSPACE};
     padding: 1.2rem 1.2rem 1.2rem 1.2rem;
@@ -19,16 +27,17 @@ export const Spacer = styled.section`
 `
 
 export const Text = styled.a`
+    color: ${colors.ASPHALT_DARK};
     font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
     font-size: ${(props) => props.theme.buttonSize.default.size || '18px'};
     font-weight: ${(props) => props.theme.fontWeight || 300};
     /*padding: 10px 10px 10px 10px*/
 `
 
-export const Layout = ({children}) => {
-    return(
-        <ThemeProvider theme={theme}>
-            { children }
-        </ThemeProvider>
-    )
-}
+export const Header = styled.h1`
+    color: ${colors.ASPHALT_DARK};
+    font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
+    font-size: ${(props) => props.theme.buttonSize.large.size || '18px'};
+    font-weight: ${(props) => props.theme.fontWeight || 300};
+    /*padding: 10px 10px 10px 10px*/
+`
