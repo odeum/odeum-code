@@ -16,11 +16,11 @@
 ### Agenda (tentative)
 
 1. Onboarding of new interns and contributing (our repo and how we work)
-2. Presentation of real world ODEUM CodeJS App "BWF App" (or initial workings)
-3. Presentation of dynamic tabs and current project state (AT)
-4. Initial theming with icons and footerlabel included in framework (AT, CB)
-5. Refactoring stuff (theming, colors, styles, Prop Types, Naming, Code Style)
-6. Coding Dojo (Setting up framework and building a simple app or adding your own experiment with Create-React-App to the repo)
+2. Presentation of dynamic tabs and current project state (AT)
+3. Initial theming with icons, buttons and footerlabel included in framework (AT, CB)
+4. Refactoring stuff (theming, colors, styles, Prop Types, Naming, Code Style)
+5. Coding Dojo (Setting up framework and building a simple app or adding your own experiment with Create-React-App to the repo)
+6. Plans for the summer :) 
 7. Next steps ... 
 
 ### Takeaways and milestones:

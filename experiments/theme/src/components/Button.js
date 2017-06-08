@@ -1,77 +1,46 @@
-import styled from 'styled-components'
-import { transparentize, darken } from 'polished'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+// import * as iconname from './components/icons'
 import * as colors from './colors'
 
-const Button = styled.button`
-    -webkit-border-radius: 4;
-    -moz-border-radius: 4;
-    border-radius: 4px;
-    font-family: Source Sans Pro;
-    font-weight: 300;
-    color: ${(props) => props.theme.button.color || 'white'}
-    font-size: 34px;
-    background: ${(props) => props.theme.button.background || colors.BUTTON_PRIMARY}
-    padding: 10px 20px 10px 20px;
-    margin-right: 0.7rem;
-    border: none;
-    text-decoration: none;
+import theme from './theme'
+import Icon from './Icon'
+import StyledButton from './ButtonStyles'
 
-    &:focus {
-        border-color: ${colors.BUTTON_PRIMARY_FOCUS};
-        box-shadow: 0 0 0 3px ${transparentize(0.7, colors.BUTTON_PRIMARY)};
-        outline: none;
+
+//TODO: constructor, switch buttonType, sizes, fonts!!!
+class Button extends Component {
+
+    render() {
+        return (
+            <StyledButton>
+                <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />{this.props.children}
+            </StyledButton>
+        )
     }
+}
 
-    /*&.is-active,
-    &.active,*/
-    &:active {        
-        background: ${darken(0.1, colors.BUTTON_PRIMARY)};
-        border-color: ${darken(0.1, colors.BUTTON_PRIMARY)};
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-        transform: translateY(2px);
+Button.defaultProps = {
+    name: 'info',
+    size: 75,
+    color: colors.ICON_DEFAULT_COLOR,
+    active: false,
+    style: {
+        verticalAlign: '-5px',           
+        paddingRight: '8px'
     }
+}
 
-    &:hover {
-    background: ${colors.BUTTON_PRIMARY_HOVER};
-    }
-`
-
-export const ButtonGreen = styled.button`
-    -webkit-border-radius: 4;
-    -moz-border-radius: 4;
-    border-radius: 4px;
-    font-family: Source Sans Pro;
-    color: ${(props) => props.theme.buttoncolor || 'white'}
-    font-size: 34px;
-    background: ${(props) => props.theme.buttonbackground || colors.BUTTON_ALTERNATIVE}
-    padding: 10px 20px 10px 20px;
-    margin-right: 0.7rem;
-    border: none;
-    text-decoration: none;
-
-    &:focus {
-        border-color: ${colors.BUTTON_ALTERNATIVE_FOCUS};
-        box-shadow: 0 0 0 3px ${transparentize(0.7, colors.BUTTON_ALTERNATIVE_FOCUS)};
-        outline: none;
-    }
-
-    &.is-active,
-    &:active {
-        background: #e6e6e6; /*${darken(0.1, colors.BUTTON_ALTERNATIVE)};*/
-        border-color: ${darken(0.1, colors.BUTTON_ALTERNATIVE)};
-        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-        transform: translateY(2px);
-    }
-
-    &.is-active:focus:not(:active) {
-		border-color: ${darken(0.1, colors.BUTTON_ALTERNATIVE)};
-		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-	}
-
-    &:hover {
-    background: ${colors.BUTTON_ALTERNATIVE_HOVER};
-    }
-
-`
+Button.propTypes = {
+    icon: PropTypes.string.isRequired,
+    size: PropTypes.number,
+    color: PropTypes.string, 
+    active: PropTypes.bool,
+    style: PropTypes.shape({
+        verticalAlign: PropTypes.string,
+        paddingRight: PropTypes.string
+    })
+}
 
 export default Button

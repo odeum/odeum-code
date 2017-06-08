@@ -199,9 +199,9 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 - [Example of ThemeProvider used in a similar framework](https://github.com/zksailor534/react-adminlte-dash)
 - [Grommet - Example of complete design system and framework made in ReactJS](https://grommet.github.io)
 - [Ant Design - Yet another UI framework](https://ant.design)
-- [Material Desifn UI - not React edition](http://www.material-ui.com/#/)
-    - Icons
-    - Buttons
+- [Material Design UI - not React edition](http://www.material-ui.com/#/)
+    - Icons (done)
+    - Buttons (almost done)
     - Popup Windows
     - Dropdown (text, color, font, icons, avatars)
     - Group-Avatar (disabled - greyed out)
@@ -224,7 +224,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
     - Image Preview (sizeable)
     - Map (pinable, sizeable (fixed/flow), source (Google, OpenStreepMap))
     - Comments (item comments)
-    - Image Carousel/Slider (single image + multiple images)
+    - Image Carousel/Slider (single image + multiple images)[React-slider](https://github.com/react-component/slider)
     - Tourist Guide (Intro Guide) 
 
 ### 5.4.4. Footerlabel
