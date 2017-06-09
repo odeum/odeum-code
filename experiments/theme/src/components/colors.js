@@ -65,3 +65,8 @@ export const EMERALD_DARK = '#13A085'
 export const CLOUDY_LIGHT = '#ECF0F0'
 export const CLOUDY_DARK = '#BDC2C6'
 export const DREAMY_BLUE = '#81C1EA'
+
+export const COMPLEMENTARY_BLUE = '#006CB2'
+export const COMPLEMENTARY_ORANGE = '#FF9600'
+
+// https://color.adobe.com/
