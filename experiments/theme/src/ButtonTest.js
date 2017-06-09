@@ -22,7 +22,7 @@ export class ButtonTest extends PureComponent {
                 <Button icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button>
                 <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}>Normal button</Button>
                 <Button icon={iconname.ICON_CHECK_CIRCLE} size={18}>Normal themed button</Button>
-                <Button icon={iconname.ICON_LAPTOP_MAC} size={18}>Button Component new</Button>
+                <Button icon={iconname.ICON_LAPTOP_MAC} size={18}>Button Component</Button>
             </div>
         )
     }
