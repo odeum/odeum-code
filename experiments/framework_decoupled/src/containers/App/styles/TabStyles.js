@@ -17,7 +17,6 @@ export const PanelDiv = styled.div`
 export const TabLink = styled(Link)`
     display:inline-block;
     text-decoration: none;
-    width:100%;
     height:100%;
     outline: 0;
     color: ${(props)=> props.theme.tabs.TAB_TEXT};
@@ -34,7 +33,6 @@ export const TabLink = styled(Link)`
 export const TabCloseLink = styled(Link)`
     display:inline-block;
     text-decoration: none;
-    width:100%;
     height:100%;
     outline: 0;
     color: ${(props)=> props.theme.tabs.TAB_TEXT};

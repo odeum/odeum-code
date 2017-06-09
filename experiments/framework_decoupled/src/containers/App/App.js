@@ -9,7 +9,7 @@ const rootRoute = {
         component: require('./Home/Home').default,
         childRoutes:[
             require('../../custom_apps/routes.js')
-        ]
+        ],
     },
     {
         path:'*',

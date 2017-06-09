@@ -1,6 +1,6 @@
 {
     "scenes": [
-        {   
+        {
             "name": "Dashboard",
             "location": "/dashboard/general",
             "icon": "dashboard",
@@ -18,48 +18,45 @@
                     "fixed": true
                 },
                 {
-                    "label":"Workflow",
-                    "location":"/dashboard/workflow",
-                    "icon":"timeline",
-                    "fixed":true
-                },                {
-                    "label":"Users",
-                    "location":"/dashboard/users",
-                    "icon":"people",
-                    "fixed":true
-                },                {
-                    "label":"Actions",
-                    "location":"/dashboard/actions",
-                    "icon":"code",
-                    "fixed":true
-                },                {
-                    "label":"Configuration",
-                    "location":"/dashboard/configuration",
-                    "icon":"settings",
-                    "fixed":true
+                    "label": "Workflow",
+                    "location": "/dashboard/workflow",
+                    "icon": "timeline",
+                    "fixed": true
                 },
                 {
-                    "label":"Design",
-                    "location":"/dashboard/design",
-                    "icon":"opacity",
-                    "fixed":true
+                    "label": "Users",
+                    "location": "/dashboard/users",
+                    "icon": "people",
+                    "fixed": true
+                },
+                {
+                    "label": "Actions",
+                    "location": "/dashboard/actions",
+                    "icon": "code",
+                    "fixed": true
+                },
+                {
+                    "label": "Configuration",
+                    "location": "/dashboard/configuration",
+                    "icon": "settings",
+                    "fixed": true
+                },
+                {
+                    "label": "Design",
+                    "location": "/dashboard/design",
+                    "icon": "opacity",
+                    "fixed": true
                 }
             ]
         },
         {
             "name": "Forms",
-            "location":"/forms/simple",
+            "location": "/forms/list",
             "icon": "assignment",
             "tabs": [
-  {
-                    "label": "Simple Form",
-                    "location": "/forms/simple",
-                    "icon": "assignment",
-                    "fixed": true
-                },
-                                                {
-                    "label": "Dynamic Tab Opener",
-                    "location": "/forms/dynamictabopener",
+                {
+                    "label": "Forms",
+                    "location": "/forms/list",
                     "icon": "assignment",
                     "fixed": true
                 }
