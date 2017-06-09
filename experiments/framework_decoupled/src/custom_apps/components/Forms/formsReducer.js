@@ -4,7 +4,6 @@ const initialState = {
     forms:[]
 }
 
-var _ = require('lodash')
 
 export default function forms(state=initialState,action){
     switch(action.type){
