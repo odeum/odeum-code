@@ -8,19 +8,22 @@ var config = require('../../custom_apps/config.json')
 
 const initialState = {
     scenes: config.scenes,
-    tabChildren: [],
-    activeLabel: '',
-    activeScene: ''
+    tabChildren: config.scenes[0].tabs || [],
+    activeTab: '',
+    activeScene: '',
+
 }
 var _ = require('lodash')
 //
 export default function global(state = initialState, action) {
     switch (action.type) {
         case LOAD_DEFAULT_TABS: {
-        
-            let sceneFind = _.find(config.scenes, function (scene) {
+
+            let sceneFind = _.find(state.scenes, function (scene) {
                 return scene.name === action.payload
             })
+            //let newScenes = state.scenes.splice(_.findIndex(sceneFind))
+            //  console.log(newScenes)
             // let dynamicTabList = _.filter(state.tabChildren, function (tab) {
             //     return tab.fixed === true ? null : tab
             // })
@@ -28,16 +31,25 @@ export default function global(state = initialState, action) {
                 ...state,
                 tabChildren: sceneFind.tabs,
                 activeScene: sceneFind.name,
-                activeLabel: sceneFind.tabs[0].label
+                activeTab: sceneFind.tabs[0].label
             }
         }
         //TODO Go Back on 
         case CLOSE_TAB:
             {
+                let newTabs = state.tabChildren.filter((item) => item.label !== action.payload.label)
+                let sceneFind = _.find(state.scenes, function (scene) {
+                    return scene.name === state.activeScene
+                })
+                sceneFind.tabs = newTabs
+                // let newScenes = _.unionBy([sceneFind],state.scenes,'name')
+                let newScenes = _(state.scenes).keyBy('name').set(sceneFind.name, sceneFind).values().value()
+                console.log(newScenes)
                 return {
                     ...state,
-                    tabChildren: state.tabChildren.filter((item) => item.label !== action.payload.label),
-                    activeLabel: state.tabChildren[0].label
+                    scenes: newScenes,
+                    tabChildren: sceneFind.tabs,
+                    activeTab: state.tabChildren[0].label
                 }
             }
 
@@ -46,44 +58,54 @@ export default function global(state = initialState, action) {
                 //TODO This needs a rethinking, probably use LOCATION_CHANGE
                 //This finds the tab in the current active tab list so it doesn't duplicate
                 let formsArray = _.find(state.tabChildren, action.payload)
-                 //console.log(formsArray)
-                 //If it finds it it will set it as active (RRR will render it)
+                //console.log(formsArray)
+                //If it finds it it will set it as active (RRR will render it)
                 if (formsArray !== undefined)
                     return {
                         ...state,
-                        activeLabel: action.payload.label
+                        activeTab: action.payload.label
                     }
-                    //if it doesn't find anything:
+                //if it doesn't find anything:
                 else {
                     //if the tabswrapper is empty it will search in the config for the scene the tab loaded it belongs to
                     if (state.tabChildren.length === 0) {
-                        let sceneFinder = _.find(config.scenes, function (scene) {
+                        let sceneFinder = _.find(state.scenes, function (scene) {
                             return action.payload.location.includes(scene.name.toLowerCase())
                         })
+                        console.log(sceneFinder)
                         //if it does find the scene
-                        if (sceneFinder!==undefined)
-                       {    //it will load the tabs from from the scene
-                           let completeScenes = sceneFinder.tabs.concat(action.payload)
+                        if (sceneFinder !== undefined) {    //it will load the tabs from from the scene
+                            let completeScenes = sceneFinder.tabs.concat(action.payload)
                             return {
                                 ...state,
                                 tabChildren: state.tabChildren.concat(completeScenes),
-                                activeLabel: action.payload.label
-                            }}
+                                activeTab: action.payload.label
+                            }
+                        }
                         else {
                             //if it doesn't find any scene, it will just add the tab
                             return {
                                 ...state,
                                 tabChildren: state.tabChildren.concat(action.payload),
-                                activeLabel: action.payload.label
+                                activeTab: action.payload.label
                             }
                         }
                     }
                     //if the tabswrapper is not empty, it will concatenate the tab to the actual list of tabs
                     else {
+                        let newTabs = state.tabChildren.concat(action.payload)
+                        let sceneFind = _.find(state.scenes, function (scene) {
+                            return scene.name === state.activeScene
+                        })
+                        sceneFind.tabs = newTabs
+                        // let newScenes = _.unionBy([sceneFind],state.scenes,'name')
+                        let newScenes = _(state.scenes).keyBy('name').set(sceneFind.name, sceneFind).values().value()
+                        console.log(newScenes)
                         return {
                             ...state,
-                            tabChildren: state.tabChildren.concat(action.payload),
-                            activeLabel: action.payload.label
+                            scenes:newScenes,
+                            tabChildren: sceneFind.tabs,
+                            activeTab: action.payload.label
                         }
                     }
                 }

@@ -22,7 +22,7 @@ class TabsWrapper extends Component {
 
     render() { 
      
-        let active = (tab) => (tab.label === this.props.activeLabel ? 'active' : '')
+        let active = (tab) => (tab.label === this.props.activeTab ? 'active' : '')
         const act = (tab) => { return active(tab).includes('active')? true:false}
         var _this = this.props
         function isFixed(tab) {
@@ -37,7 +37,7 @@ class TabsWrapper extends Component {
         return (          
             <styled.TabList>
                 {_this.children.map((tab, index) => (
-//TODO Notify the wrapper when entered directly to a component to properly display the activeLabel
+//TODO Notify the wrapper when entered directly to a component to properly display the activeTab
                     <styled.TabLabel key={index} className={active(tab)}>
                         <div onClick={(e) => {e.preventDefault();this.props.updateTab(tab)}}>
                         <styled.TabLink to={tab.location} className={active(tab)}>
@@ -58,11 +58,11 @@ class TabsWrapper extends Component {
 }
 TabsWrapper.propTypes = {
     children: PropTypes.array,
-    activeLabel: PropTypes.string,
+    activeTab: PropTypes.string,
 }
 
 const mapStateToProps = (state) => ({
-    activeLabel: state.global.activeLabel
+    activeTab: state.global.activeTab
 })
 
 function mapDispatchToProps(dispatch) {

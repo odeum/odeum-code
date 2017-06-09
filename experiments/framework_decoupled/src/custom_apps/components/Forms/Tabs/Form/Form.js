@@ -18,6 +18,12 @@ class Form extends Component {
            this.setState({formParams:true})
        // else
         // browserHistory.push('/error404')
+        this.props.updateTab(
+            { label: FormProps.name,
+            location: '/forms/'+this.props.id,
+            icon: 'info',
+            fixed: false}
+        )
     }
     render() { return(
                 this.state.formParams ?
