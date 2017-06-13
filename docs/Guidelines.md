@@ -64,6 +64,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
     - [6.7. ODEUM Dashboard](#67-odeum-dashboard)
     - [6.8. ODEUM Help Server](#68-odeum-help-server)
     - [6.9. ODEUM Search Server](#69-odeum-search-server)
+    - [External Backup Services](#external-backup-services)
 - [7. Icons](#7-icons)
     - [7.1. Icons location](#71-icons-location)
 - [8. Future Technology ideas](#8-future-technology-ideas)
@@ -470,6 +471,11 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Elastic Search
 - Connected to ODEUM Help Server for returning help items 
 
+## External Backup Services
+- Manage access to Dropbox and Flickr accounts for managing remote backup/restore from/to these services
+- [Flickr API](https://github.com/flickr/flickr-sdk)
+- [Dropbox API](https://github.com/dropbox/dropbox-sdk-js)
+
 # 7. Icons
 Icons for ODEUM CodeJS will use Material Design (MD) icons.
 - [Material Design icons](https://material.io/icons/)
@@ -596,8 +602,10 @@ class HavingFun extends React.PureComponent {
 export default HavingFun
 ``` 
 
-Use stateless functional components (non-class components) whenever possible.  
+Use stateless functional components (non-class components) whenever possible.
+
 ```javascript
+
 const HelloName = ({name}) => {
     const sayHi = (event) => {
         alert(`Hi ${name}`)        
@@ -609,14 +617,25 @@ const HelloName = ({name}) => {
         )
 }
 
-export default HelloName
-
-
 const HelloWorld = ({name}) => (
  <div>{`Hi ${name}`}</div>
 );
 
-export default HelloWorld;
+function MyInput({ title, value, onValueChange }) {
+  return (
+    <div>
+      <label>{title}</label>
+      <input type="text" value={value} onChange={onValueChange} />
+    </div>
+  );
+}
+
+const LetsWrap = () => {
+  return (
+    <div>It's a trap ... </div>
+  )
+}
+
 ```
 
 ### 10.3.2. Stateful components (container components)
