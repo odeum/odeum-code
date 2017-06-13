@@ -55,16 +55,17 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
         - [5.4.30. ODEUM Slack Service](#5430-odeum-slack-service)
         - [5.4.31. ODEUM CodeJS Tutorial Site](#5431-odeum-codejs-tutorial-site)
 - [6. Apps](#6-apps)
-    - [6.1. ThemeBuilder](#61-themebuilder)
-    - [6.2. HelpBuilder](#62-helpbuilder)
-    - [6.3. AppBuilder](#63-appbuilder)
-    - [6.4. ComponentBuilder](#64-componentbuilder)
+    - [6.1. ODEUM ThemeBuilder](#61-odeum-themebuilder)
+    - [6.2. ODEUM HelpBuilder](#62-odeum-helpbuilder)
+    - [6.3. ODEUM AppBuilder](#63-odeum-appbuilder)
+    - [6.4. ODEUM ComponentBuilder](#64-odeum-componentbuilder)
     - [6.5. GeoCloud2 (GC2) porting](#65-geocloud2-gc2-porting)
     - [6.6. ODEUM Connect](#66-odeum-connect)
     - [6.7. ODEUM Dashboard](#67-odeum-dashboard)
     - [6.8. ODEUM Help Server](#68-odeum-help-server)
     - [6.9. ODEUM Search Server](#69-odeum-search-server)
-    - [External Backup Services](#external-backup-services)
+    - [6.10. ODEUM Backup Services](#610-odeum-backup-services)
+    - [6.11. ODEUM Native App (Electron)](#611-odeum-native-app-electron)
 - [7. Icons](#7-icons)
     - [7.1. Icons location](#71-icons-location)
 - [8. Future Technology ideas](#8-future-technology-ideas)
@@ -423,7 +424,7 @@ With Styled-Components:
 # 6. Apps
 - The following Apps will be developed with ODEUM CodeJS for the repository examples and/or production.
 
-## 6.1. ThemeBuilder
+## 6.1. ODEUM ThemeBuilder
 - Build an App to create a theme for an ODEUM CodeJS App
 - Examples of different themes
 - Publish theme components to NPM
@@ -432,10 +433,10 @@ http://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
 
 The ThemeBuilder (or an AppChecker) needs to have an available Material Design Icon name checker so you do not overwrite the created constants from the ThemeBuilder with invalid icon names.
 
-## 6.2. HelpBuilder
+## 6.2. ODEUM HelpBuilder
 - Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
 
-## 6.3. AppBuilder
+## 6.3. ODEUM AppBuilder
 - Build an App to invoke a boilerplate to set up scenes (menus) for an app
 - Import a theme from ThemeBuilder
 - Import help from HelpBuilder
@@ -445,7 +446,7 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Workspace Page Templates (Design system guidelines - see Grommet templates examples [Grommet templates](https://grommet.github.io/aruba/docs/templates))
 - [Inspiration from Structor](https://hackernoon.com/creating-react-components-in-structor-react-ui-builder-f7c5026edfbd)
 
-## 6.4. ComponentBuilder
+## 6.4. ODEUM ComponentBuilder
 - Build an App to construct a JavaScript file with a new component
 - Use dropdown menues and checkboxes to select type and default values and innerworkings
 
@@ -471,10 +472,18 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Elastic Search
 - Connected to ODEUM Help Server for returning help items 
 
-## External Backup Services
-- Manage access to Dropbox and Flickr accounts for managing remote backup/restore from/to these services
+## 6.10. ODEUM Backup Services
+- Manage access to external Dropbox and Flickr accounts for managing remote backup/restore from/to these services
 - [Flickr API](https://github.com/flickr/flickr-sdk)
 - [Dropbox API](https://github.com/dropbox/dropbox-sdk-js)
+
+## 6.11. ODEUM Native App (Electron)
+- Native Mac App
+- Native Windows App
+- Native Linux App
+- [Electron with CRA](https://medium.com/@kitze/%EF%B8%8F-from-react-to-an-electron-app-ready-for-production-a0468ecb1da3)
+- [Code Signing](https://github.com/electron-userland/electron-builder/wiki/Code-Signing)
+- [Repo](https://github.com/electron-userland/electron-builder)
 
 # 7. Icons
 Icons for ODEUM CodeJS will use Material Design (MD) icons.
