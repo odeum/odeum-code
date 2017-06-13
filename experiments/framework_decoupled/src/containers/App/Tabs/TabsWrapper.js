@@ -39,7 +39,8 @@ class TabsWrapper extends Component {
                 {_this.children.map((tab, index) => (
 //TODO Notify the wrapper when entered directly to a component to properly display the activeTab
                     <styled.TabLabel key={index} className={active(tab)}>
-                        <div onClick={(e) => {e.preventDefault();this.props.updateTab(tab)}}>
+                        {/*TODO Replace the updateTab with setActive()*/}
+                        <div onClick={(e) => {e.preventDefault();this.props.setActive(tab)}}>
                         <styled.TabLink to={tab.location} className={active(tab)}>
                             <styled.TabDiv>
                          <styled.TabIconDiv> <styled.TabIcon icon={tab.icon} active={act(tab)}/> </styled.TabIconDiv>

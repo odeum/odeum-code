@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import TabsWrapper from '../../../../../containers/App/Tabs/TabsWrapper'
 import * as formsActions from '../../formsActions'
 // import {browserHistory} from 'react-router'
 class Form extends Component {
@@ -38,10 +39,28 @@ class Form extends Component {
 
     }
     render() {
+       //TODO Implement Children with props
         return (
             this.state.formParams ?
                 (
-                    <div>It worked  {this.props.id}</div>) : (<div>Error 404</div>)
+                    <div>It worked  {this.props.id} <TabsWrapper children={[{
+                    label: "General",
+                    location: '/forms/' + this.props.id+'/general',
+                    icon: 'assignment_turned_in',
+                    fixed: true
+                },
+                {
+                    label: "Design",
+                    location: '/forms/' + this.props.id,
+                    icon: 'info',
+                    fixed: false
+                },{
+                    label: "Configuration",
+                    location: '/forms/' + this.props.id+'/configuration',
+                    icon: 'settings',
+                    fixed: true
+                },]}/>{this.props.children}</div>) : (<div>Error 404</div>)
+                   
         )
     }
 }

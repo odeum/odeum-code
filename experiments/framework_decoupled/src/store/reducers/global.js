@@ -110,6 +110,11 @@ export default function global(state = initialState, action) {
                     }
                 }
             }
+            case 'SET_ACTIVE':
+            return{
+            ...state,
+            activeTab:action.payload.label
+            }
         default:
             return state
 

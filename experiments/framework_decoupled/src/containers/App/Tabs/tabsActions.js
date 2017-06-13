@@ -13,3 +13,9 @@ export function updateTab(tab){
         dispatch({type:ADD_TAB, payload:tab})
     }
 }
+
+export function setActive(tab){
+    return (dispatch) =>{
+        dispatch({type:'SET_ACTIVE',payload:tab})
+    }
+}
