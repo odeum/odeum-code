@@ -21,8 +21,8 @@ class App extends Component {
                 </Layout>
                 </Wrapper>
             </div>
-    )    
-  }
+        )    
+    }
 }
 
 export default App

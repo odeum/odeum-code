@@ -93,8 +93,9 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
     - [11.6. React Native Tools](#116-react-native-tools)
     - [11.7. Reactjs code snippets](#117-reactjs-code-snippets)
     - [11.8. vscode-styled-components](#118-vscode-styled-components)
-- [12. ODEUM API](#12-odeum-api)
-- [13. ODEUM 2GO!](#13-odeum-2go)
+- [12. ESLINT (linting)](#12-eslint-linting)
+- [13. ODEUM API](#13-odeum-api)
+- [14. ODEUM 2GO!](#14-odeum-2go)
 
 <!-- /TOC -->
 
@@ -683,11 +684,47 @@ Popular Atom keybindings for Visual Studio Code (by Microsoft)
 ## 11.8. vscode-styled-components
 [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
-# 12. ODEUM API
+# 12. ESLINT (linting)
+To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. 
+
+```json
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-const-assign": "warn",
+        "no-this-before-super": "warn",
+        "no-undef": "warn",
+        "no-unreachable": "warn",
+        "no-unused-vars": "warn",
+        "constructor-super": "warn",
+        "valid-typeof": "warn",
+        "semi": ["error", "never"],
+
+        "react/display-name": 0
+    },
+       "extends": [
+        "react-app"
+    ]
+}
+
+```
+
+# 13. ODEUM API
 - Location of future ODEUM API (under construction)
 - https://api.odeum.com/api/v1/...
 
-# 13. ODEUM 2GO!
+# 14. ODEUM 2GO!
 
 ODEUM 2GO is a "Hub" and SaaS cloud service which facilitates hosting and deployment management of Web Apps created with the open source App framework ODEUM CodeJS. ODEUM 2GO is charged with a monthly fee of $XX. 
 
