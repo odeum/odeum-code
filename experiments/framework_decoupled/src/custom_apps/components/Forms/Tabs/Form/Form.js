@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import TabsWrapper from '../../../../../containers/App/Tabs/TabsWrapper'
+
 import * as formsActions from '../../formsActions'
 // import {browserHistory} from 'react-router'
 class Form extends Component {

@@ -14,6 +14,7 @@ JavaScript Helper functions or links to code or snippets or tutorials.
         - [2.1.2. FUNCTION DECLARATION](#212-function-declaration)
         - [2.1.3. FUNCTION EXPRESSION](#213-function-expression)
         - [2.1.4. IIFE (unnamed)](#214-iife-unnamed)
+- [3. Module imports in Create React App](#3-module-imports-in-create-react-app)
 
 <!-- /TOC -->
 
@@ -61,4 +62,9 @@ var MyFunctionExpression = function(){
     var superSecret = 42;
     console.log(superSecret)
 })()
-````
+```
+
+# 3. Module imports in Create React App
+
+- [Absolute Imports with Create React App](https://medium.com/@ktruong008/absolute-imports-with-create-react-app-4338fbca7e3d)
+- [Babel Module Resolver](https://github.com/tleunen/babel-plugin-module-resolver)
