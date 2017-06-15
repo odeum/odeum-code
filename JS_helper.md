@@ -43,7 +43,7 @@ tag `string text ${expression} string text`
 ### 2.1.2. FUNCTION DECLARATION
 ```js
 function MyDeclaredFunction(){
-    var notSoSecret = 42;
+    var notSoSecret = 42
     console.log(notSoSecret)
 }
 ```
@@ -51,7 +51,7 @@ function MyDeclaredFunction(){
 ### 2.1.3. FUNCTION EXPRESSION
 ```js
 var MyFunctionExpression = function(){
-    var notSoSecret = 42;
+    var notSoSecret = 42
     console.log(notSoSecret)
 }
 ```
@@ -59,7 +59,7 @@ var MyFunctionExpression = function(){
 ### 2.1.4. IIFE (unnamed)
 ```js
 (function(){
-    var superSecret = 42;
+    var superSecret = 42
     console.log(superSecret)
 })()
 ```

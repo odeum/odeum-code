@@ -15,7 +15,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 - [4. ODEUM CodeJS App Components Reference Guide](#4-odeum-codejs-app-components-reference-guide)
     - [4.1. Naming Conventions](#41-naming-conventions)
     - [4.2. Create-React-App (CRA)](#42-create-react-app-cra)
-        - [4.2.1. Setup instructions](#421-setup-instructions)
+    - [4.3. Experiments GitHub Setup Instructions](#43-experiments-github-setup-instructions)
 - [5. Experiments (initial developer experiments)](#5-experiments-initial-developer-experiments)
     - [5.1. Working with the ODEUM CodeJS framework (evolution)](#51-working-with-the-odeum-codejs-framework-evolution)
     - [5.2. Contributors (primary):](#52-contributors-primary)
@@ -94,8 +94,9 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
     - [11.7. Reactjs code snippets](#117-reactjs-code-snippets)
     - [11.8. vscode-styled-components](#118-vscode-styled-components)
 - [12. ESLINT (linting)](#12-eslint-linting)
-- [13. ODEUM API](#13-odeum-api)
-- [14. ODEUM 2GO!](#14-odeum-2go)
+- [13. Absolute imports (still no working solutions)](#13-absolute-imports-still-no-working-solutions)
+- [14. ODEUM API](#14-odeum-api)
+- [15. ODEUM 2GO!](#15-odeum-2go)
 
 <!-- /TOC -->
 
@@ -103,7 +104,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 - Find it here: 
 - [ODEUM CodeJS Github Repository](https://github.com/odeum/odeum-codejs)
 
-```
+```sh
 Git clone https://github.com/odeum/odeum-codejs
 ```
 
@@ -153,7 +154,34 @@ During our hackathons we:
 ## 4.2. Create-React-App (CRA)
 All experiments is based upon the Create-React-App (CRA) boilerplate (and zero-configuration) setup from the React team. Using CRA makes it easy to test and check-out other developers experiments and code.
 
-### 4.2.1. Setup instructions
+To create a new experiment using CRA from the command line:
+
+For example:
+```sh
+ yarn create react-app my-react-app
+
+ or
+
+ create-react-app my-react-app
+```
+
+```sh
+cd experiments
+yarn create react-app my-react-app
+cd my-react-app
+```
+
+## 4.3. Experiments GitHub Setup Instructions
+After creating a new project with create-react-app it might be a good idea to create a GitHub repository for the experiment. This will help other developers with easy access to your experiments. When you have a Github repository ready for the project (create the repository on GitHub) you can add the CRA project to the repository from the command line
+
+```sh
+echo "# my-react-app" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git remote add origin https://github.com/user/my-react-app.git
+  git push -u origin master
+```
 
 # 5. Experiments (initial developer experiments)
 
@@ -520,7 +548,8 @@ Icons for ODEUM CodeJS will use Material Design (MD) icons.
 ## 9.1. Source files 
 
 ## 9.2. Public static source files 
-```
+
+```sh
 /public
 /public/index.html
 /public/favicon.ico
@@ -720,11 +749,17 @@ To set up ESLINT in VSCODE for proper use with React create the following .eslin
 
 ```
 
-# 13. ODEUM API
+# 13. Absolute imports (still no working solutions)
+- [1](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-development-environment-variables-in-env)
+- [2](https://medium.com/@ktruong008/absolute-imports-with-create-react-app-4338fbca7e3d)
+- [3](https://medium.com/@tuchk4/why-i-love-create-react-app-e63b1be689a3)
+
+
+# 14. ODEUM API
 - Location of future ODEUM API (under construction)
 - https://api.odeum.com/api/v1/...
 
-# 14. ODEUM 2GO!
+# 15. ODEUM 2GO!
 
 ODEUM 2GO is a "Hub" and SaaS cloud service which facilitates hosting and deployment management of Web Apps created with the open source App framework ODEUM CodeJS. ODEUM 2GO is charged with a monthly fee of $XX. 
 
