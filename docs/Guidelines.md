@@ -334,6 +334,10 @@ import Header from 'odeum-codejs/components/Header'
 import Notifications from 'odeum-codejs/components/Notifications'
 import Telemetry from 'odeum-codejs/components/Telemetry'
 
+// or multi components as named exports
+
+import { App, Icon, Tabs, Search ... } from 'odeum-codejs/components'
+
 <App>
     {contents}
 </App>
