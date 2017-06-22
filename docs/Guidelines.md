@@ -8,9 +8,10 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 - [1. ODEUM CodeJS Github repository](#1-odeum-codejs-github-repository)
     - [1.1. Github access and usage (branches)](#11-github-access-and-usage-branches)
 - [2. Must-read and tutorials (will update continously)](#2-must-read-and-tutorials-will-update-continously)
-    - [2.1. Technology](#21-technology)
-    - [2.2. Articles](#22-articles)
-    - [2.3. Video tutorials](#23-video-tutorials)
+    - [2.1. Technology (preffered dependency list)](#21-technology-preffered-dependency-list)
+    - [2.2. Technology (validated dependencies)](#22-technology-validated-dependencies)
+    - [2.3. Articles](#23-articles)
+    - [2.4. Video tutorials](#24-video-tutorials)
 - [3. Hackathons](#3-hackathons)
 - [4. ODEUM CodeJS App Components Reference Guide](#4-odeum-codejs-app-components-reference-guide)
     - [4.1. Naming Conventions](#41-naming-conventions)
@@ -119,19 +120,48 @@ Initially we pull and commit work to 3 branches:
 # 2. Must-read and tutorials (will update continously)
 The following technology areas and articles are all must-reads for newcommers to React and ODEUM CodeJS. 
 
-## 2.1. Technology
-- React (15.x)
-- Redux (3.6.x)
-- Redux DevTools Extension (and/or Chrome extension)
-- React-Router-Redux (4.x)
-- Styled-Components (1.4.x)
-- Grid Styled (https://github.com/jxnblk/grid-styled) - http://jxnblk.com/grid-styled/ 
+## 2.1. Technology (preffered dependency list)
+The following modules/packages/dependencies are our preffered dependency list for use in ODEUM CodeJS. They all need to be validated and tested before ending up in production code. When a technology is validated it will be listed on the validated list.
 
-## 2.2. Articles
+- [create-react-app](https://github.com/facebookincubator/create-react-app)
+- [react (15.x)](https://github.com/facebook/react)
+- [react-dom](https://github.com/facebook/react)
+- [prop-types](https://github.com/facebook/prop-types)
+- [redux (3.6.x)](https://github.com/reactjs/redux/)
+- [react-redux (5.x.x)](https://github.com/reactjs/react-redux)
+- [redux-thunk](https://github.com/gaearon/redux-thunk)
+- [react-router (4.x.x)](https://github.com/ReactTraining/react-router)
+- [react-router-dom](https://github.com/reacttraining/react-router)
+- [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+- [redux-devtools](https://github.com/gaearon/redux-devtools)
+- [redux-devTools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
+- [react-router-redux (4.x)](https://github.com/reactjs/react-router-redux)
+- [styled-components (2.1.0)](https://github.com/styled-components/styled-components)
+- [styled-normalize](https://github.com/LestaD/styled-normalize)
+- [polished](https://github.com/styled-components/polished)
+- [react-form](https://github.com/erikras/redux-form)
+- [react-icons](https://github.com/gorangajic/react-icons)
+- [reselect](https://github.com/reactjs/reselect)
+- [react-dnd](https://github.com/react-dnd/react-dnd)
+- [grid-styled](https://github.com/jxnblk/grid-styled)
+- [lodash](https://github.com/lodash/lodash)
+- [history](https://github.com/reacttraining/history)
+- [moment (date, time, locale)](https://github.com/moment/moment/)
+
+## 2.2. Technology (validated dependencies)
+The list you eventually want to have your dependency listed :) 
+
+- [create-react-app](https://github.com/facebookincubator/create-react-app)
+- [react (15.x)](https://github.com/facebook/react)
+- [redux (3.6.x)](https://github.com/reactjs/redux/)
+- [react-redux (5.x.x)](https://github.com/reactjs/react-redux)
+
+
+## 2.3. Articles
 - [Redux.org](http://redux.js.org)
 - [Article from Mapbox](https://www.mapbox.com/blog/redux-for-state-management-in-large-web-apps/)
 
-## 2.3. Video tutorials
+## 2.4. Video tutorials
 - [Getting Started with Redux - Dan Abramov](https://egghead.io/courses/getting-started-with-redux)
 
 # 3. Hackathons
@@ -376,7 +406,7 @@ import Telemetry from 'odeum-telemetry'
     - Redux Dev Tools
     - Custom Telemetry Player (own React view component/app)
 
-- Experiment: Check NPM (redux-state-history, redux-dev-tools, redux-test-recorder, redux-query, redux-storage)
+- Experiment: Check NPM (redux-remotedev, redux-state-history, redux-dev-tools, redux-test-recorder, redux-query, redux-storage)
 - export const APP_ENABLE_TELEMETRY = true
 - export const APP_ENABLE_CRASH_REPORTS = true
 
@@ -422,7 +452,6 @@ and "password" to resolve which server to communicate with.
 - [Enzyme](http://airbnb.io/enzyme/)
 - [Mocha](https://mochajs.org/)
 - [Chai](http://chaijs.com/)
-
 
 ### 5.4.26. Help Server (Help Items)
 - The App platform for displaying context-sensitive helpitems based upon views in scenes. 
