@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import AsyncComponent from 'constants/AsyncComponent'
 /*Routing*/
 import { Switch, Route } from 'react-router-dom'
@@ -14,7 +14,8 @@ import { Scenes } from 'framework/store/selectors/scenes'
 
 function LoadCustomComponents(scene) {
     // console.log(name)
-    const LoadComp = AsyncComponent(() =>import('custom_apps/containers/' + scene.name + '/index.js').then(module => module.default, { name: scene.name }),{scene:scene})
+    /*eslint-disable-next-line*/
+    const LoadComp = AsyncComponent(() => import('custom_apps/containers/' + scene.name + '/index.js').then(module => module.default, { name: scene.name }),{scene:scene})
     return LoadComp
 }
 
@@ -40,4 +41,4 @@ class HomeContainer extends React.Component {
             </ThemeProvider>)
     }
 }
-export default connect(mapStateToProps)(HomeContainer);
+export default connect(mapStateToProps)(HomeContainer)

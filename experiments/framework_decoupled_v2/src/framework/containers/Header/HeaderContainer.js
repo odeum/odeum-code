@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Logo from 'framework/components/Header/Logo'
 import Notification from 'framework/components/Header/Notification'
 import Search from 'framework/components/Header/Search'
@@ -12,8 +12,8 @@ class HeaderContainer extends Component {
                 <Search />
                 <Notification/>
             </HeaderDiv>
-        );
+        )
     }
 }
 
-export default HeaderContainer;
+export default HeaderContainer

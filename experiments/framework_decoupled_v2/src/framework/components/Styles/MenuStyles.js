@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Icon from 'assets/Icon'
 
 export const MenuDiv = styled.div`

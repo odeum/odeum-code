@@ -1,10 +1,20 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './modules/rootReducer'
-import global from './modules/globalReducer'
+import {createBrowserHistory} from 'history'
+import logger from 'redux-logger'
+// Create the history
+ export const history = createBrowserHistory()
+
+
+// console.log(routerMiddleware)
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(combineReducers(rootReducer,global), composeEnhancers(applyMiddleware(thunk)))
-export default store;
+const enhancer = composeEnhancers(applyMiddleware(thunk,logger))
+
+const store = createStore(combineReducers(rootReducer), enhancer)
+
+
+export default store
 
 
 /**Async Reducers **/
@@ -19,7 +29,7 @@ function replaceReducers(defaultReducers) {
 export function injectAsyncReducers(asyncReducers) {
     const injectReducers = Object.keys(asyncReducers).reduce((all, item) => {
         if (store.asyncReducers[item]) {
-            delete all[item];
+            delete all[item]
         }
         return all
     }, asyncReducers)

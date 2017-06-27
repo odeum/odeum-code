@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
+// import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 import {injectAsyncReducers} from 'framework/store'

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Icon from 'assets/Icon'
 import { ICON_SEARCH } from 'assets/icons'
 import {
@@ -21,8 +21,8 @@ class Search extends Component {
                     <Icon icon={ICON_SEARCH} size={20} active={true} />
                 </SearchBarButtonDiv>
             </SearchBarDiv>
-        );
+        )
     }
 }
 
-export default Search;
+export default Search

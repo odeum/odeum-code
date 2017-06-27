@@ -1,0 +1,66 @@
+{
+    "forms": [
+        {
+            "id": 800,
+            "name": "Service Eftersyn",
+            "activeTab": "General",
+            "fields": [
+                {
+                    "general": [
+                        {
+                            "title": "Service Eftersyn",
+                            "description": "Some kind of description",
+                            "date": "2017-07-08T18:25:43.511Z",
+                            "type": [
+                                "Accident",
+                                "Fault",
+                                "Magic"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "tabChidlrenDashboard": [
+                {
+                    "label": "General",
+                    "location": "/forms/800/general",
+                    "icon": "assignment_turned_in",
+                    "fixed": true
+                },
+                {
+                    "label": "Design",
+                    "location": "/forms/800/design",
+                    "icon": "info",
+                    "fixed": false
+                },
+                {
+                    "label": "Configuration",
+                    "location": "/forms/800/configuration",
+                    "icon": "settings",
+                    "fixed": true
+                }
+            ]
+        },
+        {
+            "id": 801,
+            "name": "Andrei's How NOT to start an essay form",
+            "activeTab": "General",
+            "fields": [
+                {
+                    "general": [
+                        {
+                            "title": "Andrei's form",
+                            "description": "Lorem ipsum Lorem ipsum ",
+                            "date": "2017-07-08T18:25:43.511Z",
+                            "type": [
+                                "Magic",
+                                "Blackjack",
+                                "Hookers"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

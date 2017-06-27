@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {HeaderNotificationDiv, 
         HeaderNotificationIcon, 
         HeaderNotificationBadgeSpan} from 'framework/components/Styles/HeaderStyles'
@@ -14,8 +14,8 @@ class Notification extends Component {
                     <HeaderNotificationBadgeSpan>42</HeaderNotificationBadgeSpan>
                     </HeaderNotificationIcon>
             </HeaderNotificationDiv>
-        );
+        )
     }
 }
 
-export default Notification;
+export default Notification

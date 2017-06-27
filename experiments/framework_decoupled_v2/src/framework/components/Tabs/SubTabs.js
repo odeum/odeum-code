@@ -2,7 +2,7 @@ import React from 'react'
 import { CloseDiv, CloseLink, List, Label, Div, TabIcon, IconDiv, TabLink } from 'framework/components/Styles/TabStyles'
 import {ICON_CLOSE} from 'assets/icons'
 
-const Tabs = ({ tabs, activeTab, onTabClick, onCloseClick, id }) => {
+const SubTabs = ({ tabs, activeTab, onTabClick, onCloseClick, id }) => {
 
     let active = (tab) => (tab.label === activeTab ? 'active' : '')
     const act = (tab) => (active(tab).includes('active') ? true : false)
@@ -40,4 +40,4 @@ const Tabs = ({ tabs, activeTab, onTabClick, onCloseClick, id }) => {
     )
 }
 
-export default Tabs
+export default SubTabs

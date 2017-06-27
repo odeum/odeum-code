@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 import Form from 'custom_apps/containers/Forms/tabs/Form/Form'
 import { Switch } from 'react-router'
@@ -6,6 +6,7 @@ import PropsRoute from 'constants/PropsRoute'
 import { injectAsyncReducers } from 'framework/store'
 import forms from 'custom_apps/modules/formsReducer'
 import {loadTabs} from 'framework/store/modules/globalReducer'
+import List from './tabs/List/List'
 injectAsyncReducers({
     forms: forms
 })
@@ -23,11 +24,12 @@ class Forms extends Component {
             <div>
                 <TabsContainer id={scene.id} />
                 <Switch>
-                    <PropsRoute path='/forms/form/:id' component={Form} />
+                    <PropsRoute path='/forms/id=:id' component={Form} />
+                    <PropsRoute path='/forms/list' component={List}/>
                 </Switch>
             </div>
-        );
+        )
     }
 }
 
-export default Forms;
+export default Forms

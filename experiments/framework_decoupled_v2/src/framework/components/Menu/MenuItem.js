@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {MenuPanelDiv,MenuLink,MenuIconDiv,MenuIcon,Arrow} from 'framework/components/Styles/MenuStyles'
 import {MdKeyboardArrowRight} from 'react-icons/lib/md'
 
@@ -14,7 +14,7 @@ const MenuItem = ({name,icon,location,active,onClick}) => {
             </MenuLink>
             </MenuPanelDiv>
             
-    );
-};
+    )
+}
 
-export default MenuItem;
+export default MenuItem

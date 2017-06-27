@@ -15,6 +15,6 @@ function mapDispatchToProps(dispatch){
 }
 Menu.propTypes={
 scenes:PropTypes.array.isRequired,
-id:PropTypes.number.isRequired
+id:PropTypes.string.isRequired
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Menu)

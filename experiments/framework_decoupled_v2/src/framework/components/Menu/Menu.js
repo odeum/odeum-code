@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {MenuDiv} from 'framework/components/Styles/MenuStyles'
 import MenuItem from 'framework/components/Menu/MenuItem'
 
@@ -17,7 +17,7 @@ const Menu = ({scenes,loadTabs}) => {
             />)}
         </MenuDiv>
     </div>
-    );
-};
+    )
+}
 
-export default Menu;
+export default Menu

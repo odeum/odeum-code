@@ -46,6 +46,6 @@ export default function global(state = initialState, action = {}) {
           activeTab: action.payload.label
         }
       }
-    default: return state;
+    default: return state
   }
 };

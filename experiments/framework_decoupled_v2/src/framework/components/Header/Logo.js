@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import logo from 'assets/codejs_logo.png'
 import { HeaderLogoDiv, LogoLink} from 'framework/components/Styles/HeaderStyles'
 const Logo = () => {
@@ -8,7 +8,7 @@ const Logo = () => {
                 <img src={logo} alt="Logo" />
             </LogoLink>
         </HeaderLogoDiv>
-    );
-};
+    )
+}
 
-export default Logo;
+export default Logo
