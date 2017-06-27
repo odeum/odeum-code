@@ -63,7 +63,7 @@ TabsWrapper.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-    activeTab: state.global.activeTab
+    // activeTab: state.global.activeTab
 })
 
 function mapDispatchToProps(dispatch) {

@@ -1,4 +1,4 @@
 import dashboardReducer from './components/Dashboard/dashboardReducer'
-import formsReducer from './components/Forms/formsReducer'
+import forms from './components/Forms/formsReducer'
 
-export {dashboardReducer,formsReducer}
+export {dashboardReducer,forms}

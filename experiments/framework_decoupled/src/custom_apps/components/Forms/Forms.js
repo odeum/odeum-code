@@ -7,6 +7,7 @@ class Forms extends Component {
     componentWillMount(){
         // console.log(this.props)
          this.props.loadTabs('Forms')
+         this.props.getForms()
     }
     render() {
       //  const childWithProps = React.Children.map(this.props.children,

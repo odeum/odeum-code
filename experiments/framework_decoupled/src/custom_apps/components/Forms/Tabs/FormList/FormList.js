@@ -8,7 +8,7 @@ import {browserHistory} from 'react-router'
 class FormList extends Component {
     
     componentWillMount() {
-        //TODO this must be done only once!
+        //Move to Forms Container
         this.props.getForms()
     }
     handleClick(form){
@@ -33,7 +33,7 @@ class FormList extends Component {
     }
 }
 const mapStateToProps = (state) =>({
-    forms:state.formsReducer.forms
+    forms:state.forms.forms
 })
 function mapDispatchToProps(dispatch){
     return bindActionCreators(formsActions,dispatch)

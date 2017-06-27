@@ -30,7 +30,7 @@ class Home extends Component {
                 <HeaderContainer />
                 <MenuContainer />
                 
-                <TabsWrapper children={this.props.tabChildren}/>
+                <TabsWrapper children={this.props.tabChildren} activeTab={this.props.activeTab}/>
                
                 {this.props.children}
 
@@ -43,11 +43,13 @@ class Home extends Component {
     }
 }
 Home.propTypes = {
-    tabChildren: PropTypes.array
+    tabChildren: PropTypes.array,
+    activeTab: PropTypes.string
 }
 
 const mapStateToProps = (state,ownProps) =>({
-    tabChildren: state.global.tabChildren
+    tabChildren: state.global.tabChildren,
+    activeTab: state.global.activeTab
 })
 
 function mapDispatchToProps(dispatch){

@@ -5,7 +5,7 @@ const initialState = {
 }
 
 
-export default function forms(state=initialState,action){
+const forms=(state=initialState,action)=>{
     switch(action.type){
         case actions.GET_FORMS:
         { //console.log(action.payload.forms)
@@ -14,3 +14,5 @@ export default function forms(state=initialState,action){
         default: return state
     }
 }
+
+export default forms
