@@ -1,0 +1,70 @@
+{
+    "scenes": [
+        {
+            "name": "Dashboard",
+            "id":"dashboard",
+            "location": "/dashboard",
+            "icon": "dashboard",
+            "activeTab":"General",
+            "tabs": [
+                {
+                    "label": "General",
+                    "location": "/dashboard/general",
+                    "icon": "assignment_turned_in",
+                    "fixed": true
+                },
+                {
+                    "label": "Fields",
+                    "location": "/dashboard/fields",
+                    "icon": "input",
+                    "fixed": true
+                },
+                {
+                    "label": "Workflow",
+                    "location": "/dashboard/workflow",
+                    "icon": "timeline",
+                    "fixed": true
+                },
+                {
+                    "label": "Users",
+                    "location": "/dashboard/users",
+                    "icon": "people",
+                    "fixed": true
+                },
+                {
+                    "label": "Actions",
+                    "location": "/dashboard/actions",
+                    "icon": "code",
+                    "fixed": true
+                },
+                {
+                    "label": "Configuration",
+                    "location": "/dashboard/configuration",
+                    "icon": "settings",
+                    "fixed": true
+                },
+                {
+                    "label": "Design",
+                    "location": "/dashboard/design",
+                    "icon": "opacity",
+                    "fixed": true
+                }
+            ]
+        },
+        {
+            "name": "Forms",
+            "location": "/forms",
+            "id":"forms",
+            "activeTab":"Forms",
+            "icon": "assignment",
+            "tabs": [
+                {
+                    "label": "Forms",
+                    "location": "/forms/list",
+                    "icon": "assignment",
+                    "fixed": true
+                }
+            ]
+        }
+    ]
+}
