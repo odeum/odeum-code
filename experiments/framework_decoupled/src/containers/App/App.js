@@ -2,34 +2,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
-//TODO redirect from / to /first_scene/first_component
-const rootRoute = {
-    childRoutes:[{
-        path:'/',
-        component: require('./Home/Home').default,
-        childRoutes:[
-            require('../../custom_apps/routes.js')
-        ],
-    },
-    {
-        path:'*',
-        component: require('./NotFound').default
-    }]
-}
+import rootRoute from './rootRoute'
 
-class AppContainer extends Component {    
+class AppContainer extends Component {
     render() {
-        return (            
-            <Provider store={this.props.store}>
-                <Router history={this.props.history} routes={rootRoute} />
+        return (
+            <Provider store={ this.props.store }>
+              <Router history={ this.props.history } routes={ rootRoute } />
             </Provider>
         )
     }
 }
 
 AppContainer.propTypes = {
-    history:PropTypes.object.isRequired,
-    store:PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired
 }
 
 export default AppContainer

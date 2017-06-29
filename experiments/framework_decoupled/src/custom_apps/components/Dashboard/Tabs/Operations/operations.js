@@ -1,30 +1,32 @@
 import React, { Component } from 'react'
-import * as operationsActions from './operationsActions.js'
+import { updateTab } from 'store/modules/tabs'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class Operations extends Component {
     componentWillMount() {
         this.props.updateTab({
-    label: 'Actions',
-    location: '/dashboard/actions',
-    icon: 'code',
-    fixed: true
-})
+            label: 'Actions',
+            location: '/dashboard/actions',
+            icon: 'code',
+            fixed: true
+        })
     }
     render() {
         return (
             <div>
-                Operations
+              Operations
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(operationsActions, dispatch)
+    return bindActionCreators({
+        updateTab
+    }, dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Operations)
+export default connect(mapStateToProps, mapDispatchToProps)(Operations)

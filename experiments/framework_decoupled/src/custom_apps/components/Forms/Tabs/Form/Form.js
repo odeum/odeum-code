@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import TabsWrapper from '../../../../../containers/App/Tabs/TabsWrapper'
-import * as formsActions from '../../formsActions'
+import TabsContainer from 'containers/Tabs/TabsContainer'
+// import * as formsActions from '../../formsActions'
+import { getForm, getForms } from '../../../../modules/forms'
+import { updateTab, loadTabs } from 'store/modules/tabs'
 // import {browserHistory} from 'react-router'
 var _ = require('lodash')
 class Form extends Component {
@@ -12,17 +14,15 @@ class Form extends Component {
             formParams: false
         }
     }
-    getTabs(formID){
-        console.log(this.props.formProps)
+    getTabs(formID) {
         return this.props.formProps.tabChildrenDashboard
     }
     componentWillMount() {
-        //TODO replace with formProps
         let FormProps = this.props.getForm(parseInt(this.props.id, 10))
-        // console.log(this.state.formParams)
-         console.log(this.props.formProps)
         if (FormProps !== undefined) {
-            this.setState({ formParams: true })
+            this.setState({
+                formParams: true
+            })
             this.props.updateTab(
                 {
                     label: FormProps.name,
@@ -30,9 +30,7 @@ class Form extends Component {
                     icon: 'info',
                     fixed: false
                 })
-        }
-        else {
-            //this.setState({ formParams: true })
+        } else {
             this.props.updateTab(
                 {
                     label: "Error",
@@ -45,24 +43,34 @@ class Form extends Component {
 
     }
     render() {
-       //TODO Implement Children with props
+        //TODO Implement Children with props
         return (
-            this.state.formParams ?
-                (
-                    <div>It worked  {this.props.id} <TabsWrapper children={this.props.formProps.tabChidlrenDashboard} 
-                    activeTab={this.props.activeTab}/>{this.props.children}</div>) : (<div>Error 404</div>)
-                   
+        this.state.formParams ?
+            (
+            <div>Form number: { this.props.id }
+              <TabsContainer children={ this.props.formProps.tabChidlrenDashboard } activeTab={ this.props.activeTab } />
+              { this.props.children }
+            </div>) : (<div>Error 404</div>)
+
         )
     }
 }
+//TODO: Implement Selectors
 const mapStateToProps = (state, ownProps) => ({
     id: ownProps.params.id,
-    formProps: _.find(state.forms.forms,function (form){
-        return form.id===parseInt(ownProps.params.id,10)}),
-    activeTab: _.find(state.forms.forms,function (form){
-        return form.id===parseInt(ownProps.params.id,10)}).activeTab
+    formProps: _.find(state.forms.forms, function(form) {
+        return form.id === parseInt(ownProps.params.id, 10)
+    }),
+    activeTab: _.find(state.forms.forms, function(form) {
+        return form.id === parseInt(ownProps.params.id, 10)
+    }).activeTab
 })
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(formsActions, dispatch)
+    return bindActionCreators({
+        updateTab,
+        loadTabs,
+        getForm,
+        getForms
+    }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Form)

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 
-class index extends Component {
+class ODEUMTab extends Component {
+
     render() {
         return (
             <div>
-              { this.props.children }
+              Hello
             </div>
         )
     }
 }
 
-export default index
+export default ODEUMTab

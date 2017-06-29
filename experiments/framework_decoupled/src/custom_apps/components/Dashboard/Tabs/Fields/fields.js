@@ -1,29 +1,31 @@
 import React, { Component } from 'react'
-import * as fieldsActions from './fieldsActions.js'
+import { updateTab } from 'store/modules/tabs'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class Fields extends Component {
     componentWillMount() {
         this.props.updateTab({
-    label: 'Fields',
-    location: '/dashboard/fields',
-    icon: 'input',
-    fixed: true
-})
+            label: 'Fields',
+            location: '/dashboard/fields',
+            icon: 'input',
+            fixed: true
+        })
     }
     render() {
         return (
             <div>
-                Fields
+              Fields
             </div>
         )
     }
 }
 const mapStateToProps = (state) => ({
-    
+
 })
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(fieldsActions, dispatch)
+    return bindActionCreators({
+        updateTab
+    }, dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Fields)
+export default connect(mapStateToProps, mapDispatchToProps)(Fields)

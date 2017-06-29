@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
-import * as usersActions from './usersActions.js'
+import { updateTab } from 'store/modules/tabs'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class Users extends Component {
     componentWillMount() {
         this.props.updateTab({
-    label: 'Users',
-    location: '/dashboard/users',
-    icon: 'people',
-    fixed: true
-})
+            label: 'Users',
+            location: '/dashboard/users',
+            icon: 'people',
+            fixed: true
+        })
     }
     render() {
         return (
             <div>
-                Users
+              Users
             </div>
         )
     }
@@ -23,9 +23,11 @@ class Users extends Component {
 
 
 const mapStateToProps = (state) => ({
-    
+
 })
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(usersActions, dispatch)
+    return bindActionCreators({
+        updateTab
+    }, dispatch)
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Users)
+export default connect(mapStateToProps, mapDispatchToProps)(Users)

@@ -1,4 +1,4 @@
-import React/*, { Component }*/ from 'react'
+import React /*, { Component }*/ from 'react'
 import * as configurationActions from './configurationActions.js'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -14,12 +14,12 @@ class Configuration extends ODEUMTab {
         //     icon: 'settings',
         //     fixed: true
         // })
-      //  this.updateTab(this)
+        //  this.updateTab(this)
     }
     render() {
         return (
             <div>
-                Configuration
+              Configuration
             </div>
         )
     }

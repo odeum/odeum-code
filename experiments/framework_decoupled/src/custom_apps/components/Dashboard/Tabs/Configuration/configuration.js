@@ -1,12 +1,11 @@
-import React/*, { Component }*/ from 'react'
-import * as configurationActions from './configurationActions.js'
+import React /*, { Component }*/ from 'react'
+// import * as configurationActions from './configurationActions.js'
+import { updateTab } from 'store/modules/tabs'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import ODEUMTab from './ODEUMTab'
+import ODEUMTab from '../ODEUMTab'
 class Configuration extends ODEUMTab {
-    // constructor(props) {
-    //     super(props)
-    // }
+
     componentWillMount() {
         this.props.updateTab({
             label: 'Configuration',
@@ -14,12 +13,12 @@ class Configuration extends ODEUMTab {
             icon: 'settings',
             fixed: true
         })
-      //  this.updateTab(this)
+
     }
     render() {
         return (
             <div>
-                Configuration
+              Configuration
             </div>
         )
     }
@@ -29,6 +28,8 @@ const mapStateToProps = (state) => ({
 
 })
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(configurationActions, dispatch)
+    return bindActionCreators({
+        updateTab
+    }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Configuration)
