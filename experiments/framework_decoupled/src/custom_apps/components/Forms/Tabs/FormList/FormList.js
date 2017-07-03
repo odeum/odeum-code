@@ -9,7 +9,7 @@ class FormList extends Component {
 
     componentWillMount() {}
     handleClick(form) {
-        browserHistory.push('/forms/' + form.id +'/'+form.tabChildrenDashboard[0].label+'/'+form.tabChildrenDashboard[2].label)
+        browserHistory.push('/forms/' + form.id +'/general/something')
     }
     render() {
         return (
