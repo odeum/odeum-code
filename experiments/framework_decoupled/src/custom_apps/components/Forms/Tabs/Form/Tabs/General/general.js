@@ -14,7 +14,6 @@ class General extends Component {
                     <Tab name={'General'}>General Tab</Tab>
                     <Tab name={'Children'}>{this.props.children}</Tab>
                 </SubTabsContainer>
-                {/*{this.props.children}*/}
             </div>
         )
     }
