@@ -9,15 +9,7 @@ class FormList extends Component {
 
     componentWillMount() {}
     handleClick(form) {
-        browserHistory.push('/forms/' + form.id)
-        this.props.updateTab(
-            {
-                label: form.name,
-                location: '/forms/' + form.id,
-                icon: 'info',
-                fixed: false
-            }
-        )
+        browserHistory.push('/forms/' + form.id +'/'+form.tabChildrenDashboard[0].label+'/'+form.tabChildrenDashboard[2].label)
     }
     render() {
         return (

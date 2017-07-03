@@ -4,6 +4,10 @@ import { ICON_CLOSE } from 'assets/icons'
 import Icon from 'assets/Icon'
 import { TabList, TabLabel, TabLink, TabDiv, TabIcon, TabIconDiv, TabCloseLink, TabClose } from 'components/styles/TabStyles'
 
+/*Dumb component for Main Tab component
+
+*/
+
 const Tabs = ({children, activeTab, closeTab, updateTab, setActive}) => {
     let active = (tab) => (tab.label === activeTab ? 'active' : '')
     const act = (tab) => {

@@ -13,8 +13,6 @@ import { connect } from 'react-redux'
 import { Scenes } from 'framework/store/selectors/scenes'
 
 function LoadCustomComponents(scene) {
-    // console.log(name)
-    /*eslint-disable-next-line*/
     const LoadComp = AsyncComponent(() => import('custom_apps/containers/' + scene.name + '/index.js').then(module => module.default, { name: scene.name }),{scene:scene})
     return LoadComp
 }

@@ -14,6 +14,22 @@ export const PanelDiv = styled.div`
     border-radius: 0px 5px 5px 5px;
     overflow: scroll;
 `
+export const SubTabAnchor = styled.a`
+    display:inline-block;
+    text-decoration: none;
+    height:100%;
+    outline: 0;
+    color: ${(props)=> props.theme.tabs.TAB_TEXT};
+    font-family:  ${(props)=> props.theme.font};
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 300;
+    ${props => props.className === 'active' && css`
+        color: white;
+    `}
+    padding-left: 20px;
+    padding-right: 20px;
+`
 export const TabLink = styled(Link)`
     display:inline-block;
     text-decoration: none;

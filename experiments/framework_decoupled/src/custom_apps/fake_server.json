@@ -10,7 +10,7 @@
             "type":["Accident","Fault","Magic"]}
         ]}
     ],
-    "tabChidlrenDashboard":[
+    "tabChildrenDashboard":[
         {
                     "label": "General",
                     "location": "/forms/800/general",
@@ -40,8 +40,23 @@
             "date":"2017-07-08T18:25:43.511Z",
             "type":["Magic","Blackjack","Hookers"]}
         ]}
-    ],    "tabChidlrenDashboard":[
-       
+    ],    "tabChildrenDashboard": [{
+                    "label": "General",
+                    "location": "/forms/800/general",
+                    "icon": "assignment_turned_in",
+                    "fixed": true
+                },
+                {
+                    "label": "Design",
+                    "location": "/forms/800/design",
+                    "icon": "info",
+                    "fixed": false
+                },{
+                    "label": "Configuration",
+                    "location": "/forms/800/configuration",
+                    "icon": "settings",
+                    "fixed": true
+                }
                 
     ]}
     

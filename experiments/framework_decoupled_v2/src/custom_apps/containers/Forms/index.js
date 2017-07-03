@@ -24,8 +24,8 @@ class Forms extends Component {
             <div>
                 <TabsContainer id={scene.id} />
                 <Switch>
-                    <PropsRoute path='/forms/id=:id' component={Form} />
-                    <PropsRoute path='/forms/list' component={List}/>
+                    <PropsRoute exact path='/forms/list' component={List}/>
+                    <PropsRoute path='/forms/:id' component={Form} />
                 </Switch>
             </div>
         )

@@ -9,6 +9,7 @@ const LOAD_DEFAULT_TABS = '@@TABS/LOAD DEFAULT TABS'
 var _ = require('lodash')
 
 export function loadTabs(label) {
+    console.log("Load Tabs",label)
     return (dispatch) => {
         dispatch({ type: LOAD_DEFAULT_TABS, payload: label })
     }
@@ -35,6 +36,7 @@ export function setActive(tab) {
 }
 function sceneFinder(scenes, payload) {
     return _.find(scenes, function (scene) {
+        console.log("Scene", scene)
         return scene.name === payload
     })
 }

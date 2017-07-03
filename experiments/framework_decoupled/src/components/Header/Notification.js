@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//Styles and Icons
+//Styled components and Icons
 import Icon from 'assets/Icon'
 import { ICON_NOTIFICATIONS_NONE } from 'assets/icons'
 import {

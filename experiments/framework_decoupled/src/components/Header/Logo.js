@@ -1,5 +1,8 @@
+
 import React from 'react'
+//Assets logo image
 import logo from 'assets/codejs_logo.png'
+//Styled components
 import {LogoLink, LogoDiv, LogoImg} from '../styles/HeaderStyles'
 
 const Logo = () => {
