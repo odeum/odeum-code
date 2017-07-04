@@ -12,6 +12,8 @@ class Forms extends Component {
         this.props.getForms()
     }
     render() {
+
+        //INFO Children with props
         //  const childWithProps = React.Children.map(this.props.children,
         //(child)=> React.cloneElement(child,{updateTabWrapper:this.props.updateTab}))
         return (

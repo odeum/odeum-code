@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {TabList} from 'components/styles/TabStyles'
+
 class SubTabs extends Component {
     constructor(props) {
         super(props)

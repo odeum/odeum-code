@@ -22,6 +22,7 @@ class Form extends Component {
             this.setState({
                 formParams: true
             })
+            //TODO change static url
             this.props.updateTab(
                 {
                     label: FormProps.name,
