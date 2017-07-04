@@ -406,7 +406,7 @@ import Telemetry from 'odeum-telemetry'
     - Redux Dev Tools
     - Custom Telemetry Player (own React view component/app)
 
-- Experiment: Check NPM (redux-remotedev, redux-state-history, redux-dev-tools, redux-test-recorder, redux-query, redux-storage)
+- Experiment: Check NPM (redux-remotedev, redux-state-history, redux-dev-tools, redux-test-recorder, redux-query, redux-storage, https://sentry.io/welcome/)
 - export const APP_ENABLE_TELEMETRY = true
 - export const APP_ENABLE_CRASH_REPORTS = true
 
