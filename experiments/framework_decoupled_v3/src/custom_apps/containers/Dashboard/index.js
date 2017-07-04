@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
-
+import {connect} from 'react-redux'
+import {changeId} from 'store/modules/tabs'
 class Dashboard extends Component {
+    
+    componentWillMount() {
+        this.props.onMount()
+    }
+    
     render() {
         return (
             <div>
@@ -9,4 +15,16 @@ class Dashboard extends Component {
         )
     }
 }
-export default Dashboard
+const mapStateToProps = (state) => ({
+})
+
+function mapDispatchToProps(dispatch) {
+    return{
+        onMount: ()=>{
+            dispatch(changeId('dashboard'))
+        }
+    }
+    
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Dashboard)
+

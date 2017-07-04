@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {changeId} from 'store/modules/tabs'
 class Forms extends Component {
+    
+    componentWillMount() {
+        this.props.onMount()
+    }
     
     render() {
         return (
             <div>
-                Form
+               {this.props.children}
             </div>
         )
     }
@@ -14,8 +19,12 @@ const mapStateToProps = (state) => ({
 })
 
 function mapDispatchToProps(dispatch) {
-    return({
-    })
+    return{
+        onMount: ()=>{
+            dispatch(changeId('forms'))
+        }
+    }
+    
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Forms)
 

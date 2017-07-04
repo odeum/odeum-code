@@ -71,7 +71,7 @@
         {
             "name": "Forms",
             "id":"forms",
-            "location": "/forms",
+            "location": "/forms/list",
             "icon": "assignment"
         }
     ]
