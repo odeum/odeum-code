@@ -304,6 +304,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 ### 5.4.6. Redux Forms (redux-form)
 - Experiment with Redux Forms.
 - [Redux Forms](http://redux-form.com/)
+- [Redux Forms with Draft.js](https://medium.com/front-end-hacking/redux-form-and-draft-js-mashup-43d4609fc7abs)
 
 ### 5.4.7. Datagrid/Datatables
 - Experiment with lists with large data payloads
