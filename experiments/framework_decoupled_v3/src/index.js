@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import registerServiceWorker from './registerServiceWorker'
-import AppContainer from './containers/App/App'
-import { history, store } from 'store'
+import AppContainer from 'framework/containers/App/App'
+import { history, store } from 'framework/store'
 
 
 ReactDOM.render(
