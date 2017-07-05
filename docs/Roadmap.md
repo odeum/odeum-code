@@ -14,5 +14,6 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 - Theme
 - Forms (Redux-Form)
 - Lists
+- Editor
 - Drag n' Drop
 
