@@ -4,8 +4,8 @@ import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-rou
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import reducers from 'store/reducer'
-
-const middlewares = [thunk, routerMiddleware(browserHistory)]
+import {asyncDispatchMiddleware} from 'store/modules/tabs'
+const middlewares = [thunk, routerMiddleware(browserHistory), asyncDispatchMiddleware]
 
 const reducer = combineReducers({
     ...reducers,

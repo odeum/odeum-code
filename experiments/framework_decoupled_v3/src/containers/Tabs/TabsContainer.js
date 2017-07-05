@@ -22,8 +22,9 @@ function mapDispatchToProps(dispatch) {
         },
         OnCloseClick: (id,tab)=>{
             dispatch(tabClose(id,tab))
-            dispatch(tabChange(id))//REFACTOR
-            dispatch(push('/'))
+            dispatch(tabChange(id))
+            console.log(push('/'))
+            
         }
     }
     

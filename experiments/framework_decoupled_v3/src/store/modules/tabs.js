@@ -1,4 +1,5 @@
 import config from 'custom_apps/config.json'
+import push from 'react-router-redux'
 /*Action Types*/
 export const CHANGE_TAB = "@@TABS/CHANGE_TAB"
 export const SET_SUBTABS = "@@TABS/SET_TABS"
@@ -7,8 +8,35 @@ export const ADD_TAB = "@@TABS/ADD_TAB"
 export const CHANGE_ID = "@@TABS/CHANGE_ID"
 export const CLOSE_TAB = "@@TABS/CLOSE_TAB"
 var _ = require('lodash')
+/* MiddleWare */
+export const asyncDispatchMiddleware = store => next => action => {
+    let syncActivityFinished = false
+    let actionQueue = []
+
+    function flushQueue() {
+        actionQueue.forEach(a => store.dispatch(a)) // flush queue
+        actionQueue = []
+    }
+
+    function asyncDispatch(asyncAction) {
+        actionQueue = actionQueue.concat([asyncAction])
+
+        if (syncActivityFinished) {
+            flushQueue()
+        }
+    }
+
+    const actionWithAsyncDispatch = Object.assign({}, action, {
+        asyncDispatch
+    })
+
+    next(actionWithAsyncDispatch)
+    syncActivityFinished = true
+    flushQueue()
+}
 
 /*Actions*/
+
 export const addTab = (id, tab) => ({
     type: ADD_TAB,
     payload: {
@@ -16,33 +44,37 @@ export const addTab = (id, tab) => ({
         tab: tab
     }
 })
-export const tabClose = (id,tab) =>{
-    return{
-    type:CLOSE_TAB,
-    payload:{
-        id: id,
-        tab:tab
+export const tabClose = (id, tab) => {
+    return {
+        type: CLOSE_TAB,
+        payload: {
+            id: id,
+            tab: tab
+        }
     }
-}
 }
 
 export const changeId = (scene) => ({
     type: CHANGE_ID,
-    payload: {scene:scene}
+    payload: {
+        scene: scene
+    }
 })
 export const tabChange = (id, label) => {
-   if(label)
-   return{
-    type: CHANGE_TAB,
-    payload: {
-        id: id,
-        label: label}}
+    if (label)
+        return {
+            type: CHANGE_TAB,
+            payload: {
+                id: id,
+                label: label
+            }
+    }
     else return {
-        type:CHANGE_TAB,
-        payload:{
-            id: id,
-            label: ''
-        }
+            type: CHANGE_TAB,
+            payload: {
+                id: id,
+                label: ''
+            }
     }
 }
 
@@ -76,12 +108,23 @@ function findInstanceByID(id, tabInstance) {
 }
 export default function tabs(state = initialState, action) {
     switch (action.type) {
-        case CLOSE_TAB:{
+        case CLOSE_TAB: {
             let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
-            let newTabs =findInstance.tabs.filter((tab)=> tab !== action.payload.tab)
+            let newTabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
             findInstance.tabs = newTabs
             let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
-            return{
+            action.asyncDispatch({
+                type: '@@router/LOCATION_CHANGE',
+                payload: {
+                   pathname: findInstance.tabs[0].location,
+                   search:"",
+                   hash:"",
+                   action:"POP",
+                   key:"null",
+                   query:{}
+                    }
+            })
+            return {
                 ...state,
                 tabInstance: newInstances
             }
@@ -100,10 +143,11 @@ export default function tabs(state = initialState, action) {
         }
         case CHANGE_TAB: {
             let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
-            if(action.payload.label ==='')
-           { findInstance.activeTab = findInstance.tabs[0].label}
-            else
-            {findInstance.activeTab = action.payload.label}
+            if (action.payload.label === '') {
+                findInstance.activeTab = findInstance.tabs[0].label
+            } else {
+                findInstance.activeTab = action.payload.label
+            }
             let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
             return {
                 ...state,
@@ -113,7 +157,7 @@ export default function tabs(state = initialState, action) {
         case ADD_TAB: {
             let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
             let findDuplicate = _.find(findInstance.tabs, action.payload.tab)
-            if (findDuplicate===undefined) {
+            if (findDuplicate === undefined) {
                 findInstance.tabs.push(action.payload.tab)
                 let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
                 return {
