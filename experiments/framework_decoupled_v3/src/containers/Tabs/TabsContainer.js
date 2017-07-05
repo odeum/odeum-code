@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 // import { getActiveTab, getTabs} from '../selectors/tabsSelectors'
 import {getInstance} from 'store/selectors/tabsSelectors'
 import Tabs from 'components/Tabs/Tabs'
-import {tabChange,tabClose,navBack} from 'store/modules/tabs'
+import {tabChange,tabClose} from 'store/modules/tabs'
 import {push} from 'react-router-redux'
 
 const makeMapStateToProps = () => {

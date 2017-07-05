@@ -1,5 +1,4 @@
 import config from 'custom_apps/config.json'
-import {push} from 'react-router-redux'
 /*Action Types*/
 export const CHANGE_TAB = "@@TABS/CHANGE_TAB"
 export const SET_SUBTABS = "@@TABS/SET_TABS"
