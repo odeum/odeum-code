@@ -1,5 +1,4 @@
 import config from 'custom_apps/config.json'
-import push from 'react-router-redux'
 /*Action Types*/
 export const CHANGE_TAB = "@@TABS/CHANGE_TAB"
 export const SET_SUBTABS = "@@TABS/SET_TABS"
@@ -8,13 +7,15 @@ export const ADD_TAB = "@@TABS/ADD_TAB"
 export const CHANGE_ID = "@@TABS/CHANGE_ID"
 export const CLOSE_TAB = "@@TABS/CLOSE_TAB"
 var _ = require('lodash')
+
 /* MiddleWare */
+
 export const asyncDispatchMiddleware = store => next => action => {
     let syncActivityFinished = false
     let actionQueue = []
 
     function flushQueue() {
-        actionQueue.forEach(a => store.dispatch(a)) // flush queue
+        actionQueue.forEach(a => store.dispatch(a)) 
         actionQueue = []
     }
 
