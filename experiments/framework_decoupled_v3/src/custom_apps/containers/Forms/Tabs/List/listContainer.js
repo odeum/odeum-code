@@ -4,20 +4,23 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {push} from 'react-router-redux'
 import {tabChange} from 'store/modules/tabs'
-
+import {Div} from 'custom_apps/styles'
 class List extends Component {
 
     
     componentWillMount() {
+        //Fixed tab example
         this.props.onMount()
     }
     
     render() {
         return (
-            <div>
-                Here are all the forms <br/>
+            <Div>
+                Here are all the forms 
+                <br/>
+                <br/>
                 <button onClick={(e)=>{e.preventDefault();this.props.onClick()}}>Open form</button>
-            </div>
+            </Div>
         )
     }
 }

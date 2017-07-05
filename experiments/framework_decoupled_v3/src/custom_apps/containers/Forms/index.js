@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {changeId} from 'store/modules/tabs'
 import TabsContainer from 'containers/Tabs/TabsContainer'
-import styled from 'styled-components'
+import {Div} from 'custom_apps/styles'
 class Forms extends Component {
     
     componentWillMount() {
@@ -10,15 +10,7 @@ class Forms extends Component {
     }
     
     render() {
-    const Div = styled.div`
-    float: left;
-    width: calc(100% - 290px);
-    height: calc(100vh - 230px);
-    padding-left: 20px;
-    padding-right: 20px;
-    background: #ecf0f1;
-    margin-top: 10px;
-`
+
         return (
             <Div>
                 <TabsContainer id='formlist'/>
