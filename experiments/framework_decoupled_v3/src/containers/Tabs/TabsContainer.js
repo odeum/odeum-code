@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 // import { getActiveTab, getTabs} from '../selectors/tabsSelectors'
 import {getInstance} from 'store/selectors/tabsSelectors'
 import Tabs from 'components/Tabs/Tabs'
-import {tabChange,tabClose} from 'store/modules/tabs'
+import {tabChange,tabClose,navBack} from 'store/modules/tabs'
 import {push} from 'react-router-redux'
 
 const makeMapStateToProps = () => {
@@ -23,7 +23,7 @@ function mapDispatchToProps(dispatch) {
         OnCloseClick: (id,tab)=>{
             dispatch(tabClose(id,tab))
             dispatch(tabChange(id))//REFACTOR
-            dispatch(push('/'))//REFACTOR
+            dispatch(push('/'))
         }
     }
     

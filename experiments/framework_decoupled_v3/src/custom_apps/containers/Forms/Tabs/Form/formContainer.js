@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {addTab,tabChange} from 'store/modules/tabs'
-class FormList extends Component {
+import {push} from 'react-router-redux'
+
+class Form extends Component {
     
     componentWillMount() {
 
-        this.props.onMount('forms',{
+        this.props.onMount('formlist',{
             label:"Form",
             icon:"general",
-            location:"form",//REFACTOR to ID
+            location:"/forms/list/form",//REFACTOR to ID
             fixed:false
         })
     }
+   
+    
     
     render() {
         return (
             <div>
-              Form List
+              Form
             </div>
         )
     }
@@ -33,5 +37,5 @@ function mapDispatchToProps(dispatch) {
     }
     
 }
-export default connect(mapStateToProps,mapDispatchToProps)(FormList)
+export default connect(mapStateToProps,mapDispatchToProps)(Form)
 

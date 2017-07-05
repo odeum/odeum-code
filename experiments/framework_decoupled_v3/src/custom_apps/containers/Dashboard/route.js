@@ -3,7 +3,7 @@ path: 'dashboard',
   getChildRoutes(location, cb) {
     require.ensure([], (require) => {
       cb(null, [
-        require('./Tabs/route.js'),
+        require('./Tabs/General/route.js'),
       ])
     })
   },

@@ -54,7 +54,19 @@
             "tabs": [
                 {
                     "label": "Forms",
-                    "location": "/forms",
+                    "location": "/forms/list",
+                    "icon": "assignment",
+                    "fixed": true
+                }
+            ]
+        },
+        {
+            "id": "formlist",
+            "activeTab":"All Forms",
+            "tabs": [
+                {
+                    "label": "All Forms",
+                    "location": "/forms/list",
                     "icon": "assignment",
                     "fixed": true
                 }
