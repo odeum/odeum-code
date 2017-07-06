@@ -61,12 +61,12 @@
             ]
         },
         {
-            "id": "formlist",
-            "activeTab":"All Forms",
+            "id": "eplan",
+            "activeTab":"Appendix List",
             "tabs": [
                 {
-                    "label": "All Forms",
-                    "location": "/forms/list",
+                    "label": "Appendix List",
+                    "location": "/eplan/list",
                     "icon": "assignment",
                     "fixed": true
                 }
@@ -81,10 +81,10 @@
             "icon": "dashboard"
         },
         {
-            "name": "Forms",
-            "id":"forms",
-            "location": "/forms/list",
-            "icon": "assignment"
+            "name": "Eplan Appendix",
+            "id":"eplan",
+            "location":"/eplan/list",
+            "icon":"assignment"
         }
     ]
 }

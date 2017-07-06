@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 import {push} from 'react-router-redux'
 import {tabChange} from 'framework/store/modules/tabs'
 import {Div} from 'app/styles'
-class List extends Component {
 
-    
+class List extends Component {
     componentWillMount() {
         //Fixed tab example
-        this.props.onMount()
+        // console.log(this.props)
+        this.props.onMount(this.props)
     }
     
     render() {
@@ -33,8 +33,8 @@ const mapDispatchToProps = dispatch => ({
     onClick:()=>{
         dispatch(push('/forms/list/form'))
     },
-    onMount:()=>{
-        dispatch(tabChange('formlist','All Forms'))
+    onMount:(props)=>{
+        dispatch(tabChange(props.id,'All Forms'))
     }
 })
 

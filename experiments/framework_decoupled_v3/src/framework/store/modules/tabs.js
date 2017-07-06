@@ -1,8 +1,9 @@
 import config from 'app/config.json'
+import {push} from 'react-router-redux'
+
 /*Action Types*/
 export const CHANGE_TAB = "@@TABS/CHANGE_TAB"
 export const SET_SUBTABS = "@@TABS/SET_TABS"
-export const INIT_TAB_INSTANCE = "@@TABS/INIT_TABS_INSTANCE"
 export const ADD_TAB = "@@TABS/ADD_TAB"
 export const CHANGE_ID = "@@TABS/CHANGE_ID"
 export const CLOSE_TAB = "@@TABS/CLOSE_TAB"
@@ -60,6 +61,7 @@ export const setTabs = (id, tabs) => ({
     }
 })
 
+
 /*Reducer*/
 const initialState = {
     scenes: config.scenes,
@@ -84,30 +86,16 @@ export default function tabs(state = initialState, action) {
     switch (action.type) {
         case CLOSE_TAB: {
             let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
-            let newTabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
-            findInstance.tabs = newTabs
-            let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
+            findInstance.tabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
+            findInstance.activeTab = findInstance.tabs[0].label
+            // let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
 
-            action.asyncDispatch({
-                type: '@@router/LOCATION_CHANGE',
-                payload: {
-                   pathname: findInstance.tabs[0].location,
-                   search:"",
-                   hash:"",
-                   action:"POP",
-                   key:"null",
-                   query:{}
-                    }
-            })
-
-            action.asyncDispatch({
-                type:CHANGE_TAB,
-                payload:{id:findInstance.id}
-            })
-            
+            action.asyncDispatch(push('/eplan/list'))
+           // action.asyncDispatch({type:CHANGE_TAB,payload:{id:findInstance.id,label:'a'}})
             return {
                 ...state,
-                tabInstance: newInstances
+                 tabInstance: state.tabInstance.map((instance) => instance.id === findInstance.id ? instance=findInstance : instance),
+                
             }
         }
         case CHANGE_ID: {
@@ -116,20 +104,18 @@ export default function tabs(state = initialState, action) {
                 activeScene: action.payload.scene
             }
         }
-        case INIT_TAB_INSTANCE: {
-            return {
-                ...state,
-                tabInstance: state.tabInstance.concat(action.payload)
-            }
-        }
         case CHANGE_TAB: {
             let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
-            if (action.payload.label === '') {
-                findInstance.activeTab = findInstance.tabs[0].label
+           
+            if (action.payload.label==='') {
+                 findInstance.activeTab = findInstance.tabs[0].label
+              
             } else {
+                
                 findInstance.activeTab = action.payload.label
             }
             let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
+            
             return {
                 ...state,
                 tabInstance: newInstances

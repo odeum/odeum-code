@@ -1,3 +1,3 @@
-import forms from './modules/forms'
+import forms from 'app/store/modules/forms'
 
 export {forms}

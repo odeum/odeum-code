@@ -1,4 +1,4 @@
-import getFormsFromAPI from '../data/forms'
+import getFormsFromAPI from '../../data/forms'
 
 const GET_FORMS = '@@FORMS/GET_FORMS_FROM_SERVER'
 var _ = require('lodash')
@@ -14,7 +14,7 @@ export function getForms() {
 //Replace with a selector
 export function getForm(id) {
     return (dispatch) => {
-        var serverData = require('../fake_server.json')
+        var serverData = require('../../fake_server.json')
         var formData = _.find(serverData.forms, function (form) {
             return form.id === id
         })
