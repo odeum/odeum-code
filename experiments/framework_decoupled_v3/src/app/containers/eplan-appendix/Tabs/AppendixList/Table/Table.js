@@ -3,9 +3,8 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {Col,ColId,ColName,ColStatus,InputRow,LabeledInput} from 'app/styles/TableStyles'
+import {Col,ColId,ColName,ColStatus,InputRow,LabeledInput,HeaderCell} from 'app/styles/TableStyles'
 import './Table.css'
-
 export default class TableExample extends Component {
   static propTypes = {
     list: PropTypes.instanceOf(Immutable.List).isRequired
@@ -15,6 +14,7 @@ export default class TableExample extends Component {
     super(props, context)
     console.log(props)
     this.state = {
+      disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
       height: 270,
@@ -27,7 +27,7 @@ export default class TableExample extends Component {
       sortDirection: SortDirection.ASC,
       useDynamicRowHeight: false
     }
-
+    this._linkRowRenderer = this._linkRowRenderer.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._headerRenderer = this._headerRenderer.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
@@ -39,6 +39,7 @@ export default class TableExample extends Component {
 
   render () {
     const {
+      disableExtraRows,
       disableHeader,
       headerHeight,
       height,
@@ -66,27 +67,9 @@ export default class TableExample extends Component {
     const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
     return (
-      /*<ContentBox>
-        <ContentBoxHeader
-          text='Table'
-          sourceLink='https://github.com/bvaughn/react-virtualized/blob/master/source/Table/Table.example.js'
-          docsLink='https://github.com/bvaughn/react-virtualized/blob/master/docs/Table.md'
-        />
 
-        <ContentBoxParagraph>
-          The table layout below is created with flexboxes.
-          This allows it to have a fixed header and scrollable body content.
-          It also makes use of <code>Grid</code> for windowing table content so that large lists are rendered efficiently.
-          Adjust its configurable properties below to see how it reacts.
-        </ContentBoxParagraph>
-
-        <ContentBoxParagraph>
-
-        </ContentBoxParagraph>
-
-*/
         <div className={'ContentBox'}>
-                    <label className={'checkboxLabel'}>
+                    {/*<label className={'checkboxLabel'}>
             <input
               aria-label='Use dynamic row heights?'
               checked={useDynamicRowHeight}
@@ -95,7 +78,7 @@ export default class TableExample extends Component {
               onChange={event => this._updateUseDynamicRowHeight(event.target.checked)}
             />
             Use dynamic row heights?
-          </label>
+          </label>*/}
 
           <label className={'checkboxLabel'}>
             <input
@@ -118,26 +101,46 @@ export default class TableExample extends Component {
             />
             Hide header?
           </label>
+          <label>
+            <input
+             aria-label='Hide header?'
+              checked={disableExtraRows}
+              className={'checkbox'}
+              type='checkbox'
+              onChange={event => this.setState({ disableExtraRows: event.target.checked })}
+              />
+              Hide debug options?
+          </label>
+          {!disableExtraRows &&
         <InputRow>
+        <div>
+        <label>Row Numbers</label> <br/>
           <LabeledInput
             label='Num rows'
             name='rowCount'
             onChange={this._onRowCountChange}
             value={rowCount}
           />
+          </div>
+          <div>
+          <label>Scroll to:</label> <br/>
           <LabeledInput
             label='Scroll to'
             name='onScrollToRow'
             placeholder='Index...'
             onChange={this._onScrollToRowChange}
             value={scrollToIndex || ''}
-          />
-          <LabeledInput
+          /></div>
+          <div>
+            <label>List height</label> <br/>
+            <LabeledInput
             label='List height'
             name='height'
             onChange={event => this.setState({ height: parseInt(event.target.value, 10) || 1 })}
             value={height}
-          />
+            />
+          </div>
+          <div><label>Row Height</label><br/>
           <LabeledInput
             disabled={useDynamicRowHeight}
             label='Row height'
@@ -145,25 +148,31 @@ export default class TableExample extends Component {
             onChange={event => this.setState({ rowHeight: parseInt(event.target.value, 10) || 1 })}
             value={rowHeight}
           />
+          </div>
+           
+          <div><label>Header Height</label><br/>
           <LabeledInput
             label='Header height'
             name='headerHeight'
             onChange={event => this.setState({ headerHeight: parseInt(event.target.value, 10) || 1 })}
             value={headerHeight}
           />
+          </div>
+            <div><label>Header Height</label><br/>
           <LabeledInput
             label='Overscan'
             name='overscanRowCount'
             onChange={event => this.setState({ overscanRowCount: parseInt(event.target.value, 10) || 0 })}
             value={overscanRowCount}
           />
-        </InputRow>
+          </div>
+        </InputRow>}
           <AutoSizer disableHeight>
             {({ width }) => (
               <Table
                 ref='Table'
                 disableHeader={disableHeader}
-                headerClassName={'headerColumn'}
+                headerClassName={'Header'}
                 headerHeight={headerHeight}
                 height={height}
                 noRowsRenderer={this._noRowsRenderer}
@@ -182,24 +191,26 @@ export default class TableExample extends Component {
                   <Column
                     className={'headerColumn'}
                     label='ID'
+                    headerRenderer={this._headerRenderer}
                     cellRenderer={
                       ({cellData, columnData, dataKey, rowData }) => (<ColId>{cellData}</ColId>)
                     }
                     dataKey='appendixid'
                     disableSort={!this._isSortEnabled()}
-                    width={60}
+                    width={50}
                   />
                 }
                 <Column
                   label='Name'
                   dataKey='name'
+                  className='nameRow'
                   disableSort={!this._isSortEnabled()}
                   headerRenderer={this._headerRenderer}
                   cellRenderer={
                     ({cellData,columnData, dataKey, rowData})=>(<ColName>{cellData}</ColName>)
                   }
-                  width={100}
-                  flexGrow={0.1}
+                  width={130}
+                  
                 />
                 <Column
                   width={60}
@@ -217,12 +228,10 @@ export default class TableExample extends Component {
                   dataKey='appendixid'
                   disableSort
                   cellRenderer={
-                    ({ cellData, columnData, dataKey, rowData, rowIndex }) => 
-                    (<Col onClick={(e)=>{e.preventDefault(); this.props.onClickButton(cellData);console.log(cellData)}}>{cellData}</Col>)
-                  }
+                  this._linkRowRenderer}
                   />
                 <Column
-                  width={100}
+                  width={60}
                   label='Status'
                   dataKey='status'
                   cellRenderer={
@@ -237,7 +246,7 @@ export default class TableExample extends Component {
                    cellRenderer={
                      ({cellData,columnData,dataKey,rowData,rowIndex})=> (<ColId>{cellData}</ColId>)
                   }
-                   flexGrow={1}
+                  flexgrow={1}
                   />
               </Table>
             )}
@@ -257,6 +266,19 @@ export default class TableExample extends Component {
     return this._getDatum(list, index).size
   }
 
+  _linkRowRenderer({ cellData, 
+    columnData, 
+    dataKey, 
+    rowData, rowIndex 
+    }) {
+    return <Col onClick={(e)=>
+                    { e.preventDefault()
+                      this.props.onClickButton(cellData)
+                      console.log(cellData)}}>
+                      <a href={"#"+cellData}>{cellData}</a>
+           </Col>
+    }
+
   _headerRenderer ({
     columnData,
     dataKey,
@@ -266,12 +288,12 @@ export default class TableExample extends Component {
     sortDirection
   }) {
     return (
-      <div>
-        Full Name
+      <HeaderCell>
+        {label}
         {sortBy === dataKey &&
           <SortIndicator sortDirection={sortDirection} />
         }
-      </div>
+      </HeaderCell>
     )
   }
 
@@ -309,7 +331,7 @@ export default class TableExample extends Component {
 
   _rowClassName ({ index }) {
     if (index < 0) {
-      return 'headerRow'
+      return 'Header'
     } else {
       return index % 2 === 0 ? 'evenRow' : 'oddRow'
     }

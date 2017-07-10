@@ -1,31 +1,33 @@
 .Table,
 {
-  width: 100%;
+  width:100%;
   margin-top: 15px;
   
 }
-.headerRow,
 .evenRow,
 .oddRow {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #fff;
   display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 3px;
 }
+
 .oddRow {
-  background-color: #fafafa;
+  background-color: #ededed;
 }
 .headerColumn {
   text-transform: none;
-  background:'#2C3E50';
 }
-.exampleColumn {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color:red;
+.nameRow{
+  text-align: left;
 }
 .ContentBox {
   flex: 1 0 auto;
-  display: flex;
   flex-direction: column;
   background-color: #FFF;
   padding: 0 1rem 1rem 1rem;
@@ -37,15 +39,23 @@
 }
 
 .Header {
+
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   font-weight: normal;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0 0 0.5rem;
-  font-size: 1rem;
-  font-weight: normal;
+  background-color: #2C3E50;
+  color:white;
+  fill: white;
+  font-family: Source Sans Pro;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 3px;
 }
+
 .Small {
   font-size: .65em;
 }
@@ -53,11 +63,6 @@
   text-decoration: none;
 }
 
-.Paragraph {
-  flex: 0 0 auto;
-  line-height: 1.2rem;
-  margin: 0 0 1rem;
-}
 .checkboxLabel {
   margin-left: .5rem;
 }

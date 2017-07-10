@@ -48,7 +48,7 @@ class AppendixList extends Component {
          const {onClickButton} = this.props
         return (
             <Div>
-                <DescriptionDiv>Small notification/descriptor placeholder</DescriptionDiv>
+                <DescriptionDiv>Small description placeholder</DescriptionDiv>
                 <Table list={this.state.data} onClickButton={onClickButton}/>
 
                     {/*<List

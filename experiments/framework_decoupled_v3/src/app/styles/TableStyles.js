@@ -9,12 +9,14 @@ export const Col = styled.div`
 export const ColName = styled.div`
 
 `
+export const HeaderCell = styled.div`
 
+`
 export const ColId = styled.div`
 
 `
 export const InputRow = styled.div`
-
+display:flex;
 `
 export const LabeledInput = styled.input`
 `
