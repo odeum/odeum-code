@@ -3,7 +3,9 @@ import * as colors from 'framework/assets/colors'
 export const ContentHeader = styled.div`
 `
 export const Col = styled.div`
-
+`
+export const ColName = styled.div`
+  overflow:z;
 `
 export const Row= styled.div`
   display: flex;

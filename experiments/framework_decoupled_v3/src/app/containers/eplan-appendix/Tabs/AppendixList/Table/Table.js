@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {Col,NoRows,ColStatus,InputRow,LabeledInput,HeaderCell,HeaderRow,ContentBox} from 'app/styles/TableStyles'
+import {Col,ColName,NoRows,ColStatus,InputRow,LabeledInput,HeaderCell,HeaderRow,ContentBox} from 'app/styles/TableStyles'
 import RowRenderer from './_rowRender'
 
 export default class AppendixTable extends Component {
@@ -18,10 +18,10 @@ export default class AppendixTable extends Component {
       disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
-      height: 430,
+      height: 400,
       hideIndexRow: false,
       overscanRowCount: 10,
-      rowHeight: 30,
+      rowHeight: 40,
       rowCount: this.props.list.size,
       scrollToIndex: undefined,
       sortBy: '',
@@ -192,7 +192,7 @@ export default class AppendixTable extends Component {
                 {!hideIndexRow &&
                   <Column
                     label='ID'
-                    dataKey='appendixid'
+                    dataKey='appendixId'
                     disableSort={!this._isSortEnabled()}
                     headerRenderer={this._headerRenderer}
                     cellRenderer={
@@ -207,9 +207,10 @@ export default class AppendixTable extends Component {
                   disableSort={!this._isSortEnabled()}
                   headerRenderer={this._headerRenderer}
                   cellRenderer={
-                    ({cellData,columnData, dataKey, rowData})=>(<Col>{cellData}</Col>)
+                    ({cellData,columnData, dataKey, rowData})=>(<ColName>{cellData}</ColName>)
                   }
-                  width={140}
+                  width={200}
+                  flexgrow={1}
                 />
                 <Column
                   width={60}
@@ -224,7 +225,7 @@ export default class AppendixTable extends Component {
                 <Column
                   width={50}
                   label="Link"
-                  dataKey='appendixid'
+                  dataKey='appendixId'
                   disableSort
                   cellRenderer={
                   this._linkRowRenderer}
