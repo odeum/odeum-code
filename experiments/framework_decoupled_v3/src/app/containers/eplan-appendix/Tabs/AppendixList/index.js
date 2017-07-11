@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 import {tabChange} from 'framework/store/modules/tabs'
 import {List} from 'immutable'
-import Table from './Table/Table'
+import AppendixTable from './Table/Table'
 import data from 'app/data/dummyData'
 import {DescriptionDiv} from 'app/styles/EplanStyles'
 const props={name:'Appendix List'}
@@ -25,6 +25,7 @@ class AppendixList extends Component {
         this.state = {
             data:list
         }
+        this.onClickButton = this.onClickButton.bind(this)
     }
     componentWillMount() {
         this.props.onMount(this.props.id,props.name)
@@ -32,46 +33,13 @@ class AppendixList extends Component {
     onClickButton(index){
         this.props.onClickButton(index)
     }
-    // rowRenderer({key,index,isScrolling,isVisible,style}){
-    //     return(
-    //         <div key={key} style={style}>
-    //             <tr className={'h1'}>
-    //                 <td> {list[index]}</td>
-    //                 <td><button onClick={(e)=>{e.preventDefault();this.onClickButton(index)}}>{index}</button><br/></td>
-    //             </tr>
-               
-                
-    //         </div>
-    //     )
-    // }
     render() {
-         const {onClickButton} = this.props
         return (
             <Div>
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
-                <Table list={this.state.data} onClickButton={onClickButton}/>
+                <AppendixTable list={this.state.data} onClickButton={this.onClickButton}/>
 
-                    {/*<List
-                    width={500}
-                    height={500}
-                    rowCount={list.length}
-                    rowHeight={30}
-                    rowRenderer={({key,index,isScrolling,isVisible,style})=>((
-            <div key={key} style={style}>
-                <tr className={'h1'}>
-                    <td> {list[index]}</td>
-                    <td><button onClick={(e)=>{e.preventDefault();this.onClickButton(index)}}>{index}</button><br/></td>
-                </tr>
-               
-                
-            </div>
-        ))}
-
-                    />*/}
-{/*
-                <button onClick={(e)=>{e.preventDefault();onClickButton('801')}}>801</button><br/>
-                <button onClick={(e)=>{e.preventDefault();onClickButton('802')}}>802</button><br/>
-                <button onClick={(e)=>{e.preventDefault();onClickButton('803')}}>803</button>*/}
+                  
             </Div>
         )
     }

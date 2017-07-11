@@ -3,9 +3,10 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {Col,ColId,ColName,ColStatus,InputRow,LabeledInput,HeaderCell} from 'app/styles/TableStyles'
-import './Table.css'
-export default class TableExample extends Component {
+import {Col,NoRows,ColStatus,InputRow,LabeledInput,HeaderCell,HeaderRow,ContentBox} from 'app/styles/TableStyles'
+import RowRenderer from './_rowRender'
+
+export default class AppendixTable extends Component {
   static propTypes = {
     list: PropTypes.instanceOf(Immutable.List).isRequired
   };
@@ -17,10 +18,10 @@ export default class TableExample extends Component {
       disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
-      height: 270,
+      height: 430,
       hideIndexRow: false,
       overscanRowCount: 10,
-      rowHeight: 40,
+      rowHeight: 30,
       rowCount: this.props.list.size,
       scrollToIndex: undefined,
       sortBy: '',
@@ -68,7 +69,7 @@ export default class TableExample extends Component {
 
     return (
 
-        <div className={'ContentBox'}>
+        <ContentBox>
                     {/*<label className={'checkboxLabel'}>
             <input
               aria-label='Use dynamic row heights?'
@@ -80,7 +81,19 @@ export default class TableExample extends Component {
             Use dynamic row heights?
           </label>*/}
 
-          <label className={'checkboxLabel'}>
+          <label>
+            <input
+             aria-label='Hide header?'
+              checked={disableExtraRows}
+              className={'checkbox'}
+              type='checkbox'
+              onChange={event => this.setState({ disableExtraRows: event.target.checked })}
+              />
+              Hide debug options?
+          </label>
+          {!disableExtraRows &&
+          <div>
+                      <label className={'checkboxLabel'}>
             <input
               aria-label='Hide index?'
               checked={hideIndexRow}
@@ -99,19 +112,8 @@ export default class TableExample extends Component {
               type='checkbox'
               onChange={event => this.setState({ disableHeader: event.target.checked })}
             />
-            Hide header?
+            Hide header?&nbsp;
           </label>
-          <label>
-            <input
-             aria-label='Hide header?'
-              checked={disableExtraRows}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ disableExtraRows: event.target.checked })}
-              />
-              Hide debug options?
-          </label>
-          {!disableExtraRows &&
         <InputRow>
         <div>
         <label>Row Numbers</label> <br/>
@@ -166,18 +168,18 @@ export default class TableExample extends Component {
             value={overscanRowCount}
           />
           </div>
-        </InputRow>}
+        </InputRow></div>}
           <AutoSizer disableHeight>
             {({ width }) => (
               <Table
                 ref='Table'
                 disableHeader={disableHeader}
-                headerClassName={'Header'}
                 headerHeight={headerHeight}
                 height={height}
+                headerRowRenderer={this._defaultHeaderRowRenderer}
                 noRowsRenderer={this._noRowsRenderer}
                 overscanRowCount={overscanRowCount}
-                rowClassName={this._rowClassName}
+                rowRenderer = {RowRenderer}
                 rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
                 rowGetter={rowGetter}
                 rowCount={rowCount}
@@ -189,28 +191,25 @@ export default class TableExample extends Component {
               >
                 {!hideIndexRow &&
                   <Column
-                    className={'headerColumn'}
                     label='ID'
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({cellData, columnData, dataKey, rowData }) => (<ColId>{cellData}</ColId>)
-                    }
                     dataKey='appendixid'
                     disableSort={!this._isSortEnabled()}
+                    headerRenderer={this._headerRenderer}
+                    cellRenderer={
+                      ({cellData, columnData, dataKey, rowData }) => (<Col>{cellData}</Col>)
+                    }
                     width={50}
                   />
                 }
                 <Column
                   label='Name'
                   dataKey='name'
-                  className='nameRow'
                   disableSort={!this._isSortEnabled()}
                   headerRenderer={this._headerRenderer}
                   cellRenderer={
-                    ({cellData,columnData, dataKey, rowData})=>(<ColName>{cellData}</ColName>)
+                    ({cellData,columnData, dataKey, rowData})=>(<Col>{cellData}</Col>)
                   }
-                  width={130}
-                  
+                  width={140}
                 />
                 <Column
                   width={60}
@@ -240,20 +239,29 @@ export default class TableExample extends Component {
                   }
                 />
                 <Column 
-                  width={100}
+                  width={130}
                   label='Date'
                   dataKey='created'
                    cellRenderer={
-                     ({cellData,columnData,dataKey,rowData,rowIndex})=> (<ColId>{cellData}</ColId>)
+                     ({cellData,columnData,dataKey,rowData,rowIndex})=> (<Col>{cellData}</Col>)
                   }
                   flexgrow={1}
                   />
               </Table>
             )}
           </AutoSizer>
-        </div>
+        </ContentBox>
   
     )
+  }
+  _defaultHeaderRowRenderer ({
+    className,
+    columns,
+    style
+  }) {
+  return <HeaderRow style={style}>
+    {columns}
+  </HeaderRow>
   }
 
   _getDatum (list, index) {
@@ -306,9 +314,9 @@ export default class TableExample extends Component {
 
   _noRowsRenderer () {
     return (
-      <div className={'noRows'}>
+      <NoRows>
         No rows
-      </div>
+      </NoRows>
     )
   }
 
@@ -331,7 +339,7 @@ export default class TableExample extends Component {
 
   _rowClassName ({ index }) {
     if (index < 0) {
-      return 'Header'
+      return 'evenRow'
     } else {
       return index % 2 === 0 ? 'evenRow' : 'oddRow'
     }
