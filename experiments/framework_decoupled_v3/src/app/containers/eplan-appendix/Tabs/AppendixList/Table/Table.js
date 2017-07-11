@@ -18,7 +18,7 @@ export default class AppendixTable extends Component {
       disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
-      height: 400,
+      height: 600,
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
@@ -210,7 +210,7 @@ export default class AppendixTable extends Component {
                   cellRenderer={
                     ({cellData,columnData, dataKey, rowData})=>(<ColName>{cellData}</ColName>)
                   }
-                  width={200}
+                  width={500}
                   flexgrow={1}
                 />
                 <Column

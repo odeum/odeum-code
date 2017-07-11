@@ -3,11 +3,13 @@ import * as colors from 'framework/assets/colors'
 export const ContentHeader = styled.div`
 `
 export const Col = styled.div`
+    font-family: Source Sans Pro;
 `
 export const ColName = styled.div`
-  overflow:z;
+  overflow:z; 
 `
-export const Row= styled.div`
+export const Row = styled.div`
+  padding-top: 10px;
   display: flex;
   flex: 1 1 auto;
   flex-direction: row;
