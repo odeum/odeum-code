@@ -1,3 +1,2 @@
-import forms from 'app/store/modules/forms'
-
-export {forms}
+import eplan  from 'app/store/modules/eplan'
+export {eplan}

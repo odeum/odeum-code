@@ -36,6 +36,7 @@ export default class AppendixTable extends Component {
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
     this._rowClassName = this._rowClassName.bind(this)
     this._sort = this._sort.bind(this)
+
   }
 
   render () {

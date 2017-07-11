@@ -3,36 +3,20 @@ import {Div} from 'app/styles'
 import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 import {tabChange} from 'framework/store/modules/tabs'
-import {List} from 'immutable'
 import AppendixTable from './Table/Table'
-import data from 'app/data/dummyData'
-import getFormsFormAPI from 'app/data/eplan'
 import {DescriptionDiv} from 'app/styles/EplanStyles'
+import {getListAsync} from 'app/store/modules/eplan'
 const props={name:'Appendix List'}
-// const list = [
-//     'Brian Vaughn',
-//     'Christian Broberg',
-//     'Mette Bugge',
-//     'Mathilde Porsmose',
-//     'Max Porsmose',
-//     'Amalie Hayes'
-    
-// ]
 
 class AppendixList extends Component {
     constructor(props) {
         super(props)
-        
-        this.state = {
-            data:List([]),
-            isLoading:true
-        }
         this.onClickButton = this.onClickButton.bind(this)
     }
     async componentWillMount() {
         this.props.onMount(this.props.id,props.name)
-        var dat=await getFormsFormAPI()
-        this.setState({data:dat, isLoading:false})
+        await this.props.getList()
+       
     }
     onClickButton(index){
         this.props.onClickButton(index)
@@ -41,7 +25,7 @@ class AppendixList extends Component {
         return (
             <Div>
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
-                {this.state.isLoading?null :<AppendixTable list={this.state.data} onClickButton={this.onClickButton}/>}
+                {this.props.isLoading? null :<AppendixTable list={this.props.data} onClickButton={this.onClickButton}/>}
 
                   
             </Div>
@@ -49,15 +33,20 @@ class AppendixList extends Component {
     }
 }
 const mapStateToProps = (state,ownProps) => ({
+    data: state.eplan.data,
+    isLoading: state.eplan.isLoading
 })
 
 function mapDispatchToProps(dispatch) {
-    return{
+    return {
         onMount: (id,name)=>{
             dispatch(tabChange(id,name))
         },
         onClickButton:(location)=>{
             dispatch(push('/eplan/list/'+location))
+        },
+        getList:()=>{
+           dispatch(getListAsync())
         }
     }
 }

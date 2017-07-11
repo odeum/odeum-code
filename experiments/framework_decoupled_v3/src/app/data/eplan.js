@@ -7,12 +7,12 @@ var axiosInstance= axios.create({
                 'Accept': 'application/json' }
 })
 
-export default async function getFormsFromAPI()
+export async function getAppendixList()
 {  var data = []
    await axiosInstance.get('/rest/eplan/kpt/appendix/list')
     .then(function(response){
     data = data.concat(response.data)
-    console.log(data)
 })
-    return List(data)
+    const dataList = List(data)
+    return dataList
 }
