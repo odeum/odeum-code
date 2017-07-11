@@ -6,6 +6,7 @@ export const Col = styled.div`
     font-family: Source Sans Pro;
 `
 export const ColName = styled.div`
+  overflow-y: hidden
   overflow:z; 
 `
 export const Row = styled.div`
@@ -19,10 +20,11 @@ export const Row = styled.div`
   font-style: normal;
   font-size: 15px;
   font-weight: 500;
-  border-radius: 3px;
+  border-radius: 0px;
   background:${(props)=>{return props.index %2? '#ededed':'white'}};
     &:hover {
 		background: ${colors.TAB_HOVER};
+        color: white;
 	}
 `
 
@@ -38,6 +40,7 @@ export const ContentBox = styled.div`
   background: white;
 `
 export const HeaderRow = styled.div`
+  padding-top: 10px;
   display:flex;
   flex: 1 1 auto;
   flex-direction: row;

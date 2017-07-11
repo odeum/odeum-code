@@ -18,7 +18,7 @@ export default class AppendixTable extends Component {
       disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
-      height: 600,
+      height: 380,
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
