@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {Col,ColName,NoRows,ColStatus,InputRow,LabeledInput,HeaderCell,HeaderRow,ContentBox} from 'app/styles/TableStyles'
+import {NoRows,InputRow,LabeledInput,HeaderCell,HeaderRow,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
 import RowRenderer from './_rowRender'
 
 export default class AppendixTable extends Component {
@@ -18,7 +18,7 @@ export default class AppendixTable extends Component {
       disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
-      height: 380,
+      height: 400,
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
@@ -190,17 +190,20 @@ export default class AppendixTable extends Component {
                 sortBy={sortBy}
                 sortDirection={sortDirection}
                 width={width}
+                style={{width:'100%'}}
               >
                 {!hideIndexRow &&
+                 
                   <Column
                     label='ID'
                     dataKey='appendixId'
                     disableSort={!this._isSortEnabled()}
                     headerRenderer={this._headerRenderer}
                     cellRenderer={
-                      ({cellData, columnData, dataKey, rowData }) => (<Col>{cellData}</Col>)
+                      ({cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
                     }
-                    width={50}
+                    width={width}
+                    flexgrow={1}
                   />
                 }
                 <Column
@@ -209,44 +212,48 @@ export default class AppendixTable extends Component {
                   disableSort={!this._isSortEnabled()}
                   headerRenderer={this._headerRenderer}
                   cellRenderer={
-                    ({cellData,columnData, dataKey, rowData})=>(<ColName>{cellData}</ColName>)
+                    ({cellData,columnData, dataKey, rowData})=>(<Cell>{cellData}</Cell>)
                   }
-                  width={500}
+                  width={width}
                   flexgrow={1}
                 />
                 <Column
-                  width={60}
+                  width={width}
                   label='UserID'
                   dataKey='authorAppendixId'
+                  headerRenderer={this._headerRenderer}
                   disableSort={!this._isSortEnabled()}
                   cellRenderer={
                     ({ cellData, columnData, dataKey, rowData, rowIndex }) => 
-                    (<Col>{cellData}</Col>)
+                    (<Cell>{cellData}</Cell>)
                   }
                 />
                 <Column
-                  width={50}
+                  width={width}
                   label="Link"
                   dataKey='appendixId'
+                  headerRenderer={this._headerRenderer}
                   disableSort
                   cellRenderer={
                   this._linkRowRenderer}
                   />
                 <Column
-                  width={60}
+                  width={width}
                   label='Status'
                   dataKey='status'
+                  headerRenderer={this._headerRenderer}
                   cellRenderer={
                      ({cellData,columnData,dataKey,rowData,rowIndex})=> 
-                     (<ColStatus done={cellData==='Klar'? true:false}>{cellData}</ColStatus>)
+                     (<CellStatus done={cellData==='Klar'? true:false}>{cellData}</CellStatus>)
                   }
                 />
                 <Column 
-                  width={130}
+                  width={width}
                   label='Date'
                   dataKey='created'
+                  headerRenderer={this._headerRenderer}
                    cellRenderer={
-                     ({cellData,columnData,dataKey,rowData,rowIndex})=> (<Col>{cellData}</Col>)
+                     ({cellData,columnData,dataKey,rowData,rowIndex})=> (<Cell>{cellData}</Cell>)
                   }
                   flexgrow={1}
                   />
@@ -263,15 +270,15 @@ export default class AppendixTable extends Component {
     rowData
   })
   {
-    console.log("rowData", rowData)
-    this.props.onClickButton(rowData.appendixId)
+  this.props.onClickButton(rowData.appendixId)
   }
   _defaultHeaderRowRenderer ({
     className,
     columns,
     style
   }) {
-  return <HeaderRow style={style}>
+    console.log(style)
+  return <HeaderRow width={style.width}>
     {columns}
   </HeaderRow>
   }
@@ -291,12 +298,12 @@ export default class AppendixTable extends Component {
     dataKey, 
     rowData, rowIndex 
     }) {
-    return <Col onClick={(e)=>
+    return <Cell onClick={(e)=>
                     { e.preventDefault()
                       this.props.onClickButton(cellData)
                       console.log(cellData)}}>
                       <a href={"#"+cellData}>{cellData}</a>
-           </Col>
+           </Cell>
     }
 
   _headerRenderer ({

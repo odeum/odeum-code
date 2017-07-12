@@ -1,58 +1,76 @@
 import styled from 'styled-components'
 import * as colors from 'framework/assets/colors'
+
 export const ContentHeader = styled.div`
 `
-export const Col = styled.div`
+
+export const Cell = styled.div` 
     font-family: Source Sans Pro;
-`
-export const ColName = styled.div`
-  overflow-y: hidden
-  overflow:z; 
-`
-export const Row = styled.div`
-  padding-top: 10px;
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: row;
-  border-bottom: 1px solid #fff;
-  justify-content: space-around;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-size: 15px;
-  font-weight: 500;
-  border-radius: 0px;
-  background:${(props)=>{return props.index %2? '#ededed':'white'}};
-    &:hover {
-		background: ${colors.TAB_HOVER};
-        color: white;
-	}
+    align-items: center;
 `
 
+
+
 export const HeaderCell = styled.div`
+display: flex;
+background-color: #2C3E50;
+font-family: Source Sans Pro;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 500;
+text-transform: none;
+cursor: pointer;
+height: 30px;
+padding-left: 3px;
+align-items: center;
 
 `
 export const InputRow = styled.div`
 display:flex;
 `
 export const ContentBox = styled.div`
-  align-items:center;
+/*   align-items:center;
   padding: 0 1rem 1rem 1rem;
   background: white;
+ */
+`
+export const Row = styled.div`
+ display: flex;
+ flex-direction: row;
+  border-bottom: 1px solid #fff;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 500;
+  background:${(props)=>{return props.index %2? '#ededed':'white'}};
+    &:hover {
+		background: ${colors.TAB_HOVER};
+        color: white;
+  }
+      &:active{
+        background: ${colors.TAB_SELECTED};
+      } 
 `
 export const HeaderRow = styled.div`
-  padding-top: 10px;
-  display:flex;
-  flex: 1 1 auto;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: #2C3E50;
-  color:white;
-  fill: white;
-  font-family: Source Sans Pro;
+width:${props=> props.width+'px'};
+display: flex;
+flex-direction: row;
+margin-top:10px;
+margin-bottom:3px;
+color:white;
+fill:white;
+overflow:hidden;
+align-items:center;
+border-bottom: 1px solid #e0e0e0;
+font-family: Source Sans Pro;
     font-style: normal;
     font-size: 15px;
     font-weight: 600;
-    border-radius: 3px;
+
+/*  
+
+  justify-content: space-around;
+ */
 `
 export const NoRows = styled.div`
   position: absolute;
@@ -68,6 +86,6 @@ export const NoRows = styled.div`
 `
 export const LabeledInput = styled.input`
 `
-export const ColStatus = styled.div`
+export const CellStatus = styled.div`
 color: ${(props)=> props.done? 'green':'red'}
 `
