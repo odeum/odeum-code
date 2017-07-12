@@ -36,7 +36,7 @@ export default class AppendixTable extends Component {
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
     this._rowClassName = this._rowClassName.bind(this)
     this._sort = this._sort.bind(this)
-
+    this._rowClicked = this._rowClicked.bind(this)
   }
 
   render () {
@@ -181,6 +181,7 @@ export default class AppendixTable extends Component {
                 noRowsRenderer={this._noRowsRenderer}
                 overscanRowCount={overscanRowCount}
                 rowRenderer = {RowRenderer}
+                onRowClick = {this._rowClicked}
                 rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
                 rowGetter={rowGetter}
                 rowCount={rowCount}
@@ -255,6 +256,15 @@ export default class AppendixTable extends Component {
         </ContentBox>
   
     )
+  }
+  _rowClicked({
+    event,
+    index,
+    rowData
+  })
+  {
+    console.log("rowData", rowData)
+    this.props.onClickButton(rowData.appendixId)
   }
   _defaultHeaderRowRenderer ({
     className,
