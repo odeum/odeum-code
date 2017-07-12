@@ -68,5 +68,14 @@ export const DREAMY_BLUE = '#81C1EA'
 
 export const COMPLEMENTARY_BLUE = '#006CB2'
 export const COMPLEMENTARY_ORANGE = '#FF9600'
+export const COMPLEMENTARY_YELLOW = '#F8BB31'
+export const COMPLEMENTARY_ORANGE_2 = '#E98832'
+
+export const REDUX_PURPLE = '#764EB9'
+export const REACTIVEX_PINK = '#EA228F'
+export const REACTIVEX_PURPLE = '#513085'
+export const REACT_CYAN = '#58C1DC'
+export const GRAPHQL_PINK = '#E33CAA'
+
 
 // https://color.adobe.com/
