@@ -12,8 +12,19 @@ export async function getAppendixList()
    await axiosInstance.get('/rest/eplan/kpt/appendix/list')
     .then(function(response){
     data = data.concat(response.data)
-    data = data.concat([{appendixId:99999999999,name:"This is a very loooooooooong nameThis is a very loooooooooong nameThis is a very loooooooooong nameThis is a very loooooooooong name"}])
+   // data = data.concat([{appendixId:99999999999,name:"This is a very loooooooooong nameThis is a very loooooooooong nameThis is a very loooooooooong nameThis is a very loooooooooong name"}])
 })
     const dataList = List(data)
     return dataList
+}
+
+export async function getAppendixById(id)
+{
+    var appendix =[]
+    await axiosInstance.get('rest/eplan/kpt/appendix/'+id)
+    .then(function(response){
+        console.log(response)
+        appendix = appendix.concat(response.data)
+    })
+    return appendix
 }

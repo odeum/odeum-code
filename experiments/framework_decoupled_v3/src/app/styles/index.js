@@ -9,5 +9,5 @@ export const Div = styled.div`
     background: #ecf0f1;
     margin-top: 10px;
     background:white;
-    margin-left:10px;
+    margin-left:10px;  
 `
