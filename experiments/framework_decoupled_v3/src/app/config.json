@@ -62,10 +62,10 @@
         },
         {
             "id": "eplan",
-            "activeTab":"Appendix List",
+            "activeTab":"Oversigt",
             "tabs": [
                 {
-                    "label": "Appendix List",
+                    "label": "Oversigt",
                     "location": "/eplan/list",
                     "icon": "assignment",
                     "fixed": true
@@ -81,7 +81,7 @@
             "icon": "dashboard"
         },
         {
-            "name": "Eplan Appendix",
+            "name": "Kommuneplantillæg",
             "id":"eplan",
             "location":"/eplan/list",
             "icon":"assignment"
