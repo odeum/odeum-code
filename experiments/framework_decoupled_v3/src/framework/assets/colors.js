@@ -1,4 +1,4 @@
-// PRIMARY COLORS
+// DEFAULT COLORS
 export const HEADER = '#2C3E50'
 
 export const MENUBAR = '#3B97D3'
@@ -21,13 +21,15 @@ export const SEARCHBAR = '#34495D'
 
 // BUTTON COLORS
 export const BUTTON_TEXT = '#FFFFFF'
-export const BUTTON_PRIMARY = '#3B97D3'
-export const BUTTON_PRIMARY_HOVER = '#81C1EA'
-export const BUTTON_PRIMARY_FOCUS = '#81C1EA'
+export const BUTTON_DEFAULT = '#3B97D3'
+export const BUTTON_DEFAULT_HOVER = '#81C1EA'
+export const BUTTON_DEFAULT_FOCUS = '#81C1EA'
 
 export const BUTTON_ALTERNATIVE = '#13A085'
 export const BUTTON_ALTERNATIVE_HOVER = '#25B89A'
 export const BUTTON_ALTERNATIVE_FOCUS = '#25B89A'
+
+//TODO: BUTTON_SUCCESS, BUTTON_WARNING, BUTTON_DANGER
 
 // ICON COLORS
 export const ICON_ACTIVE_COLOR = '#FFFFFF'
@@ -63,3 +65,8 @@ export const EMERALD_DARK = '#13A085'
 export const CLOUDY_LIGHT = '#ECF0F0'
 export const CLOUDY_DARK = '#BDC2C6'
 export const DREAMY_BLUE = '#81C1EA'
+
+export const COMPLEMENTARY_BLUE = '#006CB2'
+export const COMPLEMENTARY_ORANGE = '#FF9600'
+
+// https://color.adobe.com/
