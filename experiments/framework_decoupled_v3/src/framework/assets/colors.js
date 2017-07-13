@@ -1,3 +1,28 @@
+// HELPER FUNCTIONS
+
+import _ from 'lodash'
+
+export function getColor(colorName) {
+     var colorFinder = _.find(colorArr, function (color) {
+            return color.name === colorName
+        })
+        return colorFinder.value
+}
+
+export function hexToRgbA(hex) {
+    var c
+    if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+        c = hex.substring(1).split('')
+        if (c.length === 3) {
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]]
+        }
+        c = '0x' + c.join('')
+        return 'rgba(' + [(c>>16)&255, (c>>8)&255, c&255].join(', ') + ', 1)'
+    }
+    throw new Error('Invalid Hex value')
+}
+
+
 // DEFAULT COLORS
 export const HEADER = '#2C3E50'
 
@@ -76,10 +101,10 @@ export const REACTIVEX_PINK = '#EA228F'
 export const REACTIVEX_PURPLE = '#513085'
 export const REACT_CYAN = '#58C1DC'
 export const GRAPHQL_PINK = '#E33CAA'
+export const BLACK = '#000'
 
 
 // https://color.adobe.com/
-
 
 export const colorArr = [
     {
@@ -297,5 +322,9 @@ export const colorArr = [
     {
         name: 'GRAPHQL_PINK',
         value: '#E33CAA'
+    },
+    {
+        name: 'BLACK',
+        value: '#000'
     },
 ]

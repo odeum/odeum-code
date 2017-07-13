@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 
-import { colorArr } from './colors'
-import { hexToRgbA } from '../helpers'
+import { colorArr, hexToRgbA } from './colors'
 import { DisplayColor, CopyButton } from './ColorPaletteStyles'
 
 
@@ -12,11 +11,11 @@ class ColorPalette extends Component {
             <div>
                 {colorArr.map((color) => (
                     <div key={color.name}>                        
-                        <DisplayColor color={color.value}>
-                            {color.name} 
-                            <p/> hex: {color.value} 
-                            <p/> {hexToRgbA(color.value)} <p/>
-                            <CopyToClipboard text={color.name}><CopyButton color={color.value}>c</CopyButton></CopyToClipboard></DisplayColor>
+                        <DisplayColor color={color.value}>                            
+                            <CopyToClipboard text={color.name}><CopyButton color={color.value}>{color.name}</CopyButton></CopyToClipboard> <p/>
+                            <CopyToClipboard text={color.value}><CopyButton color={color.value}>{color.value}</CopyButton></CopyToClipboard> <p/>
+                            <CopyToClipboard text={hexToRgbA(color.value)}><CopyButton color={color.value}>{hexToRgbA(color.value)}</CopyButton></CopyToClipboard>
+                        </DisplayColor>
                     </div>
                 ))}
             </div>
@@ -25,4 +24,6 @@ class ColorPalette extends Component {
 }
 
 export default ColorPalette
+
+// https://github.com/nkbt/react-copy-to-clipboard
 
