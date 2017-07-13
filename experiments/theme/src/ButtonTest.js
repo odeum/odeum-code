@@ -14,9 +14,9 @@ export class ButtonTest extends PureComponent {
     render() {
         return (
             <div>
-                <StyledButton><Icon icon='dashboard' size={18} color={colors.COMPLEMENTARY_BLUE} active={true} style={theme.iconStyle} />Dashboard</StyledButton>
+                <StyledButton><Icon icon='dashboard' size={18} color={colors.COMP_BLUE} active={true} style={theme.iconStyle} />Dashboard</StyledButton>
                 <StyledButton><Icon icon={iconname.ICON_MAIL_OUTLINE} size={18} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />Task New Meeting</StyledButton>
-                <StyledButton><Icon icon={iconname.ICON_ASSIGNMENT} size={18} color={colors.COMPLEMENTARY_ORANGE} active={true} style={{verticalAlign: '-3px', paddingRight: '16px'}} />Styles overridden</StyledButton>
+                <StyledButton><Icon icon={iconname.ICON_ASSIGNMENT} size={18} color={colors.COMP_ORANGE} active={true} style={{verticalAlign: '-3px', paddingRight: '16px'}} />Styles overridden</StyledButton>
                 
                 <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button>
                 <Button icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button>
