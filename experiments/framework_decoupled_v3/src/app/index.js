@@ -3,7 +3,7 @@ import {Div} from 'app/styles/index'
 class index extends Component {
     render() {
         return (
-            <Div style={{'overflow-y':'scroll'}}>
+            <Div>
               { this.props.children }
             </Div>
         )

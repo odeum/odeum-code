@@ -56,51 +56,17 @@ class Appendix extends Component {
     render() {
         const {appendix} = this.props
         return (
-            <Div>
+            <Div style={{overflowY:'scroll',width:'90%',height:'90%'}}>
             {appendix?
-            <form>
+            <form >
                 <h1>{appendix.name}</h1>
-                <FieldArray name={'fields'} component={renderFields}/>
-             <div>
-          
-            </div>
+                 <FieldArray name={'fields'} component={renderFields}/>
             </form>:null}
             </Div>
         )
     }
 }
-/*
 
-                /* {fields.map((field,index)=>
-                (<div key={index} style={{display:'flex'}}>
-                    <div style={{width:'150px'}}>
-                        <label style={{"paddingRight":"5px;"}}>{field.name}</label>
-                        </div>
-                      
-                        <br/>
-                    </div>))}
-   {   Object.keys( appendix.fields ).map( p => Object.assign( appendix.fields[p], {field:p})).map((field,index)=>{
-             
-                return <div key={index} style={{display:'flex'}}>
-                    <div style={{width:'150px'}}>
-                        <label style={{"paddingRight":"5px;"}}>{field.name}</label>
-                        </div>
-                        <Field name={`${field.id}`} component='input'/>
-                        <br/>
-                    </div>})}
-            </div>
-<AppendixForm appendix={appendix}/> */
-            /* <div>
-            <h1>{appendix.name}</h1>
-            {appendix.fields.map((form)=>(
-                <div style={{display:'flex','flex-direction':'row'}}>
-                    <div style={{width:'150px'}}>
-                        <label style={{"padding-right":"5px;"}}>{form.name}</label>
-                        </div>
-                        <input value={form.value}/>
-                        <br/>
-                    </div>))}
-            </div> */
 const mapStateToProps = (state,ownProps) => ({
     param:ownProps.params.id,
     appendix: state.eplan.openAppendix[0],//change to selector

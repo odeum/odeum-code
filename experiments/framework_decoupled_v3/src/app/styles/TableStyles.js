@@ -7,6 +7,7 @@ export const ContentHeader = styled.div`
 export const Cell = styled.div` 
     font-family: Source Sans Pro;
     align-items: center;
+    height:40px;
 `
 
 
@@ -29,10 +30,6 @@ export const InputRow = styled.div`
 display:flex;
 `
 export const ContentBox = styled.div`
-/*   align-items:center;
-  padding: 0 1rem 1rem 1rem;
-  background: white;
- */
 `
 export const Row = styled.div`
  display: flex;
@@ -50,6 +47,10 @@ export const Row = styled.div`
       &:active{
         background: ${colors.TAB_SELECTED};
       } 
+`
+export const AutoSizerDiv = styled.div`
+
+height: calc(100vh - 300px);
 `
 export const HeaderRow = styled.div`
 width:${props=> props.width+'px'};

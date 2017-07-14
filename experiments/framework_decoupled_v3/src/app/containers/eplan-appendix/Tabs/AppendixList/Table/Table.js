@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {NoRows,InputRow,LabeledInput,HeaderCell,HeaderRow,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
+import {NoRows,InputRow,LabeledInput,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
 import RowRenderer from './_rowRender'
 
 export default class AppendixTable extends Component {
@@ -13,12 +13,11 @@ export default class AppendixTable extends Component {
 
   constructor (props, context) {
     super(props, context)
-    console.log(props)
     this.state = {
       disableExtraRows:true,
       disableHeader: false,
       headerHeight: 30,
-      height: 400,
+  
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
@@ -41,10 +40,10 @@ export default class AppendixTable extends Component {
 
   render () {
     const {
+
       disableExtraRows,
       disableHeader,
       headerHeight,
-      height,
       hideIndexRow,
       overscanRowCount,
       rowHeight,
@@ -69,7 +68,7 @@ export default class AppendixTable extends Component {
     const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
     return (
-
+  <div style={{width:'100%',height:'100%'}}>
         <ContentBox>
                     {/*<label className={'checkboxLabel'}>
             <input
@@ -134,15 +133,7 @@ export default class AppendixTable extends Component {
             onChange={this._onScrollToRowChange}
             value={scrollToIndex || ''}
           /></div>
-          <div>
-            <label>List height</label> <br/>
-            <LabeledInput
-            label='List height'
-            name='height'
-            onChange={event => this.setState({ height: parseInt(event.target.value, 10) || 1 })}
-            value={height}
-            />
-          </div>
+
           <div><label>Row Height</label><br/>
           <LabeledInput
             disabled={useDynamicRowHeight}
@@ -170,8 +161,11 @@ export default class AppendixTable extends Component {
           />
           </div>
         </InputRow></div>}
-          <AutoSizer disableHeight>
-            {({ width }) => (
+          
+        </ContentBox>
+            <AutoSizerDiv>
+              <AutoSizer >
+               {({ height,width }) => (
               <Table
                 ref='Table'
                 disableHeader={disableHeader}
@@ -182,7 +176,7 @@ export default class AppendixTable extends Component {
                 overscanRowCount={overscanRowCount}
                 rowRenderer = {RowRenderer}
                 onRowClick = {this._rowClicked}
-                rowHeight={useDynamicRowHeight ? this._getRowHeight : rowHeight}
+                rowHeight={rowHeight}
                 rowGetter={rowGetter}
                 rowCount={rowCount}
                 scrollToIndex={scrollToIndex}
@@ -260,8 +254,8 @@ export default class AppendixTable extends Component {
               </Table>
             )}
           </AutoSizer>
-        </ContentBox>
-  
+          </AutoSizerDiv>
+  </div>
     )
   }
   _rowClicked({
@@ -277,7 +271,6 @@ export default class AppendixTable extends Component {
     columns,
     style
   }) {
-    console.log(style)
   return <HeaderRow width={style.width}>
     {columns}
   </HeaderRow>
@@ -301,7 +294,7 @@ export default class AppendixTable extends Component {
     return <Cell onClick={(e)=>
                     { e.preventDefault()
                       this.props.onClickButton(cellData)
-                      console.log(cellData)}}>
+                     }}>
                       <a href={"#"+cellData}>{cellData}</a>
            </Cell>
     }
