@@ -12,7 +12,7 @@ constructor(props) {
     super(props)
     this.defaultProps = {
         name: 'info',
-        size: 75,
+        size: 18,
         color: ICON_DEFAULT_COLOR,
         active: false,
         style: {
@@ -138,9 +138,9 @@ switch (name) {
     case iconname.ICON_SYNC_DISABLED: return <Icons.MdSyncDisabled size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
     case iconname.ICON_SYNC_PROBLEM: return <Icons.MdSyncProblem size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
 
-    case '': return <Icons.MdInfo size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
+    case '': return null /* <Icons.MdInfo size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} /> */
 
-    default: return <Icons.MdInfo size={this.defaultProps.size} color={this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
+    default: return null /* <Icons.MdInfo size={this.defaultProps.size} color={this.defaultProps.color} style={this.props.style || this.defaultProps.style} /> */
     }
 }    
     render() {
@@ -162,7 +162,7 @@ Icon.defaultProps = {
 }
 
 Icon.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string/* .isRequired */,
     size: PropTypes.number,
     color: PropTypes.string, 
     active: PropTypes.bool,

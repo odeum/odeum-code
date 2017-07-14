@@ -39,6 +39,7 @@ export const ButtonTest2 = () => {
             <Button icon={iconname.ICON_CHECK_CIRCLE} size={18}>Save</Button>
             <Button icon={iconname.ICON_MAIL_OUTLINE} size={18}>Mail</Button>
             <Button icon={iconname.ICON_CLOUD} size={18}>Stateless component</Button>
+            <Button size={18}>No icon</Button>
         </div>
     )
 }
