@@ -9,18 +9,16 @@ import AppendixForm from 'app/components/eplan-appendix/Tabs/form'
 
 const renderField = ({ input, label, type, meta: { touched, error } }) =>{
     console.log(input)
-    return (<div style={{display:'flex',flexDirection:'row'}}>
+    return (<div style={{display:'flex',flexDirection:'row',marginBottom:'10px'}}>
     <label style={{width:'150px',paddingRight:"30px",marginRight:"30px"}}>
       {label}
     </label>
-    <div>
-      <textarea {...input} type={type} placeholder={label} style={{}}/>
+      <textarea {...input} type={type} placeholder={label} style={{height: '160px',width:'100%'}}/>
       {touched &&
         error &&
         <span>
           {error}
         </span>}
-    </div>
   </div>
     )}
 let renderFields = ({fields})=>
