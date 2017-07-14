@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {getAppendixAsync} from 'app/store/modules/eplan'
 import {addTab,tabChange} from 'framework/store/modules/tabs'
-import {Field, Fields,FieldArray, reduxForm } from 'redux-form'
+import {Field,FieldArray, reduxForm } from 'redux-form'
 import {Div} from 'app/styles'
 import {getAppendixSel} from 'app/store/selectors/eplan'
-import AppendixForm from 'app/components/eplan-appendix/Tabs/form'
+
 
 const renderField = ({ input, label, type, meta: { touched, error } }) =>{
     console.log(input)
