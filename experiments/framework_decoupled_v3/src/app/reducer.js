@@ -1,2 +1,3 @@
 import eplan  from 'app/store/modules/eplan'
-export {eplan}
+import {reducer as form} from 'redux-form'
+export {eplan,form}

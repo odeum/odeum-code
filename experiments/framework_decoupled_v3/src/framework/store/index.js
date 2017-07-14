@@ -5,11 +5,12 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import reducers from 'framework/store/reducer'
 import {asyncDispatchMiddleware} from 'framework/store/middleware/asyncDispatchMiddleware'
+
 const middlewares = [thunk, routerMiddleware(browserHistory), asyncDispatchMiddleware]
 
 const reducer = combineReducers({
     ...reducers,
-    routing: routerReducer
+    routing: routerReducer,
 })
 
 export const store = createStore(

@@ -2,11 +2,18 @@ import axios from 'axios'
 import {List} from 'immutable'
 var axiosInstance= axios.create({
     baseURL:'http://horsenskp.dev.webhouse.dk/',
-    timeout:1000,
+    timeout:10000,
     headers:{'Content-Type': 'application/json',
                 'Accept': 'application/json' }
 })
-
+export async function getAppendixConfig(){
+    var data=[]
+    await axiosInstance.get('/rest/eplan/kpt/appendix/config')
+    .tehn(function(response){
+        data = data.concat(response.data)
+    })
+    return data
+}
 export async function getAppendixList()
 {  var data = []
    await axiosInstance.get('/rest/eplan/kpt/appendix/list')
