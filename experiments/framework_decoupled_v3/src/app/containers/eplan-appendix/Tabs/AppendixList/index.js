@@ -6,7 +6,7 @@ import {tabChange} from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
 import {DescriptionDiv} from 'app/styles/EplanStyles'
 import {getListAsync} from 'app/store/modules/eplan'
-const props={name:'Appendix List'}
+const props={name:'Oversigt'}
 
 class AppendixList extends Component {
     constructor(props) {
