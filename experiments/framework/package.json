@@ -17,7 +17,7 @@
     "styled-components": "^1.4.5",
     "styled-normalize": "^1.0.0"
   },
-  "homepage": "",
+  "homepage": "/demo/",
   "devDependencies": {
     "babel-preset-stage-0": "^6.24.1",
     "react-scripts": "0.9.5",
