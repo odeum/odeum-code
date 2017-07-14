@@ -33,6 +33,17 @@ class Button extends Component {
     }
 }
 
+Button.propTypes = {
+    icon: PropTypes.string/* .isRequired */,
+    size: PropTypes.number,
+    color: PropTypes.string, 
+    active: PropTypes.bool,
+    style: PropTypes.shape({
+        verticalAlign: PropTypes.string,
+        paddingRight: PropTypes.string
+    })
+}
+
 Button.defaultProps = {
     name: 'info',
     size: 75,
@@ -42,17 +53,6 @@ Button.defaultProps = {
         verticalAlign: '-5px',           
         paddingRight: '8px'
     }
-}
-
-Button.propTypes = {
-    icon: PropTypes.string.isRequired,
-    size: PropTypes.number,
-    color: PropTypes.string, 
-    active: PropTypes.bool,
-    style: PropTypes.shape({
-        verticalAlign: PropTypes.string,
-        paddingRight: PropTypes.string
-    })
 }
 
 export default Button
