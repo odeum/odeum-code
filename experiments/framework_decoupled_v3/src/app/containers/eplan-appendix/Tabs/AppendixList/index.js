@@ -23,12 +23,12 @@ class AppendixList extends Component {
     }
     render() {
         return (
-            <Div>
+            <div>
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
                 {this.props.isLoading? null :<AppendixTable list={this.props.data} onClickButton={this.onClickButton}/>}
 
                   
-            </Div>
+            </div>
         )
     }
 }
