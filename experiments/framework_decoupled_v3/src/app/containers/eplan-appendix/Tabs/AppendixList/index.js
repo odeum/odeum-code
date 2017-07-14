@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {Div} from 'app/styles'
 import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 import {tabChange} from 'framework/store/modules/tabs'
