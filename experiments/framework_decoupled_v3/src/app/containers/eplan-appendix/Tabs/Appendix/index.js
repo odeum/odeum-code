@@ -22,16 +22,15 @@ const renderField = ({ input, label, type, meta: { touched, error } }) =>{
   </div>
     )}
 let renderFields = ({fields})=>
-{console.log(fields)
+{
 return(
     <div>
-    {fields.map((field,index)=>{
-        console.log()
-    return <Field
+    {fields.map((field,index)=>(
+ <Field
         name={`${field}.value`}
         type="text"
         component={renderField}
-        label={fields.get(index).name}/>})}
+        label={fields.get(index).name}/>))}
     </div>
     )
 }

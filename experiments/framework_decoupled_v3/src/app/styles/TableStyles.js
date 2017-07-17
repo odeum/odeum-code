@@ -49,8 +49,7 @@ export const Row = styled.div`
       } 
 `
 export const AutoSizerDiv = styled.div`
-
-height: calc(100vh - 300px);
+height: calc(100vh - 400px);
 `
 export const HeaderRow = styled.div`
 width:${props=> props.width+'px'};

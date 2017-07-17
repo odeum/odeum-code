@@ -5,6 +5,7 @@ import {tabChange} from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
 import {DescriptionDiv} from 'app/styles/EplanStyles'
 import {getListAsync} from 'app/store/modules/eplan'
+import {WHDiv} from 'app/styles/'
 const props={name:'Oversigt'}
 
 class AppendixList extends Component {
@@ -22,12 +23,12 @@ class AppendixList extends Component {
     }
     render() {
         return (
-            <div style={{height:'100%'}}>
+            <WHDiv>
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
                 {this.props.isLoading? null :<AppendixTable list={this.props.data} onClickButton={this.onClickButton}/>}
 
                   
-            </div>
+            </WHDiv>
         )
     }
 }

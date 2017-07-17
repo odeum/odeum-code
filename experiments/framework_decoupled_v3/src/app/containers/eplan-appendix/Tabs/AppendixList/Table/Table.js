@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
 import {NoRows,InputRow,LabeledInput,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
+import {SelectRowNr,SpanRowNr,Label} from 'app/styles/EplanStyles'
 import RowRenderer from './_rowRender'
 
 export default class AppendixTable extends Component {
@@ -14,7 +15,7 @@ export default class AppendixTable extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
-      disableExtraRows:true,
+      disableExtraRows:false,
       disableHeader: false,
       headerHeight: 30,
   
@@ -70,18 +71,7 @@ export default class AppendixTable extends Component {
     return (
   <div style={{width:'100%',height:'100%'}}>
         <ContentBox>
-                    {/*<label className={'checkboxLabel'}>
-            <input
-              aria-label='Use dynamic row heights?'
-              checked={useDynamicRowHeight}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this._updateUseDynamicRowHeight(event.target.checked)}
-            />
-            Use dynamic row heights?
-          </label>*/}
-
-          <label>
+         {/*  <label>
             <input
              aria-label='Hide header?'
               checked={disableExtraRows}
@@ -113,18 +103,21 @@ export default class AppendixTable extends Component {
               onChange={event => this.setState({ disableHeader: event.target.checked })}
             />
             Hide header?&nbsp;
-          </label>
+          </label> */}
         <InputRow>
-        <div>
-        <label>Row Numbers</label> <br/>
-          <LabeledInput
-            label='Num rows'
-            name='rowCount'
-            onChange={this._onRowCountChange}
-            value={rowCount}
-          />
-          </div>
-          <div>
+
+        {/* Row numbers display */}
+        <SpanRowNr>
+          <Label>Vis</Label>
+        <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
+          <option value={50}> 50</option>
+          <option value={100}> 100</option>
+          <option value={150}> 150</option>
+        </SelectRowNr>
+          </SpanRowNr>
+          
+          {/* SearchBar replace */}
+        {/*   <div>
           <label>Scroll to:</label> <br/>
           <LabeledInput
             label='Scroll to'
@@ -159,8 +152,8 @@ export default class AppendixTable extends Component {
             onChange={event => this.setState({ overscanRowCount: parseInt(event.target.value, 10) || 0 })}
             value={overscanRowCount}
           />
-          </div>
-        </InputRow></div>}
+          </div> */}
+        </InputRow>{/* </div> */}
           
         </ContentBox>
             <AutoSizerDiv>
@@ -255,6 +248,7 @@ export default class AppendixTable extends Component {
             )}
           </AutoSizer>
           </AutoSizerDiv>
+          <div style={{marginTop:'30px'}}> 1,2,3......</div>
   </div>
     )
   }
