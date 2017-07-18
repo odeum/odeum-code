@@ -25,7 +25,7 @@ class AppendixList extends Component {
         return (
             <WHDiv>
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
-                {this.props.isLoading? null :<AppendixTable list={this.props.data} onClickButton={this.onClickButton}/>}
+                {this.props.isLoading? null :<AppendixTable list={this.props.appendixes} onClickButton={this.onClickButton}/>}
 
                   
             </WHDiv>
@@ -33,7 +33,7 @@ class AppendixList extends Component {
     }
 }
 const mapStateToProps = (state,ownProps) => ({
-    data: state.eplan.data,
+    appendixes: state.eplan.appendixes,
     isLoading: state.eplan.isLoading
 })
 

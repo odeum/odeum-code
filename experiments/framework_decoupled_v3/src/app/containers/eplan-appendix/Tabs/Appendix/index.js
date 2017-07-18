@@ -69,8 +69,8 @@ class Appendix extends Component {
 
 const mapStateToProps = (state,ownProps) => ({
     param:ownProps.params.id,
-    appendix: getAppendixSel(ownProps.params.id,state,ownProps),
-    initialValues: getAppendixSel(ownProps.params.id,state,ownProps)
+    appendix: getAppendixSel(state,ownProps.params.id,ownProps)||null,
+    initialValues: getAppendixSel(state,ownProps.params.id,ownProps)
 })
 
 function mapDispatchToProps(dispatch) {

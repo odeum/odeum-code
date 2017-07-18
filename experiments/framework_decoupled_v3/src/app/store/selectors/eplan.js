@@ -1,6 +1,12 @@
 var _ = require('lodash')
-export const getAppendixSel = (id,state,props)=>{
-    console.log(_.find(state.eplan.openAppendix,(appendix)=>{return appendix.appendixId===parseInt(id,10)}))
-    return _.find(state.eplan.openAppendix,(appendix)=>{return appendix.appendixId===parseInt(id,10)})
-}
 
+const getConfigSel = state => state.eplan.config
+export const getAppendixSel = (state,id,props)=>{
+    // A dirty way of handling an async await, must rethink another way
+    var appendix= _.find(state.eplan.openAppendix,(appendix)=>{return appendix.appendixId===parseInt(id,10)})
+    if(appendix)
+        {
+            appendix.fields = _.intersectionBy(appendix.fields,getConfigSel(state).editFields,'id')
+        }
+        return appendix
+    }
