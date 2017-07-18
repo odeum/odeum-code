@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {getAppendixAsync} from 'app/store/modules/eplan'
+import {getAppendixAsync,getAppendixCfg} from 'app/store/modules/eplan'
 import {addTab,tabChange} from 'framework/store/modules/tabs'
 import {Field,FieldArray, reduxForm } from 'redux-form'
 import {Div} from 'app/styles'
@@ -30,7 +30,7 @@ return(
         name={`${field}.value`}
         type="text"
         component={renderField}
-        label={fields.get(index).name}/>))}
+        label={fields.get(index).caption}/>))}
     </div>
     )
 }
@@ -78,6 +78,7 @@ function mapDispatchToProps(dispatch) {
         onMount: (id,tab,param)=>{
             dispatch(addTab(id,tab))
             dispatch(tabChange(id,tab.label))
+            dispatch(getAppendixCfg())
             // dispatch(getAppendixAsync(param))
         },
         getAppendix:(param)=>{
