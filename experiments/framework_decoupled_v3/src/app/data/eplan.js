@@ -35,6 +35,7 @@ export async function getAppendixById(id)
     })
     return appendix
 }
+
 /* 
 import axios from 'axios'
 var axiosInstance= axios.create({

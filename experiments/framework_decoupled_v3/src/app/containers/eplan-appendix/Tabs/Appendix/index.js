@@ -8,7 +8,6 @@ import {getAppendixSel} from 'app/store/selectors/eplan'
 
 
 const renderField = ({ input, label, type, meta: { touched, error } }) =>{
-    console.log(input)
     return (<div style={{display:'flex',flexDirection:'row',marginBottom:'10px'}}>
     <label style={{width:'150px',paddingRight:"30px",marginRight:"30px"}}>
       {label}
@@ -27,6 +26,7 @@ return(
     <div>
     {fields.map((field,index)=>(
  <Field
+        key={`${field}.id`}
         name={`${field}.value`}
         type="text"
         component={renderField}
@@ -35,9 +35,9 @@ return(
     )
 }
 class Appendix extends Component {
-    
-   async componentWillMount() {
-      await this.props.onMount(
+
+    componentWillMount() {
+       this.props.onMount(
             this.props.id,
             {
                 label:this.props.param,
@@ -50,6 +50,7 @@ class Appendix extends Component {
 }
     async componentDidMount(){
         await this.props.getAppendix(this.props.param)
+        console.log(this.props.fields)
     }
     
     render() {
@@ -68,9 +69,8 @@ class Appendix extends Component {
 
 const mapStateToProps = (state,ownProps) => ({
     param:ownProps.params.id,
-    appendix: state.eplan.openAppendix[0],//change to selector
-    initialValues: state.eplan.openAppendix[0],
-    fields:getAppendixSel(0,state,ownProps)
+    appendix: getAppendixSel(ownProps.params.id,state,ownProps),
+    initialValues: getAppendixSel(ownProps.params.id,state,ownProps)
 })
 
 function mapDispatchToProps(dispatch) {

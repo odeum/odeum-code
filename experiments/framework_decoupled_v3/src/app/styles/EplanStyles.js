@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {WORKSPACE,CLOUDY_DARK} from 'framework/assets/colors'
+import {CLOUDY_DARK} from 'framework/assets/colors'
 export const DescriptionDiv = styled.div`
 
 font-family: Source Sans Pro;

@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {NoRows,InputRow,LabeledInput,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
+import {NoRows,InputRow,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
 import {SelectRowNr,SpanRowNr,Label} from 'app/styles/EplanStyles'
 import RowRenderer from './_rowRender'
 
@@ -41,8 +41,6 @@ export default class AppendixTable extends Component {
 
   render () {
     const {
-
-      disableExtraRows,
       disableHeader,
       headerHeight,
       hideIndexRow,
@@ -51,8 +49,7 @@ export default class AppendixTable extends Component {
       rowCount,
       scrollToIndex,
       sortBy,
-      sortDirection,
-      useDynamicRowHeight
+      sortDirection
     } = this.state
 
     const { list } = this.props
@@ -231,7 +228,7 @@ export default class AppendixTable extends Component {
                   headerRenderer={this._headerRenderer}
                   cellRenderer={
                      ({cellData,columnData,dataKey,rowData,rowIndex})=> 
-                     (<CellStatus done={cellData==='Klar'? true:false}>{cellData}</CellStatus>)
+                     (<Cell>{cellData}</Cell>)
                   }
                 />
                 <Column 
