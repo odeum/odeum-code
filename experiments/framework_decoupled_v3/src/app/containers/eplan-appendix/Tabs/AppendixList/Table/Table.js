@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {NoRows,InputRow,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell,CellStatus} from 'app/styles/TableStyles'
+import {NoRows,InputRow,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell} from 'app/styles/TableStyles'
 import {SelectRowNr,SpanRowNr,Label} from 'app/styles/EplanStyles'
 import RowRenderer from './_rowRender'
 
