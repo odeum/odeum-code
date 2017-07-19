@@ -155,7 +155,8 @@ export default class AppendixTable extends Component {
         </ContentBox>
             <AutoSizerDiv>
               <AutoSizer >
-               {({ height,width }) => (
+               {({ height,
+               width }) => (
               <Table
                 ref='Table'
                 disableHeader={disableHeader}

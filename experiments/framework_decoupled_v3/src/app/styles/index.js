@@ -13,5 +13,6 @@ export const Div = styled.div`
     overflow-y:scroll;
 `
 export const WHDiv = styled.div`
-
+width:100%;
+height:100%;
 `

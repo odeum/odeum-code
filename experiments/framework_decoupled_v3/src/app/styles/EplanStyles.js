@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import {CLOUDY_DARK} from 'framework/assets/colors'
-export const DescriptionDiv = styled.div`
 
+export const DescriptionDiv = styled.div`
 font-family: Source Sans Pro;
     font-style: normal;
     font-size: 13px;

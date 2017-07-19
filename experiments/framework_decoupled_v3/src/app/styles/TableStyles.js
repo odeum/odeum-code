@@ -10,8 +10,6 @@ export const Cell = styled.div`
     height:40px;
 `
 
-
-
 export const HeaderCell = styled.div`
 display: flex;
 background-color: #2C3E50;
@@ -66,11 +64,6 @@ font-family: Source Sans Pro;
     font-style: normal;
     font-size: 15px;
     font-weight: 600;
-
-/*  
-
-  justify-content: space-around;
- */
 `
 export const NoRows = styled.div`
   position: absolute;
