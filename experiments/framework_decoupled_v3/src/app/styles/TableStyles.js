@@ -82,3 +82,53 @@ export const LabeledInput = styled.input`
 export const CellStatus = styled.div`
 color: ${(props)=> props.done? 'green':'red'}
 `
+export const SearchDiv = styled.div`
+  display:flex;
+  flex-direction:row;
+  width: 500px;
+  padding-top: 10px;
+  padding-left: 10px;
+`
+
+export const SearchInput = styled.input`
+width: 200px;
+height: 30px;
+border: 1px solid #dedede;
+border-radius: 3px 0 0 3px;
+background-color: #fff;
+  padding: 0;
+  padding-left: 10px;
+  font-family: 'Source Sans Pro';
+  font-size: 16px;
+  font-weight: 300;
+//   color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+
+  &::placeholder {
+    color: #fff;
+  }
+  &:-ms-input-placeholder {
+    color: #fff;
+  }
+  &::-webkit-input-placeholder {
+    color: #fff;
+  }
+  &::-moz-placeholder {
+    color: #fff;
+    opacity: 1;
+  }
+`
+
+export const SearchButtonDiv = styled.div`
+  width: 25px;
+  height: 30px;
+  border-radius: 0 1px 1px 0;
+  background: #3b97d3;
+  color: #fff;
+  font-size: 20px;
+  outline: none;
+  cursor: pointer;
+  padding-top: 2px;
+  padding-left: 8px;
+`

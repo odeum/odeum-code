@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
 import {NoRows,InputRow,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell} from 'app/styles/TableStyles'
+import {SearchDiv,SearchButtonDiv,SearchInput} from 'app/styles/TableStyles'
 import {SelectRowNr,SpanRowNr,Label} from 'app/styles/EplanStyles'
+import Icon from 'framework/assets/Icon'
+import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
 
 export default class AppendixTable extends Component {
@@ -104,15 +107,18 @@ export default class AppendixTable extends Component {
         <InputRow>
 
         {/* Row numbers display */}
-        <SpanRowNr>
-          <Label>Vis</Label>
-        <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
-          <option value={50}> 50</option>
-          <option value={100}> 100</option>
-          <option value={150}> 150</option>
-        </SelectRowNr>
-          </SpanRowNr>
-          
+<SpanRowNr>
+  <Label>Vis</Label>
+  <SelectRowNr name="rowNumber" onChange={ this._onRowCountChange }>
+    <option value={ 50 }> 50</option>
+    <option value={ 100 }> 100</option>
+    <option value={ 150 }> 150</option>
+  </SelectRowNr>
+</SpanRowNr>
+<SearchDiv>
+    <SearchInput/><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true}/></SearchButtonDiv>
+</SearchDiv>
+
           {/* SearchBar replace */}
         {/*   <div>
           <label>Scroll to:</label> <br/>
