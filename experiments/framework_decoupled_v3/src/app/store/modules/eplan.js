@@ -1,4 +1,4 @@
-import {getAppendixList,getAppendixById,getAppendixConfig} from 'app/data/eplan'
+import {getAppendixList,getAppendixById,getAppendixConfig, publishAppendixToPlansystem} from 'app/data/eplan'
 import {List} from 'immutable'
 
 /* Action Types */
@@ -6,11 +6,14 @@ import {List} from 'immutable'
 export const GET_APPENDIX_LIST = '@@EPLAN/GET_EPLAN_LIST'
 export const GET_APPENDIX = '@@EPLAN/GET_APPENDIX'
 export const GET_APPENDIX_CONFIG = '@@EPLAN/GET_APPENDIX_CONFIG'
-/* Actions */
+export const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 
+/* Actions */
 export const getList = (data) => ( {type: GET_APPENDIX_LIST ,payload:data})
 export const getAppendix = (data) => ( {type:GET_APPENDIX,payload:data})
 export const getApdCfg = (data) => ({type:GET_APPENDIX_CONFIG,payload:data})
+export const publishAppendix = () => ({type:PUBLISH_APPENDIX_PLANSYSTEM})
+
 /* Middleware */
 export function getAppendixAsync(id){
     return async dispatch=>{
@@ -32,6 +35,13 @@ export function getAppendixCfg(){
         dispatch(getApdCfg(config))
     }
 }
+export function publishAppendixToPlansystemAsync(id) {
+    return async dispatch => {
+        await publishAppendixToPlansystem(id)
+        dispatch(publishAppendix())
+    }
+}
+
 /* Reducer */
 const initState = {
     appendixes: List([]),
