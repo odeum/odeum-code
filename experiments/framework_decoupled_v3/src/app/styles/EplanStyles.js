@@ -65,3 +65,29 @@ pointer-events: none;
 background: #E3E5E5;
 }
 `
+
+export const AppendixButtonPanel = styled.div`
+  float: right;
+`
+
+export const AppendixButtonPanelDiv = styled.div`
+  float: right;
+  margin-left: 20px;
+  cursor: pointer;
+  border: 1px solid #000;
+`
+
+export const AppendixForm = styled.form`
+  clear: both;
+`
+
+export const PublishStepTwoDiv = styled.div`
+  display: none;
+`
+
+export const PublishLoadingDiv = styled.div`
+  display: none;
+`
+
+
+

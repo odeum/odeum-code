@@ -1,4 +1,5 @@
-import {getAppendixList,getAppendixById,getAppendixConfig,postAppendix} from 'app/data/eplan'
+
+import {getAppendixList,getAppendixById,getAppendixConfig, postAppendix,publishAppendixToPlansystem} from 'app/data/eplan'
 import {List} from 'immutable'
 
 
@@ -9,13 +10,16 @@ export const GET_APPENDIX = '@@EPLAN/GET_APPENDIX'
 export const GET_APPENDIX_CONFIG = '@@EPLAN/GET_APPENDIX_CONFIG'
 export const UPDATE_APPENDIX = '@@EPLAN/UPDATE_APPENDIX'
 const CLOSE_APPENDIX = '@@EPLAN/CLOSE_OPEN_APPENDIX'
-/* Actions */
+export const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 
+/* Actions */
 export const getList = (data) => ( {type: GET_APPENDIX_LIST ,payload:data})
 export const getAppendix = (data) => ( {type:GET_APPENDIX,payload:data})
 export const getApdCfg = (data) => ({type:GET_APPENDIX_CONFIG,payload:data})
 export const updateApd = (data) =>({type:UPDATE_APPENDIX,payload:data})
 const removeApdx = (data)=>({type:CLOSE_APPENDIX,payload:data})
+export const publishAppendix = () => ({type:PUBLISH_APPENDIX_PLANSYSTEM})
+
 /* Middleware */
 export function removeOpenApdx(id){
     return dispatch=>{
@@ -56,6 +60,13 @@ export function getAppendixCfg(){
        
     }
 }
+export function publishAppendixToPlansystemAsync(id) {
+    return async dispatch => {
+        await publishAppendixToPlansystem(id)
+        dispatch(publishAppendix())
+    }
+}
+
 /* Reducer */
 const initState = {
     appendixes: List([]),
