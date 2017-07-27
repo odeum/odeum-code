@@ -3,7 +3,6 @@ import ReactQuill from 'react-quill'
 export default class Quill extends Component {
 
     render() {
-        console.log(this.props)
         return (
             <div style={{width:'100%'}}>
 

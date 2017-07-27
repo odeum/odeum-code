@@ -1,7 +1,7 @@
 import React from 'react'
-import Quill from './Quill'
-import TinyMceEditor from './TinyMCE'
-import DraftEditor from './Draft'
+import Quill from './Editors/Quill'
+import TinyMceEditor from './Editors/TinyMCE'
+import DraftEditor from './Editors/Draft'
 export const renderQuill = ({ input, label, type, meta: { touched, error } }) =>{
     return (<div style={{display:'flex',flexDirection:'row',marginBottom:'10px'}}>
      <label style={{width:'150px',padding:"30px 20px 50px 20px"}}>

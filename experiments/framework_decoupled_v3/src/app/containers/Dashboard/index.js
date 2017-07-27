@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {changeId} from 'framework/store/modules/tabs'
-import {Div} from 'app/styles'
+import {WHDiv} from 'app/styles'
 class Dashboard extends Component {
     
     componentWillMount() {
@@ -10,9 +10,9 @@ class Dashboard extends Component {
     
     render() {
         return (
-            <Div>
+            <WHDiv>
                 {this.props.children}
-            </Div>
+            </WHDiv>
         )
     }
 }

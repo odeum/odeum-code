@@ -56,8 +56,6 @@ export default class DraftEditor extends Component {
     }
     constructor(props) {
         super(props)
-        console.log(props)
-        console.log(this.props.value)
         this.state = {value:RichTextEditor.createValueFromString(this.props.value,'html')}
     }
     componentDidMount(){

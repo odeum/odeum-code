@@ -17,12 +17,27 @@ import FooterContainer from '../Footer/Footer'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+//Login
+import LoginContainer from 'framework/containers/Login/Login'
+
 
 
 class Home extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loggedIn: false
+        }
+        this.handleLogin = this.handleLogin.bind(this)
+    }
+    handleLogin(){
+        this.setState({loggedIn:true})
+    }
     render() {
         return (
+            
             <ThemeProvider theme={ theme }>
+            {this.state.loggedIn?
               <div>
                 <HomeDiv>
                   <HeaderContainer />
@@ -32,6 +47,7 @@ class Home extends Component {
                   <FooterContainer />
                 </HomeDiv>
               </div>
+               : <LoginContainer handleLogin={this.handleLogin}/>}
             </ThemeProvider>
         )
     }

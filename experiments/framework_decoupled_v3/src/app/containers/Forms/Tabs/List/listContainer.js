@@ -8,8 +8,6 @@ import {Div} from 'app/styles'
 
 class List extends Component {
     componentWillMount() {
-        //Fixed tab example
-        // console.log(this.props)
         this.props.onMount(this.props)
     }
     

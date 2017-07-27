@@ -3,8 +3,8 @@ path: 'eplan',
   getChildRoutes(location, cb) {
     require.ensure([], (require) => {
       cb(null, [
-        require('./Tabs/Appendix/route.js'),
-        require('./Tabs/AppendixList/route.js'),
+        require('./Appendix/route.js'),
+        require('./AppendixList/route.js'),
       ])
     })
   },
