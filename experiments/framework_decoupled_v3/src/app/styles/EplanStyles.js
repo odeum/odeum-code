@@ -1,6 +1,7 @@
-import styled from 'styled-components'
-import {CLOUDY_DARK} from 'framework/assets/colors'
-
+import styled, { keyframes } from 'styled-components'
+import { CLOUDY_DARK } from 'framework/assets/colors'
+import Loader from 'halogen/PulseLoader'
+import Modal from 'react-modal'
 export const DescriptionDiv = styled.div`
 font-family: Source Sans Pro;
     font-style: normal;
@@ -17,6 +18,19 @@ padding:3px;
 export const Label = styled.label`
 color:#5E5E5E;
 margin-left:10px;
+`
+
+export const PulseLoader = styled(Loader) `
+color:${CLOUDY_DARK};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
 `
 export const SelectRowNr = styled.select`
   background: #E3E5E5;
@@ -89,5 +103,50 @@ export const PublishLoadingDiv = styled.div`
   display: none;
 `
 
+const fadeIn = keyframes`
+from{
+    transform:translateY(-100%);
+    opacity:0;
+    width:0%;
+}
+to{
+    transform:translateY(0%);
+    opacity:1;
+    width:100%;
+}
+`
+const fadeModal = keyframes`
+from{
+    opacity:0;
+    top:0%;
+    left:50%;
+}
+to{
+    opacity:1;
+    top:50%;
+    left: 50%;
+}
+`
+
+export const ModalWindow = styled(Modal) `
+border-radius:3px;
+border:2px cyan royalblue;
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        marginRight: -50%;
+        height: auto;
+        transform:translate(-50% ,-50%);
+        animation: ${fadeModal} 1s ease-in-out;
+        background-color: white;
+        width:30%;
+`
+export const Animation = styled.div`
+
+animation: ${fadeIn} 1s ease-in-out;
+
+`
 
 

@@ -26,8 +26,8 @@ class MenuContainer extends Component {
     }
 }
 MenuContainer.propTypes = {
-    scenes: PropTypes.array,
-    active: PropTypes.string
+    scenes: PropTypes.array.isRequired,
+    active: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state) => ({

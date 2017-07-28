@@ -10,7 +10,7 @@ class Dashboard extends Component {
     
     render() {
         return (
-            <WHDiv>
+            <WHDiv out={false}>
                 {this.props.children}
             </WHDiv>
         )

@@ -1,14 +1,11 @@
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 // import { getActiveTab, getTabs} from '../selectors/tabsSelectors'
 import {getInstance,getTabs} from 'framework/store/selectors/tabsSelectors'
 import Tabs from 'framework/components/Tabs/Tabs'
 import {tabClose,tabChange} from 'framework/store/modules/tabs'
 
-//REFACTOR each prop to own function
-/*
-id: getInstanceId(),
-activeTab:getInstanceActiveTab()
-*/
+
 const mapStateToProps = (state,props) => {
         return {
             tabs: getTabs(state,props),
@@ -28,5 +25,9 @@ function mapDispatchToProps(dispatch) {
     
 }
 const TabsContainer = connect(mapStateToProps, mapDispatchToProps)(Tabs)
-
+TabsContainer.propTypes = {
+    tabs: PropTypes.array,
+    id: PropTypes.string.isRequired,
+    activeTab: PropTypes.string
+}
 export default TabsContainer

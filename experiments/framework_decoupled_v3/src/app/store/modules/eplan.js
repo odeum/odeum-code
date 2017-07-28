@@ -36,7 +36,6 @@ export function updateAppendix(appendix,id){
 export function getAppendixAsync(id){
     return async dispatch=>{
         await getAppendixById(id).then((result)=>{
-            console.log('-----Modules/Appendix Async-----')
             dispatch(getAppendix(result))
         })
       
@@ -60,10 +59,14 @@ export function getAppendixCfg(){
        
     }
 }
-export function publishAppendixToPlansystemAsync(id) {
+export async function publishAppendixToPlansystemAsync(id) {
+
     return async dispatch => {
-        await publishAppendixToPlansystem(id)
-        dispatch(publishAppendix())
+       var test= await publishAppendixToPlansystem(id).then((result)=>{
+            dispatch(publishAppendix())
+            return result
+       })
+        return test
     }
 }
 
@@ -84,12 +87,8 @@ function eplan(state = initState, action) {
             }
         }
      case UPDATE_APPENDIX:
-     {  console.log('-----action.payload-----')
-        console.log(action.payload)
+     {  
         var orig = state.openAppendix.find((apdx)=>(apdx.appendixId===parseInt(action.payload.id,10)))
-        console.log('-----orig-----')
-        console.log(orig)
-        // console.log(orig.fields)
         orig.fields.map((field)=>{
             return action.payload.appendix.fields.map((afield)=>{
                 return field.id===afield.id? field.value=afield.value : field

@@ -12,6 +12,7 @@ export const Div = styled.div`
     margin-left:10px;  
     overflow-y:scroll;
 `
+
 export const WHDiv = styled.div`
 width:100%;
 height:100%;

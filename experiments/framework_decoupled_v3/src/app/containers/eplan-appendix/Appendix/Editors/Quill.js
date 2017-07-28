@@ -1,18 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ReactQuill from 'react-quill'
-export default class Quill extends Component {
 
-    render() {
-        return (
-            <div style={{width:'100%'}}>
+const Quill = ({value,onChange}) => {
+    return (
+       <div style={{width:'100%'}}>
 
-                <ReactQuill value={this.props.value} 
-                            onChange={this.props.onChange}
+                <ReactQuill value={value} 
+                            onChange={onChange}
                             modules={Quill.modules}/>
             </div>
-        )
-    }
+    )
 }
+
+export default Quill
+
 Quill.modules = {
   toolbar: [
     [{ 'header': '1'}, {'header': '2'}],
