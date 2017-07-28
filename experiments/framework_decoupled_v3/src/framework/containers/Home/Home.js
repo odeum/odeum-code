@@ -30,7 +30,6 @@ class Home extends Component {
             loggedIn: true
         }
         this.handleLogin = this.handleLogin.bind(this)
-        //REFACTOR 
         this.props.onMount()
     }
     handleLogin(){
