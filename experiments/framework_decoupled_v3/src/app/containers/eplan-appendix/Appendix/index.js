@@ -181,7 +181,7 @@ class AppendixContainer extends Component {
   }
   render() {
      /* State */
-    const { configModalIsOpen, publishModalIsOpen, startDate,dates } = this.state
+    const { configModalIsOpen, publishModalIsOpen, dates } = this.state
     /* Props */
     const { appendix, handleSubmit, } = this.props
     /* Functions */
@@ -208,7 +208,6 @@ class AppendixContainer extends Component {
             <Settings
               configModalIsOpen={configModalIsOpen}
               closeConfigModal={closeConfigModal}
-              startDate={startDate}
               handleDateChange={handleDateChange}
               saveConfigModal={saveConfigModal} 
               dates={dates}/>

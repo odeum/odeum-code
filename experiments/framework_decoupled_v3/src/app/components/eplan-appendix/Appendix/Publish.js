@@ -1,8 +1,5 @@
 import React from 'react'
 import { PublishStepTwoDiv, PublishLoadingDiv,ModalWindow, PulseLoader } from 'app/styles/EplanStyles'
-import Loader from 'halogen/FadeLoader'
-
-
 
 const Publish = ({ publishModalIsOpen, closePublishModal, customStyles, appendix, onClickPublishAppendix }) => {
     return (
