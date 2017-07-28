@@ -14,21 +14,20 @@ import TabsContainer from '../Tabs/TabsContainer'
 import FooterContainer from '../Footer/Footer'
 
 //Redux+Router
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
-
-
+import {getAppendixCfg} from 'app/store/modules/eplan'
 
 class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            loggedIn: false
+            loggedIn: true
         }
         this.handleLogin = this.handleLogin.bind(this)
+        this.props.onMount()
     }
     handleLogin(){
         this.setState({loggedIn:true})
@@ -63,7 +62,12 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({}, dispatch)
+    return{
+        onMount: ()=>{
+            dispatch(getAppendixCfg())
+        }
+    }
+    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

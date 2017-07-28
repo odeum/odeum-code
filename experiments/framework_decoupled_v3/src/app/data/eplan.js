@@ -56,3 +56,23 @@ export async function publishAppendixToPlansystem(id) {
 
     return result
 }
+
+export async function getCompleteAppendixPdf(id) {
+    var result = await api.get('rest/eplan/kpt/appendix/appendixpdf/' + id)
+        .then((response) => {
+            return response.data
+        })
+
+    return result
+}
+
+export async function createCompleteAppendixPdf(id) {
+    var result = await api.post('rest/eplan/kpt/appendix/appendixpdf/' + id)
+        .then((response) => {
+            return response.data
+        })
+
+    return result
+}
+
+

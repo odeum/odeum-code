@@ -29,9 +29,6 @@ const customStyles = {
 }
 
 function editorSelector(editor) {
-    console.log('------------------------------------')
-    console.log(editor)
-    console.log('------------------------------------')
     switch (editor) {
         case "default":
             return renderDefault
@@ -86,7 +83,6 @@ class Appendix extends Component {
     }
     async componentDidMount() {
         await this.props.getAppendix(this.props.param)
-        console.log(this.props.fields)
     }
     onEditorChange(event) {
         this.setState({ editor: event.target.value })
@@ -94,7 +90,7 @@ class Appendix extends Component {
     }
     openConfigModal() {
         for (let field in this.props.appendix.fields) {
-            console.log(field)
+            // console.log(field)
         }
 
         this.setState({ configModalIsOpen: true })
@@ -133,8 +129,6 @@ class Appendix extends Component {
         } catch (e) {
             console.log('Error:' + e)
         }
-
-        //this.setState({ publishModalIsOpen: false })
     }
     handleDateChange(date) {
         this.setState({ startDate: date })
@@ -192,13 +186,12 @@ class Appendix extends Component {
                         </Modal>
 
                         <Modal isOpen={this.state.publishModalIsOpen} onRequestClose={this.closePublishModal} style={customStyles} contentLabel="Plansystem">
-                            <h2>Publicer til plansystem</h2>
+                            <h2>Publicer til plansystem 123</h2>
 
                             <div id="publishStepOne">
                                 Tillæg {this.props.appendix.name} indmeldes med følgende status: {this.props.appendix.status}
                                 <br /><br />
                                 <button id="publishButton" onClick={(e) => {e.preventDefault(); this.onClickPublishAppendix()}}>Indmeld nu</button>
-
                             </div>
                             <PublishStepTwoDiv id="publishStepTwo">
                                 <PublishLoadingDiv id="publishLoadingDiv">
