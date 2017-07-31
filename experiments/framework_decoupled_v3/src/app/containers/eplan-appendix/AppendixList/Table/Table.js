@@ -292,7 +292,7 @@ export default class AppendixTable extends Component {
       e.preventDefault()
       this.props.onClickButton(cellData)
     }}>
-      <a href={"list/"+cellData}>{cellData}</a>
+      <a href={"list/"+cellData+"/edit"}>{cellData}</a>
     </Cell>
   }
 

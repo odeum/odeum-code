@@ -105,12 +105,12 @@ export const PublishLoadingDiv = styled.div`
 
 const fadeIn = keyframes`
 from{
-    transform:translateY(-100%);
+   /*  transform:translateY(-100%); */
     opacity:0;
-    width:0%;
+    width:100%;
 }
 to{
-    transform:translateY(0%);
+/*     transform:translateY(0%); */
     opacity:1;
     width:100%;
 }
@@ -145,7 +145,7 @@ border:2px cyan royalblue;
 `
 export const Animation = styled.div`
 
-animation: ${fadeIn} 1s ease-in-out;
+animation: ${fadeIn} 0.7s ease-in-out;
 
 `
 
