@@ -2,10 +2,10 @@
 import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import {Table,SortDirection,SortIndicator,Column,AutoSizer} from 'react-virtualized'
-import {NoRows,InputRow,HeaderCell,HeaderRow,AutoSizerDiv,ContentBox,Cell} from 'app/styles/TableStyles'
-import {SearchDiv,SearchButtonDiv,SearchInput} from 'app/styles/TableStyles'
-import {SelectRowNr,SpanRowNr,Label} from 'app/styles/EplanStyles'
+import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
+import { NoRows, InputRow, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'
+import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
+import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
 import Icon from 'framework/assets/Icon'
 import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
@@ -15,13 +15,13 @@ export default class AppendixTable extends Component {
     list: PropTypes.instanceOf(Immutable.List).isRequired
   };
 
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
     this.state = {
-      disableExtraRows:false,
+      disableExtraRows: false,
       disableHeader: false,
       headerHeight: 30,
-  
+
       hideIndexRow: false,
       overscanRowCount: 10,
       rowHeight: 40,
@@ -42,7 +42,7 @@ export default class AppendixTable extends Component {
     this._rowClicked = this._rowClicked.bind(this)
   }
 
-  render () {
+  render() {
     const {
       disableHeader,
       headerHeight,
@@ -69,9 +69,9 @@ export default class AppendixTable extends Component {
     const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
     return (
-  <div style={{width:'100%',height:'100%'}}>
+      <div style={{ width: '100%', height: '100%' }}>
         <ContentBox>
-         {/*  <label>
+          {/*  <label>
             <input
              aria-label='Hide header?'
               checked={disableExtraRows}
@@ -104,23 +104,23 @@ export default class AppendixTable extends Component {
             />
             Hide header?&nbsp;
           </label> */}
-        <InputRow>
+          <InputRow>
 
-        {/* Row numbers display */}
-<SpanRowNr>
-  <Label>Vis</Label>
-  <SelectRowNr name="rowNumber" onChange={ this._onRowCountChange }>
-    <option value={ 50 }> 50</option>
-    <option value={ 100 }> 100</option>
-    <option value={ 150 }> 150</option>
-  </SelectRowNr>
-</SpanRowNr>
-<SearchDiv>
-    <SearchInput/><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true}/></SearchButtonDiv>
-</SearchDiv>
+            {/* Row numbers display */}
+            <SpanRowNr>
+              <Label>Vis</Label>
+              <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
+                <option value={50}> 50</option>
+                <option value={100}> 100</option>
+                <option value={150}> 150</option>
+              </SelectRowNr>
+            </SpanRowNr>
+            <SearchDiv>
+              <SearchInput /><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true} /></SearchButtonDiv>
+            </SearchDiv>
 
-          {/* SearchBar replace */}
-        {/*   <div>
+            {/* SearchBar replace */}
+            {/*   <div>
           <label>Scroll to:</label> <br/>
           <LabeledInput
             label='Scroll to'
@@ -156,148 +156,147 @@ export default class AppendixTable extends Component {
             value={overscanRowCount}
           />
           </div> */}
-        </InputRow>{/* </div> */}
-          
+          </InputRow>{/* </div> */}
+
         </ContentBox>
-            <AutoSizerDiv>
-              <AutoSizer >
-               {({ height,
-               width }) => (
-              <Table
-                ref='Table'
-                disableHeader={disableHeader}
-                headerHeight={headerHeight}
-                height={height}
-                headerRowRenderer={this._defaultHeaderRowRenderer}
-                noRowsRenderer={this._noRowsRenderer}
-                overscanRowCount={overscanRowCount}
-                rowRenderer = {RowRenderer}
-                onRowClick = {this._rowClicked}
-                rowHeight={rowHeight}
-                rowGetter={rowGetter}
-                rowCount={rowCount}
-                scrollToIndex={scrollToIndex}
-                sort={this._sort}
-                sortBy={sortBy}
-                sortDirection={sortDirection}
-                width={width}
-                style={{width:'100%'}}
-              >
-                {!hideIndexRow &&
-                 
+        <AutoSizerDiv>
+          <AutoSizer >
+            {({ height,
+              width }) => (
+                <Table
+                  ref='Table'
+                  disableHeader={disableHeader}
+                  headerHeight={headerHeight}
+                  height={height}
+                  headerRowRenderer={this._defaultHeaderRowRenderer}
+                  noRowsRenderer={this._noRowsRenderer}
+                  overscanRowCount={overscanRowCount}
+                  rowRenderer={RowRenderer}
+                  onRowClick={this._rowClicked}
+                  rowHeight={rowHeight}
+                  rowGetter={rowGetter}
+                  rowCount={rowCount}
+                  scrollToIndex={scrollToIndex}
+                  sort={this._sort}
+                  sortBy={sortBy}
+                  sortDirection={sortDirection}
+                  width={width}
+                  style={{ width: '100%' }}
+                >
+                  {!hideIndexRow &&
+
+                    <Column
+                      label='ID'
+                      dataKey='appendixId'
+                      disableSort={!this._isSortEnabled()}
+                      headerRenderer={this._headerRenderer}
+                      cellRenderer={
+                        ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+                      }
+                      width={width}
+                      flexgrow={1}
+                    />
+                  }
                   <Column
-                    label='ID'
-                    dataKey='appendixId'
+                    label='Name'
+                    dataKey='name'
                     disableSort={!this._isSortEnabled()}
                     headerRenderer={this._headerRenderer}
                     cellRenderer={
-                      ({cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+                      ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
                     }
                     width={width}
                     flexgrow={1}
                   />
-                }
-                <Column
-                  label='Name'
-                  dataKey='name'
-                  disableSort={!this._isSortEnabled()}
-                  headerRenderer={this._headerRenderer}
-                  cellRenderer={
-                    ({cellData,columnData, dataKey, rowData})=>(<Cell>{cellData}</Cell>)
-                  }
-                  width={width}
-                  flexgrow={1}
-                />
-                <Column
-                  width={width}
-                  label='UserID'
-                  dataKey='authorAppendixId'
-                  headerRenderer={this._headerRenderer}
-                  disableSort={!this._isSortEnabled()}
-                  cellRenderer={
-                    ({ cellData, columnData, dataKey, rowData, rowIndex }) => 
-                    (<Cell>{cellData}</Cell>)
-                  }
-                />
-                <Column
-                  width={width}
-                  label="Link"
-                  dataKey='appendixId'
-                  headerRenderer={this._headerRenderer}
-                  disableSort
-                  cellRenderer={
-                  this._linkRowRenderer}
+                  <Column
+                    width={width}
+                    label='UserID'
+                    dataKey='authorAppendixId'
+                    headerRenderer={this._headerRenderer}
+                    disableSort={!this._isSortEnabled()}
+                    cellRenderer={
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+                        (<Cell>{cellData}</Cell>)
+                    }
                   />
-                <Column
-                  width={width}
-                  label='Status'
-                  dataKey='status'
-                  headerRenderer={this._headerRenderer}
-                  cellRenderer={
-                     ({cellData,columnData,dataKey,rowData,rowIndex})=> 
-                     (<Cell>{cellData}</Cell>)
-                  }
-                />
-                <Column 
-                  width={width}
-                  label='Date'
-                  dataKey='created'
-                  headerRenderer={this._headerRenderer}
-                   cellRenderer={
-                     ({cellData,columnData,dataKey,rowData,rowIndex})=> (<Cell>{cellData}</Cell>)
-                  }
-                  flexgrow={1}
+                  <Column
+                    width={width}
+                    label="Link"
+                    dataKey='appendixId'
+                    headerRenderer={this._headerRenderer}
+                    disableSort
+                    cellRenderer={
+                      this._linkRowRenderer}
                   />
-              </Table>
-            )}
+                  <Column
+                    width={width}
+                    label='Status'
+                    dataKey='status'
+                    headerRenderer={this._headerRenderer}
+                    cellRenderer={
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+                        (<Cell>{cellData}</Cell>)
+                    }
+                  />
+                  <Column
+                    width={width}
+                    label='Date'
+                    dataKey='created'
+                    headerRenderer={this._headerRenderer}
+                    cellRenderer={
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{cellData}</Cell>)
+                    }
+                    flexgrow={1}
+                  />
+                </Table>
+              )}
           </AutoSizer>
-          </AutoSizerDiv>
-          <div style={{marginTop:'30px'}}> 1,2,3......</div>
-  </div>
+        </AutoSizerDiv>
+        <div style={{ marginTop: '30px' }}> 1,2,3......</div>
+      </div>
     )
   }
   _rowClicked({
     event,
     index,
     rowData
-  })
-  {
-  this.props.onClickButton(rowData.appendixId)
+  }) {
+    this.props.onClickButton(rowData.appendixId)
   }
-  _defaultHeaderRowRenderer ({
+  _defaultHeaderRowRenderer({
     className,
     columns,
     style
   }) {
-  return <HeaderRow width={style.width}>
-    {columns}
-  </HeaderRow>
+    return <HeaderRow width={style.width}>
+      {columns}
+    </HeaderRow>
   }
 
-  _getDatum (list, index) {
+  _getDatum(list, index) {
     return list.get(index % list.size)
   }
 
-  _getRowHeight ({ index }) {
+  _getRowHeight({ index }) {
     const { list } = this.props
 
     return this._getDatum(list, index).size
   }
 
-  _linkRowRenderer({ cellData, 
-    columnData, 
-    dataKey, 
-    rowData, rowIndex 
+  _linkRowRenderer({ cellData,
+    columnData,
+    dataKey,
+    rowData, rowIndex
     }) {
-    return <Cell onClick={(e)=>
-                    { e.preventDefault()
-                      this.props.onClickButton(cellData)
-                     }}>
-                      <a href={"#"+cellData}>{cellData}</a>
-           </Cell>
-    }
+    return <Cell onClick={(e) => {
+      e.preventDefault()
+      this.props.onClickButton(cellData)
+    }}>
+      <a href={"list/"+cellData}>{cellData}</a>
+    </Cell>
+  }
 
-  _headerRenderer ({
+  _headerRenderer({
     columnData,
     dataKey,
     disableSort,
@@ -315,14 +314,14 @@ export default class AppendixTable extends Component {
     )
   }
 
-  _isSortEnabled () {
+  _isSortEnabled() {
     const { list } = this.props
     const { rowCount } = this.state
 
     return rowCount <= list.size
   }
 
-  _noRowsRenderer () {
+  _noRowsRenderer() {
     return (
       <NoRows>
         No rows
@@ -330,13 +329,13 @@ export default class AppendixTable extends Component {
     )
   }
 
-  _onRowCountChange (event) {
+  _onRowCountChange(event) {
     const rowCount = parseInt(event.target.value, 10) || 0
 
     this.setState({ rowCount })
   }
 
-  _onScrollToRowChange (event) {
+  _onScrollToRowChange(event) {
     const { rowCount } = this.state
     let scrollToIndex = Math.min(rowCount - 1, parseInt(event.target.value, 10))
 
@@ -347,7 +346,7 @@ export default class AppendixTable extends Component {
     this.setState({ scrollToIndex })
   }
 
-  _rowClassName ({ index }) {
+  _rowClassName({ index }) {
     if (index < 0) {
       return 'evenRow'
     } else {
@@ -355,11 +354,11 @@ export default class AppendixTable extends Component {
     }
   }
 
-  _sort ({ sortBy, sortDirection }) {
+  _sort({ sortBy, sortDirection }) {
     this.setState({ sortBy, sortDirection })
   }
 
-  _updateUseDynamicRowHeight (value) {
+  _updateUseDynamicRowHeight(value) {
     this.setState({
       useDynamicRowHeight: value
     })

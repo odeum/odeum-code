@@ -21,7 +21,8 @@ const getApdCfg = (data) => ({type:GET_APPENDIX_CONFIG,payload:data})
 const updateApd = (data) =>({type:UPDATE_APPENDIX,payload:data})
 const removeApdx = (data)=>({type:CLOSE_APPENDIX,payload:data})
 const publishAppendix = () => ({type:PUBLISH_APPENDIX_PLANSYSTEM})
-
+const getAppendixPdf = () =>({type:GET_APPENDIX_PDF})
+const createAppendixPdf = () =>({type:CREATE_APPENDIX_PDF})
 
 /* Middleware */
 export function removeOpenApdx(id){
@@ -72,7 +73,22 @@ export async function publishAppendixToPlansystemAsync(id) {
         return test
     }
 }
-
+export async function getAppendixPdfAsync(){
+    return async dispatch=>{
+        //TODO
+        var test = []
+        dispatch(getAppendixPdf())
+        return test
+    }
+}
+export async function createAppendixPdfAsync(){
+    return async dispatch =>{
+        //TODO
+        var ret = []
+        dispatch(createAppendixPdf())
+        return ret
+    }
+}
 /* Reducer */
 const initState = {
     appendixes: List([]),

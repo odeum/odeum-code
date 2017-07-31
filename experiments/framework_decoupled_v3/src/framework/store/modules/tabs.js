@@ -88,11 +88,10 @@ export default function tabs(state = initialState, action) {
             let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
             findInstance.tabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
             findInstance.activeTab = findInstance.tabs[0].label
-            // let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
             //REFACTOR
             //POSSIBLE BUG
             action.asyncDispatch(push('/eplan/list'))
-           // action.asyncDispatch({type:CHANGE_TAB,payload:{id:findInstance.id,label:'a'}})
+
             return {
                 ...state,
                  tabInstance: state.tabInstance.map((instance) => instance.id === findInstance.id ? instance=findInstance : instance),
