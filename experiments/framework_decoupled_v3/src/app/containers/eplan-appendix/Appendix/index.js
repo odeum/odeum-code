@@ -134,6 +134,7 @@ class AppendixContainer extends Component {
                         alert(response.description)
                     } else {
                         console.log(response)
+                        
                     }
                 })
             } catch (e) {
@@ -147,7 +148,9 @@ class AppendixContainer extends Component {
                         alert(response.description)
                     } else {
                       //REFACTOR Open a new browser tab/window to download PDF
+                        
                         console.log(response)
+                        return response
                     }
                 })
             } catch (e) {
@@ -196,7 +199,7 @@ class AppendixContainer extends Component {
               <AppendixButtonPanelDiv onClick={openConfigModal}>Indstillinger</AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv onClick={openPublishModal}>Publicer</AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv>
-                <select id="pdfSelect" onChange={handlePdfChange}>
+                <select id="pdfSelect" onChange={(e)=>{e.preventDefault();handlePdfChange(e).then((result)=>(window.open(result)))}}>
                             <option value="0">PDF</option>
                             <option value="create">Opret PDF af tillæg</option>
                             <option value="view">Se PDF</option>

@@ -85,6 +85,18 @@
             "id":"eplan",
             "location":"/eplan/list",
             "icon":"assignment"
+        },
+        {
+            "name":"Reference tabeller",
+            "id":"ref_table",
+            "location":"/reference/",
+            "icon":"grid_on"
+        },
+        {
+            "name":"Indstillinger",
+            "id":"settings",
+            "location":"/settings/general",
+            "icon":"settings"
         }
     ]
 }

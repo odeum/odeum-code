@@ -5,20 +5,23 @@ import {List} from 'immutable'
 
 /* Action Types */
 
-export const GET_APPENDIX_LIST = '@@EPLAN/GET_EPLAN_LIST'
-export const GET_APPENDIX = '@@EPLAN/GET_APPENDIX'
-export const GET_APPENDIX_CONFIG = '@@EPLAN/GET_APPENDIX_CONFIG'
-export const UPDATE_APPENDIX = '@@EPLAN/UPDATE_APPENDIX'
+const GET_APPENDIX_LIST = '@@EPLAN/GET_EPLAN_LIST'
+const GET_APPENDIX = '@@EPLAN/GET_APPENDIX'
+const GET_APPENDIX_CONFIG = '@@EPLAN/GET_APPENDIX_CONFIG'
+const UPDATE_APPENDIX = '@@EPLAN/UPDATE_APPENDIX'
 const CLOSE_APPENDIX = '@@EPLAN/CLOSE_OPEN_APPENDIX'
-export const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
+const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
+const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
+const CREATE_APPENDIX_PDF = '@@EPLAN/CREATE_APPENDIX_PDF'
 
 /* Actions */
-export const getList = (data) => ( {type: GET_APPENDIX_LIST ,payload:data})
-export const getAppendix = (data) => ( {type:GET_APPENDIX,payload:data})
-export const getApdCfg = (data) => ({type:GET_APPENDIX_CONFIG,payload:data})
-export const updateApd = (data) =>({type:UPDATE_APPENDIX,payload:data})
+const getList = (data) => ( {type: GET_APPENDIX_LIST ,payload:data})
+const getAppendix = (data) => ( {type:GET_APPENDIX,payload:data})
+const getApdCfg = (data) => ({type:GET_APPENDIX_CONFIG,payload:data})
+const updateApd = (data) =>({type:UPDATE_APPENDIX,payload:data})
 const removeApdx = (data)=>({type:CLOSE_APPENDIX,payload:data})
-export const publishAppendix = () => ({type:PUBLISH_APPENDIX_PLANSYSTEM})
+const publishAppendix = () => ({type:PUBLISH_APPENDIX_PLANSYSTEM})
+
 
 /* Middleware */
 export function removeOpenApdx(id){
