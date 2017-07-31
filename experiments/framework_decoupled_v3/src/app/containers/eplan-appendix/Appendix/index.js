@@ -37,20 +37,22 @@ let renderFields = ({ fields }) => {
   )
 }
 class AppendixContainer extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            configModalIsOpen: false,
-            publishModalIsOpen: false,
-            dates:{date1: moment(),
-            date2: moment(),
-            date3: moment(),
-            date4: moment(),
-            date5: moment(),
-            date6: moment(),
-            date7: moment()}
-        }
-    
+  constructor(props) {
+    super(props)
+    this.state = {
+      configModalIsOpen: false,
+      publishModalIsOpen: false,
+      dates: {
+        date1: moment(),
+        date2: moment(),
+        date3: moment(),
+        date4: moment(),
+        date5: moment(),
+        date6: moment(),
+        date7: moment()
+      }
+    }
+
     /* Bind functions to this component */
     this.submitUpdate = this.submitUpdate.bind(this)
     this.openConfigModal = this.openConfigModal.bind(this)
@@ -61,6 +63,7 @@ class AppendixContainer extends Component {
     this.handleDateChange = this.handleDateChange.bind(this)
     this.onClickPublishAppendix = this.onClickPublishAppendix.bind(this)
     this.handlePdfChange = this.handlePdfChange.bind(this)
+    this.handleViewAppendix = this.handleViewAppendix.bind(this)
   }
 
   componentWillMount() {
@@ -74,12 +77,11 @@ class AppendixContainer extends Component {
       },
       this.props.param
     )
-
   }
   async componentDidMount() {
     await this.props.getAppendix(this.props.param)
   }
-  submitUpdate(values){
+  submitUpdate(values) {
     this.props.updateApd(values, this.props.param)
   }
   openConfigModal() {
@@ -108,56 +110,53 @@ class AppendixContainer extends Component {
       publishModalIsOpen: false
     })
   }
-    handleDateChange(date, id) {
-        if (id === 'date1') {
-            this.setState({ dates:{...this.state.dates,date1:date}})
-        } else if (id === 'date2') {
-            this.setState({ dates:{...this.state.dates,date2: date}})
-        } else if (id === 'date3') {
-            this.setState({ dates:{...this.state.dates,date3: date }})
-        } else if (id === 'date4') {
-            this.setState({ dates:{...this.state.dates,date4: date }})
-        } else if (id === 'date5') {
-            this.setState({ dates:{...this.state.dates,date5: date }})
-        } else if (id === 'date6') {
-            this.setState({ dates:{...this.state.dates,date6: date }})
-        } else if (id === 'date7') {
-            this.setState({ dates:{...this.state.dates,date7: date }})
-        }
+  handleDateChange(date, id) {
+    if (id === 'date1') {
+      this.setState({ dates: { ...this.state.dates, date1: date } })
+    } else if (id === 'date2') {
+      this.setState({ dates: { ...this.state.dates, date2: date } })
+    } else if (id === 'date3') {
+      this.setState({ dates: { ...this.state.dates, date3: date } })
+    } else if (id === 'date4') {
+      this.setState({ dates: { ...this.state.dates, date4: date } })
+    } else if (id === 'date5') {
+      this.setState({ dates: { ...this.state.dates, date5: date } })
+    } else if (id === 'date6') {
+      this.setState({ dates: { ...this.state.dates, date6: date } })
+    } else if (id === 'date7') {
+      this.setState({ dates: { ...this.state.dates, date7: date } })
     }
-    async handlePdfChange(event) {
-        if (event.target.value === 'create') {
-            event.target.selectedIndex = 0 //reset to default
-            try {
-                await createCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
-                    if (response.errorcode) {
-                        alert(response.description)
-                    } else {
-                        console.log(response)
-                        
-                    }
-                })
-            } catch (e) {
-                console.log('Error:' + e)
-            }
-        } else if (event.target.value === 'view') {
-            event.target.selectedIndex = 0 //reset to default
-            try {
-                await getCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
-                    if (response.errorcode) {
-                        alert(response.description)
-                    } else {
-                      //REFACTOR Open a new browser tab/window to download PDF
-                        
-                        console.log(response)
-                        return response
-                    }
-                })
-            } catch (e) {
-                console.log('Error:' + e)
-            }
-        }
+  }
+  async handlePdfChange(event) {
+    if (event.target.value === 'create') {
+      event.target.selectedIndex = 0 //reset dropwown to default
+      try {
+        await createCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+          if (response.errorcode) {
+            alert(response.description)
+          } else {
+            console.log(response)
+          }
+        })
+      } catch (e) {
+        console.log('Error:' + e)
+      }
+    } else if (event.target.value === 'view') {
+      event.target.selectedIndex = 0 //reset dropwown to default
+      try {
+        await getCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+          if (response.errorcode) {
+            alert(response.description)
+          } else {
+            //TODO: window open dont work as it's blocked in the browser
+            window.open(response, '_pdfview')
+          }
+        })
+      } catch (e) {
+        console.log('Error:' + e)
+      }
     }
+  }
   async onClickPublishAppendix() {
     document.getElementById('publishStepOne').style.display = 'none'
     document.getElementById('publishButton').style.display = 'none'
@@ -179,18 +178,22 @@ class AppendixContainer extends Component {
     } catch (e) {
       console.log('Error:' + e)
     }
-
-    //this.setState({ publishModalIsOpen: false })
+  }
+  handleViewAppendix(event) {
+    if (event.target.value === 'viewpublic') {
+      event.target.selectedIndex = 0 //reset dropwown to default
+      window.open(this.props.appendix.folderUrl, '_viewappendix')
+    }
   }
   render() {
-     /* State */
+    /* State */
     const { configModalIsOpen, publishModalIsOpen, dates } = this.state
     /* Props */
     const { appendix, handleSubmit, } = this.props
     /* Functions */
-    const { submitUpdate, openConfigModal, openPublishModal, 
+    const { submitUpdate, openConfigModal, openPublishModal,
       closeConfigModal, handleDateChange, saveConfigModal,
-      closePublishModal,onClickPublishAppendix, handlePdfChange } = this
+      closePublishModal, onClickPublishAppendix, handlePdfChange, handleViewAppendix } = this
     return (
       <WHDiv>
         {appendix ?
@@ -199,12 +202,18 @@ class AppendixContainer extends Component {
               <AppendixButtonPanelDiv onClick={openConfigModal}>Indstillinger</AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv onClick={openPublishModal}>Publicer</AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv>
-                <select id="pdfSelect" onChange={(e)=>{e.preventDefault();handlePdfChange(e).then((result)=>(window.open(result)))}}>
-                            <option value="0">PDF</option>
-                            <option value="create">Opret PDF af tillæg</option>
-                            <option value="view">Se PDF</option>
-                        </select></AppendixButtonPanelDiv>
-              <AppendixButtonPanelDiv>Vis plan</AppendixButtonPanelDiv>
+                <select id="pdfSelect" onChange={handlePdfChange}>
+                  <option value="0">PDF</option>
+                  <option value="create">Opret PDF af tillæg</option>
+                  <option value="view">Se PDF</option>
+                </select>
+              </AppendixButtonPanelDiv>
+              <AppendixButtonPanelDiv>
+                <select id="viewAppendixSelect" onChange={handleViewAppendix}>
+                  <option value="0">Vis plan</option>
+                  <option value="viewpublic">Vis offentlig udgave</option>
+                </select>
+              </AppendixButtonPanelDiv>
             </AppendixButtonPanel>
 
             <Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
@@ -212,25 +221,24 @@ class AppendixContainer extends Component {
               configModalIsOpen={configModalIsOpen}
               closeConfigModal={closeConfigModal}
               handleDateChange={handleDateChange}
-              saveConfigModal={saveConfigModal} 
-              dates={dates}/>
+              saveConfigModal={saveConfigModal}
+              dates={dates} />
             <Publish
               publishModalIsOpen={publishModalIsOpen}
               closePublishModal={closePublishModal}
               appendix={appendix}
               onClickPublishAppendix={onClickPublishAppendix}
             />
-
           </Animation>
           : <PulseLoader size="16px" color={'royalblue'} />}
       </WHDiv>
     )
   }
 }
-AppendixContainer.propTypes={
+AppendixContainer.propTypes = {
   param: PropTypes.string.isRequired,
   appendix: PropTypes.object,
-  conf : PropTypes.object
+  conf: PropTypes.object
 
 }
 const mapStateToProps = (state, ownProps) => ({
