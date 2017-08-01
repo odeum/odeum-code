@@ -88,7 +88,12 @@ export const AppendixButtonPanelDiv = styled.div`
   float: right;
   margin-left: 20px;
   cursor: pointer;
-  border: 1px solid #000;
+  &:nth-of-type(3) {
+    width: 150px;
+  }
+  &:nth-of-type(4) {
+    width: 200px;
+  }
 `
 
 export const AppendixForm = styled.form`
