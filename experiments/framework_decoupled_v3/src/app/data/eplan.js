@@ -15,7 +15,7 @@ import { List } from 'immutable'
 export async function postAppendix(appendix){
     var app = JSON.stringify(appendix)
     var data = await api.post('/rest/eplan/kpt/appendix/'+appendix.appendixId,app)
-        .then((response)=>console.log(response))
+        .then((response)=>/* console.log(response) */ response)
     return data
 }
 export async function getAppendixConfig() {
@@ -23,8 +23,8 @@ export async function getAppendixConfig() {
         .then((response) => {
             return response.data
         })
-        console.log('-----Config-----')
-        console.log(data)
+      /*   console.log('-----Config-----')
+        console.log(data) */
     return data
 }
 
@@ -37,12 +37,12 @@ export async function getAppendixList() {
     return dataList
 }
 export async function getAppendixById(id) {
-    console.log('-----API Instance -----')
-    console.log(api)
+ /*    console.log('-----API Instance -----')
+    console.log(api) */
     var appendix = await api.get('rest/eplan/kpt/appendix/' + id)
         .then((response) => {
-            console.log("-------Data/Eplan/GetAppendixByID------")
-            console.log(response)
+           /*  console.log("-------Data/Eplan/GetAppendixByID------")
+            console.log(response) */
             return response.data
         })
     return appendix

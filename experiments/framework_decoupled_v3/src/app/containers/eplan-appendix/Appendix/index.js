@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { addTab, tabChange } from 'framework/store/modules/tabs'
+import { addTab, tabChange, addInstance } from 'framework/store/modules/tabs'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 /* Styling */
 
@@ -34,7 +34,7 @@ class AppendixContainer extends Component {
 
     tabs() {
     this.props.tabConfig(
-      "appendix",
+      this.props.param,
       [{
         label: "Tillægs tekst",
         location: "/eplan/list/" + this.props.param + "/edit",
@@ -53,7 +53,7 @@ class AppendixContainer extends Component {
     render() {
         return (
             <div>
-                <TabsContainer id="appendix"/>
+                <TabsContainer id={this.props.param.toString()}/>
                 
                 {React.cloneElement(this.props.children, { param: this.props.param })}
             </div>
@@ -74,6 +74,7 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
   return {
     tabConfig: (id, tabs) => {
+      dispatch(addInstance(id))
       dispatch(addTab(id, tabs[0]))
       dispatch(addTab(id, tabs[1]))
       dispatch(tabChange(id, tabs[0].label))

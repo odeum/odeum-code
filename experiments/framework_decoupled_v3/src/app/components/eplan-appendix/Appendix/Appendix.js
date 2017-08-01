@@ -3,7 +3,6 @@ import React from 'react'
 import {FieldArray} from 'redux-form'
 
 const Appendix = ({handleSubmit,renderFields,appendix}) => {
-    console.log(appendix)
     return (
         <div>
             <form onSubmit={handleSubmit}>

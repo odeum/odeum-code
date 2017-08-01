@@ -71,12 +71,6 @@
                     "fixed": true
                 }
             ]
-        },
-        {
-            "id": "appendix",
-            "activeTab":"Tillaegs tekst",
-            "tabs":[
-            ]
         }
     ],
     "scenes": [

@@ -41,6 +41,8 @@ function mapDispatchToProps(dispatch) {
     return {
         onMount: (id,name)=>{
             dispatch(tabChange(id,name))
+            
+           
         },
         onClickButton:(location)=>{
             dispatch(push('/eplan/list/'+location+'/edit'))

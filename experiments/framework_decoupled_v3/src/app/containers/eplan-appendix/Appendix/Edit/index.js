@@ -6,13 +6,14 @@ import { Field, reduxForm } from 'redux-form'
 import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { addTab, tabChange } from 'framework/store/modules/tabs'
+import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { WHDiv } from 'app/styles'
-import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader } from 'app/styles/EplanStyles'
+import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader,Select } from 'app/styles/EplanStyles'
 import { Animation } from 'app/styles/EplanStyles'
 import 'react-datepicker/dist/react-datepicker.css'
+import * as Icons from 'react-icons/lib/md'
 
 /* Components */
 import moment from 'moment'
@@ -21,6 +22,8 @@ import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import Settings from 'app/components/eplan-appendix/Appendix/Settings'
 import Publish from 'app/components/eplan-appendix/Appendix/Publish'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
+import Select from 'react-select'
+import 'react-select/dist/react-select.css'
 
 let renderFields = ({ fields }) => {
   return (
@@ -34,7 +37,7 @@ let renderFields = ({ fields }) => {
 }
 
 class EditAppendix extends Component {
-      constructor(props) {
+  constructor(props) {
     super(props)
     this.state = {
       configModalIsOpen: false,
@@ -62,7 +65,14 @@ class EditAppendix extends Component {
     this.handlePdfChange = this.handlePdfChange.bind(this)
     this.handleViewAppendix = this.handleViewAppendix.bind(this)
   }
-
+  
+  componentWillMount() {
+    this.props.onMount(
+      this.props.param,
+      "Tillægs tekst"
+    )
+  }
+  
   async componentDidMount() {
     await this.props.getAppendix(this.props.param)
   
@@ -114,22 +124,20 @@ class EditAppendix extends Component {
       this.setState({ dates: { ...this.state.dates, date7: date } })
     }
   }
-  async handlePdfChange(event) {
-    if (event.target.value === 'create') {
-      event.target.selectedIndex = 0 //reset dropwown to default
+  async handlePdfChange(option) {
+    if (option.value === 'create') {
       try {
         await createCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
           if (response.errorcode) {
             alert(response.description)
           } else {
-            console.log(response)
+            window.open(response, '_pdfview')
           }
         })
       } catch (e) {
         console.log('Error:' + e)
       }
-    } else if (event.target.value === 'view') {
-      event.target.selectedIndex = 0 //reset dropwown to default
+    } else if (option.value === 'view') {
       try {
         await getCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
           if (response.errorcode) {
@@ -142,6 +150,11 @@ class EditAppendix extends Component {
       } catch (e) {
         console.log('Error:' + e)
       }
+    }
+  }
+  handleViewAppendix(option) {
+    if (option.value === 'viewpublic') {
+      window.open(this.props.appendix.folderUrl, '_viewappendix')
     }
   }
   async onClickPublishAppendix() {
@@ -166,13 +179,6 @@ class EditAppendix extends Component {
       console.log('Error:' + e)
     }
   }
-  handleViewAppendix(event) {
-    if (event.target.value === 'viewpublic') {
-      event.target.selectedIndex = 0 //reset dropwown to default
-      window.open(this.props.appendix.folderUrl, '_viewappendix')
-    }
-  }
-
 
  render() {
     /* State */
@@ -183,25 +189,44 @@ class EditAppendix extends Component {
     const { submitUpdate, openConfigModal, openPublishModal,
       closeConfigModal, handleDateChange, saveConfigModal,
       closePublishModal, onClickPublishAppendix, handlePdfChange, handleViewAppendix } = this
+
+    const pdfOptions = [
+      { value: 'create', label: 'Opret PDF af tillæg' },
+      { value: 'view', label: 'Se PDF' }
+    ]
+    const viewOptions = [
+      { value: 'viewpublic', label: 'Vis offentlig udgave' }
+    ]
+
     return (
       <WHDiv>
          {appendix !== null ?
           <Animation>
+
             <AppendixButtonPanel>
-              <AppendixButtonPanelDiv onClick={openConfigModal}>Indstillinger</AppendixButtonPanelDiv>
-              <AppendixButtonPanelDiv onClick={openPublishModal}>Publicer</AppendixButtonPanelDiv>
+              <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="30" color="#000" /></AppendixButtonPanelDiv>
+              <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="30" color="#000" /></AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv>
-                <select id="pdfSelect" onChange={handlePdfChange}>
-                  <option value="0">PDF</option>
-                  <option value="create">Opret PDF af tillæg</option>
-                  <option value="view">Se PDF</option>
-                </select>
+                <Select
+                  name="pdfSelect"
+                  value="one"
+                  options={pdfOptions}
+                  onChange={handlePdfChange}
+                  searchable={false}
+                  clearable={false}
+                  placeholder="PDF"
+                />
               </AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv>
-                <select id="viewAppendixSelect" onChange={handleViewAppendix}>
-                  <option value="0">Vis plan</option>
-                  <option value="viewpublic">Vis offentlig udgave</option>
-                </select>
+                <Select
+                  name="viewAppendixSelect"
+                  value="one"
+                  options={viewOptions}
+                  onChange={handleViewAppendix}
+                  searchable={false}
+                  clearable={false}
+                  placeholder="Vis plan"
+                />
               </AppendixButtonPanelDiv>
             </AppendixButtonPanel>
 
@@ -235,10 +260,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
   return {
-    tabConfig: (id, tabs) => {
-      dispatch(addTab(id, tabs[0]))
-      dispatch(addTab(id,tabs[1]))
-      dispatch(tabChange(id, tabs[0].label))
+    onMount: (id,param) =>{
+      dispatch(tabChange(id,param))
     },
     getAppendix: (param) => {
       dispatch(getAppendixAsync(param))
