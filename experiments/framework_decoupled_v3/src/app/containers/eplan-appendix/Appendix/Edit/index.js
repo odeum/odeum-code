@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { WHDiv } from 'app/styles'
-import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader,Select } from 'app/styles/EplanStyles'
+import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader } from 'app/styles/EplanStyles'
 import { Animation } from 'app/styles/EplanStyles'
 import 'react-datepicker/dist/react-datepicker.css'
 import * as Icons from 'react-icons/lib/md'
