@@ -111,6 +111,18 @@ export const PublishLoadingDiv = styled.div`
    display: none;
 `
 
+export const AppendixSaveButton = styled.button`
+  background-color: #3b97d3;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  width: 100px;
+  height: 40px;
+  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+  vursor: pointer;
+`
+
 const fadeIn = keyframes`
  @keyframes  {
    from {
