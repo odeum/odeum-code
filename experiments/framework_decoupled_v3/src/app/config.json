@@ -2,7 +2,7 @@
     "tabs": [
         {
             "id": "dashboard",
-            "activeTab":"General",
+            "activeTab": "General",
             "tabs": [
                 {
                     "label": "General",
@@ -50,7 +50,7 @@
         },
         {
             "id": "forms",
-            "activeTab":"Forms",
+            "activeTab": "Forms",
             "tabs": [
                 {
                     "label": "Forms",
@@ -62,7 +62,7 @@
         },
         {
             "id": "eplan",
-            "activeTab":"Oversigt",
+            "activeTab": "Oversigt",
             "tabs": [
                 {
                     "label": "Oversigt",
@@ -71,32 +71,44 @@
                     "fixed": true
                 }
             ]
+        },
+        {
+            "id": "ref_table",
+            "activeTab": "",
+            "tabs": [
+            ]
+        },
+        {
+            "id": "settings",
+            "activeTab": "",
+            "tabs": [
+            ]
         }
     ],
     "scenes": [
         {
             "name": "Dashboard",
-            "id":"dashboard",
+            "id": "dashboard",
             "location": "/dashboard/general",
             "icon": "dashboard"
         },
         {
             "name": "Kommuneplantillæg",
-            "id":"eplan",
-            "location":"/eplan/list",
-            "icon":"assignment"
+            "id": "eplan",
+            "location": "/eplan/list",
+            "icon": "assignment"
         },
         {
-            "name":"Reference tabeller",
-            "id":"ref_table",
-            "location":"/reference/",
-            "icon":"grid_on"
+            "name": "Reference tabeller",
+            "id": "ref_table",
+            "location": "/reference/",
+            "icon": "grid_on"
         },
         {
-            "name":"Indstillinger",
-            "id":"settings",
-            "location":"/settings/general",
-            "icon":"settings"
+            "name": "Indstillinger",
+            "id": "settings",
+            "location": "/settings/general",
+            "icon": "settings"
         }
     ]
 }
