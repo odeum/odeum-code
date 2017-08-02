@@ -4,65 +4,89 @@ import * as colors from 'framework/assets/colors'
 export const ContentHeader = styled.div`
 `
 export const Cell = styled.div` 
-    font-family: Source Sans Pro;
-    align-items: center;
-    height:40px;
+  font-family: Source Sans Pro;
+  align-items: center;
+  height: 40px;
+`
+
+export const CellCentered = styled.div` 
+  font-family: Source Sans Pro;
+  align-items: center;
+  height: 40px;
+  text-align: center;
 `
 
 export const HeaderCell = styled.div`
-display: flex;
-background-color: #2C3E50;
-font-family: Source Sans Pro;
-    font-style: normal;
-    font-size: 15px;
-    font-weight: 500;
-text-transform: none;
-cursor: pointer;
-height: 30px;
-padding-left: 3px;
-align-items: center;
-
-`
-export const InputRow = styled.div`
-display:flex;
-`
-export const ContentBox = styled.div`
-`
-export const Row = styled.div`
- display: flex;
- flex-direction: row;
-  border-bottom: 1px solid #fff;
+  display: flex;
+  height: 50px;
+  background-color: #2C3E50;
   font-family: Source Sans Pro;
   font-style: normal;
   font-size: 15px;
   font-weight: 500;
+  text-transform: none;
+  cursor: pointer;
+  align-items: center;
+  padding-left: 3px;
+`
+
+export const HeaderCellCentered = styled.div`
+  display: flex;
+  height: 50px;
+  background-color: #2C3E50;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+`
+
+export const InputRow = styled.div`
+  display:flex;
+`
+
+export const ContentBox = styled.div`
+`
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 500;
+  padding-top: 10px;
+  cursor: pointer;
   background:${(props)=>{return props.index %2? '#ededed':'white'}};
-    &:hover {
+  &:hover {
 		background: ${colors.TAB_HOVER};
-        color: white;
+    color: white;
   }
-      &:active{
-        background: ${colors.TAB_SELECTED};
-      } 
+  &:active{
+    background: ${colors.TAB_SELECTED};
+  }
 `
 export const AutoSizerDiv = styled.div`
 height: calc(100vh - 400px);
 `
 export const HeaderRow = styled.div`
-width:${props=> props.width+'px'};
-display: flex;
-flex-direction: row;
-margin-top:10px;
-margin-bottom:3px;
-color:white;
-fill:white;
-overflow:hidden;
-align-items:center;
-border-bottom: 1px solid #e0e0e0;
-font-family: Source Sans Pro;
-    font-style: normal;
-    font-size: 15px;
-    font-weight: 600;
+  width:${props=> props.width+'px'};
+  display: flex;
+  flex-direction: row;
+  margin-top:10px;
+  // margin-bottom:3px;
+  color:white;
+  fill:white;
+  overflow:hidden;
+  align-items:center;
+  // border-bottom: 1px solid #e0e0e0;
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 600;
 `
 export const NoRows = styled.div`
   position: absolute;
@@ -79,7 +103,7 @@ export const NoRows = styled.div`
 export const LabeledInput = styled.input`
 `
 export const CellStatus = styled.div`
-color: ${(props)=> props.done? 'green':'red'}
+  color: ${(props)=> props.done? 'green':'red'}
 `
 export const SearchDiv = styled.div`
   display:flex;
@@ -90,11 +114,11 @@ export const SearchDiv = styled.div`
 `
 
 export const SearchInput = styled.input`
-width: 200px;
-height: 30px;
-border: 1px solid #dedede;
-border-radius: 3px 0 0 3px;
-background-color: #fff;
+  width: 200px;
+  height: 30px;
+  border: 1px solid #dedede;
+  border-radius: 3px 0 0 3px;
+  background-color: #fff;
   padding: 0;
   padding-left: 10px;
   font-family: 'Source Sans Pro';

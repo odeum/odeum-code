@@ -75,7 +75,6 @@ class EditAppendix extends Component {
   
   async componentDidMount() {
     await this.props.getAppendix(this.props.param)
-  
   }
 
   submitUpdate(values) {
@@ -202,7 +201,6 @@ class EditAppendix extends Component {
       <WHDiv>
          {appendix !== null ?
           <Animation>
-
             <AppendixButtonPanel>
               <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="30" color="#000" /></AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="30" color="#000" /></AppendixButtonPanelDiv>
@@ -229,7 +227,6 @@ class EditAppendix extends Component {
                 />
               </AppendixButtonPanelDiv>
             </AppendixButtonPanel>
-
             <Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
             <Settings
               configModalIsOpen={configModalIsOpen}
@@ -244,11 +241,13 @@ class EditAppendix extends Component {
               onClickPublishAppendix={onClickPublishAppendix}
             />
           </Animation>
-          : <PulseLoader color="royalblue"/>}
+          : <PulseLoader color="royalblue"/>
+        }
       </WHDiv>
     )
   }
 }
+
 const mapStateToProps = (state, ownProps) => ({
   param: ownProps.param,
   appendix: getAppendix(state, ownProps.param, ownProps) || null,
@@ -277,10 +276,11 @@ function mapDispatchToProps(dispatch) {
       return dispatch(await publishAppendixToPlansystemAsync(id))
     }
   }
-
 }
+
 EditAppendix = reduxForm({
   form: 'appendix',
   enableReinitialize: true
 })(EditAppendix)
+
 export default connect(mapStateToProps, mapDispatchToProps)(EditAppendix)

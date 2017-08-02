@@ -4,6 +4,7 @@ import Loader from 'halogen/PulseLoader'
 import Modal from 'react-modal'
 
 export const DescriptionDiv = styled.div`
+   float: left;
    font-family: Source Sans Pro;
    font-style: normal;
    font-size: 13px;
@@ -111,16 +112,18 @@ export const PublishLoadingDiv = styled.div`
    display: none;
 `
 
-export const AppendixSaveButton = styled.button`
+export const AppendixButton = styled.button`
   background-color: #3b97d3;
   border: none;
   border-radius: 3px;
   color: #fff;
   font-size: 14px;
-  width: 100px;
+  min-width: 100px;
   height: 40px;
   box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
-  vursor: pointer;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
 `
 
 const fadeIn = keyframes`
