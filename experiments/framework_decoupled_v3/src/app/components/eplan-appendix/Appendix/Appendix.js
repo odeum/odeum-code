@@ -1,7 +1,7 @@
 import React from 'react'
 /* Redux Forms */
 import {FieldArray} from 'redux-form'
-import { AppendixSaveButton } from 'app/styles/EplanStyles'
+import { AppendixButton } from 'app/styles/EplanStyles'
 
 
 const Appendix = ({handleSubmit,renderFields,appendix}) => {
@@ -10,7 +10,7 @@ const Appendix = ({handleSubmit,renderFields,appendix}) => {
             <form onSubmit={handleSubmit}>
                 <h1>{appendix.name}</h1>
                 <FieldArray name={'fields'} component={renderFields}/>
-                <AppendixSaveButton type="submit">Save</AppendixSaveButton>  
+                <AppendixButton type="submit">Save</AppendixButton>  
             </form>
             <br /><br />
         </div>

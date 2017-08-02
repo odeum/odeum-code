@@ -3,12 +3,13 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, InputRow, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'
+import { NoRows, InputRow, HeaderCell, HeaderCellCentered, HeaderRow, AutoSizerDiv, ContentBox, Cell, CellCentered } from 'app/styles/TableStyles'
 import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
 import Icon from 'framework/assets/Icon'
 import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
+import moment from 'moment'
 
 export default class AppendixTable extends Component {
   static propTypes = {
@@ -20,9 +21,7 @@ export default class AppendixTable extends Component {
     this.state = {
       disableExtraRows: false,
       disableHeader: false,
-      headerHeight: 30,
-
-      hideIndexRow: false,
+      hideIndexRow: true,
       overscanRowCount: 10,
       rowHeight: 40,
       rowCount: this.props.list.size,
@@ -34,6 +33,7 @@ export default class AppendixTable extends Component {
     this._linkRowRenderer = this._linkRowRenderer.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._headerRenderer = this._headerRenderer.bind(this)
+    this._headerRendererCentered = this._headerRendererCentered.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowCountChange = this._onRowCountChange.bind(this)
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
@@ -69,7 +69,7 @@ export default class AppendixTable extends Component {
     const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
     return (
-      <div style={{ width: '100%', height: '100%' }}>
+      <div style={{ width: '100%', height: '100%', clear: 'both' }}>
         <ContentBox>
           {/*  <label>
             <input
@@ -161,8 +161,7 @@ export default class AppendixTable extends Component {
         </ContentBox>
         <AutoSizerDiv>
           <AutoSizer >
-            {({ height,
-              width }) => (
+            {({ height, width }) => (
                 <Table
                   ref='Table'
                   disableHeader={disableHeader}
@@ -181,10 +180,8 @@ export default class AppendixTable extends Component {
                   sortBy={sortBy}
                   sortDirection={sortDirection}
                   width={width}
-                  style={{ width: '100%' }}
                 >
                   {!hideIndexRow &&
-
                     <Column
                       label='ID'
                       dataKey='appendixId'
@@ -198,55 +195,70 @@ export default class AppendixTable extends Component {
                     />
                   }
                   <Column
-                    label='Name'
+                    width={width}
+                    minWidth={700}
+                    label='Navn'
                     dataKey='name'
                     disableSort={!this._isSortEnabled()}
                     headerRenderer={this._headerRenderer}
                     cellRenderer={
                       ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
                     }
-                    width={width}
                     flexgrow={1}
                   />
                   <Column
                     width={width}
-                    label='UserID'
-                    dataKey='authorAppendixId'
-                    headerRenderer={this._headerRenderer}
+                    label='Nummer'
+                    dataKey='number'
+                    disableSort={!this._isSortEnabled()}
+                    headerRenderer={this._headerRendererCentered}
+                    cellRenderer={
+                      ({ cellData, columnData, dataKey, rowData }) => (<CellCentered>{cellData}</CellCentered>)
+                    }
+                    flexgrow={1}
+                  />
+                  <Column
+                    width={width}
+                    maxWidth={50}
+                    label="Link"
+                    dataKey='folderUrl'
+                    headerRenderer={this._headerRendererCentered}
+                    disableSort
+                    cellRenderer={
+                      this._linkRowRenderer
+                    }
+                  />
+                  <Column
+                    width={width}
+                    label='Oprettelsesdato'
+                    dataKey='created'
+                    headerRenderer={this._headerRendererCentered}
+                    cellRenderer={
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<CellCentered>{moment(cellData).format('LL')}</CellCentered>)
+                    }
+                    flexgrow={1}
+                  />
+                  <Column
+                    width={width}
+                    maxWidth={100}
+                    label='Status'
+                    dataKey='status'
+                    headerRenderer={this._headerRendererCentered}
+                    cellRenderer={
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+                        (<CellCentered>{cellData}</CellCentered>)
+                    }
+                  />
+                  <Column
+                    width={width}
+                    label='Ansvarlig'
+                    dataKey='responsible'
+                    headerRenderer={this._headerRendererCentered}
                     disableSort={!this._isSortEnabled()}
                     cellRenderer={
                       ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-                        (<Cell>{cellData}</Cell>)
+                        (<CellCentered>{cellData}</CellCentered>)
                     }
-                  />
-                  <Column
-                    width={width}
-                    label="Link"
-                    dataKey='appendixId'
-                    headerRenderer={this._headerRenderer}
-                    disableSort
-                    cellRenderer={
-                      this._linkRowRenderer}
-                  />
-                  <Column
-                    width={width}
-                    label='Status'
-                    dataKey='status'
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-                        (<Cell>{cellData}</Cell>)
-                    }
-                  />
-                  <Column
-                    width={width}
-                    label='Date'
-                    dataKey='created'
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{cellData}</Cell>)
-                    }
-                    flexgrow={1}
                   />
                 </Table>
               )}
@@ -288,12 +300,10 @@ export default class AppendixTable extends Component {
     dataKey,
     rowData, rowIndex
     }) {
-    return <Cell onClick={(e) => {
-      e.preventDefault()
-      this.props.onClickButton(cellData)
+    return <CellCentered onClick={(e) => {
     }}>
-      <a href={"list/"+cellData+"/edit"}>{cellData}</a>
-    </Cell>
+      <a href={cellData} target="_blank">Vis</a>
+    </CellCentered>
   }
 
   _headerRenderer({
@@ -311,6 +321,24 @@ export default class AppendixTable extends Component {
           <SortIndicator sortDirection={sortDirection} />
         }
       </HeaderCell>
+    )
+  }
+
+  _headerRendererCentered({
+    columnData,
+    dataKey,
+    disableSort,
+    label,
+    sortBy,
+    sortDirection
+  }) {
+    return (
+      <HeaderCellCentered>
+        {label}
+        {sortBy === dataKey &&
+          <SortIndicator sortDirection={sortDirection} />
+        }
+      </HeaderCellCentered>
     )
   }
 
