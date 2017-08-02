@@ -1,4 +1,5 @@
 module.exports= {
+id:'test',
 path: 'eplan',
   getChildRoutes(location, cb) {
     require.ensure([], (require) => {

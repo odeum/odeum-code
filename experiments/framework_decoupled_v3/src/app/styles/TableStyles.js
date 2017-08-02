@@ -3,7 +3,6 @@ import * as colors from 'framework/assets/colors'
 
 export const ContentHeader = styled.div`
 `
-
 export const Cell = styled.div` 
     font-family: Source Sans Pro;
     align-items: center;

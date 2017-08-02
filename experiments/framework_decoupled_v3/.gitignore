@@ -17,6 +17,7 @@ build
 /.chrome
 
 # misc
+/Notes
 .DS_Store
 /.idea
 /.vscode
