@@ -196,7 +196,7 @@ export default class AppendixTable extends Component {
                   }
                   <Column
                     width={width}
-                    minWidth={700}
+                    minWidth={500}
                     label='Navn'
                     dataKey='name'
                     disableSort={!this._isSortEnabled()}

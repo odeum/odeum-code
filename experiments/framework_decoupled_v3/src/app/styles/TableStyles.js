@@ -7,6 +7,9 @@ export const Cell = styled.div`
   font-family: Source Sans Pro;
   align-items: center;
   height: 40px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const CellCentered = styled.div` 
@@ -14,6 +17,9 @@ export const CellCentered = styled.div`
   align-items: center;
   height: 40px;
   text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const HeaderCell = styled.div`
@@ -28,6 +34,9 @@ export const HeaderCell = styled.div`
   cursor: pointer;
   align-items: center;
   padding-left: 3px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const HeaderCellCentered = styled.div`
@@ -42,6 +51,9 @@ export const HeaderCellCentered = styled.div`
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `
 
 export const InputRow = styled.div`
