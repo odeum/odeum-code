@@ -1,18 +1,23 @@
 import React from 'react'
-import { ModalWindow } from 'app/styles/EplanStyles'
-import { AppendixButton } from 'app/styles/EplanStyles'
+import { AppendixButton, ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import * as Icons from 'react-icons/lib/md'
 
 const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveNewAppendix }) => {
     return (
         <div>
             <ModalWindow isOpen={newAppendixModalIsOpen} onRequestClose={closeNewAppendixModal} contentLabel="Tilføj tillæg">
-                <h2>Tilføj tillæg</h2>
-                <br />
-                <form>
-                    <br />
-                    <br />
-                    <AppendixButton onClick={saveNewAppendix}>Tilføj tillæg</AppendixButton>
-                </form>
+                <ModalHeader>
+                    <ModalHeaderIcon><Icons.MdAddCircleOutline size="30" color="#fff" /></ModalHeaderIcon>
+                    <ModalHeaderTitle>Tilføj tillæg</ModalHeaderTitle>
+                    <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeNewAppendixModal() }}><Icons.MdClose size="30" color="#fff" /></ModalHeaderClose>
+                </ModalHeader>
+                <ModalContent>
+                    <form>
+                        <br />
+                        <br />
+                    </form>
+                    <ModalButtonPanel><AppendixButton onClick={saveNewAppendix}>Gem tillæg</AppendixButton></ModalButtonPanel>
+                </ModalContent>
             </ModalWindow>
         </div>
     )

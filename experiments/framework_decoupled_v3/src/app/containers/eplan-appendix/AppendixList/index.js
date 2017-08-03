@@ -52,16 +52,14 @@ class AppendixList extends Component {
 
         return (
             <WHDiv>
-            *
-                <NewAppendixModal
-                    configModalIsOpen={newAppendixModalIsOpen}
-                    closeConfigModal={closeNewAppendixModal}
-                    saveConfigModal={saveNewAppendix}
-                />
-            *
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
                 <AppendixButtonPanel><AppendixButton onClick={openNewAppendixModal}>Opret nyt tillæg</AppendixButton></AppendixButtonPanel>
                 {this.props.isLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <AppendixTable list={this.props.appendixes} onClickButton={this.onClickButton} />}
+                <NewAppendixModal
+                    newAppendixModalIsOpen={newAppendixModalIsOpen}
+                    closeNewAppendixModal={closeNewAppendixModal}
+                    saveNewAppendix={saveNewAppendix}
+                />
             </WHDiv>
         )
     }
