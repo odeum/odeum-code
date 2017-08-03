@@ -172,5 +172,7 @@ export const ModalWindow = styled(Modal) `
     background-color: white;
     width: 30%;
 `
+
 export const Animation = styled.div`
-   animation: ${fadeIn} 0.7s ease-in-out`
+   animation: ${fadeIn} 0.7s ease-in-out
+`

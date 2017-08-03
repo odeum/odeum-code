@@ -12,7 +12,6 @@ import { tabChange } from 'framework/store/modules/tabs'
 import { WHDiv } from 'app/styles'
 import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader } from 'app/styles/EplanStyles'
 import { Animation } from 'app/styles/EplanStyles'
-import 'react-datepicker/dist/react-datepicker.css'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -183,7 +182,7 @@ class EditAppendix extends Component {
     /* State */
     const { configModalIsOpen, publishModalIsOpen, dates } = this.state
     /* Props */
-    const { appendix, handleSubmit, } = this.props
+    const { appendix, handleSubmit } = this.props
     /* Functions */
     const { submitUpdate, openConfigModal, openPublishModal,
       closeConfigModal, handleDateChange, saveConfigModal,

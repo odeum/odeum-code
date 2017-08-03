@@ -6,12 +6,20 @@ import AppendixTable from './Table/Table'
 import {DescriptionDiv,PulseLoader,AppendixButtonPanel,AppendixButton} from 'app/styles/EplanStyles'
 import {getListAsync} from 'app/store/modules/eplan'
 import {WHDiv} from 'app/styles/'
+import NewAppendixModal from 'app/components/eplan-appendix/Appendix/NewAppendixModal'
 const props={name:'Oversigt'}
 
 class AppendixList extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            newAppendixModalIsOpen: false
+        }
+
         this.onClickButton = this.onClickButton.bind(this)
+        this.openNewAppendixModal = this.openNewAppendixModal.bind(this)
+        this.closeNewAppendixModal = this.closeNewAppendixModal.bind(this)
+        this.saveNewAppendix = this.saveNewAppendix.bind(this)
     }
     async componentWillMount() {
         this.props.onMount(this.props.id,props.name)
@@ -21,11 +29,38 @@ class AppendixList extends Component {
     onClickButton(index){
         this.props.onClickButton(index)
     }
+    openNewAppendixModal() {
+        console.log('openNewAppendixModal')
+        this.setState({
+            newAppendixModalIsOpen: true
+        })
+    }
+    closeNewAppendixModal() {
+        this.setState({
+            newAppendixModalIsOpen: false
+        })
+    }
+    saveNewAppendix() {
+        //TODO: Save changes
+        this.setState({
+            newAppendixModalIsOpen: false
+        })
+    }
     render() {
+        const { newAppendixModalIsOpen } = this.state
+        const { openNewAppendixModal, closeNewAppendixModal, saveNewAppendix } = this
+
         return (
             <WHDiv>
+            *
+                <NewAppendixModal
+                    configModalIsOpen={newAppendixModalIsOpen}
+                    closeConfigModal={closeNewAppendixModal}
+                    saveConfigModal={saveNewAppendix}
+                />
+            *
                 <DescriptionDiv>Small description placeholder</DescriptionDiv>
-                <AppendixButtonPanel><AppendixButton>Opret nyt tillæg</AppendixButton></AppendixButtonPanel>
+                <AppendixButtonPanel><AppendixButton onClick={openNewAppendixModal}>Opret nyt tillæg</AppendixButton></AppendixButtonPanel>
                 {this.props.isLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <AppendixTable list={this.props.appendixes} onClickButton={this.onClickButton} />}
             </WHDiv>
         )
