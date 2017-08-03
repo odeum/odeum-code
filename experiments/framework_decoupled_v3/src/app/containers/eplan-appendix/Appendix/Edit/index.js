@@ -21,6 +21,7 @@ import { renderQuill } from '../EditorSelector'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import Settings from 'app/components/eplan-appendix/Appendix/Settings'
 import Publish from 'app/components/eplan-appendix/Appendix/Publish'
+import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
@@ -74,7 +75,8 @@ class EditAppendix extends Component {
   }
   
   async componentDidMount() {
-    await this.props.getAppendix(this.props.param)
+    if(this.props.appendix === null)
+    {await this.props.getAppendix(this.props.param)}
   }
 
   submitUpdate(values) {
