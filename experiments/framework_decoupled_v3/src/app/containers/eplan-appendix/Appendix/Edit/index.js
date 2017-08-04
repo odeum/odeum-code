@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { WHDiv } from 'app/styles'
-import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader } from 'app/styles/EplanStyles'
+import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
 import { Animation } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
@@ -22,8 +22,6 @@ import Settings from 'app/components/eplan-appendix/Appendix/Settings'
 import Publish from 'app/components/eplan-appendix/Appendix/Publish'
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
-import Select from 'react-select'
-import 'react-select/dist/react-select.css'
 
 let renderFields = ({ fields }) => {
   return (
@@ -203,10 +201,11 @@ class EditAppendix extends Component {
          {appendix !== null ?
           <Animation>
             <AppendixButtonPanel>
-              <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="30" color="#000" /></AppendixButtonPanelDiv>
-              <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="30" color="#000" /></AppendixButtonPanelDiv>
+              <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
+              <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv>
-                <Select
+                <Dropdown
+                  className="pdfSelect"
                   name="pdfSelect"
                   value="one"
                   options={pdfOptions}
@@ -217,7 +216,8 @@ class EditAppendix extends Component {
                 />
               </AppendixButtonPanelDiv>
               <AppendixButtonPanelDiv>
-                <Select
+                <Dropdown
+                  className="viewAppendixSelect"
                   name="viewAppendixSelect"
                   value="one"
                   options={viewOptions}

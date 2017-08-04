@@ -2,6 +2,8 @@ import styled, { keyframes } from 'styled-components'
 import { CLOUDY_DARK } from 'framework/assets/colors'
 import Loader from 'halogen/PulseLoader'
 import Modal from 'react-modal'
+import Select from 'react-select'
+import 'react-select/dist/react-select.css'
 
 export const DescriptionDiv = styled.div`
    float: left;
@@ -235,4 +237,74 @@ export const ModalButtonPanel = styled.div`
 
 export const Animation = styled.div`
    animation: ${fadeIn} 0.7s ease-in-out
+`
+
+export const Dropdown = styled(Select) `
+  &.Select--single {
+    .Select-control {
+      background-color: #3b97d3;
+      border: none;
+      border-radius: 3px;
+      height: 44px;
+      cursor: pointer;
+      box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+
+      .Select-placeholder {
+        color: #fff;
+        font-family: 'Source Sans Pro';
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 44px;
+      }
+
+      .Select-value {
+        line-height: 44px !important;
+      }
+
+      .Select-value-label {
+        line-height: 44px;
+      }
+
+      .Select-input {
+        height: 44px;
+      }
+
+      .Select-arrow-zone {
+        width: 50px;
+      }
+
+      .Select-arrow {
+        border: none;
+        border: solid #fff;
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 5px;
+        transform: rotate(45deg);
+      }
+    }
+
+    .Select-menu-outer {
+      background-color: #3b97d3;
+      border: none;
+      box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+
+      .Select-option {
+        background-color: #3b97d3;
+        color: #fff;
+        font-family: 'Source Sans Pro';
+        font-size: 15px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &.is-open > .Select-control .Select-arrow {
+    top: 5px;
+    transform: rotate(-135deg) !important;
+  }
+
+  &.is-focused:not(.is-open) > .Select-control {
+    border-color: none;
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+  }
 `
