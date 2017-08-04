@@ -6,9 +6,8 @@ import { AppendixButton } from 'app/styles/EplanStyles'
 
 const Appendix = ({handleSubmit,renderFields,appendix}) => {
     return (
-        <div>
+        <div style={{clear: 'both' }}>
             <form onSubmit={handleSubmit}>
-                <h1>{appendix.name}</h1>
                 <FieldArray name={'fields'} component={renderFields}/>
                 <AppendixButton type="submit">Save</AppendixButton>  
             </form>

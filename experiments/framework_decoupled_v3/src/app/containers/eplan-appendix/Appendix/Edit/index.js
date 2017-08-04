@@ -10,8 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { WHDiv } from 'app/styles'
-import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
-import { Animation } from 'app/styles/EplanStyles'
+import { Animation, AppendixHeader, AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -197,38 +196,40 @@ class EditAppendix extends Component {
     ]
 
     return (
-      <WHDiv>
+      <WHDiv style={{borderTop: 'solid 1px #ccc', padding: '20px', width: 'calc(100% - 40px)'}}>
          {appendix !== null ?
           <Animation>
-            <AppendixButtonPanel>
-              <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
-              <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
-              <AppendixButtonPanelDiv>
-                <Dropdown
-                  className="pdfSelect"
-                  name="pdfSelect"
-                  value="one"
-                  options={pdfOptions}
-                  onChange={handlePdfChange}
-                  searchable={false}
-                  clearable={false}
-                  placeholder="PDF"
-                />
-              </AppendixButtonPanelDiv>
-              <AppendixButtonPanelDiv>
-                <Dropdown
-                  className="viewAppendixSelect"
-                  name="viewAppendixSelect"
-                  value="one"
-                  options={viewOptions}
-                  onChange={handleViewAppendix}
-                  searchable={false}
-                  clearable={false}
-                  placeholder="Vis plan"
-                />
-              </AppendixButtonPanelDiv>
-            </AppendixButtonPanel>
-            <Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
+            <div>
+              <AppendixHeader>{appendix.name}</AppendixHeader>
+              <AppendixButtonPanel>
+                <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
+                <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
+                <AppendixButtonPanelDiv>
+                  <Dropdown
+                    className="pdfSelect"
+                    name="pdfSelect"
+                    value="one"
+                    options={pdfOptions}
+                    onChange={handlePdfChange}
+                    searchable={false}
+                    clearable={false}
+                    placeholder="PDF"
+                  />
+                </AppendixButtonPanelDiv>
+                <AppendixButtonPanelDiv>
+                  <Dropdown
+                    className="viewAppendixSelect"
+                    name="viewAppendixSelect"
+                    value="one"
+                    options={viewOptions}
+                    onChange={handleViewAppendix}
+                    searchable={false}
+                    clearable={false}
+                    placeholder="Vis plan"
+                  />
+                </AppendixButtonPanelDiv>
+              </AppendixButtonPanel>
+            </div>
             <Settings
               configModalIsOpen={configModalIsOpen}
               closeConfigModal={closeConfigModal}
@@ -241,6 +242,7 @@ class EditAppendix extends Component {
               appendix={appendix}
               onClickPublishAppendix={onClickPublishAppendix}
             />
+            <Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
           </Animation>
           : <PulseLoader color="royalblue"/>
         }

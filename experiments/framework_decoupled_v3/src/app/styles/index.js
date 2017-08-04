@@ -4,10 +4,8 @@ export const Div = styled.div`
     float: left;
     width: calc(100% - 300px);
     height: calc(100vh - 250px);
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 20px;
     background: #ecf0f1;
-    margin-top: 10px;
     background:white;
     margin-left:10px;  
     overflow-y:scroll;
@@ -25,7 +23,7 @@ to{
 }
 `
 export const WHDiv = styled.div`
-animation: ${fadeIn} 0.7s ease-in-out;
-width:100%;
-height:100%;
+    animation: ${fadeIn} 0.7s ease-in-out;
+    width: 100%;
+    height: 100%;
 `

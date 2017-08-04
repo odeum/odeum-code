@@ -19,6 +19,7 @@ export const DescriptionDiv = styled.div`
    width: 60%;
    padding: 3px;
 `
+
 export const Label = styled.label`
    color: #5e5e5e;
    margin-left: 10px;
@@ -36,6 +37,7 @@ export const PulseLoader = styled(Loader) `
    justify-content: center;
    font-size: 1em;
 `
+
 export const SelectRowNr = styled.select`
    background: #e3e5e5;
    color: #5e5e5e;
@@ -86,8 +88,20 @@ export const SpanRowNr = styled.span`
    }
 `
 
+export const AppendixHeader = styled.div`
+  float: left;
+  max-width: 80%;
+  font-family: 'Source Sans Pro';
+  font-size: 35px;
+  font-weight: 400;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+`
+
 export const AppendixButtonPanel = styled.div`
    float: right;
+   margin-bottom: 20px;
 `
 
 export const AppendixButtonPanelDiv = styled.div`
@@ -133,6 +147,9 @@ export const AppendixButton = styled.button`
   user-select: none;
 `
 
+export const Appendix = styled.div`
+`
+
 const fadeIn = keyframes`
  @keyframes  {
    from {
@@ -148,6 +165,7 @@ const fadeIn = keyframes`
    }
  }
 `
+
 const fadeModal = keyframes`
  @keyframes  {
    from {
@@ -255,6 +273,7 @@ export const Dropdown = styled(Select) `
         font-size: 16px;
         font-weight: 300;
         line-height: 44px;
+        padding-left: 15px;
       }
 
       .Select-value {
@@ -294,6 +313,7 @@ export const Dropdown = styled(Select) `
         font-family: 'Source Sans Pro';
         font-size: 15px;
         font-weight: 300;
+        padding-left: 15px;
       }
     }
   }
