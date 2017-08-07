@@ -202,36 +202,40 @@ class EditAppendix extends Component {
           <Animation>
             <div>
               <Flex wrap>
-                <Box width={[1, 1, 1, 1, 2/3]} mb={10}>
+                <Box width={[1, 1, 1, 1, 8/12]} mb={10}>
                   <AppendixHeader>{appendix.name}</AppendixHeader>
                 </Box>
-                <Box width={[1, 1, 1, 1, 1/3]} mb={20}>
+                <Box width={[1, 1, 1, 1, 4/12]} mb={20}>
                   <Flex wrap>
-                    <Box width={[1, 1, 1, 1, 3/8]} pb={[15,15,15,15,0]} pr={[0,0,0,0,15]}>
-                        <Dropdown
-                          className="pdfSelect"
-                          name="pdfSelect"
-                          value="one"
-                          options={pdfOptions}
-                          onChange={handlePdfChange}
-                          searchable={false}
-                          clearable={false}
-                          placeholder="PDF"
-                        />
-                    </Box>
-                    <Box width={[1, 1, 1, 1, 3/8]} pb={[15,15,15,15,0]} pl={[0,0,0,0,15]}>
-                        <Dropdown
-                          className="viewAppendixSelect"
-                          name="viewAppendixSelect"
-                          value="one"
-                          options={viewOptions}
-                          onChange={handleViewAppendix}
-                          searchable={false}
-                          clearable={false}
-                          placeholder="Vis plan"
-                        />
+                      <Box width={[1, 1, 1, 1, 9/12]}>
+                        <Flex wrap>
+                          <Box width={[1, 1, 1, 1, 6/12]} pb={[15,15,15,15,0]} pr={[0,0,0,0,15]}>
+                            <Dropdown
+                              className="pdfSelect"
+                              name="pdfSelect"
+                              value="one"
+                              options={pdfOptions}
+                              onChange={handlePdfChange}
+                              searchable={false}
+                              clearable={false}
+                              placeholder="PDF"
+                            />
+                        </Box>
+                        <Box width={[1, 1, 1, 1, 6/12]} pb={[15,15,15,15,0]} pl={[0,0,0,0,15]}>
+                            <Dropdown
+                              className="viewAppendixSelect"
+                              name="viewAppendixSelect"
+                              value="one"
+                              options={viewOptions}
+                              onChange={handleViewAppendix}
+                              searchable={false}
+                              clearable={false}
+                              placeholder="Vis plan"
+                            />
+                        </Box>
+                      </Flex>
                       </Box>
-                      <Box width={[1, 1, 1, 1, 1/4]}>
+                      <Box width={[1, 1, 1, 1, 3/12]}>
                         <IconButton onClick={openConfigModal} style={{float: 'right'}}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
                         <IconButton onClick={openPublishModal} style={{float: 'right'}}><Icons.MdPublish size="40" color="#3b97d3" /></IconButton>
                     </Box>
