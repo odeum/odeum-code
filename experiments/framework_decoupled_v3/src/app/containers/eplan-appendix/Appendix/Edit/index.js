@@ -9,13 +9,14 @@ import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
-import { WHDiv } from 'app/styles'
-import { Animation, AppendixHeader, AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
+import { WHDiv, IconButton } from 'app/styles'
+import { Animation, AppendixHeader, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
 import moment from 'moment'
 import { renderQuill } from '../EditorSelector'
+import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import Settings from 'app/components/eplan-appendix/Appendix/Settings'
 import Publish from 'app/components/eplan-appendix/Appendix/Publish'
@@ -200,35 +201,43 @@ class EditAppendix extends Component {
          {appendix !== null ?
           <Animation>
             <div>
-              <AppendixHeader>{appendix.name}</AppendixHeader>
-              <AppendixButtonPanel>
-                <AppendixButtonPanelDiv onClick={openConfigModal}><Icons.MdSettings size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
-                <AppendixButtonPanelDiv onClick={openPublishModal}><Icons.MdPublish size="40" color="#3b97d3" /></AppendixButtonPanelDiv>
-                <AppendixButtonPanelDiv>
-                  <Dropdown
-                    className="pdfSelect"
-                    name="pdfSelect"
-                    value="one"
-                    options={pdfOptions}
-                    onChange={handlePdfChange}
-                    searchable={false}
-                    clearable={false}
-                    placeholder="PDF"
-                  />
-                </AppendixButtonPanelDiv>
-                <AppendixButtonPanelDiv>
-                  <Dropdown
-                    className="viewAppendixSelect"
-                    name="viewAppendixSelect"
-                    value="one"
-                    options={viewOptions}
-                    onChange={handleViewAppendix}
-                    searchable={false}
-                    clearable={false}
-                    placeholder="Vis plan"
-                  />
-                </AppendixButtonPanelDiv>
-              </AppendixButtonPanel>
+              <Flex wrap>
+                <Box width={[1, 1, 1, 1, 2/3]} mb={10}>
+                  <AppendixHeader>{appendix.name}</AppendixHeader>
+                </Box>
+                <Box width={[1, 1, 1, 1, 1/3]} mb={20}>
+                  <Flex wrap>
+                    <Box width={[1, 1, 1, 1, 3/8]} pb={[15,15,15,15,0]} pr={[0,0,0,0,15]}>
+                        <Dropdown
+                          className="pdfSelect"
+                          name="pdfSelect"
+                          value="one"
+                          options={pdfOptions}
+                          onChange={handlePdfChange}
+                          searchable={false}
+                          clearable={false}
+                          placeholder="PDF"
+                        />
+                    </Box>
+                    <Box width={[1, 1, 1, 1, 3/8]} pb={[15,15,15,15,0]} pl={[0,0,0,0,15]}>
+                        <Dropdown
+                          className="viewAppendixSelect"
+                          name="viewAppendixSelect"
+                          value="one"
+                          options={viewOptions}
+                          onChange={handleViewAppendix}
+                          searchable={false}
+                          clearable={false}
+                          placeholder="Vis plan"
+                        />
+                      </Box>
+                      <Box width={[1, 1, 1, 1, 1/4]}>
+                        <IconButton onClick={openConfigModal} style={{float: 'right'}}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
+                        <IconButton onClick={openPublishModal} style={{float: 'right'}}><Icons.MdPublish size="40" color="#3b97d3" /></IconButton>
+                    </Box>
+                  </Flex>
+                </Box>
+              </Flex>
             </div>
             <Settings
               configModalIsOpen={configModalIsOpen}
