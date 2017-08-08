@@ -31,3 +31,28 @@ export const WHDiv = styled.div`
 export const IconButton = styled.div`
     cursor: pointer;
 `
+
+export const FieldLabel = styled.label`
+    display: inline-block;
+    color: #181818;
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+`
+
+export const TextInputField = styled.input`
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    background-color: #ecf0f1;
+    color: #5e5e5e;
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+`
