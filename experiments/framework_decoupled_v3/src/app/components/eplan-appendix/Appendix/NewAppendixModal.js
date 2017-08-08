@@ -13,6 +13,11 @@ const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveN
                 </ModalHeader>
                 <ModalContent>
                     <form>
+                        <input type="text" name="" placeholder="Kommuneplantillæg navn" />
+                        <br />
+                        <input type="text" name="" placeholder="Kommuneplantillæg nummer" />
+                        <br />
+                        <input type="text" name="" placeholder="Antal kommuneplanrammer" />
                         <br />
                         <br />
                     </form>
