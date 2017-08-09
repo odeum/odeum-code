@@ -74,5 +74,12 @@ export async function createCompleteAppendixPdf(id) {
 
     return result
 }
-
+export async function getAppendixFramesList(id) {
+    var data = await api.get('/rest/eplan/kpt/frame/list/' + id)
+        .then((response) => {
+            return response.data
+        })
+    const dataList = List(data)
+    return dataList
+}
 

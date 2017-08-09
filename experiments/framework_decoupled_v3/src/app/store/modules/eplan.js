@@ -1,5 +1,5 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, publishAppendixToPlansystem } from 'app/data/eplan'
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, publishAppendixToPlansystem, getAppendixFramesList } from 'app/data/eplan'
 import { List } from 'immutable'
 
 /*Lodash*/
@@ -15,6 +15,7 @@ const CLOSE_APPENDIX = '@@EPLAN/CLOSE_OPEN_APPENDIX'
 const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
 const CREATE_APPENDIX_PDF = '@@EPLAN/CREATE_APPENDIX_PDF'
+const GET_APPENDIX_FRAMES_LIST = '@@EPLAN/GET_APPENDIX_FRAMES_LIST'
 
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -25,6 +26,7 @@ const removeApdx = (data) => ({ type: CLOSE_APPENDIX, payload: data })
 const publishAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
 const getAppendixPdf = () => ({ type: GET_APPENDIX_PDF })
 const createAppendixPdf = () => ({ type: CREATE_APPENDIX_PDF })
+const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data })
 
 /* Middleware */
 export function removeOpenApdx(id) {
@@ -54,7 +56,15 @@ export function getListAsync() {
                 dispatch(getList(result))
             }
         )
-
+    }
+}
+export function getFramesListAsync(id) {
+    return async dispatch => {
+        await getAppendixList().then(
+            (result) => {
+                dispatch(getFramesList(result))
+            }
+        )
     }
 }
 export function getAppendixCfg() {
@@ -96,6 +106,7 @@ const initState = {
     appendixes: List([]),
     openAppendix: [],
     isLoading: true,
+    framesIsLoading: true,
     conf: null
 }
 
@@ -138,9 +149,18 @@ function eplan(state = initState, action) {
                 return state 
                 else return {
                     ...state,
-                    openAppendix: state.openAppendix.concat(action.payload)
+                    openAppendix: state.openAppendix.concat(action.payload),
+                    framesIsLoading: false
                 }
             }
+        case GET_APPENDIX_FRAMES_LIST:
+            console.log(action.payload)
+            return {
+                ...state,
+                appendixes: action.payload,
+                framesIsLoading: false
+            }
+
         default:
             return state
     }
