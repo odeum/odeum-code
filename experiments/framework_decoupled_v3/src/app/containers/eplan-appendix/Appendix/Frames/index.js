@@ -5,26 +5,23 @@ import { List } from 'immutable'
 import {push} from 'react-router-redux'
 import { connect } from 'react-redux'
 import { getAppendixAsync } from 'app/store/modules/eplan'
-import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
+import { getAppendix } from 'app/store/selectors/eplan' //getAppendixSel
 
 /* Framework */
 import { tabChange } from 'framework/store/modules/tabs'
 
 /* App */
 import FramesTable from './FramesTable/Table'
-import {DescriptionDiv,PulseLoader,AppendixButtonPanel,AppendixButton} from 'app/styles/EplanStyles'
+import {PulseLoader,AppendixButtonPanel} from 'app/styles/EplanStyles'//AppendixButton
+import {WHDiv} from 'app/styles/'
+import * as iconname from 'framework/assets/icons'
+import Button from 'framework/components/Widgets/Button'
 
 class Frames extends Component {
     constructor(props) {
         super(props)
-        // this.state = {
-        //     newAppendixModalIsOpen: false
-        // }
 
         this.onClickButton = this.onClickButton.bind(this)
-        // this.openNewAppendixModal = this.openNewAppendixModal.bind(this)
-        // this.closeNewAppendixModal = this.closeNewAppendixModal.bind(this)
-        // this.saveNewAppendix = this.saveNewAppendix.bind(this)
     }
     async componentWillMount() {
         this.props.onMount(this.props.param, "Rammer til tillæg")
@@ -37,9 +34,10 @@ class Frames extends Component {
 
     render() {
         return (
-            <div>
+            <WHDiv>
+                <AppendixButtonPanel><Button onClick="" icon={iconname.ICON_ADD_CIRCLE} size={22}>Tilføj ny ramme</Button></AppendixButtonPanel>
                 {this.props.framesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <FramesTable list={List(this.props.appendix.frames)} onClickButton={this.onClickButton} />}
-            </div>
+            </WHDiv>
         )
     }
 }

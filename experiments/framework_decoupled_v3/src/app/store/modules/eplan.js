@@ -1,5 +1,5 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, publishAppendixToPlansystem, getAppendixFramesList } from 'app/data/eplan'
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, publishAppendixToPlansystem } from 'app/data/eplan' //getAppendixFramesList
 import { List } from 'immutable'
 
 /*Lodash*/

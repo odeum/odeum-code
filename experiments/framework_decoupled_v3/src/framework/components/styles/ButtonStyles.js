@@ -15,6 +15,7 @@ const StyledButton = styled.button`
     border: none;
     text-decoration: none;
     cursor: pointer;
+    user-select: none;
 
     &:focus {
         border-color: ${colors.BUTTON_DEFAULT_FOCUS};
