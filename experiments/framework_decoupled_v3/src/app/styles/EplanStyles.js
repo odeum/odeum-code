@@ -7,7 +7,7 @@ import 'react-select/dist/react-select.css'
 
 export const DescriptionDiv = styled.div`
    float: left;
-   font-family: Source Sans Pro;
+   font-family: 'Source Sans Pro';
    font-style: normal;
    font-size: 13px;
    font-weight: 500;
@@ -136,7 +136,7 @@ export const AppendixButton = styled.button`
   font-size: 14px;
   min-width: 100px;
   height: 40px;
-  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+  //box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
   cursor: pointer;
   padding-left: 10px;
   padding-right: 10px;

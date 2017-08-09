@@ -42,6 +42,7 @@ class AppendixList extends Component {
     }
     saveNewAppendix() {
         //TODO: Save changes
+        alert('do save')
         this.setState({
             newAppendixModalIsOpen: false
         })

@@ -20,6 +20,7 @@ import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import Settings from 'app/components/eplan-appendix/Appendix/Settings'
 import Publish from 'app/components/eplan-appendix/Appendix/Publish'
+import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdfModal'
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
 
@@ -40,6 +41,8 @@ class EditAppendix extends Component {
     this.state = {
       configModalIsOpen: false,
       publishModalIsOpen: false,
+      pdfModalIsOpen: false,
+      pdfFile: '',
       dates: {
         date1: moment(),
         date2: moment(),
@@ -62,6 +65,8 @@ class EditAppendix extends Component {
     this.onClickPublishAppendix = this.onClickPublishAppendix.bind(this)
     this.handlePdfChange = this.handlePdfChange.bind(this)
     this.handleViewAppendix = this.handleViewAppendix.bind(this)
+    this.openPdfModal = this.openPdfModal.bind(this)
+    this.closePdfModal = this.closePdfModal.bind(this)
   }
   
   componentWillMount() {
@@ -105,6 +110,16 @@ class EditAppendix extends Component {
       publishModalIsOpen: false
     })
   }
+  openPdfModal() {
+    this.setState({
+      pdfModalIsOpen: true
+    })
+  }
+  closePdfModal() {
+    this.setState({
+      pdfModalIsOpen: false
+    })
+  }
   handleDateChange(date, id) {
     if (id === 'date1') {
       this.setState({ dates: { ...this.state.dates, date1: date } })
@@ -129,7 +144,8 @@ class EditAppendix extends Component {
           if (response.errorcode) {
             alert(response.description)
           } else {
-            window.open(response, '_pdfview')
+            this.setState({ pdfFile: response })
+            this.openPdfModal()
           }
         })
       } catch (e) {
@@ -141,8 +157,8 @@ class EditAppendix extends Component {
           if (response.errorcode) {
             alert(response.description)
           } else {
-            //TODO: window open dont work as it's blocked in the browser
-            window.open(response, '_pdfview')
+            this.setState({ pdfFile: response })
+            this.openPdfModal()
           }
         })
       } catch (e) {
@@ -177,16 +193,58 @@ class EditAppendix extends Component {
       console.log('Error:' + e)
     }
   }
+  onDocumentComplete = (pages) => {
+    this.setState({ page: 1, pages })
+  }
+  onPageComplete = (page) => {
+    this.setState({ page })
+  }
+  handlePrevious = () => {
+    this.setState({ page: this.state.page - 1 })
+  }
+  handleNext = () => {
+    this.setState({ page: this.state.page + 1 })
+  }
+  handlePdfDownload = () => {
+    alert('Download PDF')
+  }
+  renderPagination = (page, pages) => {
+    let previousButton = <IconButton style={{float: 'left'}} className="previous" onClick={this.handlePrevious}><Icons.MdArrowBack size="60" color="#3b97d3" /></IconButton>
+    if (page === 1) {
+      previousButton = ''
+    }
+    let nextButton = <IconButton style={{float: 'right'}} className="next" onClick={this.handleNext}><Icons.MdArrowForward size="60" color="#3b97d3" /></IconButton>
+    if (page === pages) {
+      nextButton = ''
+    }
+    let downloadButton = <IconButton style={{textAlign: 'center'}} className="next" onClick={this.handlePdfDownload}><Icons.MdFileDownload size="60" color="#3b97d3" /></IconButton>
+    return (
+      <div style={{marginBottom: '20px'}}>
+        <Flex wrap>
+          <Box width={[4/12]}>
+            {previousButton}
+          </Box>
+          <Box width={[4/12]}>
+            {downloadButton}
+          </Box>
+          <Box width={[4/12]}>
+            {nextButton}
+          </Box>
+        </Flex>
+      </div>
+      )
+  }
 
  render() {
     /* State */
-    const { configModalIsOpen, publishModalIsOpen, dates } = this.state
+    const { configModalIsOpen, publishModalIsOpen, pdfModalIsOpen, dates, pdfFile, page } = this.state
     /* Props */
     const { appendix, handleSubmit } = this.props
     /* Functions */
     const { submitUpdate, openConfigModal, openPublishModal,
       closeConfigModal, handleDateChange, saveConfigModal,
-      closePublishModal, onClickPublishAppendix, handlePdfChange, handleViewAppendix } = this
+      closePublishModal, onClickPublishAppendix, handlePdfChange,
+      handleViewAppendix, closePdfModal, onDocumentComplete, onPageComplete } = this
 
     const pdfOptions = [
       { value: 'create', label: 'Opret PDF af tillæg' },
@@ -195,6 +253,11 @@ class EditAppendix extends Component {
     const viewOptions = [
       { value: 'viewpublic', label: 'Vis offentlig udgave' }
     ]
+
+    let pagination = null
+    if (this.state.pages) {
+      pagination = this.renderPagination(this.state.page, this.state.pages)
+    }
 
     return (
       <WHDiv style={{borderTop: 'solid 1px #ccc', padding: '20px', width: 'calc(100% - 40px)'}}>
@@ -254,6 +317,15 @@ class EditAppendix extends Component {
               closePublishModal={closePublishModal}
               appendix={appendix}
               onClickPublishAppendix={onClickPublishAppendix}
+            />
+            <AppendixPdfModal
+              pdfModalIsOpen={pdfModalIsOpen}
+              closePdfModal={closePdfModal}
+              onDocumentComplete={onDocumentComplete}
+              onPageComplete={onPageComplete}
+              page={page}
+              pagination={pagination}
+              pdfFile={pdfFile}
             />
             <Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
           </Animation>
