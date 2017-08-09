@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { List } from 'immutable'
 
 /* Redux */
-
+import {push} from 'react-router-redux'
 import { connect } from 'react-redux'
 import { getAppendixAsync } from 'app/store/modules/eplan'
 import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
@@ -15,10 +15,24 @@ import FramesTable from './FramesTable/Table'
 import {DescriptionDiv,PulseLoader,AppendixButtonPanel,AppendixButton} from 'app/styles/EplanStyles'
 
 class Frames extends Component {
+    constructor(props) {
+        super(props)
+        // this.state = {
+        //     newAppendixModalIsOpen: false
+        // }
 
+        this.onClickButton = this.onClickButton.bind(this)
+        // this.openNewAppendixModal = this.openNewAppendixModal.bind(this)
+        // this.closeNewAppendixModal = this.closeNewAppendixModal.bind(this)
+        // this.saveNewAppendix = this.saveNewAppendix.bind(this)
+    }
     async componentWillMount() {
         this.props.onMount(this.props.param, "Rammer til tillæg")
         await this.props.getAppendix(this.props.param)
+    }
+
+    onClickButton(index){
+        this.props.onClickButton(index, this.props.param)
     }
 
     render() {
@@ -39,6 +53,9 @@ function mapDispatchToProps(dispatch) {
     return {
         onMount:(id,tab)=> {
             dispatch(tabChange(id,tab))
+        },
+        onClickButton:(frameId, appendixId)=>{
+            dispatch(push('/eplan/list/'+appendixId+'/frames/'+frameId+'/edit'))
         },
         getAppendix: (param) => {
             dispatch(getAppendixAsync(param))

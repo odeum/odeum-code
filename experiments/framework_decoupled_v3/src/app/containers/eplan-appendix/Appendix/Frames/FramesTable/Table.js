@@ -241,7 +241,7 @@ export default class FramesTable extends Component {
     index,
     rowData
   }) {
-    this.props.onClickButton(rowData.appendixId)
+    this.props.onClickButton(rowData.frameId)
   }
   _defaultHeaderRowRenderer({
     className,
