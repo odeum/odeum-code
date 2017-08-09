@@ -4,56 +4,40 @@ import * as colors from 'framework/assets/colors'
 export const ContentHeader = styled.div`
 `
 export const Cell = styled.div` 
-  font-family: Source Sans Pro;
+  font-family: 'Source Sans Pro';
   align-items: center;
   height: 40px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  padding-left: 5px;
 `
 
-export const CellCentered = styled.div` 
-  font-family: Source Sans Pro;
-  align-items: center;
-  height: 40px;
+export const CellCentered = styled(Cell)` 
   text-align: center;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  padding-left: 0;
 `
 
 export const HeaderCell = styled.div`
   display: flex;
   height: 50px;
   background-color: #2C3E50;
-  font-family: Source Sans Pro;
+  font-family: 'Source Sans Pro';
   font-style: normal;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   text-transform: none;
   cursor: pointer;
   align-items: center;
-  padding-left: 3px;
+  padding-left: 5px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 `
 
-export const HeaderCellCentered = styled.div`
-  display: flex;
-  height: 50px;
-  background-color: #2C3E50;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-size: 15px;
-  font-weight: 500;
-  text-transform: none;
-  cursor: pointer;
-  align-items: center;
+export const HeaderCellCentered = styled(HeaderCell)`
   justify-content: center;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  padding-left: 0;
 `
 
 export const InputRow = styled.div`
@@ -66,7 +50,7 @@ export const ContentBox = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
-  font-family: Source Sans Pro;
+  font-family: 'Source Sans Pro';
   font-style: normal;
   font-size: 15px;
   font-weight: 500;

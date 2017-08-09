@@ -3,11 +3,11 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, InputRow, HeaderCell, HeaderCellCentered, HeaderRow, AutoSizerDiv, ContentBox, Cell, CellCentered } from 'app/styles/TableStyles'
-import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
-import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
-import Icon from 'framework/assets/Icon'
-import { ICON_SEARCH } from 'framework/assets/icons'
+import { NoRows, HeaderCell, HeaderCellCentered, HeaderRow, AutoSizerDiv, ContentBox, Cell, CellCentered } from 'app/styles/TableStyles' //InputRow
+//import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
+//import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
+//import Icon from 'framework/assets/Icon'
+//import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
 import moment from 'moment'
 
@@ -104,10 +104,10 @@ export default class AppendixTable extends Component {
             />
             Hide header?&nbsp;
           </label> */}
-          <InputRow>
+          {/*<InputRow>*/}
 
             {/* Row numbers display */}
-            <SpanRowNr>
+            {/*<SpanRowNr>
               <Label>Vis</Label>
               <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
                 <option value={50}> 50</option>
@@ -117,7 +117,7 @@ export default class AppendixTable extends Component {
             </SpanRowNr>
             <SearchDiv>
               <SearchInput /><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true} /></SearchButtonDiv>
-            </SearchDiv>
+            </SearchDiv>*/}
 
             {/* SearchBar replace */}
             {/*   <div>
@@ -156,7 +156,8 @@ export default class AppendixTable extends Component {
             value={overscanRowCount}
           />
           </div> */}
-          </InputRow>{/* </div> */}
+          {/*</InputRow>*/}
+          {/* </div> */}
 
         </ContentBox>
         <AutoSizerDiv>
