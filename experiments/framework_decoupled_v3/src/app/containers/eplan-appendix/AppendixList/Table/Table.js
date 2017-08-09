@@ -6,6 +6,7 @@ import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-vi
 import { NoRows, HeaderCell, HeaderCellCentered, HeaderRow, AutoSizerDiv, ContentBox, Cell, CellCentered } from 'app/styles/TableStyles' //InputRow
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
+import { ListLink } from 'app/styles/EplanStyles'
 //import Icon from 'framework/assets/Icon'
 //import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
@@ -303,7 +304,7 @@ export default class AppendixTable extends Component {
     }) {
     return <CellCentered onClick={(e) => {
     }}>
-      <a href={cellData} target="_blank">Vis</a>
+      <ListLink href={cellData} target="_blank">Vis</ListLink>
     </CellCentered>
   }
 

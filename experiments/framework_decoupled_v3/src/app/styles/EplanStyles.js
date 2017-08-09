@@ -20,6 +20,20 @@ export const DescriptionDiv = styled.div`
    padding: 3px;
 `
 
+export const ListLink = styled.a`
+  color: #000;
+  text-decoration: none;
+  &:visited {
+    color: #000;
+  }
+  &:active {
+    color: #000;
+  }
+  &:focus {
+    color: #000;
+  }
+`
+
 export const Label = styled.label`
    color: #5e5e5e;
    margin-left: 10px;
