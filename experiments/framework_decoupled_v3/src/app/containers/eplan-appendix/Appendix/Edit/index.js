@@ -174,6 +174,7 @@ class EditAppendix extends Component {
   async onClickPublishAppendix() {
     document.getElementById('publishStepOne').style.display = 'none'
     document.getElementById('publishButton').style.display = 'none'
+    document.getElementById('publishCloseButton').style.display = 'none'
     document.getElementById('publishStepTwo').style.display = 'block'
     document.getElementById('publishLoadingDiv').style.display = 'block'
 
@@ -181,11 +182,12 @@ class EditAppendix extends Component {
       await this.props.publishToPlanSystem(this.props.appendix.appendixId).then((response) => {
         console.log('Publish result this:', response)
 
+        document.getElementById('publishLoadingDiv').style.display = 'none'
+        document.getElementById('publishCloseButton').style.display = 'block'
+
         if (response.errors === 0) {
-          document.getElementById('publishLoadingDiv').style.display = 'none'
           document.getElementById('publishStatusText').innerText = 'Tillæget blev indmeldt korrekt'
         } else {
-          document.getElementById('publishLoadingDiv').style.display = 'none'
           document.getElementById('publishStatusText').innerText = 'Tillæget blev ikke indmeldt, fik følgende fejl: ' + response.result
         }
       })

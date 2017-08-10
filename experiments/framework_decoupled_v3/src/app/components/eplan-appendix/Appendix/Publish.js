@@ -5,7 +5,6 @@ import theme from 'framework/assets/theme'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
-
 const Publish = ({ publishModalIsOpen, closePublishModal, customStyles, appendix, onClickPublishAppendix }) => {
     return (
         <div>
@@ -28,7 +27,7 @@ const Publish = ({ publishModalIsOpen, closePublishModal, customStyles, appendix
                         </PublishLoadingDiv>
                         <div id="publishStatusText"></div>
                         <ModalButtonPanel>
-                            <Button onClick={(e) => { e.preventDefault(); closePublishModal() }} icon={iconname.ICON_CLOSE} size={18}>Luk</Button>
+                            <Button id="publishCloseButton" onClick={(e) => { e.preventDefault(); closePublishModal() }} icon={iconname.ICON_CLOSE} size={18}>Luk</Button>
                         </ModalButtonPanel>
                     </PublishStepTwoDiv>
                 </ModalContent>
