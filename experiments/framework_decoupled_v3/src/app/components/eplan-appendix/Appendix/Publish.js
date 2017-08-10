@@ -1,18 +1,22 @@
 import React from 'react'
 import { PublishStepTwoDiv, PublishLoadingDiv, PulseLoader, ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
-import * as Icons from 'react-icons/lib/md'
-import theme from 'framework/assets/theme'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
+import * as colors from 'framework/assets/colors'
+import Icon from 'framework/assets/Icon'
 
 const Publish = ({ publishModalIsOpen, closePublishModal, customStyles, appendix, onClickPublishAppendix }) => {
     return (
         <div>
             <ModalWindow isOpen={publishModalIsOpen} onRequestClose={closePublishModal} contentLabel="Plansystem">
                 <ModalHeader>
-                    <ModalHeaderIcon><Icons.MdCloudUpload size="30" color="#fff" style={theme.iconStyle} /></ModalHeaderIcon>
+                    <ModalHeaderIcon>
+                        <Icon icon={iconname.ICON_CLOUD_UPLOAD} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                    </ModalHeaderIcon>
                     <ModalHeaderTitle>Publicer til plansystem</ModalHeaderTitle>
-                    <ModalHeaderClose onClick={(e) => { e.preventDefault(); closePublishModal() }}><Icons.MdClose size="30" color="#fff" /></ModalHeaderClose>
+                    <ModalHeaderClose onClick={(e) => { e.preventDefault(); closePublishModal() }}>
+                        <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                    </ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>
                     <div id="publishStepOne">

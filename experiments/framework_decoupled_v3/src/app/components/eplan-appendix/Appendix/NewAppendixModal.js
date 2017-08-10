@@ -1,7 +1,8 @@
 import React from 'react'
 import { /* AppendixButton */ ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
 import { FieldLabel, TextInputField } from 'app/styles/'
-import * as Icons from 'react-icons/lib/md'
+import * as colors from 'framework/assets/colors'
+import Icon from 'framework/assets/Icon'
 import * as iconname from 'framework/assets/icons'
 import Button from 'framework/components/Widgets/Button'
 
@@ -10,9 +11,13 @@ const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveN
         <div>
             <ModalWindow isOpen={newAppendixModalIsOpen} onRequestClose={closeNewAppendixModal} contentLabel="Tilføj tillæg">
                 <ModalHeader>
-                    <ModalHeaderIcon><Icons.MdAddCircleOutline size="30" color="#fff" /></ModalHeaderIcon>
+                    <ModalHeaderIcon>
+                        <Icon icon={iconname.ICON_ADD_CIRCLE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                    </ModalHeaderIcon>
                     <ModalHeaderTitle>Tilføj kommuneplan tillæg</ModalHeaderTitle>
-                    <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeNewAppendixModal() }}><Icons.MdClose size="30" color="#fff" /></ModalHeaderClose>
+                    <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeNewAppendixModal() }}>
+                        <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                    </ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>
                     <form>

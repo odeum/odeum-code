@@ -3,20 +3,23 @@ import React from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
-import * as Icons from 'react-icons/lib/md'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
-
-
+import * as colors from 'framework/assets/colors'
+import Icon from 'framework/assets/Icon'
 
 const Settings = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveConfigModal, dates }) => {
   return (
     <div>
       <ModalWindow isOpen={configModalIsOpen} onRequestClose={closeConfigModal} contentLabel="Indstillinger">
         <ModalHeader>
-            <ModalHeaderIcon><Icons.MdSettings size="30" color="#fff" /></ModalHeaderIcon>
+            <ModalHeaderIcon>
+                <Icon icon={iconname.ICON_SETTINGS} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+            </ModalHeaderIcon>
             <ModalHeaderTitle>Indstillinger</ModalHeaderTitle>
-            <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeConfigModal() }}><Icons.MdClose size="30" color="#fff" /></ModalHeaderClose>
+            <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeConfigModal() }}>
+                <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+            </ModalHeaderClose>
         </ModalHeader>
         <ModalContent>
             <form>
