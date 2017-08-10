@@ -20,6 +20,11 @@ const theme = {
       background: colors.BUTTON_DEFAULT,
   },
 
+  iconStyle: {
+      verticalAlign: '-5px', /* -10% */
+      paddingRight: '8px'
+  },
+
   iconButtonStyle: {
       verticalAlign: '-5px', /* -10% */
       paddingRight: '8px'

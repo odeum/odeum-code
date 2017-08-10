@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {push} from 'react-router-redux'
-import {tabChange} from 'framework/store/modules/tabs'
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import { tabChange } from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
-import {DescriptionDiv,PulseLoader,AppendixButtonPanel,AppendixButton} from 'app/styles/EplanStyles'
-import {getListAsync} from 'app/store/modules/eplan'
-import {WHDiv} from 'app/styles/'
+import { DescriptionDiv, PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { getListAsync } from 'app/store/modules/eplan'
+import { WHDiv } from 'app/styles/'
 import NewAppendixModal from 'app/components/eplan-appendix/Appendix/NewAppendixModal'
+import Button from 'framework/components/Widgets/Button'
+import * as iconname from 'framework/assets/icons'
+
 const props={name:'Oversigt'}
 
 class AppendixList extends Component {
@@ -53,8 +56,10 @@ class AppendixList extends Component {
 
         return (
             <WHDiv>
-                <DescriptionDiv>Small description placeholder</DescriptionDiv>
-                <AppendixButtonPanel><AppendixButton onClick={openNewAppendixModal}>Opret nyt tillæg</AppendixButton></AppendixButtonPanel>
+                 <DescriptionDiv  >Small description placeholder</DescriptionDiv> 
+                <AppendixButtonPanel>
+                    <Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
+                </AppendixButtonPanel>
                 {this.props.isLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <AppendixTable list={this.props.appendixes} onClickButton={this.onClickButton} />}
                 <NewAppendixModal
                     newAppendixModalIsOpen={newAppendixModalIsOpen}

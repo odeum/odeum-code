@@ -300,7 +300,7 @@ class EditAppendix extends Component {
                       </Box>
                       <Box width={[1, 1, 1, 1, 3/12]}>
                         <IconButton onClick={openConfigModal} style={{float: 'right'}}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
-                        <IconButton onClick={openPublishModal} style={{float: 'right'}}><Icons.MdPublish size="40" color="#3b97d3" /></IconButton>
+                        <IconButton onClick={openPublishModal} style={{float: 'right'}}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
                     </Box>
                   </Flex>
                 </Box>

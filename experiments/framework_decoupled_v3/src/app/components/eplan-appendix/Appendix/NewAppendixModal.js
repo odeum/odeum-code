@@ -1,9 +1,9 @@
 import React from 'react'
-import { AppendixButton, ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { /* AppendixButton */ ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
 import { FieldLabel, TextInputField } from 'app/styles/'
 import * as Icons from 'react-icons/lib/md'
-//import * as iconname from 'framework/assets/icons'
-//import Button from 'framework/components/Widgets/Button'
+import * as iconname from 'framework/assets/icons'
+import Button from 'framework/components/Widgets/Button'
 
 const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveNewAppendix }) => {
     return (
@@ -28,13 +28,12 @@ const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveN
                         <br />
                     </form>
                     <ModalButtonPanel>
-                        <AppendixButton onClick={saveNewAppendix}>Opret nyt tillæg</AppendixButton>
+                        <Button onClick={saveNewAppendix} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
                     </ModalButtonPanel>
                 </ModalContent>
             </ModalWindow>
         </div>
     )
 }
-//                        <Button onClick={saveNewAppendix} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Opret nyt tillæg</Button>
 
 export default NewAppendixModal
