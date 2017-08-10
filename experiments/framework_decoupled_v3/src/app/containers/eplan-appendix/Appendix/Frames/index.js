@@ -16,13 +16,22 @@ import {PulseLoader,AppendixButtonPanel} from 'app/styles/EplanStyles'//Appendix
 import {WHDiv} from 'app/styles/'
 import * as iconname from 'framework/assets/icons'
 import Button from 'framework/components/Widgets/Button'
+import AddFrameModal from 'app/components/eplan-appendix/Frames/AddFrameModal'
 
 class Frames extends Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            addFrameModalIsOpen: false,
+        }
+
         this.onClickButton = this.onClickButton.bind(this)
+        this.openAddFrameModal = this.openAddFrameModal.bind(this)
+        this.closeAddFrameModal = this.closeAddFrameModal.bind(this)
+        this.addNewFrame = this.addNewFrame.bind(this)
     }
+
     async componentWillMount() {
         this.props.onMount(this.props.param, "Rammer til tillæg")
         await this.props.getAppendix(this.props.param)
@@ -32,13 +41,39 @@ class Frames extends Component {
         this.props.onClickButton(index, this.props.param)
     }
 
+    openAddFrameModal() {
+        this.setState({
+            addFrameModalIsOpen: true
+        })
+    }
+
+    closeAddFrameModal() {
+        this.setState({
+            addFrameModalIsOpen: false
+        })
+    }
+
+    addNewFrame() {
+        alert("TODO")
+        this.closeAddFrameModal()
+    }
+
     render() {
+        const { addFrameModalIsOpen } = this.state
+
+        const { openAddFrameModal, closeAddFrameModal, addNewFrame } = this
+
         return (
             <WHDiv>
                 <AppendixButtonPanel>
-                    <Button onClick="" icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny ramme</Button>
+                    <Button onClick={openAddFrameModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny ramme</Button>
                 </AppendixButtonPanel>
                 {this.props.framesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <FramesTable list={List(this.props.appendix.frames)} onClickButton={this.onClickButton} />}
+            <AddFrameModal
+              addFrameModalIsOpen={addFrameModalIsOpen}
+              closeAddFrameModal={closeAddFrameModal}
+              addNewFrame={addNewFrame}
+            />
             </WHDiv>
         )
     }
