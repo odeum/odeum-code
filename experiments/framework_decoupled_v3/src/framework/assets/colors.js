@@ -103,6 +103,9 @@ export const REACT_CYAN = '#58C1DC'
 export const GRAPHQL_PINK = '#E33CAA'
 export const BLACK = '#000'
 
+export const MODAL_HEADER = PRIMARY_BLUE
+export const MODAL_HEADER_ICON = '#fff'
+export const MODAL_HEADER_TITLE = '#fff'
 
 // https://color.adobe.com/
 

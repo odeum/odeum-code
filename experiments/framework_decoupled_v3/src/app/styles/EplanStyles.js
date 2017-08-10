@@ -4,6 +4,7 @@ import Loader from 'halogen/PulseLoader'
 import Modal from 'react-modal'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
+import * as colors from 'framework/assets/colors'
 
 export const DescriptionDiv = styled.div`
    float: left;
@@ -219,11 +220,11 @@ export const ModalHeader = styled.div`
   width: 100%;
   height: 60px;
   line-height: 60px;
-  background-color: #3b97d3;
+  background-color: ${colors.MODAL_HEADER};
   font-family: 'Source Sans Pro';
   font-size: 20px;
   font-weight: 300;
-  color: #fff;
+  color: ${colors.MODAL_HEADER_TITLE};
   box-sizing: border-box; 
   padding-left: 20px;
   padding-right: 20px;
