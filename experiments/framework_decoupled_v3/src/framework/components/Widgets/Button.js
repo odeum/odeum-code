@@ -25,7 +25,7 @@ class Button extends Component {
     render() {
         return (
             <StyledButton onClickCapture={(event) => this.handleClick(event)}>  {/*onClick={this.handleClick*/}
-                <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} /><span>{this.props.children}</span>
+                <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconButtonStyle} /><span>{this.props.children}</span>
             </StyledButton>
         )
     }

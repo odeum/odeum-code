@@ -4,7 +4,11 @@ import * as fonts from './fonts'
 const theme = {
   background: colors.EMERALD_LIGHT,
   color: colors.TAB_COLOR_2,
+  
   font: fonts.PRIMARY,
+  fontWeight: fonts.FONT_WEIGHT,
+  fontStyle: fonts.FONT_STYLE, 
+
   tabs:{
       TAB_TEXT:colors.TAB_TEXT,
       TAB_TEXT_SELECTED: colors.TAB_TEXT_SELECTED,
@@ -15,6 +19,12 @@ const theme = {
       color: colors.BUTTON_TEXT,
       background: colors.BUTTON_DEFAULT,
   },
+
+  iconButtonStyle: {
+      verticalAlign: '-5px', /* -10% */
+      paddingRight: '8px'
+  },
+
   buttonSize: {
       large: {
           size: fonts.SIZE_LARGE,

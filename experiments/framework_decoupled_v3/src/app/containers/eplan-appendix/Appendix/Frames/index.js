@@ -35,7 +35,9 @@ class Frames extends Component {
     render() {
         return (
             <WHDiv>
-                <AppendixButtonPanel><Button onClick="" icon={iconname.ICON_ADD_CIRCLE} size={22}>Tilføj ny ramme</Button></AppendixButtonPanel>
+                <AppendixButtonPanel>
+                    <Button onClick="" icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny ramme</Button>
+                </AppendixButtonPanel>
                 {this.props.framesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <FramesTable list={List(this.props.appendix.frames)} onClickButton={this.onClickButton} />}
             </WHDiv>
         )

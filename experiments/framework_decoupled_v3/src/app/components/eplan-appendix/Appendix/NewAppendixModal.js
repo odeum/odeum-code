@@ -11,18 +11,18 @@ const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveN
             <ModalWindow isOpen={newAppendixModalIsOpen} onRequestClose={closeNewAppendixModal} contentLabel="Tilføj tillæg">
                 <ModalHeader>
                     <ModalHeaderIcon><Icons.MdAddCircleOutline size="30" color="#fff" /></ModalHeaderIcon>
-                    <ModalHeaderTitle>Tilføj kommuneplantillæg</ModalHeaderTitle>
+                    <ModalHeaderTitle>Tilføj kommuneplan tillæg</ModalHeaderTitle>
                     <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeNewAppendixModal() }}><Icons.MdClose size="30" color="#fff" /></ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>
                     <form>
-                        <FieldLabel for="name">Kommuneplantillæg navn</FieldLabel>
+                        <FieldLabel for="name">Kommuneplan tillæg navn</FieldLabel>
                         <TextInputField type="text" name="name" />
                         <br />
-                        <FieldLabel for="number">Kommuneplantillæg nummer</FieldLabel>
+                        <FieldLabel for="number">Kommuneplan tillæg nummer</FieldLabel>
                         <TextInputField type="text" name="number" />
                         <br />
-                        <FieldLabel for="numFrames">Antal kommuneplanrammer</FieldLabel>
+                        <FieldLabel for="numFrames">Antal kommuneplan rammer</FieldLabel>
                         <TextInputField type="text" name="numFrames" />
                         <br />
                         <br />

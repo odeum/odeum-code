@@ -15,7 +15,9 @@ const StyledButton = styled.button`
     padding: ${(props) => props.theme.buttonSize.default.padding || '9px 20px 9px 15px'};
     margin-right: 0.7rem;
     border: none;
+    cursor: pointer;
     text-decoration: none;
+    user-select: none;
 
     &:focus {
         border-color: ${colors.BUTTON_DEFAULT_FOCUS};
