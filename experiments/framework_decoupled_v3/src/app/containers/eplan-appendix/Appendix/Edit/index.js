@@ -9,7 +9,7 @@ import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
-import { WHDiv, IconButton } from 'app/styles'
+import { WHDiv2, IconButton } from 'app/styles'
 import { Animation, AppendixHeader, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
@@ -262,7 +262,7 @@ class EditAppendix extends Component {
     }
 
     return (
-      <WHDiv style={{borderTop: 'solid 1px #ccc', padding: '20px', width: 'calc(100% - 40px)'}}>
+      <WHDiv2>
          {appendix !== null ?
           <Animation>
             <div>
@@ -333,7 +333,7 @@ class EditAppendix extends Component {
           </Animation>
           : <PulseLoader color="royalblue"/>
         }
-      </WHDiv>
+      </WHDiv2>
     )
   }
 }

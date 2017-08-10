@@ -2,13 +2,14 @@ import styled,{keyframes} from 'styled-components'
 
 export const Div = styled.div`
     float: left;
-    width: calc(100% - 300px);
-    height: calc(100vh - 250px);
+    width: calc(100% - 330px);
+    height: calc(100vh - 260px);
     padding: 20px;
     background: #ecf0f1;
-    background:white;
-    margin-left:10px;  
-    overflow-y:scroll;
+    background: #fff;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow-y: scroll;
 `
 const fadeIn = keyframes`
 from{
@@ -23,9 +24,14 @@ to{
 }
 `
 export const WHDiv = styled.div`
-    animation: ${fadeIn} 0.7s ease-in-out;
+/*    animation: ${fadeIn} 0.7s ease-in-out;*/
     width: 100%;
     height: 100%;
+`
+
+export const WHDiv2 = styled(WHDiv)`
+    padding: 20px;
+    box-sizing: border-box;
 `
 
 export const IconButton = styled.div`
