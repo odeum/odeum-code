@@ -1,11 +1,11 @@
 import React from 'react'
 
 const General = () => {
-    return (
-        <div>
+	return (
+		<div>
             General tab
-        </div>
-    )
+		</div>
+	)
 }
 
 export default General

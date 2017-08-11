@@ -1,32 +1,32 @@
 import React, { Component } from 'react'
-import {changeId} from 'framework/store/modules/tabs'
-import {connect} from 'react-redux'
-const sceneProp ={id:'eplan'}
+import { changeId } from 'framework/store/modules/tabs'
+import { connect } from 'react-redux'
+const sceneProp = { id: 'eplan' }
 // const tabProp = {id:'eplan-list'}
 
 class EplanAppendix extends Component {
-    componentWillMount() {
-        this.props.onMount()
-    }
+	componentWillMount() {
+		this.props.onMount()
+	}
     
-    render() {
+	render() {
      
-        return (
-            <div style={{height:'100%'}}>
-               {React.cloneElement(this.props.children, sceneProp)}
-            </div>
-        )
-    }
+		return (
+			<div style={{ height: '100%' }}>
+				{React.cloneElement(this.props.children, sceneProp)}
+			</div>
+		)
+	}
 }
 const mapStateToProps = (state) => ({
 })
 
 function mapDispatchToProps(dispatch) {
-    return{
-        onMount: ()=>{
-            dispatch(changeId(sceneProp.id))
-        }
-    }
+	return {
+		onMount: () => {
+			dispatch(changeId(sceneProp.id))
+		}
+	}
     
 }
-export default connect(mapStateToProps,mapDispatchToProps)(EplanAppendix)
+export default connect(mapStateToProps, mapDispatchToProps)(EplanAppendix)
