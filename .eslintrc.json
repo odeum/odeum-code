@@ -21,6 +21,16 @@
         "valid-typeof": "warn",
         "semi": ["error", "never"],
         "indent": ["error", "tab"],
+        "comma-spacing": ["error",
+            {
+                "before": false,
+                "after": true
+            }
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
 
         "react/display-name": 0
     },
@@ -28,3 +38,4 @@
         "react-app"
     ]
 }
+
