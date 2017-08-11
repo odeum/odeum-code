@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import TinyMCE from 'react-tinymce'
-import {WHDiv} from 'app/styles'
+import {PrimaryContainer} from 'app/styles'
 export default class TinyMceEditor extends Component {
     render() {
         return (
-            <WHDiv>
+            <PrimaryContainer>
             <TinyMCE
             content={this.props.value}
             config={{
@@ -14,7 +14,7 @@ export default class TinyMceEditor extends Component {
             }} 
             onBlur={this.props.onChange}
             />      
-            </WHDiv>
+            </PrimaryContainer>
         )
     }
 }

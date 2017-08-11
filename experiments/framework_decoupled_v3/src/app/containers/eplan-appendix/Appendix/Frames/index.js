@@ -13,7 +13,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 /* App */
 import FramesTable from './FramesTable/Table'
 import {PulseLoader,AppendixButtonPanel} from 'app/styles/EplanStyles'//AppendixButton
-import {WHDiv} from 'app/styles/'
+import {PrimaryContainer} from 'app/styles/'
 import * as iconname from 'framework/assets/icons'
 import Button from 'framework/components/Widgets/Button'
 import AddFrameModal from 'app/components/eplan-appendix/Frames/AddFrameModal'
@@ -64,7 +64,7 @@ class Frames extends Component {
         const { openAddFrameModal, closeAddFrameModal, addNewFrame } = this
 
         return (
-            <WHDiv>
+            <PrimaryContainer>
                 <AppendixButtonPanel>
                     <Button onClick={openAddFrameModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny ramme</Button>
                 </AppendixButtonPanel>
@@ -74,7 +74,7 @@ class Frames extends Component {
               closeAddFrameModal={closeAddFrameModal}
               addNewFrame={addNewFrame}
             />
-            </WHDiv>
+            </PrimaryContainer>
         )
     }
 }

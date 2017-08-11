@@ -13,7 +13,7 @@ import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 import { addTab, tabChange } from 'framework/store/modules/tabs'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 /* Styling */
-import { WHDiv } from 'app/styles'
+import { PrimaryContainer } from 'app/styles'
 import { AppendixButtonPanel, AppendixButtonPanelDiv, PulseLoader } from 'app/styles/EplanStyles'
 import { Animation } from 'app/styles/EplanStyles'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -219,7 +219,7 @@ class AppendixContainer extends Component {
       closeConfigModal, handleDateChange, saveConfigModal,
       closePublishModal, onClickPublishAppendix, handlePdfChange, handleViewAppendix } = this
     return (
-      <WHDiv>
+      <PrimaryContainer>
 
       <TabsContainer id={"appendix"} />
        {appendix !== null ?
@@ -261,7 +261,7 @@ class AppendixContainer extends Component {
             />
           </Animation> */
           : <PulseLoader size="16px" color={'royalblue'} />}
-      </WHDiv>
+      </PrimaryContainer>
     )
   }
 }

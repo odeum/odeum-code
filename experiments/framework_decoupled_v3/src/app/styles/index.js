@@ -23,13 +23,13 @@ to{
     width:100%;
 }
 `
-export const WHDiv = styled.div`
+export const PrimaryContainer = styled.div`
 /*    animation: ${fadeIn} 0.7s ease-in-out;*/
     width: 100%;
     height: 100%;
 `
 
-export const WHDiv2 = styled(WHDiv)`
+export const SecondaryContainer = styled(PrimaryContainer)`
     padding: 20px;
     box-sizing: border-box;
 `
