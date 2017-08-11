@@ -11,11 +11,11 @@ const Publish = ({ publishModalIsOpen, closePublishModal, customStyles, appendix
             <ModalWindow isOpen={publishModalIsOpen} onRequestClose={closePublishModal} contentLabel="Plansystem">
                 <ModalHeader>
                     <ModalHeaderIcon>
-                        <Icon icon={iconname.ICON_CLOUD_UPLOAD} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_CLOUD_UPLOAD} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderIcon>
                     <ModalHeaderTitle>Publicer til plansystem</ModalHeaderTitle>
                     <ModalHeaderClose onClick={(e) => { e.preventDefault(); closePublishModal() }}>
-                        <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>
