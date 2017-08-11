@@ -12,11 +12,11 @@ const NewAppendixModal = ({ newAppendixModalIsOpen, closeNewAppendixModal, saveN
             <ModalWindow isOpen={newAppendixModalIsOpen} onRequestClose={closeNewAppendixModal} contentLabel="Tilføj tillæg">
                 <ModalHeader>
                     <ModalHeaderIcon>
-                        <Icon icon={iconname.ICON_ADD_CIRCLE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_ADD_CIRCLE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderIcon>
                     <ModalHeaderTitle>Tilføj kommuneplan tillæg</ModalHeaderTitle>
                     <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeNewAppendixModal() }}>
-                        <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>

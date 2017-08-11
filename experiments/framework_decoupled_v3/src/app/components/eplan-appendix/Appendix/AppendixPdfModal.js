@@ -11,11 +11,11 @@ const AppendixPdfModal = ({ pdfModalIsOpen, closePdfModal, onDocumentComplete, o
             <ModalWindow isOpen={pdfModalIsOpen} onRequestClose={closePdfModal} contentLabel="PDF">
                 <ModalHeader>
                     <ModalHeaderIcon>
-                        <Icon icon={iconname.ICON_ADD_CIRCLE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_ADD_CIRCLE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderIcon>
                     <ModalHeaderTitle>Kommuneplantillæg PDF</ModalHeaderTitle>
                     <ModalHeaderClose onClick={(e) => { e.preventDefault(); closePdfModal() }}>
-                        <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>

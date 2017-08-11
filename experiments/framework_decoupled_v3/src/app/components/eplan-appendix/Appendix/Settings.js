@@ -14,11 +14,11 @@ const Settings = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveC
       <ModalWindow isOpen={configModalIsOpen} onRequestClose={closeConfigModal} contentLabel="Indstillinger">
         <ModalHeader>
             <ModalHeaderIcon>
-                <Icon icon={iconname.ICON_SETTINGS} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                <Icon icon={iconname.ICON_SETTINGS} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
             </ModalHeaderIcon>
             <ModalHeaderTitle>Indstillinger</ModalHeaderTitle>
             <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeConfigModal() }}>
-                <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                <Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
             </ModalHeaderClose>
         </ModalHeader>
         <ModalContent>
