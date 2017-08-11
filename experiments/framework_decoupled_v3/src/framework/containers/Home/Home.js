@@ -21,54 +21,54 @@ import { connect } from 'react-redux'
 import LoginContainer from 'framework/containers/Login/Login'
 
 //REFACTOR
-import {getAppendixCfg} from 'app/store/modules/eplan'
+import { getAppendixCfg } from 'app/store/modules/eplan'
 
 class Home extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            loggedIn: true
-        }
-        this.handleLogin = this.handleLogin.bind(this)
-        this.props.onMount()
-    }
-    handleLogin(){
-        this.setState({loggedIn:true})
-    }
-    render() {
-        return (
-            
-            <ThemeProvider theme={ theme }>
-            {this.state.loggedIn?
-              <div>
-                <HomeDiv>
-                  <HeaderContainer />
-                  <MenuContainer />
-                  <TabsContainer id={this.props.activeScene} />
-                  { this.props.children }
-                  <FooterContainer />
-                </HomeDiv>
-              </div>
-               : <LoginContainer handleLogin={this.handleLogin}/>}
-            </ThemeProvider>
-        )
-    }
+	constructor(props) {
+		super(props)
+		this.state = {
+			loggedIn: true
+		}
+		this.handleLogin = this.handleLogin.bind(this)
+		this.props.onMount()
+	}
+	handleLogin() {
+		this.setState({ loggedIn: true })
+	}
+	render() {
+		return (
+
+			<ThemeProvider theme={theme}>
+				{this.state.loggedIn ?
+					<div>
+						<HomeDiv>
+							<HeaderContainer />
+							<MenuContainer />
+							<TabsContainer id={this.props.activeScene} />
+							{this.props.children}
+							<FooterContainer />
+						</HomeDiv>
+					</div>
+					: <LoginContainer handleLogin={this.handleLogin} />}
+			</ThemeProvider>
+		)
+	}
 }
 Home.propTypes = {
-    activeScene: PropTypes.string.isRequired
+	activeScene: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    activeScene: state.tabs.activeScene
+	activeScene: state.tabs.activeScene
 })
 //REFACTOR
 function mapDispatchToProps(dispatch) {
-    return{
-        onMount: ()=>{
-            dispatch(getAppendixCfg())
-        }
-    }
-    
+	return {
+		onMount: () => {
+			dispatch(getAppendixCfg())
+		}
+	}
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
