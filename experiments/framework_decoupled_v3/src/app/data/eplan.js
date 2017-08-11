@@ -15,7 +15,10 @@ import { List } from 'immutable'
 export async function postAppendix(appendix){
     var app = JSON.stringify(appendix)
     var data = await api.post('/rest/eplan/kpt/appendix/'+appendix.appendixId,app)
-        .then((response)=>/* console.log(response) */ response)
+        .then((response) => {
+            // console.log(response.data)
+            return response.data
+        })
     return data
 }
 export async function getAppendixConfig() {
