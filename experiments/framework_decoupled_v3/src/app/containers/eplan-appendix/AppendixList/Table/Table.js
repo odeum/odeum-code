@@ -3,7 +3,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, HeaderCell, HeaderCellCentered, HeaderRow, AutoSizerDiv, ContentBox, Cell, CellCentered } from 'app/styles/TableStyles' //InputRow
+import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
 import { ListLink } from 'app/styles/EplanStyles'
@@ -34,7 +34,6 @@ export default class AppendixTable extends Component {
     this._linkRowRenderer = this._linkRowRenderer.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._headerRenderer = this._headerRenderer.bind(this)
-    this._headerRendererCentered = this._headerRendererCentered.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowCountChange = this._onRowCountChange.bind(this)
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
@@ -198,7 +197,7 @@ export default class AppendixTable extends Component {
                   }
                   <Column
                     width={width}
-                    minWidth={500}
+                    minWidth={400}
                     label='Navn'
                     dataKey='name'
                     disableSort={!this._isSortEnabled()}
@@ -210,12 +209,13 @@ export default class AppendixTable extends Component {
                   />
                   <Column
                     width={width}
+                    maxWidth={100}
                     label='Nummer'
                     dataKey='number'
                     disableSort={!this._isSortEnabled()}
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData }) => (<CellCentered>{cellData}</CellCentered>)
+                      ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
                     }
                     flexgrow={1}
                   />
@@ -224,7 +224,7 @@ export default class AppendixTable extends Component {
                     maxWidth={50}
                     label="Link"
                     dataKey='folderUrl'
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     disableSort
                     cellRenderer={
                       this._linkRowRenderer
@@ -232,11 +232,12 @@ export default class AppendixTable extends Component {
                   />
                   <Column
                     width={width}
+                    maxWidth={150}
                     label='Oprettelsesdato'
                     dataKey='created'
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<CellCentered>{moment(cellData).format('LL')}</CellCentered>)
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{moment(cellData).format('LL')}</Cell>)
                     }
                     flexgrow={1}
                   />
@@ -245,21 +246,21 @@ export default class AppendixTable extends Component {
                     maxWidth={100}
                     label='Status'
                     dataKey='status'
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     cellRenderer={
                       ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-                        (<CellCentered>{cellData}</CellCentered>)
+                        (<Cell>{cellData}</Cell>)
                     }
                   />
                   <Column
                     width={width}
                     label='Ansvarlig'
                     dataKey='responsible'
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     disableSort={!this._isSortEnabled()}
                     cellRenderer={
                       ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-                        (<CellCentered>{cellData}</CellCentered>)
+                        (<Cell>{cellData}</Cell>)
                     }
                   />
                 </Table>
@@ -302,10 +303,10 @@ export default class AppendixTable extends Component {
     dataKey,
     rowData, rowIndex
     }) {
-    return <CellCentered onClick={(e) => {
+    return <Cell onClick={(e) => {
     }}>
       <ListLink href={cellData} target="_blank">Vis</ListLink>
-    </CellCentered>
+    </Cell>
   }
 
   _headerRenderer({
@@ -323,24 +324,6 @@ export default class AppendixTable extends Component {
           <SortIndicator sortDirection={sortDirection} />
         }
       </HeaderCell>
-    )
-  }
-
-  _headerRendererCentered({
-    columnData,
-    dataKey,
-    disableSort,
-    label,
-    sortBy,
-    sortDirection
-  }) {
-    return (
-      <HeaderCellCentered>
-        {label}
-        {sortBy === dataKey &&
-          <SortIndicator sortDirection={sortDirection} />
-        }
-      </HeaderCellCentered>
     )
   }
 

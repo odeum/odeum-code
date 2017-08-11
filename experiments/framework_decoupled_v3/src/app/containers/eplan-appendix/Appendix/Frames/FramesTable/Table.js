@@ -2,7 +2,7 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, HeaderCell, HeaderCellCentered, HeaderRow, AutoSizerDiv, ContentBox, Cell, CellCentered } from 'app/styles/TableStyles'//InputRow
+import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'//InputRow
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
 //import Icon from 'framework/assets/Icon'
@@ -33,7 +33,6 @@ export default class FramesTable extends Component {
     this._linkRowRenderer = this._linkRowRenderer.bind(this)
     this._getRowHeight = this._getRowHeight.bind(this)
     this._headerRenderer = this._headerRenderer.bind(this)
-    this._headerRendererCentered = this._headerRendererCentered.bind(this)
     this._noRowsRenderer = this._noRowsRenderer.bind(this)
     this._onRowCountChange = this._onRowCountChange.bind(this)
     this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
@@ -212,9 +211,9 @@ export default class FramesTable extends Component {
                     label='Nummer'
                     dataKey='number'
                     disableSort={!this._isSortEnabled()}
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData }) => (<CellCentered>{cellData}</CellCentered>)
+                      ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
                     }
                     flexgrow={1}
                   />
@@ -222,9 +221,9 @@ export default class FramesTable extends Component {
                     width={width}
                     label='Oprettelsesdato'
                     dataKey='created'
-                    headerRenderer={this._headerRendererCentered}
+                    headerRenderer={this._headerRenderer}
                     cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<CellCentered>{moment(cellData).format('LL')}</CellCentered>)
+                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{moment(cellData).format('LL')}</Cell>)
                     }
                     flexgrow={1}
                   />
@@ -268,10 +267,10 @@ export default class FramesTable extends Component {
     dataKey,
     rowData, rowIndex
     }) {
-    return <CellCentered onClick={(e) => {
+    return <Cell onClick={(e) => {
     }}>
       <a href={cellData} target="_blank">Vis</a>
-    </CellCentered>
+    </Cell>
   }
 
   _headerRenderer({
@@ -289,24 +288,6 @@ export default class FramesTable extends Component {
           <SortIndicator sortDirection={sortDirection} />
         }
       </HeaderCell>
-    )
-  }
-
-  _headerRendererCentered({
-    columnData,
-    dataKey,
-    disableSort,
-    label,
-    sortBy,
-    sortDirection
-  }) {
-    return (
-      <HeaderCellCentered>
-        {label}
-        {sortBy === dataKey &&
-          <SortIndicator sortDirection={sortDirection} />
-        }
-      </HeaderCellCentered>
     )
   }
 
