@@ -15,7 +15,7 @@ const Tabs = ({tabs,id,activeTab, onTabClick, OnCloseClick}) => {
                                                             e.preventDefault()
                                                             OnCloseClick(id,tab)
                                                           } }>
-                 <Icon icon={ ICON_CLOSE } on={ active(tab) } size={ 12 } />
+                 <Icon icon={ ICON_CLOSE } on={ active(tab) } size={ 13 } />
                </TabClose>
              </TabCloseLink>
     }
