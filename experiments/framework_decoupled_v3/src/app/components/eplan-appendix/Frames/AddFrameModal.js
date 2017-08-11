@@ -8,14 +8,14 @@ import Button from 'framework/components/Widgets/Button'
 const AddFrameModal = ({ addFrameModalIsOpen, closeAddFrameModal, addNewFrame }) => {
     return (
         <div>
-            <ModalWindow isOpen={addFrameModalIsOpen} onRequestClose={closeAddFrameModal}>
+            <ModalWindow isOpen={addFrameModalIsOpen} onRequestClose={closeAddFrameModal} contentLabel="Tilføj ramme til kommuneplantillæg">
                 <ModalHeader>
                     <ModalHeaderIcon>
-                        <Icon icon={iconname.ICON_ADD_CIRCLE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_ADD_CIRCLE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderIcon>
                     <ModalHeaderTitle>Tilføj ramme til kommuneplantillæg</ModalHeaderTitle>
                     <ModalHeaderClose onClick={(e) => { e.preventDefault(); closeAddFrameModal() }}>
-                        <Icon icon={iconname.ICON_CLOSE} size="30" color={colors.MODAL_HEADER_ICON} active={true} />
+                        <Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
                     </ModalHeaderClose>
                 </ModalHeader>
                 <ModalContent>
