@@ -5,6 +5,6 @@ import tabs from './modules/tabs'
 //Import all custom Reducers from reducer.js inside custom_apps folder
 import * as custom from 'app/reducer'
 
-const reducer = {tabs,...custom}
+const reducer = { tabs, ...custom }
 
 export default reducer

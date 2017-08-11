@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
 import Icon from 'framework/assets/Icon'
-import {getColor} from 'framework/assets/colors'
+import { getColor } from 'framework/assets/colors'
 
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     padding: 20px;
-    font-family: ${(props)=> props.theme.font};
+    font-family: ${(props) => props.theme.font};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -19,8 +19,8 @@ export const TabLink = styled(Link)`
     text-decoration: none;
     height:100%;
     outline: 0;
-    color: ${(props)=> props.theme.tabs.TAB_TEXT};
-    font-family:  ${(props)=> props.theme.font};
+    color: ${(props) => props.theme.tabs.TAB_TEXT};
+    font-family:  ${(props) => props.theme.font};
     font-style: normal;
     font-size: 15px;
     font-weight: 300;
@@ -38,8 +38,8 @@ export const TabCloseLink = styled(Link)`
     text-decoration: none;
     height:100%;
     outline: 0;
-    color: ${(props)=> props.theme.tabs.TAB_TEXT};
-    font-family:  ${(props)=> props.theme.font};
+    color: ${(props) => props.theme.tabs.TAB_TEXT};
+    font-family:  ${(props) => props.theme.font};
     font-style: normal;
     font-size: 15px;
     font-weight: 300;
@@ -48,7 +48,7 @@ export const TabCloseLink = styled(Link)`
     `}
 `
 
-export const TabDiv=styled.div`
+export const TabDiv = styled.div`
 display:inline-flex;
 `
 export const TabList = styled.ul`
@@ -70,14 +70,14 @@ export const TabLabel = styled.li`
     display: inline-flex;
     height: 40px;
     line-height: 40px;
-    background-color:${(props)=> props.theme.tabs.TAB};
+    background-color:${(props) => props.theme.tabs.TAB};
     border-radius: 5px 5px 0px 0px;
      &:hover{
         background-color: ${getColor('TAB_COLOR_1')};
     }
     ${props => props.on === true && css`
-        background-color: ${(props)=> props.theme.tabs.TAB_SELECTED};
-        color: ${(props)=> props.theme.tabs.TAB_TEXT_SELECTED};
+        background-color: ${(props) => props.theme.tabs.TAB_SELECTED};
+        color: ${(props) => props.theme.tabs.TAB_TEXT_SELECTED};
     `}
    
     position:relative;

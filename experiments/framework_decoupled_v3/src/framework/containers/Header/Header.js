@@ -8,15 +8,15 @@ import { connect } from 'react-redux'
 
 
 class HeaderContainer extends Component {
-        render() {
-                return (
-                        <HeaderDiv>
-                          <Logo />
-                          <Search />
-                          <Notification />
-                        </HeaderDiv>
-                )
-        }
+	render() {
+		return (
+			<HeaderDiv>
+				<Logo />
+				<Search />
+				<Notification />
+			</HeaderDiv>
+		)
+	}
 }
 HeaderContainer.propTypes = {
 }
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
 })
 
 function mapDispatchToProps(dispatch) {
-        return bindActionCreators({}, dispatch)
+	return bindActionCreators({}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer)
