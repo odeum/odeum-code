@@ -6,8 +6,8 @@ import { history, store } from 'framework/store'
 
 
 ReactDOM.render(
-  <AppContainer store={ store } history={ history } />
-  ,
-  document.getElementById('root')
+	<AppContainer store = { store } history = { history } />
+	,
+	document.getElementById('root')
 )
 registerServiceWorker()
