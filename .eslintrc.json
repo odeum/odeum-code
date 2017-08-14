@@ -20,8 +20,14 @@
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "semi": ["error", "never"],
-        "indent": ["error", "tab"],
-
+        "indent": ["error", "tab", {"SwitchCase": 1}],
+        "comma-spacing": ["error", {"before": false, "after": true}],
+        "keyword-spacing": ["error", {"before": true, "after": true}],
+        "key-spacing": ["error", {"beforeColon": false, "afterColon": true}],
+        "object-curly-spacing": ["error", "always"],
+        "space-infix-ops": "error",
+        "space-before-blocks": "error",
+        "arrow-spacing": "error",
         "react/display-name": 0
     },
        "extends": [

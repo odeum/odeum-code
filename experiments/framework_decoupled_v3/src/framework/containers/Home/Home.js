@@ -37,16 +37,16 @@ class Home extends Component {
 	}
 	render() {
 		return (
-
+            
 			<ThemeProvider theme={theme}>
 				{this.state.loggedIn ?
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
-							<div style={{display: 'flex', height: 'calc(100vh - 140px)'}}>
+							<div style={{ display: 'flex', height: 'calc(100vh - 140px)' }}>
 								<MenuContainer />
 								<WorkspaceContainer>
-									<TabsContainer style={{border: 'solid 1px blue'}} id={this.props.activeScene} />
+									<TabsContainer style={{ border: 'solid 1px blue' }} id={this.props.activeScene} />
 									{this.props.children}
 								</WorkspaceContainer>
 							</div>
@@ -67,8 +67,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 //REFACTOR
 function mapDispatchToProps(dispatch) {
-	return{
-		onMount: ()=>{
+	return {
+		onMount: () => {
 			dispatch(getAppendixCfg())
 		}
 	}

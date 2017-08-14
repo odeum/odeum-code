@@ -13,65 +13,65 @@ import RowRenderer from './_rowRender'
 import moment from 'moment'
 
 export default class AppendixTable extends Component {
-  static propTypes = {
-    list: PropTypes.instanceOf(Immutable.List).isRequired
-  };
+				static propTypes = {
+					list: PropTypes.instanceOf(Immutable.List).isRequired
+				};
 
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-      disableExtraRows: false,
-      disableHeader: false,
-      hideIndexRow: true,
-      overscanRowCount: 10,
-      rowHeight: 40,
-      rowCount: this.props.list.size,
-      scrollToIndex: undefined,
-      sortBy: '',
-      sortDirection: SortDirection.ASC,
-      useDynamicRowHeight: false
-    }
-    this._linkRowRenderer = this._linkRowRenderer.bind(this)
-    this._getRowHeight = this._getRowHeight.bind(this)
-    this._headerRenderer = this._headerRenderer.bind(this)
-    this._noRowsRenderer = this._noRowsRenderer.bind(this)
-    this._onRowCountChange = this._onRowCountChange.bind(this)
-    this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
-    this._rowClassName = this._rowClassName.bind(this)
-    this._sort = this._sort.bind(this)
-    this._rowClicked = this._rowClicked.bind(this)
-  }
+				constructor(props, context) {
+					super(props, context)
+					this.state = {
+						disableExtraRows: false,
+						disableHeader: false,
+						hideIndexRow: true,
+						overscanRowCount: 10,
+						rowHeight: 40,
+						rowCount: this.props.list.size,
+						scrollToIndex: undefined,
+						sortBy: '',
+						sortDirection: SortDirection.ASC,
+						useDynamicRowHeight: false
+					}
+					this._linkRowRenderer = this._linkRowRenderer.bind(this)
+					this._getRowHeight = this._getRowHeight.bind(this)
+					this._headerRenderer = this._headerRenderer.bind(this)
+					this._noRowsRenderer = this._noRowsRenderer.bind(this)
+					this._onRowCountChange = this._onRowCountChange.bind(this)
+					this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
+					this._rowClassName = this._rowClassName.bind(this)
+					this._sort = this._sort.bind(this)
+					this._rowClicked = this._rowClicked.bind(this)
+				}
 
-  render() {
-    const {
-      disableHeader,
-      headerHeight,
-      hideIndexRow,
-      overscanRowCount,
-      rowHeight,
-      rowCount,
-      scrollToIndex,
-      sortBy,
-      sortDirection
-    } = this.state
+				render() {
+					const {
+						disableHeader,
+						headerHeight,
+						hideIndexRow,
+						overscanRowCount,
+						rowHeight,
+						rowCount,
+						scrollToIndex,
+						sortBy,
+						sortDirection
+					} = this.state
 
-    const { list } = this.props
-    const sortedList = this._isSortEnabled()
-      ? list
-        .sortBy(item => item[sortBy])
-        .update(list =>
-          sortDirection === SortDirection.DESC
-            ? list.reverse()
-            : list
-        )
-      : list
+					const { list } = this.props
+					const sortedList = this._isSortEnabled()
+						? list
+							.sortBy(item => item[sortBy])
+							.update(list =>
+								sortDirection === SortDirection.DESC
+									? list.reverse()
+									: list
+							)
+						: list
 
-    const rowGetter = ({ index }) => this._getDatum(sortedList, index)
+					const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
-    return (
-      <div style={{ width: '100%', height: '100%', clear: 'both' }}>
-        <ContentBox>
-          {/*  <label>
+					return (
+						<div style={{ width: '100%', height: '100%', clear: 'both' }}>
+							<ContentBox>	
+								{/*  <label>
             <input
              aria-label='Hide header?'
               checked={disableExtraRows}
@@ -104,10 +104,10 @@ export default class AppendixTable extends Component {
             />
             Hide header?&nbsp;
           </label> */}
-          {/*<InputRow>*/}
+								{/*<InputRow>*/}
 
-            {/* Row numbers display */}
-            {/*<SpanRowNr>
+								{/* Row numbers display */}
+								{/*<SpanRowNr>
               <Label>Vis</Label>
               <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
                 <option value={50}> 50</option>
@@ -119,8 +119,8 @@ export default class AppendixTable extends Component {
               <SearchInput /><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true} /></SearchButtonDiv>
             </SearchDiv>*/}
 
-            {/* SearchBar replace */}
-            {/*   <div>
+								{/* SearchBar replace */}
+								{/*   <div>
           <label>Scroll to:</label> <br/>
           <LabeledInput
             label='Scroll to'
@@ -156,224 +156,231 @@ export default class AppendixTable extends Component {
             value={overscanRowCount}
           />
           </div> */}
-          {/*</InputRow>*/}
-          {/* </div> */}
+								{/*</InputRow>*/}
+								{/* </div> */}
 
-        </ContentBox>
-        <AutoSizerDiv>
-          <AutoSizer >
-            {({ height, width }) => (
-                <Table
-                  ref='Table'
-                  disableHeader={disableHeader}
-                  headerHeight={headerHeight}
-                  height={height}
-                  headerRowRenderer={this._defaultHeaderRowRenderer}
-                  noRowsRenderer={this._noRowsRenderer}
-                  overscanRowCount={overscanRowCount}
-                  rowRenderer={RowRenderer}
-                  onRowClick={this._rowClicked}
-                  rowHeight={rowHeight}
-                  rowGetter={rowGetter}
-                  rowCount={rowCount}
-                  scrollToIndex={scrollToIndex}
-                  sort={this._sort}
-                  sortBy={sortBy}
-                  sortDirection={sortDirection}
-                  width={width}
-                >
-                  {!hideIndexRow &&
-                    <Column
-                      label='ID'
-                      dataKey='appendixId'
-                      disableSort={!this._isSortEnabled()}
-                      headerRenderer={this._headerRenderer}
-                      cellRenderer={
-                        ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
-                      }
-                      width={width}
-                      flexgrow={1}
-                    />
-                  }
-                  <Column
-                    width={width}
-                    minWidth={400}
-                    label='Navn'
-                    dataKey='name'
-                    disableSort={!this._isSortEnabled()}
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
-                    }
-                    flexgrow={1}
-                  />
-                  <Column
-                    width={width}
-                    maxWidth={100}
-                    label='Nummer'
-                    dataKey='number'
-                    disableSort={!this._isSortEnabled()}
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
-                    }
-                    flexgrow={1}
-                  />
-                  <Column
-                    width={width}
-                    maxWidth={50}
-                    label="Link"
-                    dataKey='folderUrl'
-                    headerRenderer={this._headerRenderer}
-                    disableSort
-                    cellRenderer={
-                      this._linkRowRenderer
-                    }
-                  />
-                  <Column
-                    width={width}
-                    maxWidth={150}
-                    label='Oprettelsesdato'
-                    dataKey='created'
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{moment(cellData).format('LL')}</Cell>)
-                    }
-                    flexgrow={1}
-                  />
-                  <Column
-                    width={width}
-                    maxWidth={100}
-                    label='Status'
-                    dataKey='status'
-                    headerRenderer={this._headerRenderer}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-                        (<Cell>{cellData}</Cell>)
-                    }
-                  />
-                  <Column
-                    width={width}
-                    label='Ansvarlig'
-                    dataKey='responsible'
-                    headerRenderer={this._headerRenderer}
-                    disableSort={!this._isSortEnabled()}
-                    cellRenderer={
-                      ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-                        (<Cell>{cellData}</Cell>)
-                    }
-                  />
-                </Table>
-              )}
-          </AutoSizer>
-        </AutoSizerDiv>
-        <div style={{ marginTop: '30px' }}> 1,2,3......</div>
-      </div>
-    )
-  }
-  _rowClicked({
-    event,
-    index,
-    rowData
-  }) {
-    this.props.onClickButton(rowData.appendixId)
-  }
-  _defaultHeaderRowRenderer({
-    className,
-    columns,
-    style
-  }) {
-    return <HeaderRow width={style.width}>
-      {columns}
-    </HeaderRow>
-  }
+							</ContentBox>
+							<AutoSizerDiv>
+								<AutoSizer >
+									{({ height, width }) => (
+										<Table
+											ref='Table'
+											disableHeader={disableHeader}
+											headerHeight={headerHeight}
+											height={height}
+											headerRowRenderer={this._defaultHeaderRowRenderer}
+											noRowsRenderer={this._noRowsRenderer}
+											overscanRowCount={overscanRowCount}
+											rowRenderer={RowRenderer}
+											onRowClick={this._rowClicked}
+											rowHeight={rowHeight}
+											rowGetter={rowGetter}
+											rowCount={rowCount}
+											scrollToIndex={scrollToIndex}
+											sort={this._sort}
+											sortBy={sortBy}
+											sortDirection={sortDirection}
+											width={width}>
+											{!hideIndexRow &&
 
-  _getDatum(list, index) {
-    return list.get(index % list.size)
-  }
+                                            <Column
+                                                label='ID'
+                                                dataKey='appendixId'
+                                                disableSort={!this._isSortEnabled()}
+                                                headerRenderer={this._headerRenderer}
+                                                cellRenderer={
+                                                    ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+                                                }
+                                                width={width}
+                                                flexgrow={1}
+                                            />
+											}
 
-  _getRowHeight({ index }) {
-    const { list } = this.props
+											<Column
+												width={width}
+												minWidth={400}
+												label='Navn'
+												dataKey='name'
+												disableSort={!this._isSortEnabled()}
+												headerRenderer={this._headerRenderer}
+												cellRenderer={
+													({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+												}
+												flexgrow={1}
+											/>
 
-    return this._getDatum(list, index).size
-  }
+											<Column
+												width={width}
+												maxWidth={100}
+												label='Nummer'
+												dataKey='number'
+												disableSort={!this._isSortEnabled()}
+												headerRenderer={this._headerRenderer}
+												cellRenderer={
+													({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+												}
+												flexgrow={1}
+											/>
 
-  _linkRowRenderer({ cellData,
-    columnData,
-    dataKey,
-    rowData, rowIndex
-    }) {
-    return <Cell onClick={(e) => {
-    }}>
-      <ListLink href={cellData} target="_blank">Vis</ListLink>
-    </Cell>
-  }
+											<Column
+												width={width}
+												maxWidth={50}
+												label="Link"
+												dataKey='folderUrl'
+												headerRenderer={this._headerRenderer}
+												disableSort
+												cellRenderer={
+													this._linkRowRenderer
+												}
+											/>
 
-  _headerRenderer({
-    columnData,
-    dataKey,
-    disableSort,
-    label,
-    sortBy,
-    sortDirection
-  }) {
-    return (
-      <HeaderCell>
-        {label}
-        {sortBy === dataKey &&
-          <SortIndicator sortDirection={sortDirection} />
-        }
-      </HeaderCell>
-    )
-  }
+											<Column
+												width={width}
+												maxWidth={150}
+												label='Oprettelsesdato'
+												dataKey='created'
+												headerRenderer={this._headerRenderer}
+												cellRenderer={
+													({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{moment(cellData).format('LL')}</Cell>)
+												}
+												flexgrow={1}
+											/>
 
-  _isSortEnabled() {
-    const { list } = this.props
-    const { rowCount } = this.state
+											<Column
+												width={width}
+												maxWidth={100}
+												label='Status'
+												dataKey='status'
+												headerRenderer={this._headerRenderer}
+												cellRenderer={
+													({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+														(<Cell>{cellData}</Cell>)
+												}
+											/>
 
-    return rowCount <= list.size
-  }
+											<Column
+												width={width}
+												label='Ansvarlig'
+												dataKey='responsible'
+												headerRenderer={this._headerRenderer}
+												disableSort={!this._isSortEnabled()}
+												cellRenderer={
+													({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+														(<Cell>{cellData}</Cell>)
+												}
+											/>
 
-  _noRowsRenderer() {
-    return (
-      <NoRows>
-        No rows
-      </NoRows>
-    )
-  }
+										</Table>
+									)}
+								</AutoSizer>
+							</AutoSizerDiv>
+							<div style={{ marginTop: '30px' }}> 1,2,3......</div>
+						</div>
+					)
+				}
+				_rowClicked({
+					event,
+					index,
+					rowData
+				}) {
+					this.props.onClickButton(rowData.appendixId)
+				}
+				_defaultHeaderRowRenderer({
+					className,
+					columns,
+					style
+				}) {
+					return <HeaderRow width={style.width}>
+						{columns}
+					</HeaderRow>
+				}
 
-  _onRowCountChange(event) {
-    const rowCount = parseInt(event.target.value, 10) || 0
+				_getDatum(list, index) {
+					return list.get(index % list.size)
+				}
 
-    this.setState({ rowCount })
-  }
+				_getRowHeight({ index }) {
+					const { list } = this.props
 
-  _onScrollToRowChange(event) {
-    const { rowCount } = this.state
-    let scrollToIndex = Math.min(rowCount - 1, parseInt(event.target.value, 10))
+					return this._getDatum(list, index).size
+				}
 
-    if (isNaN(scrollToIndex)) {
-      scrollToIndex = undefined
-    }
+				_linkRowRenderer({ cellData,
+					columnData,
+					dataKey,
+					rowData, rowIndex
+				}) {
+					return <Cell onClick={(e) => {
+					}}>
+						<ListLink href={cellData} target="_blank">Vis</ListLink>
+					</Cell>
+				}
 
-    this.setState({ scrollToIndex })
-  }
+				_headerRenderer({
+					columnData,
+					dataKey,
+					disableSort,
+					label,
+					sortBy,
+					sortDirection
+				}) {
+					return (
+						<HeaderCell>
+							{label}
+							{sortBy === dataKey &&
+																				<SortIndicator sortDirection={sortDirection} />
+							}
+						</HeaderCell>
+					)
+				}
 
-  _rowClassName({ index }) {
-    if (index < 0) {
-      return 'evenRow'
-    } else {
-      return index % 2 === 0 ? 'evenRow' : 'oddRow'
-    }
-  }
+				_isSortEnabled() {
+					const { list } = this.props
+					const { rowCount } = this.state
 
-  _sort({ sortBy, sortDirection }) {
-    this.setState({ sortBy, sortDirection })
-  }
+					return rowCount <= list.size
+				}
 
-  _updateUseDynamicRowHeight(value) {
-    this.setState({
-      useDynamicRowHeight: value
-    })
-  }
+				_noRowsRenderer() {
+					return (
+						<NoRows>
+                No rows
+						</NoRows>
+					)
+				}
+
+				_onRowCountChange(event) {
+					const rowCount = parseInt(event.target.value, 10) || 0
+
+					this.setState({ rowCount })
+				}
+
+				_onScrollToRowChange(event) {
+					const { rowCount } = this.state
+					let scrollToIndex = Math.min(rowCount - 1, parseInt(event.target.value, 10))
+
+					if (isNaN(scrollToIndex)) {
+						scrollToIndex = undefined
+					}
+
+					this.setState({ scrollToIndex })
+				}
+
+				_rowClassName({ index }) {
+					if (index < 0) {
+						return 'evenRow'
+					} else {
+						return index % 2 === 0 ? 'evenRow' : 'oddRow'
+					}
+				}
+
+				_sort({ sortBy, sortDirection }) {
+					this.setState({ sortBy, sortDirection })
+				}
+
+				_updateUseDynamicRowHeight(value) {
+					this.setState({
+						useDynamicRowHeight: value
+					})
+				}
 }

@@ -1,4 +1,4 @@
-import styled,{keyframes} from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Div = styled.div`
     width: 100%;
@@ -8,18 +8,20 @@ export const Div = styled.div`
     overflow-y: scroll;
     box-sizing: border-box;
 `
+
 const fadeIn = keyframes`
-from{
-   /*  transform:translateY(-100%); */
-    opacity:0;
-    width:100%;
-}
-to{
-/*     transform:translateY(0%); */
-    opacity:1;
-    width:100%;
-}
+    from{
+    /*  transform:translateY(-100%); */
+        opacity:0;
+        width:100%;
+    }
+    to{
+    /*     transform:translateY(0%); */
+        opacity:1;
+        width:100%;
+    }
 `
+
 export const PrimaryContainer = styled.div`
 /*    animation: ${fadeIn} 0.7s ease-in-out;*/
     width: 100%;

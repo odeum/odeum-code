@@ -3,12 +3,12 @@ import styled, { ThemeProvider } from 'styled-components'
 import theme from './theme'
 import * as colors from './colors'
 
-export const Layout = ({children}) => {
-    return(
+export const Layout = ({ children }) => {
+	return (
         <ThemeProvider theme={theme}>
             { children }
         </ThemeProvider>
-    )
+	)
 }
 
 export const Wrapper = styled.section`

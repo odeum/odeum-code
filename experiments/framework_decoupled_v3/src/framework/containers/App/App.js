@@ -5,18 +5,18 @@ import { Router } from 'react-router'
 import rootRoute from './rootRoute'
 
 class AppContainer extends Component {
-    render() {
-        return (
-            <Provider store={ this.props.store }>
-              <Router history={ this.props.history } routes={ rootRoute } />
-            </Provider>
-        )
-    }
+	render() {
+		return (
+			<Provider store={this.props.store}>
+				<Router history={this.props.history} routes={rootRoute} />
+			</Provider>
+		)
+	}
 }
 
 AppContainer.propTypes = {
-    history: PropTypes.object.isRequired,
-    store: PropTypes.object.isRequired
+	history: PropTypes.object.isRequired,
+	store: PropTypes.object.isRequired
 }
 
 export default AppContainer

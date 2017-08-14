@@ -1,27 +1,27 @@
-import {createSelector} from 'reselect'
+import { createSelector } from 'reselect'
 var _ = require('lodash')
 
-export const getInstance=(state,props)=>
+export const getInstance = (state, props) =>
 { 
-    var instance=_.find(state.tabs.tabInstance,function (instance) {
-   return instance.id === props.id ? instance: null
-})
-    return instance
+	var instance = _.find(state.tabs.tabInstance, function (instance) {
+		return instance.id === props.id ? instance : null
+	})
+	return instance
 }
 
-export const getTabs=(state,props)=>{
+export const getTabs = (state, props) => {
 
-var instance=_.find(state.tabs.tabInstance,function (instance) {
-   return instance.id === props.id ? instance: null
-})
-return instance.tabs
+	var instance = _.find(state.tabs.tabInstance, function (instance) {
+		return instance.id === props.id ? instance : null
+	})
+	return instance.tabs
 }
-export const makeGetTabInstance = () =>{
-    return createSelector(
-        [getInstance],
-        (tabInstance) =>{
-            return tabInstance
-        }
-    )
+export const makeGetTabInstance = () => {
+	return createSelector(
+		[getInstance],
+		(tabInstance) => {
+			return tabInstance
+		}
+	)
 }
 

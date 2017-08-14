@@ -7,8 +7,8 @@ import ColorPalette from './components/ColorPalette'
 /*eslint-enable*/
 
 class App extends Component {
-    render() {
-        return (
+	render() {
+		return (
             <div>
                 <Wrapper>
                 <Layout>
@@ -24,8 +24,8 @@ class App extends Component {
                 <Room />
                 <ColorPalette />
             </div>
-        )    
-    }
+		)    
+	}
 }
 
 export default App
