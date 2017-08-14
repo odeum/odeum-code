@@ -19,7 +19,7 @@
     "react-icons": "^2.2.3",
     "react-modal": "^2.2.2",
     "react-pdf-js": "^2.0.1",
-    "react-quill": "^1.0.0",
+    "react-quill": "^1.1.0",
     "react-redux": "^5.0.4",
     "react-router": "^3.0.2",
     "react-router-redux": "^4.0.8",
