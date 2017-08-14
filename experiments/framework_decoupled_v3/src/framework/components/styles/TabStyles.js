@@ -6,7 +6,7 @@ import { getColor } from 'framework/assets/colors'
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
     /*padding: 20px;*/
-    font-family: ${(props)=> props.theme.font};
+    font-family: ${(props) => props.theme.font};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

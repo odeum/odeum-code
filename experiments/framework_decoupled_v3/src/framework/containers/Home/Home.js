@@ -32,7 +32,11 @@ class Home extends Component {
 		this.handleLogin = this.handleLogin.bind(this)
 		this.props.onMount()
 	}
+<<<<<<< HEAD
 	handleLogin() {
+=======
+	handleLogin(){
+>>>>>>> b9e26af4a5d935f0d8a078dc29ee9aa6983ff9a0
 		this.setState({ loggedIn: true })
 	}
 	render() {
@@ -43,6 +47,7 @@ class Home extends Component {
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
+<<<<<<< HEAD
 							<div style={{ display: 'flex', height: 'calc(100vh - 140px)' }}>
 								<MenuContainer />
 								<WorkspaceContainer>
@@ -54,6 +59,15 @@ class Home extends Component {
 						</HomeDiv>
 					</div>
 					: <LoginContainer handleLogin={this.handleLogin} />}
+=======
+							<MenuContainer />
+							<TabsContainer id={this.props.activeScene} />
+							{ this.props.children }
+							<FooterContainer />
+						</HomeDiv>
+					</div>
+					: <LoginContainer handleLogin={this.handleLogin}/>}
+>>>>>>> b9e26af4a5d935f0d8a078dc29ee9aa6983ff9a0
 			</ThemeProvider>
 		)
 	}

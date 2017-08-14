@@ -3,13 +3,13 @@ import { Link } from 'react-router'
 import Icon from 'framework/assets/Icon'
 
 export const MenuDiv = styled.div`
-  clear: both;
-  background-color: #3b97d3;
-  width: 250px;
-  float: left;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  align-items: stretch;
+    clear: both;
+    background-color: #3b97d3;
+    width: 250px;
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: stretch;
 `
 
 export const MenuPanelDiv = styled.div`
