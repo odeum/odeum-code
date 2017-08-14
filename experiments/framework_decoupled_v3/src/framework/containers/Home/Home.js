@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 //Styles
-import { HomeDiv } from '../styles/AppStyles'
+import { HomeDiv, WorkspaceContainer } from '../styles/AppStyles'
 import theme from 'framework/assets/theme'
 import { ThemeProvider } from 'styled-components'
 
@@ -43,9 +43,13 @@ class Home extends Component {
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
-							<MenuContainer />
-							<TabsContainer id={this.props.activeScene} />
-							{this.props.children}
+							<div style={{display: 'flex', height: 'calc(100vh - 140px)'}}>
+								<MenuContainer />
+								<WorkspaceContainer>
+									<TabsContainer style={{border: 'solid 1px blue'}} id={this.props.activeScene} />
+									{this.props.children}
+								</WorkspaceContainer>
+							</div>
 							<FooterContainer />
 						</HomeDiv>
 					</div>
@@ -63,12 +67,12 @@ const mapStateToProps = (state, ownProps) => ({
 })
 //REFACTOR
 function mapDispatchToProps(dispatch) {
-	return {
-		onMount: () => {
+	return{
+		onMount: ()=>{
 			dispatch(getAppendixCfg())
 		}
 	}
-
+    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

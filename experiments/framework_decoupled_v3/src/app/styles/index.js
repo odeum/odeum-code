@@ -1,15 +1,12 @@
 import styled,{keyframes} from 'styled-components'
 
 export const Div = styled.div`
-    float: left;
-    width: calc(100% - 330px);
-    height: calc(100vh - 260px);
+    width: 100%;
+    height: 100%;
     padding: 20px;
-    background: #ecf0f1;
-    background: #fff;
-    margin-left: 20px;
-    margin-right: 20px;
+    background-color: #fff;
     overflow-y: scroll;
+    box-sizing: border-box;
 `
 const fadeIn = keyframes`
 from{
@@ -27,10 +24,12 @@ export const PrimaryContainer = styled.div`
 /*    animation: ${fadeIn} 0.7s ease-in-out;*/
     width: 100%;
     height: 100%;
-`
+    padding-top: 10px;
+    padding-bottom: 20px;
+    `
 
 export const SecondaryContainer = styled(PrimaryContainer)`
-    padding: 20px;
+   /* padding: 20px;*/
     box-sizing: border-box;
 `
 

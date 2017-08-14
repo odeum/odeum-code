@@ -5,13 +5,13 @@ import {getColor} from 'framework/assets/colors'
 
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
-    padding: 20px;
+    /*padding: 20px;*/
     font-family: ${(props)=> props.theme.font};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     background-color: #fff;
-    border-radius: 0px 5px 5px 5px;
+    border-radius: 0px 4px 4px 4px;
     overflow: scroll;
 `
 export const TabLink = styled(Link)`
@@ -55,7 +55,7 @@ export const TabList = styled.ul`
     height: 40px;
     margin: 0;
     padding: 0;
-    padding: 20px 0px 0px 20px;
+    /*padding: 20px 0px 0px 20px;*/
     overflow-y: hidden;
 `
 export const TabClose = styled.div`

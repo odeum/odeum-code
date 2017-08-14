@@ -6,10 +6,10 @@ export const MenuDiv = styled.div`
   clear: both;
   background-color: #3b97d3;
   width: 250px;
-  height: calc(100vh - 180px);
   float: left;
   padding-top: 20px;
   padding-bottom: 20px;
+  align-items: stretch;
 `
 
 export const MenuPanelDiv = styled.div`
