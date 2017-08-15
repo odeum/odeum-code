@@ -1,11 +1,9 @@
 module.exports = {
-	path: 'list/:id',
+	path: 'frames/:frameid',
 	getChildRoutes(location, cb) {
 		require.ensure([], (require) => {
 			cb(null, [
 				require('./Edit/route.js'),
-				require('./Frames/route.js'),
-				require('./Frame/route.js'),
 			])
 		})
 	},
