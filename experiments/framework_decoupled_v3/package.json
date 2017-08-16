@@ -31,7 +31,7 @@
     "redux-form": "^6.7.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
-    "styled-components": "^1.4.5",
+    "styled-components": "^2.1.2",
     "styled-normalize": "^1.0.0"
   },
   "homepage": "",
