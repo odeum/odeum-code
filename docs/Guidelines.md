@@ -6,96 +6,97 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 <!-- TOC -->
 
 - [1. ODEUM CodeJS Github repository](#1-odeum-codejs-github-repository)
-    - [1.1. Github access and usage (branches)](#11-github-access-and-usage-branches)
+	- [1.1. Github access and usage (branches)](#11-github-access-and-usage-branches)
 - [2. Must-read and tutorials (will update continously)](#2-must-read-and-tutorials-will-update-continously)
-    - [2.1. Technology (preffered dependency list)](#21-technology-preffered-dependency-list)
-    - [2.2. Technology (validated dependencies)](#22-technology-validated-dependencies)
-    - [2.3. Articles](#23-articles)
-    - [2.4. Video tutorials](#24-video-tutorials)
+	- [2.1. Technology (preffered dependency list)](#21-technology-preffered-dependency-list)
+	- [2.2. Technology (validated dependencies)](#22-technology-validated-dependencies)
+	- [2.3. Articles](#23-articles)
+	- [2.4. Video tutorials](#24-video-tutorials)
 - [3. Hackathons](#3-hackathons)
 - [4. ODEUM CodeJS App Components Reference Guide](#4-odeum-codejs-app-components-reference-guide)
-    - [4.1. Naming Conventions](#41-naming-conventions)
-    - [4.2. Create-React-App (CRA)](#42-create-react-app-cra)
-    - [4.3. Experiments GitHub Setup Instructions](#43-experiments-github-setup-instructions)
+	- [4.1. Naming Conventions](#41-naming-conventions)
+	- [4.2. Create-React-App (CRA)](#42-create-react-app-cra)
+	- [4.3. Experiments GitHub Setup Instructions](#43-experiments-github-setup-instructions)
 - [5. Experiments (initial developer experiments)](#5-experiments-initial-developer-experiments)
-    - [5.1. Working with the ODEUM CodeJS framework (evolution)](#51-working-with-the-odeum-codejs-framework-evolution)
-    - [5.2. Contributors (primary):](#52-contributors-primary)
-    - [5.3. Experiments location](#53-experiments-location)
-    - [5.4. Experiments List](#54-experiments-list)
-        - [5.4.1. Codesplitting / PRPL (codesplitting)](#541-codesplitting--prpl-codesplitting)
-        - [5.4.2. Framework (framework)](#542-framework-framework)
-        - [5.4.3. Themes and themable components in ODEUM CodeJS (theme)](#543-themes-and-themable-components-in-odeum-codejs-theme)
-        - [5.4.4. Footerlabel](#544-footerlabel)
-        - [5.4.5. Localization & Strings (internationalization and language support)](#545-localization--strings-internationalization-and-language-support)
-        - [5.4.6. Redux Forms (redux-form)](#546-redux-forms-redux-form)
-        - [5.4.7. Datagrid/Datatables](#547-datagriddatatables)
-        - [5.4.8. React Drag and Drop (react-dnd)](#548-react-drag-and-drop-react-dnd)
-        - [5.4.9. Page Not Found (404) module](#549-page-not-found-404-module)
-        - [5.4.10. WYSIWYG editor (draftjs)](#5410-wysiwyg-editor-draftjs)
-        - [5.4.11. Skeleton Loading](#5411-skeleton-loading)
-        - [5.4.12. PDF Generator](#5412-pdf-generator)
-        - [5.4.13. GraphQL + Redux](#5413-graphql--redux)
-        - [5.4.14. Creating NPM packages containing our framework](#5414-creating-npm-packages-containing-our-framework)
-            - [5.4.14.1. Multi Component NPM package](#54141-multi-component-npm-package)
-            - [5.4.14.2. Single Component NPM packages](#54142-single-component-npm-packages)
-        - [5.4.15. Demo App to Connect to the ODEUM CodeJS framework](#5415-demo-app-to-connect-to-the-odeum-codejs-framework)
-        - [5.4.16. Full-screen presentations (ODEUM Sales Manager/ODEUM Report)](#5416-full-screen-presentations-odeum-sales-managerodeum-report)
-        - [5.4.17. ODEUM Telemetry Services](#5417-odeum-telemetry-services)
-        - [5.4.18. Login](#5418-login)
-        - [5.4.19. REST and components API documentation platform/style](#5419-rest-and-components-api-documentation-platformstyle)
-        - [5.4.20. REST API implementation experiments](#5420-rest-api-implementation-experiments)
-        - [5.4.21. IAM - Identity and Access Management](#5421-iam---identity-and-access-management)
-        - [5.4.22. App ID + Token Creator](#5422-app-id--token-creator)
-        - [5.4.23. ODEUM CodeJS website](#5423-odeum-codejs-website)
-        - [5.4.24. Deployment](#5424-deployment)
-        - [5.4.25. JavaScript Style Guide](#5425-javascript-style-guide)
-        - [5.4.26. Debugging with Chrome in VS Code](#5426-debugging-with-chrome-in-vs-code)
-        - [5.4.27. Test setup scenarios](#5427-test-setup-scenarios)
-        - [5.4.28. Help Server (Help Items)](#5428-help-server-help-items)
-        - [5.4.29. Responsiveness](#5429-responsiveness)
-        - [5.4.30. Search Server](#5430-search-server)
-        - [5.4.31. Filename Refactoring (VSCode Extension)](#5431-filename-refactoring-vscode-extension)
-        - [5.4.32. ODEUM Slack Service](#5432-odeum-slack-service)
-        - [5.4.33. ODEUM CodeJS Tutorial Site](#5433-odeum-codejs-tutorial-site)
+	- [5.1. Working with the ODEUM CodeJS framework (evolution)](#51-working-with-the-odeum-codejs-framework-evolution)
+	- [5.2. Contributors (primary):](#52-contributors-primary)
+	- [5.3. Experiments location](#53-experiments-location)
+	- [5.4. Experiments List](#54-experiments-list)
+		- [5.4.1. Codesplitting / PRPL (codesplitting)](#541-codesplitting--prpl-codesplitting)
+		- [5.4.2. Framework (framework)](#542-framework-framework)
+		- [5.4.3. Themes and themable components in ODEUM CodeJS (theme)](#543-themes-and-themable-components-in-odeum-codejs-theme)
+		- [5.4.4. Footerlabel](#544-footerlabel)
+		- [5.4.5. Localization & Strings (internationalization and language support)](#545-localization--strings-internationalization-and-language-support)
+		- [5.4.6. Redux Forms (redux-form)](#546-redux-forms-redux-form)
+		- [5.4.7. Datagrid/Datatables](#547-datagriddatatables)
+		- [5.4.8. React Drag and Drop (react-dnd)](#548-react-drag-and-drop-react-dnd)
+		- [5.4.9. Page Not Found (404) module](#549-page-not-found-404-module)
+		- [5.4.10. WYSIWYG editor (draftjs)](#5410-wysiwyg-editor-draftjs)
+		- [5.4.11. Skeleton Loading](#5411-skeleton-loading)
+		- [5.4.12. PDF Generator](#5412-pdf-generator)
+		- [5.4.13. GraphQL + Redux](#5413-graphql--redux)
+		- [5.4.14. Creating NPM packages containing our framework](#5414-creating-npm-packages-containing-our-framework)
+			- [5.4.14.1. Multi Component NPM package default import (odeum-codejs)](#54141-multi-component-npm-package-default-import-odeum-codejs)
+			- [5.4.14.2. Multi components as named exports](#54142-multi-components-as-named-exports)
+			- [5.4.14.3. Single Component NPM packages](#54143-single-component-npm-packages)
+		- [5.4.15. Demo App to Connect to the ODEUM CodeJS framework](#5415-demo-app-to-connect-to-the-odeum-codejs-framework)
+		- [5.4.16. Full-screen presentations (ODEUM Sales Manager/ODEUM Report)](#5416-full-screen-presentations-odeum-sales-managerodeum-report)
+		- [5.4.17. ODEUM Telemetry Services](#5417-odeum-telemetry-services)
+		- [5.4.18. Login](#5418-login)
+		- [5.4.19. REST and components API documentation platform/style](#5419-rest-and-components-api-documentation-platformstyle)
+		- [5.4.20. REST API implementation experiments](#5420-rest-api-implementation-experiments)
+		- [5.4.21. IAM - Identity and Access Management](#5421-iam---identity-and-access-management)
+		- [5.4.22. App ID + Token Creator](#5422-app-id--token-creator)
+		- [5.4.23. ODEUM CodeJS website](#5423-odeum-codejs-website)
+		- [5.4.24. Deployment](#5424-deployment)
+		- [5.4.25. JavaScript Style Guide](#5425-javascript-style-guide)
+		- [5.4.26. Debugging with Chrome in VS Code](#5426-debugging-with-chrome-in-vs-code)
+		- [5.4.27. Test setup scenarios](#5427-test-setup-scenarios)
+		- [5.4.28. Help Server (Help Items)](#5428-help-server-help-items)
+		- [5.4.29. Responsiveness](#5429-responsiveness)
+		- [5.4.30. Search Server](#5430-search-server)
+		- [5.4.31. Filename Refactoring (VSCode Extension)](#5431-filename-refactoring-vscode-extension)
+		- [5.4.32. ODEUM Slack Service](#5432-odeum-slack-service)
+		- [5.4.33. ODEUM CodeJS Tutorial Site](#5433-odeum-codejs-tutorial-site)
 - [6. Apps](#6-apps)
-    - [6.1. ODEUM ThemeBuilder](#61-odeum-themebuilder)
-    - [6.2. ODEUM HelpBuilder](#62-odeum-helpbuilder)
-    - [6.3. ODEUM AppBuilder](#63-odeum-appbuilder)
-    - [6.4. ODEUM ComponentBuilder](#64-odeum-componentbuilder)
-    - [6.5. GeoCloud2 (GC2) porting](#65-geocloud2-gc2-porting)
-    - [6.6. ODEUM Connect](#66-odeum-connect)
-    - [6.7. ODEUM Dashboard](#67-odeum-dashboard)
-    - [6.8. ODEUM Help Server](#68-odeum-help-server)
-    - [6.9. ODEUM Search Server](#69-odeum-search-server)
-    - [6.10. ODEUM Backup Services](#610-odeum-backup-services)
-    - [6.11. ODEUM Native App (Electron)](#611-odeum-native-app-electron)
+	- [6.1. ODEUM ThemeBuilder](#61-odeum-themebuilder)
+	- [6.2. ODEUM HelpBuilder](#62-odeum-helpbuilder)
+	- [6.3. ODEUM AppBuilder](#63-odeum-appbuilder)
+	- [6.4. ODEUM ComponentBuilder](#64-odeum-componentbuilder)
+	- [6.5. GeoCloud2 (GC2) porting](#65-geocloud2-gc2-porting)
+	- [6.6. ODEUM Connect](#66-odeum-connect)
+	- [6.7. ODEUM Dashboard](#67-odeum-dashboard)
+	- [6.8. ODEUM Help Server](#68-odeum-help-server)
+	- [6.9. ODEUM Search Server](#69-odeum-search-server)
+	- [6.10. ODEUM Backup Services](#610-odeum-backup-services)
+	- [6.11. ODEUM Native App (Electron)](#611-odeum-native-app-electron)
 - [7. Icons](#7-icons)
-    - [7.1. Icons location](#71-icons-location)
+	- [7.1. Icons location](#71-icons-location)
 - [8. Future Technology ideas](#8-future-technology-ideas)
-    - [8.1. GraphQL](#81-graphql)
-    - [8.2. Data Branching (SS)](#82-data-branching-ss)
-    - [8.3. Point of failure:](#83-point-of-failure)
-    - [8.4. Using a failover loader](#84-using-a-failover-loader)
-    - [8.5. Offline-first approach](#85-offline-first-approach)
+	- [8.1. GraphQL](#81-graphql)
+	- [8.2. Data Branching (SS)](#82-data-branching-ss)
+	- [8.3. Point of failure:](#83-point-of-failure)
+	- [8.4. Using a failover loader](#84-using-a-failover-loader)
+	- [8.5. Offline-first approach](#85-offline-first-approach)
 - [9. Folder Structure Convention](#9-folder-structure-convention)
-    - [9.1. Source files](#91-source-files)
-    - [9.2. Public static source files](#92-public-static-source-files)
-    - [9.3. Folder Structure Convention example for ODEUM Report Web App](#93-folder-structure-convention-example-for-odeum-report-web-app)
+	- [9.1. Source files](#91-source-files)
+	- [9.2. Public static source files](#92-public-static-source-files)
+	- [9.3. Folder Structure Convention example for ODEUM Report Web App](#93-folder-structure-convention-example-for-odeum-report-web-app)
 - [10. JavaScript and React Style Guide](#10-javascript-and-react-style-guide)
-    - [10.1. Guidelines](#101-guidelines)
-    - [10.2. PropTypes](#102-proptypes)
-    - [10.3. Components](#103-components)
-        - [10.3.1. Stateless components (presentational components)](#1031-stateless-components-presentational-components)
-        - [10.3.2. Stateful components (container components)](#1032-stateful-components-container-components)
+	- [10.1. Guidelines](#101-guidelines)
+	- [10.2. PropTypes](#102-proptypes)
+	- [10.3. Components](#103-components)
+		- [10.3.1. Stateless components (presentational components)](#1031-stateless-components-presentational-components)
+		- [10.3.2. Stateful components (container components)](#1032-stateful-components-container-components)
 - [11. Visual Studio Code Extensions](#11-visual-studio-code-extensions)
-    - [11.1. Atom Keymap](#111-atom-keymap)
-    - [11.2. Babel ES6/ES7](#112-babel-es6es7)
-    - [11.3. Debugger for Chrome](#113-debugger-for-chrome)
-    - [11.4. ESLint](#114-eslint)
-    - [11.5. NPM Intellisense](#115-npm-intellisense)
-    - [11.6. React Native Tools](#116-react-native-tools)
-    - [11.7. Reactjs code snippets](#117-reactjs-code-snippets)
-    - [11.8. vscode-styled-components](#118-vscode-styled-components)
+	- [11.1. Atom Keymap](#111-atom-keymap)
+	- [11.2. Babel ES6/ES7](#112-babel-es6es7)
+	- [11.3. Debugger for Chrome](#113-debugger-for-chrome)
+	- [11.4. ESLint](#114-eslint)
+	- [11.5. NPM Intellisense](#115-npm-intellisense)
+	- [11.6. React Native Tools](#116-react-native-tools)
+	- [11.7. Reactjs code snippets](#117-reactjs-code-snippets)
+	- [11.8. vscode-styled-components](#118-vscode-styled-components)
 - [12. ESLINT (linting)](#12-eslint-linting)
 - [13. Absolute imports (still no working solutions)](#13-absolute-imports-still-no-working-solutions)
 - [14. ODEUM API](#14-odeum-api)
@@ -354,51 +355,56 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 A big question is whether ODEUM CodeJS UI framework should transform into an NPM modulized solution or remain a documented templating/boilerplate platform. NPM might be another path to follow for making easier updates to both internal and external development of ODEUM CodeJS Apps and hence deployment builds. 
 
 - Which parts if not all can be packaged?
-- NPM package naming convention (if not just all in one package)
-    - odeum-codejs
-    - odeum-connect
-    - odeum-api
-    - odeum-ui
-    - odeum-icons
-    - odeum-help
-    - odeum-search
-    - odeum-messages
-    - odeum-notifications
-    - odeum-store
-    - odeum-login
-    - odeum-apps
 
-#### 5.4.14.1. Multi Component NPM package
+#### 5.4.14.1. Multi Component NPM package default import (odeum-codejs)
+
 ```js
 import App from 'odeum-codejs/components/App'
 import Icon from 'odeum-codejs/components/Icon'
 import Tabs from 'odeum-codejs/components/Tabs'
+import TabsList from 'odeum-codejs/components/TabsList'
 import Search from 'odeum-codejs/components/Search'
 import Help from 'odeum-codejs/components/Help'
 import Header from 'odeum-codejs/components/Header'
 import Notifications from 'odeum-codejs/components/Notifications'
 import Telemetry from 'odeum-codejs/components/Telemetry'
 
-// or multi components as named exports
-
-import { App, Icon, Tabs, Search ... } from 'odeum-codejs/components'
-
 <App>
     {contents}
 </App>
 ```
+#### 5.4.14.2. Multi components as named exports
 
-#### 5.4.14.2. Single Component NPM packages
 ```js
-import App from 'odeum-app'
-import Icon from 'odeum-icons'
-import Telemetry from 'odeum-telemetry'
+import { App, Icon, Tabs, Search ... } from 'odeum-codejs'
 
 <App>
     {contents}
 </App>
 ```
 
+#### 5.4.14.3. Single Component NPM packages
+
+```js
+import App from 'odeum-core'
+import Api from 'odeum-api'
+import Icon from 'odeum-icons'
+import { Tabs, TabsList } from 'odeum-tabs'
+import Help from 'odeum-help'
+import Search from 'odeum-search'
+import Messages from 'odeum-messages'
+import Notifications from 'odeum-notifications'
+import Login from 'odeum-login'
+import ThemeProvider from 'odeum-theme'
+import Store from 'odeum-store'
+import Localiser from 'odeum-localise'
+import Telemetry from 'odeum-telemetry'
+import Dashboard from 'odeum-dashboard'
+
+<App>
+    {contents}
+</App>
+```
 
 ### 5.4.15. Demo App to Connect to the ODEUM CodeJS framework
 - ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems (schenes), search items, help items, login, routes (schenes) etc. We need a simple Demo App to test this symbiotic connection. The framework manages the state for the app 
@@ -762,7 +768,7 @@ Popular Atom keybindings for Visual Studio Code (by Microsoft)
 [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
 # 12. ESLINT (linting)
-To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. 
+To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. See [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for more info on rules. 
 
 ```json
 {
@@ -787,7 +793,14 @@ To set up ESLINT in VSCODE for proper use with React create the following .eslin
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "semi": ["error", "never"],
-
+        "indent": ["error", "tab", {"SwitchCase": 1}],
+        "comma-spacing": ["error", {"before": false, "after": true}],
+        "keyword-spacing": ["error", {"before": true, "after": true}],
+        "key-spacing": ["error", {"beforeColon": false, "afterColon": true}],
+        "object-curly-spacing": ["error", "always"],
+        "space-infix-ops": "error",
+        "space-before-blocks": "error",
+        "arrow-spacing": "error",
         "react/display-name": 0
     },
        "extends": [
@@ -816,14 +829,14 @@ The Hub facilitates the following services in-a-box:
 - Login Service Provider
 - User Database Manager
 - App Database Manager
-- Update Manager
 - Document Storage (x GB per month)
 - Database (x GB per month)
 - Themes & Theme Editor (ThemeProvider)
+- App Templates
 - Hotline and chat support from ODEUM CodeJS developers
 ```
 
 ODEUM 2GO is designed and build with ODEUM CodeJS
 
-https://www.reindex.io
-https://cloud.docker.com
+- [Reindex](https://www.reindex.io)
+- [Docker Cloud](https://cloud.docker.com)

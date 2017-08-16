@@ -15,10 +15,10 @@ class NotFound extends Component {
 				<ImgDiv>
 					<Img src={ HeaderLogo } alt="Logo" />
 				</ImgDiv>
-				<E404> 404 Not Found</E404>
-				<ErrMsg> Welcome to the dark side!
-					<br/> We have cookies! </ErrMsg>
-				<ErrMsg2>There's nothing to see here... so you should go back </ErrMsg2>
+				<E404>404 Not Found</E404>
+				<ErrMsg>Welcome to the dark ... well ... blue side!
+					<br/>We have cookies!</ErrMsg>
+				<ErrMsg2>There's absolutely nothing to see here ... so you should go back and go about your business!</ErrMsg2>
 			</Div>
 		)
 	}
