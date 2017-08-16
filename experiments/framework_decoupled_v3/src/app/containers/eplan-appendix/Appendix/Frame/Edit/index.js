@@ -40,7 +40,7 @@ function mapDispatchToProps(dispatch) {
 			// dispatch(removeOpenApdx(param))
 		},
 		// publishToPlanSystem: async (id) => {
-		// 	return dispatch(await publishAppendixToPlansystemAsync(id))
+		// 	return dispatch(await exportAppendixToPlansystemAsync(id))
 		// }
 	}
 }

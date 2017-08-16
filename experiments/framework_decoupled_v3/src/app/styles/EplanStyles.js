@@ -135,11 +135,11 @@ export const AppendixForm = styled.form`
     clear: both;
 `
 
-export const PublishStepTwoDiv = styled.div`
+export const ExportStepTwoDiv = styled.div`
     display: none;
 `
 
-export const PublishLoadingDiv = styled.div`
+export const ExportLoadingDiv = styled.div`
     display: none;
 `
 
@@ -151,7 +151,7 @@ export const AppendixButton = styled.button`
     font-size: 14px;
     min-width: 100px;
     height: 40px;
-    //box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+    /*box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);*/
     cursor: pointer;
     padding-left: 10px;
     padding-right: 10px;
@@ -260,9 +260,9 @@ export const ModalContent = styled.div`
 `
 
 export const ModalButtonPanel = styled.div`
-    // position: relative;
-    // left: 0;
-    // bottom: 0;
+    /*position: relative;
+    left: 0;
+    bottom: 0;*/
     width: 100%;
     height: 60px;
     margin-top: 20px;

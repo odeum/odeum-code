@@ -1,5 +1,5 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, publishAppendixToPlansystem } from 'app/data/eplan' //getAppendixFramesList
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem } from 'app/data/eplan' //getAppendixFramesList
 import { List } from 'immutable'
 
 /*Lodash*/
@@ -23,7 +23,7 @@ const getAppendix = (data) => ({ type: GET_APPENDIX, payload: data })
 const getApdCfg = (data) => ({ type: GET_APPENDIX_CONFIG, payload: data })
 const updateApd = (data) => ({ type: UPDATE_APPENDIX, payload: data })
 const removeApdx = (data) => ({ type: CLOSE_APPENDIX, payload: data })
-const publishAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
+const exportAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
 const getAppendixPdf = () => ({ type: GET_APPENDIX_PDF })
 const createAppendixPdf = () => ({ type: CREATE_APPENDIX_PDF })
 const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data })
@@ -80,11 +80,11 @@ export function getAppendixCfg() {
 	}
 }
 
-export async function publishAppendixToPlansystemAsync(id) {
+export async function exportAppendixToPlansystemAsync(id) {
 
 	return async dispatch => {
-		var test = await publishAppendixToPlansystem(id).then((result) => {
-			dispatch(publishAppendix())
+		var test = await exportAppendixToPlansystem(id).then((result) => {
+			dispatch(exportAppendix())
 			return result
 		})
 		return test

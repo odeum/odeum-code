@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getAppendixAsync, updateAppendix, removeOpenApdx, publishAppendixToPlansystemAsync } from 'app/store/modules/eplan'
+import { getAppendixAsync, updateAppendix, removeOpenApdx, exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
 import { Field, reduxForm } from 'redux-form'
 import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 
@@ -19,7 +19,7 @@ import { renderQuill } from '../EditorSelector'
 import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import Settings from 'app/components/eplan-appendix/Appendix/Settings'
-import Publish from 'app/components/eplan-appendix/Appendix/Publish'
+import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdfModal'
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
@@ -40,7 +40,7 @@ class EditAppendix extends Component {
 		super(props)
 		this.state = {
 			configModalIsOpen: false,
-			publishModalIsOpen: false,
+			exportModalIsOpen: false,
 			pdfModalIsOpen: false,
 			pdfFile: '',
 			dates: {
@@ -59,10 +59,10 @@ class EditAppendix extends Component {
 		this.openConfigModal = this.openConfigModal.bind(this)
 		this.closeConfigModal = this.closeConfigModal.bind(this)
 		this.saveConfigModal = this.saveConfigModal.bind(this)
-		this.openPublishModal = this.openPublishModal.bind(this)
-		this.closePublishModal = this.closePublishModal.bind(this)
+		this.openExportModal = this.openExportModal.bind(this)
+		this.closeExportModal = this.closeExportModal.bind(this)
 		this.handleDateChange = this.handleDateChange.bind(this)
-		this.onClickPublishAppendix = this.onClickPublishAppendix.bind(this)
+		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
 		this.handlePdfChange = this.handlePdfChange.bind(this)
 		this.handleViewAppendix = this.handleViewAppendix.bind(this)
 		this.openPdfModal = this.openPdfModal.bind(this)
@@ -104,15 +104,15 @@ class EditAppendix extends Component {
 		})
 	}
 
-	openPublishModal() {
+	openExportModal() {
 		this.setState({
-			publishModalIsOpen: true
+			exportModalIsOpen: true
 		})
 	}
 
-	closePublishModal() {
+	closeExportModal() {
 		this.setState({
-			publishModalIsOpen: false
+			exportModalIsOpen: false
 		})
 	}
 
@@ -182,24 +182,24 @@ class EditAppendix extends Component {
 		}
 	}
 
-	async onClickPublishAppendix() {
-		document.getElementById('publishStepOne').style.display = 'none'
-		document.getElementById('publishButton').style.display = 'none'
-		document.getElementById('publishCloseButton').style.display = 'none'
-		document.getElementById('publishStepTwo').style.display = 'block'
-		document.getElementById('publishLoadingDiv').style.display = 'block'
+	async onClickExportAppendix() {
+		document.getElementById('exportStepOne').style.display = 'none'
+		document.getElementById('exportButton').style.display = 'none'
+		document.getElementById('exportCloseButton').style.display = 'none'
+		document.getElementById('exportStepTwo').style.display = 'block'
+		document.getElementById('exportLoadingDiv').style.display = 'block'
 
 		try {
-			await this.props.publishToPlanSystem(this.props.appendix.appendixId).then((response) => {
-				console.log('Publish result this:', response)
+			await this.props.exportToPlanSystem(this.props.appendix.appendixId).then((response) => {
+				//console.log('Export result this:', response)
 
-				document.getElementById('publishLoadingDiv').style.display = 'none'
-				document.getElementById('publishCloseButton').style.display = 'block'
+				document.getElementById('exportLoadingDiv').style.display = 'none'
+				document.getElementById('exportCloseButton').style.display = 'block'
 
 				if (response.errors === 0) {
-					document.getElementById('publishStatusText').innerText = 'Tillæget blev indmeldt korrekt'
+					document.getElementById('exportStatusText').innerText = 'Tillæget blev indmeldt korrekt'
 				} else {
-					document.getElementById('publishStatusText').innerText = 'Tillæget blev ikke indmeldt, fik følgende fejl: ' + response.result
+					document.getElementById('exportStatusText').innerText = 'Tillæget blev ikke indmeldt, fik følgende fejl: ' + response.result
 				}
 			})
 		} catch (e) {
@@ -255,13 +255,13 @@ class EditAppendix extends Component {
 
 	render() {
 		/* State */
-		const { configModalIsOpen, publishModalIsOpen, pdfModalIsOpen, dates, pdfFile, page } = this.state
+		const { configModalIsOpen, exportModalIsOpen, pdfModalIsOpen, dates, pdfFile, page } = this.state
 		/* Props */
 		const { appendix, handleSubmit } = this.props
 		/* Functions */
-		const { submitUpdate, openConfigModal, openPublishModal,
+		const { submitUpdate, openConfigModal, openExportModal,
 			closeConfigModal, handleDateChange, saveConfigModal,
-			closePublishModal, onClickPublishAppendix, handlePdfChange,
+			closeExportModal, onClickExportAppendix, handlePdfChange,
 			handleViewAppendix, closePdfModal, onDocumentComplete, onPageComplete } = this
 
 		const pdfOptions = [
@@ -318,7 +318,7 @@ class EditAppendix extends Component {
 										</Box>
 										<Box width={[1, 1, 1, 1, 3 / 12]}>
 											<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
-											<IconButton onClick={openPublishModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
+											<IconButton onClick={openExportModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
 										</Box>
 									</Flex>
 								</Box>
@@ -330,11 +330,11 @@ class EditAppendix extends Component {
 							handleDateChange={handleDateChange}
 							saveConfigModal={saveConfigModal}
 							dates={dates} />
-						<Publish
-							publishModalIsOpen={publishModalIsOpen}
-							closePublishModal={closePublishModal}
+						<ExportModal
+							exportModalIsOpen={exportModalIsOpen}
+							closeExportModal={closeExportModal}
 							appendix={appendix}
-							onClickPublishAppendix={onClickPublishAppendix}
+							onClickExportAppendix={onClickExportAppendix}
 						/>
 						<AppendixPdfModal
 							pdfModalIsOpen={pdfModalIsOpen}
@@ -378,8 +378,8 @@ function mapDispatchToProps(dispatch) {
 			//TODO Remove Open Appendix when *CLOSED* not when unmounted
 			dispatch(removeOpenApdx(param))
 		},
-		publishToPlanSystem: async (id) => {
-			return dispatch(await publishAppendixToPlansystemAsync(id))
+		exportToPlanSystem: async (id) => {
+			return dispatch(await exportAppendixToPlansystemAsync(id))
 		}
 	}
 }

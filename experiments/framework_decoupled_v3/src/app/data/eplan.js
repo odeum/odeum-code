@@ -53,7 +53,7 @@ export async function getAppendixById(id) {
 	return appendix
 }
 
-export async function publishAppendixToPlansystem(id) {
+export async function exportAppendixToPlansystem(id) {
 	var result = await api.get('rest/eplan/kpt/appendix/publish/' + id)
 		.then((response) => {
 			return response.data
