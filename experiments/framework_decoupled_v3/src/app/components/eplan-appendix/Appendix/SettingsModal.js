@@ -8,7 +8,7 @@ import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 
-const Settings = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveConfigModal, dates }) => {
+const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveConfigModal, dates }) => {
 	return (
 		<div>
 			<ModalWindow isOpen={configModalIsOpen} onRequestClose={closeConfigModal} contentLabel="Indstillinger">
@@ -57,4 +57,4 @@ const Settings = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveC
 	)
 }
 
-export default Settings
+export default SettingsModal

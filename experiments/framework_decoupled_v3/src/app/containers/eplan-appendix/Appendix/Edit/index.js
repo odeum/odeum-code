@@ -18,7 +18,7 @@ import moment from 'moment'
 import { renderQuill } from '../EditorSelector'
 import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
-import Settings from 'app/components/eplan-appendix/Appendix/Settings'
+import SettingsModal from 'app/components/eplan-appendix/Appendix/SettingsModal'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdfModal'
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
@@ -331,7 +331,7 @@ class EditAppendix extends Component {
 								</Box>
 							</Flex>
 						</div>
-						<Settings
+						<SettingsModal
 							configModalIsOpen={configModalIsOpen}
 							closeConfigModal={closeConfigModal}
 							handleDateChange={handleDateChange}
