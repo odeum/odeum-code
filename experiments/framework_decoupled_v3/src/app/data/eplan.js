@@ -89,3 +89,11 @@ export async function getAppendixFramesList(id) {
 	return dataList
 }
 
+export async function getReferenceTableList() {
+	var data = await api.get('/rest/eplan/kpt/reftable/list')
+		.then((response) => {
+			return response.data
+		})
+	const dataList = List(data)
+	return dataList
+}
