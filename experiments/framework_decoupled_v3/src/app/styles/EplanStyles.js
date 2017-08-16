@@ -3,6 +3,7 @@ import { CLOUDY_DARK } from 'framework/assets/colors'
 import Loader from 'halogen/PulseLoader'
 import Modal from 'react-modal'
 import Select from 'react-select'
+import DatePicker from 'react-datepicker'
 import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
 
@@ -280,7 +281,7 @@ export const Dropdown = styled(Select) `
         border-radius: 3px;
         height: 44px;
         cursor: pointer;
-        box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+        /*box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);*/
 
         .Select-placeholder {
             color: #fff;
@@ -320,7 +321,7 @@ export const Dropdown = styled(Select) `
         .Select-menu-outer {
         background-color: #3b97d3;
         border: none;
-        box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+        /*box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);*/
 
         .Select-option {
             background-color: #3b97d3;
@@ -340,6 +341,22 @@ export const Dropdown = styled(Select) `
 
     &.is-focused:not(.is-open) > .Select-control {
         border-color: none;
-        box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);
+        /*box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);*/
     }
+`
+
+export const DatePickerStyled = styled(DatePicker)`
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    background-color: #ecf0f1;
+    color: #5e5e5e;
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 `

@@ -1,12 +1,24 @@
 import React from 'react'
 // import Modal from 'react-modal'
-import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, Dropdown, DatePickerStyled } from 'app/styles/EplanStyles'
+import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
+import { Flex, Box } from 'grid-styled'
+
+const statusOptions = [
+	{ value: '1', label: 'Kladde' },
+	{ value: '2', label: 'Udkast' },
+	{ value: '3', label: 'Intern høring' },
+	{ value: '4', label: 'Forslag' }
+]
+
+function handleStatusChange() {
+
+}
 
 const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveConfigModal, dates }) => {
 	return (
@@ -23,30 +35,61 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 				</ModalHeader>
 				<ModalContent>
 					<form>
-                Intern høring start:
-						<DatePicker selected={dates.date1} onChange={(date) => handleDateChange(date, 'date1')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-                Intern høring slut:
-						<DatePicker selected={dates.date2} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-                Forslag:
-						<DatePicker selected={dates.date3} onChange={(date) => handleDateChange(date, 'date3')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-                Offentliggørelse:
-						<DatePicker selected={dates.date4} onChange={(date) => handleDateChange(date, 'date4')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-                Høring start:
-						<DatePicker selected={dates.date5} onChange={(date) => handleDateChange(date, 'date5')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-                Høring slut:
-						<DatePicker selected={dates.date6} onChange={(date) => handleDateChange(date, 'date6')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-                Vedtagelse:
-						<DatePicker selected={dates.date7} onChange={(date) => handleDateChange(date, 'date7')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-						<br />
-						<br />
-                Vælg fase:
-						<br />
-						<select>
-							<option>Kladde</option>
-							<option>Udkast</option>
-							<option>Intern høring</option>
-							<option>Forslag</option>
-						</select>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Intern høring start:</FieldLabel>
+								<DatePickerStyled selected={dates.date1} onChange={(date) => handleDateChange(date, 'date1')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Vælg fase:</FieldLabel>
+								<Dropdown
+									className="statusSelect"
+									name="statusSelect"
+									value="one"
+									options={statusOptions}
+									onChange={handleStatusChange}
+									searchable={false}
+									clearable={false}
+									placeholder="Vælg status"
+								/>
+							</Box>
+						</Flex>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Intern høring slut:</FieldLabel>
+								<DatePickerStyled selected={dates.date2} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+						</Flex>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Forslag:</FieldLabel>                
+								<DatePickerStyled selected={dates.date3} onChange={(date) => handleDateChange(date, 'date3')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+						</Flex>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Offentliggørelse:</FieldLabel>                
+								<DatePickerStyled selected={dates.date4} onChange={(date) => handleDateChange(date, 'date4')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+						</Flex>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Høring start:</FieldLabel>                
+								<DatePickerStyled selected={dates.date5} onChange={(date) => handleDateChange(date, 'date5')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+						</Flex>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name"> Høring slut:</FieldLabel>               
+								<DatePickerStyled selected={dates.date6} onChange={(date) => handleDateChange(date, 'date6')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+						</Flex>
+						<Flex wrap>
+							<Box width={[1 / 2]}>
+								<FieldLabel for="name">Vedtagelse:</FieldLabel>                
+								<DatePickerStyled selected={dates.date7} onChange={(date) => handleDateChange(date, 'date7')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+							</Box>
+						</Flex>
 					</form>
 					<ModalButtonPanel>
 						<Button onClick={saveConfigModal} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
