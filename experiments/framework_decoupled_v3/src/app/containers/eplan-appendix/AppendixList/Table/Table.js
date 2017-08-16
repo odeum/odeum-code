@@ -11,6 +11,7 @@ import { ListLink } from 'app/styles/EplanStyles'
 //import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
 import moment from 'moment'
+import 'moment/locale/da'
 
 export default class AppendixTable extends Component {
 				static propTypes = {
