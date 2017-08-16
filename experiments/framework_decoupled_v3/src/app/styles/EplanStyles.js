@@ -22,6 +22,11 @@ export const DescriptionDiv = styled.div`
     padding: 3px;
 `
 
+export const ListAction = styled.div`
+    float: left;
+    margin-right: 5px;
+`
+
 export const ListLink = styled.a`
     color: #000;
     text-decoration: none;

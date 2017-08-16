@@ -6,9 +6,10 @@ import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-vi
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
-import { ListLink } from 'app/styles/EplanStyles'
-//import Icon from 'framework/assets/Icon'
-//import { ICON_SEARCH } from 'framework/assets/icons'
+import { ListLink, ListAction } from 'app/styles/EplanStyles'
+import Icon from 'framework/assets/Icon'
+import * as iconname from 'framework/assets/icons'
+import * as colors from 'framework/assets/colors'
 import RowRenderer from './_rowRender'
 import moment from 'moment'
 import 'moment/locale/da'
@@ -32,7 +33,7 @@ export default class AppendixTable extends Component {
 			sortDirection: SortDirection.ASC,
 			useDynamicRowHeight: false
 		}
-		this._linkRowRenderer = this._linkRowRenderer.bind(this)
+		this._actionRowRenderer = this._actionRowRenderer.bind(this)
 		this._getRowHeight = this._getRowHeight.bind(this)
 		this._headerRenderer = this._headerRenderer.bind(this)
 		this._noRowsRenderer = this._noRowsRenderer.bind(this)
@@ -41,6 +42,7 @@ export default class AppendixTable extends Component {
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
 		this._rowClicked = this._rowClicked.bind(this)
+		this._cellClicked = this._cellClicked.bind(this)
 	}
 
 	render() {
@@ -173,7 +175,6 @@ export default class AppendixTable extends Component {
 								noRowsRenderer={this._noRowsRenderer}
 								overscanRowCount={overscanRowCount}
 								rowRenderer={RowRenderer}
-								onRowClick={this._rowClicked}
 								rowHeight={rowHeight}
 								rowGetter={rowGetter}
 								rowCount={rowCount}
@@ -205,7 +206,7 @@ export default class AppendixTable extends Component {
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
 									flexgrow={1}
 								/>
@@ -218,21 +219,9 @@ export default class AppendixTable extends Component {
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
 									flexgrow={1}
-								/>
-
-								<Column
-									width={width}
-									maxWidth={50}
-									label="Link"
-									dataKey='folderUrl'
-									headerRenderer={this._headerRenderer}
-									disableSort
-									cellRenderer={
-										this._linkRowRenderer
-									}
 								/>
 
 								<Column
@@ -242,7 +231,7 @@ export default class AppendixTable extends Component {
 									dataKey='created'
 									headerRenderer={this._headerRenderer}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{moment(cellData).format('LL')}</Cell>)
+										({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell onClick={() => this._cellClicked(rowData)}>{moment(cellData).format('LL')}</Cell>)
 									}
 									flexgrow={1}
 								/>
@@ -255,27 +244,39 @@ export default class AppendixTable extends Component {
 									headerRenderer={this._headerRenderer}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-											(<Cell>{cellData}</Cell>)
+											(<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
 								/>
 
 								<Column
 									width={width}
+									maxWidth={300}
 									label='Ansvarlig'
 									dataKey='responsible'
 									headerRenderer={this._headerRenderer}
 									disableSort={!this._isSortEnabled()}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-											(<Cell>{cellData}</Cell>)
+											(<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
 								/>
 
+								<Column
+									width={width}
+									maxWidth={110}
+									label="Handlinger"
+									dataKey='actions'
+									headerRenderer={this._headerRenderer}
+									disableSort
+									cellRenderer={
+										this._actionRowRenderer
+									}
+								/>
 							</Table>
 						)}
 					</AutoSizer>
 				</AutoSizerDiv>
-				<div style={{ marginTop: '30px' }}> 1,2,3......</div>
+				{/* <div style={{ marginTop: '30px' }}> 1,2,3......</div> */}
 			</div>
 		)
 	}
@@ -284,6 +285,9 @@ export default class AppendixTable extends Component {
 		index,
 		rowData
 	}) {
+		this.props.onClickButton(rowData.appendixId)
+	}
+	_cellClicked(rowData) {
 		this.props.onClickButton(rowData.appendixId)
 	}
 	_defaultHeaderRowRenderer({
@@ -306,14 +310,14 @@ export default class AppendixTable extends Component {
 		return this._getDatum(list, index).size
 	}
 
-	_linkRowRenderer({ cellData,
+	_actionRowRenderer({ cellData,
 		columnData,
 		dataKey,
 		rowData, rowIndex
 	}) {
-		return <Cell onClick={(e) => {
-		}}>
-			<ListLink href={cellData} target="_blank">Vis</ListLink>
+		return <Cell onClick={(e) => { }}>
+			<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
+			<ListAction><ListLink href={cellData} target="_blank"><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
 		</Cell>
 	}
 
