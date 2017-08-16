@@ -30,7 +30,7 @@ export const PrimaryContainer = styled.div`
     padding-bottom: 20px;
     `
 
-export const SecondaryContainer = styled(PrimaryContainer)`
+export const SecondaryContainer = PrimaryContainer.extend`
    /* padding: 20px;*/
     box-sizing: border-box;
 `
