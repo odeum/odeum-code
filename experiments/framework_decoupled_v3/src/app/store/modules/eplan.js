@@ -1,5 +1,5 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem } from 'app/data/eplan' //getAppendixFramesList
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList } from 'app/data/eplan' //getAppendixFramesList
 import { List } from 'immutable'
 
 /*Lodash*/
@@ -16,6 +16,7 @@ const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
 const CREATE_APPENDIX_PDF = '@@EPLAN/CREATE_APPENDIX_PDF'
 const GET_APPENDIX_FRAMES_LIST = '@@EPLAN/GET_APPENDIX_FRAMES_LIST'
+const GET_REFERENCE_TABLE_LIST = '@@EPLAN/GET_REFERENCE_TABLE_LIST'
 
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -27,6 +28,7 @@ const exportAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
 const getAppendixPdf = () => ({ type: GET_APPENDIX_PDF })
 const createAppendixPdf = () => ({ type: CREATE_APPENDIX_PDF })
 const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data })
+const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: data })
 
 /* Middleware */
 export function removeOpenApdx(id) {
@@ -107,12 +109,26 @@ export async function createAppendixPdfAsync() {
 		return ret
 	}
 }
+
+
+export function getReferenceTableListAsync() {
+	return async dispatch => {
+		await getReferenceTableList().then(
+			(result) => {
+				dispatch(getRefTableList(result))
+			}
+		)
+	}
+}
+
+
 /* Reducer */
 const initState = {
 	appendixes: List([]),
 	openAppendix: [],
 	isLoading: true,
 	framesIsLoading: true,
+	referencetablesIsLoading: true,
 	conf: null
 }
 
@@ -165,6 +181,13 @@ function eplan(state = initState, action) {
 				...state,
 				appendixes: action.payload,
 				framesIsLoading: false
+			}
+		case GET_REFERENCE_TABLE_LIST:
+			console.log(action.payload)
+			return {
+				...state,
+				referencetables: action.payload,
+				referencetablesIsLoading: false
 			}
 
 		default:

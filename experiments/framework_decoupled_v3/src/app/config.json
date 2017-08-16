@@ -1,114 +1,119 @@
 {
-    "tabs": [
-        {
-            "id": "dashboard",
-            "activeTab": "General",
-            "tabs": [
-                {
-                    "label": "General",
-                    "location": "/dashboard/general",
-                    "icon": "assignment_turned_in",
-                    "fixed": true
-                },
-                {
-                    "label": "Fields",
-                    "location": "/dashboard/fields",
-                    "icon": "input",
-                    "fixed": true
-                },
-                {
-                    "label": "Workflow",
-                    "location": "/dashboard/workflow",
-                    "icon": "timeline",
-                    "fixed": true
-                },
-                {
-                    "label": "Users",
-                    "location": "/dashboard/users",
-                    "icon": "people",
-                    "fixed": true
-                },
-                {
-                    "label": "Actions",
-                    "location": "/dashboard/actions",
-                    "icon": "code",
-                    "fixed": true
-                },
-                {
-                    "label": "Configuration",
-                    "location": "/dashboard/configuration",
-                    "icon": "settings",
-                    "fixed": true
-                },
-                {
-                    "label": "Design",
-                    "location": "/dashboard/design",
-                    "icon": "opacity",
-                    "fixed": true
-                }
-            ]
-        },
-        {
-            "id": "forms",
-            "activeTab": "Forms",
-            "tabs": [
-                {
-                    "label": "Forms",
-                    "location": "/forms/list",
-                    "icon": "assignment",
-                    "fixed": true
-                }
-            ]
-        },
-        {
-            "id": "eplan",
-            "activeTab": "Oversigt",
-            "tabs": [
-                {
-                    "label": "Oversigt",
-                    "location": "/eplan/list",
-                    "icon": "assignment",
-                    "fixed": true
-                }
-            ]
-        },
-        {
-            "id": "ref_table",
-            "activeTab": "",
-            "tabs": [
-            ]
-        },
-        {
-            "id": "settings",
-            "activeTab": "",
-            "tabs": [
-            ]
-        }
-    ],
-    "scenes": [
-        {
-            "name": "Dashboard",
-            "id": "dashboard",
-            "location": "/dashboard/general",
-            "icon": "dashboard"
-        },
-        {
-            "name": "Kommuneplantillæg",
-            "id": "eplan",
-            "location": "/eplan/list",
-            "icon": "assignment"
-        },
-        {
-            "name": "Reference tabeller",
-            "id": "ref_table",
-            "location": "/reference/",
-            "icon": "grid_on"
-        },
-        {
-            "name": "Indstillinger",
-            "id": "settings",
-            "location": "/settings/general",
-            "icon": "settings"
-        }
-    ]
+	"tabs": [
+		{
+			"id": "dashboard",
+			"activeTab": "General",
+			"tabs": [
+				{
+					"label": "General",
+					"location": "/dashboard/general",
+					"icon": "assignment_turned_in",
+					"fixed": true
+				},
+				{
+					"label": "Fields",
+					"location": "/dashboard/fields",
+					"icon": "input",
+					"fixed": true
+				},
+				{
+					"label": "Workflow",
+					"location": "/dashboard/workflow",
+					"icon": "timeline",
+					"fixed": true
+				},
+				{
+					"label": "Users",
+					"location": "/dashboard/users",
+					"icon": "people",
+					"fixed": true
+				},
+				{
+					"label": "Actions",
+					"location": "/dashboard/actions",
+					"icon": "code",
+					"fixed": true
+				},
+				{
+					"label": "Configuration",
+					"location": "/dashboard/configuration",
+					"icon": "settings",
+					"fixed": true
+				},
+				{
+					"label": "Design",
+					"location": "/dashboard/design",
+					"icon": "opacity",
+					"fixed": true
+				}
+			]
+		},
+		{
+			"id": "forms",
+			"activeTab": "Forms",
+			"tabs": [
+				{
+					"label": "Forms",
+					"location": "/forms/list",
+					"icon": "assignment",
+					"fixed": true
+				}
+			]
+		},
+		{
+			"id": "eplan",
+			"activeTab": "Oversigt",
+			"tabs": [
+				{
+					"label": "Oversigt",
+					"location": "/eplan/list",
+					"icon": "assignment",
+					"fixed": true
+				}
+			]
+		},
+		{
+			"id": "ref_table",
+			"activeTab": "Oversigt",
+			"tabs": [
+				{
+					"label": "Oversigt",
+					"location": "/reference/list",
+					"icon": "grid_on",
+					"fixed": true
+				}
+			]
+		},
+		{
+			"id": "settings",
+			"activeTab": "",
+			"tabs": []
+		}
+	],
+	"scenes": [
+		{
+			"name": "Dashboard",
+			"id": "dashboard",
+			"location": "/dashboard/general",
+			"icon": "dashboard"
+		},
+		{
+			"name": "Kommuneplantillæg",
+			"id": "eplan",
+			"location": "/eplan/list",
+			"icon": "assignment"
+		},
+		{
+			"name": "Reference tabeller",
+			"id": "ref_table",
+			"location": "/reference/list",
+			"icon": "grid_on"
+		},
+		{
+			"name": "Indstillinger",
+			"id": "settings",
+			"location": "/settings/general",
+			"icon": "settings"
+		}
+	]
 }
