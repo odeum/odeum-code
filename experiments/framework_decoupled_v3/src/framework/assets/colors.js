@@ -38,7 +38,7 @@ export const MENUBAR_SELECTED = '#81C1EA'
 export const TAB = '#E3E5E5'
 export const TAB_HOVER = '#81C1EA'
 export const TAB_SELECTED = '#3B97D3'
-export const TAB_TEXT ='#5E5E5E'
+export const TAB_TEXT = '#5E5E5E'
 export const TAB_TEXT_SELECTED = '#FFFFFF'
 
 // SEARCH COLORS
