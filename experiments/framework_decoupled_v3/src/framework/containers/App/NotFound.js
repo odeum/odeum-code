@@ -16,9 +16,9 @@ class NotFound extends Component {
 					<Img src={ HeaderLogo } alt="Logo" />
 				</ImgDiv>
 				<E404>404 Not Found</E404>
-				<ErrMsg>Welcome to the dark ... well ... blue side!
-					<br/>We have cookies!</ErrMsg>
-				<ErrMsg2>There's absolutely nothing to see here ... so you should go back and go about your business!</ErrMsg2>
+				<ErrMsg>Welcome to the dark side ... well ... I mean blue side!
+					<br/>This is not the page you are looking for!</ErrMsg>
+				<ErrMsg2>So you should go back and go about your business!</ErrMsg2>
 			</Div>
 		)
 	}

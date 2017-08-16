@@ -8,18 +8,18 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 - [1. ODEUM CodeJS Github repository](#1-odeum-codejs-github-repository)
 	- [1.1. Github access and usage (branches)](#11-github-access-and-usage-branches)
 - [2. Must-read and tutorials (will update continously)](#2-must-read-and-tutorials-will-update-continously)
-	- [2.1. Technology (preffered dependency list)](#21-technology-preffered-dependency-list)
-	- [2.2. Technology (validated dependencies)](#22-technology-validated-dependencies)
+	- [2.1. Preffered Dependencies](#21-preffered-dependencies)
+	- [2.2. Validated dependencies](#22-validated-dependencies)
 	- [2.3. Articles](#23-articles)
 	- [2.4. Video tutorials](#24-video-tutorials)
 - [3. Hackathons](#3-hackathons)
 - [4. ODEUM CodeJS App Components Reference Guide](#4-odeum-codejs-app-components-reference-guide)
 	- [4.1. Naming Conventions](#41-naming-conventions)
-	- [4.2. Create-React-App (CRA)](#42-create-react-app-cra)
+	- [4.2. Creating experiments and examples with create-project](#42-creating-experiments-and-examples-with-create-project)
 	- [4.3. Experiments GitHub Setup Instructions](#43-experiments-github-setup-instructions)
 - [5. Experiments (initial developer experiments)](#5-experiments-initial-developer-experiments)
-	- [5.1. Working with the ODEUM CodeJS framework (evolution)](#51-working-with-the-odeum-codejs-framework-evolution)
-	- [5.2. Contributors (primary):](#52-contributors-primary)
+	- [5.1. Working with the ODEUM CodeJS framework](#51-working-with-the-odeum-codejs-framework)
+	- [5.2. Contributors](#52-contributors)
 	- [5.3. Experiments location](#53-experiments-location)
 	- [5.4. Experiments List](#54-experiments-list)
 		- [5.4.1. Codesplitting / PRPL (codesplitting)](#541-codesplitting--prpl-codesplitting)
@@ -120,10 +120,14 @@ Initially we pull and commit work to 3 branches:
 - development/beta
 - MASTER
 
-# 2. Must-read and tutorials (will update continously)
-The following technology areas and articles are all must-reads for newcommers to React and ODEUM CodeJS. 
+All current development code is located in development/alpha
 
-## 2.1. Technology (preffered dependency list)
+# 2. Must-read and tutorials (will update continously)
+The following technology areas and articles are all must-reads for newcommers to React and ODEUM CodeJS.
+A good start is to read up on articles and postings in out Slack channels, all core team members will get an invite
+- [Vanilla JavaScript Playground](https://github.com/cbroberg/vanilla)
+
+## 2.1. Preffered Dependencies
 The following modules/packages/dependencies are our preffered dependency list for use in ODEUM CodeJS. They all need to be validated and tested before ending up in production code. When a technology is validated it will be listed on the validated list.
 
 - [create-react-app](https://github.com/facebookincubator/create-react-app)
@@ -151,7 +155,7 @@ The following modules/packages/dependencies are our preffered dependency list fo
 - [history](https://github.com/reacttraining/history)
 - [moment (date, time, locale)](https://github.com/moment/moment/)
 
-## 2.2. Technology (validated dependencies)
+## 2.2. Validated dependencies
 The list you eventually want to have your dependency listed :) 
 
 - [create-react-app](https://github.com/facebookincubator/create-react-app)
@@ -159,75 +163,97 @@ The list you eventually want to have your dependency listed :)
 - [redux (3.6.x)](https://github.com/reactjs/redux/)
 - [react-redux (5.x.x)](https://github.com/reactjs/react-redux)
 
-
 ## 2.3. Articles
 - [Redux.org](http://redux.js.org)
 - [Article from Mapbox](https://www.mapbox.com/blog/redux-for-state-management-in-large-web-apps/)
 
 ## 2.4. Video tutorials
 - [Getting Started with Redux - Dan Abramov](https://egghead.io/courses/getting-started-with-redux)
+- [JavaScript tutorials - Vanilla](https://medium.freecodecamp.org/my-giant-javascript-basics-course-is-now-live-on-youtube-and-its-100-free-9020a21bbc27)
 
 # 3. Hackathons
-All interns and freelancers are incited to attend our hackathons which is held at WebHouse every second Monday from 17.00 - 21.30. 
+All interns and freelancers are promoted to attend ODEUM CodeJS hackathons which is held at WebHouse every second Monday from 17.00 - 21.30 (including free food :) ). 
 
 During our hackathons we:
-- Eat pizza or other healthy meals (Angus beef for the win)
-- Drink Coke and coffee
+- Eat pizza or other healthy coder meals (Angus beef for the win)
+- Drink Coke and coffee and tea (if you're sick)
 - State of the Union - how far are we with specific experiments and real-world code
 - Coding Dojo - learning by doing
+- Pair Programming
 - Takeaways and new milestones
 
 # 4. ODEUM CodeJS App Components Reference Guide
 
 - All decomposed and architected App Components are listed and explained in a Microsoft Word document you can find here: [AppComponents.docx](/docs/AppComponents.docx)
+- The upcoming ODEUM CodeJS website will introduce a full and updated component list and tutorials on how to use
 
 ## 4.1. Naming Conventions
-- CB will be in charge of all naming conventions so refactoring can be at a minimum for later stages with more active contributors. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation has been defined
+- CB is in charge of naming conventions so refactoring can be at a minimum for later stages with more active contributors. If you adhere from this, you might spend your time refactoring code, don't do that. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in /docs/AppComponents.docx will introduce component naming until further API documentation and website has been defined
 
-## 4.2. Create-React-App (CRA)
-All experiments is based upon the Create-React-App (CRA) boilerplate (and zero-configuration) setup from the React team. Using CRA makes it easy to test and check-out other developers experiments and code.
+## 4.2. Creating experiments and examples with create-project
+All experiments and ODEUM CodeJS is based upon Create-React-App (CRA) boilerplate (and zero-configuration) setup from the React team. Using CRA makes it easy to test and check-out other developers experiments and code. 
 
-To create a new experiment using CRA from the command line:
+We have created and are maintaining a boilerplate for experiments based upon CRA with basic dependency JavaScript libraries included, and our eslint rules. Please get it here:
 
-For example:
-```sh
- yarn create react-app my-react-app
+[create-project](https://github.com/cbroberg/create-project)
 
- or
+To create a new experiment using create-project from the command line:
 
- create-react-app my-react-app
-```
+In ODEUM CodeJS repositoty to the following from the command line:
 
 ```sh
 cd experiments
-yarn create react-app my-react-app
-cd my-react-app
+git clone https://github.com/cbroberg/create-project.git my-react-app
+cd myapp
+yarn install
 ```
 
 ## 4.3. Experiments GitHub Setup Instructions
-After creating a new project with create-react-app it might be a good idea to create a GitHub repository for the experiment. This will help other developers with easy access to your experiments. When you have a Github repository ready for the project (create the repository on GitHub) you can add the CRA project to the repository from the command line
+After creating a new project with [create-project](https://github.com/cbroberg/create-project.git) it might be a good idea to create a GitHub repository for the experiment. This will help other developers with easy access to your experiments. When you have a Github repository ready for the project (create the repository on GitHub) you can add the experiment project to the repository from the command line
 
 ```sh
 echo "# my-react-app" >> README.md
-  git init
-  git add README.md
-  git commit -m "first commit"
-  git remote add origin https://github.com/user/my-react-app.git
-  git push -u origin master
+git init
+git add -A
+git commit -m "My first commit in my-react-app"
+git remote add origin https://github.com/user/my-react-app.git
+git push -u origin master
 ```
+
+git init
+git add -A
+git commit -m "Initial commit"
+git remote add origin https://github.com/$username/"$project_name".git
+git push -u origin master
+echo Files added to https://github.com/$username/"$project_name".git on GitHub
+echo
 
 # 5. Experiments (initial developer experiments)
 
-## 5.1. Working with the ODEUM CodeJS framework (evolution)
+## 5.1. Working with the ODEUM CodeJS framework
 All initial work is done through experiments. The experiments will facilitate and test different JavaScript libraries and technology and create examples to check-out prosumtions and evaluate the viability of different choices made during our hackathons.
 
-## 5.2. Contributors (primary):
+## 5.2. Contributors
 
-- AT:     Andrei Tudor - [at@webhouse.dk](at@webhouse.dk)
-- CB:     Christian Broberg - [cb@webhouse.dk](cb@webhouse.dk)
-- HH:     Henrik Hansen - [hh@webhouse.dk](hh@webhouse.dk)
-- MB:     Mikkel Broberg - [mb@webhouse.dk](mb@webhouse.dk)
-- MHK:    Martin Kristiansen - [mhk@webhouse.dk](mhk@webhouse.dk)
+* Core Software Developemt Team
+	* [Andrei Tudor](at@webhouse.dk) (AT)
+	* [Christian Broberg](cb@webhouse.dk) (CB)
+	* [Henrik Hansen](hh@webhouse.dk) (HH)
+	* [Mikkel Broberg](mb@webhouse.dk) (MB)
+	* [Martin Kristiansen](mhk@webhouse.dk) (MHK)
+
+* Software Development:
+    * [Frida Jakobsen](frida.jakobsen@hotmail.com) (FJ) - Apps, Test
+	* [Elena-Luminia Gavrilovici](luminita.gavrilovici@yahoo.com) (ELG) - Apps/CSS/Refactoring/Code style/Code review
+    * [Kasper Nielsen](kasper8791@gmail.com) (KN) - Apps, Test setup
+    * [Anders Juel Lichon](Lichondk@gmail.com) (AJL) - Apps, Test
+    * [Leonid Zorin](leonid9.021@gmail.com) (LZ) - Apps, Test
+
+* Design & Marketing:
+	* [Elena Frankovic](frankovic.elena@gmail.com) (EF) - Art Direction, Graphic design, Marketing
+    * [Tina Bota](bota.tina@gmail.com) (TB) - Design System, Marketing
+    * [Ineta Bulbenkovaite](i.bulbenkovaite@gmail.com) (IB) - Project Management, Communication, SoMe and Project Documentation (meta story)
+	* [Mette Bugge](mette@webhouse.dk) (MBK) - Sales, Project Facilitation, Mentoring
 
 
 ## 5.3. Experiments location
@@ -361,6 +387,7 @@ A big question is whether ODEUM CodeJS UI framework should transform into an NPM
 ```js
 import App from 'odeum-codejs/components/App'
 import Icon from 'odeum-codejs/components/Icon'
+import Button from 'odeum-codejs/components/Button'
 import Tabs from 'odeum-codejs/components/Tabs'
 import TabsList from 'odeum-codejs/components/TabsList'
 import Search from 'odeum-codejs/components/Search'
@@ -389,6 +416,7 @@ import { App, Icon, Tabs, Search ... } from 'odeum-codejs'
 import App from 'odeum-core'
 import Api from 'odeum-api'
 import Icon from 'odeum-icons'
+import Button from 'odeum-buttons'
 import { Tabs, TabsList } from 'odeum-tabs'
 import Help from 'odeum-help'
 import Search from 'odeum-search'
@@ -397,9 +425,11 @@ import Notifications from 'odeum-notifications'
 import Login from 'odeum-login'
 import ThemeProvider from 'odeum-theme'
 import Store from 'odeum-store'
+import Route from 'odeum-router'
 import Localiser from 'odeum-localise'
 import Telemetry from 'odeum-telemetry'
 import Dashboard from 'odeum-dashboard'
+import Markdown from 'odeum-markdown'
 
 <App>
     {contents}
@@ -499,13 +529,13 @@ With Styled-Components:
 ### 5.4.33. ODEUM CodeJS Tutorial Site
 - An App that can display simple markdown files from the ODEUM CodeJS repo and run as a tutorial site
 - Convert markdown to HTML
-- [Example 1 in React](https://github.com/acdlite/react-remarkable)
-- [Example 2 in React](https://github.com/rexxars/react-markdown)
-- [Example 1](https://github.com/showdownjs/showdown)
-- [Example 2](https://github.com/evilstreak/markdown-js)
+- [Example 1 in React](https://github.com/acdlite/react-remarkable) (3395 original library)
+- [Example 2 in React](https://github.com/rexxars/react-markdown) (1146)
+- [Example 1](https://github.com/showdownjs/showdown) (5219)
+- [Example 2](https://github.com/evilstreak/markdown-js) (6097)
 
 # 6. Apps
-- The following Apps will be developed with ODEUM CodeJS for the repository examples and/or production.
+- The following Apps is planned to be developed with ODEUM CodeJS for the repository examples and/or production.
 
 ## 6.1. ODEUM ThemeBuilder
 - Build an App to create a theme for an ODEUM CodeJS App

@@ -12,7 +12,7 @@
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "polished": "^1.4.0",
-    "react": "^15.5.0",
+    "react": "15.6.1",
     "react-addons-shallow-compare": "^15.6.0",
     "react-datepicker": "^0.52.0",
     "react-dom": "^15.5.0",
