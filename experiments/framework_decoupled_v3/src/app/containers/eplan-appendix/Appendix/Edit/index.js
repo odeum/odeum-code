@@ -56,6 +56,7 @@ class EditAppendix extends Component {
 
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
+		this.submitUpdateAndCommit = this.submitUpdateAndCommit.bind(this)
 		this.openConfigModal = this.openConfigModal.bind(this)
 		this.closeConfigModal = this.closeConfigModal.bind(this)
 		this.saveConfigModal = this.saveConfigModal.bind(this)
@@ -82,7 +83,13 @@ class EditAppendix extends Component {
 	}
 
 	submitUpdate(values) {
-		this.props.updateApd(values, this.props.param)
+		console.log('gem')
+		this.props.updateApd(values, this.props.param, false)
+	}
+
+	submitUpdateAndCommit(values) {
+		console.log('gem + commit')
+		this.props.updateApd(values, this.props.param, true)
 	}
 
 	openConfigModal() {
@@ -259,7 +266,7 @@ class EditAppendix extends Component {
 		/* Props */
 		const { appendix, handleSubmit } = this.props
 		/* Functions */
-		const { submitUpdate, openConfigModal, openExportModal,
+		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
 			closeConfigModal, handleDateChange, saveConfigModal,
 			closeExportModal, onClickExportAppendix, handlePdfChange,
 			handleViewAppendix, closePdfModal, onDocumentComplete, onPageComplete } = this
@@ -345,7 +352,7 @@ class EditAppendix extends Component {
 							pagination={pagination}
 							pdfFile={pdfFile}
 						/>
-						<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
+						<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
 					</Animation>
 					: <PulseLoader color="royalblue" />
 				}
@@ -371,8 +378,8 @@ function mapDispatchToProps(dispatch) {
 		getAppendix: (param) => {
 			dispatch(getAppendixAsync(param))
 		},
-		updateApd: (appendix, id) => {
-			dispatch(updateAppendix(appendix, id))
+		updateApd: (appendix, id, commit) => {
+			dispatch(updateAppendix(appendix, id, commit))
 		},
 		unMount: (param) => {
 			//TODO Remove Open Appendix when *CLOSED* not when unmounted

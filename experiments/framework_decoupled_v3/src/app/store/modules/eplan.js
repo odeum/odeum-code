@@ -35,10 +35,9 @@ export function removeOpenApdx(id) {
 	}
 }
 
-export function updateAppendix(appendix, id) {
+export function updateAppendix(appendix, id, commit) {
 	return dispatch => {
-		dispatch(updateApd({ appendix, id }))
-
+		dispatch(updateApd({ appendix, id, commit }))
 	}
 }
 
@@ -127,13 +126,13 @@ function eplan(state = initState, action) {
 		}
 		case UPDATE_APPENDIX:
 		{
-			var orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
+			let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
 			orig.fields.map((field) => {
 				return action.payload.appendix.fields.map((afield) => {
 					return field.id === afield.id ? field.value = afield.value : field
 				})
 			})
-			postAppendix(orig)
+			postAppendix(orig, action.payload.commit)
 			return state
 		}
 		case GET_APPENDIX_CONFIG:

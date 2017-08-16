@@ -6,12 +6,13 @@ import * as iconname from 'framework/assets/icons'
 
 // import SaveModal from './Save'
 
-const Appendix = ({ handleSubmit, renderFields, appendix }) => {
+const Appendix = ({ handleSubmit, handleSubmitAndCommit, renderFields, appendix }) => {
 	return (
 		<div style={{ clear: 'both' }}>
 			<form onSubmit={handleSubmit}>
 				<FieldArray name={'fields'} component={renderFields}/>                
-				<Button type="submit" icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
+				<Button type="button" onClick={handleSubmit} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
+				<Button type="button" onClick={handleSubmitAndCommit} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem og godkend ændringer</Button>
 			</form>
 			<br /><br />
 		</div>
