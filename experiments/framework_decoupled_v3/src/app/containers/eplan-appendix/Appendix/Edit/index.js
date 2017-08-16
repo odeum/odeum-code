@@ -68,66 +68,66 @@ class EditAppendix extends Component {
 		this.openPdfModal = this.openPdfModal.bind(this)
 		this.closePdfModal = this.closePdfModal.bind(this)
 	}
-  
+
 	componentWillMount() {
 		this.props.onMount(
 			this.props.param,
 			"Tillægs tekst"
 		)
 	}
-  
+
 	async componentDidMount() {
 		if (this.props.appendix === null)
-		{await this.props.getAppendix(this.props.param)}
+		{ await this.props.getAppendix(this.props.param) }
 	}
 
 	submitUpdate(values) {
 		this.props.updateApd(values, this.props.param)
 	}
-    
+
 	openConfigModal() {
 		this.setState({
 			configModalIsOpen: true
 		})
 	}
-    
+
 	closeConfigModal() {
 		this.setState({
 			configModalIsOpen: false
 		})
 	}
-    
+
 	saveConfigModal() {
 		//TODO: Save changes
 		this.setState({
 			configModalIsOpen: false
 		})
 	}
-    
+
 	openPublishModal() {
 		this.setState({
 			publishModalIsOpen: true
 		})
 	}
-    
+
 	closePublishModal() {
 		this.setState({
 			publishModalIsOpen: false
 		})
 	}
-    
+
 	openPdfModal() {
 		this.setState({
 			pdfModalIsOpen: true
 		})
 	}
-    
+
 	closePdfModal() {
 		this.setState({
 			pdfModalIsOpen: false
 		})
 	}
-    
+
 	handleDateChange(date, id) {
 		if (id === 'date1') {
 			this.setState({ dates: { ...this.state.dates, date1: date } })
@@ -145,7 +145,7 @@ class EditAppendix extends Component {
 			this.setState({ dates: { ...this.state.dates, date7: date } })
 		}
 	}
-    
+
 	async handlePdfChange(option) {
 		if (option.value === 'create') {
 			try {
@@ -175,13 +175,13 @@ class EditAppendix extends Component {
 			}
 		}
 	}
-    
+
 	handleViewAppendix(option) {
 		if (option.value === 'viewpublic') {
 			window.open(this.props.appendix.folderUrl, '_viewappendix')
 		}
 	}
-    
+
 	async onClickPublishAppendix() {
 		document.getElementById('publishStepOne').style.display = 'none'
 		document.getElementById('publishButton').style.display = 'none'
@@ -206,152 +206,152 @@ class EditAppendix extends Component {
 			console.log('Error:' + e)
 		}
 	}
-		onDocumentComplete = (pages) => {
-			this.setState({ page: 1, pages })
+	onDocumentComplete = (pages) => {
+		this.setState({ page: 1, pages })
+	}
+
+	onPageComplete = (page) => {
+		this.setState({ page })
+	}
+
+	handlePrevious = () => {
+		this.setState({ page: this.state.page - 1 })
+	}
+
+	handleNext = () => {
+		this.setState({ page: this.state.page + 1 })
+	}
+
+	handlePdfDownload = () => {
+		alert('Download PDF')
+	}
+
+	renderPagination = (page, pages) => {
+		let previousButton = <IconButton style={{ float: 'left' }} className="previous" onClick={this.handlePrevious}><Icons.MdArrowBack size="60" color="#3b97d3" /></IconButton>
+		if (page === 1) {
+			previousButton = ''
 		}
-        
-		onPageComplete = (page) => {
-			this.setState({ page })
+		let nextButton = <IconButton style={{ float: 'right' }} className="next" onClick={this.handleNext}><Icons.MdArrowForward size="60" color="#3b97d3" /></IconButton>
+		if (page === pages) {
+			nextButton = ''
 		}
-        
-		handlePrevious = () => {
-			this.setState({ page: this.state.page - 1 })
-		}
-        
-		handleNext = () => {
-			this.setState({ page: this.state.page + 1 })
-		}
-        
-		handlePdfDownload = () => {
-			alert('Download PDF')
-		}
-        
-		renderPagination = (page, pages) => {
-			let previousButton = <IconButton style={{ float: 'left' }} className="previous" onClick={this.handlePrevious}><Icons.MdArrowBack size="60" color="#3b97d3" /></IconButton>
-			if (page === 1) {
-				previousButton = ''
-			}
-			let nextButton = <IconButton style={{ float: 'right' }} className="next" onClick={this.handleNext}><Icons.MdArrowForward size="60" color="#3b97d3" /></IconButton>
-			if (page === pages) {
-				nextButton = ''
-			}
-			let downloadButton = <IconButton style={{ textAlign: 'center' }} className="next" onClick={this.handlePdfDownload}><Icons.MdFileDownload size="60" color="#3b97d3" /></IconButton>
-			return (
-				<div style={{ marginBottom: '20px' }}>
-					<Flex wrap>
-						<Box width={[4 / 12]}>
-							{previousButton}
-						</Box>
-						<Box width={[4 / 12]}>
-							{downloadButton}
-						</Box>
-						<Box width={[4 / 12]}>
-							{nextButton}
-						</Box>
-					</Flex>
-				</div>
-			)
+		let downloadButton = <IconButton style={{ textAlign: 'center' }} className="next" onClick={this.handlePdfDownload}><Icons.MdFileDownload size="60" color="#3b97d3" /></IconButton>
+		return (
+			<div style={{ marginBottom: '20px' }}>
+				<Flex wrap>
+					<Box width={[4 / 12]}>
+						{previousButton}
+					</Box>
+					<Box width={[4 / 12]}>
+						{downloadButton}
+					</Box>
+					<Box width={[4 / 12]}>
+						{nextButton}
+					</Box>
+				</Flex>
+			</div>
+		)
+	}
+
+	render() {
+		/* State */
+		const { configModalIsOpen, publishModalIsOpen, pdfModalIsOpen, dates, pdfFile, page } = this.state
+		/* Props */
+		const { appendix, handleSubmit } = this.props
+		/* Functions */
+		const { submitUpdate, openConfigModal, openPublishModal,
+			closeConfigModal, handleDateChange, saveConfigModal,
+			closePublishModal, onClickPublishAppendix, handlePdfChange,
+			handleViewAppendix, closePdfModal, onDocumentComplete, onPageComplete } = this
+
+		const pdfOptions = [
+			{ value: 'create', label: 'Opret PDF af tillæg' },
+			{ value: 'view', label: 'Se PDF' }
+		]
+		const viewOptions = [
+			{ value: 'viewpublic', label: 'Vis offentlig udgave' }
+		]
+
+		let pagination = null
+		if (this.state.pages) {
+			pagination = this.renderPagination(this.state.page, this.state.pages)
 		}
 
-		render() {
-			/* State */
-			const { configModalIsOpen, publishModalIsOpen, pdfModalIsOpen, dates, pdfFile, page } = this.state
-			/* Props */
-			const { appendix, handleSubmit } = this.props
-			/* Functions */
-			const { submitUpdate, openConfigModal, openPublishModal,
-				closeConfigModal, handleDateChange, saveConfigModal,
-				closePublishModal, onClickPublishAppendix, handlePdfChange,
-				handleViewAppendix, closePdfModal, onDocumentComplete, onPageComplete } = this
-
-			const pdfOptions = [
-				{ value: 'create', label: 'Opret PDF af tillæg' },
-				{ value: 'view', label: 'Se PDF' }
-			]
-			const viewOptions = [
-				{ value: 'viewpublic', label: 'Vis offentlig udgave' }
-			]
-
-			let pagination = null
-			if (this.state.pages) {
-				pagination = this.renderPagination(this.state.page, this.state.pages)
-			}
-
-			return (
-				<SecondaryContainer>
-					{appendix !== null ?
-						<Animation>
-							<div>
-								<Flex wrap>
-									<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
-										<AppendixHeader>{appendix.name}</AppendixHeader>
-									</Box>
-									<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
-										<Flex wrap>
-											<Box width={[1, 1, 1, 1, 9 / 12]}>
-												<Flex wrap>
-													<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
-														<Dropdown
-															className="pdfSelect"
-															name="pdfSelect"
-															value="one"
-															options={pdfOptions}
-															onChange={handlePdfChange}
-															searchable={false}
-															clearable={false}
-															placeholder="PDF"
-														/>
-													</Box>
-													<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
-														<Dropdown
-															className="viewAppendixSelect"
-															name="viewAppendixSelect"
-															value="one"
-															options={viewOptions}
-															onChange={handleViewAppendix}
-															searchable={false}
-															clearable={false}
-															placeholder="Vis plan"
-														/>
-													</Box>
-												</Flex>
-											</Box>
-											<Box width={[1, 1, 1, 1, 3 / 12]}>
-												<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
-												<IconButton onClick={openPublishModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
-											</Box>
-										</Flex>
-									</Box>
-								</Flex>
-							</div>
-							<Settings
-								configModalIsOpen={configModalIsOpen}
-								closeConfigModal={closeConfigModal}
-								handleDateChange={handleDateChange}
-								saveConfigModal={saveConfigModal}
-								dates={dates} />
-							<Publish
-								publishModalIsOpen={publishModalIsOpen}
-								closePublishModal={closePublishModal}
-								appendix={appendix}
-								onClickPublishAppendix={onClickPublishAppendix}
-							/>
-							<AppendixPdfModal
-								pdfModalIsOpen={pdfModalIsOpen}
-								closePdfModal={closePdfModal}
-								onDocumentComplete={onDocumentComplete}
-								onPageComplete={onPageComplete}
-								page={page}
-								pagination={pagination}
-								pdfFile={pdfFile}
-							/>
-							<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
-						</Animation>
-						: <PulseLoader color="royalblue"/>
-					}
-				</SecondaryContainer>
-			)
-		}
+		return (
+			<SecondaryContainer>
+				{appendix !== null ?
+					<Animation>
+						<div>
+							<Flex wrap>
+								<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
+									<AppendixHeader>{appendix.name}</AppendixHeader>
+								</Box>
+								<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
+									<Flex wrap>
+										<Box width={[1, 1, 1, 1, 9 / 12]}>
+											<Flex wrap>
+												<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
+													<Dropdown
+														className="pdfSelect"
+														name="pdfSelect"
+														value="one"
+														options={pdfOptions}
+														onChange={handlePdfChange}
+														searchable={false}
+														clearable={false}
+														placeholder="PDF"
+													/>
+												</Box>
+												<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
+													<Dropdown
+														className="viewAppendixSelect"
+														name="viewAppendixSelect"
+														value="one"
+														options={viewOptions}
+														onChange={handleViewAppendix}
+														searchable={false}
+														clearable={false}
+														placeholder="Vis plan"
+													/>
+												</Box>
+											</Flex>
+										</Box>
+										<Box width={[1, 1, 1, 1, 3 / 12]}>
+											<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
+											<IconButton onClick={openPublishModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
+										</Box>
+									</Flex>
+								</Box>
+							</Flex>
+						</div>
+						<Settings
+							configModalIsOpen={configModalIsOpen}
+							closeConfigModal={closeConfigModal}
+							handleDateChange={handleDateChange}
+							saveConfigModal={saveConfigModal}
+							dates={dates} />
+						<Publish
+							publishModalIsOpen={publishModalIsOpen}
+							closePublishModal={closePublishModal}
+							appendix={appendix}
+							onClickPublishAppendix={onClickPublishAppendix}
+						/>
+						<AppendixPdfModal
+							pdfModalIsOpen={pdfModalIsOpen}
+							closePdfModal={closePdfModal}
+							onDocumentComplete={onDocumentComplete}
+							onPageComplete={onPageComplete}
+							page={page}
+							pagination={pagination}
+							pdfFile={pdfFile}
+						/>
+						<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} renderFields={renderFields} />
+					</Animation>
+					: <PulseLoader color="royalblue" />
+				}
+			</SecondaryContainer>
+		)
+	}
 }
 
 const mapStateToProps = (state, ownProps) => ({
