@@ -1,18 +1,17 @@
 import React from 'react'
 import ReactQuill from 'react-quill'
 
-const Quill = ({ value, onChange }) => {
+const Quill = ({ value, onChange, panellIsOpen }) => {
+	var quillStyle = {
+		display: (panellIsOpen) ? 'block' : 'none'	
+	}
+
 	return (
-		<div style={{ width: '100%' }}>
-			<ReactQuill value={value} 
-				onChange={onChange}
-				modules={Quill.modules} />
-		</div>
+		<ReactQuill value={value} onChange={onChange} modules={Quill.modules} style={quillStyle} />
 	)
 }
 
 export default Quill
-
 
 Quill.modules = {
 	toolbar: {

@@ -365,3 +365,28 @@ export const DatePickerStyled = styled(DatePicker)`
     padding-left: 10px;
     padding-right: 10px;
 `
+
+export const FormPanelWrapper = styled.div`
+    margin-bottom: 10px;
+/* 
+    &:first-of-type > .quill {
+        display: block;
+    }
+    &:not(:first-of-type) > .quill {
+        display: none;
+    } */
+`
+
+export const FormPanelHeader = styled.div`
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background-color: ${colors.PRIMARY_BLUE};
+    font-family: 'Source Sans Pro';
+    font-size: 18px;
+    font-weight: 300;
+    padding-left: 10px;
+    cursor: pointer;
+    user-select: none;
+`

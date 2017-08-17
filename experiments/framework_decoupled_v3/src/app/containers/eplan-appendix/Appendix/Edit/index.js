@@ -27,10 +27,7 @@ import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/epla
 let renderFields = ({ fields }) => {
 	return (
 		<div>
-			{fields.map((field, index) => {
-				return (
-					<Field key={fields.get(index).id} name={`${field}.value`} type="text" component={renderQuill} label={fields.get(index).caption} />)
-			})}
+			{fields.map((field, index) => { return ( <Field key={fields.get(index).id} name={`${field}.value`} type="text" component={renderQuill} label={fields.get(index).caption} />) })}
 		</div>
 	)
 }
