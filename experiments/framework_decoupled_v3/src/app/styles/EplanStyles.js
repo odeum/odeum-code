@@ -285,7 +285,7 @@ export const Dropdown = styled(Select) `
         background-color: #3b97d3;
         border: none;
         border-radius: 3px;
-        height: 44px;
+        height: 37px;
         cursor: pointer;
         /*box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);*/
 
@@ -294,20 +294,20 @@ export const Dropdown = styled(Select) `
             font-family: 'Source Sans Pro';
             font-size: 16px;
             font-weight: 300;
-            line-height: 44px;
+            line-height: 37px;
             padding-left: 15px;
         }
 
         .Select-value {
-            line-height: 44px !important;
+            line-height: 37px !important;
         }
 
         .Select-value-label {
-            line-height: 44px;
+            line-height: 37px;
         }
 
         .Select-input {
-            height: 44px;
+            height: 37px;
         }
 
         .Select-arrow-zone {
@@ -390,4 +390,6 @@ export const FormPanelHeader = styled.div`
     padding-left: 10px;
     cursor: pointer;
     user-select: none;
+    /* border-top-left-radius: 4px;
+    border-top-right-radius: 4px; */
 `
