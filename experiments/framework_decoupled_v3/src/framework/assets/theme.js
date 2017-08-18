@@ -26,29 +26,29 @@ const theme = {
 	},
 
 	iconButtonStyle: {
-		verticalAlign: '-5px', /* -10% */
-		paddingRight: '8px'
+		//verticalAlign: '-4px', /* -10% */
+		marginRight: '8px'
 	},
 
 	buttonSize: {
 		large: {
 			size: fonts.SIZE_LARGE,
-			padding: '9px 20px 9px 15px', /* top, right, buttom, left */
+			padding: '0 20px 0 15px', /*9px 20px 9px 15px; *//* top, right, buttom, left */
 			lineHeight: 1.9
 		},
 		default: {
 			size: fonts.SIZE_DEFAULT,
-			padding: '9px 20px 9px 15px', /*9px 20px 9px 15px; *//* top, right, buttom, left */
+			padding: '0 20px 0 15px', /*9px 20px 9px 15px; *//* top, right, buttom, left */
 			lineHeight: 1.9
 		},
 		small: {
 			size: fonts.SIZE_SMALL,
-			padding: '9px 20px 9px 15px', /* top, right, buttom, left */
+			padding: '0 20px 0 15px', /*9px 20px 9px 15px; *//* top, right, buttom, left */
 			lineHeight: 1.9
 		},
 		xsmall: {
 			size: fonts.SIZE_EXTRA_SMALL,
-			padding: '9px 20px 9px 15px', /* top, right, buttom, left */
+			padding: '0 20px 0 15px', /*9px 20px 9px 15px; *//* top, right, buttom, left */
 			lineHeight: 1.9
 		}
 	},

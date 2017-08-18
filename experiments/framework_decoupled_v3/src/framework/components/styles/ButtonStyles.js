@@ -3,6 +3,9 @@ import { transparentize, darken } from 'polished'
 import * as colors from 'framework/assets/colors'
 
 const StyledButton = styled.button`
+    display : flex;
+    align-items : center;
+    float: left;
     border-radius: 4px;
     font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
     font-size: ${(props) => props.theme.buttonSize.default.size || '18px'};
@@ -10,7 +13,9 @@ const StyledButton = styled.button`
     font-style: ${(props) => props.theme.fontStyle || 'normal'}; 
     color: ${(props) => props.theme.button.color || colors.BUTTON_TEXT};
     background: ${(props) => props.theme.button.background || colors.BUTTON_DEFAULT};
-    padding: ${(props) => props.theme.buttonSize.default.padding || '9px 20px 9px 15px'};
+    padding: 0;
+    padding: ${(props) => props.theme.buttonSize.default.padding || '0 20px 0 15px'};
+    height: 37px;
     margin-right: 0.7rem;
     border: none;
     text-decoration: none;
