@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { removeOpenApdx } from 'app/store/modules/eplan'
 // import { Field, reduxForm } from 'redux-form'
 // import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 
@@ -32,11 +31,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, param) => {
 			dispatch(tabChange(id, param))
-		},
-		unMount: (param) => {
-			//TODO Remove Open Appendix when *CLOSED* not when unmounted
-			dispatch(removeOpenApdx(param))
-		},
+		}
 	}
 }
 

@@ -12,9 +12,9 @@ class EplanAppendix extends Component {
 	render() {
      
 		return (
-			<div style={{ height: '100%' }}>
-				{React.cloneElement(this.props.children, sceneProp)}
-			</div>
+
+			React.cloneElement(this.props.children, sceneProp)
+
 		)
 	}
 }

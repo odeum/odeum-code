@@ -31,8 +31,8 @@ class ReferenceTableContainer extends Component {
 		)
 		// this.tabs()
 	}
-
-	tabs() {
+	//UNUSED
+	/* 	tabs() {
 		this.props.tabConfig(
 			this.props.param,
 			[{
@@ -50,7 +50,7 @@ class ReferenceTableContainer extends Component {
 			]
 		)
 	}
-    
+     */
 	render() {
 		return (
 			<div>

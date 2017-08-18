@@ -72,7 +72,7 @@ export default class AppendixTable extends Component {
 		const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
 		return (
-			<div style={{ width: '100%', height: '100%', clear: 'both' }}>
+			<div style={{ clear: 'both' }}>
 				<ContentBox>
 					{/*  <label>
             <input
