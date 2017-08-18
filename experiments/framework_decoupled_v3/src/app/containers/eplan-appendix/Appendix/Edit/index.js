@@ -30,9 +30,9 @@ let renderFields = ({ fields }) => {
 		<div>
 			{fields.map((field, index) => { 
 				return (
-					<Flex wrap>
+					<Flex wrap key={index}>
 						<Box width={[1, 1, 1, 1, 7 / 12]}>
-							<Field index={index} key={fields.get(index).id} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).caption} />
+							<Field index={index} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).caption} />
 						</Box>
 					</Flex>
 				)
