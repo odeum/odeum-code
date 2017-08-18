@@ -3,13 +3,14 @@ import React from 'react'
 // import TinyMceEditor from './Editors/TinyMCE'
 // import DraftEditor from './Editors/Draft'
 
-import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
+// import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 
-export const renderQuill = ({ input, label, type, meta: { touched, error } }) => {
-	return (
-		<FormPanel input={input} label={label} type={type} touched={touched} error={error}></FormPanel>
-	)
-}
+// export const renderQuill = ({ index, input, label, type, meta: { touched, error } }) => {
+// 	return (
+// 		<FormPanel index={index} input={input} label={label} type={type} touched={touched} error={error}></FormPanel>
+// 	)
+// }
+
 export const renderDefault = ({ input, label, type, meta: { touched, error } }) => {
 	return (<div style={{ display: 'flex', flexDirection: 'row', marginBottom: '10px' }}>
 		<label style={{ width: '150px', padding: "30px 20px 50px 20px" }}>

@@ -8,7 +8,7 @@ class FormPanel extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			panellIsOpen: false
+			panellIsOpen: (this.props.index === 0) ? true : false
 		}
 	}
 

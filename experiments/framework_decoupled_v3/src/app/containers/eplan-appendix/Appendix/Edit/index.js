@@ -15,7 +15,7 @@ import * as Icons from 'react-icons/lib/md'
 
 /* Components */
 import moment from 'moment'
-import { renderQuill } from '../EditorSelector'
+// import { renderQuill } from '../EditorSelector'
 import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import SettingsModal from 'app/components/eplan-appendix/Appendix/SettingsModal'
@@ -23,11 +23,14 @@ import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdfModal'
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
+import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 
 let renderFields = ({ fields }) => {
 	return (
 		<div>
-			{fields.map((field, index) => { return ( <Field key={fields.get(index).id} name={`${field}.value`} type="text" component={renderQuill} label={fields.get(index).caption} />) })}
+			{fields.map((field, index) => { 
+				return ( <Field index={index} key={fields.get(index).id} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).caption} />)
+			})}
 		</div>
 	)
 }
