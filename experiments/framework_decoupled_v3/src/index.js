@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import registerServiceWorker from './registerServiceWorker'
 import AppContainer from 'framework/containers/App/App'
 import { history, store } from 'framework/store'
-//import 'normalize.css'
+import 'normalize.css'
 
 ReactDOM.render(
 	<AppContainer store = { store } history = { history } />
