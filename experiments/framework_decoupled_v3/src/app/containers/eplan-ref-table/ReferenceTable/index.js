@@ -16,7 +16,7 @@ class ReferenceTableContainer extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.tabs = this.tabs.bind(this)
+	//	this.tabs = this.tabs.bind(this)
 	}
 	componentWillMount() {
 		this.props.onMount(
@@ -25,7 +25,8 @@ class ReferenceTableContainer extends Component {
 				label: this.props.param,
 				icon: 'mode_edit',
 				location: '/reference/list/' + this.props.param + '/edit',
-				fixed: false
+				fixed: false,
+				closeLink: '/reference/list'
 			},
 			this.props.param
 		)
