@@ -23,7 +23,8 @@ class FrameContainer extends Component {
 				label: this.props.frameId,
 				icon: 'mode_edit',
 				location: '/eplan/list/' + this.props.appendixId + '/frames/' + this.props.frameId + '/edit',
-				fixed: false
+				fixed: false,
+				closeLink: '/eplan/list/' + this.props.appendixId + '/frames/'
 			},
 			this.props.frameId
 		)

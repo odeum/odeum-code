@@ -18,10 +18,11 @@ class ReferenceTableContainer extends Component {
 		this.state = {}
 	//	this.tabs = this.tabs.bind(this)
 	}
+
 	componentWillMount() {
 		this.props.onMount(
 			this.props.id,
-			{
+			{ //Identifier for tab
 				label: this.props.param,
 				icon: 'mode_edit',
 				location: '/reference/list/' + this.props.param + '/edit',
