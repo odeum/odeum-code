@@ -3,8 +3,8 @@ import { transparentize, darken } from 'polished'
 import * as colors from 'framework/assets/colors'
 
 const StyledButton = styled.button`
-    display : flex;
-    align-items : center;
+    display: flex;
+    align-items: center;
     float: left;
     border-radius: 4px;
     font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
