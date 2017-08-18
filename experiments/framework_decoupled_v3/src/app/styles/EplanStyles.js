@@ -223,9 +223,10 @@ export const ModalWindow = styled(Modal) `
 `
 
 export const ModalHeader = styled.div`
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 60px;
-    line-height: 60px;
     background-color: ${colors.MODAL_HEADER};
     font-family: 'Source Sans Pro';
     font-size: 20px;
@@ -241,7 +242,6 @@ export const ModalHeader = styled.div`
 `
 
 export const ModalHeaderIcon = styled.div`
-    float: left;
     margin-right: 5px;
 `
 
@@ -251,6 +251,7 @@ export const ModalHeaderTitle = styled.div`
 
 export const ModalHeaderClose = styled.div`
     float: right;
+    margin-left: auto;
     cursor: pointer;
 `
 
