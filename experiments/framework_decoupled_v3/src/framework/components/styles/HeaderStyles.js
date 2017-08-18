@@ -54,6 +54,7 @@ export const SearchBarInput = styled.input`
     color: #fff;
     outline: none;
     -webkit-appearance: none;
+    box-sizing: content-box;
 
     &::placeholder {
         color: #fff;
@@ -82,6 +83,7 @@ export const SearchBarButtonDiv = styled.div`
     cursor: pointer;
     padding-top: 2px;
     padding-left: 8px;
+    box-sizing: content-box;
 `
 
 export const NotificationDiv = styled.div`
@@ -120,6 +122,7 @@ export const NotificationBadgeSpan = styled.span`
     font-weight: 300;
     color: #fff;
     user-select: none;
+    box-sizing: content-box;
 `
 
 export default HeaderDiv
