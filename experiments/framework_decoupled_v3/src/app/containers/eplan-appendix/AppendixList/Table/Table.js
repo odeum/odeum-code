@@ -2,11 +2,14 @@
 import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
 import { ListLink, ListAction } from 'app/styles/EplanStyles'
+import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
+import { exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
 import Icon from 'framework/assets/Icon'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
@@ -14,7 +17,7 @@ import RowRenderer from './_rowRender'
 import moment from 'moment'
 import 'moment/locale/da'
 
-export default class AppendixTable extends Component {
+class AppendixTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
 	};
@@ -31,7 +34,9 @@ export default class AppendixTable extends Component {
 			scrollToIndex: undefined,
 			sortBy: '',
 			sortDirection: SortDirection.ASC,
-			useDynamicRowHeight: false
+			useDynamicRowHeight: false,
+			exportModalIsOpen: false,
+			exportAppendix: null
 		}
 		this._actionRowRenderer = this._actionRowRenderer.bind(this)
 		this._getRowHeight = this._getRowHeight.bind(this)
@@ -43,6 +48,9 @@ export default class AppendixTable extends Component {
 		this._sort = this._sort.bind(this)
 		this._rowClicked = this._rowClicked.bind(this)
 		this._cellClicked = this._cellClicked.bind(this)
+		this.openExportModal = this.openExportModal.bind(this)
+		this.closeExportModal = this.closeExportModal.bind(this)
+		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
 	}
 
 	render() {
@@ -276,6 +284,12 @@ export default class AppendixTable extends Component {
 						)}
 					</AutoSizer>
 				</AutoSizerDiv>
+				<ExportModal
+					exportModalIsOpen={this.state.exportModalIsOpen}
+					closeExportModal={this.closeExportModal}
+					appendix={this.state.exportAppendix}
+					onClickExportAppendix={this.onClickExportAppendix}
+				/>
 				{/* <div style={{ marginTop: '30px' }}> 1,2,3......</div> */}
 			</div>
 		)
@@ -310,6 +324,46 @@ export default class AppendixTable extends Component {
 		return this._getDatum(list, index).size
 	}
 
+	openExportModal(rowData) {
+		this.setState({
+			exportAppendix: rowData
+		})
+		this.setState({
+			exportModalIsOpen: true
+		})
+	}
+
+	closeExportModal() {
+		this.setState({
+			exportModalIsOpen: false
+		})
+	}
+
+	async onClickExportAppendix() {
+		document.getElementById('exportStepOne').style.display = 'none'
+		document.getElementById('exportButton').style.display = 'none'
+		document.getElementById('exportCloseButton').style.display = 'none'
+		document.getElementById('exportStepTwo').style.display = 'block'
+		document.getElementById('exportLoadingDiv').style.display = 'block'
+		console.log(this.state.exportAppendix.appendixId)
+		try {
+			await this.props.exportToPlanSystem(this.state.exportAppendix.appendixId).then((response) => {
+				console.log('Export result this:', response)
+
+				document.getElementById('exportLoadingDiv').style.display = 'none'
+				document.getElementById('exportCloseButton').style.display = 'block'
+
+				if (response.errors === 0) {
+					document.getElementById('exportStatusText').innerText = 'Tillæget blev indmeldt korrekt'
+				} else {
+					document.getElementById('exportStatusText').innerText = 'Tillæget blev ikke indmeldt, fik følgende fejl: ' + response.result
+				}
+			})
+		} catch (e) {
+			console.log('Error:' + e)
+		}
+	}
+
 	_actionRowRenderer({ cellData,
 		columnData,
 		dataKey,
@@ -317,7 +371,7 @@ export default class AppendixTable extends Component {
 	}) {
 		return <Cell onClick={(e) => { }}>
 			<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
-			<ListAction><ListLink href={cellData} target="_blank"><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
+			<ListAction><div onClick={() => this.openExportModal(rowData)}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></div></ListAction>
 		</Cell>
 	}
 
@@ -389,3 +443,14 @@ export default class AppendixTable extends Component {
 		})
 	}
 }
+
+function mapDispatchToProps(dispatch) {
+	return {
+		exportToPlanSystem: async (id) => {
+			console.log('exportToPlanSystem table.js')
+			return dispatch(await exportAppendixToPlansystemAsync(id))
+		}
+	}
+}
+
+export default connect(mapDispatchToProps) (AppendixTable)
