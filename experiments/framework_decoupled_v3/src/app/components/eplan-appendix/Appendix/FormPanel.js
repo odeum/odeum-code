@@ -38,9 +38,10 @@ class FormPanel extends Component {
 }
 
 FormPanel.propTypes = {
+	index: PropTypes.number.isRequired,
 	label: PropTypes.string.isRequired,
 	input: PropTypes.any.isRequired,
-	touched: PropTypes.any.isRequired,
+	touched: PropTypes.any,
 	error: PropTypes.any
 }
 
