@@ -96,6 +96,10 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 	- [11.6. React Native Tools](#116-react-native-tools)
 	- [11.7. Reactjs code snippets](#117-reactjs-code-snippets)
 	- [11.8. vscode-styled-components](#118-vscode-styled-components)
+	- [11.9. Markdown Checkboxes](#119-markdown-checkboxes)
+	- [11.10. Markdown Preview Github Styles](#1110-markdown-preview-github-styles)
+	- [11.11. Markdown Shortcuts](#1111-markdown-shortcuts)
+	- [11.12. Markdown TOC](#1112-markdown-toc)
 - [12. ESLINT (linting)](#12-eslint-linting)
 - [13. ODEUM API](#13-odeum-api)
 - [14. ODEUM 2GO!](#14-odeum-2go)
@@ -786,6 +790,18 @@ Popular Atom keybindings for Visual Studio Code (by Microsoft)
 
 ## 11.8. vscode-styled-components
 [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
+
+## 11.9. Markdown Checkboxes
+[Markdown Checkboxes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-checkbox)
+
+## 11.10. Markdown Preview Github Styles 
+[Markdown Preview Github Styles](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
+
+## 11.11. Markdown Shortcuts
+[Markdown Shortcuts](https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts)
+
+## 11.12. Markdown TOC
+[Markdown TOC](https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc)
 
 # 12. ESLINT (linting)
 To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. See [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for more info on rules. 
