@@ -114,8 +114,7 @@ export default function tabs(state = initialState, action) {
 			findInstance.tabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
 			findInstance.activeTab = findInstance.tabs[0].label
 			//REFACTOR
-			//POSSIBLE BUG
-			action.asyncDispatch(push('/eplan/list'))
+			action.asyncDispatch(push(action.payload.tab.closeLink))
 
 			return {
 				...state,

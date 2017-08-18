@@ -25,7 +25,8 @@ class AppendixContainer extends Component {
 				label: this.props.param,
 				icon: 'mode_edit',
 				location: '/eplan/list/' + this.props.param + '/edit',
-				fixed: false
+				fixed: false,
+				closeLink: '/eplan/list'
 			},
 			this.props.param
 		)

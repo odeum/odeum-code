@@ -5,7 +5,7 @@ export const Div = styled.div`
     height: 100%;
     padding: 20px;
     background-color: #fff;
-    overflow-y: scroll;
+    overflow-y: auto;
     box-sizing: border-box;
 `
 
