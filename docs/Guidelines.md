@@ -128,24 +128,24 @@ All current development code is located in development/alpha.
 ## 1.2. ODEUM CodeJS Contributors
 
 * Core Software Developemt Team
-	* [Andrei Tudor](at@webhouse.dk) (AT) - Framework, Apps
-	* [Christian Broberg](cb@webhouse.dk) (CB) - Project Management
-	* [Henrik Hansen](hh@webhouse.dk) (HH) - API, Apps
-	* [Mikkel Broberg](mb@webhouse.dk) (MB) - API, Apps
-	* [Martin Kristiansen](mhk@webhouse.dk) (MHK) - API, Apps
+	* [Andrei Tudor](at@webhouse.dk) (AT) (Phone: +45 50 25 70 47) - Framework, Apps
+	* [Christian Broberg](cb@webhouse.dk) (CB) (Phone: +45 22 68 08 80) - Project Management
+	* [Henrik Hansen](hh@webhouse.dk) (HH) (Phone: +45 22 68 08 86) - API, Apps
+	* [Mikkel Broberg](mb@webhouse.dk) (MB) (Phone: +45 22 68 08 81) - API, Apps
+	* [Martin Kristiansen](mhk@webhouse.dk) (MHK) (Phone: +45 22 68 08 89) - API, Apps
 
 * Software Development:
-    * [Frida Jakobsen](frida.jakobsen@hotmail.com) (FJ) - Apps, Test
-	* [Elena-Luminia Gavrilovici](luminita.gavrilovici@yahoo.com) (ELG) - Apps/CSS/Refactoring/Code style/Code review
-    * [Kasper Nielsen](kasper8791@gmail.com) (KN) - Apps, Test setup
-    * [Anders Juel Lichon](Lichondk@gmail.com) (AJL) - Apps, Test
-    * [Leonid Zorin](leonid9.021@gmail.com) (LZ) - Apps, Test
+    * [Frida Jakobsen](frida.jakobsen@hotmail.com) (FJ) (Phone: +45 93 99 77 83) - Apps, Test
+	* [Elena-Luminia Gavrilovici](luminita.gavrilovici@yahoo.com) (ELG) (Phone: +45 91 72 27 27) - Apps/CSS/Refactoring/Code style/Code review
+    * [Kasper Nielsen](kasper8791@gmail.com) (KN) (Phone: +45 40 35 45 47) - Apps, Test setup
+    * [Anders Juel Lichon](Lichondk@gmail.com) (AJL) (Phone: +45 30 27 63 07) - Apps, Test
+    * [Leonid Zorin](leonid9.021@gmail.com) (LZ) (Phone: +45 51 49 36 12) - Apps, Test
 
 * Design & Marketing:
-	* [Elena Frankovic](frankovic.elena@gmail.com) (EF) - Art Direction, Graphic design, Marketing, Prototyping
-    * [Tina Bota](bota.tina@gmail.com) (TB) - Art Direction, Design System, Marketing, Prototyping
-    * [Ineta Bulbenkovaite](i.bulbenkovaite@gmail.com) (IB) - Project Management, Communication, SoMe and Project Documentation (meta story), Prototyping
-	* [Mette Bugge](mette@webhouse.dk) (MBK) - Project Facilitation, Mentoring, Sales, Backup
+	* [Elena Frankovic](frankovic.elena@gmail.com) (EF) (Phone: +45 91 81 19 09) - Art Direction, Graphic design, Marketing, Prototyping
+    * [Tina Bota](bota.tina@gmail.com) (TB) (Phone: +45 91 85 41 24) - Art Direction, Design System, Marketing, Prototyping
+    * [Ineta Bulbenkovaite](i.bulbenkovaite@gmail.com) (IB) (Phone: +45 50 27 87 58) - Project Management, Communication, SoMe and Project Documentation (meta story), Prototyping
+	* [Mette Bugge](mette@webhouse.dk) (MBK) (Phone: +45 24 21 89 96) - Project Facilitation, Mentoring, Sales, Backup
 
 # 2. Must-reads and tutorials (will update continously)
 The following technology areas and articles are all must-reads for newcommers to React and ODEUM CodeJS.
