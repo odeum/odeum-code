@@ -139,6 +139,7 @@ export const AppendixButtonPanelDiv = styled.div`
 
 export const AppendixForm = styled.form`
     clear: both;
+    margin-bottom: 80px;
 `
 
 export const ExportStepTwoDiv = styled.div`

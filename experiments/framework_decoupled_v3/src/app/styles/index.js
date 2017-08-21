@@ -27,8 +27,8 @@ export const PrimaryContainer = styled.div`
     width: 100%;
     height: 100%;
     padding-top: 10px;
-    padding-bottom: 20px;
-    `
+    /* padding-bottom: 20px; */
+`
 
 export const SecondaryContainer = PrimaryContainer.extend`
    /* padding: 20px;*/
