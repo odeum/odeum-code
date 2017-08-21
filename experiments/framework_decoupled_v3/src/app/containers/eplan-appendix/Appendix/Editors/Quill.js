@@ -1,13 +1,13 @@
 import React from 'react'
-import ReactQuill from 'react-quill'
+import { ReactQuillStyled } from 'app/styles/EplanStyles'
 
 const Quill = ({ value, onChange, panellIsOpen }) => {
 	var quillStyle = {
-		display: (panellIsOpen) ? 'block' : 'none'	
+		display: (panellIsOpen) ? 'block' : 'none',
 	}
 
 	return (
-		<ReactQuill value={value} onChange={onChange} modules={Quill.modules} style={quillStyle} />
+		<ReactQuillStyled value={value} onChange={onChange} modules={Quill.modules} style={quillStyle} />
 	)
 }
 

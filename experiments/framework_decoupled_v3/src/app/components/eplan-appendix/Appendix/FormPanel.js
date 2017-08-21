@@ -8,7 +8,11 @@ class FormPanel extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			panellIsOpen: (this.props.index === 0) ? true : false
+			panellIsOpen: (this.props.index === 0) ? true : false,
+			panelStyle: {
+				borderBottomLeftRadius: (this.props.index === 0) ? '0' : '4px',
+				borderBottomRightRadius: (this.props.index === 0) ? '0' : '4px',
+			}
 		}
 	}
 
@@ -18,12 +22,16 @@ class FormPanel extends Component {
 		} else {
 			this.setState({ panellIsOpen: true })
 		}
+		this.setState({ panelStyle: {
+			borderBottomLeftRadius: (this.state.panellIsOpen) ? '4px' : '0',
+			borderBottomRightRadius: (this.state.panellIsOpen) ? '4px' : '0',
+		} })
 	}
 
 	render() {
 		return (
 			<FormPanelWrapper>
-				<FormPanelHeader onClick={this.handleOnClick}>
+				<FormPanelHeader onClick={this.handleOnClick} style={this.state.panelStyle}>
 					{this.props.label}
 				</FormPanelHeader>
 				<Quill {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} />

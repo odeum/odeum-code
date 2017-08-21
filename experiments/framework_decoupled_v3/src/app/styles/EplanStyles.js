@@ -6,6 +6,7 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
+import ReactQuill from 'react-quill'
 
 export const DescriptionDiv = styled.div`
     float: left;
@@ -391,6 +392,12 @@ export const FormPanelHeader = styled.div`
     padding-left: 10px;
     cursor: pointer;
     user-select: none;
-    /* border-top-left-radius: 4px;
-    border-top-right-radius: 4px; */
+    border-radius: 4px;
+`
+
+export const ReactQuillStyled = styled(ReactQuill)`
+    div:nth-of-type(2) {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
 `
