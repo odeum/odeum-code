@@ -1,4 +1,19 @@
 import styled from 'styled-components'
+import { injectGlobal } from 'styled-components'
+
+injectGlobal`
+    html {
+        font-size: 62.5%;
+    }
+    * {
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0
+    }
+`
 
 export const HomeDiv = styled.div`
     width: 100%;
