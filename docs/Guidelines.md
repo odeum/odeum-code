@@ -128,11 +128,11 @@ All current development code is located in development/alpha.
 ## 1.2. ODEUM CodeJS Contributors
 
 * Core Software Developemt Team
-	* [Andrei Tudor](at@webhouse.dk) (AT)
-	* [Christian Broberg](cb@webhouse.dk) (CB)
-	* [Henrik Hansen](hh@webhouse.dk) (HH)
-	* [Mikkel Broberg](mb@webhouse.dk) (MB)
-	* [Martin Kristiansen](mhk@webhouse.dk) (MHK)
+	* [Andrei Tudor](at@webhouse.dk) (AT) - Framework, Apps
+	* [Christian Broberg](cb@webhouse.dk) (CB) - Project Management
+	* [Henrik Hansen](hh@webhouse.dk) (HH) - API, Apps
+	* [Mikkel Broberg](mb@webhouse.dk) (MB) - API, Apps
+	* [Martin Kristiansen](mhk@webhouse.dk) (MHK) - API, Apps
 
 * Software Development:
     * [Frida Jakobsen](frida.jakobsen@hotmail.com) (FJ) - Apps, Test
@@ -142,10 +142,10 @@ All current development code is located in development/alpha.
     * [Leonid Zorin](leonid9.021@gmail.com) (LZ) - Apps, Test
 
 * Design & Marketing:
-	* [Elena Frankovic](frankovic.elena@gmail.com) (EF) - Art Direction, Graphic design, Marketing
-    * [Tina Bota](bota.tina@gmail.com) (TB) - Design System, Marketing
-    * [Ineta Bulbenkovaite](i.bulbenkovaite@gmail.com) (IB) - Project Management, Communication, SoMe and Project Documentation (meta story)
-	* [Mette Bugge](mette@webhouse.dk) (MBK) - Project Facilitation, Mentoring, Backup
+	* [Elena Frankovic](frankovic.elena@gmail.com) (EF) - Art Direction, Graphic design, Marketing, Prototyping
+    * [Tina Bota](bota.tina@gmail.com) (TB) - Art Direction, Design System, Marketing, Prototyping
+    * [Ineta Bulbenkovaite](i.bulbenkovaite@gmail.com) (IB) - Project Management, Communication, SoMe and Project Documentation (meta story), Prototyping
+	* [Mette Bugge](mette@webhouse.dk) (MBK) - Project Facilitation, Mentoring, Sales, Backup
 
 # 2. Must-reads and tutorials (will update continously)
 The following technology areas and articles are all must-reads for newcommers to React and ODEUM CodeJS.
