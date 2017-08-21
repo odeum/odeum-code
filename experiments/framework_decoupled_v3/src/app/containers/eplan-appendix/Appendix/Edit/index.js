@@ -380,8 +380,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: (id, param) => {
-			dispatch(tabChange(id, param))
+		onMount: (instanceID, param) => {
+			dispatch(tabChange(instanceID, param))
 		},
 		getAppendix: (param) => {
 			dispatch(getAppendixAsync(param))

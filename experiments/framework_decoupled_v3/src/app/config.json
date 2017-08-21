@@ -4,19 +4,19 @@
 			"instanceID": "dashboard",
 			"activeTab": "General",
 			"tabs": [
-				{
+				{	"id": 0,
 					"label": "General",
 					"location": "/dashboard/general",
 					"icon": "assignment_turned_in",
 					"fixed": true
 				},
-				{
+				{	"id": 1,
 					"label": "Fields",
 					"location": "/dashboard/fields",
 					"icon": "input",
 					"fixed": true
 				},
-				{
+				{	"id": 2,
 					"label": "Workflow",
 					"location": "/dashboard/workflow",
 					"icon": "timeline",
@@ -52,7 +52,7 @@
 			"instanceID": "forms",
 			"activeTab": "Forms",
 			"tabs": [
-				{
+				{	"id": 0,
 					"label": "Forms",
 					"location": "/forms/list",
 					"icon": "assignment",
@@ -64,7 +64,7 @@
 			"instanceID": "eplan",
 			"activeTab": "Oversigt",
 			"tabs": [
-				{
+				{	"id": 0,
 					"label": "Oversigt",
 					"location": "/eplan/list",
 					"icon": "assignment",
@@ -76,7 +76,7 @@
 			"instanceID": "ref_table",
 			"activeTab": "Oversigt",
 			"tabs": [
-				{
+				{	"id": 0,
 					"label": "Oversigt",
 					"location": "/reference/list",
 					"icon": "grid_on",
