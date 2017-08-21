@@ -33,7 +33,14 @@ class Frames extends Component {
 	}
 
 	async componentWillMount() {
-		this.props.onMount(this.props.param, "Rammer til tillæg")
+		this.props.onMount(this.props.param, 
+			{
+				label: "Rammer til tillæg",
+				location: '/eplan/list/' + this.props.appendixId + '/frames',
+				icon: "info",
+				fixed: true
+			}
+		)
 		await this.props.getAppendix(this.props.param)
 	}
 
@@ -86,8 +93,9 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: (id, tab) => {
-			dispatch(tabChange(id, tab))
+		onMount: (instanceID, tab) => {
+			console.log(instanceID, tab)
+			dispatch(tabChange(instanceID, tab.label))
 		},
 		onClickButton: (frameId, appendixId) => {
 			dispatch(push('/eplan/list/' + appendixId + '/frames/' + frameId + '/edit'))

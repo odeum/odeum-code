@@ -3,7 +3,7 @@ import { TabClose, TabCloseLink, TabDiv, TabIcon, TabLabel, TabList, TabLink, Ta
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 
-const Tabs = ({ tabs, id, activeTab, onTabClick, OnCloseClick }) => {
+const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 	let active = (tab) => (tab.label === activeTab ? true : false)
 	function isFixed(tab) {
 		if (tab.fixed === undefined) {
@@ -13,7 +13,7 @@ const Tabs = ({ tabs, id, activeTab, onTabClick, OnCloseClick }) => {
 			return <TabCloseLink to="/">
 				<TabClose on={ active(tab) } onClick={ (e) => {
 					e.preventDefault()
-					OnCloseClick(id, tab)
+					OnCloseClick(instanceID, tab)
 				} }>
 					<Icon icon={ ICON_CLOSE } on={ active(tab) } size={ 13 } />
 				</TabClose>
@@ -27,7 +27,7 @@ const Tabs = ({ tabs, id, activeTab, onTabClick, OnCloseClick }) => {
 					<TabLabel key={ index } on={ active(tab) }>
 						<div onClick={ (e) => {
 							e.preventDefault()
-							onTabClick(id, tab.label)
+							onTabClick(instanceID, tab.label)
 						} }>
 							<TabLink to={ tab.location } className={ active(tab) }>
 								<TabDiv>

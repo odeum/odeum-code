@@ -1,7 +1,7 @@
 {
 	"tabs": [
 		{
-			"id": "dashboard",
+			"instanceID": "dashboard",
 			"activeTab": "General",
 			"tabs": [
 				{
@@ -49,7 +49,7 @@
 			]
 		},
 		{
-			"id": "forms",
+			"instanceID": "forms",
 			"activeTab": "Forms",
 			"tabs": [
 				{
@@ -61,7 +61,7 @@
 			]
 		},
 		{
-			"id": "eplan",
+			"instanceID": "eplan",
 			"activeTab": "Oversigt",
 			"tabs": [
 				{
@@ -73,7 +73,7 @@
 			]
 		},
 		{
-			"id": "ref_table",
+			"instanceID": "ref_table",
 			"activeTab": "Oversigt",
 			"tabs": [
 				{
@@ -85,7 +85,7 @@
 			]
 		},
 		{
-			"id": "settings",
+			"instanceID": "settings",
 			"activeTab": "",
 			"tabs": []
 		}
@@ -93,25 +93,25 @@
 	"scenes": [
 		{
 			"name": "Dashboard",
-			"id": "dashboard",
+			"sceneID": "dashboard",
 			"location": "/dashboard/general",
 			"icon": "dashboard"
 		},
 		{
 			"name": "Kommuneplantillæg",
-			"id": "eplan",
+			"sceneID": "eplan",
 			"location": "/eplan/list",
 			"icon": "assignment"
 		},
 		{
 			"name": "Reference tabeller",
-			"id": "ref_table",
+			"sceneID": "ref_table",
 			"location": "/reference/list",
 			"icon": "grid_on"
 		},
 		{
 			"name": "Indstillinger",
-			"id": "settings",
+			"sceneID": "settings",
 			"location": "/settings/general",
 			"icon": "settings"
 		}

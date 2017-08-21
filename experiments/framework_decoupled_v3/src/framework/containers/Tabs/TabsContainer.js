@@ -9,14 +9,14 @@ import { tabClose, tabChange } from 'framework/store/modules/tabs'
 const mapStateToProps = (state, props) => {
 	return {
 		tabs: getTabs(state, props),
-		id: getInstance(state, props).id,
+		instanceID: getInstance(state, props).instanceID,
 		activeTab: getInstance(state, props).activeTab
 	}
 }
 function mapDispatchToProps(dispatch) {
 	return {
-		onTabClick: (id, label) => {
-			dispatch(tabChange(id, label))
+		onTabClick: (instanceID, label) => {
+			dispatch(tabChange(instanceID, label))
 		},
 		OnCloseClick: (id, tab) => {
 			dispatch(tabClose(id, tab))
@@ -27,7 +27,7 @@ function mapDispatchToProps(dispatch) {
 const TabsContainer = connect(mapStateToProps, mapDispatchToProps)(Tabs)
 TabsContainer.propTypes = {
 	tabs: PropTypes.array,
-	id: PropTypes.string.isRequired,
+	instanceID: PropTypes.string.isRequired,
 	activeTab: PropTypes.string
 }
 export default TabsContainer

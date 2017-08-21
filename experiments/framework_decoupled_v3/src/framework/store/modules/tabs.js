@@ -11,24 +11,24 @@ export const CLOSE_TAB = "@@TABS/CLOSE_TAB"
 var _ = require('lodash')
 
 /*Actions*/
-export const addInstance = (id) => ({
+export const addInstance = (instanceID) => ({
 	type: ADD_INSTANCE,
-	payload: id
+	payload: instanceID
 })
 
-export const addTab = (id, tab) => ({
+export const addTab = (instanceID, tab) => ({
 	type: ADD_TAB,
 	payload: {
-		id: id,
+		instanceID: instanceID,
 		tab: tab
 	}
 })
 
-export const tabClose = (id, tab) => {
+export const tabClose = (instanceID, tab) => {
 	return {
 		type: CLOSE_TAB,
 		payload: {
-			id: id,
+			instanceID: instanceID,
 			tab: tab
 		}
 	}
@@ -41,28 +41,28 @@ export const changeId = (scene) => ({
 	}
 })
 
-export const tabChange = (id, label) => {
+export const tabChange = (instanceID, label) => {
 	if (label)
 		return {
 			type: CHANGE_TAB,
 			payload: {
-				id: id,
+				instanceID: instanceID,
 				label: label
 			}
 		}
 	else return {
 		type: CHANGE_TAB,
 		payload: {
-			id: id,
+			instanceID: instanceID,
 			label: ''
 		}
 	}
 }
 
-export const setTabs = (id, tabs) => ({
+export const setTabs = (instanceID, tabs) => ({
 	type: SET_SUBTABS,
 	payload: {
-		id: id,
+		instanceID: instanceID,
 		tabs: tabs
 	}
 })
@@ -71,10 +71,10 @@ export const setTabs = (id, tabs) => ({
 /*Reducer*/
 const initialState = {
 	scenes: config.scenes,
-	activeScene: config.scenes[0].id,
+	activeScene: config.scenes[0].sceneID,
 	tabInstance: config.tabs || [
 		{
-			id: 0,
+			instanceID: 0,
 			tabs: [{
 				label: 'Error',
 				location: 'e404',
@@ -85,12 +85,14 @@ const initialState = {
 		}]
 }
 
-function findInstanceByID(id, tabInstance) {
-	return _.find(tabInstance, (tabInstance) => (tabInstance.id === id))
+function findInstanceByID(instanceID, tabInstance) {
+	return _.find(tabInstance, (tabInstance) => (tabInstance.instanceID === instanceID))
 
 }
 
 export default function tabs(state = initialState, action) {
+	console.log('-----action-----')
+	console.log(action)
 	switch (action.type) {
 		case ADD_INSTANCE: {
 			let findInstance = findInstanceByID(action.payload, state.tabInstance)
@@ -98,7 +100,7 @@ export default function tabs(state = initialState, action) {
 				return state
 			else {
 				var emptyInstance = {
-					id: action.payload,
+					instanceID: action.payload,
 					tabs: [],
 					activeTab: ''
 				}
@@ -110,7 +112,7 @@ export default function tabs(state = initialState, action) {
 			}
 		}
 		case CLOSE_TAB: {
-			let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
+			let findInstance = findInstanceByID(action.payload.instanceID, state.tabInstance)
 			findInstance.tabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
 			findInstance.activeTab = findInstance.tabs[0].label
 			//REFACTOR
@@ -118,7 +120,7 @@ export default function tabs(state = initialState, action) {
 
 			return {
 				...state,
-				tabInstance: state.tabInstance.map((instance) => instance.id === findInstance.id ? instance = findInstance : instance),
+				tabInstance: state.tabInstance.map((instance) => instance.instanceID === findInstance.instanceID ? instance = findInstance : instance),
 
 			}
 		}
@@ -129,7 +131,8 @@ export default function tabs(state = initialState, action) {
 			}
 		}
 		case CHANGE_TAB: {
-			let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
+
+			let findInstance = findInstanceByID(action.payload.instanceID, state.tabInstance)
 
 			if (action.payload.label === '') {
 				findInstance.activeTab = findInstance.tabs[0].label
@@ -138,7 +141,7 @@ export default function tabs(state = initialState, action) {
 
 				findInstance.activeTab = action.payload.label
 			}
-			let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
+			let newInstances = _(state.tabInstance).keyBy('instanceID').set(findInstance.instanceID, findInstance).values().value()
 
 			return {
 				...state,
@@ -146,11 +149,11 @@ export default function tabs(state = initialState, action) {
 			}
 		}
 		case ADD_TAB: {
-			let findInstance = findInstanceByID(action.payload.id, state.tabInstance)
+			let findInstance = findInstanceByID(action.payload.instanceID, state.tabInstance)
 			let findDuplicate = _.find(findInstance.tabs, action.payload.tab)
 			if (findDuplicate === undefined) {
 				findInstance.tabs.push(action.payload.tab)
-				let newInstances = _(state.tabInstance).keyBy('id').set(findInstance.id, findInstance).values().value()
+				let newInstances = _(state.tabInstance).keyBy('instanceID').set(findInstance.instanceID, findInstance).values().value()
 				return {
 					...state,
 					tabInstance: newInstances

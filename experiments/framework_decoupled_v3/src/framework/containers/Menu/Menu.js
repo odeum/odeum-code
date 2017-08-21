@@ -19,7 +19,7 @@ class MenuContainer extends Component {
 		return (
 			<MenuDiv>
 				{this.props.scenes.map((scene, index) => (
-					<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index} onLoad={this.props.changeId} id={scene.id}
+					<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index} onLoad={this.props.changeId} id={scene.sceneID}
 					/>))}
 			</MenuDiv>
 		)

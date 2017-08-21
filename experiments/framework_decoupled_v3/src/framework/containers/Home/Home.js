@@ -46,7 +46,7 @@ class Home extends Component {
 							<div style={{ display: 'flex', height: 'calc(100vh - 140px)' }}>
 								<MenuContainer />
 								<WorkspaceContainer>
-									<TabsContainer style={{ border: 'solid 1px blue' }} id={this.props.activeScene} />
+									<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
 									{this.props.children}
 								</WorkspaceContainer>
 							</div>
