@@ -100,6 +100,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 	- [11.10. Markdown Preview Github Styles](#1110-markdown-preview-github-styles)
 	- [11.11. Markdown Shortcuts](#1111-markdown-shortcuts)
 	- [11.12. Markdown TOC](#1112-markdown-toc)
+	- [11.13. Import Cost](#1113-import-cost)
 - [12. ESLINT (linting)](#12-eslint-linting)
 - [13. ODEUM API](#13-odeum-api)
 - [14. ODEUM 2GO!](#14-odeum-2go)
@@ -802,6 +803,9 @@ Popular Atom keybindings for Visual Studio Code (by Microsoft)
 
 ## 11.12. Markdown TOC
 [Markdown TOC](https://marketplace.visualstudio.com/items?itemName=AlanWalk.markdown-toc)
+
+## 11.13. Import Cost
+[Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
 
 # 12. ESLINT (linting)
 To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. See [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for more info on rules. 
