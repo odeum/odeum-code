@@ -9,7 +9,14 @@
 					"location": "/dashboard/general",
 					"icon": "assignment_turned_in",
 					"fixed": true
-				}
+				},
+				{
+					"id":1,
+				"label":"Cake",
+				"location":"/dashboard/cake",
+				"icon":"info",
+				"fixed":true
+							}
 			]
 		}
 	],

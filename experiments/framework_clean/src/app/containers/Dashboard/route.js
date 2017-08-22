@@ -4,6 +4,7 @@ module.exports = {
 		require.ensure([], (require) => {
 			cb(null, [
 				require('./General/route.js'),
+				require('./Cake/route.js')
 			])
 		})
 	},
