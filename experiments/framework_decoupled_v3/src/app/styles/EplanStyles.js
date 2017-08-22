@@ -387,7 +387,7 @@ export const FormPanelHeader = styled.div`
     color: #fff;
     background-color: ${colors.PRIMARY_BLUE};
     font-family: 'Source Sans Pro';
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 300;
     padding-left: 10px;
     cursor: pointer;
