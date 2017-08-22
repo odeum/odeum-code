@@ -7,13 +7,8 @@
 2. Tabs 
 	- [x] Refactor Close function to receive a prop where to go back on creation
 	- [ ] Add identifier for each tab, do not use label as an identifier, refactor reducers and selectors to use id instead of label
-<<<<<<< HEAD
 	- [ ] if the tab has a label use the label for display else use id
-	- [ ] refactor id to instanceId
-=======
-	- [ ] If the tab has a label use the label for display else use id
-	- [ ] Refactor id to instanceId
->>>>>>> fd972ee515a439e1debe301980032f2d5e51675e
+	- [x] refactor id to instanceId
 	- [x] Check the main tabsContainer as the tabs from Reference Table move to Kommuneplantillaeg
 
 3. CSS

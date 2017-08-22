@@ -1,0 +1,24 @@
+{
+	"tabs": [
+		{
+			"instanceID": "dashboard",
+			"activeTab": "General",
+			"tabs": [
+				{	"id": 0,
+					"label": "General",
+					"location": "/dashboard/general",
+					"icon": "assignment_turned_in",
+					"fixed": true
+				}
+			]
+		}
+	],
+	"scenes": [
+		{
+			"name": "Dashboard",
+			"sceneID": "dashboard",
+			"location": "/dashboard/general",
+			"icon": "dashboard"
+		}
+	]
+}

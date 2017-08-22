@@ -1,0 +1,52 @@
+{
+  "name": "odeum_base",
+  "version": "0.1.1",
+  "private": true,
+  "dependencies": {
+    "apisauce": "^0.14.0",
+    "axios": "^0.16.2",
+    "draft": "^0.2.3",
+    "draft-js": "^0.10.1",
+    "grid-styled": "^2.0.0-10",
+    "halogen": "^0.2.0",
+    "immutable": "^3.8.1",
+    "lodash": "^4.17.4",
+    "normalize.css": "^7.0.0",
+    "polished": "^1.4.0",
+    "react": "15.6.1",
+    "react-addons-shallow-compare": "^15.6.0",
+    "react-datepicker": "^0.52.0",
+    "react-dom": "^15.5.0",
+    "react-icons": "^2.2.3",
+    "react-modal": "^2.2.2",
+    "react-pdf-js": "^2.0.1",
+    "react-quill": "^1.1.0",
+    "react-redux": "^5.0.4",
+    "react-router": "^3.0.2",
+    "react-router-redux": "^4.0.8",
+    "react-rte": "^0.11.0",
+    "react-select": "^1.0.0-rc.5",
+    "react-tinymce": "^0.5.1",
+    "react-virtualized": "^9.8.0",
+    "redux": "^3.6.0",
+    "redux-form": "^6.7.0",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "styled-components": "^2.1.2",
+    "styled-normalize": "^1.0.0"
+  },
+  "homepage": "",
+  "devDependencies": {
+    "babel-preset-stage-0": "^6.24.1",
+    "react-scripts": "1.0.11",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.1",
+    "surge": "^0.19.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
