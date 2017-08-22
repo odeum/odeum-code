@@ -3,6 +3,8 @@ import Cake from 'app/components/Dashboard/cake'
 import { connect } from 'react-redux'
 import { tabChange } from 'framework/store/modules/tabs'
 import { changeCake } from 'app/store/modules/cake'
+/* import TabsContainer from 'framework/containers/Tabs/TabsContainer'
+ */
 class CakeContainer extends Component {
 	componentWillMount = () => {
 		this.props.onMount()
@@ -10,13 +12,16 @@ class CakeContainer extends Component {
 	render() {
 		return (
 			<div>
+				{/* <TabsContainer instanceID={'cakes'}/> */}
 				<Cake type={this.props.type} changeCake={this.props.changeCakeType}/>
+				{this.props.activeTab}
 			</div>
 		)
 	}
 }
 const mapStateToProps = (state) => ({
-	type: state.cake.type
+	type: state.cake.type,
+	activeTab: state.tabs.activeScene
 })
 
 function mapDispatchToProps(dispatch) {

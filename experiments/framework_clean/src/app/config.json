@@ -18,6 +18,24 @@
 				"fixed":true
 							}
 			]
+		},
+		{
+			"instanceID":"cakes",
+			"activeTab":"Chocolate",
+			"tabs":[
+				{
+				"label":"Chocolate",
+				"location":"/dashboard/cake/chocolate",
+				"icon":"info",
+				"fixed":true
+				},
+				{
+				"label":"Vanilla",
+				"location":"/dashboard/cake/vanilla",
+				"icon":"info",
+				"fixed":true
+				}
+			]
 		}
 	],
 	"scenes": [
