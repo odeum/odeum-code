@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Cake = () => {
+const Cake = ({ type, changeCake }) => {
 	return (
 		<div>
-			<h2>Here's Cake</h2>
+			<h2>Here's Cake type: {type}</h2>
+			<button onClick={(e) => {e.preventDefault();changeCake('vanilla')}}>Change Cake</button>
 		</div>
 	)
 }
