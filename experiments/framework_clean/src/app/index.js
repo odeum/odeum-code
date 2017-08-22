@@ -5,7 +5,6 @@ class index extends Component {
 	render() {
 		return (
 			<PrimaryContainer>
-				<p>App *REMOVE this*</p>
 				{this.props.children}
 			</PrimaryContainer>
 		)
