@@ -5,6 +5,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 import { changeCake } from 'app/store/modules/cake'
 /* import TabsContainer from 'framework/containers/Tabs/TabsContainer'
  */
+const CakeArray = ['Cake', 'Muffin', 'Cookie']
 class CakeContainer extends Component {
 	componentWillMount = () => {
 		this.props.onMount()
@@ -13,8 +14,7 @@ class CakeContainer extends Component {
 		return (
 			<div>
 				{/* <TabsContainer instanceID={'cakes'}/> */}
-				<Cake type={this.props.type} changeCake={this.props.changeCakeType}/>
-				{this.props.activeTab}
+				<Cake type={this.props.type} changeCake={this.props.changeCakeType} CakeArray={CakeArray}/>
 			</div>
 		)
 	}
