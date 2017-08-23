@@ -180,6 +180,7 @@ The following modules/packages/dependencies are a list of dependency for use in 
 - [lodash](https://github.com/lodash/lodash)
 - [history](https://github.com/reacttraining/history)
 - [moment (date, time, locale)](https://github.com/moment/moment/)
+- [typeface-source-sans-pro](https://www.npmjs.com/package/typeface-source-sans-pro)
 
 ## 2.2. Articles
 - [Redux.org](http://redux.js.org)
@@ -808,7 +809,7 @@ Popular Atom keybindings for Visual Studio Code (by Microsoft)
 [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)
 
 # 12. ESLINT (linting)
-To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. See [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for more info on rules. 
+To set up ESLINT in VSCODE for proper use with React create the following .eslintrc.json file in the root of your project, experiment or app. It is important you include the "extends": ["react-app"] or you will encounter errors that actually aren't errors in JSX but errors in normal JavaScript. See [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) for more info on rules.   
 
 ```json
 {

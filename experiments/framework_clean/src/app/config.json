@@ -1,0 +1,55 @@
+{
+	"tabs": [
+		{
+			"instanceID": "dashboard",
+			"activeTab": "General",
+			"tabs": [
+				{	"id": 0,
+					"label": "General",
+					"location": "/dashboard/general",
+					"icon": "assignment_turned_in",
+					"fixed": true
+				},
+				{
+					"id":1,
+				"label":"Cake",
+				"location":"/dashboard/cake",
+				"icon":"info",
+				"fixed":true
+							},
+							{
+							"label":"Users",
+							"location":"/dashboard/users",
+							"icon":"info",
+							"fixed":true
+							}
+			]
+		},
+		{
+			"instanceID":"cakes",
+			"activeTab":"Chocolate",
+			"tabs":[
+				{
+				"label":"Chocolate",
+				"location":"/dashboard/cake/chocolate",
+				"icon":"info",
+				"fixed":true
+				},
+				{
+				"label":"Vanilla",
+				"location":"/dashboard/cake/vanilla",
+				"icon":"info",
+				"fixed":true
+				}
+			]
+		}
+	],
+	"scenes": [
+		{
+			"name": "Dashboard",
+			"sceneID": "dashboard",
+			"location": "/dashboard/general",
+			"icon": "dashboard"
+		}
+	]
+}
