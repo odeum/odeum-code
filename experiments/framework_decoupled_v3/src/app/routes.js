@@ -6,7 +6,7 @@ module.exports = {
 				require('./containers/Dashboard/route.js'),
 				require('./containers/Forms/route.js'),
 				require('./containers/eplan-appendix/route.js'),
-				require('./containers/eplan-ref-table/route.js')
+				require('./containers/ReferenceTables/ReferenceTablesRoute.js')
 			])
 		})
 	},

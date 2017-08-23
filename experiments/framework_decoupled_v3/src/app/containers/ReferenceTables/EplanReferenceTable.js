@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { changeId } from 'framework/store/modules/tabs'
 import { connect } from 'react-redux'
+import { getReferenceTableListAsync } from 'app/store/modules/eplan'
+
 const sceneProp = { id: 'ref_table' }
-// const tabProp = {id:'eplan-list'}
+
 
 class EplanReferenceTable extends Component {
-	componentWillMount() {
+	async componentWillMount() {
 		this.props.onMount()
+		await this.props.getList()
 	}
     
 	render() {
-     
 		return (
 			<div style={{ height: '100%' }}>
 				{React.cloneElement(this.props.children, sceneProp)}
@@ -19,12 +21,17 @@ class EplanReferenceTable extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
+	referencetables: state.eplan.referencetables,
+	referencetablesIsLoading: state.eplan.referencetablesIsLoading
 })
 
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(changeId(sceneProp.id))
+		},
+		getList: () => {
+			dispatch(getReferenceTableListAsync())
 		}
 	}
     

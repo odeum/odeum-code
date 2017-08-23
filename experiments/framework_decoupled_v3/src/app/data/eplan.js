@@ -100,6 +100,17 @@ export async function getReferenceTableList() {
 	return dataList
 }
 
+export async function getReferenceTableEntry(id) {
+	var data = await api.get('/rest/eplan/kpt/reftable/listvalues/' + id)
+		.then((response) => {
+			return response.data
+		})
+	var a = {}
+	a.id = parseInt(id, 10)
+	a.data = data
+	return a
+}
+
 //TODO: Should be moved to framework
 export async function getImagesList(folder) {
 	var data = await api.get('/rest/core/files/images/' + encodeURIComponent(folder))
