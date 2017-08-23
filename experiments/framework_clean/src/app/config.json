@@ -16,6 +16,12 @@
 				"location":"/dashboard/cake",
 				"icon":"info",
 				"fixed":true
+							},
+							{
+							"label":"Users",
+							"location":"/dashboard/users",
+							"icon":"info",
+							"fixed":true
 							}
 			]
 		},

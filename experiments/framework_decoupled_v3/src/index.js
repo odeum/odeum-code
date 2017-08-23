@@ -6,7 +6,7 @@ import { history, store } from 'framework/store'
 //BUG normalize is not compatible with react-select
 //TODO Replace react-select with a home made drop down
 // import 'normalize.css'
-
+require('typeface-source-sans-pro')
 ReactDOM.render(
 	<AppContainer store = { store } history = { history } />
 	,

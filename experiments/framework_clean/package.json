@@ -33,7 +33,8 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "styled-components": "^2.1.2",
-    "styled-normalize": "^1.0.0"
+    "styled-normalize": "^1.0.0",
+    "typeface-source-sans-pro": "^0.0.35"
   },
   "homepage": "",
   "devDependencies": {
