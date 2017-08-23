@@ -96,6 +96,18 @@ export async function getReferenceTableList() {
 		.then((response) => {
 			return response.data
 		})
-	const dataList = List(data)
-	return dataList
+	// const dataList = List(data)
+	// return dataList
+	return data
+}
+
+export async function getReferenceTableEntry(id) {
+	var data = await api.get('/rest/eplan/kpt/reftable/listvalues/' + id)
+		.then((response) => {
+			return response.data
+		})
+	var a = {}
+	a.id = parseInt(id, 10)
+	a.data = data
+	return a
 }

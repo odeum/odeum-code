@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker'
 import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
 import ReactQuill from 'react-quill'
+import { Field } from 'redux-form'
 
 export const DescriptionDiv = styled.div`
     float: left;
@@ -399,5 +400,24 @@ export const ReactQuillStyled = styled(ReactQuill)`
     div:nth-of-type(2) {
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
+    }
+`
+export const FormField = styled(Field)`
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    background-color: #ecf0f1;
+    color: #5e5e5e;
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &:hover {
+        box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
     }
 `
