@@ -206,7 +206,7 @@ const fadeModal = keyframes`
 `
 
 export const ModalWindow = styled(Modal) `
-    border-radius: 3px;
+    border-radius: 4px;
     border: none;
     position: absolute;
     top: 50%;

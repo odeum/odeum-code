@@ -65,7 +65,7 @@ class ImageBrowser extends Component {
 		const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
 		return (
-			<ImageBrowserModalWindow isOpen={this.props.imageBrowserModalIsOpen} onRequestClose={this.props.closeImageBrowserModal} contentLabel="Billeder">
+			<ImageBrowserModalWindow style={{ overlay: { zIndex: 66000 } }} isOpen={this.props.imageBrowserModalIsOpen} onRequestClose={this.props.closeImageBrowserModal} contentLabel="Billeder">
 				<ModalHeader>
 					<ModalHeaderIcon>
 						<Icon icon={iconname.ICON_ADD_CIRCLE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
@@ -233,19 +233,19 @@ class ImageBrowser extends Component {
 	}) {
 		if (rowData.type === 'dir') {
 			console.log('is dir')
+			alert('go to dir somehow')
 		} else {
 			console.log(' is file')
+			this.props.insertImage(rowData.url)
+			this.props.closeImageBrowserModal()
 		}
-
-		this.props.insertImage()
-		//console.log(rowData)
-		// this.props.onClickButton(rowData.appendixId)
 	}
 }
 
 ImageBrowser.propTypes = {
 	imageBrowserModalIsOpen: PropTypes.bool.isRequired,
 	closeImageBrowserModal: PropTypes.func.isRequired,
+	list: PropTypes.object.isRequired,
 	insertImage: PropTypes.func.isRequired
 }
 

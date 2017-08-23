@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Quill from 'app/containers/eplan-appendix/Appendix/Editors/Quill'
+import Editor from 'framework/components/Widgets/Editor'
 import { FormPanelWrapper, FormPanelHeader } from 'app/styles/EplanStyles'
 
 class FormPanel extends Component {
@@ -37,7 +37,7 @@ class FormPanel extends Component {
 				<FormPanelHeader onClick={this.handleOnClick} style={this.state.panelStyle}>
 					{this.props.label}
 				</FormPanelHeader>
-				<Quill {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} />
+				<Editor {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} />
 				{this.props.touched && this.props.error &&
 					<span>
 						{this.props.error}
