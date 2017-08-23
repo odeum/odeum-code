@@ -99,3 +99,14 @@ export async function getReferenceTableList() {
 	const dataList = List(data)
 	return dataList
 }
+
+//TODO: Should be moved to framework
+export async function getImagesList(folder) {
+	var data = await api.get('/rest/core/files/images/' + encodeURIComponent(folder))
+		.then((response) => {
+			// console.log(response.data)
+			return response.data
+		})
+	const dataList = List(data)
+	return dataList
+}
