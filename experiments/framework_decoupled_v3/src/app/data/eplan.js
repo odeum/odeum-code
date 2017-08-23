@@ -96,9 +96,8 @@ export async function getReferenceTableList() {
 		.then((response) => {
 			return response.data
 		})
-	// const dataList = List(data)
-	// return dataList
-	return data
+	const dataList = List(data)
+	return dataList
 }
 
 export async function getReferenceTableEntry(id) {
@@ -110,4 +109,15 @@ export async function getReferenceTableEntry(id) {
 	a.id = parseInt(id, 10)
 	a.data = data
 	return a
+}
+
+//TODO: Should be moved to framework
+export async function getImagesList(folder) {
+	var data = await api.get('/rest/core/files/images/' + encodeURIComponent(folder))
+		.then((response) => {
+			// console.log(response.data)
+			return response.data
+		})
+	const dataList = List(data)
+	return dataList
 }

@@ -180,6 +180,7 @@ The following modules/packages/dependencies are a list of dependency for use in 
 - [lodash](https://github.com/lodash/lodash)
 - [history](https://github.com/reacttraining/history)
 - [moment (date, time, locale)](https://github.com/moment/moment/)
+- [typeface-source-sans-pro](https://www.npmjs.com/package/typeface-source-sans-pro)
 
 ## 2.2. Articles
 - [Redux.org](http://redux.js.org)

@@ -7,6 +7,7 @@ import { FormPanelWrapper, FormPanelHeader } from 'app/styles/EplanStyles'
 class FormPanel extends Component {
 	constructor(props) {
 		super(props)
+
 		this.state = {
 			panellIsOpen: (this.props.index === 0) ? true : false,
 			panelStyle: {
@@ -22,10 +23,12 @@ class FormPanel extends Component {
 		} else {
 			this.setState({ panellIsOpen: true })
 		}
-		this.setState({ panelStyle: {
-			borderBottomLeftRadius: (this.state.panellIsOpen) ? '4px' : '0',
-			borderBottomRightRadius: (this.state.panellIsOpen) ? '4px' : '0',
-		} })
+		this.setState({ 
+			panelStyle: {
+				borderBottomLeftRadius: (this.state.panellIsOpen) ? '4px' : '0',
+				borderBottomRightRadius: (this.state.panellIsOpen) ? '4px' : '0',
+			} 
+		})
 	}
 
 	render() {

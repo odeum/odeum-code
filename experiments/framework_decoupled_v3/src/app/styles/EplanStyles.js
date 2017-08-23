@@ -225,6 +225,11 @@ export const ModalWindow = styled(Modal) `
     box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);
 `
 
+export const ImageBrowserModalWindow = ModalWindow.extend`
+    width: 50%;
+    height: 50%;
+`
+
 export const ModalHeader = styled.div`
     display: flex;
     align-items: center;
@@ -388,7 +393,7 @@ export const FormPanelHeader = styled.div`
     color: #fff;
     background-color: ${colors.PRIMARY_BLUE};
     font-family: 'Source Sans Pro';
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 300;
     padding-left: 10px;
     cursor: pointer;
