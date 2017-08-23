@@ -1,8 +1,8 @@
 module.exports = {
-	path: 'edit',
+	path: 'list',
 	getComponent(location, cb) {
 		require.ensure([], (require) => {
-			cb(null, require('./index.js').default)
+			cb(null, require('./ReferenceTableList.js').default)
 		})
 	}
 }

@@ -3,14 +3,14 @@ module.exports = {
 	getChildRoutes(location, cb) {
 		require.ensure([], (require) => {
 			cb(null, [
-				require('./ReferenceTableList/route.js'),
-				require('./ReferenceTable/route.js'),
+				require('./ReferenceTableList/ReferenceTableListRoute.js'),
+				require('./ReferenceTable/ReferenceTableContainerRoute.js'),
 			])
 		})
 	},
 	getComponent(location, cb) {
 		require.ensure([], (require) => {
-			cb(null, require('./index.js').default)
+			cb(null, require('./EplanReferenceTable.js').default)
 		})
 	}
 }
