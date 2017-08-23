@@ -1,9 +1,10 @@
 import React from 'react'
+import { Header } from 'app/styles'
 const Users = ({ users }) => {
 	return (
 		<div>
 			{users.map((user, index ) => (
-				<h3 key={index} >{user.name}</h3>
+				<Header key={index} >{user.name}</Header>
 			))}
 		</div>
 	)

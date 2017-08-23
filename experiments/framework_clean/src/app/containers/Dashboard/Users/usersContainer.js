@@ -22,6 +22,7 @@ class UsersContainer extends Component {
 				 else
 				 return <h1>Loading</h1> 
 				 */}
+				 <h1>User names:</h1>
 				{users !== [] ?
 					<Users users={users}/> :
 					<h1>Loading</h1>}
