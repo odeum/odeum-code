@@ -4,6 +4,7 @@ import { Layout, Wrapper, Spacer, Room } from './components/Styles'
 import IconTest from './IconTest'
 import { ButtonTest, ButtonTest2 } from './ButtonTest'
 import ColorPalette from './components/ColorPalette'
+import IconPalette from './components/IconPalette'
 /*eslint-enable*/
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                     </div>
                 </Layout>
                 </Wrapper>
+				<IconPalette />
                 <Room />
                 <ColorPalette />
             </div>

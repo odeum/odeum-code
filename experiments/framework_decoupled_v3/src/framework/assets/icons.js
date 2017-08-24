@@ -3,7 +3,6 @@
 // Component names use MdSettings where settings have a caps initial letter
 
 // Framework icons
-
 export const ICON_SEARCH = 'search'
 export const ICON_MENU = 'menu'
 export const ICON_MESSAGES = 'chat'
@@ -120,7 +119,6 @@ export const ICON_NOTIFICATIONS_NONE = 'notifications_none'
 export const ICON_NOTIFICATIONS_OFF = 'notifications_off'
 
 // Tab Icons
-
 export const ICON_TAB_GENERAL = 'general'
 export const ICON_TAB_FIELDS = 'fields'
 export const ICON_TAB_USERS = 'users'

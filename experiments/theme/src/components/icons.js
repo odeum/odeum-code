@@ -18,7 +18,7 @@ export const ICON_INPUT = 'input'
 export const ICON_TIMELINE = 'timeline' // Workflow
 export const ICON_CODE = 'code' // Actions
 export const ICON_OPACITY = 'opacity' // Design
-export const ICON_ASSIGNMENT = 'assignment' // Reports
+export const ICON_ASSIGNMENT = 'assignment' // Forms
 export const ICON_ASSIGNMENT_TURNED_IN = 'assignment_turned_in' // Reports
 export const ICON_PEOPLE = 'people' // Organisation
 export const ICON_GROUP_ADD = 'group_add'
@@ -84,7 +84,7 @@ export const ICON_MOOD = 'mood'
 export const ICON_CHECK_BOX = 'check_box'
 export const ICON_RADIO_BUTTON_CHECKED = 'radio_button_checked'
 export const ICON_GRID_ON = 'grid_on'
-export const ICON_LAYERS = 'layers'
+export const ICON_LAYERS = 'layers' //forms
 export const ICON_SYNC = 'sync'
 export const ICON_SYNC_DISABLED = 'sync_disabled'
 export const ICON_SYNC_PROBLEM = 'sync_problem'
@@ -117,3 +117,16 @@ export const ICON_NOTIFICATIONS = 'notifications'
 export const ICON_NOTIFICATIONS_ACTIVE = 'notifications_active'
 export const ICON_NOTIFICATIONS_NONE = 'notifications_none'
 export const ICON_NOTIFICATIONS_OFF = 'notifications_off'
+
+// Tab Icons
+export const ICON_TAB_GENERAL = 'general'
+export const ICON_TAB_FIELDS = 'fields'
+export const ICON_TAB_USERS = 'users'
+
+export const iconArr = [
+	{
+		name: ICON_SEARCH,
+		value: '#2C3E50'
+	}
+]
+
