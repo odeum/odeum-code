@@ -9,6 +9,8 @@ import * as colors from 'framework/assets/colors'
 import ReactQuill from 'react-quill'
 import { Field } from 'redux-form'
 import DropDown from 'framework/components/Widgets/DropDown'
+import { ToastContainer } from 'react-toastify'
+
 export const DescriptionDiv = styled.div`
     float: left;
     font-family: 'Source Sans Pro';
@@ -314,6 +316,22 @@ width: 50px;
     padding: 5px;
 }
 `
+
+export const ToastContainerStyled = styled(ToastContainer)`
+    &.toastify {
+        /* .toastify-content--success {
+            background: #e74c3c;
+        } */
+        .toastify-content {
+            color: #fff;
+            font-family: 'Source Sans Pro';
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 4px;
+        }
+    }
+`
+
 export const Dropdown = styled(Select) `
     &.Select--single {
         .Select-control {
