@@ -91,8 +91,7 @@ function findInstanceByID(instanceID, tabInstance) {
 }
 
 export default function tabs(state = initialState, action) {
-	console.log('-----action-----')
-	console.log(action)
+
 	switch (action.type) {
 		case ADD_INSTANCE: {
 			let findInstance = findInstanceByID(action.payload, state.tabInstance)

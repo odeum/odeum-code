@@ -28,7 +28,7 @@ import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 let renderFields = ({ fields }) => {
 	return (
 		<div>
-			{fields.map((field, index) => { 
+			{fields.map((field, index) => {
 				return (
 					<div key={fields.get(index).id}>
 						<Flex wrap>
@@ -90,14 +90,14 @@ class EditAppendix extends Component {
 		{ await this.props.getAppendix(this.props.param) }
 	}
 
-	submitUpdate(values) {
+	async submitUpdate(values) {
 		console.log('gem')
-		this.props.updateApd(values, this.props.param, false)
+		await this.props.updateApd(values, this.props.param, false)
 	}
 
-	submitUpdateAndCommit(values) {
+	async submitUpdateAndCommit(values) {
 		console.log('gem + commit')
-		this.props.updateApd(values, this.props.param, true)
+		await this.props.updateApd(values, this.props.param, true)
 	}
 
 	openConfigModal() {
@@ -291,76 +291,84 @@ class EditAppendix extends Component {
 		if (this.state.pages) {
 			pagination = this.renderPagination(this.state.page, this.state.pages)
 		}
-
+		console.log('-----this.props.appendixIsSaving-----')
+		console.log(this.props.appendixIsSaving)
 		return (
 			<SecondaryContainer>
 				{appendix !== null ?
 					<Animation>
-						<div>
-							<Flex wrap>
-								<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
-									<AppendixHeader>{appendix.name}</AppendixHeader>
-								</Box>
-								<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
+						{this.props.appendixIsSaving ? <PulseLoader color="royalblue" /> :
+							<div>
+								<div>
 									<Flex wrap>
-										<Box width={[1, 1, 1, 1, 9 / 12]}>
+										<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
+											<AppendixHeader>{appendix.name}</AppendixHeader>
+										</Box>
+										<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
 											<Flex wrap>
-												<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
-													<Dropdown
-														className="pdfSelect"
-														name="pdfSelect"
-														value="one"
-														options={pdfOptions}
-														onChange={handlePdfChange}
-														searchable={false}
-														clearable={false}
-														placeholder="PDF"
-													/>
+												<Box width={[1, 1, 1, 1, 9 / 12]}>
+													<Flex wrap>
+														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
+															<Dropdown
+																className="pdfSelect"
+																name="pdfSelect"
+																value="one"
+																options={pdfOptions}
+																onChange={handlePdfChange}
+																searchable={false}
+																clearable={false}
+																placeholder="PDF"
+															/>
+															{/* 															<CustomDD label="Se PDF">
+																<h3>See PDF</h3>
+																<h3>Download PDF</h3>
+															</CustomDD> */}
+														</Box>
+														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
+															<Dropdown
+																className="viewAppendixSelect"
+																name="viewAppendixSelect"
+																value="one"
+																options={viewOptions}
+																onChange={handleViewAppendix}
+																searchable={false}
+																clearable={false}
+																placeholder="Vis plan"
+															/>
+														</Box>
+													</Flex>
 												</Box>
-												<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
-													<Dropdown
-														className="viewAppendixSelect"
-														name="viewAppendixSelect"
-														value="one"
-														options={viewOptions}
-														onChange={handleViewAppendix}
-														searchable={false}
-														clearable={false}
-														placeholder="Vis plan"
-													/>
+												<Box width={[1, 1, 1, 1, 3 / 12]}>
+													<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
+													<IconButton onClick={openExportModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
 												</Box>
 											</Flex>
 										</Box>
-										<Box width={[1, 1, 1, 1, 3 / 12]}>
-											<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
-											<IconButton onClick={openExportModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
-										</Box>
 									</Flex>
-								</Box>
-							</Flex>
-						</div>
-						<SettingsModal
-							configModalIsOpen={configModalIsOpen}
-							closeConfigModal={closeConfigModal}
-							handleDateChange={handleDateChange}
-							saveConfigModal={saveConfigModal}
-							dates={dates} />
-						<ExportModal
-							exportModalIsOpen={exportModalIsOpen}
-							closeExportModal={closeExportModal}
-							appendix={appendix}
-							onClickExportAppendix={onClickExportAppendix}
-						/>
-						<AppendixPdfModal
-							pdfModalIsOpen={pdfModalIsOpen}
-							closePdfModal={closePdfModal}
-							onDocumentComplete={onDocumentComplete}
-							onPageComplete={onPageComplete}
-							page={page}
-							pagination={pagination}
-							pdfFile={pdfFile}
-						/>
-						<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
+								</div>
+								<SettingsModal
+									configModalIsOpen={configModalIsOpen}
+									closeConfigModal={closeConfigModal}
+									handleDateChange={handleDateChange}
+									saveConfigModal={saveConfigModal}
+									dates={dates} />
+								<ExportModal
+									exportModalIsOpen={exportModalIsOpen}
+									closeExportModal={closeExportModal}
+									appendix={appendix}
+									onClickExportAppendix={onClickExportAppendix}
+								/>
+								<AppendixPdfModal
+									pdfModalIsOpen={pdfModalIsOpen}
+									closePdfModal={closePdfModal}
+									onDocumentComplete={onDocumentComplete}
+									onPageComplete={onPageComplete}
+									page={page}
+									pagination={pagination}
+									pdfFile={pdfFile}
+								/>
+								<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
+							</div>}
 					</Animation>
 					: <PulseLoader color="royalblue" />
 				}
@@ -375,7 +383,8 @@ const mapStateToProps = (state, ownProps) => ({
 	initialValues: {
 		fields: getAppendixSel(state, ownProps.param, ownProps)
 	} || null,
-	conf: state.eplan.conf
+	conf: state.eplan.conf,
+	appendixIsSaving: state.eplan.appendixIsSaving
 })
 
 function mapDispatchToProps(dispatch) {
@@ -386,8 +395,8 @@ function mapDispatchToProps(dispatch) {
 		getAppendix: (param) => {
 			dispatch(getAppendixAsync(param))
 		},
-		updateApd: (appendix, id, commit) => {
-			dispatch(updateAppendix(appendix, id, commit))
+		updateApd: async (appendix, id, commit) => {
+			dispatch(await updateAppendix(appendix, id, commit))
 		},
 		unMount: (param) => {
 			//TODO Remove Open Appendix when *CLOSED* not when unmounted
