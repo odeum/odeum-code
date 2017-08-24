@@ -8,7 +8,7 @@ export const getAppendixSel = (state, id, props) => {
 	var filter = null
 	if (appendix && config)
 	{ filter = _.intersectionBy(appendix.fields, config.editFields, 'id') }
-	console.log(filter)
+	// console.log(filter)
 	return filter ? filter : undefined
 }
 
