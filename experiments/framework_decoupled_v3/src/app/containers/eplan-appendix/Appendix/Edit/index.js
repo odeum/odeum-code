@@ -275,9 +275,9 @@ class EditAppendix extends Component {
 
 	render() {
 		/* State */
-		const { configModalIsOpen, exportModalIsOpen, pdfModalIsOpen, dates, pdfFile, page } = this.state
+		const { configModalIsOpen, exportModalIsOpen, pdfModalIsOpen, pdfFile, page } = this.state
 		/* Props */
-		const { appendix, handleSubmit } = this.props
+		const { appendix, handleSubmit, appendixDates } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
 			closeConfigModal, handleDateChange, saveConfigModal,
@@ -296,10 +296,6 @@ class EditAppendix extends Component {
 		if (this.state.pages) {
 			pagination = this.renderPagination(this.state.page, this.state.pages)
 		}
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c8494aaf3a0d2cf68261390e80282d22e9b5e92
 		return (
 			<SecondaryContainer>
 				{appendix !== null ?
@@ -358,7 +354,7 @@ class EditAppendix extends Component {
 									closeConfigModal={closeConfigModal}
 									handleDateChange={handleDateChange}
 									saveConfigModal={saveConfigModal}
-									dates={this.props.appendixDates} />
+									dates={appendixDates} />
 								<ExportModal
 									exportModalIsOpen={exportModalIsOpen}
 									closeExportModal={closeExportModal}

@@ -25,7 +25,7 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 	console.log('Dates')
 	console.log(dates)
 	function dateChecker(date) {
-		return date._isValid ? date : moment('1980-01-01')
+		return date._isValid ? date : moment('1970-01-01')
 	}
 	return (
 		<div>
