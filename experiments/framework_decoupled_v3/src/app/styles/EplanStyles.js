@@ -271,7 +271,7 @@ export const ModalContent = styled.div`
     font-family: 'Source Sans Pro';
     font-size: 16px;
     font-weight: 300;
-    height: 100%;
+    height: calc(100% - 90px);
 `
 
 export const ModalButtonPanel = styled.div`

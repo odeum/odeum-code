@@ -76,8 +76,8 @@ class ImageBrowser extends Component {
 					</ModalHeaderClose>
 				</ModalHeader>
 				<ModalContent>
-					<AutoSizer style={{ overflow: 'hidden', border: 'solid 1px red' }}>
-						{({ width }) => (
+					<AutoSizer>
+						{({ height, width }) => (
 							<Table
 								ref="Table"
 								disableHeader={disableHeader}
@@ -93,7 +93,7 @@ class ImageBrowser extends Component {
 								sortBy={sortBy}
 								sortDirection={sortDirection}
 								width={width}
-								height={480}
+								height={height - 62}
 								rowRenderer={RowRenderer}
 								onRowClick={this._rowClicked}
 							>
