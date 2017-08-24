@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
-import { Animation, AppendixHeader, PulseLoader, Dropdown, CustomDD } from 'app/styles/EplanStyles'
+import { Animation, AppendixHeader, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
