@@ -8,6 +8,7 @@ import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 import { Flex, Box } from 'grid-styled'
+import moment from 'moment'
 
 const statusOptions = [
 	{ value: '1', label: 'Kladde' },
@@ -21,6 +22,11 @@ function handleStatusChange() {
 }
 
 const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveConfigModal, dates }) => {
+	console.log('Dates')
+	console.log(dates)
+	function dateChecker(date) {
+		return date._isValid ? date : moment('1980-01-01')
+	}
 	return (
 		<div>
 			<ModalWindow isOpen={configModalIsOpen} onRequestClose={closeConfigModal} contentLabel="Indstillinger">
@@ -36,10 +42,10 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 				<ModalContent>
 					<form>
 						<Flex wrap>
-							<Box width={[1 / 2]}>
+{/* 							<Box width={[1 / 2]}>
 								<FieldLabel for="name">Intern høring start:</FieldLabel>
 								<DatePickerStyled selected={dates.date1} onChange={(date) => handleDateChange(date, 'date1')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-							</Box>
+							</Box> */}
 							<Box width={[1 / 2]}>
 								<FieldLabel for="name">Vælg fase:</FieldLabel>
 								<Dropdown
@@ -54,7 +60,15 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 								/>
 							</Box>
 						</Flex>
-						<Flex wrap>
+						{dates.map((date, index) => (
+							<Flex wrap key={index}>
+								<Box width={[1 / 2]}>
+									<FieldLabel for="name">{date.caption}</FieldLabel>
+									<DatePickerStyled selected={dateChecker(moment(date.value))} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+								</Box>
+							</Flex>
+						))}
+						{/* 	<Flex wrap>
 							<Box width={[1 / 2]}>
 								<FieldLabel for="name">Intern høring slut:</FieldLabel>
 								<DatePickerStyled selected={dates.date2} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
@@ -89,7 +103,7 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 								<FieldLabel for="name">Vedtagelse:</FieldLabel>                
 								<DatePickerStyled selected={dates.date7} onChange={(date) => handleDateChange(date, 'date7')} dateFormat="DD/MM/YYYY" showWeekNumbers />
 							</Box>
-						</Flex>
+						</Flex> */}
 					</form>
 					<ModalButtonPanel>
 						<Button onClick={saveConfigModal} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>

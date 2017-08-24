@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAppendixAsync, updateAppendix, removeOpenApdx, exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
 import { Field, reduxForm } from 'redux-form'
-import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
+import { getAppendixSel, getAppendix, getAppendixDates } from 'app/store/selectors/eplan'
 
 /* Framework */
 import { tabChange } from 'framework/store/modules/tabs'
@@ -61,7 +61,8 @@ class EditAppendix extends Component {
 				date7: moment()
 			}
 		}
-
+		console.log('---Dates---')
+		console.log(this.state.dates)
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
 		this.submitUpdateAndCommit = this.submitUpdateAndCommit.bind(this)
@@ -291,8 +292,6 @@ class EditAppendix extends Component {
 		if (this.state.pages) {
 			pagination = this.renderPagination(this.state.page, this.state.pages)
 		}
-		console.log('-----this.props.appendixIsSaving-----')
-		console.log(this.props.appendixIsSaving)
 		return (
 			<SecondaryContainer>
 				{appendix !== null ?
@@ -351,7 +350,7 @@ class EditAppendix extends Component {
 									closeConfigModal={closeConfigModal}
 									handleDateChange={handleDateChange}
 									saveConfigModal={saveConfigModal}
-									dates={dates} />
+									dates={this.props.appendixDates} />
 								<ExportModal
 									exportModalIsOpen={exportModalIsOpen}
 									closeExportModal={closeExportModal}
@@ -384,7 +383,8 @@ const mapStateToProps = (state, ownProps) => ({
 		fields: getAppendixSel(state, ownProps.param, ownProps)
 	} || null,
 	conf: state.eplan.conf,
-	appendixIsSaving: state.eplan.appendixIsSaving
+	appendixIsSaving: state.eplan.appendixIsSaving,
+	appendixDates: getAppendixDates(state, ownProps.param, ownProps)
 })
 
 function mapDispatchToProps(dispatch) {
