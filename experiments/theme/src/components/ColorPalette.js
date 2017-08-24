@@ -6,8 +6,8 @@ import { DisplayColor, CopyButton } from './ColorPaletteStyles'
 
 
 class ColorPalette extends Component {
-    render() {
-        return (
+	render() {
+		return (
             <div>
                 {colorArr.map((color) => (
                     <div key={color.name}>                        
@@ -19,8 +19,8 @@ class ColorPalette extends Component {
                     </div>
                 ))}
             </div>
-        )
-    }
+		)
+	}
 }
 
 export default ColorPalette

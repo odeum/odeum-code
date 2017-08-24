@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import registerServiceWorker from './registerServiceWorker'
+// import registerServiceWorker from './registerServiceWorker'
 import AppContainer from 'framework/containers/App/App'
 import { history, store } from 'framework/store'
 //BUG normalize is not compatible with react-select
@@ -12,4 +12,4 @@ ReactDOM.render(
 	,
 	document.getElementById('root')
 )
-registerServiceWorker()
+// registerServiceWorker()
