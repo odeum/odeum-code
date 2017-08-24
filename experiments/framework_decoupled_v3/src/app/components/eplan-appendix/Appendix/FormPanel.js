@@ -32,12 +32,20 @@ class FormPanel extends Component {
 	}
 
 	render() {
+		let field = null
+
+		// if (this.props.input.type === 'ARTICLE') {
+		field = <Editor {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} />
+		// } else if (this.props.input.type === 'TEXTAREA') {
+		// 	field = <FormFieldTextarea name={this.props.input.name} component="input" type="text" />
+		// }
+
 		return (
 			<FormPanelWrapper>
 				<FormPanelHeader onClick={this.handleOnClick} style={this.state.panelStyle}>
 					{this.props.label}
 				</FormPanelHeader>
-				<Editor {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} />
+				{field}
 				{this.props.touched && this.props.error &&
 					<span>
 						{this.props.error}

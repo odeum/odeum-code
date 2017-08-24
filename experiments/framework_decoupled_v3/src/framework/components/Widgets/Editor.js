@@ -88,14 +88,15 @@ class Editor extends Component {
 				<TinyMCE
 					content={this.props.value}
 					config={{
-						plugins: 'autolink link image imagetools lists preview code autoresize contextmenu ',
+						plugins: 'autolink link image imagetools lists preview code contextmenu ',
 						toolbar: 'styleselect | bold italic | alignleft aligncenter alignright | link | image | code ',
 						statusbar: false,
 						branding: false,
 						imagetools_toolbar: 'editimage imageoptions',
 						removed_menuitems: 'newdocument',
 						file_browser_callback: this.openMediaBrowser,
-						width: "calc(100% - 2px)"
+						width: "calc(100% - 2px)",
+						height: '300px'
 					}}
 					onBlur={(e) => {
           				this.props.onBlur()

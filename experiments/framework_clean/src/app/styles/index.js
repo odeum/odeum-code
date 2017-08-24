@@ -6,7 +6,11 @@ export const EplanDropDown = styled(DropDown)`
     width:100%;
     padding:20px;
 `
-
+export const Button = styled.button`
+background:red;
+border: 0;
+color:white;
+`
 export const PrimaryContainer = styled.div`
     width: 100%;
     height: 100%;
