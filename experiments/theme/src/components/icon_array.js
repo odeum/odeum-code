@@ -1,7 +1,6 @@
-/* 
-// import React from 'react'
-// import * as Icons from 'react-icons/lib/md'
-*/
+import React from 'react'
+import * as Icons from 'react-icons/lib/md'
+
 
 
 // Framework icons
@@ -9,13 +8,15 @@ const ICON_SEARCH = 'search'
 const ICON_MENU = 'menu'
 const ICON_ASSIGNMENT_TURNED_IN = 'assignment_turned_in'
 
-function createTagName(iconname) {
+export function createTagName(iconname) {
 	const tagprefix = 'Md'
+	let combined = ''
 	let arr = iconname.split('_')
 	arr = arr.map((a) => {
 		return a.charAt(0).toUpperCase() + a.slice(1)
 	})
-	return tagprefix + arr.join('')
+	combined = tagprefix + arr.join('')
+	return <Icons.combined />
 
 }
 
@@ -23,17 +24,17 @@ export const iconArr = [
 	{
 		name: 'ICON_SEARCH', 
 		value: ICON_SEARCH,
-		component: () => { return createTagName(this.value)}
+		component: () => { return createTagName(ICON_SEARCH)}
 	},
 	{
 		name: 'ICON_MENU',
 		value: ICON_MENU,
-		component: () => { return createTagName(this.value) }
+		component: () => { return createTagName(ICON_MENU) }
 	},
 	{
 		name: 'ICON_ASSIGNMENT_TURNED_IN',
 		value: ICON_ASSIGNMENT_TURNED_IN,
-		component() { return createTagName(this.value) }
+		component() { return createTagName(ICON_ASSIGNMENT_TURNED_IN) }
 	}
 ]
 
@@ -44,7 +45,7 @@ export const iconArr = [
 
 /* 
 render() {
-    const TagName = this.props.tag
+    const TagName = createTagName(iconname)
     return <TagName />
 }
 

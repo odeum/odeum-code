@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
-import { Animation, AppendixHeader, PulseLoader, Dropdown } from 'app/styles/EplanStyles'
+import { Animation, AppendixHeader, PulseLoader, Dropdown, ToastContainerStyled } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -24,6 +24,8 @@ import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdf
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 let renderFields = ({ fields }) => {
 	return (
@@ -94,11 +96,13 @@ class EditAppendix extends Component {
 	async submitUpdate(values) {
 		console.log('gem')
 		await this.props.updateApd(values, this.props.param, false)
+		toast.success('Dine ændringer er gemt')
 	}
 
 	async submitUpdateAndCommit(values) {
 		console.log('gem + commit')
 		await this.props.updateApd(values, this.props.param, true)
+		toast.success('Dine ændringer er gemt')
 	}
 
 	openConfigModal() {
@@ -292,11 +296,15 @@ class EditAppendix extends Component {
 		if (this.state.pages) {
 			pagination = this.renderPagination(this.state.page, this.state.pages)
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c8494aaf3a0d2cf68261390e80282d22e9b5e92
 		return (
 			<SecondaryContainer>
 				{appendix !== null ?
 					<Animation>
-						{this.props.appendixIsSaving ? <PulseLoader color="royalblue" /> :
+						{this.props.appendixIsSaving ? <PulseLoader color="royalblue" /> : 
 							<div>
 								<div>
 									<Flex wrap>
@@ -366,6 +374,14 @@ class EditAppendix extends Component {
 									pagination={pagination}
 									pdfFile={pdfFile}
 								/>
+								<ToastContainerStyled 
+									position="top-right"
+									autoClose={5000}
+									hideProgressBar={true}
+									newestOnTop={true}
+									closeOnClick
+									pauseOnHover
+			        			/>
 								<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
 							</div>}
 					</Animation>
