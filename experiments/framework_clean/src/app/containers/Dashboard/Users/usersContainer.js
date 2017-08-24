@@ -32,7 +32,7 @@ class UsersContainer extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	users: state.cake.users
+	users: state.cake.users.results || []
 })
 
 function mapDispatchToProps(dispatch) {

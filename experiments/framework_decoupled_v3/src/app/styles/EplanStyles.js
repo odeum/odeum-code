@@ -8,7 +8,7 @@ import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
 import ReactQuill from 'react-quill'
 import { Field } from 'redux-form'
-
+import DropDown from 'framework/components/Widgets/DropDown'
 export const DescriptionDiv = styled.div`
     float: left;
     font-family: 'Source Sans Pro';
@@ -286,7 +286,34 @@ export const ModalButtonPanel = styled.div`
 export const Animation = styled.div`
     animation: ${fadeIn} 0.7s ease-in-out
 `
-
+export const CustomDD = styled(DropDown) `
+background-color: #3b97d3;
+border: none;
+border-radius: 3px;
+height: 37px;
+cursor: pointer;
+.label{
+color: #fff;
+font-family: 'Source Sans Pro';
+font-size: 16px;
+font-weight: 300;
+line-height: 37px;
+padding-left: 15px;
+}
+.container{
+background:green;
+}
+.arrow-zone{
+width: 50px;
+}
+.arrow{
+    border: none;
+    border: solid #fff;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 5px;
+}
+`
 export const Dropdown = styled(Select) `
     &.Select--single {
         .Select-control {

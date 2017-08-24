@@ -9,7 +9,6 @@ import { PrimaryContainer } from 'app/styles/'
 import NewAppendixModal from 'app/components/eplan-appendix/Appendix/NewAppendixModal'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
-
 const props = { name: 'Oversigt' }
 
 class AppendixList extends Component {
@@ -27,7 +26,7 @@ class AppendixList extends Component {
 	async componentWillMount() {
 		this.props.onMount(this.props.id, props.name)
 		await this.props.getList()
-       
+
 	}
 	onClickButton(index) {
 		this.props.onClickButton(index)
@@ -56,7 +55,9 @@ class AppendixList extends Component {
 
 		return (
 			<PrimaryContainer>
-				<DescriptionDiv>Small description placeholder</DescriptionDiv> 
+				<DescriptionDiv>Small description placeholder</DescriptionDiv>
+
+
 				<AppendixButtonPanel>
 					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
 				</AppendixButtonPanel>

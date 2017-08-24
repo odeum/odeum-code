@@ -1,10 +1,17 @@
 import React from 'react'
-import { Header } from 'app/styles'
+import { Header, EplanDropDown } from 'app/styles'
+
 const Users = ({ users }) => {
 	return (
 		<div>
-			{users.map((user, index ) => (
-				<Header key={index} >{user.name}</Header>
+			<EplanDropDown label={'Extra Info'} onClick={() => { console.log('Hello')}}>
+				<p>Text</p>
+			</EplanDropDown>
+			{users.map((user, index) => (
+				<div>
+					<Header key={index} >{user.name}</Header>
+
+				</div>
 			))}
 		</div>
 	)

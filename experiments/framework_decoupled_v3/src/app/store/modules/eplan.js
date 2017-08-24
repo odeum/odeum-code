@@ -21,7 +21,7 @@ const GET_REFERENCE_TABLE_ENTRY = '@@EPLAN/GET_REFERENCE_TABLE_ENTRY'
 const UPDATE_REFERENCE_TABLE = '@@EPLAN/UPDATE_REFERENCE_TABLE'
 const ADD_REFERENCE_TABLE = '@@EPLAN/ADD_REFERENCE_TABLE'
 const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
-
+const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
 const getAppendix = (data) => ({ type: GET_APPENDIX, payload: data })
@@ -37,7 +37,7 @@ const getRefTableEntry = (data) => ({ type: GET_REFERENCE_TABLE_ENTRY, payload: 
 const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data })
 const addRefTable = (data) => ({ type: ADD_REFERENCE_TABLE, payload: data })
 const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, payload: data })
-
+const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
 /* Middleware */
 export function removeOpenApdx(id) {
 	return dispatch => {
@@ -45,8 +45,9 @@ export function removeOpenApdx(id) {
 	}
 }
 
-export function updateAppendix(appendix, id, commit) {
+export async function updateAppendix(appendix, id, commit) {
 	return dispatch => {
+		dispatch(appendixIsSaving())
 		dispatch(updateApd({ appendix, id, commit }))
 	}
 }
@@ -167,7 +168,8 @@ const initState = {
 	framesIsLoading: true,
 	referencetablesIsLoading: true,
 	referenceTablesEntryIsLoading: true,
-	conf: null
+	conf: null,
+	appendixIsSaving: false
 }
 
 function eplan(state = initState, action) {
@@ -178,6 +180,11 @@ function eplan(state = initState, action) {
 				openAppendix: state.openAppendix.filter((item) => item === action.payload)
 			}
 		}
+		case APPENDIX_IS_SAVING:
+			return {
+				...state,
+				appendixIsSaving: true
+			}
 		case UPDATE_APPENDIX:
 		{
 			let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
@@ -187,7 +194,9 @@ function eplan(state = initState, action) {
 				})
 			})
 			postAppendix(orig, action.payload.commit)
-			return state
+			return { ...state,
+				appendixIsSaving: false
+			}
 		}
 		case GET_APPENDIX_CONFIG:
 		{
@@ -205,8 +214,8 @@ function eplan(state = initState, action) {
 		case GET_APPENDIX:
 		{
 			var findAppendix = _.find(state.openAppendix, (apdx) => (apdx.appendixId === action.payload.appendixId))
-			if (findAppendix !== undefined) 
-				return state 
+			if (findAppendix !== undefined)
+				return state
 			else return {
 				...state,
 				openAppendix: state.openAppendix.concat(action.payload),
@@ -240,15 +249,15 @@ function eplan(state = initState, action) {
 			return {
 				...state,
 				referencetables: state.referencetables.map(
-					(referencetable) => referencetable.id === parseInt(action.payload.id, 10) ? action.payload.referenceTable : referencetable
-				) 
+					(referencetable) => referencetable.id === parseInt(action.payload.id, 10) ? action.payload.referenceTable : referencetable
+				)
 			}
 		case ADD_REFERENCE_TABLE:
 			// TODO: Submit to server
 			action.payload.referenceTable.id = 1234
 			return {
 				...state,
-				referencetables: state.referencetables.concat(action.payload.referenceTable) 
+				referencetables: state.referencetables.concat(action.payload.referenceTable)
 			}
 		case UPDATE_REFERENCE_TABLE_DATA:
 			// TODO: Submit to server
@@ -257,11 +266,10 @@ function eplan(state = initState, action) {
 			return {
 				...state,
 				openReferenceTables: state.openReferenceTables.map(
-					(referencetable) => 
-					{
+					(referencetable) => {
 						console.log(referencetable)
 						// if (referencetable.id === parseInt(action.payload.id, 10)) {
-							
+
 						// 	referencetable.data.map((dataEntry) => {
 						// 		return dataEntry
 						// 	})
@@ -269,7 +277,7 @@ function eplan(state = initState, action) {
 						return referencetable
 					}
 					// referencetable.id === parseInt(action.payload.id, 10) ? action.payload.referenceTable : referencetable
-				) 
+				)
 			}
 		default:
 			return state

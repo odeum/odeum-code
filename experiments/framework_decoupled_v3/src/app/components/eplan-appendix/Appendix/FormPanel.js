@@ -37,7 +37,7 @@ class FormPanel extends Component {
 				<FormPanelHeader onClick={this.handleOnClick} style={this.state.panelStyle}>
 					{this.props.label}
 				</FormPanelHeader>
-				<Editor {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} />
+				{/* <Editor {...this.props.input} label={this.props.label} panellIsOpen={this.state.panellIsOpen} /> */}
 				{this.props.touched && this.props.error &&
 					<span>
 						{this.props.error}
