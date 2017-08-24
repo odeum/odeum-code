@@ -91,6 +91,7 @@ class Editor extends Component {
 						plugins: 'autolink link image imagetools lists preview code autoresize contextmenu ',
 						toolbar: 'styleselect | bold italic | alignleft aligncenter alignright | link | image | code ',
 						statusbar: false,
+						branding: false,
 						imagetools_toolbar: 'editimage imageoptions',
 						removed_menuitems: 'newdocument',
 						file_browser_callback: this.openMediaBrowser,
