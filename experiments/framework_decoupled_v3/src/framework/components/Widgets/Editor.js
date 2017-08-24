@@ -40,22 +40,21 @@ class Editor extends Component {
 	}
 
 	async componentWillMount() {
-		// this.setQuillStyle(this.props)
+		this.setEditorStyles(this.props)
 
 		let list = await getImagesList('/')
-		// console.log(list)
 		this.setState({ imagesList: list })
 	}
 
 	componentWillUpdate(nextProps) {
-		// this.setQuillStyle(nextProps)
+		this.setEditorStyles(nextProps)
 	}
 
-	// setQuillStyle(props) {
-	// 	this.quillStyle = {
-	// 		display: (props.panellIsOpen) ? 'block' : 'none'
-	// 	}
-	// }
+	setEditorStyles(props) {
+		this.editorStyle = {
+			display: (props.panellIsOpen) ? 'block' : 'none'
+		}
+	}
 
 	openMediaBrowser(field_name, url, type, win) {
 		if (type === 'image') {
@@ -83,16 +82,17 @@ class Editor extends Component {
 
 	render() {
 		return (
-			<div>
+			<div style={this.editorStyle}>
 				{/* <ReactQuill ref={(el) => { this.reactQuillRef = el }} value={this.props.value} onChange={this.props.onChange} modules={this.modules} style={this.quillStyle} /> */}
 				<TinyMCE
 					content={this.props.value}
 					config={{
-						plugins: 'autolink link image imagetools lists preview code',
+						plugins: 'autolink link image imagetools lists preview code autoresize',
 						toolbar: 'styleselect | bold italic | alignleft aligncenter alignright | link | image | code ',
 						imagetools_toolbar: 'editimage imageoptions',
 						removed_menuitems: 'newdocument',
-						file_browser_callback: this.openMediaBrowser
+						file_browser_callback: this.openMediaBrowser,
+						width: "calc(100% - 2px)"
 					}}
 					onBlur={this.props.onChange}
 				/>      
