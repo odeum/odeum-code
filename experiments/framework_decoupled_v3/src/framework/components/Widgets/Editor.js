@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 // import { ReactQuillStyled } from 'app/styles/EplanStyles'
 import ImageBrowserModal from 'framework/components/Widgets/ImageBrowserModal'
 import { getImagesList } from 'app/data/eplan' //getAppendixFramesList
@@ -20,7 +21,7 @@ class Editor extends Component {
 		this.openMediaBrowser = this.openMediaBrowser.bind(this)
 		this.closeImageBrowserModal = this.closeImageBrowserModal.bind(this)
 		this.insertImage = this.insertImage.bind(this)
-
+		
 		// this.modules = {
 		// 	toolbar: {
 		// 		container: [
@@ -87,15 +88,19 @@ class Editor extends Component {
 				<TinyMCE
 					content={this.props.value}
 					config={{
-						plugins: 'autolink link image imagetools lists preview code autoresize',
+						plugins: 'autolink link image imagetools lists preview code autoresize contextmenu ',
 						toolbar: 'styleselect | bold italic | alignleft aligncenter alignright | link | image | code ',
+						statusbar: false,
 						imagetools_toolbar: 'editimage imageoptions',
 						removed_menuitems: 'newdocument',
 						file_browser_callback: this.openMediaBrowser,
 						width: "calc(100% - 2px)"
 					}}
-					onBlur={this.props.onChange}
-				/>      
+					onBlur={(e) => {
+          				this.props.onBlur()
+          				this.props.onChange(e.target.getContent())
+        			}}				
+				/>
 
 				{this.state.imagesList !== null ? <ImageBrowserModal
 					imageBrowserModalIsOpen={this.state.imageBrowserModalIsOpen}
@@ -107,6 +112,12 @@ class Editor extends Component {
 			</div>
 		)
 	}
+}
+
+Editor.propTypes = {
+	onChange: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired,
+	panellIsOpen: PropTypes.bool.isRequired
 }
 
 export default Editor
