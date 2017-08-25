@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { injectGlobal } from 'styled-components'
 import styledNormalize from 'styled-normalize'
 
-injectGlobal`
+injectGlobal([`
     ${styledNormalize}
 
     html {
@@ -17,7 +17,7 @@ injectGlobal`
     body {
         margin: 0
     }
-`
+`])
 
 export const HomeDiv = styled.div`
     width: 100%;
