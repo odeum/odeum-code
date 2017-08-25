@@ -218,13 +218,16 @@ export const ModalWindow = styled(Modal) `
     bottom: auto;
     margin-right: -50%;
     width: 30%;
-    height: auto;
+    height: calc(100% - 200px);
     min-height: 500px;
+    max-height: 700px;
     transform: translate(-50%, -50%);
     animation: ${fadeModal} 1s ease-in-out;
     background-color: white;
     outline: none;
     box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);
+    overflow-y: auto;
+
 `
 
 export const ImageBrowserModalWindow = ModalWindow.extend`
@@ -274,6 +277,7 @@ export const ModalContent = styled.div`
     font-size: 16px;
     font-weight: 300;
     height: calc(100% - 90px);
+
 `
 
 export const ModalButtonPanel = styled.div`
