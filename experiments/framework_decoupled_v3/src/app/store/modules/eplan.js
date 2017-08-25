@@ -164,6 +164,8 @@ const initState = {
 	openAppendix: [],
 	referencetables: [],
 	openReferenceTables: [],
+	referenceTables: [],
+	referenceTableValues: [],
 	isLoading: true,
 	framesIsLoading: true,
 	referencetablesIsLoading: true,
@@ -233,6 +235,7 @@ function eplan(state = initState, action) {
 			// console.log(action.payload)
 			return {
 				...state,
+				referenceTables: action.payload,
 				referencetables: action.payload,
 				referencetablesIsLoading: false
 			}
@@ -241,44 +244,28 @@ function eplan(state = initState, action) {
 			// console.log(action.payload.ownerID)
 			return {
 				...state,
+				referenceTableValues: {
+					[action.payload.id]: action.payload
+				},
 				openReferenceTables: state.openReferenceTables.concat(action.payload),
 				referenceTablesEntryIsLoading: false
 			}
 		case UPDATE_REFERENCE_TABLE:
 			// TODO: Submit to server
-			return {
-				...state,
-				referencetables: state.referencetables.map(
-					(referencetable) => referencetable.id === parseInt(action.payload.id, 10) ? action.payload.referenceTable : referencetable
-				)
-			}
+			const UPDATE_REFERENCE_TABLE_state = { ...state }
+			UPDATE_REFERENCE_TABLE_state.referenceTables[action.payload.referenceTable.id] = action.payload.referenceTable
+			return UPDATE_REFERENCE_TABLE_state
 		case ADD_REFERENCE_TABLE:
 			// TODO: Submit to server
 			action.payload.referenceTable.id = 1234
-			return {
-				...state,
-				referencetables: state.referencetables.concat(action.payload.referenceTable)
-			}
+			const ADD_REFERENCE_TABLE_state = { ...state }
+			ADD_REFERENCE_TABLE_state.referenceTables[action.payload.referenceTable.id] = action.payload.referenceTable
+			return ADD_REFERENCE_TABLE_state
 		case UPDATE_REFERENCE_TABLE_DATA:
 			// TODO: Submit to server
-			console.log('UPDATE_REFERENCE_TABLE_DATA')
-			console.log(action.payload)
-			return {
-				...state,
-				openReferenceTables: state.openReferenceTables.map(
-					(referencetable) => {
-						console.log(referencetable)
-						// if (referencetable.id === parseInt(action.payload.id, 10)) {
-
-						// 	referencetable.data.map((dataEntry) => {
-						// 		return dataEntry
-						// 	})
-						// }
-						return referencetable
-					}
-					// referencetable.id === parseInt(action.payload.id, 10) ? action.payload.referenceTable : referencetable
-				)
-			}
+			const UPDATE_REFERENCE_TABLE_DATA_state = { ...state }
+			UPDATE_REFERENCE_TABLE_DATA_state.referenceTableValues[action.payload.id].data[action.payload.referenceTableEntry.id] = action.payload.referenceTableEntry
+			return UPDATE_REFERENCE_TABLE_DATA_state
 		default:
 			return state
 	}

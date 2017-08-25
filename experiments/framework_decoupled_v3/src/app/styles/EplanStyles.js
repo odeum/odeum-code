@@ -6,7 +6,7 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
-import ReactQuill from 'react-quill'
+// import ReactQuill from 'react-quill'
 import { Field } from 'redux-form'
 import DropDown from 'framework/components/Widgets/DropDown'
 import { ToastContainer } from 'react-toastify'
@@ -446,12 +446,13 @@ export const FormPanelHeader = styled.div`
     border-radius: 4px;
 `
 
-export const ReactQuillStyled = styled(ReactQuill)`
-    div:nth-of-type(2) {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
-`
+// export const ReactQuillStyled = styled(ReactQuill)`
+//     div:nth-of-type(2) {
+//         border-bottom-left-radius: 4px;
+//         border-bottom-right-radius: 4px;
+//     }
+// `
+
 export const FormField = styled(Field)`
     box-sizing: border-box;
     width: 100%;
@@ -470,4 +471,8 @@ export const FormField = styled(Field)`
     &:hover {
         box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
     }
+`
+
+export const FormFieldTextarea = styled(Field)`
+
 `
