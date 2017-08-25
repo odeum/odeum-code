@@ -1,3 +1,5 @@
+import { List } from 'immutable'
+
 var _ = require('lodash')
 
 export const getConfigSel = state => state.eplan.conf
@@ -34,11 +36,10 @@ export const getReferenceTable = (state, id) => {
 	return referenceTable ? referenceTable : null
 }
 
-export const getReferenceTableData = (state, id) => {
-	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => {
-		return referenceTable.id === parseInt(id, 10)
-	})
-	return referenceTable ? referenceTable : null
+export const getReferenceTableValues = (state, id) => {
+	let referenceTableData = state.eplan.referenceTablesValues ? state.eplan.referenceTablesValues[id].data : null
+	console.log(referenceTableData)
+	return referenceTableData ? List(_.map(referenceTableData)) : null
 }
 export const getReferenceTableDataEntry = (state, id, referenceTableId) => {
 	if (id === undefined) {

@@ -84,7 +84,6 @@ class ReferenceTableEdit extends Component {
 	}
 
 	async componentWillMount() {
-		// console.log(this.props.referenceTableEntry)
 		if (!this.props.referenceTable) {
 			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 		}
@@ -131,7 +130,7 @@ class ReferenceTableEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	referencetables: state.eplan.referenceTables,
+	// referenceTableValues: getReferenceTableValues(state, ownProps.referenceTableId) || List(),
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
 	referenceTable: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
