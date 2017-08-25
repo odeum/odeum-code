@@ -24,13 +24,13 @@ class Icon extends React.Component {
 
 	setColor(active) {
 		if (active === true)
-        {return (this.props.color)}
+		{return (this.props.color)}
 		else
-        {return (this.defaultProps.color)}
+		{return (this.defaultProps.color)}
 	}
 
 	getSubComponent(name, size) {
-// All theme available icons must be in this switch
+		// All theme available icons must be in this switch
 
 		switch (name) {    
 			case iconname.ICON_MENU: return <Icons.MdMenu size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />    
@@ -145,7 +145,7 @@ class Icon extends React.Component {
 	}    
 	render() {
 		return (
-            this.getSubComponent(this.props.icon, this.props.size)
+			this.getSubComponent(this.props.icon, this.props.size)
 		)        
 	}
 }

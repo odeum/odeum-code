@@ -12,6 +12,8 @@ import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 import * as iconname from 'framework/assets/icons'
 
+import { getImagesList } from 'app/data/eplan' //getAppendixFramesList
+
 class ImageBrowser extends Component {
 	constructor(props) {
 		super(props)
@@ -25,7 +27,8 @@ class ImageBrowser extends Component {
 			scrollToIndex: undefined,
 			sortBy: '',
 			sortDirection: SortDirection.ASC,
-			useDynamicRowHeight: false
+			useDynamicRowHeight: false,
+			data: null
 		}
 
 		this._getRowHeight = this._getRowHeight.bind(this)
@@ -36,6 +39,10 @@ class ImageBrowser extends Component {
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
 		this._rowClicked = this._rowClicked.bind(this)
+	}
+
+	async componentWillMount() {
+		this.setState({ data: this.props.list })
 	}
 
 	render() {
@@ -50,7 +57,9 @@ class ImageBrowser extends Component {
 			sortDirection
 		} = this.state
 
-		const { list } = this.props
+		// const { list } = this.props
+
+		const list = this.state.data
 
 		const sortedList = this._isSortEnabled()
 			? list
@@ -76,8 +85,8 @@ class ImageBrowser extends Component {
 					</ModalHeaderClose>
 				</ModalHeader>
 				<ModalContent>
-					<AutoSizer style={{ overflow: 'hidden', border: 'solid 1px red' }}>
-						{({ width }) => (
+					<AutoSizer>
+						{({ height, width }) => (
 							<Table
 								ref="Table"
 								disableHeader={disableHeader}
@@ -93,7 +102,7 @@ class ImageBrowser extends Component {
 								sortBy={sortBy}
 								sortDirection={sortDirection}
 								width={width}
-								height={480}
+								height={height - 62}
 								rowRenderer={RowRenderer}
 								onRowClick={this._rowClicked}
 							>
@@ -226,14 +235,18 @@ class ImageBrowser extends Component {
 
 		return this._getDatum(list, index).size
 	}
-	_rowClicked({
+	async _rowClicked({
 		event,
 		index,
 		rowData
 	}) {
 		if (rowData.type === 'dir') {
 			console.log('is dir')
-			alert('go to dir somehow')
+			//alert('go to dir somehow')
+			// console.log('/' + rowData.name)
+			this.setState({ data: await getImagesList(rowData.nextLevel) })
+			// console.log(this.state.data)
+			this.setState({ scrollToIndex: 0 })
 		} else {
 			console.log(' is file')
 			this.props.insertImage(rowData.url)

@@ -1,6 +1,16 @@
 import styled from 'styled-components'
+import DropDown from 'framework/components/Widgets/DropDown'
 
-
+export const EplanDropDown = styled(DropDown)`
+    color:red;
+    width:100%;
+    padding:20px;
+`
+export const Button = styled.button`
+background:red;
+border: 0;
+color:white;
+`
 export const PrimaryContainer = styled.div`
     width: 100%;
     height: 100%;

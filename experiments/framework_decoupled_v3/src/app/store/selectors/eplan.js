@@ -8,31 +8,39 @@ export const getAppendixSel = (state, id, props) => {
 	var filter = null
 	if (appendix && config)
 	{ filter = _.intersectionBy(appendix.fields, config.editFields, 'id') }
+	// console.log(filter)
+	return filter ? filter : undefined
+}
+export const getAppendixDates = (state, id, props) => {
+	var appendix = _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
+	var config = getConfigSel(state)
+	var filter = null
+	if (appendix && config)
+	{ filter = _.intersectionBy(appendix.fields, config.propertiesFields, 'id') }
 	console.log(filter)
 	return filter ? filter : undefined
 }
-
 export const getAppendix = (state, id, props) => {
 	var appendix = _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
 	return appendix ? appendix : undefined
 }
 
 export const getReferenceTable = (state, id) => {
-	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => { 
-		return referenceTable.id === parseInt(id, 10) 
+	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => {
+		return referenceTable.id === parseInt(id, 10)
 	})
 	return referenceTable ? referenceTable : null
 }
 
 export const getReferenceTableData = (state, id) => {
-	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => { 
-		return referenceTable.id === parseInt(id, 10) 
+	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => {
+		return referenceTable.id === parseInt(id, 10)
 	})
 	return referenceTable ? referenceTable : null
 }
 export const getReferenceTableDataEntry = (state, id) => {
-	if ( id === undefined) {
-		return { 
+	if (id === undefined) {
+		return {
 			id: null,
 			parentKey: "",
 			valueKey: "",
@@ -40,8 +48,8 @@ export const getReferenceTableDataEntry = (state, id) => {
 			value2: ""
 		}
 	}
-	let referenceTableData = _.find(state.eplan.openReferenceTables, (referenceTable, index) => {  
-		return referenceTable.id === parseInt(id, 10) 
+	let referenceTableData = _.find(state.eplan.openReferenceTables, (referenceTable, index) => {
+		return referenceTable.id === parseInt(id, 10)
 	})
 	// let referenceTableDataEntry = _.find(referenceTableData, (referenceTableDataEntry) => {  
 	// 	return referenceTable.id === parseInt(id, 10) 
@@ -52,8 +60,8 @@ export const getReferenceTableDataEntry = (state, id) => {
 
 
 export const getReferenceTableEntry = (state, id) => {
-	if ( id === undefined) {
-		return { 
+	if (id === undefined) {
+		return {
 			id: null,
 			parentReftableId: -1,
 			name: "",
@@ -63,8 +71,8 @@ export const getReferenceTableEntry = (state, id) => {
 			fieldType: 1
 		}
 	}
-	let referenceTable = _.find(state.eplan.referencetables, (referenceTable, index) => {  
-		return referenceTable.id === parseInt(id, 10) 
+	let referenceTable = _.find(state.eplan.referencetables, (referenceTable, index) => {
+		return referenceTable.id === parseInt(id, 10)
 	})
 	return referenceTable ? referenceTable : undefined
 }

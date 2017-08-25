@@ -2,7 +2,7 @@ import { create } from 'apisauce'
 
 //API instance
 const api = create({
-	baseURL: 'https://jsonplaceholder.typicode.com',
+	baseURL: 'https://swapi.co/api/',
 	timeout: 10000,
 	headers: {
 		'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ const api = create({
 })
 //Async function to return data
 export async function getUsers() {
-	var data = await api.get('/users')
+	var data = await api.get('/people')
 		.then((response) => {
 			console.log(response.data)
 			return response.data

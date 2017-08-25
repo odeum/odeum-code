@@ -6,8 +6,10 @@ import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
-import ReactQuill from 'react-quill'
+// import ReactQuill from 'react-quill'
 import { Field } from 'redux-form'
+import DropDown from 'framework/components/Widgets/DropDown'
+import { ToastContainer } from 'react-toastify'
 
 export const DescriptionDiv = styled.div`
     float: left;
@@ -271,7 +273,7 @@ export const ModalContent = styled.div`
     font-family: 'Source Sans Pro';
     font-size: 16px;
     font-weight: 300;
-    height: 100%;
+    height: calc(100% - 90px);
 `
 
 export const ModalButtonPanel = styled.div`
@@ -285,6 +287,49 @@ export const ModalButtonPanel = styled.div`
 
 export const Animation = styled.div`
     animation: ${fadeIn} 0.7s ease-in-out
+`
+export const CustomDD = styled(DropDown) `
+background-color: #3b97d3;
+border: none;
+border-radius: 3px;
+height: 37px;
+cursor: pointer;
+.label{
+color: #fff;
+font-family: 'Source Sans Pro';
+font-size: 16px;
+font-weight: 300;
+line-height: 37px;
+padding-left: 15px;
+}
+.container{
+background:green;
+}
+.arrow-zone{
+width: 50px;
+}
+.arrow{
+    border: none;
+    border: solid #fff;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 5px;
+}
+`
+
+export const ToastContainerStyled = styled(ToastContainer)`
+    &.toastify {
+        /* .toastify-content--success {
+            background: #e74c3c;
+        } */
+        .toastify-content {
+            color: #fff;
+            font-family: 'Source Sans Pro';
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 4px;
+        }
+    }
 `
 
 export const Dropdown = styled(Select) `
@@ -401,12 +446,13 @@ export const FormPanelHeader = styled.div`
     border-radius: 4px;
 `
 
-export const ReactQuillStyled = styled(ReactQuill)`
-    div:nth-of-type(2) {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
-`
+// export const ReactQuillStyled = styled(ReactQuill)`
+//     div:nth-of-type(2) {
+//         border-bottom-left-radius: 4px;
+//         border-bottom-right-radius: 4px;
+//     }
+// `
+
 export const FormField = styled(Field)`
     box-sizing: border-box;
     width: 100%;
@@ -425,4 +471,8 @@ export const FormField = styled(Field)`
     &:hover {
         box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
     }
+`
+
+export const FormFieldTextarea = styled(Field)`
+
 `
