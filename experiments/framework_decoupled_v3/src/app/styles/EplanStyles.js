@@ -2,9 +2,9 @@ import styled, { keyframes } from 'styled-components'
 import { CLOUDY_DARK } from 'framework/assets/colors'
 import Loader from 'halogen/PulseLoader'
 import Modal from 'react-modal'
-import Select from 'react-select'
+// import Select from 'react-select'
+// import 'react-select/dist/react-select.css'
 import DatePicker from 'react-datepicker'
-import 'react-select/dist/react-select.css'
 import * as colors from 'framework/assets/colors'
 // import ReactQuill from 'react-quill'
 import { Field } from 'redux-form'
@@ -336,7 +336,7 @@ export const ToastContainerStyled = styled(ToastContainer)`
     }
 `
 
-export const DropdownSelect = styled(Select) `
+export const DropdownSelect = styled.div`
     &.Select--single {
         .Select-control {
         background-color: #3b97d3;
