@@ -96,8 +96,7 @@ export async function getReferenceTableList() {
 		.then((response) => {
 			return response.data
 		})
-	const dataList = List(data)
-	return dataList
+	return data
 }
 
 export async function getReferenceTableEntry(id) {

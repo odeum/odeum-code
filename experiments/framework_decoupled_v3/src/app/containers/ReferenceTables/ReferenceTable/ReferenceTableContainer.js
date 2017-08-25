@@ -47,7 +47,7 @@ class ReferenceTableContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	referencetables: state.eplan.referencetables,
+	referencetables: state.eplan.referenceTables,
 	referencetablesIsLoading: state.eplan.referencetablesIsLoading,
 	referenceTableId: ownProps.params.id,
 	conf: state.eplan.conf

@@ -17,6 +17,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
+var _ = require('lodash')
 
 const props = { name: 'Oversigt' }
 
@@ -79,7 +80,7 @@ class ReferenceTableList extends Component {
 				<AppendixButtonPanel>
 					<Button icon={iconname.ICON_ADD_CIRCLE} onClick={this.openSettingsModal} size={18}>Opret ny reference tabel</Button>
 				</AppendixButtonPanel>
-				{this.props.referencetablesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTable list={List(this.props.referencetables)} onClickButton={this.onClickButton} />}
+				{this.props.referencetablesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTable list={List(_.map(this.props.referencetables))} onClickButton={this.onClickButton} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
@@ -96,7 +97,7 @@ class ReferenceTableList extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	referencetables: state.eplan.referencetables,
+	referencetables: state.eplan.referenceTables,
 	referencetablesIsLoading: state.eplan.referencetablesIsLoading,
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 

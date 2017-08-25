@@ -29,6 +29,8 @@ import * as iconname from 'framework/assets/icons'
 import ReferenceTableSettingsModal from '../../ReferenceTableSettingsModal'
 import ReferenceTableEditModal from '../../ReferenceTableEditModal'
 
+var _ = require('lodash')
+
 class ReferenceTableEdit extends Component {
 	constructor(props) {
 		super(props)
@@ -49,9 +51,7 @@ class ReferenceTableEdit extends Component {
 		this.openEditModal = this.openEditModal.bind(this)
 		this.closeEditModal = this.closeEditModal.bind(this)
 		this.saveEditModal = this.saveEditModal.bind(this)
-
 	}
-
 	openSettingsModal() {
 		this.setState({
 			settingsModalIsOpen: true,
@@ -93,7 +93,7 @@ class ReferenceTableEdit extends Component {
 	}
 
 	async componentWillMount() {
-		console.log(this.props.referenceTableEntry)
+		// console.log(this.props.referenceTableEntry)
 		if (!this.props.referenceTable) {
 			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 		}
@@ -112,7 +112,7 @@ class ReferenceTableEdit extends Component {
 					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={this.openSettingsModal}>Egenskaber</Button>
 					<Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
-				{this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(this.props.referenceTable.data)} onClickButton={this.openEditModal} />}
+				{this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
@@ -133,7 +133,7 @@ class ReferenceTableEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	referencetables: state.eplan.referencetables,
+	referencetables: state.eplan.referenceTables,
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
 	referenceTable: getReferenceTable(state, ownProps.referenceTableId) || null,
