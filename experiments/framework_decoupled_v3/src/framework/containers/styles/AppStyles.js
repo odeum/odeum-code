@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 import { injectGlobal } from 'styled-components'
+import styledNormalize from 'styled-normalize'
 
 injectGlobal`
+    ${styledNormalize}
+
     html {
         font-size: 62.5%;
     }
+
     * {
         outline: none;
         box-sizing: border-box;
