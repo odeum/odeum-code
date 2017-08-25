@@ -109,7 +109,7 @@ export default class ReferenceTableEditList extends Component {
 								<Column
 									width={width}
 									minWidth={400}
-									label='valueKey'
+									label='Relationsværdi'
 									dataKey='valueKey'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
@@ -122,7 +122,7 @@ export default class ReferenceTableEditList extends Component {
 								<Column
 									width={width}
 									minWidth={400}
-									label='value'
+									label='Tekst værdi 1'
 									dataKey='value'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
@@ -134,7 +134,7 @@ export default class ReferenceTableEditList extends Component {
 								<Column
 									width={width}
 									minWidth={400}
-									label='value2'
+									label='Tekst værdi 2'
 									dataKey='value2'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}

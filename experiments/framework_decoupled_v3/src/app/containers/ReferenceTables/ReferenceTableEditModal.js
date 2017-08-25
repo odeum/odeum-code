@@ -22,10 +22,24 @@ class ReferenceTableEditModal extends Component {
 		this.submitUpdate = this.submitUpdate.bind(this)
 	}
 
-	submitUpdate(values) {
-		this.props.updateReferenceTableData(values, this.props.referenceTableId)
-		console.log(values)
+	async submitUpdate(values) {
+		await this.props.updateReferenceTableData(values, this.props.referenceTableId)
 		this.props.saveEditModal()
+	}
+
+	getComponentType() {
+		if (this.props.referenceTable !== null) {
+			switch (this.props.referenceTable.field1Type) {
+				default:
+					return 'input'	
+				case '1':
+					return 'input'
+				case 2:
+					return 'textarea'
+				case 3:
+					return 'input'
+			}
+		}
 	}
 
 	render() {
@@ -83,8 +97,8 @@ class ReferenceTableEditModal extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
 	referenceTableId: ownProps.referenceTableId,
-	// referenceTableEntry: getReferenceTableEntry(state, ownProps.referenceTableId) || null,
-	initialValues: ownProps.editData || null,
+	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId] || null,
+	initialValues: ownProps.editData || null
 })
 
 function mapDispatchToProps(dispatch) {

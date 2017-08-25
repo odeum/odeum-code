@@ -5,7 +5,7 @@ import { removeOpenApdx } from 'app/store/modules/eplan'
 // import { Field, reduxForm } from 'redux-form'
 
 import { getReferenceTableEntryAsync, updateReferenceTable } from 'app/store/modules/eplan'
-import { getReferenceTable, getReferenceTableSelectValues } from 'app/store/selectors/eplan'
+import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
 
 import { List } from 'immutable'
 
@@ -37,16 +37,13 @@ class ReferenceTableEdit extends Component {
 		this.state = {
 			settingsModalIsOpen: false,
 			editModalIsOpen: false,
-			editData: {},
+			editData: {}
 		}
 
 		/* Bind functions to this component */
 		this.openSettingsModal = this.openSettingsModal.bind(this)
 		this.closeSettingsModal = this.closeSettingsModal.bind(this)
 		this.saveSettingsModal = this.saveSettingsModal.bind(this)
-		// this.handleSetting = this.handleSetting.bind(this)
-		// this.handleSettingsSubmit = this.handleSettingsSubmit.bind(this)
-		// this.settingsForm = this.settingsForm.bind(this)
 
 		this.openEditModal = this.openEditModal.bind(this)
 		this.closeEditModal = this.closeEditModal.bind(this)
@@ -83,6 +80,7 @@ class ReferenceTableEdit extends Component {
 		this.setState({
 			editModalIsOpen: false
 		})
+		console.log(this.props.referenceTable)
 	}
 
 	async componentWillMount() {
@@ -103,7 +101,14 @@ class ReferenceTableEdit extends Component {
 				<DescriptionDiv>Small description placeholder</DescriptionDiv>
 				<AppendixButtonPanel>
 					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.openSettingsModal()}>Egenskaber</Button>
-					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={() => this.openEditModal({id:null})}>Tilføj ny værdi</Button>
+					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={() => this.openEditModal({
+						id: null,
+						parentKey: "",
+						valueKey: "",
+						value: "",
+						value2: "",
+						reftableId: this.props.referenceTableId
+					})}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
 				{this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
@@ -129,7 +134,7 @@ const mapStateToProps = (state, ownProps) => ({
 	referencetables: state.eplan.referenceTables,
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
-	referenceTable: getReferenceTable(state, ownProps.referenceTableId) || null,
+	referenceTable: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
 })
 
 function mapDispatchToProps(dispatch) {

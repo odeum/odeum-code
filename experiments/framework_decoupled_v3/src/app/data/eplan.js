@@ -91,6 +91,9 @@ export async function getAppendixFramesList(id) {
 	return dataList
 }
 
+/**
+ * REFERENCE TABLE FUNCTIONS BEGIN
+ */
 export async function getReferenceTableList() {
 	var data = await api.get('/rest/eplan/kpt/reftable/list')
 		.then((response) => {
@@ -98,7 +101,6 @@ export async function getReferenceTableList() {
 		})
 	return data
 }
-
 export async function getReferenceTableEntry(id) {
 	var data = await api.get('/rest/eplan/kpt/reftable/listvalues/' + id)
 		.then((response) => {
@@ -109,6 +111,44 @@ export async function getReferenceTableEntry(id) {
 	a.data = data
 	return a
 }
+export async function saveReferenceTable(referenceTable) {
+	var app = JSON.stringify(referenceTable)
+	var data
+	if (referenceTable.id === null) {
+		data = await api.put('/rest/eplan/kpt/reftable', app)
+			.then((response) => {
+				console.log(response.data)
+				return response.data
+			})
+	} else {
+		data = await api.post('/rest/eplan/kpt/reftable/' + referenceTable.id, app)
+			.then((response) => {
+				// console.log(response.data)
+				return response.data
+			})
+	}
+	return data
+}
+export async function saveReferenceTableValue(referenceTableEntry) {
+	var app = JSON.stringify(referenceTableEntry)
+	var data
+	if (referenceTableEntry.id === null) {
+		data = await api.put('/rest/eplan/kpt/reftable/value', app)
+			.then((response) => {
+				return response.data
+			})
+	} else {
+		data = await api.post('/rest/eplan/kpt/reftable/value/' + referenceTableEntry.reftableId, app)
+			.then((response) => {
+				return response.data
+			})
+	}
+	return data
+}
+/**
+ * REFERENCE TABLE FUNCTIONS END
+ */
+
 
 //TODO: Should be moved to framework
 export async function getImagesList(folder) {

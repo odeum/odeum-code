@@ -110,7 +110,7 @@ class ReferenceTableSettingsModal extends Component {
 							>
 								{
 									referenceTableSelectValues.map((opt, index) => {
-										return (<option value={opt.value}>{opt.label}</option>)
+										return (<option key={opt.value} value={opt.value}>{opt.label}</option>)
 									})
 								}
 							</FormField>

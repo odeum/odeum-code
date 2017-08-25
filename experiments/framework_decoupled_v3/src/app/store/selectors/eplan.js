@@ -26,6 +26,8 @@ export const getAppendix = (state, id, props) => {
 }
 
 export const getReferenceTable = (state, id) => {
+
+
 	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => {
 		return referenceTable.id === parseInt(id, 10)
 	})
@@ -38,7 +40,7 @@ export const getReferenceTableData = (state, id) => {
 	})
 	return referenceTable ? referenceTable : null
 }
-export const getReferenceTableDataEntry = (state, id) => {
+export const getReferenceTableDataEntry = (state, id, referenceTableId) => {
 	if (id === undefined) {
 		return {
 			id: null,
@@ -48,13 +50,7 @@ export const getReferenceTableDataEntry = (state, id) => {
 			value2: ""
 		}
 	}
-	let referenceTableData = _.find(state.eplan.openReferenceTables, (referenceTable, index) => {
-		return referenceTable.id === parseInt(id, 10)
-	})
-	// let referenceTableDataEntry = _.find(referenceTableData, (referenceTableDataEntry) => {  
-	// 	return referenceTable.id === parseInt(id, 10) 
-	// })
-
+	let referenceTableData = state.eplan.referenceTablesValues[referenceTableId].data[id]
 	return referenceTableData ? referenceTableData : undefined
 }
 
@@ -71,17 +67,15 @@ export const getReferenceTableEntry = (state, id) => {
 			fieldType: 1
 		}
 	}
-	let referenceTable = _.find(state.eplan.referencetables, (referenceTable, index) => {
-		return referenceTable.id === parseInt(id, 10)
-	})
+	let referenceTable = state.eplan.referenceTables[id]
 	return referenceTable ? referenceTable : undefined
 }
 
 export const getReferenceTableSelectValues = (state) => {
 	let referenceTableSelectValues = []
 	referenceTableSelectValues[referenceTableSelectValues.length] = { value: -1, label: 'ingen valgt' }
-	_.forEach(state.eplan.referencetables, (e) => {
-		referenceTableSelectValues[referenceTableSelectValues.length] = { value: e.id, label: e.name }
+	_.forEach(state.eplan.referenceTables, (e) => {
+		referenceTableSelectValues[referenceTableSelectValues.length] = { key: e.id, value: e.id, label: e.name }
 	})
 	return referenceTableSelectValues
 }

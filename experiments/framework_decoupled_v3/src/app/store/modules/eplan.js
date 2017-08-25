@@ -1,5 +1,5 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry } from 'app/data/eplan' //getAppendixFramesList
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue } from 'app/data/eplan' //getAppendixFramesList
 import { List } from 'immutable'
 
 /*Lodash*/
@@ -138,22 +138,21 @@ export function getReferenceTableEntryAsync(id) {
 }
 
 export function updateReferenceTable(referenceTable, id) {
-	// TODO: Submit to server
-	if (referenceTable.id === null) {
-		referenceTable.id = 1234
-	}
-	return dispatch => {
-		dispatch(updateRefTable({ referenceTable, id }))
+	return async dispatch => {
+		await saveReferenceTable(referenceTable).then(
+			(referenceTable) => {
+				dispatch(updateRefTable({ referenceTable }))
+			}
+		)
 	}
 }
-
 export function updateReferenceTableData(referenceTableEntry, id) {
-	// TODO: Submit to server
-	if (referenceTableEntry.id === null) {
-		referenceTableEntry.id = 1234
-	}
-	return dispatch => {
-		dispatch(updateRefTableData({ referenceTableEntry, id }))
+	return async dispatch => {
+		await saveReferenceTableValue(referenceTableEntry).then(
+			(referenceTableEntry) => {
+				dispatch(updateRefTableData({ referenceTableEntry }))
+			}
+		)
 	}
 }
 
@@ -161,8 +160,8 @@ export function updateReferenceTableData(referenceTableEntry, id) {
 const initState = {
 	appendixes: List([]),
 	openAppendix: [],
-	referencetables: [],
-	openReferenceTables: [],
+	// referencetables: [],
+	// openReferenceTables: [],
 	referenceTables: [],
 	referenceTableValues: [],
 	isLoading: true,
@@ -231,22 +230,19 @@ function eplan(state = initState, action) {
 				framesIsLoading: false
 			}
 		case GET_REFERENCE_TABLE_LIST:
-			// console.log(action.payload)
 			return {
 				...state,
 				referenceTables: action.payload,
-				referencetables: action.payload,
+				// referencetables: action.payload,
 				referencetablesIsLoading: false
 			}
 		case GET_REFERENCE_TABLE_ENTRY:
-			// console.log(action.payload)
-			// console.log(action.payload.ownerID)
 			return {
 				...state,
 				referenceTableValues: {
 					[action.payload.id]: action.payload
 				},
-				openReferenceTables: state.openReferenceTables.concat(action.payload),
+				// openReferenceTables: state.openReferenceTables.concat(action.payload),
 				referenceTablesEntryIsLoading: false
 			}
 		case UPDATE_REFERENCE_TABLE:
@@ -255,7 +251,7 @@ function eplan(state = initState, action) {
 			return UPDATE_REFERENCE_TABLE_state
 		case UPDATE_REFERENCE_TABLE_DATA:
 			const UPDATE_REFERENCE_TABLE_DATA_state = { ...state }
-			UPDATE_REFERENCE_TABLE_DATA_state.referenceTableValues[action.payload.id].data[action.payload.referenceTableEntry.id] = action.payload.referenceTableEntry
+			UPDATE_REFERENCE_TABLE_DATA_state.referenceTableValues[action.payload.referenceTableEntry.reftableId].data[action.payload.referenceTableEntry.id] = action.payload.referenceTableEntry
 			return UPDATE_REFERENCE_TABLE_DATA_state
 		default:
 			return state
