@@ -36,40 +36,33 @@ class ReferenceTableList extends Component {
 
 		this.onClickButton = this.onClickButton.bind(this)
 	}
-
 	async componentWillMount() {
 		this.props.onMount(this.props.id, props.name)
 		if (!this.props.referencetables) {
 			await this.props.getList()
 		}
 	}
-
 	openSettingsModal() {
 		this.setState({
 			settingsModalIsOpen: true,
 			settingData: this.props.referenceTableEntry
 		})
 	}
-
 	closeSettingsModal() {
 		this.setState({
 			settingsModalIsOpen: false
 		})
 	}
-
 	saveSettingsModal() {
 		this.setState({
 			settingsModalIsOpen: false
 		})
 	}
-
 	handleSettingsSubmit(values) {
 		// console.log('gem')
 		// this.props.updateReferenceTable(values, this.props.referenceTableId)
 	}
-
 	onClickButton(index) {
-		console.log('onClickButton: ' + index)
 		this.props.onClickButton(index)
 	}
 

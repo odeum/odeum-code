@@ -68,25 +68,18 @@ class ReferenceTableEdit extends Component {
 			settingsModalIsOpen: false
 		})
 	}
-
 	openEditModal(data) {
-		console.log('openEditModal')
-		console.log(data)
-
 		this.setState({
 			editModalIsOpen: true,
 			editData: data
 		})
 	}
-
 	closeEditModal() {
 		this.setState({
 			editModalIsOpen: false
 		})
 	}
-
 	saveEditModal() {
-		//TODO: Save changes
 		this.setState({
 			editModalIsOpen: false
 		})
@@ -109,8 +102,8 @@ class ReferenceTableEdit extends Component {
 			<PrimaryContainer>
 				<DescriptionDiv>Small description placeholder</DescriptionDiv>
 				<AppendixButtonPanel>
-					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={this.openSettingsModal}>Egenskaber</Button>
-					<Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny værdi</Button>
+					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.openSettingsModal()}>Egenskaber</Button>
+					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={() => this.openEditModal({id:null})}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
 				{this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
