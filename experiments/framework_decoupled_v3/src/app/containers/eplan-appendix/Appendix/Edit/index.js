@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
-import { Animation, AppendixHeader, PulseLoader, Dropdown, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { Animation, AppendixHeader, PulseLoader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -322,7 +322,7 @@ class EditAppendix extends Component {
 												<Box width={[1, 1, 1, 1, 9 / 12]}>
 													<Flex wrap>
 														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
-															<Dropdown
+															<DropdownSelect
 																className="pdfSelect"
 																name="pdfSelect"
 																value="one"
@@ -338,7 +338,7 @@ class EditAppendix extends Component {
 															</CustomDD> */}
 														</Box>
 														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
-															<Dropdown
+															<DropdownSelect
 																className="viewAppendixSelect"
 																name="viewAppendixSelect"
 																value="one"

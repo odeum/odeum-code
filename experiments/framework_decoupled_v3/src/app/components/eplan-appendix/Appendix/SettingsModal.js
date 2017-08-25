@@ -1,7 +1,7 @@
 import React from 'react'
 // import Modal from 'react-modal'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, Dropdown, DatePickerStyled } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, DropdownSelect, DatePickerStyled } from 'app/styles/EplanStyles'
 import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
@@ -48,7 +48,7 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 							</Box> */}
 							<Box width={[1 / 2]}>
 								<FieldLabel for="name">Vælg fase:</FieldLabel>
-								<Dropdown
+								<DropdownSelect
 									className="statusSelect"
 									name="statusSelect"
 									value="one"

@@ -332,7 +332,7 @@ export const ToastContainerStyled = styled(ToastContainer)`
     }
 `
 
-export const Dropdown = styled(Select) `
+export const DropdownSelect = styled(Select) `
     &.Select--single {
         .Select-control {
         background-color: #3b97d3;
