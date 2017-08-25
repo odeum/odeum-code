@@ -10,22 +10,22 @@ import IconPalette from './components/IconPalette'
 class App extends Component {
 	render() {
 		return (
-            <div>
-                <Wrapper>
-                <Layout>
-                    <div>
-                        <ButtonTest />
-                        <Spacer space={'0.8rem'} />
-                        <ButtonTest2 />
-                        <Spacer space={'0.8rem'} />
-                        <IconTest />                        
-                    </div>
-                </Layout>
-                </Wrapper>
+			<div>
+				<Wrapper>
+					<Layout>
+						<div>
+							<ButtonTest />
+							<Spacer space={'0.8rem'} />
+							<ButtonTest2 />
+							<Spacer space={'0.8rem'} />
+							<IconTest />                        
+						</div>
+					</Layout>
+				</Wrapper>
 				<IconPalette />
-                <Room />
-                <ColorPalette />
-            </div>
+				<Room />
+				<ColorPalette />
+			</div>
 		)    
 	}
 }

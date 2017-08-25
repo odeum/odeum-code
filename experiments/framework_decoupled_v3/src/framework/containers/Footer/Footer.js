@@ -8,7 +8,7 @@ class FooterContainer extends Component {
 	render() {
 		let date = new Date()
 		return (
-			<FooterDiv><b>ODEUM Report</b> v2.0.0 © Copyright
+			<FooterDiv><b>ODEUM ePlan</b> v2.0.0 © Copyright
 				{date.getFullYear()}
 			</FooterDiv>
 		)

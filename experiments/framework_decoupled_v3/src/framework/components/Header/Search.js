@@ -14,7 +14,7 @@ class HeaderSearch extends Component {
 			<SearchBarDiv>
 				<form>
 					<SearchBarInputWrapper>
-						<SearchBarInput placeholder="Search for forms, reports, fields, users or comments ..." />
+						<SearchBarInput placeholder="Søgning efter planer, tillæg og rammer ..." />
 					</SearchBarInputWrapper>
 				</form>
 				<SearchBarButtonDiv>
