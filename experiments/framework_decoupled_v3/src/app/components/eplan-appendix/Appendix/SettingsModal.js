@@ -25,7 +25,8 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 	console.log('Dates')
 	console.log(dates)
 	function dateChecker(date) {
-		return date._isValid ? date : moment('1970-01-01')
+		var momentDate = moment(date)
+		return momentDate._isValid ? momentDate : null
 	}
 	return (
 		<div>
@@ -64,7 +65,7 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 							<Flex wrap key={index}>
 								<Box width={[1 / 2]}>
 									<FieldLabel for="name">{date.caption}</FieldLabel>
-									<DatePickerStyled selected={dateChecker(moment(date.value))} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+									<DatePickerStyled selected={dateChecker(date.value)} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
 								</Box>
 							</Flex>
 						))}
