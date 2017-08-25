@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
 import { reset, reduxForm } from 'redux-form'
-import { updateReferenceTableData, addReferenceTable } from 'app/store/modules/eplan'
+import { updateReferenceTableData } from 'app/store/modules/eplan'
 // import { getReferenceTableEntry } from 'app/store/selectors/eplan'
 
 
@@ -23,11 +23,7 @@ class ReferenceTableEditModal extends Component {
 	}
 
 	submitUpdate(values) {
-		// if (values.id === null) {
-		// 	this.props.addReferenceTable(values)
-		// } else {
 		this.props.updateReferenceTableData(values, this.props.referenceTableId)
-		// }
 		console.log(values)
 		this.props.saveEditModal()
 	}
@@ -95,12 +91,8 @@ function mapDispatchToProps(dispatch) {
 	return {
 		updateReferenceTableData: (referenceTableEntry, id) => {
 			dispatch(updateReferenceTableData(referenceTableEntry, id))
+			dispatch(reset('eplan.referencetabledata'))
 		},
-		addReferenceTable: (referenceTableEntry, id) => {
-			dispatch(addReferenceTable(referenceTableEntry))
-			dispatch(reset('eplan.referencetables'))
-		},
-
 	}
 }
 

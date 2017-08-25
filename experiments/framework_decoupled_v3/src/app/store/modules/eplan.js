@@ -19,7 +19,6 @@ const GET_APPENDIX_FRAMES_LIST = '@@EPLAN/GET_APPENDIX_FRAMES_LIST'
 const GET_REFERENCE_TABLE_LIST = '@@EPLAN/GET_REFERENCE_TABLE_LIST'
 const GET_REFERENCE_TABLE_ENTRY = '@@EPLAN/GET_REFERENCE_TABLE_ENTRY'
 const UPDATE_REFERENCE_TABLE = '@@EPLAN/UPDATE_REFERENCE_TABLE'
-const ADD_REFERENCE_TABLE = '@@EPLAN/ADD_REFERENCE_TABLE'
 const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
 const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 /* Actions */
@@ -35,7 +34,6 @@ const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data
 const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: data })
 const getRefTableEntry = (data) => ({ type: GET_REFERENCE_TABLE_ENTRY, payload: data })
 const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data })
-const addRefTable = (data) => ({ type: ADD_REFERENCE_TABLE, payload: data })
 const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
 /* Middleware */
@@ -140,23 +138,24 @@ export function getReferenceTableEntryAsync(id) {
 }
 
 export function updateReferenceTable(referenceTable, id) {
+	// TODO: Submit to server
+	if (referenceTable.id === null) {
+		referenceTable.id = 1234
+	}
 	return dispatch => {
 		dispatch(updateRefTable({ referenceTable, id }))
 	}
 }
 
-export function addReferenceTable(referenceTable) {
-	return dispatch => {
-		dispatch(addRefTable({ referenceTable }))
-	}
-}
-
 export function updateReferenceTableData(referenceTableEntry, id) {
+	// TODO: Submit to server
+	if (referenceTableEntry.id === null) {
+		referenceTableEntry.id = 1234
+	}
 	return dispatch => {
 		dispatch(updateRefTableData({ referenceTableEntry, id }))
 	}
 }
-
 
 /* Reducer */
 const initState = {
@@ -251,18 +250,10 @@ function eplan(state = initState, action) {
 				referenceTablesEntryIsLoading: false
 			}
 		case UPDATE_REFERENCE_TABLE:
-			// TODO: Submit to server
 			const UPDATE_REFERENCE_TABLE_state = { ...state }
 			UPDATE_REFERENCE_TABLE_state.referenceTables[action.payload.referenceTable.id] = action.payload.referenceTable
 			return UPDATE_REFERENCE_TABLE_state
-		case ADD_REFERENCE_TABLE:
-			// TODO: Submit to server
-			action.payload.referenceTable.id = 1234
-			const ADD_REFERENCE_TABLE_state = { ...state }
-			ADD_REFERENCE_TABLE_state.referenceTables[action.payload.referenceTable.id] = action.payload.referenceTable
-			return ADD_REFERENCE_TABLE_state
 		case UPDATE_REFERENCE_TABLE_DATA:
-			// TODO: Submit to server
 			const UPDATE_REFERENCE_TABLE_DATA_state = { ...state }
 			UPDATE_REFERENCE_TABLE_DATA_state.referenceTableValues[action.payload.id].data[action.payload.referenceTableEntry.id] = action.payload.referenceTableEntry
 			return UPDATE_REFERENCE_TABLE_DATA_state
