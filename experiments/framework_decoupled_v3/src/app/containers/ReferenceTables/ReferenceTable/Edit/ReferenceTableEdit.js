@@ -97,7 +97,7 @@ class ReferenceTableEdit extends Component {
 	render() {
 		return (
 			<PrimaryContainer>
-				<DescriptionDiv>Small description placeholder</DescriptionDiv>
+				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
 					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.openSettingsModal()}>Egenskaber</Button>
 					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={() => this.openEditModal({

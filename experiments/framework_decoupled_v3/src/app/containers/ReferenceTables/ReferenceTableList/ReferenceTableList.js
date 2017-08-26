@@ -6,7 +6,7 @@ import { getReferenceTableListAsync } from 'app/store/modules/eplan'
 import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
 import { List } from 'immutable'
 
-import { DescriptionDiv, PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { PrimaryContainer } from 'app/styles/'
 import ReferenceTable from './Table/Table'
 
@@ -69,7 +69,7 @@ class ReferenceTableList extends Component {
 	render() {
 		return (
 			<PrimaryContainer>
-				<DescriptionDiv>Small description placeholder</DescriptionDiv>
+				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
 					<Button icon={iconname.ICON_ADD_CIRCLE} onClick={this.openSettingsModal} size={18}>Opret ny reference tabel</Button>
 				</AppendixButtonPanel>

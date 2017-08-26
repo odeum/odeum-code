@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { tabChange } from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
-import { DescriptionDiv, PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { getListAsync } from 'app/store/modules/eplan'
 import { PrimaryContainer } from 'app/styles/'
 import NewAppendixModal from 'app/components/eplan-appendix/Appendix/NewAppendixModal'
@@ -55,9 +55,7 @@ class AppendixList extends Component {
 
 		return (
 			<PrimaryContainer>
-				<DescriptionDiv>Small description placeholder</DescriptionDiv>
-
-
+				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
 					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
 				</AppendixButtonPanel>
