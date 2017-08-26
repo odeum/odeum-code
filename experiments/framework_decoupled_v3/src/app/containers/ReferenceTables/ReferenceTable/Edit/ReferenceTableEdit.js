@@ -17,7 +17,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer } from 'app/styles'
-import { DescriptionDiv, PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
 
 /* Components */
 import ReferenceTableEditList from './Table/Table'
