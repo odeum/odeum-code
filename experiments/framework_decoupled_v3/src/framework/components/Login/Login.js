@@ -1,6 +1,6 @@
 import React from 'react'
 import { Img, LoginLabel, BackgroundDiv, HeaderDiv, Input, InputDiv, LoginButton } from 'framework/components/styles/LoginStyles'
-import HeaderLogo from '../../assets/codejs_logo.png'
+import HeaderLogo from '../../assets/eplan_logo.png'
 
 
 const Login = ({ onSubmit }) => {

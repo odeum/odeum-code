@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Div, ImgDiv, E404, ErrMsg, ErrMsg2, Img } from '../styles/NotFoundStyles'
-import HeaderLogo from '../../assets/codejs_logo.png'
+import HeaderLogo from '../../assets/eplan_logo.png'
 import { connect } from 'react-redux'
 import { replace } from 'react-router-redux'
 class NotFound extends Component {
