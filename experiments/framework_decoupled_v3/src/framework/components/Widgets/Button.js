@@ -13,27 +13,27 @@ class Button extends Component {
 		super(props)
 		this.state = { message: this.props.children }
 	}
-				handleClick = (event) => {
-					/*event.preventDefault()*/
-					/*event.persist()*/
-					console.log(event.type)
-					console.log(this.state.message)
-					console.log(this.props.children)
-				}
+	handleClick = (event) => {
+		/*event.preventDefault()*/
+		/*event.persist()*/
+		console.log(event.type)
+		console.log(this.state.message)
+		console.log(this.props.children)
+	}
 
-				render() {
-					return (
-						<StyledButton id={this.props.id} onClick={this.props.onClick}>  {/* onClickCapture={(event) => this.handleClick(event)}  -- onClick={this.handleClick*/}
-							<Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconButtonStyle} /><span>{this.props.children}</span>
-						</StyledButton>
-					)
-				}
+	render() {
+		return (
+			<StyledButton id={this.props.id} onClick={this.props.onClick}>  {/* onClickCapture={(event) => this.handleClick(event)}  -- onClick={this.handleClick*/}
+				<Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconButtonStyle} /><span>{this.props.children}</span>
+			</StyledButton>
+		)
+	}
 }
 
 Button.propTypes = {
 	icon: PropTypes.string/* .isRequired */,
 	size: PropTypes.number,
-	color: PropTypes.string, 
+	color: PropTypes.string,
 	active: PropTypes.bool,
 	id: PropTypes.string,
 	onClick: PropTypes.func,
@@ -49,7 +49,7 @@ Button.defaultProps = {
 	color: colors.ICON_DEFAULT_COLOR,
 	active: false,
 	style: {
-		verticalAlign: '-5px',           
+		verticalAlign: '-5px',
 		paddingRight: '8px'
 	}
 }
