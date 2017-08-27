@@ -36,8 +36,8 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 		- [5.3.13. GraphQL + Redux](#5313-graphql--redux)
 		- [5.3.14. Creating NPM packages containing our framework](#5314-creating-npm-packages-containing-our-framework)
 			- [5.3.14.1. Multi Component NPM package default import (odeum-codejs)](#53141-multi-component-npm-package-default-import-odeum-codejs)
-			- [5.3.14.2. Multi components as named exports](#53142-multi-components-as-named-exports)
-			- [5.3.14.3. Single Component NPM packages](#53143-single-component-npm-packages)
+			- [5.3.14.2. Multi components as named exports from single NPM package](#53142-multi-components-as-named-exports-from-single-npm-package)
+			- [5.3.14.3. Single/Multiple components from multiple NPM packages](#53143-singlemultiple-components-from-multiple-npm-packages)
 		- [5.3.15. Demo App to Connect to the ODEUM CodeJS framework](#5315-demo-app-to-connect-to-the-odeum-codejs-framework)
 		- [5.3.16. Full-screen presentations (ODEUM Sales Manager/ODEUM Report)](#5316-full-screen-presentations-odeum-sales-managerodeum-report)
 		- [5.3.17. ODEUM Telemetry Services](#5317-odeum-telemetry-services)
@@ -394,7 +394,7 @@ import Telemetry from 'odeum-codejs/components/Telemetry'
     {contents}
 </App>
 ```
-#### 5.3.14.2. Multi components as named exports
+#### 5.3.14.2. Multi components as named exports from single NPM package
 
 ```js
 import { App, Icon, Tabs, Search ... } from 'odeum-codejs'
@@ -404,7 +404,8 @@ import { App, Icon, Tabs, Search ... } from 'odeum-codejs'
 </App>
 ```
 
-#### 5.3.14.3. Single Component NPM packages
+#### 5.3.14.3. Single/Multiple components from multiple NPM packages
+This is my personal favorite thus it gives a lot of flexibility with package design and usage.
 
 ```js
 import App from 'odeum-core'
@@ -412,12 +413,12 @@ import Api from 'odeum-api'
 import Icon from 'odeum-icons'
 import Button from 'odeum-buttons'
 import { Tabs, TabsList } from 'odeum-tabs'
-import Help from 'odeum-help'
+import { Help, Faq, Support } from 'odeum-help'
 import Search from 'odeum-search'
 import Messages from 'odeum-messages'
 import Notifications from 'odeum-notifications'
 import Login from 'odeum-login'
-import ThemeProvider from 'odeum-theme'
+import { ThemeProvider, Theme, Colors, Fonts } from 'odeum-theme'
 import Store from 'odeum-store'
 import Route from 'odeum-router'
 import Localiser from 'odeum-localise'
