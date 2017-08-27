@@ -71,7 +71,10 @@ export const getReferenceTableEntry = (state, id) => {
 	let referenceTable = state.eplan.referenceTables[id]
 	return referenceTable ? referenceTable : undefined
 }
-
+export const getReferences = (state) => {
+	var referenceTable = List(_.map(state.eplan.referenceTables))
+	return referenceTable
+}
 export const getReferenceTableSelectValues = (state) => {
 	let referenceTableSelectValues = []
 	referenceTableSelectValues[referenceTableSelectValues.length] = { value: -1, label: 'ingen valgt' }

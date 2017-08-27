@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { reset, reduxForm } from 'redux-form'
 import { updateReferenceTable } from 'app/store/modules/eplan'
 import { getReferenceTableEntry } from 'app/store/selectors/eplan'
-
-
 import { FormField } from 'app/styles/EplanStyles'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
@@ -20,8 +18,9 @@ class ReferenceTableSettingsModal extends Component {
 		super(props)
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
+	
 	}
-
+	
 	submitUpdate(values) {
 		this.props.updateReferenceTable(values, this.props.referenceTableId)
 		this.props.saveSettingsModal()

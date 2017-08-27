@@ -40,7 +40,7 @@ let renderFields = ({ fields }) => {
 								<Field index={index} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).caption} />
 								{/* <FormPanel index={index} input={fields.get(index)} /> */}
 								{/* name={`${field}.value`} label={fields.get(index).caption} */}
-								
+
 							</Box>
 						</Flex>
 					</div>
@@ -59,18 +59,8 @@ class EditAppendix extends Component {
 			pdfIsLoading: false,
 			// pdfModalIsOpen: false,
 			// pdfFile: '',
-			dates: {
-				date1: moment(),
-				date2: moment(),
-				date3: moment(),
-				date4: moment(),
-				date5: moment(),
-				date6: moment(),
-				date7: moment()
-			}
+			dates: []
 		}
-		console.log('---Dates---')
-		console.log(this.state.dates)
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
 		this.submitUpdateAndCommit = this.submitUpdateAndCommit.bind(this)
@@ -85,6 +75,13 @@ class EditAppendix extends Component {
 		this.handleViewAppendix = this.handleViewAppendix.bind(this)
 		// this.openPdfModal = this.openPdfModal.bind(this)
 		// this.closePdfModal = this.closePdfModal.bind(this)
+	}
+	componentWillUpdate(nextProps, nextState) {
+		if (nextProps.appendixDates !== this.state.dates) {
+			console.log('-----DatesCWU-----')
+			this.setState({ dates: nextProps.appendixDates })
+			console.log(nextProps.appendixDates)
+		}
 	}
 
 	componentWillMount() {
@@ -310,7 +307,7 @@ class EditAppendix extends Component {
 			<SecondaryContainer>
 				{appendix !== null ?
 					<Animation>
-						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> : 
+						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> :
 							<div>
 								<div>
 									<Flex wrap>
@@ -380,14 +377,14 @@ class EditAppendix extends Component {
 									pagination={pagination}
 									pdfFile={pdfFile}
 								/> */}
-								<ToastContainerStyled 
+								<ToastContainerStyled
 									position="top-right"
 									autoClose={5000}
 									hideProgressBar={true}
 									newestOnTop={true}
 									closeOnClick
 									pauseOnHover
-			        			/>
+								/>
 								<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
 							</div>}
 					</Animation>

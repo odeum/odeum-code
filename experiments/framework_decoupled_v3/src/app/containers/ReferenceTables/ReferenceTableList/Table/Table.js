@@ -16,7 +16,14 @@ export default class ReferenceTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
 	};
-
+	componentWillUpdate = (nextProps, nextState) => {
+		// console.log('aici e puturosu', nextProps.list.size)
+		if (this.props.list.size !== nextProps.list.size)
+		{
+			this._onRowCountChange(this.props.list.size)
+		}
+	}
+	
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
@@ -75,7 +82,7 @@ export default class ReferenceTable extends Component {
 					<AutoSizer >
 						{({ height, width }) => (
 							<Table
-								ref='Table'
+								ref={'Table'}
 								disableHeader={disableHeader}
 								headerHeight={headerHeight}
 								height={height}
@@ -195,8 +202,8 @@ export default class ReferenceTable extends Component {
 		)
 	}
 
-	_onRowCountChange(event) {
-		const rowCount = parseInt(event.target.value, 10) || 0
+	_onRowCountChange(listSize) {
+		const rowCount = parseInt(listSize, 10) || 0
 
 		this.setState({ rowCount })
 	}

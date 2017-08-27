@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
 import { getReferenceTableListAsync } from 'app/store/modules/eplan'
-import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
-import { List } from 'immutable'
+import { getReferenceTableSelectValues, getReferences } from 'app/store/selectors/eplan'
 
 import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { PrimaryContainer } from 'app/styles/'
@@ -16,8 +15,6 @@ import ReferenceTableSettingsModal from '../ReferenceTableSettingsModal'
 import { tabChange } from 'framework/store/modules/tabs'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
-
-var _ = require('lodash')
 
 const props = { name: 'Oversigt' }
 
@@ -36,6 +33,8 @@ class ReferenceTableList extends Component {
 
 		this.onClickButton = this.onClickButton.bind(this)
 	}
+
+	
 	async componentWillMount() {
 		this.props.onMount(this.props.id, props.name)
 		if (!this.props.referencetables) {
@@ -73,7 +72,7 @@ class ReferenceTableList extends Component {
 				<AppendixButtonPanel>
 					<Button icon={iconname.ICON_ADD_CIRCLE} onClick={this.openSettingsModal} size={18}>Opret ny reference tabel</Button>
 				</AppendixButtonPanel>
-				{this.props.referencetablesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTable list={List(_.map(this.props.referencetables))} onClickButton={this.onClickButton} />}
+				{this.props.referencetablesIsLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTable list={this.props.referencetables} settingsModalIsOpen={this.state.settingsModalIsOpen} onClickButton={this.onClickButton} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
@@ -90,7 +89,7 @@ class ReferenceTableList extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	referencetables: state.eplan.referenceTables,
+	referencetables: getReferences(state),
 	referencetablesIsLoading: state.eplan.referencetablesIsLoading,
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 
