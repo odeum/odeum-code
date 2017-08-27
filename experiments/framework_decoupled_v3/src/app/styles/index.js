@@ -7,6 +7,7 @@ export const Div = styled.div`
     background-color: #fff;
     overflow-y: auto;
     box-sizing: border-box;
+    border-top-right-radius: 4px;
 `
 
 const fadeIn = keyframes`

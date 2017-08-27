@@ -33,4 +33,6 @@ export const WorkspaceContainer = styled.div`
     align-items: stretch;
     margin: 20px;
     overflow: hidden;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;    
 `
