@@ -93,7 +93,7 @@ class ReferenceTableSettingsModal extends Component {
 								type="text"
 								placeholder="Tekst værdi 2 type"
 							>
-								<option value="0" selected="selected">Anvendes ikke</option>
+								<option value="0" defaultValue>Anvendes ikke</option>
 								<option value="1">Kort tekst</option>
 								<option value="2">Lang tekst</option>
 								<option value="3">WYSIWYG</option>

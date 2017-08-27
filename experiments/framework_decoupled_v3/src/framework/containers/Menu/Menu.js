@@ -9,7 +9,12 @@ import { connect } from 'react-redux'
 import { changeId } from 'framework/store/modules/tabs'
 
 class MenuContainer extends Component {
+	constructor(props) {
+		super(props)
+		this.active = this.active.bind(this)
+	}
 	active(sceneName) {
+		console.log(sceneName, this.props.active)
 		if (sceneName === this.props.active)
 			return 'active'
 		else
@@ -19,7 +24,7 @@ class MenuContainer extends Component {
 		return (
 			<MenuDiv>
 				{this.props.scenes.map((scene, index) => (
-					<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.name)} key={index} onLoad={this.props.changeId} id={scene.sceneID}
+					<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.sceneID)} key={index} onLoad={this.props.changeId} id={scene.sceneID}
 					/>))}
 			</MenuDiv>
 		)

@@ -43,7 +43,7 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 				<ModalContent>
 					<form>
 						<Flex wrap>
-{/* 							<Box width={[1 / 2]}>
+							{/* 							<Box width={[1 / 2]}>
 								<FieldLabel for="name">Intern høring start:</FieldLabel>
 								<DatePickerStyled selected={dates.date1} onChange={(date) => handleDateChange(date, 'date1')} dateFormat="DD/MM/YYYY" showWeekNumbers />
 							</Box> */}
@@ -61,11 +61,11 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 								/>
 							</Box>
 						</Flex>
-						{dates.map((date, index) => (
+						{dates.map((dateField, index) => (
 							<Flex wrap key={index}>
 								<Box width={[1 / 2]}>
-									<FieldLabel for="name">{date.caption}</FieldLabel>
-									<DatePickerStyled selected={dateChecker(date.value)} onChange={(date) => handleDateChange(date, 'date2')} dateFormat="DD/MM/YYYY" showWeekNumbers />
+									<FieldLabel for="name">{dateField.caption}</FieldLabel>
+									<DatePickerStyled selected={dateChecker(dateField.value)} onChange={(date) => handleDateChange(date, dateField.id)} dateFormat="DD/MM/YYYY" showWeekNumbers />
 								</Box>
 							</Flex>
 						))}
@@ -107,7 +107,7 @@ const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, 
 						</Flex> */}
 					</form>
 					<ModalButtonPanel>
-						<Button onClick={saveConfigModal} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
+						<Button onClick={(e) => { e.preventDefault(); saveConfigModal(dates) }} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
 					</ModalButtonPanel>
 				</ModalContent>
 			</ModalWindow>

@@ -34,7 +34,6 @@ class ReferenceTableList extends Component {
 		this.onClickButton = this.onClickButton.bind(this)
 	}
 
-	
 	async componentWillMount() {
 		this.props.onMount(this.props.id, props.name)
 		if (!this.props.referencetables) {

@@ -14,11 +14,12 @@ import { Animation, AppendixHeader, PulseLoader, DropdownSelect, ToastContainerS
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
-import moment from 'moment'
+import AppendixConfigModal from './AppendixConfigModal'
+// import moment from 'moment'
 // import { renderQuill } from '../EditorSelector'
 import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
-import SettingsModal from 'app/components/eplan-appendix/Appendix/SettingsModal'
+// import SettingsModal from 'app/components/eplan-appendix/Appendix/SettingsModal'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 // import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdfModal'
 // import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
@@ -75,13 +76,7 @@ class EditAppendix extends Component {
 		this.handleViewAppendix = this.handleViewAppendix.bind(this)
 		// this.openPdfModal = this.openPdfModal.bind(this)
 		// this.closePdfModal = this.closePdfModal.bind(this)
-	}
-	componentWillUpdate(nextProps, nextState) {
-		if (nextProps.appendixDates !== this.state.dates) {
-			console.log('-----DatesCWU-----')
-			this.setState({ dates: nextProps.appendixDates })
-			console.log(nextProps.appendixDates)
-		}
+		// this.setDates = this.setDates.bind(this)
 	}
 
 	componentWillMount() {
@@ -92,8 +87,9 @@ class EditAppendix extends Component {
 	}
 
 	async componentDidMount() {
-		if (this.props.appendix === null)
-		{ await this.props.getAppendix(this.props.param) }
+		if (this.props.appendix === null) {
+			await this.props.getAppendix(this.props.param)
+		}
 	}
 
 	async submitUpdate(values) {
@@ -104,25 +100,6 @@ class EditAppendix extends Component {
 	async submitUpdateAndCommit(values) {
 		await this.props.updateApd(values, this.props.param, true)
 		toast.success('Dine ændringer er gemt')
-	}
-
-	openConfigModal() {
-		this.setState({
-			configModalIsOpen: true
-		})
-	}
-
-	closeConfigModal() {
-		this.setState({
-			configModalIsOpen: false
-		})
-	}
-
-	saveConfigModal() {
-		//TODO: Save changes
-		this.setState({
-			configModalIsOpen: false
-		})
 	}
 
 	openExportModal() {
@@ -148,23 +125,43 @@ class EditAppendix extends Component {
 	// 		pdfModalIsOpen: false
 	// 	})
 	// }
+	openConfigModal() {
+		this.setState({
+			configModalIsOpen: true
+		})
+	}
 
+	closeConfigModal() {
+		this.setState({
+			configModalIsOpen: false
+		})
+	}
+
+	async saveConfigModal(dates) {
+		//TODO: Save changes
+		this.setState({
+			configModalIsOpen: false
+		})
+		var apdx = this.props.appendix
+		apdx.fields.map((field) => {
+			return dates.map((date) => {
+				console.log('-----date-----')
+				console.log(date)
+				return field.id === date.id ? field.value = date : field
+			})
+		})
+		//await this.props.updateApd()
+		console.log(apdx)
+	}
 	handleDateChange(date, id) {
-		if (id === 'date1') {
-			this.setState({ dates: { ...this.state.dates, date1: date } })
-		} else if (id === 'date2') {
-			this.setState({ dates: { ...this.state.dates, date2: date } })
-		} else if (id === 'date3') {
-			this.setState({ dates: { ...this.state.dates, date3: date } })
-		} else if (id === 'date4') {
-			this.setState({ dates: { ...this.state.dates, date4: date } })
-		} else if (id === 'date5') {
-			this.setState({ dates: { ...this.state.dates, date5: date } })
-		} else if (id === 'date6') {
-			this.setState({ dates: { ...this.state.dates, date6: date } })
-		} else if (id === 'date7') {
-			this.setState({ dates: { ...this.state.dates, date7: date } })
-		}
+		var newDate = { id: id, ...date }
+		var newArray = this.state.dates
+		newArray.push(newDate)
+		this.setState({
+			dates: newArray
+		})
+		console.log('-----date-----')
+		console.log(this.state.dates)
 	}
 
 	async handlePdfChange(option) {
@@ -305,7 +302,8 @@ class EditAppendix extends Component {
 
 		return (
 			<SecondaryContainer>
-				{appendix !== null ?
+				{appendix !== null && appendixDates !== undefined ?
+
 					<Animation>
 						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> :
 							<div>
@@ -356,7 +354,7 @@ class EditAppendix extends Component {
 										</Box>
 									</Flex>
 								</div>
-								<SettingsModal
+								<AppendixConfigModal
 									configModalIsOpen={configModalIsOpen}
 									closeConfigModal={closeConfigModal}
 									handleDateChange={handleDateChange}
@@ -411,8 +409,8 @@ function mapDispatchToProps(dispatch) {
 		onMount: (instanceID, param) => {
 			dispatch(tabChange(instanceID, param))
 		},
-		getAppendix: (param) => {
-			dispatch(getAppendixAsync(param))
+		getAppendix: async (param) => {
+			dispatch(await getAppendixAsync(param))
 		},
 		updateApd: async (appendix, id, commit) => {
 			dispatch(await updateAppendix(appendix, id, commit))
