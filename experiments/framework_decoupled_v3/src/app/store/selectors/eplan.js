@@ -19,7 +19,7 @@ export const getAppendixDates = (state, id, props) => {
 	var filter = null
 	if (appendix && config)
 	{ filter = _.intersectionBy(appendix.fields, config.propertiesFields, 'id') }
-	console.log(filter)
+	// console.log(filter)
 	return filter ? filter : undefined
 }
 export const getAppendix = (state, id, props) => {

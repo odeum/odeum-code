@@ -91,6 +91,21 @@ export async function getAppendixFramesList(id) {
 	return dataList
 }
 
+export async function getFrameConfig() {
+	var data = await api.get('/rest/eplan/kpt/frame/config')
+		.then((response) => {
+			return response.data
+		})
+	return data
+}
+export async function getFrameData(id) {
+	var data = await api.get('/rest/eplan/kpt/frame/' + id)
+		.then((response) => {
+			return response.data
+		})
+	return data
+}
+
 /**
  * REFERENCE TABLE FUNCTIONS BEGIN
  */

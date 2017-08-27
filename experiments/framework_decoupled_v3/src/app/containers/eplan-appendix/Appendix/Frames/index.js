@@ -94,7 +94,6 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, tab) => {
-			console.log(instanceID, tab)
 			dispatch(tabChange(instanceID, tab.label))
 		},
 		onClickButton: (frameId, appendixId) => {

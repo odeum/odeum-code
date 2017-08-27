@@ -5,17 +5,48 @@ import { connect } from 'react-redux'
 /* Framework */
 import { tabChange } from 'framework/store/modules/tabs'
 
+/* Styling */
+import { PrimaryContainer } from 'app/styles'
+import { /* DescriptionDiv, */ /* PulseLoader, */ AppendixButtonPanel } from 'app/styles/EplanStyles'
+
+/* Components */
+import Button from 'framework/components/Widgets/Button'
+import * as iconname from 'framework/assets/icons'
+
 
 class EditFrame extends Component {
 	render() {
+		console.log(this.props.frameId)
 		return (
-			<div>EditFrame: {this.props.frameId}</div>
+			<PrimaryContainer>
+				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
+				<AppendixButtonPanel>
+					<Button icon={iconname.ICON_CLOUD} size={18} >Exporter til plansystem</Button>
+					{/* <Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Knap 2</Button> */}
+				</AppendixButtonPanel>
+				{/* {this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />} */}
+				{/* <ReferenceTableSettingsModal
+				settingsModalIsOpen={this.state.settingsModalIsOpen}
+				closeSettingsModal={this.closeSettingsModal}
+				saveSettingsModal={this.saveSettingsModal}
+				referenceTableSelectValues={this.props.referenceTableSelectValues}
+				referenceTableId={this.props.referenceTableId}
+				 /> */}
+				{/* <ReferenceTableEditModal
+				editModalIsOpen={this.state.editModalIsOpen}
+				editData={this.state.editData}
+				closeEditModal={this.closeEditModal}
+				saveEditModal={this.saveEditModal}
+				referenceTableId={this.props.referenceTableId}
+				 /> */}
+			</PrimaryContainer>
+
 		)
 	}
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	param: ownProps.param,
+	frameId: ownProps.frameId,
 	// appendix: getAppendix(state, ownProps.param, ownProps) || null,
 	// initialValues: {
 	// fields: getAppendixSel(state, ownProps.param, ownProps)
