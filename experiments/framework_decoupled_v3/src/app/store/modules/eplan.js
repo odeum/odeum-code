@@ -1,5 +1,5 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue } from 'app/data/eplan' //getAppendixFramesList
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, getFrameConfig, getFrameData } from 'app/data/eplan' //getAppendixFramesList
 import { List } from 'immutable'
 
 /*Lodash*/
@@ -16,6 +16,8 @@ const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
 const CREATE_APPENDIX_PDF = '@@EPLAN/CREATE_APPENDIX_PDF'
 const GET_APPENDIX_FRAMES_LIST = '@@EPLAN/GET_APPENDIX_FRAMES_LIST'
+const GET_APPENDIX_FRAME_CONFIG = '@@EPLAN/GET_APPENDIX_FRAME_CONFIG'
+const GET_APPENDIX_FRAME_DATA = '@@EPLAN/GET_APPENDIX_FRAME_DATA'
 const GET_REFERENCE_TABLE_LIST = '@@EPLAN/GET_REFERENCE_TABLE_LIST'
 const GET_REFERENCE_TABLE_ENTRY = '@@EPLAN/GET_REFERENCE_TABLE_ENTRY'
 const UPDATE_REFERENCE_TABLE = '@@EPLAN/UPDATE_REFERENCE_TABLE'
@@ -31,6 +33,8 @@ const exportAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
 const getAppendixPdf = () => ({ type: GET_APPENDIX_PDF })
 const createAppendixPdf = () => ({ type: CREATE_APPENDIX_PDF })
 const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data })
+const actionGetFrameConfig = (data) => ({ type: GET_APPENDIX_FRAME_CONFIG, payload: data })
+const actionGetFrameData = (data) => ({ type: GET_APPENDIX_FRAME_DATA, payload: data })
 const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: data })
 const getRefTableEntry = (data) => ({ type: GET_REFERENCE_TABLE_ENTRY, payload: data })
 const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data })
@@ -78,6 +82,24 @@ export function getFramesListAsync(id) {
 		)
 	}
 }
+export function getFrameDataAsync(id) {
+	return async dispatch => {
+		await getFrameData(id).then((result) => {
+			dispatch(actionGetFrameData(result))
+		})
+
+	}
+}
+export function getFrameConfigAsync() {
+	return async dispatch => {
+		await getFrameConfig().then((result) => {
+			dispatch(actionGetFrameConfig(result))
+		})
+
+	}
+}
+
+
 
 export function getAppendixCfg() {
 	return async dispatch => {
@@ -159,6 +181,7 @@ export function updateReferenceTableData(referenceTableEntry, id) {
 const initState = {
 	appendixes: List([]),
 	openAppendix: [],
+	openFrames: [],
 	// referencetables: [],
 	// openReferenceTables: [],
 	referenceTables: [],
@@ -228,6 +251,11 @@ function eplan(state = initState, action) {
 				...state,
 				appendixes: action.payload,
 				framesIsLoading: false
+			}
+		case GET_APPENDIX_FRAME_CONFIG:
+			console.log(action.payload)
+			return {
+				...state
 			}
 		case GET_REFERENCE_TABLE_LIST:
 			return {

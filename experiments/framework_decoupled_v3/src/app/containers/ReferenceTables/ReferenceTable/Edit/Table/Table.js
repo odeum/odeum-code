@@ -143,7 +143,6 @@ export default class ReferenceTableEditList extends Component {
 									}
 									flexgrow={1}
 								/>
-
 							</Table>
 						)}
 					</AutoSizer>
