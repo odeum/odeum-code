@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
 import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
+import { getFrameConfigAsync } from 'app/store/modules/eplan'
 
 /* Framework */
 import { addTab, tabChange, addInstance } from 'framework/store/modules/tabs'
@@ -83,6 +84,7 @@ function mapDispatchToProps(dispatch) {
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
+			dispatch(getFrameConfigAsync())
 		}
 	}
 }
