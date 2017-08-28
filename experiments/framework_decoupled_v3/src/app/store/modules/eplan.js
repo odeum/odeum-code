@@ -93,7 +93,6 @@ export function getFrameDataAsync(id) {
 	}
 }
 export function setFrameDataAsync(frameId, fields, openFrame) {
-	console.log(openFrame)
 	let newFields = {}
 	_.forEach(fields, function(value, key) {
 		newFields[value.id] = value

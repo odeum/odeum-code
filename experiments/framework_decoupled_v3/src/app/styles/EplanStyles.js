@@ -7,7 +7,7 @@ import 'react-select/dist/react-select.css'
 import DatePicker from 'react-datepicker'
 import * as colors from 'framework/assets/colors'
 // import ReactQuill from 'react-quill'
-import { Field } from 'redux-form'
+import { Field, Form } from 'redux-form'
 import DropDown from 'framework/components/Widgets/DropDown'
 import { ToastContainer } from 'react-toastify'
 
@@ -503,5 +503,9 @@ export const FormFieldTextarea = styled(Field)`
 
 `
 export const FramesForm = styled.form`
+    clear: both;
+`
+
+export const FramesForm2 = styled(Form)`
     clear: both;
 `

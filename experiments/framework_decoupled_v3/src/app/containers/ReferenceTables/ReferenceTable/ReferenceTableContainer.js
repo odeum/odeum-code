@@ -38,9 +38,10 @@ class ReferenceTableContainer extends Component {
 	}
 
 	render() {
+		let key = this.props.location.pathname
 		return (
 			<div>
-				{React.cloneElement(this.props.children, { referenceTableId: this.props.referenceTableId, id: this.props.id })}
+				{React.cloneElement(this.props.children, { key: key, referenceTableId: this.props.referenceTableId, id: this.props.id })}
 			</div>
 		)
 	}

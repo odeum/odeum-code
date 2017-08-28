@@ -84,6 +84,15 @@ class EditAppendix extends Component {
 			this.props.param,
 			"Tillægs tekst"
 		)
+		this.props.reset()
+	}
+	componentWillUpdate(nextProps, nextState) {
+		if (nextProps !== this.props)
+			console.log(nextProps)
+	}
+
+	componentWillUnmount() {
+		this.props.reset()
 	}
 
 	async componentDidMount() {
@@ -146,22 +155,22 @@ class EditAppendix extends Component {
 		var appendix = {
 			fields: values.dates
 		}
-		
+
 
 		//await this.props.updateApd()
 		await this.props.updateApd(appendix, this.props.param, false)
 		//console.log('saveconfigmodal', appendix)
 	}
-/* 	handleDateChange(date, id) {
-		var newDate = { id: id, ...date }
-		var newArray = this.state.dates
-		newArray.push(newDate)
-		this.setState({
-			dates: newArray
-		})
-		console.log('-----date-----')
-		console.log(this.state.dates)
-	} */
+	/* 	handleDateChange(date, id) {
+			var newDate = { id: id, ...date }
+			var newArray = this.state.dates
+			newArray.push(newDate)
+			this.setState({
+				dates: newArray
+			})
+			console.log('-----date-----')
+			console.log(this.state.dates)
+		} */
 
 	async handlePdfChange(option) {
 		this.setState({ pdfIsLoading: true })
@@ -407,7 +416,8 @@ const mapStateToProps = (state, ownProps) => ({
 	} || null,
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,
-	appendixDates: getAppendixDates(state, ownProps.param, ownProps)
+	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
+	form: 'appendix_' + ownProps.param
 })
 
 function mapDispatchToProps(dispatch) {
@@ -432,8 +442,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 EditAppendix = reduxForm({
-	form: 'appendix',
-	enableReinitialize: true
+	// form: 'appendix',
+	enableReinitialize: true,
+	destroyOnUnmount: false,
+	keepDirtyOnReinitialize: true
 })(EditAppendix)
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAppendix)

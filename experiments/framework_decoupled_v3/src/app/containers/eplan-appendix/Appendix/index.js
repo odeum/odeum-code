@@ -54,11 +54,12 @@ class AppendixContainer extends Component {
 	}
     
 	render() {
+		let key = this.props.location.pathname
 		return (
 			<div>
 				<TabsContainer instanceID={this.props.param.toString()}/>
                 
-				{React.cloneElement(this.props.children, { param: this.props.param })}
+				{React.cloneElement(this.props.children, { param: this.props.param, key: key })}
 			</div>
 		)
 	}

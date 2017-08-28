@@ -66,6 +66,7 @@ class ReferenceTableEdit extends Component {
 		})
 	}
 	openEditModal(data) {
+		console.log(this)
 		this.setState({
 			editModalIsOpen: true,
 			editData: data
@@ -87,14 +88,24 @@ class ReferenceTableEdit extends Component {
 		if (!this.props.referenceTable) {
 			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 		}
-
 		this.props.onMount(
 		 	this.props.id,
 		 	this.props.referenceTableId
 		)
 	}
+	componentWillReceiveProps(nextProps) {
+		console.log('componentWillRecieveProps')
+		console.log(nextProps)
+	}
 
+	
 	render() {
+
+		console.log('render')
+		if (this.props.referenceTable !== null) {
+			console.log(_.map(this.props.referenceTable.data).length)
+		}
+
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
