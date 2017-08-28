@@ -22,8 +22,8 @@ function handleStatusChange() {
 }
 
 const SettingsModal = ({ configModalIsOpen, closeConfigModal, handleDateChange, saveConfigModal, dates }) => {
-	console.log('Dates')
-	console.log(dates)
+/* 	console.log('Dates')
+	console.log(dates) */
 	function dateChecker(date) {
 		var momentDate = moment(date)
 		return momentDate._isValid ? momentDate : null
