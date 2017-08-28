@@ -258,34 +258,50 @@ function eplan(state = initState, action) {
 				configFrames: action.payload
 			}
 		case GET_APPENDIX_FRAME_DATA:
-			let GET_APPENDIX_FRAME_DATA_state = { ...state }
-			GET_APPENDIX_FRAME_DATA_state.openFrames[action.payload.frameId] = action.payload
-			console.log(GET_APPENDIX_FRAME_DATA_state.openFrames)
-			return GET_APPENDIX_FRAME_DATA_state
+			return {
+				...state,
+				openFrames: {
+					...state.openFrames,
+					[action.payload.frameId]: action.payload
+				}
+			}
 		case GET_REFERENCE_TABLE_LIST:
 			return {
 				...state,
 				referenceTables: action.payload,
-				// referencetables: action.payload,
 				referencetablesIsLoading: false
 			}
 		case GET_REFERENCE_TABLE_ENTRY:
 			return {
 				...state,
 				referenceTableValues: {
+					...state.referenceTableValues,
 					[action.payload.id]: action.payload
 				},
-				// openReferenceTables: state.openReferenceTables.concat(action.payload),
 				referenceTablesEntryIsLoading: false
 			}
 		case UPDATE_REFERENCE_TABLE:
-			const UPDATE_REFERENCE_TABLE_state = { ...state }
-			UPDATE_REFERENCE_TABLE_state.referenceTables[action.payload.referenceTable.id] = action.payload.referenceTable
-			return UPDATE_REFERENCE_TABLE_state
+			return {
+				...state,
+				referenceTables: {
+					...state.referenceTables,
+					[action.payload.referenceTable.id]: action.payload.referenceTable.id
+				}
+			}
 		case UPDATE_REFERENCE_TABLE_DATA:
-			const UPDATE_REFERENCE_TABLE_DATA_state = { ...state }
-			UPDATE_REFERENCE_TABLE_DATA_state.referenceTableValues[action.payload.referenceTableEntry.reftableId].data[action.payload.referenceTableEntry.id] = action.payload.referenceTableEntry
-			return UPDATE_REFERENCE_TABLE_DATA_state
+			return {
+				...state,
+				referenceTableValues: {
+					...state.referenceTableValues,
+					[action.payload.referenceTableEntry.reftableId]: {
+						...state.referenceTableValues[action.payload.referenceTableEntry.reftableId],
+						data: {
+							...state.referenceTableValues[action.payload.referenceTableEntry.reftableId].data,
+							[action.payload.referenceTableEntry.id]: action.payload.referenceTableEntry
+						}
+					}
+				}
+			}
 		default:
 			return state
 	}

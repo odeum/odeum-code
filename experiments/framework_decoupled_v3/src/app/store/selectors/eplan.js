@@ -29,10 +29,13 @@ export const getAppendix = (state, id, props) => {
 
 export const getFrameFieldsSel = (state, id) => {
 	let openFrame = state.eplan.openFrames[id]
+	// console.log(openFrame)
 	var config = state.eplan.configFrames
+	// console.log(config)
 	var filter = null
 	if (openFrame && config)
 	{ filter = _.intersectionBy(openFrame.fields, config.editFields, 'id') }
+	// console.log(filter)
 	return filter ? filter : undefined
 }
 
