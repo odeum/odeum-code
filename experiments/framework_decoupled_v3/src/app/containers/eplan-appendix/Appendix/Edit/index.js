@@ -139,7 +139,7 @@ class EditAppendix extends Component {
 
 	async saveConfigModal(values) {
 		//TODO: Save changes
-		console.log(values.dates)
+		// console.log(values.dates)
 		this.setState({
 			configModalIsOpen: false
 		})
@@ -150,7 +150,7 @@ class EditAppendix extends Component {
 
 		//await this.props.updateApd()
 		await this.props.updateApd(appendix, this.props.param, false)
-		console.log(appendix)
+		//console.log('saveconfigmodal', appendix)
 	}
 /* 	handleDateChange(date, id) {
 		var newDate = { id: id, ...date }
