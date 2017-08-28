@@ -17,20 +17,15 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
 let renderFields = ({ fields }) => {
+	// console.log('renderFields')
+	// console.log(fields)
 	return (
 		<div>
 			{fields.map((field, index) => {
 				return (
 					<div key={fields.get(index).id}>
-						{/* <Flex wrap> */}
-						{/* <Box width={[1, 1, 1, 1, 7 / 12]}> */}
 						<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
 						<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
-						{/* <FormPanel index={index} input={fields.get(index)} /> */}
-						{/* name={`${field}.value`} label={fields.get(index).caption} */}
-
-						{/* </Box> */}
-						{/* </Flex> */}
 					</div>
 				)
 			})}
@@ -103,6 +98,7 @@ class EditFrame extends Component {
 const mapStateToProps = (state, ownProps) => ({
 	frameId: ownProps.frameId,
 	openFrame: state.eplan.openFrames[ownProps.frameId] || null,
+	form: 'EditFrame_form_' + ownProps.frameId,
 	// appendix: getAppendix(state, ownProps.param, ownProps) || null,
 	initialValues: {
 		fields: getFrameFieldsSel(state, ownProps.frameId)
@@ -137,7 +133,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 EditFrame = reduxForm({
-	form: 'EditFrame_form',
+	destroyOnUnmount: false,
+	// form: 'EditFrame_form',
 	enableReinitialize: true
 })(EditFrame)
 

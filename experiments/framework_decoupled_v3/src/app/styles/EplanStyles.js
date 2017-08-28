@@ -408,6 +408,28 @@ export const DropdownSelect = styled(Select) `
     }
 `
 
+export const DatePickerStyledWrapper = styled.div`
+    .react-datepicker {
+        font-size: 1.3rem !important;
+    }
+
+    .react-datepicker__current-month {
+        font-size: 1.5rem !important;
+    }
+
+    .react-datepicker__header {
+        padding-top: 6px !important;
+    }
+
+    .react-datepicker__navigation {
+        top: 13px !important;
+    }
+
+    .react-datepicker__day-name, .react-datepicker__day {
+        margin: 0.5rem !important;
+    }
+`
+
 export const DatePickerStyled = styled(DatePicker)`
     box-sizing: border-box;
     width: 100%;
