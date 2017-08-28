@@ -92,43 +92,54 @@ export async function getAppendixFramesList(id) {
 }
 
 export async function getFrameConfig() {
-	var data = await api.get('/rest/eplan/kpt/frame/config')
+	let data = await api.get('/rest/eplan/kpt/frame/config')
 		.then((response) => {
 			return response.data
 		})
 	return data
 }
 export async function getFrameData(id) {
-	var data = await api.get('/rest/eplan/kpt/frame/' + id)
+	let data = await api.get('/rest/eplan/kpt/frame/' + id)
 		.then((response) => {
 			return response.data
 		})
 	return data
 }
+export async function setFrameData(id, frameData) {
+	console.log(frameData)
+	let app = JSON.stringify(frameData)
+	let data = await api.put('/rest/eplan/kpt/frame/' + id, app)
+		.then((response) => {
+			return response.data
+		})
+	console.log(data)
+	return data
+}
+
 
 /**
  * REFERENCE TABLE FUNCTIONS BEGIN
  */
 export async function getReferenceTableList() {
-	var data = await api.get('/rest/eplan/kpt/reftable/list')
+	let data = await api.get('/rest/eplan/kpt/reftable/list')
 		.then((response) => {
 			return response.data
 		})
 	return data
 }
 export async function getReferenceTableEntry(id) {
-	var data = await api.get('/rest/eplan/kpt/reftable/listvalues/' + id)
+	let data = await api.get('/rest/eplan/kpt/reftable/listvalues/' + id)
 		.then((response) => {
 			return response.data
 		})
-	var a = {}
+	let a = {}
 	a.id = parseInt(id, 10)
 	a.data = data
 	return a
 }
 export async function saveReferenceTable(referenceTable) {
-	var app = JSON.stringify(referenceTable)
-	var data
+	let app = JSON.stringify(referenceTable)
+	let data
 	if (referenceTable.id === null) {
 		data = await api.post('/rest/eplan/kpt/reftable', app)
 			.then((response) => {
@@ -145,8 +156,8 @@ export async function saveReferenceTable(referenceTable) {
 	return data
 }
 export async function saveReferenceTableValue(referenceTableEntry) {
-	var app = JSON.stringify(referenceTableEntry)
-	var data
+	let app = JSON.stringify(referenceTableEntry)
+	let data
 	if (referenceTableEntry.id === null) {
 		data = await api.post('/rest/eplan/kpt/reftable/value', app)
 			.then((response) => {

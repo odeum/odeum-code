@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getFrameDataAsync } from 'app/store/modules/eplan'
+import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
 import { getFrameFieldsSel } from 'app/store/selectors/eplan'
 import { FieldArray, reduxForm } from 'redux-form'
 
@@ -48,16 +48,11 @@ class EditFrame extends Component {
 
 	submitUpdate(values) {
 		console.log(values)
+		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
 	}
 
 
 	render() {
-		console.log(this.props.frameId)
-
-		if (this.props.openFrame !== null) {
-			console.log(this.props.openFrame)
-		}
-
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
@@ -114,6 +109,9 @@ function mapDispatchToProps(dispatch) {
 		getFrameData: (frameId) => {
 			dispatch(getFrameDataAsync(frameId))
 		},
+		setFrameData: (frameId, data, frameData) => {
+			dispatch(setFrameDataAsync(frameId, data, frameData))
+		},
 
 		// getAppendix: (param) => {
 		// 	dispatch(getAppendixAsync(param))
@@ -134,6 +132,7 @@ function mapDispatchToProps(dispatch) {
 
 EditFrame = reduxForm({
 	destroyOnUnmount: false,
+	keepDirtyOnReinitialize: true,
 	// form: 'EditFrame_form',
 	enableReinitialize: true
 })(EditFrame)
