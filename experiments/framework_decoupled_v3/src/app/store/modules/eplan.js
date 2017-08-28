@@ -182,6 +182,7 @@ const initState = {
 	appendixes: List([]),
 	openAppendix: [],
 	openFrames: [],
+	configFrames: [],
 	// referencetables: [],
 	// openReferenceTables: [],
 	referenceTables: [],
@@ -208,26 +209,26 @@ function eplan(state = initState, action) {
 				appendixIsSaving: true
 			}
 		case UPDATE_APPENDIX:
-			{
-				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
-				orig.fields.map((field) => {
-					return action.payload.appendix.fields.map((afield) => {
-						return field.id === afield.id ? field.value = afield.value : field
-					})
+		{
+			let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
+			orig.fields.map((field) => {
+				return action.payload.appendix.fields.map((afield) => {
+					return field.id === afield.id ? field.value = afield.value : field
 				})
-				postAppendix(orig, action.payload.commit)
-				return {
-					...state,
-					appendixIsSaving: false
-				}
+			})
+			postAppendix(orig, action.payload.commit)
+			return {
+				...state,
+				appendixIsSaving: false
 			}
+		}
 		case GET_APPENDIX_CONFIG:
-			{
-				return {
-					...state,
-					conf: action.payload
-				}
+		{
+			return {
+				...state,
+				conf: action.payload
 			}
+		}
 		case GET_APPENDIX_LIST:
 			return {
 				...state,
@@ -235,16 +236,16 @@ function eplan(state = initState, action) {
 				isLoading: false
 			}
 		case GET_APPENDIX:
-			{
-				var findAppendix = _.find(state.openAppendix, (apdx) => (apdx.appendixId === action.payload.appendixId))
-				if (findAppendix !== undefined)
-					return state
-				else return {
-					...state,
-					openAppendix: state.openAppendix.concat(action.payload),
-					framesIsLoading: false
-				}
+		{
+			var findAppendix = _.find(state.openAppendix, (apdx) => (apdx.appendixId === action.payload.appendixId))
+			if (findAppendix !== undefined)
+				return state
+			else return {
+				...state,
+				openAppendix: state.openAppendix.concat(action.payload),
+				framesIsLoading: false
 			}
+		}
 		case GET_APPENDIX_FRAMES_LIST:
 			// console.log(action.payload)
 			return {
@@ -255,8 +256,15 @@ function eplan(state = initState, action) {
 		case GET_APPENDIX_FRAME_CONFIG:
 			console.log(action.payload)
 			return {
-				...state
+				...state,
+				configFrames: action.payload
 			}
+		case GET_APPENDIX_FRAME_DATA:
+			console.log(action.payload)
+			let GET_APPENDIX_FRAME_DATA_state = { ...state }
+			GET_APPENDIX_FRAME_DATA_state.openFrames[action.payload.frameId] = action.payload
+			console.log(GET_APPENDIX_FRAME_DATA_state.openFrames)
+			return GET_APPENDIX_FRAME_DATA_state
 		case GET_REFERENCE_TABLE_LIST:
 			return {
 				...state,

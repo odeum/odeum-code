@@ -27,6 +27,17 @@ export const getAppendix = (state, id, props) => {
 	return appendix ? appendix : undefined
 }
 
+export const getFrameFieldsSel = (state, id) => {
+	console.log(state.eplan)
+	let openFrame = state.eplan.openFrames[id]
+	var config = state.eplan.configFrames
+	var filter = null
+	if (openFrame && config)
+	{ filter = _.intersectionBy(openFrame.fields, config.editFields, 'id') }
+	console.log(filter)
+	return filter ? filter : undefined
+}
+
 export const getReferenceTable = (state, id) => {
 
 

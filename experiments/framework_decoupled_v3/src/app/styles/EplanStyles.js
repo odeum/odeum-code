@@ -480,3 +480,6 @@ export const FormField = styled(Field)`
 export const FormFieldTextarea = styled(Field)`
 
 `
+export const FramesForm = styled.form`
+    clear: both;
+`
