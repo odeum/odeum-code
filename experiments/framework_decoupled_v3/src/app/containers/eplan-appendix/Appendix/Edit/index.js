@@ -299,6 +299,13 @@ class EditAppendix extends Component {
 		// 	pagination = this.renderPagination(this.state.page, this.state.pages)
 		// }
 
+		const statusOptions = [
+			{ value: '1', label: 'Kladde' },
+			{ value: '2', label: 'Udkast' },
+			{ value: '3', label: 'Intern høring' },
+			{ value: '4', label: 'Forslag' }
+		]
+
 		return (
 			<SecondaryContainer>
 				{appendix !== null && appendixDates !== undefined ?
@@ -357,7 +364,8 @@ class EditAppendix extends Component {
 									configModalIsOpen={configModalIsOpen}
 									closeConfigModal={closeConfigModal}
 									saveConfigModal={saveConfigModal}
-									dates={appendixDates} />
+									dates={appendixDates}
+									statusOptions={statusOptions} />
 								<ExportModal
 									exportModalIsOpen={exportModalIsOpen}
 									closeExportModal={closeExportModal}
