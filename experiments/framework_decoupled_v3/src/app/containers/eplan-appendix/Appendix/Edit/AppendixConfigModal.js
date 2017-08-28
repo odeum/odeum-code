@@ -13,8 +13,6 @@ import { Flex, Box } from 'grid-styled'
 import moment from 'moment'
 
 let renderFields = ({ fields }) => {
-	console.log(fields)
-
 	return (
 		<div>
 			{fields.map((field, index) => {
@@ -34,7 +32,7 @@ let renderFields = ({ fields }) => {
 	)
 }
 let renderForm = ({ input }) => {
-	console.log(input)
+	// console.log(input)
 	return (
 		<div>
 			<DatePickerStyled selected={dateChecker(input.value)} autoOk={true} onChange={(value, event) => {
@@ -46,7 +44,7 @@ let renderForm = ({ input }) => {
 	)
 }
 function dateChecker(date) {
-	console.log(date)
+	// console.log(date)
 	var momentDate = moment(date)
 	return momentDate._isValid ? momentDate : null
 }
@@ -54,7 +52,7 @@ class AppendixConfigModal extends Component {
 	constructor(props) {
 		super(props)
 		this.dateChecker = this.dateChecker.bind(this)
-		console.log(props)
+		// console.log(props)
 	}
 	dateChecker(date) {
 		var momentDate = moment(date)

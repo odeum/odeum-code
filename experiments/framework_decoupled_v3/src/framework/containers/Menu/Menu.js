@@ -14,7 +14,6 @@ class MenuContainer extends Component {
 		this.active = this.active.bind(this)
 	}
 	active(sceneName) {
-		console.log(sceneName, this.props.active)
 		if (sceneName === this.props.active)
 			return 'active'
 		else
