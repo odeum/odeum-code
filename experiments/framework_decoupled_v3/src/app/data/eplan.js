@@ -16,7 +16,7 @@ export async function postAppendix(appendix, commit) {
 	appendix = { ...appendix, doCommit: commit } // add commit parameter true|false
 
 	var app = JSON.stringify(appendix)
-	var data = await api.post('/rest/eplan/kpt/appendix/' + appendix.appendixId, app)
+	var data = await api.put('/rest/eplan/kpt/appendix/' + appendix.appendixId, app)
 		.then((response) => {
 			// console.log(response.data)
 			return response.data

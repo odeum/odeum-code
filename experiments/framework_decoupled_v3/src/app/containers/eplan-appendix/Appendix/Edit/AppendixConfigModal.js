@@ -13,8 +13,6 @@ import { Flex, Box } from 'grid-styled'
 import moment from 'moment'
 
 let renderFields = ({ fields }) => {
-	console.log(fields)
-
 	return (
 		<div>
 			{fields.map((field, index) => {
@@ -34,10 +32,10 @@ let renderFields = ({ fields }) => {
 	)
 }
 let renderForm = ({ input }) => {
-	console.log(input)
+	// console.log(input)
 	return (
 		<div>
-			<DatePickerStyled selected={input.value ? moment(input.value) : null} autoOk={true} onChange={(value, event) => {
+			<DatePickerStyled selected={dateChecker(input.value)} autoOk={true} onChange={(value, event) => {
 				input.onChange(value.format())
 			}
 
@@ -45,15 +43,16 @@ let renderForm = ({ input }) => {
 		</div>
 	)
 }
-/* function dateChecker(date) {
+function dateChecker(date) {
+	// console.log(date)
 	var momentDate = moment(date)
 	return momentDate._isValid ? momentDate : null
-} */
+}
 class AppendixConfigModal extends Component {
 	constructor(props) {
 		super(props)
 		this.dateChecker = this.dateChecker.bind(this)
-		console.log(props)
+		// console.log(props)
 	}
 	dateChecker(date) {
 		var momentDate = moment(date)
@@ -61,7 +60,7 @@ class AppendixConfigModal extends Component {
 	}
 	render() {
 		// const { dateChecker } = this
-		const { configModalIsOpen, closeConfigModal, statusOptions, handleStatusChange, saveConfigModal, appendixDates } = this.props
+		const { configModalIsOpen, closeConfigModal, statusOptions, handleStatusChange, saveConfigModal } = this.props
 		return (
 			<div>
 				{this.props.dates !== undefined ?
@@ -99,7 +98,7 @@ class AppendixConfigModal extends Component {
 								<FieldArray name={'dates'} component={renderFields} />
 							</form>
 							<ModalButtonPanel>
-								<Button onClick={(e) => { e.preventDefault(); saveConfigModal(appendixDates) }} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
+								<Button onClick={this.props.handleSubmit(saveConfigModal)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
 							</ModalButtonPanel>
 						</ModalContent>
 					</ModalWindow> : null}

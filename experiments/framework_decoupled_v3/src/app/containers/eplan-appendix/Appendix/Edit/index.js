@@ -70,7 +70,7 @@ class EditAppendix extends Component {
 		this.saveConfigModal = this.saveConfigModal.bind(this)
 		this.openExportModal = this.openExportModal.bind(this)
 		this.closeExportModal = this.closeExportModal.bind(this)
-		this.handleDateChange = this.handleDateChange.bind(this)
+		// this.handleDateChange = this.handleDateChange.bind(this)
 		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
 		this.handlePdfChange = this.handlePdfChange.bind(this)
 		this.handleViewAppendix = this.handleViewAppendix.bind(this)
@@ -137,23 +137,22 @@ class EditAppendix extends Component {
 		})
 	}
 
-	async saveConfigModal(dates) {
+	async saveConfigModal(values) {
 		//TODO: Save changes
+		// console.log(values.dates)
 		this.setState({
 			configModalIsOpen: false
 		})
-		var apdx = this.props.appendix
-		apdx.fields.map((field) => {
-			return dates.map((date) => {
-				console.log('-----date-----')
-				console.log(date)
-				return field.id === date.id ? field.value = date : field
-			})
-		})
+		var appendix = {
+			fields: values.dates
+		}
+		
+
 		//await this.props.updateApd()
-		console.log(apdx)
+		await this.props.updateApd(appendix, this.props.param, false)
+		//console.log('saveconfigmodal', appendix)
 	}
-	handleDateChange(date, id) {
+/* 	handleDateChange(date, id) {
 		var newDate = { id: id, ...date }
 		var newArray = this.state.dates
 		newArray.push(newDate)
@@ -162,7 +161,7 @@ class EditAppendix extends Component {
 		})
 		console.log('-----date-----')
 		console.log(this.state.dates)
-	}
+	} */
 
 	async handlePdfChange(option) {
 		this.setState({ pdfIsLoading: true })
@@ -283,7 +282,7 @@ class EditAppendix extends Component {
 		const { appendix, handleSubmit, appendixDates } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
-			closeConfigModal, handleDateChange, saveConfigModal,
+			closeConfigModal, saveConfigModal,
 			closeExportModal, onClickExportAppendix, handlePdfChange,
 			handleViewAppendix } = this
 		// closePdfModal, onDocumentComplete, onPageComplete
@@ -299,6 +298,13 @@ class EditAppendix extends Component {
 		// if (this.state.pages) {
 		// 	pagination = this.renderPagination(this.state.page, this.state.pages)
 		// }
+
+		const statusOptions = [
+			{ value: '1', label: 'Kladde' },
+			{ value: '2', label: 'Udkast' },
+			{ value: '3', label: 'Intern høring' },
+			{ value: '4', label: 'Forslag' }
+		]
 
 		return (
 			<SecondaryContainer>
@@ -357,9 +363,9 @@ class EditAppendix extends Component {
 								<AppendixConfigModal
 									configModalIsOpen={configModalIsOpen}
 									closeConfigModal={closeConfigModal}
-									handleDateChange={handleDateChange}
 									saveConfigModal={saveConfigModal}
-									dates={appendixDates} />
+									dates={appendixDates}
+									statusOptions={statusOptions} />
 								<ExportModal
 									exportModalIsOpen={exportModalIsOpen}
 									closeExportModal={closeExportModal}
