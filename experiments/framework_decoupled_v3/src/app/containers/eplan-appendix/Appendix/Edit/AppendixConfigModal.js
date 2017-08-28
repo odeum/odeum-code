@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 // import { getAppendixDates } from 'app/store/selectors/eplan'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, DropdownSelect, DatePickerStyled } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, DropdownSelect, DatePickerStyled, DatePickerStyledWrapper } from 'app/styles/EplanStyles'
 import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
@@ -11,20 +11,17 @@ import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 import { Flex, Box } from 'grid-styled'
 import moment from 'moment'
+import 'moment/locale/da'
 
 let renderFields = ({ fields }) => {
 	return (
 		<div>
 			{fields.map((field, index) => {
 				return (
-					<div key={fields.get(index).id}>
-						<Flex wrap>
-							<Box width={[1 / 2]}>
-								<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
-								<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
-							</Box>
-						</Flex>
-					</div>
+					<DatePickerStyledWrapper key={fields.get(index).id}>
+						<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
+						<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
+					</DatePickerStyledWrapper>
 				)
 			})}
 
@@ -34,13 +31,16 @@ let renderFields = ({ fields }) => {
 let renderForm = ({ input }) => {
 	// console.log(input)
 	return (
-		<div>
-			<DatePickerStyled selected={dateChecker(input.value)} autoOk={true} onChange={(value, event) => {
+		<DatePickerStyled
+			selected={dateChecker(input.value)}
+			autoOk={true}
+			dateFormat="DD/MM/YYYY"
+			showWeekNumbers
+			onChange={(value, event) => {
 				input.onChange(value.format())
 			}
-
-			} dateFormat="DD/MM/YYYY" showWeekNumbers />
-		</div>
+			}
+		/>
 	)
 }
 function dateChecker(date) {
@@ -77,10 +77,9 @@ class AppendixConfigModal extends Component {
 						<ModalContent>
 							<form>
 								<Flex wrap>
-									{/* 							<Box width={[1 / 2]}>
-								<FieldLabel for="name">Intern høring start:</FieldLabel>
-								<DatePickerStyled selected={dates.date1} onChange={(date) => handleDateChange(date, 'date1')} dateFormat="DD/MM/YYYY" showWeekNumbers />
-							</Box> */}
+									<Box width={[1 / 2]}>
+										<FieldArray name={'dates'} component={renderFields} />
+									</Box>
 									<Box width={[1 / 2]}>
 										<FieldLabel for="name">Vælg fase:</FieldLabel>
 										<DropdownSelect
@@ -95,7 +94,6 @@ class AppendixConfigModal extends Component {
 										/>
 									</Box>
 								</Flex>
-								<FieldArray name={'dates'} component={renderFields} />
 							</form>
 							<ModalButtonPanel>
 								<Button onClick={this.props.handleSubmit(saveConfigModal)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
