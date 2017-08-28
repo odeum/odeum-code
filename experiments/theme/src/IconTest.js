@@ -54,6 +54,7 @@ class IconTest extends Component {
 				<Icon icon={iconname.ICON_INSERT_DRIVE_FILE} size={50} color={colors.TAB_COLOR_8} active={true} />
 				<Icon icon={iconname.ICON_VIEW_HEADLINE} size={50} color={colors.TAB_COLOR_9} active={true} />
 				<Icon icon={iconname.ICON_VIEW_MODULE} size={50} color={colors.TAB_COLOR_10} active={true} />
+				<Icon icon={iconname.ICON_VIEW_LIST} size={50} color={colors.TAB_COLOR_10} active={true} />
 				<Icon icon={iconname.ICON_SHARE} size={50} color={colors.TAB_COLOR_1} active={true} />
 				<Icon icon={iconname.ICON_FAVORITE} size={50} color={colors.TAB_COLOR_2} active={true} />
 				<Icon icon={iconname.ICON_FAVORITE_BORDER} size={50} color={colors.TAB_COLOR_3} active={true} />

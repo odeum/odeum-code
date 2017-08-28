@@ -1,22 +1,68 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
+import { getFrameDataAsync } from 'app/store/modules/eplan'
+import { getFrameFieldsSel } from 'app/store/selectors/eplan'
+import { FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
 import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
-import { PrimaryContainer } from 'app/styles'
-import { /* DescriptionDiv, */ /* PulseLoader, */ AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { PrimaryContainer, FieldLabel } from 'app/styles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FormField, FramesForm } from 'app/styles/EplanStyles'
 
 /* Components */
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
+let renderFields = ({ fields }) => {
+	return (
+		<div>
+			{fields.map((field, index) => {
+				return (
+					<div key={fields.get(index).id}>
+						{/* <Flex wrap> */}
+						{/* <Box width={[1, 1, 1, 1, 7 / 12]}> */}
+						<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+						<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
+						{/* <FormPanel index={index} input={fields.get(index)} /> */}
+						{/* name={`${field}.value`} label={fields.get(index).caption} */}
+
+						{/* </Box> */}
+						{/* </Flex> */}
+					</div>
+				)
+			})}
+		</div>
+	)
+}
 
 class EditFrame extends Component {
+	constructor(props) {
+		super(props)
+
+		/* Bind functions to this component */
+		this.submitUpdate = this.submitUpdate.bind(this)
+	}
+	async componentWillMount() {
+		if (this.props.openFrame === null) {
+			await this.props.getFrameData(this.props.frameId)
+		}
+	}
+
+	submitUpdate(values) {
+		console.log(values)
+	}
+
+
 	render() {
 		console.log(this.props.frameId)
+
+		if (this.props.openFrame !== null) {
+			console.log(this.props.openFrame)
+		}
+
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
@@ -24,7 +70,15 @@ class EditFrame extends Component {
 					<Button icon={iconname.ICON_CLOUD} size={18} >Exporter til plansystem</Button>
 					{/* <Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Knap 2</Button> */}
 				</AppendixButtonPanel>
-				{/* {this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />} */}
+				{this.props.openFrame === null ? 
+					<PulseLoader size="15px" color={'royalblue'} /> : 
+					<PrimaryContainer>
+						<FramesForm onSubmit={this.props.handleSubmit(this.submitUpdate)}>
+							<FieldArray name={'fields'} component={renderFields}/>
+							<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
+						</FramesForm>
+					</PrimaryContainer>
+				}
 				{/* <ReferenceTableSettingsModal
 				settingsModalIsOpen={this.state.settingsModalIsOpen}
 				closeSettingsModal={this.closeSettingsModal}
@@ -39,6 +93,7 @@ class EditFrame extends Component {
 				saveEditModal={this.saveEditModal}
 				referenceTableId={this.props.referenceTableId}
 				 /> */}
+				 
 			</PrimaryContainer>
 
 		)
@@ -47,10 +102,11 @@ class EditFrame extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
 	frameId: ownProps.frameId,
+	openFrame: state.eplan.openFrames[ownProps.frameId] || null,
 	// appendix: getAppendix(state, ownProps.param, ownProps) || null,
-	// initialValues: {
-	// fields: getAppendixSel(state, ownProps.param, ownProps)
-	// } || null,
+	initialValues: {
+		fields: getFrameFieldsSel(state, ownProps.frameId)
+	} || null,
 	conf: state.eplan.conf
 })
 
@@ -59,6 +115,10 @@ function mapDispatchToProps(dispatch) {
 		onMount: (id, param) => {
 			dispatch(tabChange(id, param))
 		},
+		getFrameData: (frameId) => {
+			dispatch(getFrameDataAsync(frameId))
+		},
+
 		// getAppendix: (param) => {
 		// 	dispatch(getAppendixAsync(param))
 		// },
@@ -75,5 +135,10 @@ function mapDispatchToProps(dispatch) {
 		// }
 	}
 }
+
+EditFrame = reduxForm({
+	form: 'EditFrame_form',
+	enableReinitialize: true
+})(EditFrame)
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditFrame)
