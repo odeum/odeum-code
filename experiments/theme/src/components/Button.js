@@ -17,8 +17,8 @@ class Button extends Component {
 	}
 
 	handleClick = (event) => {
-        /*event.preventDefault()*/
-        /*event.persist()*/
+		/*event.preventDefault()*/
+		/*event.persist()*/
 		console.log(event.type)
 		console.log(this.state.message)
 		console.log(this.props.children)
@@ -26,9 +26,9 @@ class Button extends Component {
 
 	render() {
 		return (
-            <StyledButton onClickCapture={(event) => this.handleClick(event)}>  {/*onClick={this.handleClick*/}
-                <Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />{this.props.children}
-            </StyledButton>
+			<StyledButton onClickCapture={(event) => this.handleClick(event)}>  {/*onClick={this.handleClick*/}
+				<Icon icon={this.props.icon} size={this.props.size} color={colors.BUTTON_TEXT} active={true} style={theme.iconStyle} />{this.props.children}
+			</StyledButton>
 		)
 	}
 }
