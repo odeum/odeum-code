@@ -13,10 +13,6 @@ injectGlobal([`
         outline: none;
         box-sizing: border-box;
     }
-
-    body {
-        margin: 0
-    }
 `])
 
 export const HomeDiv = styled.div`
