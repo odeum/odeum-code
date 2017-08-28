@@ -416,7 +416,8 @@ const mapStateToProps = (state, ownProps) => ({
 	} || null,
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,
-	appendixDates: getAppendixDates(state, ownProps.param, ownProps)
+	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
+	form: 'appendix_' + ownProps.param
 })
 
 function mapDispatchToProps(dispatch) {
@@ -441,8 +442,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 EditAppendix = reduxForm({
-	form: 'appendix',
-	enableReinitialize: true
+	// form: 'appendix',
+	enableReinitialize: true,
+	destroyOnUnmount: false,
+	keepDirtyOnReinitialize: true
 })(EditAppendix)
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAppendix)
