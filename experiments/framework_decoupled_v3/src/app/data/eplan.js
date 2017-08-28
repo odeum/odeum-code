@@ -106,13 +106,11 @@ export async function getFrameData(id) {
 	return data
 }
 export async function setFrameData(id, frameData) {
-	console.log(frameData)
 	let app = JSON.stringify(frameData)
 	let data = await api.put('/rest/eplan/kpt/frame/' + id, app)
 		.then((response) => {
 			return response.data
 		})
-	console.log(data)
 	return data
 }
 

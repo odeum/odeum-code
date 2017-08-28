@@ -54,11 +54,11 @@ class ReferenceTableContainer extends Component {
 	}
      */
 	render() {
+		let key = this.props.location.pathname
 		return (
 			<div>
 				{/* <TabsContainer id={this.props.param.toString()}/> */}
-                
-				{React.cloneElement(this.props.children, { param: this.props.param })}
+				{React.cloneElement(this.props.children, { key: key, param: this.props.param })}
 			</div>
 		)
 	}
