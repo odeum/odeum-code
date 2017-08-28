@@ -20,6 +20,7 @@ class FrameContainer extends Component {
 		 this.props.onMount(
 			this.props.appendixId,
 			{
+				id: this.props.frameId,
 				label: this.props.frameId,
 				icon: 'mode_edit',
 				location: '/eplan/list/' + this.props.appendixId + '/frames/' + this.props.frameId + '/edit',
@@ -31,9 +32,11 @@ class FrameContainer extends Component {
 	}
 
 	render() {
+		console.log(this.props)
+		let key = this.props.location.pathname
 		return (
 			<div>
-				{React.cloneElement(this.props.children, { appendixId: this.props.appendixId, frameId: this.props.frameId, param: this.props.param })}
+				{React.cloneElement(this.props.children, { key: key, appendixId: this.props.appendixId, frameId: this.props.frameId, param: this.props.param })}
 			</div>
 		)
 	}

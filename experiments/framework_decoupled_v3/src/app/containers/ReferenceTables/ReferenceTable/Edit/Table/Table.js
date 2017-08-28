@@ -41,6 +41,13 @@ export default class ReferenceTableEditList extends Component {
 		this._cellClicked = this._cellClicked.bind(this)
 	}
 
+	componentWillUpdate = (nextProps, nextState) => {
+		if (this.props.list.size !== nextProps.list.size)
+		{
+			this._onRowCountChange(this.props.list.size)
+		}
+	}
+
 	render() {
 		const {
 			disableHeader,
@@ -152,6 +159,7 @@ export default class ReferenceTableEditList extends Component {
 	}
 
 	_cellClicked(rowData) {
+		console.log(this)
 		this.props.onClickButton(rowData)
 	}
 	_defaultHeaderRowRenderer({
@@ -207,9 +215,9 @@ export default class ReferenceTableEditList extends Component {
 		)
 	}
 
-	_onRowCountChange(event) {
-		const rowCount = parseInt(event.target.value, 10) || 0
-
+	_onRowCountChange(listSize) {
+		const rowCount = parseInt(listSize, 10) || 0
+		
 		this.setState({ rowCount })
 	}
 
