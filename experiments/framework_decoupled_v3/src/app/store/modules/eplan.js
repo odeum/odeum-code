@@ -247,20 +247,17 @@ function eplan(state = initState, action) {
 			}
 		}
 		case GET_APPENDIX_FRAMES_LIST:
-			// console.log(action.payload)
 			return {
 				...state,
 				appendixes: action.payload,
 				framesIsLoading: false
 			}
 		case GET_APPENDIX_FRAME_CONFIG:
-			console.log(action.payload)
 			return {
 				...state,
 				configFrames: action.payload
 			}
 		case GET_APPENDIX_FRAME_DATA:
-			console.log(action.payload)
 			let GET_APPENDIX_FRAME_DATA_state = { ...state }
 			GET_APPENDIX_FRAME_DATA_state.openFrames[action.payload.frameId] = action.payload
 			console.log(GET_APPENDIX_FRAME_DATA_state.openFrames)
