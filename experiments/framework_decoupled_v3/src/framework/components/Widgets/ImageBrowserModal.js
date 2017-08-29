@@ -7,6 +7,7 @@ import { NoRows, HeaderCell, HeaderRow, Cell } from 'app/styles/TableStyles' //I
 import RowRenderer from 'app/containers/eplan-appendix/AppendixList/Table/_rowRender'
 import moment from 'moment'
 import 'moment/locale/da'
+import { List } from 'immutable'
 
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
@@ -23,7 +24,6 @@ class ImageBrowser extends Component {
 			disableHeader: false,
 			overscanRowCount: 10,
 			rowHeight: 40,
-			rowCount: this.props.list.size,
 			scrollToIndex: undefined,
 			sortBy: '',
 			sortDirection: SortDirection.ASC,
@@ -42,7 +42,8 @@ class ImageBrowser extends Component {
 	}
 
 	async componentWillMount() {
-		this.setState({ data: this.props.list })
+		this.setState({ data: this.props.data })
+		this.setState({ rowCount: List(this.props.data.entries).size })
 	}
 
 	render() {
@@ -59,7 +60,7 @@ class ImageBrowser extends Component {
 
 		// const { list } = this.props
 
-		const list = this.state.data
+		const list = List(this.state.data.entries)
 
 		const sortedList = this._isSortEnabled()
 			? list
@@ -218,9 +219,9 @@ class ImageBrowser extends Component {
 	}
 	_isSortEnabled() {
 		const { rowCount } = this.state
-		const { list } = this.props
+		const { data } = this.props
 
-		return rowCount <= list.size
+		return rowCount <= data.entries.size
 	}
 	_sort({ sortBy, sortDirection }) {
 		this.setState({ sortBy, sortDirection })
@@ -230,9 +231,9 @@ class ImageBrowser extends Component {
 	}
 
 	_getRowHeight({ index }) {
-		const { list } = this.props
+		const { data } = this.props
 
-		return this._getDatum(list, index).size
+		return this._getDatum(data.entries, index).size
 	}
 	async _rowClicked({
 		event,
@@ -240,15 +241,18 @@ class ImageBrowser extends Component {
 		rowData
 	}) {
 		if (rowData.type === 'dir') {
-			console.log('is dir')
-			//alert('go to dir somehow')
-			// console.log('/' + rowData.name)
-			this.setState({ data: await getImagesList(rowData.nextLevel) })
-			this.setState({ rowCount: this.state.data.size })
-			// console.log(this.state.data)
+			let dir = null
+			if (rowData.name === '..') {
+				dir = this.state.data.parent
+			} else {
+				dir = rowData.nextLevel
+			}
+
+			let imagesData = await getImagesList(dir)	
+			this.setState({ data: imagesData })
+			this.setState({ rowCount: List(this.state.data.entries).size })
 			this.setState({ scrollToIndex: 0 })
 		} else {
-			console.log(' is file')
 			this.props.insertImage(rowData.url)
 			this.props.closeImageBrowserModal()
 		}
@@ -258,7 +262,7 @@ class ImageBrowser extends Component {
 ImageBrowser.propTypes = {
 	imageBrowserModalIsOpen: PropTypes.bool.isRequired,
 	closeImageBrowserModal: PropTypes.func.isRequired,
-	list: PropTypes.object.isRequired,
+	data: PropTypes.object.isRequired,
 	insertImage: PropTypes.func.isRequired
 }
 
