@@ -50,7 +50,8 @@ export const ICON_FAVORITE = 'favorite'
 export const ICON_FAVORITE_BORDER = 'favorite_border'
 export const ICON_LABEL = 'label'
 export const ICON_LABEL_OUTLINE = 'label_outline'
-export const ICON_STAR = 'star'
+export const ICON_STAR = 'star' // Favorited (is favorite)
+export const ICON_STAR_BORDER = 'star_border' // Favorite (make favorite)
 export const ICON_STARS = 'stars'
 export const ICON_TODAY = 'today'
 export const ICON_PLAY_CIRCLE_FILLED = 'play_circle_filled'
@@ -118,16 +119,4 @@ export const ICON_NOTIFICATIONS = 'notifications'
 export const ICON_NOTIFICATIONS_ACTIVE = 'notifications_active'
 export const ICON_NOTIFICATIONS_NONE = 'notifications_none'
 export const ICON_NOTIFICATIONS_OFF = 'notifications_off'
-
-// Tab Icons
-export const ICON_TAB_GENERAL = 'general'
-export const ICON_TAB_FIELDS = 'fields'
-export const ICON_TAB_USERS = 'users'
-
-export const iconArr = [
-	{
-		name: ICON_SEARCH,
-		value: '#2C3E50'
-	}
-]
 

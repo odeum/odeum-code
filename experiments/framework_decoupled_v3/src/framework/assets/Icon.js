@@ -81,6 +81,7 @@ class Icon extends React.Component {
 			case iconname.ICON_LABEL: return <Icons.MdLabel size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
 			case iconname.ICON_LABEL_OUTLINE: return <Icons.MdLabelOutline size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
 			case iconname.ICON_STAR: return <Icons.MdStar size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
+			case iconname.ICON_STAR_BORDER: return <Icons.MdStarBorder size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
 			case iconname.ICON_STARS: return <Icons.MdStars size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
 			case iconname.ICON_TODAY: return <Icons.MdToday size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
 			case iconname.ICON_PLAY_CIRCLE_FILLED: return <Icons.MdPlayCircleFilled size={size || this.defaultProps.size} color={this.setColor(this.props.active) || this.defaultProps.color} style={this.props.style || this.defaultProps.style} />
