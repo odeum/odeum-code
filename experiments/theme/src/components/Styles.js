@@ -5,9 +5,9 @@ import * as colors from './colors'
 
 export const Layout = ({ children }) => {
 	return (
-        <ThemeProvider theme={theme}>
-            { children }
-        </ThemeProvider>
+		<ThemeProvider theme={theme}>
+			{ children }
+		</ThemeProvider>
 	)
 }
 
