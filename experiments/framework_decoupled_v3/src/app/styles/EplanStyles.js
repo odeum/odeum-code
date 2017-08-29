@@ -7,7 +7,7 @@ import 'react-select/dist/react-select.css'
 import DatePicker from 'react-datepicker'
 import * as colors from 'framework/assets/colors'
 // import ReactQuill from 'react-quill'
-import { Field, Form } from 'redux-form'
+import { Field } from 'redux-form'
 import DropDown from 'framework/components/Widgets/DropDown'
 import { ToastContainer } from 'react-toastify'
 
@@ -321,7 +321,7 @@ width: 50px;
 }
 `
 
-export const ToastContainerStyled = styled(ToastContainer)`
+export const ToastContainerStyled = styled(ToastContainer) `
     &.toastify {
         /* .toastify-content--success {
             background: #e74c3c;
@@ -430,7 +430,7 @@ export const DatePickerStyledWrapper = styled.div`
     }
 `
 
-export const DatePickerStyled = styled(DatePicker)`
+export const DatePickerStyled = styled(DatePicker) `
     box-sizing: border-box;
     width: 100%;
     height: 40px;
@@ -479,7 +479,7 @@ export const FormPanelHeader = styled.div`
 //     }
 // `
 
-export const FormField = styled(Field)`
+export const FormField = styled(Field) `
     box-sizing: border-box;
     width: 100%;
     height: 40px;
@@ -499,13 +499,28 @@ export const FormField = styled(Field)`
     }
 `
 
-export const FormFieldTextarea = styled(Field)`
+export const FormFieldTextarea = styled(Field) `
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    background-color: #ecf0f1;
+    color: #5e5e5e;
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    resize: none;
 
+    &:hover {
+        box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+    }
 `
 export const FramesForm = styled.form`
     clear: both;
-`
-
-export const FramesForm2 = styled(Form)`
-    clear: both;
+    margin-bottom: 40px;
 `

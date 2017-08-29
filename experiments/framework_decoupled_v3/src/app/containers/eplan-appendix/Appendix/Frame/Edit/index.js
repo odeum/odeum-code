@@ -10,14 +10,13 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FormField, FramesForm2 } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FormField, FramesForm, FormFieldTextarea } from 'app/styles/EplanStyles'
 
 /* Components */
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
 let renderFields = ({ fields }) => {
-	// console.log(fields)
 	return (
 		<div>
 			{fields.map((field, index) => {
@@ -35,7 +34,7 @@ let renderFields = ({ fields }) => {
 						_field = (fields.get(index).caption !== '') ? (
 							<div key={fields.get(index).id}>
 								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-								<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
+								<FormFieldTextarea name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
 							</div>
 						) : ''
 						break
@@ -103,10 +102,12 @@ class EditFrame extends Component {
 				{this.props.openFrame === null ? 
 					<PulseLoader size="15px" color={'royalblue'} /> : 
 					<PrimaryContainer>
-						<FramesForm2 form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
+						<FramesForm form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
 							<FieldArray name={'fields'} component={renderFields}/>
+							<div>
 							<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
-						</FramesForm2>
+							</div>
+						</FramesForm>
 					</PrimaryContainer>
 				}
 				{/* <ReferenceTableSettingsModal
