@@ -181,6 +181,5 @@ export async function getImagesList(folder) {
 			// console.log(response.data)
 			return response.data
 		})
-	const dataList = List(data)
-	return dataList
+	return data
 }
