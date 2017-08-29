@@ -131,10 +131,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 EditFrame = reduxForm({
-	// forceUnregisterOnUnmount: true,
 	destroyOnUnmount: false,
 	keepDirtyOnReinitialize: true,
-	// form: 'EditFrame_form',
 	enableReinitialize: true
 })(EditFrame)
 
