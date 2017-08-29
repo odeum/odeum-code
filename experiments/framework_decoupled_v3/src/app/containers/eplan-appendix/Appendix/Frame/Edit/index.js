@@ -17,15 +17,33 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
 let renderFields = ({ fields }) => {
+	// console.log(fields)
 	return (
 		<div>
 			{fields.map((field, index) => {
-				return (
-					<div key={fields.get(index).id}>
-						<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-						<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
-					</div>
-				)
+
+				let _field
+				switch (fields.get(index).type) {
+					case 'TEXT':
+						_field = (
+							<div key={fields.get(index).id}>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FormField name={`${field}.value`} type="text" component="input" label={fields.get(index).caption} placeholder={fields.get(index).caption} />
+							</div>
+						)
+						break
+					case 'TEXTAREA':
+						_field = (
+							<div key={fields.get(index).id}>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} placeholder={fields.get(index).caption} />
+							</div>
+						)
+						break
+					default:
+						break
+				}
+				return _field
 			})}
 		</div>
 	)

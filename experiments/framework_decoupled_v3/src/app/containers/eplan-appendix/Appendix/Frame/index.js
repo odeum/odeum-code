@@ -32,7 +32,6 @@ class FrameContainer extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		let key = this.props.location.pathname
 		return (
 			<div>
