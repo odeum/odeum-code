@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FormField, FramesForm2 } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FormField, FramesForm, FormFieldTextarea } from 'app/styles/EplanStyles'
 
 /* Components */
 import Button from 'framework/components/Widgets/Button'
@@ -20,12 +20,43 @@ let renderFields = ({ fields }) => {
 	return (
 		<div>
 			{fields.map((field, index) => {
-				return (
-					<div key={fields.get(index).id}>
-						<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-						<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
-					</div>
-				)
+				let _field
+				switch (fields.get(index).type) {
+					case 'TEXT':
+						_field = (fields.get(index).caption !== '') ? (
+							<div key={fields.get(index).id}>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FormField name={`${field}.value`} type="text" component="input" label={fields.get(index).caption} />
+							</div>
+						) : ''
+						break
+					case 'TEXTAREA':
+						_field = (fields.get(index).caption !== '') ? (
+							<div key={fields.get(index).id}>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FormFieldTextarea name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
+							</div>
+						) : ''
+						break
+					case 'SELECT':
+						_field = (
+							<div key={fields.get(index).id}>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FormField name={`${field}.value`} component="select" label={fields.get(index).caption}>
+									{
+										fields.get(index).options.map((opt, index) => {
+											return (opt.text !== '') ? (<option key={opt.value} value={opt.value}>{opt.text}</option>) : ''
+										})
+									}
+								</FormField>
+							</div>
+						)
+						break
+
+					default:
+						break
+				}
+				return _field
 			})}
 		</div>
 	)
@@ -71,10 +102,12 @@ class EditFrame extends Component {
 				{this.props.openFrame === null ? 
 					<PulseLoader size="15px" color={'royalblue'} /> : 
 					<PrimaryContainer>
-						<FramesForm2 form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
+						<FramesForm form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
 							<FieldArray name={'fields'} component={renderFields}/>
+							<div>
 							<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
-						</FramesForm2>
+							</div>
+						</FramesForm>
 					</PrimaryContainer>
 				}
 				{/* <ReferenceTableSettingsModal
@@ -131,10 +164,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 EditFrame = reduxForm({
-	// forceUnregisterOnUnmount: true,
 	destroyOnUnmount: false,
 	keepDirtyOnReinitialize: true,
-	// form: 'EditFrame_form',
 	enableReinitialize: true
 })(EditFrame)
 

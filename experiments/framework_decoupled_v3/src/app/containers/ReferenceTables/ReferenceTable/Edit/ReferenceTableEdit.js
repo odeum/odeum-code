@@ -93,17 +93,12 @@ class ReferenceTableEdit extends Component {
 		 	this.props.referenceTableId
 		)
 	}
-	componentWillReceiveProps(nextProps) {
-		console.log('componentWillRecieveProps')
-		console.log(nextProps)
-	}
 
-	
 	render() {
 
-		console.log('render')
+		// console.log('render')
 		if (this.props.referenceTable !== null) {
-			console.log(_.map(this.props.referenceTable.data).length)
+			// console.log(_.map(this.props.referenceTable.data).length)
 		}
 
 		return (

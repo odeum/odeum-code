@@ -338,17 +338,17 @@ class AppendixTable extends Component {
 			exportModalIsOpen: false
 		})
 	}
-
+	//REFACTOR: No document.*function* , replace with styled components + state variables passed to the 
 	async onClickExportAppendix() {
 		document.getElementById('exportStepOne').style.display = 'none'
 		document.getElementById('exportButton').style.display = 'none'
 		document.getElementById('exportCloseButton').style.display = 'none'
 		document.getElementById('exportStepTwo').style.display = 'block'
 		document.getElementById('exportLoadingDiv').style.display = 'block'
-		console.log(this.state.exportAppendix.appendixId)
+		// console.log(this.state.exportAppendix.appendixId)
 		try {
 			await this.props.exportToPlanSystem(this.state.exportAppendix.appendixId).then((response) => {
-				console.log('Export result this:', response)
+				// console.log('Export result this:', response)
 
 				document.getElementById('exportLoadingDiv').style.display = 'none'
 				document.getElementById('exportCloseButton').style.display = 'block'
@@ -443,14 +443,16 @@ class AppendixTable extends Component {
 		})
 	}
 }
+const mapStateToProps = (state, ownProps) => ({
 
+})
 function mapDispatchToProps(dispatch) {
 	return {
 		exportToPlanSystem: async (id) => {
-			console.log('exportToPlanSystem table.js')
+			// console.log('exportToPlanSystem table.js')
 			return dispatch(await exportAppendixToPlansystemAsync(id))
 		}
 	}
 }
 
-export default connect(mapDispatchToProps) (AppendixTable)
+export default connect(mapStateToProps, mapDispatchToProps) (AppendixTable)

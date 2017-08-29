@@ -1,11 +1,13 @@
 import React from 'react'
-import { ExportStepTwoDiv, ExportLoadingDiv, PulseLoader, ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
+import { ExportStepTwoDiv, ExportLoadingDiv, PulseLoader } from 'app/styles/EplanStyles'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 
 const ExportModal = ({ exportModalIsOpen, closeExportModal, customStyles, appendix, onClickExportAppendix }) => {
+	// console.log(exportModalIsOpen, closeExportModal, customStyles, appendix, onClickExportAppendix)
 	return (
 		<div>
 			{appendix !== null ?

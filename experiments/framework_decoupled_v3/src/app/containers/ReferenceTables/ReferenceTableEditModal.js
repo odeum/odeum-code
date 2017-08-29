@@ -6,9 +6,10 @@ import { updateReferenceTableData } from 'app/store/modules/eplan'
 // import { getReferenceTableEntry } from 'app/store/selectors/eplan'
 
 
-import { FormField } from 'app/styles/EplanStyles'
+import { FormField, FormFieldTextarea } from 'app/styles/EplanStyles'
+import FormFieldArticle from 'framework/components/ReduxForm/FormFieldArticle'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
 import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
@@ -27,17 +28,56 @@ class ReferenceTableEditModal extends Component {
 		this.props.saveEditModal()
 	}
 
-	getComponentType() {
+	getField1TypeComponent() {
 		if (this.props.referenceTable !== null) {
 			switch (this.props.referenceTable.field1Type) {
 				default:
-					return 'input'	
+					return ''
 				case '1':
-					return 'input'
+					return (
+						<div key="value">
+							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
+							<FormField name="value" component="input" />
+						</div>)
 				case 2:
-					return 'textarea'
+					return (
+						<div key="value">
+							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
+							<FormFieldTextarea name="value" component="textarea" />
+						</div>)
 				case 3:
-					return 'input'
+					return (
+						<div key="value">
+							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
+							<FormField name="value" label="Tekst værdi 2" component={FormFieldArticle} />
+						</div>)
+			}
+		}
+	}
+
+	getField2TypeComponent() {
+		if (this.props.referenceTable !== null) {
+			switch (this.props.referenceTable.field2Type) {
+				default:
+					return ''
+				case '1':
+					return (
+						<div key="value2">
+							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
+							<FormField name="value2" component="input" />
+						</div>)
+				case 2:
+					return (
+						<div key="value2">
+							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
+							<FormFieldTextarea name="value2" component="textarea" />
+						</div>)
+				case 3:
+					return (
+						<div key="value2">
+							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
+							<FormField name="value2" label="Tekst værdi 2" component={FormFieldArticle} />
+						</div>)
 			}
 		}
 	}
@@ -67,23 +107,8 @@ class ReferenceTableEditModal extends Component {
 								type="text"
 								placeholder="Relationsværdi"
 							/>
-							<br /><br />
-							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
-							<FormField
-								name="value"
-								component="input"
-								type="text"
-								placeholder="Tekst værdi 1"
-							/>
-							<br />
-							<br />							
-							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
-							<FormField
-								name="value2"
-								component="input"
-								type="text"
-								placeholder="Tekst værdi 2"
-							/>
+							{this.getField1TypeComponent()}
+							{this.getField2TypeComponent()}
 						</form>
 						<ModalButtonPanel>
 							<Button onClick={handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>

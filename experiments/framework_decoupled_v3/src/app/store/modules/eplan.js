@@ -133,6 +133,7 @@ export async function exportAppendixToPlansystemAsync(id) {
 
 	return async dispatch => {
 		var test = await exportAppendixToPlansystem(id).then((result) => {
+			console.log(result)
 			dispatch(exportAppendix())
 			return result
 		})

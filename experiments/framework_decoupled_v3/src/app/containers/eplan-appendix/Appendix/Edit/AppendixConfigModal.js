@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 // import { getAppendixDates } from 'app/store/selectors/eplan'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, DropdownSelect, DatePickerStyled, DatePickerStyledWrapper } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
+import { DropdownSelect, DatePickerStyled, DatePickerStyledWrapper } from 'app/styles/EplanStyles'
 import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
@@ -15,17 +16,17 @@ import 'moment/locale/da'
 
 let renderFields = ({ fields }) => {
 	return (
-		<div>
+		<Box>
 			{fields.map((field, index) => {
 				return (
-					<DatePickerStyledWrapper key={fields.get(index).id}>
-						<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
-						<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
-					</DatePickerStyledWrapper>
+						<DatePickerStyledWrapper key={fields.get(index).id}>
+							<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
+							<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
+						</DatePickerStyledWrapper>
 				)
 			})}
 
-		</div>
+		</Box>
 	)
 }
 let renderForm = ({ input }) => {
@@ -37,7 +38,7 @@ let renderForm = ({ input }) => {
 			dateFormat="DD/MM/YYYY"
 			showWeekNumbers
 			onChange={(value, event) => {
-				input.onChange(value.format())
+				input.onChange(value !== null ? value.format() : '')
 			}
 			}
 		/>
@@ -78,10 +79,7 @@ class AppendixConfigModal extends Component {
 							<form>
 								<Flex wrap>
 									<Box width={[1 / 2]}>
-										<FieldArray name={'dates'} component={renderFields} />
-									</Box>
-									<Box width={[1 / 2]}>
-										<FieldLabel for="name">Vælg fase:</FieldLabel>
+									<FieldLabel for="name">Vælg fase:</FieldLabel>
 										<DropdownSelect
 											className="statusSelect"
 											name="statusSelect"
@@ -92,6 +90,8 @@ class AppendixConfigModal extends Component {
 											clearable={false}
 											placeholder="Vælg status"
 										/>
+									<FieldArray name={'dates'} component={renderFields} />
+										
 									</Box>
 								</Flex>
 							</form>

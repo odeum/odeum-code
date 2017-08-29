@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { ImageBrowserModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { ImageBrowserModalWindow, ImageBrowserPath, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'framework/components/styles/ModalStyles'
+import { DropdownSelect, HiddenInputField } from 'app/styles/EplanStyles'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, Cell } from 'app/styles/TableStyles' //InputRow
 import RowRenderer from 'app/containers/eplan-appendix/AppendixList/Table/_rowRender'
 import moment from 'moment'
 import 'moment/locale/da'
+import { List } from 'immutable'
+import { Flex, Box } from 'grid-styled'
 
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
@@ -23,7 +26,6 @@ class ImageBrowser extends Component {
 			disableHeader: false,
 			overscanRowCount: 10,
 			rowHeight: 40,
-			rowCount: this.props.list.size,
 			scrollToIndex: undefined,
 			sortBy: '',
 			sortDirection: SortDirection.ASC,
@@ -39,13 +41,71 @@ class ImageBrowser extends Component {
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
 		this._rowClicked = this._rowClicked.bind(this)
+		this.getDataForPath = this.getDataForPath.bind(this)
+		this.uploadPhotos = this.uploadPhotos.bind(this)
 	}
 
 	async componentWillMount() {
-		this.setState({ data: this.props.list })
+		this.setState({ data: this.props.data })
+		this.setState({ rowCount: List(this.props.data.entries).size })
+	}
+
+	async getDataForPath(path) {
+		let imagesData = await getImagesList(path)
+		this.setState({ data: imagesData })
+		this.setState({ rowCount: List(this.state.data.entries).size })
+		this.setState({ scrollToIndex: 0 })
+	}
+
+	handleFunctionSelectChange(option) {
+		if (option.value === 'upload') {
+			document.getElementById('uploadImageInput').click()
+		}
+	}
+
+	async uploadPhotos() {
+		let formData = new FormData()
+
+		let fileInputElement = document.getElementById("uploadImageInput")
+		let file = fileInputElement.files[0]
+		formData.append("file", file)
+
+		let xhr = new XMLHttpRequest()
+		//TODO: Get api url in correct way
+		xhr.open("POST", 'http://horsenskp.dev.webhouse.dk/rest/core/files/images/' + encodeURIComponent(this.state.data.uploadLocation + file.name))
+		xhr.setRequestHeader("Accept", 'application/json')
+
+		// xhr.upload.addEventListener("progress", function(e) {
+		// 	if (e.lengthComputable) {
+		// 		console.log(e.loaded + " / " + e.total)
+		// 	}
+		// }, false)
+
+		// xhr.upload.addEventListener("loadstart", function(e) {
+		// 	console.log("start")
+		// }, false)
+
+		xhr.upload.addEventListener("loadend", () => {
+			alert('Billedet blev uploadet korrekt')
+			this.getDataForPath(this.state.data.reloadLocation)
+		}, false)
+
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				console.log(xhr.response)
+			}
+		}
+
+		xhr.send(formData)
 	}
 
 	render() {
+		const folderOptions = [
+			{ value: 'upload', label: 'Upload billede' },
+			{ value: 'rename', label: 'Omdøb folder' },
+			{ value: 'delete', label: 'Slet folder' }
+		]
+
 		const {
 			disableHeader,
 			headerHeight,
@@ -59,7 +119,7 @@ class ImageBrowser extends Component {
 
 		// const { list } = this.props
 
-		const list = this.state.data
+		const list = List(this.state.data.entries)
 
 		const sortedList = this._isSortEnabled()
 			? list
@@ -85,6 +145,23 @@ class ImageBrowser extends Component {
 					</ModalHeaderClose>
 				</ModalHeader>
 				<ModalContent>
+					<HiddenInputField name="imagefile" type="file" id="uploadImageInput" accept="image/*" onChange={this.uploadPhotos} />
+					<Flex wrap>
+						<Box width={[9 / 12]}>
+							<ImageBrowserPath>Sti: <span>{this.state.data.location}</span></ImageBrowserPath>
+						</Box>
+						<Box width={[3 / 12]}>
+							<DropdownSelect
+								className="folderFunctionsSelect"
+								name="folderFunctionsSelect"
+								options={folderOptions}
+								onChange={this.handleFunctionSelectChange}
+								searchable={false}
+								clearable={false}
+								placeholder="Folder funktioner"
+							/>
+						</Box>
+					</Flex>
 					<AutoSizer>
 						{({ height, width }) => (
 							<Table
@@ -102,7 +179,7 @@ class ImageBrowser extends Component {
 								sortBy={sortBy}
 								sortDirection={sortDirection}
 								width={width}
-								height={height - 62}
+								height={height - 110}
 								rowRenderer={RowRenderer}
 								onRowClick={this._rowClicked}
 							>
@@ -139,7 +216,7 @@ class ImageBrowser extends Component {
 									maxWidth={(width / 4)}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-											(<Cell>{cellData}</Cell>)
+											(<Cell>{rowData.name !== '..' ? cellData : ''}</Cell>)
 									}
 								/>
 								<Column
@@ -151,7 +228,7 @@ class ImageBrowser extends Component {
 									maxWidth={(width / 4)}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-											(<Cell>{ (cellData) ? moment(cellData).format('LL') : "" }</Cell>)
+											(<Cell>{ (cellData) ? moment(cellData).format('lll') : "" }</Cell>)
 									}
 								/>
 							</Table>
@@ -197,7 +274,6 @@ class ImageBrowser extends Component {
 	}
 	_onRowCountChange(event) {
 		const rowCount = parseInt(event.target.value, 10) || 0
-
 		this.setState({ rowCount })
 	}
 	_onScrollToRowChange(event) {
@@ -219,9 +295,9 @@ class ImageBrowser extends Component {
 	}
 	_isSortEnabled() {
 		const { rowCount } = this.state
-		const { list } = this.props
+		const { data } = this.props
 
-		return rowCount <= list.size
+		return rowCount <= data.entries.size
 	}
 	_sort({ sortBy, sortDirection }) {
 		this.setState({ sortBy, sortDirection })
@@ -231,9 +307,9 @@ class ImageBrowser extends Component {
 	}
 
 	_getRowHeight({ index }) {
-		const { list } = this.props
+		const { data } = this.props
 
-		return this._getDatum(list, index).size
+		return this._getDatum(data.entries, index).size
 	}
 	async _rowClicked({
 		event,
@@ -241,14 +317,15 @@ class ImageBrowser extends Component {
 		rowData
 	}) {
 		if (rowData.type === 'dir') {
-			console.log('is dir')
-			//alert('go to dir somehow')
-			// console.log('/' + rowData.name)
-			this.setState({ data: await getImagesList(rowData.nextLevel) })
-			// console.log(this.state.data)
-			this.setState({ scrollToIndex: 0 })
+			let dir = null
+			if (rowData.name === '..') {
+				dir = this.state.data.parent
+			} else {
+				dir = rowData.nextLevel
+			}
+
+			this.getDataForPath(dir)
 		} else {
-			console.log(' is file')
 			this.props.insertImage(rowData.url)
 			this.props.closeImageBrowserModal()
 		}
@@ -258,7 +335,7 @@ class ImageBrowser extends Component {
 ImageBrowser.propTypes = {
 	imageBrowserModalIsOpen: PropTypes.bool.isRequired,
 	closeImageBrowserModal: PropTypes.func.isRequired,
-	list: PropTypes.object.isRequired,
+	data: PropTypes.object.isRequired,
 	insertImage: PropTypes.func.isRequired
 }
 

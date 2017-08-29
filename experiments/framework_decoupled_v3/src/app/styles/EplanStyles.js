@@ -1,13 +1,12 @@
 import styled, { keyframes } from 'styled-components'
 import { CLOUDY_DARK } from 'framework/assets/colors'
 import Loader from 'halogen/PulseLoader'
-import Modal from 'react-modal'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import DatePicker from 'react-datepicker'
 import * as colors from 'framework/assets/colors'
 // import ReactQuill from 'react-quill'
-import { Field, Form } from 'redux-form'
+import { Field } from 'redux-form'
 import DropDown from 'framework/components/Widgets/DropDown'
 import { ToastContainer } from 'react-toastify'
 
@@ -177,7 +176,7 @@ export const Appendix = styled.div`
 `
 
 const fadeIn = keyframes`
-    @keyframes  {
+@keyframes  {
     from {
         /*  transform:translateY(-100%); */
         opacity: 0;
@@ -189,108 +188,11 @@ const fadeIn = keyframes`
         opacity: 1;
         width: 100%;
     }
-    }
-`
-
-const fadeModal = keyframes`
-    @keyframes  {
-    from {
-        opacity: 0;
-        top: 0%;
-        left: 50%;
-    }
-
-    to {
-        opacity: 1;
-        top: 50%;
-        left: 50%;
-    }
-    }
-`
-
-export const ModalWindow = styled(Modal) `
-    border-radius: 4px;
-    border: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right: -50%;
-    width: 30%;
-    height: calc(100% - 200px);
-    min-height: 500px;
-    max-height: 700px;
-    transform: translate(-50%, -50%);
-    animation: ${fadeModal} 1s ease-in-out;
-    background-color: white;
-    outline: none;
-    box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);
-    overflow-y: auto;
-
-`
-
-export const ImageBrowserModalWindow = ModalWindow.extend`
-    width: 50%;
-    height: 50%;
-`
-
-export const ModalHeader = styled.div`
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 60px;
-    background-color: ${colors.MODAL_HEADER};
-    font-family: 'Source Sans Pro';
-    font-size: 20px;
-    font-weight: 300;
-    color: ${colors.MODAL_HEADER_TITLE};
-    box-sizing: border-box; 
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 20px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    user-select: none;
-`
-
-export const ModalHeaderIcon = styled.div`
-    margin-right: 5px;
-`
-
-export const ModalHeaderTitle = styled.div`
-    float: left;
-`
-
-export const ModalHeaderClose = styled.div`
-    float: right;
-    margin-left: auto;
-    cursor: pointer;
-`
-
-export const ModalContent = styled.div`
-    clear: both;
-    box-sizing: border-box; 
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: 'Source Sans Pro';
-    font-size: 16px;
-    font-weight: 300;
-    height: calc(100% - 90px);
-
-`
-
-export const ModalButtonPanel = styled.div`
-    /*position: relative;
-    left: 0;
-    bottom: 0;*/
-    width: 100%;
-    height: 60px;
-    margin-top: 20px;
+}
 `
 
 export const Animation = styled.div`
-    animation: ${fadeIn} 0.7s ease-in-out
+    /*animation: ${fadeIn} 0.7s ease-in-out*/
 `
 export const CustomDD = styled(DropDown) `
 background-color: #3b97d3;
@@ -321,7 +223,7 @@ width: 50px;
 }
 `
 
-export const ToastContainerStyled = styled(ToastContainer)`
+export const ToastContainerStyled = styled(ToastContainer) `
     &.toastify {
         /* .toastify-content--success {
             background: #e74c3c;
@@ -430,7 +332,7 @@ export const DatePickerStyledWrapper = styled.div`
     }
 `
 
-export const DatePickerStyled = styled(DatePicker)`
+export const DatePickerStyled = styled(DatePicker) `
     box-sizing: border-box;
     width: 100%;
     height: 40px;
@@ -479,7 +381,7 @@ export const FormPanelHeader = styled.div`
 //     }
 // `
 
-export const FormField = styled(Field)`
+export const FormField = styled(Field) `
     box-sizing: border-box;
     width: 100%;
     height: 40px;
@@ -499,13 +401,32 @@ export const FormField = styled(Field)`
     }
 `
 
-export const FormFieldTextarea = styled(Field)`
+export const FormFieldTextarea = styled(Field) `
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+    background-color: #ecf0f1;
+    color: #5e5e5e;
+    font-family: 'Source Sans Pro';
+    font-size: 16px;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    resize: none;
 
+    &:hover {
+        box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+    }
 `
 export const FramesForm = styled.form`
     clear: both;
+    margin-bottom: 40px;
 `
 
-export const FramesForm2 = styled(Form)`
-    clear: both;
+export const HiddenInputField = styled.input`
+    display: none;
 `
