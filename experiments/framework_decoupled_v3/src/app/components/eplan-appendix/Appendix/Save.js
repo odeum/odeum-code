@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalWindow, /* PulseLoader */ } from 'app/styles/EplanStyles'
+import { ModalWindow } from 'framework/components/styles/ModalStyles'
 
 
 const SaveModal = () => {

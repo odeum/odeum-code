@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'framework/components/styles/ModalStyles'
 import PDF from 'react-pdf-js'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'

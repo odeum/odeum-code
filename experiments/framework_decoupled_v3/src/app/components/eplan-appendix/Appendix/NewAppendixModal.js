@@ -1,5 +1,5 @@
 import React from 'react'
-import { /* AppendixButton */ ModalWindow, ModalHeader, ModalContent, ModalButtonPanel, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'app/styles/EplanStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
 import { FieldLabel, TextInputField } from 'app/styles/'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
