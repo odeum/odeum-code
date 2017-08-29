@@ -197,7 +197,6 @@ class ImageBrowser extends Component {
 	}
 	_onRowCountChange(event) {
 		const rowCount = parseInt(event.target.value, 10) || 0
-
 		this.setState({ rowCount })
 	}
 	_onScrollToRowChange(event) {
@@ -245,6 +244,7 @@ class ImageBrowser extends Component {
 			//alert('go to dir somehow')
 			// console.log('/' + rowData.name)
 			this.setState({ data: await getImagesList(rowData.nextLevel) })
+			this.setState({ rowCount: this.state.data.size })
 			// console.log(this.state.data)
 			this.setState({ scrollToIndex: 0 })
 		} else {

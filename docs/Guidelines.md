@@ -408,7 +408,7 @@ import { App, Icon, Tabs, Search ... } from 'odeum-codejs'
 This is my personal favorite thus it gives a lot of flexibility with package design and usage.
 
 ```js
-import App from 'odeum-core'
+import App from 'odeum-app'
 import Api from 'odeum-api'
 import Icon from 'odeum-icons'
 import Button from 'odeum-buttons'
