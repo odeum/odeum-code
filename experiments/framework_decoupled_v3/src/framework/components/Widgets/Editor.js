@@ -43,8 +43,8 @@ class Editor extends Component {
 	async componentWillMount() {
 		this.setEditorStyles(this.props)
 
-		let list = await getImagesList('/')
-		this.setState({ imagesList: list })
+		let imagesData = await getImagesList('/')
+		this.setState({ imagesList: imagesData })
 	}
 
 	componentWillUpdate(nextProps) {
@@ -107,7 +107,7 @@ class Editor extends Component {
 				{this.state.imagesList !== null ? <ImageBrowserModal
 					imageBrowserModalIsOpen={this.state.imageBrowserModalIsOpen}
 					closeImageBrowserModal={this.closeImageBrowserModal}
-					list={this.state.imagesList}
+					data={this.state.imagesList}
 					insertImage={this.insertImage} />
 					: ""
 				}
