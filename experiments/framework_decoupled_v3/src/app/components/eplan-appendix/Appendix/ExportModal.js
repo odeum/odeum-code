@@ -6,6 +6,7 @@ import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 
 const ExportModal = ({ exportModalIsOpen, closeExportModal, customStyles, appendix, onClickExportAppendix }) => {
+	console.log(exportModalIsOpen, closeExportModal, customStyles, appendix, onClickExportAppendix)
 	return (
 		<div>
 			{appendix !== null ?
