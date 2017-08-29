@@ -21,25 +21,39 @@ let renderFields = ({ fields }) => {
 	return (
 		<div>
 			{fields.map((field, index) => {
-
 				let _field
 				switch (fields.get(index).type) {
 					case 'TEXT':
-						_field = (
+						_field = (fields.get(index).caption !== '') ? (
 							<div key={fields.get(index).id}>
 								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-								<FormField name={`${field}.value`} type="text" component="input" label={fields.get(index).caption} placeholder={fields.get(index).caption} />
+								<FormField name={`${field}.value`} type="text" component="input" label={fields.get(index).caption} />
 							</div>
-						)
+						) : ''
 						break
 					case 'TEXTAREA':
+						_field = (fields.get(index).caption !== '') ? (
+							<div key={fields.get(index).id}>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
+							</div>
+						) : ''
+						break
+					case 'SELECT':
 						_field = (
 							<div key={fields.get(index).id}>
 								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-								<FormField name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} placeholder={fields.get(index).caption} />
+								<FormField name={`${field}.value`} component="select" label={fields.get(index).caption}>
+									{
+										fields.get(index).options.map((opt, index) => {
+											return (opt.text !== '') ? (<option key={opt.value} value={opt.value}>{opt.text}</option>) : ''
+										})
+									}
+								</FormField>
 							</div>
 						)
 						break
+
 					default:
 						break
 				}
