@@ -66,7 +66,6 @@ class ReferenceTableEdit extends Component {
 		})
 	}
 	openEditModal(data) {
-		console.log(this)
 		this.setState({
 			editModalIsOpen: true,
 			editData: data
@@ -81,11 +80,11 @@ class ReferenceTableEdit extends Component {
 		this.setState({
 			editModalIsOpen: false
 		})
-		console.log(this.props.referenceTable)
+		console.log(this.props.referenceTableValues)
 	}
 
 	async componentWillMount() {
-		if (!this.props.referenceTable) {
+		if (!this.props.referenceTableValues) {
 			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 		}
 		this.props.onMount(
@@ -97,9 +96,13 @@ class ReferenceTableEdit extends Component {
 	render() {
 
 		// console.log('render')
-		if (this.props.referenceTable !== null) {
-			// console.log(_.map(this.props.referenceTable.data).length)
-		}
+		// if (this.props.referenceTable !== null) {
+		// 	console.log(this.props.referenceTable)
+		// }
+
+		// if (this.props.referenceTableValues !== null) {
+		// 	console.log(this.props.referenceTableValues)
+		// }
 
 		return (
 			<PrimaryContainer>
@@ -115,7 +118,7 @@ class ReferenceTableEdit extends Component {
 						reftableId: this.props.referenceTableId
 					})}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
-				{this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />}
+				{this.props.referenceTableValues === null || this.props.referenceTable === undefined  ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTableValues.data))} data={this.props.referenceTable} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
@@ -139,7 +142,8 @@ const mapStateToProps = (state, ownProps) => ({
 	// referenceTableValues: getReferenceTableValues(state, ownProps.referenceTableId) || List(),
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
-	referenceTable: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
+	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId], //getReferenceTableEntry(state, ownProps.referenceTableId), // state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
+	referenceTableValues: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
 })
 
 function mapDispatchToProps(dispatch) {

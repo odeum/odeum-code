@@ -323,7 +323,7 @@ function eplan(state = initState, action) {
 				...state,
 				referenceTables: {
 					...state.referenceTables,
-					[action.payload.referenceTable.id]: action.payload.referenceTable.id
+					[action.payload.referenceTable.id]: action.payload.referenceTable
 				}
 			}
 		case UPDATE_REFERENCE_TABLE_DATA:

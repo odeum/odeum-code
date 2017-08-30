@@ -14,15 +14,18 @@ import RowRenderer from './_rowRender'
 
 export default class ReferenceTableEditList extends Component {
 	static propTypes = {
-		list: PropTypes.instanceOf(Immutable.List).isRequired
+		list: PropTypes.instanceOf(Immutable.List).isRequired,
+		data: PropTypes.object.isRequired,
 	};
 
 	constructor(props, context) {
 		super(props, context)
+
 		this.state = {
 			disableExtraRows: false,
 			disableHeader: false,
 			hideIndexRow: true,
+			hideValue2: (this.props.data.field2Type === 0),
 			overscanRowCount: 10,
 			rowHeight: 40,
 			rowCount: this.props.list.size,
@@ -53,6 +56,7 @@ export default class ReferenceTableEditList extends Component {
 			disableHeader,
 			headerHeight,
 			hideIndexRow,
+			hideValue2,
 			overscanRowCount,
 			rowHeight,
 			rowCount,
@@ -138,7 +142,8 @@ export default class ReferenceTableEditList extends Component {
 									}
 									flexgrow={1}
 								/>
-								<Column
+								{!hideValue2 &&
+									<Column
 									width={width}
 									minWidth={400}
 									label='Tekst værdi 2'
@@ -146,10 +151,20 @@ export default class ReferenceTableEditList extends Component {
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+										({ cellData, columnData, dataKey, rowData }) => { 
+											let resultData = cellData
+											if (this.props.data.field2Type === 3) {
+												resultData = cellData.replace(/<\/?[^>]+(>|$)/g, "")
+												//(<div dangerouslySetInnerHTML={{ __html: cellData }} />)
+											}
+											
+											return (<Cell>{resultData}</Cell>)
+										}
 									}
 									flexgrow={1}
-								/>
+									/>
+								
+								}
 							</Table>
 						)}
 					</AutoSizer>
@@ -159,7 +174,6 @@ export default class ReferenceTableEditList extends Component {
 	}
 
 	_cellClicked(rowData) {
-		console.log(this)
 		this.props.onClickButton(rowData)
 	}
 	_defaultHeaderRowRenderer({
