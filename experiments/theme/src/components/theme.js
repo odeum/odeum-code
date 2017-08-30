@@ -11,8 +11,8 @@ const theme = {
 		background: colors.BUTTON_DEFAULT,
 	},
 
-    //  iconstyle can be overridden in the JSX call with:
-    //  style={{verticalAlign: '-6px', paddingRight: '20px'}} 
+	//  iconstyle can be overridden in the JSX call with:
+	//  style={{verticalAlign: '-6px', paddingRight: '20px'}} 
 
 	iconStyle: {
 		verticalAlign: '-3px', /* -10% */

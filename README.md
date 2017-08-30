@@ -1,8 +1,8 @@
-ODEUM CodeJS
+ODEUM Code
 ============
 
 <a href="https://github.com/odeum/odeum-codejs">
-  <img alt="ODEUM CodeJS" src="./docs/assets/codejs_logo.png" />
+  <img alt="ODEUM Code" src="./docs/assets/logotype.png" />
 </a>
 <br />
 
@@ -14,14 +14,14 @@ ODEUM CodeJS
 <!-- TOC -->
 
 - [1. Introduction](#1-introduction)
-    - [1.1. Why ODEUM CodeJS - We needed a new ODEUM frontend design](#11-why-odeum-codejs---we-needed-a-new-odeum-frontend-design)
-    - [1.2. Enter ReactJS and React Native](#12-enter-reactjs-and-react-native)
-    - [1.3. For more details and involvement in ODEUM CodeJS open source project please clone the repository or contact:](#13-for-more-details-and-involvement-in-odeum-codejs-open-source-project-please-clone-the-repository-or-contact)
-        - [1.3.1. Check out the Google presentation for the case/problem:](#131-check-out-the-google-presentation-for-the-caseproblem)
-        - [1.3.2. Read our Guidelines and reference guides:](#132-read-our-guidelines-and-reference-guides)
+	- [1.1. Why ODEUM CodeJS - We needed a new ODEUM frontend design](#11-why-odeum-codejs---we-needed-a-new-odeum-frontend-design)
+	- [1.2. Enter ReactJS and React Native](#12-enter-reactjs-and-react-native)
+	- [1.3. For more details and involvement in ODEUM CodeJS open source project please clone the repository or contact:](#13-for-more-details-and-involvement-in-odeum-codejs-open-source-project-please-clone-the-repository-or-contact)
+		- [1.3.1. Check out the Google presentation for the case/problem:](#131-check-out-the-google-presentation-for-the-caseproblem)
+		- [1.3.2. Read our Guidelines and reference guides:](#132-read-our-guidelines-and-reference-guides)
 - [2. Mission Statement](#2-mission-statement)
-        - [<a href="./docs/Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>](#a-hrefdocsguidelinesmd-target_blankodeum-codejs-guidelinesa)
-        - [<a href="http://odeum-codejs.com/" target="_blank">Follow current ODEUM CodeJS Experiments</a>](#a-hrefhttpodeum-codejscom-target_blankfollow-current-odeum-codejs-experimentsa)
+		- [<a href="./docs/Guidelines.md" target="_blank">ODEUM CodeJS Guidelines</a>](#a-hrefdocsguidelinesmd-target_blankodeum-codejs-guidelinesa)
+		- [<a href="http://odeum-codejs.com/" target="_blank">Follow current ODEUM CodeJS Experiments</a>](#a-hrefhttpodeum-codejscom-target_blankfollow-current-odeum-codejs-experimentsa)
 
 <!-- /TOC -->
 
