@@ -1,6 +1,3 @@
-ODEUM Code
-============
-
 <a href="https://github.com/odeum/odeum-codejs">
   <img alt="ODEUM Code" src="./docs/assets/logotype.png" />
 </a>
