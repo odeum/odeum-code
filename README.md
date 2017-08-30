@@ -2,7 +2,7 @@
 # ODEUM Code
 
 <a href="https://github.com/odeum/odeum-codejs">
-  <img alt="ODEUM CodeJS" src="./docs/assets/codejs_logo.png" />
+  <img alt="ODEUM CodeJS" src="https://github.com/odeum/odeum-code/blob/development/alpha/docs/assets/logotype.png" />
 </a>
 <br />
 
