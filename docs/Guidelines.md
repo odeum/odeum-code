@@ -1,29 +1,29 @@
-Guidelines (Getting started with ODEUM CodeJS)
+Guidelines (Getting started with ODEUM Code)
 ==============================================
 
-ODEUM CodeJS is a React-based UI framework for building Web & Mobile Applications. 
+ODEUM Code is a React-based UI framework for building Web & Mobile Applications. 
 
 <!-- TOC -->
 
-- [1. ODEUM CodeJS Github repository](#1-odeum-codejs-github-repository)
+- [1. ODEUM Code Github repository](#1-odeum-code-github-repository)
 	- [1.1. Github branches](#11-github-branches)
-	- [1.2. ODEUM CodeJS Contributors](#12-odeum-codejs-contributors)
+	- [1.2. ODEUM Code Contributors](#12-odeum-code-contributors)
 - [2. Must-reads and tutorials (will update continously)](#2-must-reads-and-tutorials-will-update-continously)
 	- [2.1. Dependencies](#21-dependencies)
 	- [2.2. Articles](#22-articles)
 	- [2.3. Video tutorials](#23-video-tutorials)
 - [3. Hackathons](#3-hackathons)
-- [4. ODEUM CodeJS App Components Reference Guide](#4-odeum-codejs-app-components-reference-guide)
+- [4. ODEUM Code App Components Reference Guide](#4-odeum-code-app-components-reference-guide)
 	- [4.1. Naming Conventions](#41-naming-conventions)
 	- [4.2. Creating experiments and examples with "create-project"](#42-creating-experiments-and-examples-with-create-project)
 	- [4.3. GitHub Setup Instructions for experiments](#43-github-setup-instructions-for-experiments)
 - [5. Experiments (initial developer experiments)](#5-experiments-initial-developer-experiments)
-	- [5.1. Working with the ODEUM CodeJS framework](#51-working-with-the-odeum-codejs-framework)
+	- [5.1. Working with the ODEUM Code framework](#51-working-with-the-odeum-code-framework)
 	- [5.2. Experiments location](#52-experiments-location)
 	- [5.3. Experiments List](#53-experiments-list)
 		- [5.3.1. Codesplitting / PRPL (codesplitting)](#531-codesplitting--prpl-codesplitting)
 		- [5.3.2. Framework (framework)](#532-framework-framework)
-		- [5.3.3. Themes and themable components in ODEUM CodeJS (theme)](#533-themes-and-themable-components-in-odeum-codejs-theme)
+		- [5.3.3. Themes and themable components in ODEUM Code (theme)](#533-themes-and-themable-components-in-odeum-code-theme)
 		- [5.3.4. Footerlabel](#534-footerlabel)
 		- [5.3.5. Localization & Strings (internationalization and language support)](#535-localization--strings-internationalization-and-language-support)
 		- [5.3.6. Redux Forms (redux-form)](#536-redux-forms-redux-form)
@@ -38,7 +38,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 			- [5.3.14.1. Multi Component NPM package default import (odeum-codejs)](#53141-multi-component-npm-package-default-import-odeum-codejs)
 			- [5.3.14.2. Multi components as named exports from single NPM package](#53142-multi-components-as-named-exports-from-single-npm-package)
 			- [5.3.14.3. Single/Multiple components from multiple NPM packages](#53143-singlemultiple-components-from-multiple-npm-packages)
-		- [5.3.15. Demo App to Connect to the ODEUM CodeJS framework](#5315-demo-app-to-connect-to-the-odeum-codejs-framework)
+		- [5.3.15. Demo App to Connect to the ODEUM Code framework](#5315-demo-app-to-connect-to-the-odeum-code-framework)
 		- [5.3.16. Full-screen presentations (ODEUM Sales Manager/ODEUM Report)](#5316-full-screen-presentations-odeum-sales-managerodeum-report)
 		- [5.3.17. ODEUM Telemetry Services](#5317-odeum-telemetry-services)
 		- [5.3.18. Login](#5318-login)
@@ -46,7 +46,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 		- [5.3.20. REST API implementation experiments](#5320-rest-api-implementation-experiments)
 		- [5.3.21. IAM - Identity and Access Management](#5321-iam---identity-and-access-management)
 		- [5.3.22. App ID + Token Creator](#5322-app-id--token-creator)
-		- [5.3.23. ODEUM CodeJS website](#5323-odeum-codejs-website)
+		- [5.3.23. ODEUM Code website](#5323-odeum-code-website)
 		- [5.3.24. Deployment](#5324-deployment)
 		- [5.3.25. JavaScript Style Guide](#5325-javascript-style-guide)
 		- [5.3.26. Debugging with Chrome in VS Code](#5326-debugging-with-chrome-in-vs-code)
@@ -56,7 +56,7 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 		- [5.3.30. Search Server](#5330-search-server)
 		- [5.3.31. Filename Refactoring (VSCode Extension)](#5331-filename-refactoring-vscode-extension)
 		- [5.3.32. ODEUM Slack Service](#5332-odeum-slack-service)
-		- [5.3.33. ODEUM CodeJS Tutorial Site](#5333-odeum-codejs-tutorial-site)
+		- [5.3.33. ODEUM Code Tutorial Site](#5333-odeum-code-tutorial-site)
 - [6. Apps](#6-apps)
 	- [6.1. ODEUM ThemeBuilder](#61-odeum-themebuilder)
 	- [6.2. ODEUM HelpBuilder](#62-odeum-helpbuilder)
@@ -107,8 +107,8 @@ ODEUM CodeJS is a React-based UI framework for building Web & Mobile Application
 
 <!-- /TOC -->
 
-# 1. ODEUM CodeJS Github repository
-- Find it here: [ODEUM CodeJS Github Repository](https://github.com/odeum/odeum-codejs)
+# 1. ODEUM Code Github repository
+- Find it here: [ODEUM Code Github Repository](https://github.com/odeum/odeum-codejs)
 
 From the command line execute the following:
 
@@ -126,7 +126,7 @@ Initially we pull and commit work from/to 3 branches:
 
 All current development code is located in development/alpha. 
 
-## 1.2. ODEUM CodeJS Contributors
+## 1.2. ODEUM Code Contributors
 
 * Core Software Developemt Team
 	* [Andrei Tudor](at@webhouse.dk) (AT) (Phone: +45 50 25 70 47) - Framework, Apps
@@ -149,12 +149,12 @@ All current development code is located in development/alpha.
 	* [Mette Bugge](mette@webhouse.dk) (MBK) (Phone: +45 24 21 89 96) - Project Facilitation, Mentoring, Sales, Backup
 
 # 2. Must-reads and tutorials (will update continously)
-The following technology areas and articles are all must-reads for newcommers to React and ODEUM CodeJS.
+The following technology areas and articles are all must-reads for newcommers to React and ODEUM Code.
 A good start is to read up on articles and postings in out Slack channels, all core team members will get an invite
 - [Vanilla JavaScript Playground](https://github.com/cbroberg/vanilla)
 
 ## 2.1. Dependencies
-The following modules/packages/dependencies are a list of dependency for use in ODEUM CodeJS. They all need to be validated and tested before ending up in production code.
+The following modules/packages/dependencies are a list of dependency for use in ODEUM Code. They all need to be validated and tested before ending up in production code.
 
 - [create-react-app](https://github.com/facebookincubator/create-react-app)
 - [react (15.x)](https://github.com/facebook/react)
@@ -192,7 +192,7 @@ The following modules/packages/dependencies are a list of dependency for use in 
 - [JavaScript tutorials - Vanilla](https://medium.freecodecamp.org/my-giant-javascript-basics-course-is-now-live-on-youtube-and-its-100-free-9020a21bbc27)
 
 # 3. Hackathons
-All interns and freelancers are promoted to attend ODEUM CodeJS hackathons which is held at WebHouse every second Monday from 17.00 - 21.30 (including free food :) ). 
+All interns and freelancers are promoted to attend ODEUM Code hackathons which is held at WebHouse every second Monday from 17.00 - 21.30 (including free food :) ). 
 
 During our hackathons we:
 - Eat pizza or other healthy meals
@@ -202,18 +202,18 @@ During our hackathons we:
 - Pair Programming
 - Takeaways and new milestones
 
-# 4. ODEUM CodeJS App Components Reference Guide
+# 4. ODEUM Code App Components Reference Guide
 
 - All decomposed and architected App Components are listed and explained in a Microsoft Word document you can find here: [AppComponents.docx](/docs/AppComponents.docx)
-- The upcoming ODEUM CodeJS website will introduce a full and updated component list and tutorials
+- The upcoming ODEUM Code website will introduce a full and updated component list and tutorials
 
 ## 4.1. Naming Conventions
 - CB is mainly in charge of naming conventions so refactoring can be at a minimum for later stages with more contributors. If you adhere from this, you might spend your time refactoring code, don't do that. If in doubt on what to call ANYTHING, ask CB. The AppComponents Word document located in [AppComponents.docx](/docs/AppComponents.docx) will introduce component naming until further API documentation and website has been defined
 
 ## 4.2. Creating experiments and examples with "create-project"
-All experiments and ODEUM CodeJS core is based upon Create-React-App (CRA) boilerplate (and zero-configuration) setup from the Facebook React team. Using CRA makes it easy to test and check-out other developers experiments and code. 
+All experiments and ODEUM Code core is based upon Create-React-App (CRA) boilerplate (and zero-configuration) setup from the Facebook React team. Using CRA makes it easy to test and check-out other developers experiments and code. 
 
-We have created and maintain our own copy of CRA for ODEUM CodeJS experiments, with basic dependency JavaScript libraries included, and our eslint rules. Please clone it from Github here: 
+We have created and maintain our own copy of CRA for ODEUM Code experiments, with basic dependency JavaScript libraries included, and our eslint rules. Please clone it from Github here: 
 [create-project](https://github.com/cbroberg/create-project)
 
 To create a new experiment using [create-project](https://github.com/cbroberg/create-project) from the command line:
@@ -247,7 +247,7 @@ echo
 
 # 5. Experiments (initial developer experiments)
 
-## 5.1. Working with the ODEUM CodeJS framework
+## 5.1. Working with the ODEUM Code framework
 All initial work is done through experiments. The experiments will facilitate and test different JavaScript libraries and technology and create examples to check-out prosumtions and evaluate the viability of different choices made during our hackathons.
 
 ## 5.2. Experiments location
@@ -273,11 +273,11 @@ All initial work is done through experiments. The experiments will facilitate an
 
 ### 5.3.2. Framework (framework)
 - Experiment title: ./experiments/framework
-- Setting up the core app framework in ODEUM CodeJS with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
-- Redux will be used for State Management throughout ODEUM CodeJS (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
+- Setting up the core app framework in ODEUM Code with React, Routes, Redux and Styled-Components. This means the Playground, Header, Menu, Footer and Workspace components and creating 1-2 App Scene components with routes to populate the workspace with "Hello World" and some REST API GET/PUT stuff. 
+- Redux will be used for State Management throughout ODEUM Code (OCJS) and it is a requirement for developers to obtain usable knowledge on how to use Redux in general and with all container/statefull (smart) components.
 Read the book, "The Complete Redux Book" it is located in the ./docs/developer/assets/ and check the book code examples here: [Redux Book](https://github.com/redux-book/code-samples)
 
-### 5.3.3. Themes and themable components in ODEUM CodeJS (theme)
+### 5.3.3. Themes and themable components in ODEUM Code (theme)
 - Experiment title: ./experiments/theme
 - How to create a dynamic theme in OCJS which can be used for the example app "ThemeBuilder". Themes can be facilitated with <ThemeProvider> from Styled-components (SC).
 - Includes production ready <Icon /> component
@@ -372,7 +372,7 @@ Read the book, "The Complete Redux Book" it is located in the ./docs/developer/a
 [Example 1](https://github.com/RyanCCollins/corporate-dashboard)
 
 ### 5.3.14. Creating NPM packages containing our framework
-A big question is whether ODEUM CodeJS UI framework should transform into an NPM modulized solution or remain a documented templating/boilerplate platform. NPM might be another path to follow for making easier updates to both internal and external development of ODEUM CodeJS Apps and hence deployment builds. 
+A big question is whether ODEUM Code UI framework should transform into an NPM modulized solution or remain a documented templating/boilerplate platform. NPM might be another path to follow for making easier updates to both internal and external development of ODEUM Code Apps and hence deployment builds. 
 
 - Which parts if not all can be packaged?
 
@@ -431,8 +431,8 @@ import Markdown from 'odeum-markdown'
 </App>
 ```
 
-### 5.3.15. Demo App to Connect to the ODEUM CodeJS framework
-- ODEUM CodeJS has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems (schenes), search items, help items, login, routes (schenes) etc. We need a simple Demo App to test this symbiotic connection. The framework manages the state for the app 
+### 5.3.15. Demo App to Connect to the ODEUM Code framework
+- ODEUM Code has a symbiotic connection with the App that uses the framework. The one can not exist without the other. The framework describes how the app can use it, and the app tells the framework how it will use the framework, eg. menuitems (schenes), search items, help items, login, routes (schenes) etc. We need a simple Demo App to test this symbiotic connection. The framework manages the state for the app 
 
 ### 5.3.16. Full-screen presentations (ODEUM Sales Manager/ODEUM Report)
 - Experiment with Formidable Spectacle
@@ -474,17 +474,17 @@ import Markdown from 'odeum-markdown'
 which will become our global IAM on odeum.com. Today this solution takes "customerID", "userID", 
 and "password" to resolve which server to communicate with. 
 - In the finalized model all users will only have one account on odeum.com which will resolve to numerous apps and installations (sites). 
-- Our own ODEUM CodeJS Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM CodeJS specific experiment)). 
+- Our own ODEUM Code Apps (clients) will eventually resolve which server to communicate with from odeum.com. ((This is not an ODEUM Code specific experiment)). 
 
 ### 5.3.22. App ID + Token Creator
 - Experiment with web service to create and obtain a unique App ID and TOKEN for an App that wants to be listed in the ODEUM AppMarket
 
-### 5.3.23. ODEUM CodeJS website
-- Design and setup the ODEUM CodeJS website
+### 5.3.23. ODEUM Code website
+- Design and setup the ODEUM Code website
 - Experiment "framework" is currently running at www.odeum-codejs.com
 
 ### 5.3.24. Deployment
-- How to deploy ODEUM CodeJS client updates to different customer clients and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
+- How to deploy ODEUM Code client updates to different customer clients and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
 
 ### 5.3.25. JavaScript Style Guide
 - We will create a JavaScript Style Guide and linter. 
@@ -501,7 +501,7 @@ and "password" to resolve which server to communicate with.
 
 ### 5.3.28. Help Server (Help Items)
 - The App platform for displaying context-sensitive helpitems based upon views in scenes. 
-- Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework. 
+- Apps using ODEUM Code can introduce their own helpitems which are displayed by the framework. 
 - Helpitems should be indexed and very easy to localize.
 
 ### 5.3.29. Responsiveness
@@ -511,7 +511,7 @@ With Styled-Components:
 
 ### 5.3.30. Search Server
 - The App platform for displaying helpitems based upon connected views in scenes and components 
-- Apps using ODEUM CodeJS can introduce their own helpitems which are displayed by the framework
+- Apps using ODEUM Code can introduce their own helpitems which are displayed by the framework
 
 ### 5.3.31. Filename Refactoring (VSCode Extension)
 - A VSCode extension made in NodeJS and follwoing the Microsoft instructions set out here:
@@ -521,8 +521,8 @@ With Styled-Components:
 - Creating a Slack App for posting messages from ODEUM Apps to a team Slack channel
 - [Slack API](https://api.slack.com)
 
-### 5.3.33. ODEUM CodeJS Tutorial Site
-- An App that can display simple markdown files from the ODEUM CodeJS repo and run as a tutorial site
+### 5.3.33. ODEUM Code Tutorial Site
+- An App that can display simple markdown files from the ODEUM Code repo and run as a tutorial site
 - Convert markdown to HTML
 - [Example 1 in React](https://github.com/acdlite/react-remarkable) (3395 original library)
 - [Example 2 in React](https://github.com/rexxars/react-markdown) (1146)
@@ -530,10 +530,10 @@ With Styled-Components:
 - [Example 2](https://github.com/evilstreak/markdown-js) (6097)
 
 # 6. Apps
-- The following Apps is planned to be developed with ODEUM CodeJS for the repository examples and/or production.
+- The following Apps is planned to be developed with ODEUM Code for the repository examples and/or production.
 
 ## 6.1. ODEUM ThemeBuilder
-- Build an App to create a theme for an ODEUM CodeJS App
+- Build an App to create a theme for an ODEUM Code App
 - Examples of different themes
 - Publish theme components to NPM
 - Icon components selected runtime through constants from the theme (of available icons)
@@ -542,7 +542,7 @@ http://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
 The ThemeBuilder (or an AppChecker) needs to have an available Material Design Icon name checker so you do not overwrite the created constants from the ThemeBuilder with invalid icon names.
 
 ## 6.2. ODEUM HelpBuilder
-- Build an App to construct an indexed and localized help file for an App using ODEUM CodeJS and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
+- Build an App to construct an indexed and localized help file for an App using ODEUM Code and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
 
 ## 6.3. ODEUM AppBuilder
 - Build an App to invoke a boilerplate to set up scenes (menus) for an app
@@ -559,7 +559,7 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Use dropdown menues and checkboxes to select type and default values and innerworkings
 
 ## 6.5. GeoCloud2 (GC2) porting
-- Support Mapcentia in porting GC2 to ODEUM CodeJS
+- Support Mapcentia in porting GC2 to ODEUM Code
 
 ## 6.6. ODEUM NPM package examples
 - Demo of creating and managing a React component as an NPM module + Travis CI deployment
@@ -596,7 +596,7 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - [Repo](https://github.com/electron-userland/electron-builder)
 
 # 7. Icons
-Icons for ODEUM CodeJS will use Material Design (MD) icons.
+Icons for ODEUM Code will use Material Design (MD) icons.
 - [Material Design icons](https://material.io/icons/)
 
 ## 7.1. Icons location
@@ -685,7 +685,7 @@ Icons for ODEUM CodeJS will use Material Design (MD) icons.
 ```
 
 # 10. JavaScript and React Style Guide
-We will refer to Airbnb's JavaScript style guide which is pretty strict and solid. We will produce an eslintrc.json with all the rules that apply for ODEUM CodeJS. 
+We will refer to Airbnb's JavaScript style guide which is pretty strict and solid. We will produce an eslintrc.json with all the rules that apply for ODEUM Code. 
 
 ## 10.1. Guidelines
 
@@ -765,9 +765,9 @@ const LetsWrap = () => {
 ```
 
 # 11. Visual Studio Code Extensions
-We encourage all ODEUM CodeJS developers to use and facilitate Visual Studio Code (VSCode). VSCode is available for both Windows and Mac
+We encourage all ODEUM Code developers to use and facilitate Visual Studio Code (VSCode). VSCode is available for both Windows and Mac
 
-We suggest that you install the following VSCode Extensions to get the optimal environment for your React development and ODUEM CodeJS contribution. 
+We suggest that you install the following VSCode Extensions to get the optimal environment for your React development and ODUEM Code contribution. 
 
 ## 11.1. Atom Keymap
 Popular Atom keybindings for Visual Studio Code (by Microsoft)
@@ -858,7 +858,7 @@ To set up ESLINT in VSCODE for proper use with React create the following .eslin
 
 # 14. ODEUM 2GO!
 
-ODEUM 2GO is a "Hub" and SaaS cloud service which facilitates hosting and deployment management of Web Apps created with the open source App framework ODEUM CodeJS. ODEUM 2GO is charged with a monthly fee of $XX. 
+ODEUM 2GO is a "Hub" and SaaS cloud service which facilitates hosting and deployment management of Web Apps created with the open source App framework ODEUM Code. ODEUM 2GO is charged with a monthly fee of $XX. 
 
 The Hub facilitates the following services in-a-box:
 ```
@@ -869,10 +869,10 @@ The Hub facilitates the following services in-a-box:
 - Database (x GB per month)
 - Themes & Theme Editor (ThemeProvider)
 - App Templates
-- Hotline and chat support from ODEUM CodeJS developers
+- Hotline and chat support from ODEUM Code developers
 ```
 
-ODEUM 2GO is designed and build with ODEUM CodeJS
+ODEUM 2GO is designed and build with ODEUM Code
 
 - [Reindex](https://www.reindex.io)
 - [Docker Cloud](https://cloud.docker.com)
