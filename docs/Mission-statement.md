@@ -6,7 +6,7 @@ A mission, not just to renew our existing Web UI and UX of our long product-line
 but a mission to do something amazing. Something new, something exiting, and through that mission give something back 
 to a development community we have been a part of since 1995. 
 
-The thought for ODEUM CodeJS originated in the need for a new UI and UX for ODEUM Web Apps. This thought evolved slowly into, not just wanting to produce something that we would own and be able to use, but something that others would be able to use and contribute to.
+The thought for ODEUM Code originated in the need for a new UI and UX for ODEUM Web Apps. This thought evolved slowly into, not just wanting to produce something that we would own and be able to use, but something that others would be able to use and contribute to.
 
 So the idea of open sourcing our work began to evolve. And the ideas just kept flowing in.
 
@@ -27,4 +27,4 @@ More on how to contribute later ...
 
 Thanks
 
-The ODEUM CodeJS Team
+The ODEUM Code Team
