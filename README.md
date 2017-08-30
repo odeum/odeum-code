@@ -1,4 +1,4 @@
-<a href="https://github.com/odeum/odeum-codejs">
+<a href="https://github.com/odeum/odeum-code">
   <img alt="ODEUM Code" src="./docs/assets/logotype.png" />
 </a>
 <br />
