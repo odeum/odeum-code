@@ -52,7 +52,7 @@ class ReferenceTableEdit extends Component {
 	openSettingsModal() {
 		this.setState({
 			settingsModalIsOpen: true,
-			settingData: this.props.referenceTableEntry
+			// settingData: this.props.referenceTableEntry
 		})
 	}
 	closeSettingsModal() {
@@ -80,7 +80,6 @@ class ReferenceTableEdit extends Component {
 		this.setState({
 			editModalIsOpen: false
 		})
-		console.log(this.props.referenceTableValues)
 	}
 
 	async componentWillMount() {
@@ -139,10 +138,9 @@ class ReferenceTableEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	// referenceTableValues: getReferenceTableValues(state, ownProps.referenceTableId) || List(),
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
-	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId], //getReferenceTableEntry(state, ownProps.referenceTableId), // state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
+	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId],
 	referenceTableValues: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
 })
 

@@ -16,13 +16,6 @@ export default class ReferenceTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
 	};
-	componentWillUpdate = (nextProps, nextState) => {
-		// console.log('aici e puturosu', nextProps.list.size)
-		if (this.props.list.size !== nextProps.list.size)
-		{
-			this._onRowCountChange(this.props.list.size)
-		}
-	}
 	
 	constructor(props, context) {
 		super(props, context)
@@ -46,6 +39,13 @@ export default class ReferenceTable extends Component {
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
 		this._cellClicked = this._cellClicked.bind(this)
+	}
+
+	componentWillUpdate = (nextProps, nextState) => {
+		if (this.props.list.size !== nextProps.list.size)
+		{
+			this._onRowCountChange(nextProps.list.size)
+		}
 	}
 
 	render() {

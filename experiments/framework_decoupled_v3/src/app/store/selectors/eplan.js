@@ -51,9 +51,10 @@ export const getReferenceTable = (state, id) => {
 }
 
 export const getReferenceTableValues = (state, id) => {
-	let referenceTableData = state.eplan.referenceTablesValues ? state.eplan.referenceTablesValues[id].data : null
-	console.log(referenceTableData)
-	return referenceTableData ? List(_.map(referenceTableData)) : null
+	let referenceTableData = state.eplan.referenceTableValues ? state.eplan.referenceTableValues[id] : null
+	// console.log('getReferenceTableValues: ' + id)
+	// console.log(referenceTableData)
+	return referenceTableData ? referenceTableData : null
 }
 export const getReferenceTableDataEntry = (state, id, referenceTableId) => {
 	if (id === undefined) {

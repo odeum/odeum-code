@@ -47,7 +47,7 @@ export default class ReferenceTableEditList extends Component {
 	componentWillUpdate = (nextProps, nextState) => {
 		if (this.props.list.size !== nextProps.list.size)
 		{
-			this._onRowCountChange(this.props.list.size)
+			this._onRowCountChange(nextProps.list.size)
 		}
 	}
 
@@ -119,7 +119,7 @@ export default class ReferenceTableEditList extends Component {
 
 								<Column
 									width={width}
-									minWidth={400}
+									minWidth={100}
 									label='Relationsværdi'
 									dataKey='valueKey'
 									disableSort={!this._isSortEnabled()}
@@ -132,7 +132,7 @@ export default class ReferenceTableEditList extends Component {
 
 								<Column
 									width={width}
-									minWidth={400}
+									minWidth={300}
 									label='Tekst værdi 1'
 									dataKey='value'
 									disableSort={!this._isSortEnabled()}
@@ -145,7 +145,7 @@ export default class ReferenceTableEditList extends Component {
 								{!hideValue2 &&
 									<Column
 									width={width}
-									minWidth={400}
+									minWidth={300}
 									label='Tekst værdi 2'
 									dataKey='value2'
 									disableSort={!this._isSortEnabled()}
@@ -163,8 +163,19 @@ export default class ReferenceTableEditList extends Component {
 									}
 									flexgrow={1}
 									/>
-								
 								}
+								<Column
+									width={width}
+									minWidth={100}
+									label='Action'
+									dataKey=''
+									disableSort={!this._isSortEnabled()}
+									headerRenderer={this._headerRenderer}
+									cellRenderer={
+										({ cellData, columnData, dataKey, rowData }) => (<Cell>ss{cellData}</Cell>)
+									}
+									flexgrow={1}
+								/>
 							</Table>
 						)}
 					</AutoSizer>
