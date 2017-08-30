@@ -8,4 +8,4 @@
 
 **ODEUM Code** is a Web Application Frontend Framework based on React.
 
-## <a href="./docs/Mission-statement.md" target="_blank">Please read the ODEUM CodeJS Mission Statement</a>
+## <a href="./docs/Mission-statement.md" target="_blank">Please read the ODEUM Code Mission Statement</a>
