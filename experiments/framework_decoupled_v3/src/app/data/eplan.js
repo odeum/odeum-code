@@ -169,6 +169,14 @@ export async function saveReferenceTableValue(referenceTableEntry) {
 	}
 	return data
 }
+export async function deleteReferenceTableValue(referenceTableEntry) {
+	// let data = 
+	await api.delete('/rest/eplan/kpt/reftable/value/' + referenceTableEntry.referenceTableValueId)
+		// .then((response) => {
+		// 	return response.data
+		// })
+	return referenceTableEntry
+}
 /**
  * REFERENCE TABLE FUNCTIONS END
  */

@@ -1,9 +1,20 @@
 
-import Immutable from 'immutable'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+import { connect } from 'react-redux'
+import { deleteReferenceTableData } from 'app/store/modules/eplan'
+
+import Immutable, { List, Map } from 'immutable'
+
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
+
+import Icon from 'framework/assets/Icon'
+import { ListAction } from 'app/styles/EplanStyles'
+import * as iconname from 'framework/assets/icons'
+import * as colors from 'framework/assets/colors'
+
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
 // import { ListLink } from 'app/styles/EplanStyles'
@@ -12,7 +23,9 @@ import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'a
 import RowRenderer from './_rowRender'
 // import moment from 'moment'
 
-export default class ReferenceTableEditList extends Component {
+// var _ = require('lodash')
+
+class ReferenceTableEditList extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired,
 		data: PropTypes.object.isRequired,
@@ -45,8 +58,7 @@ export default class ReferenceTableEditList extends Component {
 	}
 
 	componentWillUpdate = (nextProps, nextState) => {
-		if (this.props.list.size !== nextProps.list.size)
-		{
+		if (this.props.list.size !== nextProps.list.size) {
 			this._onRowCountChange(nextProps.list.size)
 		}
 	}
@@ -144,35 +156,37 @@ export default class ReferenceTableEditList extends Component {
 								/>
 								{!hideValue2 &&
 									<Column
-									width={width}
-									minWidth={300}
-									label='Tekst værdi 2'
-									dataKey='value2'
-									disableSort={!this._isSortEnabled()}
-									headerRenderer={this._headerRenderer}
-									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => { 
-											let resultData = cellData
-											if (this.props.data.field2Type === 3) {
-												resultData = cellData.replace(/<\/?[^>]+(>|$)/g, "")
-												//(<div dangerouslySetInnerHTML={{ __html: cellData }} />)
+										width={width}
+										minWidth={300}
+										label='Tekst værdi 2'
+										dataKey='value2'
+										disableSort={!this._isSortEnabled()}
+										headerRenderer={this._headerRenderer}
+										cellRenderer={
+											({ cellData, columnData, dataKey, rowData }) => {
+												let resultData = cellData
+												if (this.props.data.field2Type === 3) {
+													resultData = cellData.replace(/<\/?[^>]+(>|$)/g, "")
+													//(<div dangerouslySetInnerHTML={{ __html: cellData }} />)
+												}
+												return (<Cell>{resultData}</Cell>)
 											}
-											
-											return (<Cell>{resultData}</Cell>)
 										}
-									}
-									flexgrow={1}
+										flexgrow={1}
 									/>
 								}
 								<Column
 									width={width}
-									minWidth={100}
-									label='Action'
+									minWidth={20}
+									label='Handlinger'
 									dataKey=''
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell>ss{cellData}</Cell>)
+										({ cellData, columnData, dataKey, rowData }) => (
+											<Cell>
+												<ListAction><div onClick={() => this._deleteReferenceTableValue(rowData)}><Icon icon={iconname.ICON_DELETE} size={20} color={colors.ICON_DEFAULT_COLOR} /></div></ListAction>
+											</Cell>)
 									}
 									flexgrow={1}
 								/>
@@ -242,7 +256,7 @@ export default class ReferenceTableEditList extends Component {
 
 	_onRowCountChange(listSize) {
 		const rowCount = parseInt(listSize, 10) || 0
-		
+
 		this.setState({ rowCount })
 	}
 
@@ -274,4 +288,26 @@ export default class ReferenceTableEditList extends Component {
 			useDynamicRowHeight: value
 		})
 	}
+
+	_deleteReferenceTableValue(data) {
+		if (window.confirm('Er du sikker på du vil slette: ' + data.valueKey + ' ' + data.value)) {
+			this.props.deleteReferenceTableValue(this.props.referenceTableId, data.id)
+		}
+	}
 }
+
+const mapStateToProps = (state, ownProps) => ({
+	list: state.eplan.referenceTableValues[ownProps.referenceTableId] ? Map(state.eplan.referenceTableValues[ownProps.referenceTableId].data).toList() : null,
+	data: state.eplan.referenceTables[ownProps.referenceTableId],
+	referenceTableId: ownProps.referenceTableId
+})
+
+function mapDispatchToProps(dispatch) {
+	return {
+		deleteReferenceTableValue: (referenceTableId, id) => {
+			dispatch(deleteReferenceTableData(referenceTableId, id))
+		},
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (ReferenceTableEditList)

@@ -1,6 +1,6 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
-import { List } from 'immutable'
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, deleteReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
+import { List, Map } from 'immutable'
 
 /*Lodash*/
 var _ = require('lodash')
@@ -23,6 +23,7 @@ const GET_REFERENCE_TABLE_LIST = '@@EPLAN/GET_REFERENCE_TABLE_LIST'
 const GET_REFERENCE_TABLE_ENTRY = '@@EPLAN/GET_REFERENCE_TABLE_ENTRY'
 const UPDATE_REFERENCE_TABLE = '@@EPLAN/UPDATE_REFERENCE_TABLE'
 const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
+const DELETE_REFERENCE_TABLE_DATA = '@@EPLAN/DELETE_REFERENCE_TABLE_DATA'
 const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -41,7 +42,9 @@ const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: da
 const getRefTableEntry = (data) => ({ type: GET_REFERENCE_TABLE_ENTRY, payload: data })
 const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data })
 const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, payload: data })
+const deleteRefTableData = (data) => ({ type: DELETE_REFERENCE_TABLE_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
+
 /* Middleware */
 export function removeOpenApdx(id) {
 	return dispatch => {
@@ -196,6 +199,16 @@ export function updateReferenceTableData(referenceTableEntry, id) {
 		)
 	}
 }
+export function deleteReferenceTableData(referenceTableId, referenceTableValueId) {
+	return async dispatch => {
+		await deleteReferenceTableValue({ referenceTableId, referenceTableValueId }).then(
+			(referenceTableResult) => {
+				dispatch(deleteRefTableData(referenceTableResult))
+			}
+		)
+	}
+}
+
 
 /* Reducer */
 const initState = {
@@ -337,6 +350,17 @@ function eplan(state = initState, action) {
 							...state.referenceTableValues[action.payload.referenceTableEntry.reftableId].data,
 							[action.payload.referenceTableEntry.id]: action.payload.referenceTableEntry
 						}
+					}
+				}
+			}
+		case DELETE_REFERENCE_TABLE_DATA:
+			return {
+				...state,
+				referenceTableValues: {
+					...state.referenceTableValues,
+					[action.payload.referenceTableId]: {
+						...state.referenceTableValues[action.payload.referenceTableId],
+						data: Map(state.referenceTableValues[action.payload.referenceTableId].data).delete(action.payload.referenceTableValueId.toString())
 					}
 				}
 			}
