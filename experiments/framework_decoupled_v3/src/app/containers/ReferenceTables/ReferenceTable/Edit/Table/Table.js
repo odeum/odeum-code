@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { deleteReferenceTableData } from 'app/store/modules/eplan'
 
-import Immutable, { List, Map } from 'immutable'
+import Immutable, { Map } from 'immutable'
 
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
