@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { deleteReferenceTableData } from 'app/store/modules/eplan'
 
-import Immutable, { Map } from 'immutable'
+import Immutable, { List, Map } from 'immutable'
 
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
@@ -297,7 +297,7 @@ class ReferenceTableEditList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	list: state.eplan.referenceTableValues[ownProps.referenceTableId] ? Map(state.eplan.referenceTableValues[ownProps.referenceTableId].data).toList() : null,
+	list: state.eplan.referenceTableValues[ownProps.referenceTableId] ? Map(state.eplan.referenceTableValues[ownProps.referenceTableId].data).toList() : List(),
 	data: state.eplan.referenceTables[ownProps.referenceTableId],
 	referenceTableId: ownProps.referenceTableId
 })

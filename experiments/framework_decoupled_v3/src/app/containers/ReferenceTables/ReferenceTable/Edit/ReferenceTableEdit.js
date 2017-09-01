@@ -105,19 +105,6 @@ class ReferenceTableEdit extends Component {
 	// }
 
 	render() {
-
-		// console.log('render')
-		// if (this.props.referenceTable !== null) {
-		// 	console.log(this.props.referenceTable)
-		// }
-
-		// if (this.props.referenceTableValues !== null) {
-		// 	console.log(this.props.referenceTableValues)
-		// }
-
-		// const cm = new Confirm()
-		// // console.log(cm.render())
-
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}

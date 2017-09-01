@@ -185,7 +185,6 @@ export function getReferenceTableEntryAsync(id) {
 export function updateReferenceTable(referenceTable, id) {
 	return async dispatch => {
 		var data = await saveReferenceTable(referenceTable)
-		console.log(data)
 		dispatch(updateRefTable({ referenceTable: data }))
 	}
 
@@ -360,7 +359,7 @@ function eplan(state = initState, action) {
 					...state.referenceTableValues,
 					[action.payload.referenceTableId]: {
 						...state.referenceTableValues[action.payload.referenceTableId],
-						data: Map(state.referenceTableValues[action.payload.referenceTableId].data).delete(action.payload.referenceTableValueId.toString())
+						data: Map(state.referenceTableValues[action.payload.referenceTableId].data).delete(action.payload.referenceTableValueId.toString()).toObject()
 					}
 				}
 			}
