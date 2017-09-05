@@ -86,7 +86,8 @@ class NewAppendixModal extends Component {
 		// console.log(appendix)
 		await this.props.addApd(appendix).then(() => {
 			console.log('addApd then')
-			setTimeout(this.props.saveNewAppendix, 2000 )
+			// setTimeout(this.props.saveNewAppendix, 2000 )
+			this.props.saveNewAppendix()
 		})
 	}
 
