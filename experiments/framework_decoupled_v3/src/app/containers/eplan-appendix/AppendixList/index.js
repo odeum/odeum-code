@@ -6,7 +6,7 @@ import AppendixTable from './Table/Table'
 import { /* DescriptionDiv */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { getListAsync } from 'app/store/modules/eplan'
 import { PrimaryContainer } from 'app/styles/'
-import NewAppendixModal from 'app/components/eplan-appendix/Appendix/NewAppendixModal'
+import NewAppendixModal from './NewAppendixModal'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 const props = { name: 'Oversigt' }
@@ -44,7 +44,7 @@ class AppendixList extends Component {
 	}
 	saveNewAppendix() {
 		//TODO: Save changes
-		alert('do save')
+		// alert('do save')
 		this.setState({
 			newAppendixModalIsOpen: false
 		})

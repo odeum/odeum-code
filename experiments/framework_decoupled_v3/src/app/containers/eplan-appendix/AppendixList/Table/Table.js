@@ -53,6 +53,13 @@ class AppendixTable extends Component {
 		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
 	}
 
+	componentWillUpdate = (nextProps, nextState) => {
+		if (this.props.list.size !== nextProps.list.size) {
+			this._onRowCountChange(nextProps.list.size)
+		}
+	}
+
+
 	render() {
 		const {
 			disableHeader,
@@ -408,8 +415,8 @@ class AppendixTable extends Component {
 		)
 	}
 
-	_onRowCountChange(event) {
-		const rowCount = parseInt(event.target.value, 10) || 0
+	_onRowCountChange(listSize) {
+		const rowCount = parseInt(listSize, 10) || 0
 
 		this.setState({ rowCount })
 	}
