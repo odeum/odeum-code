@@ -75,7 +75,7 @@ class NewAppendixModal extends Component {
 		this.submitUpdate = this.submitUpdate.bind(this)
 	}
 
-	submitUpdate(values) {
+	async submitUpdate(values) {
 		let appendix = {
 			'name': values.fields.splice(0, 1)[0].value,
 			'number': values.fields.splice(0, 1)[0].value,
@@ -84,8 +84,10 @@ class NewAppendixModal extends Component {
 			'fields': values.fields
 		}
 		// console.log(appendix)
-		this.props.addApd(appendix)
-		this.props.saveNewAppendix()
+		await this.props.addApd(appendix).then(() => {
+			console.log('addApd then')
+			setTimeout(this.props.saveNewAppendix, 2000 )
+		})
 	}
 
 	render() {
@@ -118,6 +120,7 @@ class NewAppendixModal extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+	appendixIsSaving: state.eplan.appendixIsSaving || null,
 	initialValues: {
 		fields: state.eplan.conf ? state.eplan.conf.createFields : null
 	} || null,

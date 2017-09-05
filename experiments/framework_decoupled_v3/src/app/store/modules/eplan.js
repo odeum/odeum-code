@@ -1,5 +1,5 @@
-
 import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, addAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, deleteReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
+import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
 
 /*Lodash*/
@@ -68,6 +68,7 @@ export async function addAppendixAsync(appendix) {
 			console.log('addAppendixAsync save')
 			console.log(result)
 			dispatch(addApd({ result }))
+			dispatch(push('/eplan/list/' + result.appendixId + '/edit'))
 		})
 	}
 }

@@ -27,7 +27,8 @@ export async function addAppendix(appendix) {
 	var app = JSON.stringify(appendix)
 	var data = await api.post('/rest/eplan/kpt/appendix', app)
 		.then((response) => {
-			console.log(response.data)
+			// console.log('addAppendix then')
+			// console.log(response.data)
 			return response.data
 		})
 	return data
