@@ -1,16 +1,16 @@
 {
-  "name": "odeum-codejs",
-  "version": "1.0.2",
-  "description": "ODEUM CodeJS is a React-based UI framework for building Web & Mobile Applications.",
+  "name": "odeum-code",
+  "version": "1.0.3",
+  "description": "ODEUM Code is a React-based UI framework for building Web & Mobile Applications.",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/odeum/odeum-codejs.git"
+    "url": "git+https://github.com/odeum/odeum-code.git"
   },
   "author": "Christian Broberg",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/odeum/odeum-codejs/issues"
+    "url": "https://github.com/odeum/odeum-code/issues"
   },
   "homepage": "",
   "dependencies": {    

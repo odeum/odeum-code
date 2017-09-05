@@ -18,7 +18,8 @@ deploy:
   project: ./experiments/framework_decoupled_v3/build/
   #domain: odeum-codejs-exp3.surge.sh
   #domain: odeum-codejs.surge.sh
-  domain: odeum-codejs.com
+  #odeum-kpt.surge.sh
+  domain: odeum-kpt.surge.sh
   skip_cleanup: true
   on:
     all_branches: true
