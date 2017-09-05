@@ -32,7 +32,7 @@ class ReferenceTableSettingsModal extends Component {
 
 		return (
 			<div>
-				<ModalWindow isOpen={settingsModalIsOpen} onRequestClose={closeSettingsModal} contentLabel="Indstillinger">
+				<ModalWindow isOpen={settingsModalIsOpen} onRequestClose={closeSettingsModal} contentLabel="Egenskaber">
 					<ModalHeader>
 						<ModalHeaderIcon>
 							<Icon icon={iconname.ICON_SETTINGS} size={30} color={colors.MODAL_HEADER_ICON} active={true} />

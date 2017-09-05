@@ -7,7 +7,7 @@ import { removeOpenApdx } from 'app/store/modules/eplan'
 import { getReferenceTableEntryAsync, updateReferenceTable } from 'app/store/modules/eplan'
 import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
 
-import { List } from 'immutable'
+// import { List } from 'immutable'
 
 // import { Field, reduxForm } from 'redux-form'
 // import { getReferenceTableLabel } from 'app/store/selectors/eplan'
@@ -29,7 +29,9 @@ import * as iconname from 'framework/assets/icons'
 import ReferenceTableSettingsModal from '../../ReferenceTableSettingsModal'
 import ReferenceTableEditModal from '../../ReferenceTableEditModal'
 
-var _ = require('lodash')
+// import Confirm from 'framework/components/Dialogs/Confirm/Confirm'
+
+// var _ = require('lodash')
 
 class ReferenceTableEdit extends Component {
 	constructor(props) {
@@ -37,7 +39,8 @@ class ReferenceTableEdit extends Component {
 		this.state = {
 			settingsModalIsOpen: false,
 			editModalIsOpen: false,
-			editData: {}
+			editData: {},
+			confirm: ''
 		}
 
 		/* Bind functions to this component */
@@ -48,11 +51,13 @@ class ReferenceTableEdit extends Component {
 		this.openEditModal = this.openEditModal.bind(this)
 		this.closeEditModal = this.closeEditModal.bind(this)
 		this.saveEditModal = this.saveEditModal.bind(this)
+
+		// this.__confirm = this.__confirm.bind(this)
 	}
 	openSettingsModal() {
 		this.setState({
 			settingsModalIsOpen: true,
-			settingData: this.props.referenceTableEntry
+			// settingData: this.props.referenceTableEntry
 		})
 	}
 	closeSettingsModal() {
@@ -66,7 +71,6 @@ class ReferenceTableEdit extends Component {
 		})
 	}
 	openEditModal(data) {
-		console.log(this)
 		this.setState({
 			editModalIsOpen: true,
 			editData: data
@@ -81,11 +85,10 @@ class ReferenceTableEdit extends Component {
 		this.setState({
 			editModalIsOpen: false
 		})
-		console.log(this.props.referenceTable)
 	}
 
 	async componentWillMount() {
-		if (!this.props.referenceTable) {
+		if (!this.props.referenceTableValues) {
 			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 		}
 		this.props.onMount(
@@ -94,17 +97,20 @@ class ReferenceTableEdit extends Component {
 		)
 	}
 
+	// __confirm(h) {
+	// 	let _confirm = new Confirm({ header: 'hej', content: 'hej hej', icon: iconname.ICON_SETTINGS })
+	// 	let confirm = _confirm.render()
+
+	// 	this.setState({ confirm })
+	// }
+
 	render() {
-
-		// console.log('render')
-		if (this.props.referenceTable !== null) {
-			// console.log(_.map(this.props.referenceTable.data).length)
-		}
-
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
+					{/* <Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.__confirm('hej hej')}>Test</Button> */}
+					{/* <Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this._confirm.open()}>Test</Button> */}
 					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.openSettingsModal()}>Egenskaber</Button>
 					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={() => this.openEditModal({
 						id: null,
@@ -115,7 +121,7 @@ class ReferenceTableEdit extends Component {
 						reftableId: this.props.referenceTableId
 					})}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
-				{this.props.referenceTable === null ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList list={List(_.map(this.props.referenceTable.data))} onClickButton={this.openEditModal} />}
+				{this.props.referenceTableValues === null || this.props.referenceTable === undefined  ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
@@ -130,16 +136,18 @@ class ReferenceTableEdit extends Component {
 					saveEditModal={this.saveEditModal}
 					referenceTableId={this.props.referenceTableId}
 					 />
+				{/* <Confirm ref={(c) => this._confirm = c} /> */}
+				{/* {this.state.confirm} */}
 			</PrimaryContainer>
 		)
 	}
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	// referenceTableValues: getReferenceTableValues(state, ownProps.referenceTableId) || List(),
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
-	referenceTable: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
+	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId],
+	referenceTableValues: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
 })
 
 function mapDispatchToProps(dispatch) {

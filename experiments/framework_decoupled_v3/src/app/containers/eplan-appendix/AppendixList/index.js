@@ -59,7 +59,7 @@ class AppendixList extends Component {
 				<AppendixButtonPanel>
 					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
 				</AppendixButtonPanel>
-				{this.props.isLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <AppendixTable list={this.props.appendixes} onClickButton={this.onClickButton} />}
+				{this.props.isLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <AppendixTable onClickButton={this.onClickButton} />}
 				<NewAppendixModal
 					newAppendixModalIsOpen={newAppendixModalIsOpen}
 					closeNewAppendixModal={closeNewAppendixModal}

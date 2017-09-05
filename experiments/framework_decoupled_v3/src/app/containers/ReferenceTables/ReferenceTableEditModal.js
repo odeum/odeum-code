@@ -33,7 +33,7 @@ class ReferenceTableEditModal extends Component {
 			switch (this.props.referenceTable.field1Type) {
 				default:
 					return ''
-				case '1':
+				case 1:
 					return (
 						<div key="value">
 							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
@@ -48,8 +48,8 @@ class ReferenceTableEditModal extends Component {
 				case 3:
 					return (
 						<div key="value">
-							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
-							<FormField name="value" label="Tekst værdi 2" component={FormFieldArticle} />
+							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
+							<FormField name="value" label="Tekst værdi 1" component={FormFieldArticle} />
 						</div>)
 			}
 		}
@@ -57,10 +57,10 @@ class ReferenceTableEditModal extends Component {
 
 	getField2TypeComponent() {
 		if (this.props.referenceTable !== null) {
-			switch (this.props.referenceTable.field2Type) {
+			switch (parseInt(this.props.referenceTable.field2Type, 10)) {
 				default:
 					return ''
-				case '1':
+				case 1:
 					return (
 						<div key="value2">
 							<FieldLabel for="name">Tekst værdi 2</FieldLabel>

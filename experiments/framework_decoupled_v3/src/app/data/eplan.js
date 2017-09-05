@@ -141,13 +141,11 @@ export async function saveReferenceTable(referenceTable) {
 	if (referenceTable.id === null) {
 		data = await api.post('/rest/eplan/kpt/reftable', app)
 			.then((response) => {
-				console.log(response.data)
 				return response.data
 			})
 	} else {
 		data = await api.put('/rest/eplan/kpt/reftable/' + referenceTable.id, app)
 			.then((response) => {
-				// console.log(response.data)
 				return response.data
 			})
 	}
@@ -168,6 +166,14 @@ export async function saveReferenceTableValue(referenceTableEntry) {
 			})
 	}
 	return data
+}
+export async function deleteReferenceTableValue(referenceTableEntry) {
+	// let data = 
+	await api.delete('/rest/eplan/kpt/reftable/value/' + referenceTableEntry.referenceTableValueId)
+		// .then((response) => {
+		// 	return response.data
+		// })
+	return referenceTableEntry
 }
 /**
  * REFERENCE TABLE FUNCTIONS END

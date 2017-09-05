@@ -1,6 +1,6 @@
 
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
-import { List } from 'immutable'
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, deleteReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
+import { List, Map } from 'immutable'
 
 /*Lodash*/
 var _ = require('lodash')
@@ -23,6 +23,7 @@ const GET_REFERENCE_TABLE_LIST = '@@EPLAN/GET_REFERENCE_TABLE_LIST'
 const GET_REFERENCE_TABLE_ENTRY = '@@EPLAN/GET_REFERENCE_TABLE_ENTRY'
 const UPDATE_REFERENCE_TABLE = '@@EPLAN/UPDATE_REFERENCE_TABLE'
 const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
+const DELETE_REFERENCE_TABLE_DATA = '@@EPLAN/DELETE_REFERENCE_TABLE_DATA'
 const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -41,7 +42,9 @@ const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: da
 const getRefTableEntry = (data) => ({ type: GET_REFERENCE_TABLE_ENTRY, payload: data })
 const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data })
 const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, payload: data })
+const deleteRefTableData = (data) => ({ type: DELETE_REFERENCE_TABLE_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
+
 /* Middleware */
 export function removeOpenApdx(id) {
 	return dispatch => {
@@ -94,7 +97,7 @@ export function getFrameDataAsync(id) {
 }
 export function setFrameDataAsync(frameId, fields, openFrame) {
 	let newFields = {}
-	_.forEach(fields, function(value, key) {
+	_.forEach(fields, function (value, key) {
 		newFields[value.id] = value
 	})
 
@@ -182,10 +185,9 @@ export function getReferenceTableEntryAsync(id) {
 export function updateReferenceTable(referenceTable, id) {
 	return async dispatch => {
 		var data = await saveReferenceTable(referenceTable)
-		console.log(data)
 		dispatch(updateRefTable({ referenceTable: data }))
 	}
-		
+
 }
 export function updateReferenceTableData(referenceTableEntry, id) {
 	return async dispatch => {
@@ -196,6 +198,16 @@ export function updateReferenceTableData(referenceTableEntry, id) {
 		)
 	}
 }
+export function deleteReferenceTableData(referenceTableId, referenceTableValueId) {
+	return async dispatch => {
+		await deleteReferenceTableValue({ referenceTableId, referenceTableValueId }).then(
+			(referenceTableResult) => {
+				dispatch(deleteRefTableData(referenceTableResult))
+			}
+		)
+	}
+}
+
 
 /* Reducer */
 const initState = {
@@ -229,26 +241,26 @@ function eplan(state = initState, action) {
 				appendixIsSaving: true
 			}
 		case UPDATE_APPENDIX:
-		{
-			let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
-			orig.fields.map((field) => {
-				return action.payload.appendix.fields.map((afield) => {
-					return field.id === afield.id ? field.value = afield.value : field
+			{
+				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
+				orig.fields.map((field) => {
+					return action.payload.appendix.fields.map((afield) => {
+						return field.id === afield.id ? field.value = afield.value : field
+					})
 				})
-			})
-			postAppendix(orig, action.payload.commit)
-			return {
-				...state,
-				appendixIsSaving: false
+				postAppendix(orig, action.payload.commit)
+				return {
+					...state,
+					appendixIsSaving: false
+				}
 			}
-		}
 		case GET_APPENDIX_CONFIG:
-		{
-			return {
-				...state,
-				conf: action.payload
+			{
+				return {
+					...state,
+					conf: action.payload
+				}
 			}
-		}
 		case GET_APPENDIX_LIST:
 			return {
 				...state,
@@ -256,16 +268,16 @@ function eplan(state = initState, action) {
 				isLoading: false
 			}
 		case GET_APPENDIX:
-		{
-			var findAppendix = _.find(state.openAppendix, (apdx) => (apdx.appendixId === action.payload.appendixId))
-			if (findAppendix !== undefined)
-				return state
-			else return {
-				...state,
-				openAppendix: state.openAppendix.concat(action.payload),
-				framesIsLoading: false
+			{
+				var findAppendix = _.find(state.openAppendix, (apdx) => (apdx.appendixId === action.payload.appendixId))
+				if (findAppendix !== undefined)
+					return state
+				else return {
+					...state,
+					openAppendix: state.openAppendix.concat(action.payload),
+					framesIsLoading: false
+				}
 			}
-		}
 		case GET_APPENDIX_FRAMES_LIST:
 			return {
 				...state,
@@ -287,7 +299,7 @@ function eplan(state = initState, action) {
 			}
 		case SET_APPENDIX_FRAME_DATA:
 			let newFields = {}
-			_.forEach(action.payload.fields, function(value, key) {
+			_.forEach(action.payload.fields, function (value, key) {
 				newFields[value.id] = value
 			})
 			return {
@@ -323,7 +335,7 @@ function eplan(state = initState, action) {
 				...state,
 				referenceTables: {
 					...state.referenceTables,
-					[action.payload.referenceTable.id]: action.payload.referenceTable.id
+					[action.payload.referenceTable.id]: action.payload.referenceTable
 				}
 			}
 		case UPDATE_REFERENCE_TABLE_DATA:
@@ -337,6 +349,17 @@ function eplan(state = initState, action) {
 							...state.referenceTableValues[action.payload.referenceTableEntry.reftableId].data,
 							[action.payload.referenceTableEntry.id]: action.payload.referenceTableEntry
 						}
+					}
+				}
+			}
+		case DELETE_REFERENCE_TABLE_DATA:
+			return {
+				...state,
+				referenceTableValues: {
+					...state.referenceTableValues,
+					[action.payload.referenceTableId]: {
+						...state.referenceTableValues[action.payload.referenceTableId],
+						data: Map(state.referenceTableValues[action.payload.referenceTableId].data).delete(action.payload.referenceTableValueId.toString()).toObject()
 					}
 				}
 			}

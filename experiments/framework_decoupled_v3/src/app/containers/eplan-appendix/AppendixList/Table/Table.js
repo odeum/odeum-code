@@ -444,7 +444,7 @@ class AppendixTable extends Component {
 	}
 }
 const mapStateToProps = (state, ownProps) => ({
-
+	list: state.eplan.appendixes
 })
 function mapDispatchToProps(dispatch) {
 	return {
