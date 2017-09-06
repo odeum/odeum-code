@@ -3,7 +3,7 @@ module.exports = {
 	getChildRoutes(location, cb) {
 		require.ensure([], (require) => {
 			cb(null, [
-				require('./Tabs/General/route.js'),
+				require('./General/route.js'),
 			])
 		})
 	},

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { changeId } from 'framework/store/modules/tabs'
+import { changeInstance } from 'framework/store/modules/tabs'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 import { Div } from 'app/styles'
 const sceneProp = { id: 'forms' }
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
-			dispatch(changeId(sceneProp.id))
+			dispatch(changeInstance(sceneProp.id))
 		}
 	}
     

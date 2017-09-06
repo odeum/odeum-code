@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { changeId } from 'framework/store/modules/tabs'
+import { changeInstance } from 'framework/store/modules/tabs'
 import { connect } from 'react-redux'
 import { getReferenceTableListAsync } from 'app/store/modules/eplan'
 
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
-			dispatch(changeId(sceneProp.id))
+			dispatch(changeInstance(sceneProp.id))
 		},
 		getList: () => {
 			dispatch(getReferenceTableListAsync())

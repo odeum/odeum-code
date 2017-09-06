@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form'
 import { getAppendixSel, getAppendix, getAppendixDates } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { tabChange } from 'framework/store/modules/tabs'
+// import { tabChange, addTab } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
@@ -423,7 +423,14 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, param) => {
-			dispatch(tabChange(instanceID, param))
+			// dispatch(addTab('eplan',
+			// 	{
+			// 		id: param,
+			// 		label: param,
+			// 		icon: 'info',
+			// 		location: '/eplan/list/' + param + '/edit'
+			// 	}))
+			// dispatch(tabChange('eplan', param))
 		},
 		getAppendix: async (param) => {
 			dispatch(await getAppendixAsync(param))

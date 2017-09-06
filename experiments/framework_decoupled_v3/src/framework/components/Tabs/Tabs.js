@@ -1,47 +1,50 @@
 import React from 'react'
-import { TabClose, TabCloseLink, TabDiv, TabIcon, TabLabel, TabList, TabLink, TabIconDiv } from '../styles/TabStyles'
+import { StyledLoader, TabClose, TabCloseLink, TabDiv, TabIcon, TabLabel, TabList, TabLink, TabIconDiv } from '../styles/TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 
 const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
-	let active = (tab) => (tab.label === activeTab ? true : false)
+	let active = (tab) => {
+		return tab.label === activeTab ? true : false
+	}
 	function isFixed(tab) {
 		if (tab.fixed === undefined) {
 			return null
 		}
 		if (!tab.fixed) {
 			return <TabCloseLink to="/">
-				<TabClose on={ active(tab) } onClick={ (e) => {
+				<TabClose active={active(tab)} onClick={(e) => {
 					e.preventDefault()
 					OnCloseClick(instanceID, tab)
-				} }>
-					<Icon icon={ ICON_CLOSE } on={ active(tab) } size={ 13 } />
+				}}>
+					<Icon icon={ICON_CLOSE} active={active(tab)} size={13} />
 				</TabClose>
 			</TabCloseLink>
 		}
 	}
 	return (
 		<TabList>
-			{ tabs.map((tab, index) => {
+			{Object.keys(tabs).map((tab, index) => {
 				return (
-					<TabLabel key={ index } on={ active(tab) }>
-						<div onClick={ (e) => {
+					<TabLabel key={index} active={active(tabs[tab])}>
+						<div onClick={(e) => {
 							e.preventDefault()
-							onTabClick(instanceID, tab.label)
-						} }>
-							<TabLink to={ tab.location } className={ active(tab) }>
+							onTabClick(instanceID, tabs[tab].label)
+						}}>
+							<TabLink to={tabs[tab].location} className={active(tabs[tab])}>
 								<TabDiv>
-									<TabIconDiv>
-										<TabIcon icon={ tab.icon } active={ active(tab) } /> </TabIconDiv>
-									{ tab.label }
+									{!tabs[tab].isLoading ?
+										<TabIconDiv>
+											<TabIcon icon={tabs[tab].icon} active={active(tabs[tab])} /> </TabIconDiv>
+										: <TabIconDiv><StyledLoader size='xxs' velocity='fast' /> </TabIconDiv>}
+									{tabs[tab].label}
 								</TabDiv>
 							</TabLink>
 						</div>
-						{ isFixed(tab) }
+						{isFixed(tabs[tab])}
 					</TabLabel>
 				)
-        
-			}) }
+			})}
 		</TabList>
 	)
 }

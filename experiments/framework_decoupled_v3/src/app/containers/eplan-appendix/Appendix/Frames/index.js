@@ -8,7 +8,7 @@ import { getAppendixAsync } from 'app/store/modules/eplan'
 import { getAppendix } from 'app/store/selectors/eplan' //getAppendixSel
 
 /* Framework */
-import { tabChange } from 'framework/store/modules/tabs'
+import { tabChange, addTab } from 'framework/store/modules/tabs'
 
 /* App */
 import FramesTable from './FramesTable/Table'
@@ -33,15 +33,20 @@ class Frames extends Component {
 	}
 
 	async componentWillMount() {
-		this.props.onMount(this.props.param, 
+		// console.log(this.props.params)
+		await this.props.getAppendix(this.props.param)
+		this.props.onMount(this.props.param,
 			{
+				id: 'rammer',
 				label: "Rammer til tillæg",
-				location: '/eplan/list/' + this.props.appendixId + '/frames',
+				location: '/eplan/list/' + this.props.params.id + '/frames',
 				icon: "info",
-				fixed: true
+				fixed: true,
+				isLoading: false,
+				closeLink: ''
 			}
 		)
-		await this.props.getAppendix(this.props.param)
+
 	}
 
 	onClickButton(index) {
@@ -94,6 +99,7 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, tab) => {
+			dispatch(addTab(instanceID, tab))
 			dispatch(tabChange(instanceID, tab.label))
 		},
 		onClickButton: (frameId, appendixId) => {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { changeId } from 'framework/store/modules/tabs'
+import { changeInstance } from 'framework/store/modules/tabs'
 import { connect } from 'react-redux'
 const sceneProp = { id: 'eplan' }
 // const tabProp = {id:'eplan-list'}
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
-			dispatch(changeId(sceneProp.id))
+			dispatch(changeInstance(sceneProp.id))
 		}
 	}
     

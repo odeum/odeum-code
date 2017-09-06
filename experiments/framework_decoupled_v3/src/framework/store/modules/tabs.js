@@ -1,21 +1,22 @@
-import config from 'app/config.json'
+import tabSystemConfig from 'app/config'
 import { push } from 'react-router-redux'
 
-/*Action Types*/
-export const CHANGE_TAB = "@@TABS/CHANGE_TAB"
-export const SET_SUBTABS = "@@TABS/SET_TABS"
-export const ADD_TAB = "@@TABS/ADD_TAB"
-export const ADD_INSTANCE = "@@TABS/ADD_INSTANCE"
-export const CHANGE_ID = "@@TABS/CHANGE_ID"
-export const CLOSE_TAB = "@@TABS/CLOSE_TAB"
-var _ = require('lodash')
-
-/*Actions*/
-export const addInstance = (instanceID) => ({
+/*
+	Action Types
+*/
+const CHANGE_TAB = 'FR/TABS/CHANGE_TAB'
+const ADD_TAB = 'FR/TABS/ADD_TAB'
+const ADD_INSTANCE = 'FR/TABS/ADD_INSTANCE'
+const CHANGE_ID = 'FR/TABS/CHANGE_ID'
+const CLOSE_TAB = 'FR/TABS/CLOSE_TAB'
+const TAB_ISLOADING = 'FR/TABS/TAB_IS_LOADING'
+/*
+	Actions
+*/
+export const addInstance = (instance) => ({
 	type: ADD_INSTANCE,
-	payload: instanceID
+	payload: instance
 })
-
 export const addTab = (instanceID, tab) => ({
 	type: ADD_TAB,
 	payload: {
@@ -23,144 +24,136 @@ export const addTab = (instanceID, tab) => ({
 		tab: tab
 	}
 })
-
-export const tabClose = (instanceID, tab) => {
-	return {
-		type: CLOSE_TAB,
-		payload: {
-			instanceID: instanceID,
-			tab: tab
-		}
+export function tabClose(instanceID, tab) {
+	return dispatch => {
+		dispatch(tabCloseAction(instanceID, tab))
+		dispatch(push(tab.closeLink))
 	}
 }
-
-export const changeId = (scene) => ({
+export const tabCloseAction = (instanceID, tab) => ({
+	type: CLOSE_TAB,
+	payload: {
+		instanceID: instanceID,
+		tab: tab
+	}
+})
+export const changeInstance = (scene) => ({
 	type: CHANGE_ID,
 	payload: {
 		scene: scene
 	}
 })
-
-export const tabChange = (instanceID, label) => {
-	if (label)
-		return {
-			type: CHANGE_TAB,
-			payload: {
-				instanceID: instanceID,
-				label: label
-			}
-		}
-	else return {
-		type: CHANGE_TAB,
-		payload: {
-			instanceID: instanceID,
-			label: ''
-		}
-	}
-}
-
-export const setTabs = (instanceID, tabs) => ({
-	type: SET_SUBTABS,
+export const tabChange = (instanceID, tab) => ({
+	type: CHANGE_TAB,
 	payload: {
 		instanceID: instanceID,
-		tabs: tabs
+		tab: tab
 	}
 })
 
-// var tabss = config.tabs
-/*Reducer*/
-const initialState = {
-	scenes: config.scenes,
-	activeScene: config.scenes[0].sceneID,
-	tabInstance: config.tabs || [
-		{
-			instanceID: 0,
-			tabs: [{
-				label: 'Error',
-				location: 'e404',
-				icon: 'error',
-				isFixed: false
-			}],
-			activeTab: 'Error'
-		}]
+
+export const tabIsLoading = (instanceID, tab) => ({
+	type: TAB_ISLOADING,
+	payload: {
+		instanceID: instanceID,
+		tab: tab
+	}
+})
+
+/*
+	Reducer
+*/
+const initState = {
+	tabSystem: tabSystemConfig || {
+		error: {
+			id: 'error',
+			label: 'Error',
+			tabs: {
+				error: {
+					label: "Error",
+					location: "e404",
+					icon: "error",
+					fixed: true,
+					isLoading: null,
+					closeLocation: ''
+				}
+			}
+		}
+	},
+	activeScene: tabSystemConfig['dashboard'].sceneID
 }
 
-function findInstanceByID(instanceID, tabInstance) {
-	return _.find(tabInstance, (tabInstance) => (tabInstance.instanceID === instanceID))
-
-}
-
-export default function tabs(state = initialState, action) {
-
+export default function tabReducer(state = initState, action) {
 	switch (action.type) {
 		case ADD_INSTANCE: {
-			let findInstance = findInstanceByID(action.payload, state.tabInstance)
-			if (findInstance !== undefined)
-				return state
-			else {
-				var emptyInstance = {
-					instanceID: action.payload,
-					tabs: [],
-					activeTab: ''
-				}
-
-				return {
-					...state,
-					tabInstance: _.concat(state.tabInstance, emptyInstance)
+			return {
+				...state,
+				tabSystem: {
+					...state.tabSystem,
+					[action.payload.sceneID]: {
+						sceneID: action.payload.sceneID,
+						location: action.payload.location,
+						name: action.payload.name,
+						activeTab: action.payload.activeTab,
+						isScene: action.payload.isScene,
+						tabs: action.payload.tabs
+					}
 				}
 			}
 		}
 		case CLOSE_TAB: {
-			let findInstance = findInstanceByID(action.payload.instanceID, state.tabInstance)
-			findInstance.tabs = findInstance.tabs.filter((tab) => tab !== action.payload.tab)
-			findInstance.activeTab = findInstance.tabs[0].label
-			//REFACTOR
-			action.asyncDispatch(push(action.payload.tab.closeLink))
-
+			let copy = Object.assign({}, state.tabSystem[action.payload.instanceID].tabs)
+			delete copy[action.payload.tab.id]
 			return {
 				...state,
-				tabInstance: state.tabInstance.map((instance) => instance.instanceID === findInstance.instanceID ? instance = findInstance : instance),
-
+				tabSystem: {
+					...state.tabSystem,
+					[action.payload.instanceID]: {
+						...state.tabSystem[action.payload.instanceID],
+						tabs: copy
+					}
+				}
 			}
+
 		}
 		case CHANGE_ID: {
 			return {
 				...state,
-				activeScene: action.payload.scene
+				activeScene: state.tabSystem[action.payload.scene].sceneID
 			}
 		}
 		case CHANGE_TAB: {
-
-			let findInstance = findInstanceByID(action.payload.instanceID, state.tabInstance)
-
-			if (action.payload.label === '') {
-				findInstance.activeTab = findInstance.tabs[0].label
-
-			} else {
-
-				findInstance.activeTab = action.payload.label
-			}
-			let newInstances = _(state.tabInstance).keyBy('instanceID').set(findInstance.instanceID, findInstance).values().value()
-
 			return {
 				...state,
-				tabInstance: newInstances
-			}
-		}
-		case ADD_TAB: {
-			let findInstance = findInstanceByID(action.payload.instanceID, state.tabInstance)
-			let findDuplicate = _.find(findInstance.tabs, action.payload.tab)
-			if (findDuplicate === undefined) {
-				findInstance.tabs.push(action.payload.tab)
-				let newInstances = _(state.tabInstance).keyBy('instanceID').set(findInstance.instanceID, findInstance).values().value()
-				return {
-					...state,
-					tabInstance: newInstances
+				tabSystem: {
+					...state.tabSystem,
+					[action.payload.instanceID]: {
+						...state.tabSystem[action.payload.instanceID],
+						activeTab: action.payload.tab
+
+					}
 				}
 			}
-			else return state
 		}
+		case ADD_TAB:
+			{
+				console.log(action.payload)
+				return {
+					...state,
+					tabSystem: {
+						...state.tabSystem,
+						[action.payload.instanceID]: {
+							...state.tabSystem[action.payload.instanceID],
+							tabs: {
+								...state.tabSystem[action.payload.instanceID].tabs,
+								[action.payload.tab.id]: action.payload.tab
+							}
+						}
+					}
+				}
+			}
 		default:
 			return state
 	}
 }
+

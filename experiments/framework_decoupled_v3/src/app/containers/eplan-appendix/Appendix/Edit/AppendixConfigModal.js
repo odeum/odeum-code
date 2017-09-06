@@ -112,7 +112,6 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, param) => {
-			// dispatch(tabChange(instanceID, param))
 		}
 	}
 }

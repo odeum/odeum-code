@@ -37,7 +37,7 @@ class Home extends Component {
 	}
 	render() {
 		return (
-            
+
 			<ThemeProvider theme={theme}>
 				{this.state.loggedIn ?
 					<div>
@@ -63,16 +63,16 @@ Home.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	activeScene: state.tabs.activeScene
+	activeScene: state.tabReducer.activeScene
 })
-//REFACTOR
+
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(getAppendixCfg())
 		}
 	}
-    
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

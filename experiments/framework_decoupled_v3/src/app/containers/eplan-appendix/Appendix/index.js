@@ -23,10 +23,12 @@ class AppendixContainer extends Component {
 		this.props.onMount(
 			this.props.id,
 			{
+				id: this.props.param,
 				label: this.props.param,
-				icon: 'mode_edit',
-				location: '/eplan/list/' + this.props.param + '/edit',
+				location: "/eplan/list/" + this.props.param + "/edit",
+				icon: "mode_edit",
 				fixed: false,
+				isLoading: false,
 				closeLink: '/eplan/list'
 			},
 			this.props.param
@@ -37,28 +39,36 @@ class AppendixContainer extends Component {
 	tabs() {
 		this.props.tabConfig(
 			this.props.param,
-			[{
-				label: "Tillægs tekst",
-				location: "/eplan/list/" + this.props.param + "/edit",
-				icon: "info",
-				fixed: true
-			},
 			{
-				label: "Rammer til tillæg",
-				location: "/eplan/list/" + this.props.param + "/frames",
-				icon: "info",
-				fixed: true
+				tillaeg_tekst: {
+					id: 'tillaeg_tekst',
+					label: "Tillægs tekst",
+					location: "/eplan/list/" + this.props.param + "/edit",
+					icon: "info",
+					fixed: true,
+					isLoading: false,
+					closeLink: ''
+				},
+				rammer: {
+					id: 'rammer',
+					label: "Rammer til tillæg",
+					location: "/eplan/list/" + this.props.param + "/frames",
+					icon: "info",
+					fixed: true,
+					isLoading: false,
+					closeLink: ''
+				}
 			}
-			]
 		)
 	}
-    
+
 	render() {
 		let key = this.props.location.pathname
+		console.log(this.props.param.toString())
 		return (
 			<div>
-				<TabsContainer instanceID={this.props.param.toString()}/>
-                
+				<TabsContainer instanceID={this.props.param.toString()} />
+
 				{React.cloneElement(this.props.children, { param: this.props.param, key: key })}
 			</div>
 		)
@@ -77,13 +87,19 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		tabConfig: (id, tabs) => {
-			dispatch(addInstance(id))
-			dispatch(addTab(id, tabs[0]))
-			dispatch(addTab(id, tabs[1]))
-			dispatch(tabChange(id, tabs[0].label))
+			dispatch(addInstance({
+				sceneID: id,
+				icon: 'mode_edit',
+				name: id,
+				location: "/eplan/list/" + id + "/edit",
+				activeTab: tabs['tillaeg_tekst'].label,
+				isScene: false,
+				tabs: tabs
+			}))
+			// dispatch(tabChange(id, tabs[0].label))
 		},
 		onMount: (id, tab) => {
-			dispatch(addTab(id, tab))
+			dispatch(addTab('eplan', tab))
 			dispatch(tabChange(id, tab.label))
 			dispatch(getFrameConfigAsync())
 		}

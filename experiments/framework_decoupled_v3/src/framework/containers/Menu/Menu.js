@@ -6,8 +6,8 @@ import { MenuDiv } from 'framework/components/styles/MenuStyles'
 //Redux
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { changeId } from 'framework/store/modules/tabs'
-
+import { changeInstance } from 'framework/store/modules/tabs'
+import { getMenuItems } from 'framework/store/selectors/menuSelector'
 class MenuContainer extends Component {
 	constructor(props) {
 		super(props)
@@ -20,28 +20,35 @@ class MenuContainer extends Component {
 			return ''
 	}
 	render() {
+		const { scenes } = this.props
 		return (
 			<MenuDiv>
-				{this.props.scenes.map((scene, index) => (
-					<MenuItem name={scene.name} icon={scene.icon} location={scene.location} active={this.active(scene.sceneID)} key={index} onLoad={this.props.changeId} id={scene.sceneID}
+				{Object.keys(scenes).map((scene, index) => (
+					<MenuItem name={scenes[scene].name}
+						icon={scenes[scene].icon}
+						location={scenes[scene].location}
+						active={this.active(scenes[scene].sceneID)}
+						key={index}
+						onLoad={this.props.changeInstance}
+						id={scenes[scene].sceneID}
 					/>))}
 			</MenuDiv>
 		)
 	}
 }
 MenuContainer.propTypes = {
-	scenes: PropTypes.array.isRequired,
+	scenes: PropTypes.object.isRequired,
 	active: PropTypes.string.isRequired
 }
 
-const mapStateToProps = (state) => ({
-	scenes: state.tabs.scenes,
-	active: state.tabs.activeScene
+const mapStateToProps = (state, props) => ({
+	scenes: getMenuItems(state, props),
+	active: state.tabReducer.activeScene
 })
 
 function mapDispatchToProps(dispatch) {
 	return bindActionCreators({
-		changeId
+		changeInstance
 	}, dispatch)
 
 }
