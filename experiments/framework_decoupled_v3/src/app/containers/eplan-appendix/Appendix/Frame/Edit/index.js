@@ -3,18 +3,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
 import { getFrameFieldsSel } from 'app/store/selectors/eplan'
-import { FieldArray, reduxForm } from 'redux-form'
+import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
 import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FormField, FramesForm, FormFieldTextarea } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FramesForm } from 'app/styles/EplanStyles'
 
 /* Components */
+import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
+import FormFieldTextarea from 'framework/components/ReduxForm/FormFieldTextarea'
+import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
+
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
+
+const required = value => (value ? undefined : 'Required')
 
 let renderFields = ({ fields }) => {
 	return (
@@ -26,7 +32,7 @@ let renderFields = ({ fields }) => {
 						_field = (fields.get(index).caption !== '') ? (
 							<div key={fields.get(index).id}>
 								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-								<FormField name={`${field}.value`} type="text" component="input" label={fields.get(index).caption} />
+								<Field name={`${field}.value`} type="text" component={FormFieldInput} label={fields.get(index).caption} validate={fields.get(index).mandatory ? [required] : []} />
 							</div>
 						) : ''
 						break
@@ -34,7 +40,7 @@ let renderFields = ({ fields }) => {
 						_field = (fields.get(index).caption !== '') ? (
 							<div key={fields.get(index).id}>
 								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-								<FormFieldTextarea name={`${field}.value`} type="text" component="textarea" label={fields.get(index).caption} />
+								<Field name={`${field}.value`} type="text" component={FormFieldTextarea} label={fields.get(index).caption} validate={fields.get(index).mandatory ? [required] : []} />
 							</div>
 						) : ''
 						break
@@ -42,13 +48,13 @@ let renderFields = ({ fields }) => {
 						_field = (
 							<div key={fields.get(index).id}>
 								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
-								<FormField name={`${field}.value`} component="select" label={fields.get(index).caption}>
+								<Field name={`${field}.value`} component={FormFieldSelect} label={fields.get(index).caption} validate={fields.get(index).mandatory ? [required] : []}>
 									{
 										fields.get(index).options.map((opt, index) => {
 											return (opt.text !== '') ? (<option key={opt.value} value={opt.value}>{opt.text}</option>) : ''
 										})
 									}
-								</FormField>
+								</Field>
 							</div>
 						)
 						break

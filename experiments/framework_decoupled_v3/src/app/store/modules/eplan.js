@@ -1,5 +1,5 @@
-
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, deleteReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
+import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, addAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, deleteReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
+import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
 
 /*Lodash*/
@@ -11,6 +11,7 @@ const GET_APPENDIX_LIST = '@@EPLAN/GET_EPLAN_LIST'
 const GET_APPENDIX = '@@EPLAN/GET_APPENDIX'
 const GET_APPENDIX_CONFIG = '@@EPLAN/GET_APPENDIX_CONFIG'
 const UPDATE_APPENDIX = '@@EPLAN/UPDATE_APPENDIX'
+const ADD_APPENDIX = '@@EPLAN/ADD_APPENDIX'
 const CLOSE_APPENDIX = '@@EPLAN/CLOSE_OPEN_APPENDIX'
 const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
@@ -30,6 +31,7 @@ const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
 const getAppendix = (data) => ({ type: GET_APPENDIX, payload: data })
 const getApdCfg = (data) => ({ type: GET_APPENDIX_CONFIG, payload: data })
 const updateApd = (data) => ({ type: UPDATE_APPENDIX, payload: data })
+const addApd = (data) => ({ type: ADD_APPENDIX, payload: data })
 const removeApdx = (data) => ({ type: CLOSE_APPENDIX, payload: data })
 const exportAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
 const getAppendixPdf = () => ({ type: GET_APPENDIX_PDF })
@@ -58,6 +60,19 @@ export async function updateAppendix(appendix, id, commit) {
 		dispatch(updateApd({ appendix, id, commit }))
 	}
 }
+
+export async function addAppendixAsync(appendix) {
+	return async dispatch => {
+		dispatch(appendixIsSaving())
+		await addAppendix(appendix).then((result) => {
+			console.log('addAppendixAsync save')
+			console.log(result)
+			dispatch(addApd({ result }))
+			dispatch(push('/eplan/list/' + result.appendixId + '/edit'))
+		})
+	}
+}
+
 
 export function getAppendixAsync(id) {
 	return async dispatch => {
@@ -253,6 +268,13 @@ function eplan(state = initState, action) {
 					...state,
 					appendixIsSaving: false
 				}
+			}
+		case ADD_APPENDIX:
+			console.log(action.payload)
+			return {
+				...state,
+				appendixes: state.appendixes.concat(action.payload.result),
+				appendixIsSaving: false
 			}
 		case GET_APPENDIX_CONFIG:
 			{

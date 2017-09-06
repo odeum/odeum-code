@@ -23,6 +23,17 @@ export async function postAppendix(appendix, commit) {
 	return data
 }
 
+export async function addAppendix(appendix) {
+	var app = JSON.stringify(appendix)
+	var data = await api.post('/rest/eplan/kpt/appendix', app)
+		.then((response) => {
+			// console.log('addAppendix then')
+			// console.log(response.data)
+			return response.data
+		})
+	return data
+}
+
 export async function getAppendixConfig() {
 	var data = await api.get('/rest/eplan/kpt/appendix/config')
 		.then((response) => {

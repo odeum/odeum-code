@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { reset, reduxForm } from 'redux-form'
+import { Field, reset, reduxForm } from 'redux-form'
 import { updateReferenceTableData } from 'app/store/modules/eplan'
 // import { getReferenceTableEntry } from 'app/store/selectors/eplan'
 
-
-import { FormField, FormFieldTextarea } from 'app/styles/EplanStyles'
+/* Framework formfields */
+import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
+import FormFieldTextarea from 'framework/components/ReduxForm/FormFieldTextarea'
 import FormFieldArticle from 'framework/components/ReduxForm/FormFieldArticle'
+
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
 import { FieldLabel } from 'app/styles/'
@@ -15,6 +17,8 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
+
+const required = value => (value ? undefined : 'Required')
 
 class ReferenceTableEditModal extends Component {
 	constructor(props) {
@@ -36,20 +40,20 @@ class ReferenceTableEditModal extends Component {
 				case 1:
 					return (
 						<div key="value">
-							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
-							<FormField name="value" component="input" />
+							<FieldLabel for="name">Tekst værdi 1 *</FieldLabel>
+							<Field name="value" component={FormFieldInput} validate={[required]} />
 						</div>)
 				case 2:
 					return (
 						<div key="value">
-							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
-							<FormFieldTextarea name="value" component="textarea" />
+							<FieldLabel for="name">Tekst værdi 1 *</FieldLabel>
+							<Field name="value" component={FormFieldTextarea} validate={[required]} />
 						</div>)
 				case 3:
 					return (
 						<div key="value">
-							<FieldLabel for="name">Tekst værdi 1</FieldLabel>
-							<FormField name="value" label="Tekst værdi 1" component={FormFieldArticle} />
+							<FieldLabel for="name">Tekst værdi 1 *</FieldLabel>
+							<Field name="value" label="Tekst værdi 1" component={FormFieldArticle} validate={[required]} />
 						</div>)
 			}
 		}
@@ -63,20 +67,20 @@ class ReferenceTableEditModal extends Component {
 				case 1:
 					return (
 						<div key="value2">
-							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
-							<FormField name="value2" component="input" />
+							<FieldLabel for="name">Tekst værdi 2 *</FieldLabel>
+							<Field name="value2" component={FormFieldInput} validate={[required]} />
 						</div>)
 				case 2:
 					return (
 						<div key="value2">
-							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
-							<FormFieldTextarea name="value2" component="textarea" />
+							<FieldLabel for="name">Tekst værdi 2 *</FieldLabel>
+							<Field name="value2" component={FormFieldTextarea} validate={[required]} />
 						</div>)
 				case 3:
 					return (
 						<div key="value2">
-							<FieldLabel for="name">Tekst værdi 2</FieldLabel>
-							<FormField name="value2" label="Tekst værdi 2" component={FormFieldArticle} />
+							<FieldLabel for="name">Tekst værdi 2 *</FieldLabel>
+							<Field name="value2" label="Tekst værdi 2" component={FormFieldArticle} validate={[required]} />
 						</div>)
 			}
 		}
@@ -100,12 +104,13 @@ class ReferenceTableEditModal extends Component {
 					</ModalHeader>
 					<ModalContent>
 						<form onSubmit={handleSubmit(this.submitUpdate)}>
-							<FieldLabel for="name">Relationsværdi</FieldLabel>
-							<FormField
+							<FieldLabel for="name">Relationsværdi *</FieldLabel>
+							<Field
 								name="valueKey"
-								component="input"
+								component={FormFieldInput}
 								type="text"
 								placeholder="Relationsværdi"
+								validate={[required]}
 							/>
 							{this.getField1TypeComponent()}
 							{this.getField2TypeComponent()}

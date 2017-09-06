@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { reset, reduxForm } from 'redux-form'
+import { Field, reset, reduxForm } from 'redux-form'
 import { updateReferenceTable } from 'app/store/modules/eplan'
 import { getReferenceTableEntry } from 'app/store/selectors/eplan'
-import { FormField } from 'app/styles/EplanStyles'
+// import { FormField } from 'app/styles/EplanStyles'
+
+/* Framework formfields */
+import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
+// import FormFieldTextarea from 'framework/components/ReduxForm/FormFieldTextarea'
+import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
+
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
 import { FieldLabel } from 'app/styles/'
@@ -12,6 +18,8 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
+
+const required = value => (value ? undefined : 'Required')
 
 class ReferenceTableSettingsModal extends Component {
 	constructor(props) {
@@ -44,38 +52,37 @@ class ReferenceTableSettingsModal extends Component {
 					</ModalHeader>
 					<ModalContent>
 						<form onSubmit={handleSubmit(this.submitUpdate)}>
-							<FieldLabel for="name">Navn</FieldLabel>
-							<FormField
+							<FieldLabel for="name">Navn *</FieldLabel>
+							<Field
 								name="name"
-								component="input"
+								component={FormFieldInput}
 								type="text"
 								placeholder="Navn"
+								validate={[required]}
 							/>
-							<br/><br/>
 							<FieldLabel for="name">SQL tabel navn</FieldLabel>
-							<FormField
+							<Field
 								name="sqlTable"
-								component="input"
+								component={FormFieldInput}
 								type="text"
 								placeholder="SQL tabel navn"
+								validate={[required]}
 							/>
-							<br/>
-							<br/>
-							<FieldLabel for="name">Felttype</FieldLabel>
-							<FormField
+							<FieldLabel for="name">Felttype *</FieldLabel>
+							<Field
 								name="fieldType"
-								component="select"
+								component={FormFieldSelect}
 								type="text"
 								placeholder="Felttype"
+								validate={[required]}
 							>
             					<option value="1">Dropdown</option>
 								<option value="2">Dropdown (multipel valg)</option>
-							</FormField>
-							<br/><br/>
-							<FieldLabel for="name">Tekst værdi 1 type</FieldLabel>
-							<FormField
+							</Field>
+							<FieldLabel for="name">Tekst værdi 1 type *</FieldLabel>
+							<Field
 								name="field1Type"
-								component="select"
+								component={FormFieldSelect}
 								type="text"
 								placeholder="Tekst værdi 1 type"
 							>
@@ -83,13 +90,11 @@ class ReferenceTableSettingsModal extends Component {
 								<option value="2">Lang tekst</option>
 								<option value="3">WYSIWYG</option>
 
-							</FormField>
-
-							<br/><br/>
-							<FieldLabel for="name">Tekst værdi 2 type</FieldLabel>
-							<FormField
+							</Field>
+							<FieldLabel for="name">Tekst værdi 2 type *</FieldLabel>
+							<Field
 								name="field2Type"
-								component="select"
+								component={FormFieldSelect}
 								type="text"
 								placeholder="Tekst værdi 2 type"
 							>
@@ -97,22 +102,21 @@ class ReferenceTableSettingsModal extends Component {
 								<option value="1">Kort tekst</option>
 								<option value="2">Lang tekst</option>
 								<option value="3">WYSIWYG</option>
-
-							</FormField>
-							<br/><br/>
-							<FieldLabel for="name">Overordnet reference-tabel</FieldLabel>
-							<FormField
+							</Field>
+							<FieldLabel for="name">Overordnet reference-tabel *</FieldLabel>
+							<Field
 								name="parentReftableId"
-								component="select"
+								component={FormFieldSelect}
 								type="text"
 								placeholder="Overordnet reference-tabel"
+								validate={[required]}
 							>
 								{
 									referenceTableSelectValues.map((opt, index) => {
 										return (<option key={opt.value} value={opt.value}>{opt.label}</option>)
 									})
 								}
-							</FormField>
+							</Field>
 						</form>
 						<ModalButtonPanel>
 							<Button onClick={handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
