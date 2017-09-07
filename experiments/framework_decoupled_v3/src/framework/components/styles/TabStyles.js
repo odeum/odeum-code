@@ -1,54 +1,7 @@
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-router'
-import Icon from 'framework/assets/Icon'
+
 import { getColor } from 'framework/assets/colors'
-
-const sizes = {
-	xxs: '5px',
-	xs: '20px',
-	small: '50px',
-	medium: '80px',
-	large: '120px',
-	xl: '250px'
-}
-
-const velocities = {
-	slow: '3s',
-	medium: '2s',
-	fast: '1s'
-}
-
-
-const rotate360 = keyframes`
-from {
-    transform: rotate(0deg);
-}
-
-to {
-    transform: rotate(360deg);
-}
-`
-export const SpinLogo = styled.div`
-display: inline-block;
-animation: ${rotate360} ${props => props.time || '1s'} linear infinite;
-&:hover {
-    animation: ${rotate360} 3s linear infinite;
-}
-`
-
-export const StyledLoader = styled.div`
-display: inline-block;
-border: ${({ size }) => sizes[size]} solid #E3E5E5;
-border-radius: 50%;
-border-top: ${({ size }) => sizes[size]} solid #3498db;
- width: ${({ size }) => sizes[size]};
-height: ${({ size }) => sizes[size]};
-animation: ${rotate360} ${({ velocity }) => velocities[velocity]} linear infinite;
-`
-StyledLoader.defaultProps = {
-	size: 'medium',
-	velocity: 'fast'
-}
 
 export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
@@ -67,7 +20,7 @@ ${props => props.active === true && css`
 `}
 `
 export const TabLink = styled(Link)`
-    display:inline-block;
+    display:flex;
     text-decoration: none;
     height:100%;
     outline: 0;
@@ -86,14 +39,14 @@ export const TabLink = styled(Link)`
     padding-right: 20px;
 `
 export const TabCloseLink = styled(Link)`
-    display:inline-block;
+    display:flex;
     text-decoration: none;
     height:100%;
     outline: 0;
     color: ${(props) => props.theme.tabs.TAB_TEXT};
     font-family:  ${(props) => props.theme.font};
     font-style: normal;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
     ${props => props.on === true && css`
         color: white;
@@ -101,7 +54,9 @@ export const TabCloseLink = styled(Link)`
 `
 
 export const TabDiv = styled.div`
-display:inline-flex;
+display: flex;
+flex-direction: row;
+align-items:center;
 `
 export const TabList = styled.ul`
     height: 40px;
@@ -135,20 +90,20 @@ export const TabLabel = styled.li`
     position:relative;
     margin-right: 1px;
 `
-
-export const TabIconDiv = styled.div`
-   margin: 0;
-    margin-top: -1px;
-    margin-right: 3px;
-    padding: 0;
+export const TabLoaderDiv = styled.div`
+    width: 18px;
+    margin: 0;
+    margin-top:1px;
+    margin-left:1px;
     font-size: 18px;
-    ${props => props.active === true && css`
-        color: white;
-    `}
-    `
-export const TabIcon = styled(Icon)`
- 
 `
+export const TabIconDiv = TabLoaderDiv.extend`
+    margin-top: -3px;
+    padding: 0;
+    ${props => props.active === true && css`
+         color: white;
+    `}
+ `
 
 export const TabWrapperDiv = styled.div`
     clear: both;

@@ -11,8 +11,11 @@ const rotate360 = keyframes`
 		transform: rotate(360deg);
 	}
 `
-
 const sizes = {
+	xxxs: {
+		diameter: '8px',
+		border: '2px'
+	},
 	xxs: {
 		diameter: '13px',
 		border: '2px'
@@ -43,6 +46,7 @@ const sizes = {
 	}
 }
 
+
 const velocities = {
 	slow: '3s',
 	medium: '2s',
@@ -54,7 +58,7 @@ const StyledLoader = styled.div`
 	display:inline-block;
 	border: ${({ size }) => sizes[size].border} solid white;
 	border-radius: 50%;
-	border-top: ${({ size }) => sizes[size].border} solid orange;
+	border-top: ${({ size }) => sizes[size].border} solid #979898;
  	width: ${({ size }) => sizes[size].diameter};
 	height: ${({ size }) => sizes[size].diameter};
 	animation: ${rotate360} ${({ velocity }) => velocities[velocity]} linear infinite;

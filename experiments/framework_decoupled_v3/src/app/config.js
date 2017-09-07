@@ -32,7 +32,7 @@ var tabSystem = {
 				location: "/eplan/list",
 				icon: "assignment",
 				fixed: true,
-				isLoading: true,
+				isLoading: false,
 				closeLocation: ''
 			}
 		}

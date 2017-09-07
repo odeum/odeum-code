@@ -52,11 +52,12 @@ export const tabChange = (instanceID, tab) => ({
 })
 
 
-export const tabIsLoading = (instanceID, tab) => ({
+export const tabIsLoading = (instanceID, tab, isLoading) => ({
 	type: TAB_ISLOADING,
 	payload: {
 		instanceID: instanceID,
-		tab: tab
+		tab: tab,
+		isLoading: isLoading
 	}
 })
 
@@ -147,6 +148,25 @@ export default function tabReducer(state = initState, action) {
 							tabs: {
 								...state.tabSystem[action.payload.instanceID].tabs,
 								[action.payload.tab.id]: action.payload.tab
+							}
+						}
+					}
+				}
+			}
+		case TAB_ISLOADING:
+			{
+				return {
+					...state,
+					tabSystem: {
+						...state.tabSystem,
+						[action.payload.instanceID]: {
+							...state.tabSystem[action.payload.instanceID],
+							tabs: {
+								...state.tabSystem[action.payload.instanceID].tabs,
+								[action.payload.tab.id]: {
+									...state.tabSystem[action.payload.instanceID].tabs[action.payload.tab.id],
+									isLoading: action.payload.isLoading
+								}
 							}
 						}
 					}

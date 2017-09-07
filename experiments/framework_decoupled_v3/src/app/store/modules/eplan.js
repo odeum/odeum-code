@@ -26,6 +26,7 @@ const UPDATE_REFERENCE_TABLE = '@@EPLAN/UPDATE_REFERENCE_TABLE'
 const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
 const DELETE_REFERENCE_TABLE_DATA = '@@EPLAN/DELETE_REFERENCE_TABLE_DATA'
 const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
+const APPENDIX_IS_LOADING = '@@EPLAN/APPENDIX_IS_LOADING'
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
 const getAppendix = (data) => ({ type: GET_APPENDIX, payload: data })
@@ -46,7 +47,7 @@ const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data 
 const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, payload: data })
 const deleteRefTableData = (data) => ({ type: DELETE_REFERENCE_TABLE_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
-
+const appendixIsLoading = (data) => ({ type: APPENDIX_IS_LOADING, payload: data })
 /* Middleware */
 export function removeOpenApdx(id) {
 	return dispatch => {
@@ -76,8 +77,10 @@ export async function addAppendixAsync(appendix) {
 
 export function getAppendixAsync(id) {
 	return async dispatch => {
+		dispatch(appendixIsLoading(true))
 		await getAppendixById(id).then((result) => {
 			dispatch(getAppendix(result))
+			dispatch(appendixIsLoading(false))
 		})
 
 	}
@@ -239,7 +242,8 @@ const initState = {
 	referencetablesIsLoading: true,
 	referenceTablesEntryIsLoading: true,
 	conf: null,
-	appendixIsSaving: false
+	appendixIsSaving: false,
+	appendixIsLoading: true
 }
 
 function eplan(state = initState, action) {
@@ -255,6 +259,12 @@ function eplan(state = initState, action) {
 				...state,
 				appendixIsSaving: true
 			}
+		case APPENDIX_IS_LOADING: {
+			return {
+				...state,
+				appendixIsLoading: action.payload
+			}
+		}
 		case UPDATE_APPENDIX:
 			{
 				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))

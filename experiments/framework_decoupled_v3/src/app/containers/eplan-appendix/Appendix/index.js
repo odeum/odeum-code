@@ -2,11 +2,11 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
+// import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 import { getFrameConfigAsync } from 'app/store/modules/eplan'
 
 /* Framework */
-import { addTab, tabChange, addInstance } from 'framework/store/modules/tabs'
+import { addTab, tabChange, addInstance, tabIsLoading } from 'framework/store/modules/tabs'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 /* Styling */
 
@@ -16,9 +16,22 @@ import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 class AppendixContainer extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {}
+		this.state = {
+		}
 		this.tabs = this.tabs.bind(this)
 	}
+	tab() {
+		return {
+			id: this.props.param,
+			label: this.props.param,
+			location: "/eplan/list/" + this.props.param + "/edit",
+			icon: "mode_edit",
+			fixed: false,
+			isLoading: true,
+			closeLink: '/eplan/list'
+		}
+	}
+
 	componentWillMount() {
 		this.props.onMount(
 			this.props.id,
@@ -46,7 +59,7 @@ class AppendixContainer extends Component {
 					location: "/eplan/list/" + this.props.param + "/edit",
 					icon: "info",
 					fixed: true,
-					isLoading: false,
+					isLoading: true,
 					closeLink: ''
 				},
 				rammer: {
@@ -77,10 +90,10 @@ class AppendixContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
 	param: ownProps.params.id,
-	appendix: getAppendix(state, ownProps.params.id, ownProps) || null,
-	initialValues: {
-		fields: getAppendixSel(state, ownProps.params.id, ownProps)
-	} || null,
+	// appendix: getAppendix(state, ownProps.params.id, ownProps) || null,
+	// initialValues: {
+	// 	fields: getAppendixSel(state, ownProps.params.id, ownProps)
+	// } || null,
 	conf: state.eplan.conf
 })
 
@@ -102,6 +115,9 @@ function mapDispatchToProps(dispatch) {
 			dispatch(addTab('eplan', tab))
 			dispatch(tabChange(id, tab.label))
 			dispatch(getFrameConfigAsync())
+		},
+		tabisLoading: (id, tab, isLoading) => {
+			dispatch(tabIsLoading(id, tab, isLoading))
 		}
 	}
 }

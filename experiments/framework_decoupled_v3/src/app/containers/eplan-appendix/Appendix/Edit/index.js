@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form'
 import { getAppendixSel, getAppendix, getAppendixDates } from 'app/store/selectors/eplan'
 
 /* Framework */
-// import { tabChange, addTab } from 'framework/store/modules/tabs'
+import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
@@ -15,20 +15,15 @@ import * as Icons from 'react-icons/lib/md'
 
 /* Components */
 import AppendixConfigModal from './AppendixConfigModal'
-// import moment from 'moment'
-// import { renderQuill } from '../EditorSelector'
 import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
-// import SettingsModal from 'app/components/eplan-appendix/Appendix/SettingsModal'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
-// import AppendixPdfModal from 'app/components/eplan-appendix/Appendix/AppendixPdfModal'
-// import SaveModal from 'app/components/eplan-appendix/Appendix/Save'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
-
-var fileDownload = require('react-file-download')
+import fileDownload from 'react-file-download'
+// var fileDownload = require('react-file-download')
 
 let renderFields = ({ fields }) => {
 	return (
@@ -51,7 +46,17 @@ let renderFields = ({ fields }) => {
 	)
 }
 
+
 class EditAppendix extends Component {
+	tab = {
+		id: 'tillaeg_tekst',
+		label: "Tillægs tekst",
+		location: "/eplan/list/" + this.props.param + "/edit",
+		icon: "info",
+		fixed: true,
+		isLoading: true,
+		closeLink: ''
+	}
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -60,7 +65,8 @@ class EditAppendix extends Component {
 			pdfIsLoading: false,
 			// pdfModalIsOpen: false,
 			// pdfFile: '',
-			dates: []
+			dates: [],
+			appendixIsLoading: true
 		}
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
@@ -70,35 +76,32 @@ class EditAppendix extends Component {
 		this.saveConfigModal = this.saveConfigModal.bind(this)
 		this.openExportModal = this.openExportModal.bind(this)
 		this.closeExportModal = this.closeExportModal.bind(this)
-		// this.handleDateChange = this.handleDateChange.bind(this)
 		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
 		this.handlePdfChange = this.handlePdfChange.bind(this)
 		this.handleViewAppendix = this.handleViewAppendix.bind(this)
-		// this.openPdfModal = this.openPdfModal.bind(this)
-		// this.closePdfModal = this.closePdfModal.bind(this)
-		// this.setDates = this.setDates.bind(this)
 	}
 
 	componentWillMount() {
+		// this.props.tabisLoading(this.props.param, this.tab, true)
 		this.props.onMount(
 			this.props.param,
-			"Tillægs tekst"
+			this.tab
 		)
-		this.props.reset()
+		if (this.props.appendix !== null) {
+			this.props.tabisLoading(this.props.param, this.tab, false)
+		}
 	}
 	componentWillUpdate(nextProps, nextState) {
-		if (nextProps !== this.props)
-			console.log(nextProps)
+		if (this.props.appendix !== null || nextProps.appendix !== null)
+			this.props.tabisLoading(this.props.param, this.tab, false)
 	}
 
-	componentWillUnmount() {
-		this.props.reset()
-	}
 
 	async componentDidMount() {
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
 		}
+
 	}
 
 	async submitUpdate(values) {
@@ -123,17 +126,6 @@ class EditAppendix extends Component {
 		})
 	}
 
-	// openPdfModal() {
-	// 	this.setState({
-	// 		pdfModalIsOpen: true
-	// 	})
-	// }
-
-	// closePdfModal() {
-	// 	this.setState({
-	// 		pdfModalIsOpen: false
-	// 	})
-	// }
 	openConfigModal() {
 		this.setState({
 			configModalIsOpen: true
@@ -155,22 +147,9 @@ class EditAppendix extends Component {
 		var appendix = {
 			fields: values.dates
 		}
-
-
-		//await this.props.updateApd()
+		
 		await this.props.updateApd(appendix, this.props.param, false)
-		//console.log('saveconfigmodal', appendix)
 	}
-	/* 	handleDateChange(date, id) {
-			var newDate = { id: id, ...date }
-			var newArray = this.state.dates
-			newArray.push(newDate)
-			this.setState({
-				dates: newArray
-			})
-			console.log('-----date-----')
-			console.log(this.state.dates)
-		} */
 
 	async handlePdfChange(option) {
 		this.setState({ pdfIsLoading: true })
@@ -180,8 +159,6 @@ class EditAppendix extends Component {
 					if (response.errorcode) {
 						alert(response.description)
 					} else {
-						// this.setState({ pdfFile: response })
-						// this.openPdfModal()
 						fileDownload(atob(response.result), 'test.pdf')
 					}
 				})
@@ -194,8 +171,6 @@ class EditAppendix extends Component {
 					if (response.errorcode) {
 						alert(response.description)
 					} else {
-						// this.setState({ pdfFile: response })
-						// this.openPdfModal()
 						fileDownload(atob(response.result), 'test.pdf')
 					}
 				})
@@ -221,8 +196,6 @@ class EditAppendix extends Component {
 
 		try {
 			await this.props.exportToPlanSystem(this.props.appendix.appendixId).then((response) => {
-				//console.log('Export result this:', response)
-
 				document.getElementById('exportLoadingDiv').style.display = 'none'
 				document.getElementById('exportCloseButton').style.display = 'block'
 
@@ -285,10 +258,9 @@ class EditAppendix extends Component {
 
 	render() {
 		/* State */
-		// , pdfModalIsOpen, pdfFile, page
 		const { configModalIsOpen, exportModalIsOpen } = this.state
 		/* Props */
-		const { appendix, handleSubmit, appendixDates } = this.props
+		const { appendix, handleSubmit, appendixDates, appendixIsLoading } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
 			closeConfigModal, saveConfigModal,
@@ -303,11 +275,6 @@ class EditAppendix extends Component {
 			{ value: 'viewpublic', label: 'Vis offentlig udgave' }
 		]
 
-		// let pagination = null
-		// if (this.state.pages) {
-		// 	pagination = this.renderPagination(this.state.page, this.state.pages)
-		// }
-
 		const statusOptions = [
 			{ value: '1', label: 'Kladde' },
 			{ value: '2', label: 'Udkast' },
@@ -317,7 +284,7 @@ class EditAppendix extends Component {
 
 		return (
 			<SecondaryContainer>
-				{appendix !== null && appendixDates !== undefined ?
+				{appendixIsLoading !== true && appendixDates !== undefined ?
 
 					<Animation>
 						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> :
@@ -342,10 +309,6 @@ class EditAppendix extends Component {
 																clearable={false}
 																placeholder="PDF"
 															/>
-															{/* 															<CustomDD label="Se PDF">
-																<h3>See PDF</h3>
-																<h3>Download PDF</h3>
-															</CustomDD> */}
 														</Box>
 														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
 															<DropdownSelect
@@ -381,15 +344,6 @@ class EditAppendix extends Component {
 									appendix={appendix}
 									onClickExportAppendix={onClickExportAppendix}
 								/>
-								{/* <AppendixPdfModal
-									pdfModalIsOpen={pdfModalIsOpen}
-									closePdfModal={closePdfModal}
-									onDocumentComplete={onDocumentComplete}
-									onPageComplete={onPageComplete}
-									page={page}
-									pagination={pagination}
-									pdfFile={pdfFile}
-								/> */}
 								<ToastContainerStyled
 									position="top-right"
 									autoClose={5000}
@@ -401,7 +355,7 @@ class EditAppendix extends Component {
 								<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
 							</div>}
 					</Animation>
-					: <PulseLoader color="royalblue" />
+					: null
 				}
 			</SecondaryContainer>
 		)
@@ -417,20 +371,14 @@ const mapStateToProps = (state, ownProps) => ({
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,
 	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
-	form: 'appendix_' + ownProps.param
+	form: 'appendix_' + ownProps.param,
+	appendixIsLoading: state.eplan.appendixIsLoading
 })
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: (instanceID, param) => {
-			// dispatch(addTab('eplan',
-			// 	{
-			// 		id: param,
-			// 		label: param,
-			// 		icon: 'info',
-			// 		location: '/eplan/list/' + param + '/edit'
-			// 	}))
-			// dispatch(tabChange('eplan', param))
+		onMount: (instanceID, tab) => {
+			dispatch(addTab(instanceID, tab))
 		},
 		getAppendix: async (param) => {
 			dispatch(await getAppendixAsync(param))
@@ -444,12 +392,14 @@ function mapDispatchToProps(dispatch) {
 		},
 		exportToPlanSystem: async (id) => {
 			return dispatch(await exportAppendixToPlansystemAsync(id))
+		},
+		tabisLoading: (id, tab, isLoading) => {
+			dispatch(tabIsLoading(id, tab, isLoading))
 		}
 	}
 }
 
 EditAppendix = reduxForm({
-	// form: 'appendix',
 	enableReinitialize: true,
 	destroyOnUnmount: false,
 	keepDirtyOnReinitialize: true

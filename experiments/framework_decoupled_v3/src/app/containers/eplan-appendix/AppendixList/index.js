@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { tabChange } from 'framework/store/modules/tabs'
+import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
-import { /* DescriptionDiv */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv */ /* PulseLoader ,*/ AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { getListAsync } from 'app/store/modules/eplan'
 import { PrimaryContainer } from 'app/styles/'
 import NewAppendixModal from './NewAppendixModal'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
-const props = { name: 'Oversigt' }
+
 
 class AppendixList extends Component {
+	tab = {
+		id: 'eplan_oversigt',
+		label: "Oversigt",
+		location: "/eplan/list",
+		icon: "assignment",
+		fixed: true,
+		isLoading: true,
+		closeLocation: ''
+	}
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -24,9 +33,15 @@ class AppendixList extends Component {
 		this.saveNewAppendix = this.saveNewAppendix.bind(this)
 	}
 	async componentWillMount() {
-		this.props.onMount(this.props.id, props.name)
+		this.props.onMount(this.props.id, this.tab)
+		if (this.props.appendixes.size < 1)
+			this.props.tabisLoading(this.props.id, this.tab, true)
 		await this.props.getList()
 
+	}
+	componentWillUpdate(nextProps, nextState) {
+		if (this.props.isLoading !== true || nextProps.isLoading !== true)
+			this.props.tabisLoading(this.props.id, this.tab, false)
 	}
 	onClickButton(index) {
 		this.props.onClickButton(index)
@@ -59,7 +74,7 @@ class AppendixList extends Component {
 				<AppendixButtonPanel>
 					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
 				</AppendixButtonPanel>
-				{this.props.isLoading ? <PulseLoader size="15px" color={'royalblue'} /> : <AppendixTable onClickButton={this.onClickButton} />}
+				{this.props.isLoading ? null : <AppendixTable onClickButton={this.onClickButton} />}
 				<NewAppendixModal
 					newAppendixModalIsOpen={newAppendixModalIsOpen}
 					closeNewAppendixModal={closeNewAppendixModal}
@@ -76,14 +91,17 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: (id, name) => {
-			dispatch(tabChange(id, name))
+		onMount: (id, tab) => {
+			dispatch(tabChange(id, tab.label))
 		},
 		onClickButton: (location) => {
 			dispatch(push('/eplan/list/' + location + '/edit'))
 		},
-		getList: () => {
-			dispatch(getListAsync())
+		getList: async () => {
+			dispatch(await getListAsync())
+		},
+		tabisLoading: (instanceID, tab, isLoading) => {
+			dispatch(tabIsLoading(instanceID, tab, isLoading))
 		}
 	}
 }
