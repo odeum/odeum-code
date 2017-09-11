@@ -2,7 +2,7 @@ import React from 'react'
 import { TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from '../styles/TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
-import Loader from 'framework/components/Widgets/Loader/Loader'
+import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
 
 const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 	let active = (tab) => {
@@ -36,7 +36,7 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 								<TabDiv>
 									{!tabs[tab].isLoading ?
 										<TabIconDiv><Icon icon={tabs[tab].icon} active={active(tabs[tab])} /> </TabIconDiv>
-										: <TabLoaderDiv><Loader size='xxs' velocity='fast' /> </TabLoaderDiv>}
+										: <TabLoaderDiv><SmoothLoader size='xxs' velocity='fast' /> </TabLoaderDiv>}
 									{tabs[tab].label}
 								</TabDiv>
 							</TabLink>

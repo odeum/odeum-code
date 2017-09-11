@@ -82,24 +82,26 @@ class EditAppendix extends Component {
 	}
 
 	componentWillMount() {
-		// this.props.tabisLoading(this.props.param, this.tab, true)
+		this.props.tabisLoading(this.props.param, this.tab, true)
 		this.props.onMount(
 			this.props.param,
 			this.tab
 		)
-		if (this.props.appendix !== null) {
+
+	}
+	componentDidUpdate(nextProps, nextState) {
+		console.log('Updated')
+		if (this.props.appendix !== null || nextProps.appendix !== null) {
 			this.props.tabisLoading(this.props.param, this.tab, false)
 		}
-	}
-	componentWillUpdate(nextProps, nextState) {
-		if (this.props.appendix !== null || nextProps.appendix !== null)
-			this.props.tabisLoading(this.props.param, this.tab, false)
 	}
 
 
 	async componentDidMount() {
+		console.log('Mounted')
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
+			this.props.tabisLoading(this.props.param, this.tab, false)
 		}
 
 	}
@@ -147,7 +149,7 @@ class EditAppendix extends Component {
 		var appendix = {
 			fields: values.dates
 		}
-		
+
 		await this.props.updateApd(appendix, this.props.param, false)
 	}
 
@@ -260,7 +262,7 @@ class EditAppendix extends Component {
 		/* State */
 		const { configModalIsOpen, exportModalIsOpen } = this.state
 		/* Props */
-		const { appendix, handleSubmit, appendixDates, appendixIsLoading } = this.props
+		const { appendix, handleSubmit, appendixDates } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
 			closeConfigModal, saveConfigModal,
@@ -284,7 +286,7 @@ class EditAppendix extends Component {
 
 		return (
 			<SecondaryContainer>
-				{appendixIsLoading !== true && appendixDates !== undefined ?
+				{appendix !== null && appendixDates !== undefined ?
 
 					<Animation>
 						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> :
