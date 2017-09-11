@@ -4,16 +4,16 @@ import * as fonts from './fonts'
 const theme = {
 	background: colors.EMERALD_LIGHT,
 	color: colors.TAB_COLOR_2,
-  
+
 	font: fonts.PRIMARY,
 	fontWeight: fonts.FONT_WEIGHT,
-	fontStyle: fonts.FONT_STYLE, 
+	fontStyle: fonts.FONT_STYLE,
 
-	tabs:{
-		TAB_TEXT:colors.TAB_TEXT,
+	tabs: {
+		TAB_TEXT: colors.TAB_TEXT,
 		TAB_TEXT_SELECTED: colors.TAB_TEXT_SELECTED,
-		TAB:colors.TAB,
-		TAB_SELECTED:colors.TAB_SELECTED
+		TAB: colors.TAB,
+		TAB_SELECTED: colors.TAB_SELECTED
 	},
 	button: {
 		color: colors.BUTTON_TEXT,
@@ -52,7 +52,7 @@ const theme = {
 			lineHeight: 1.9
 		}
 	},
-	breakpoints: [ 32, 48, 64, 80 ] //640,830,1024,1280 px
+	breakpoints: [32, 48, 64, 80] //640,830,1024,1280 px
 }
 
 export default theme
