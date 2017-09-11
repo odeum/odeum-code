@@ -28,6 +28,7 @@ export const WorkspaceContainer = styled.div`
     width: calc(100% - 250px);
     align-items: stretch;
     margin: 20px;
+    padding-bottom: 40px;
     overflow: hidden;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;    
