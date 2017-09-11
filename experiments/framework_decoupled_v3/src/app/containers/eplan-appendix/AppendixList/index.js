@@ -34,8 +34,10 @@ class AppendixList extends Component {
 	}
 	async componentWillMount() {
 		this.props.onMount(this.props.id, this.tab)
-		if (this.props.appendixes.size < 1)
+		// if (this.props.appendixes.size < 1) {
+		if (this.props.isLoading === true) {
 			this.props.tabisLoading(this.props.id, this.tab, true)
+		}
 		await this.props.getList()
 
 	}

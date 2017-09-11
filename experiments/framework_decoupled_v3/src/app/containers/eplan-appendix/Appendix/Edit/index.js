@@ -66,7 +66,7 @@ class EditAppendix extends Component {
 			// pdfModalIsOpen: false,
 			// pdfFile: '',
 			dates: [],
-			appendixIsLoading: true
+			//appendixIsLoading: true
 		}
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
@@ -82,28 +82,30 @@ class EditAppendix extends Component {
 	}
 
 	componentWillMount() {
-		this.props.tabisLoading(this.props.param, this.tab, true)
 		this.props.onMount(
 			this.props.param,
 			this.tab
 		)
-
+		// this.props.tabisLoading(this.props.param, this.tab, true)
 	}
 	componentDidUpdate(nextProps, nextState) {
-		console.log('Updated')
-		if (this.props.appendix !== null || nextProps.appendix !== null) {
-			this.props.tabisLoading(this.props.param, this.tab, false)
+		if (this.props.appendixIsLoading !== undefined) {
+			if (this.props.appendixIsLoading !== true ) {
+				this.props.tabisLoading(this.props.param, this.tab, false)
+			}
 		}
+
 	}
 
 
 	async componentDidMount() {
-		console.log('Mounted')
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
+			
+		}
+		if (this.props.appendixIsLoading !== true) {
 			this.props.tabisLoading(this.props.param, this.tab, false)
 		}
-
 	}
 
 	async submitUpdate(values) {
@@ -374,7 +376,7 @@ const mapStateToProps = (state, ownProps) => ({
 	appendixIsSaving: state.eplan.appendixIsSaving,
 	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
 	form: 'appendix_' + ownProps.param,
-	appendixIsLoading: state.eplan.appendixIsLoading
+	appendixIsLoading: state.eplan.ApdxLoading[ownProps.param]
 })
 
 function mapDispatchToProps(dispatch) {

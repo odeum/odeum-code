@@ -64,6 +64,8 @@ export const TabList = styled.ul`
     padding: 0;
     /*padding: 20px 0px 0px 20px;*/
     overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
 `
 export const TabClose = styled.div`
     position: absolute;
