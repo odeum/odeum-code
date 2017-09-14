@@ -523,7 +523,13 @@ With Styled-Components:
 - [Extending Visual Studio Code](https://code.visualstudio.com/docs/extensions/overview)
 
 ### 5.3.33. ODEUM Slack Service
-- Creating a Slack App for posting messages from ODEUM Apps to a team Slack channel
+Create a Slack App for posting messages from ODEUM Apps to a team Slack channel. Can be astablished pretty easy with Slack webhooks (already created for odeum-code channel). We will need a NodeJS service (server - test on surge.sh to hide the tokens from Slack. Setup up of easy NodeJS boilerplate with Express webserver to exhibit API which should contain:
+
+- Base URL to Slack webhooks: https://hooks.slack.com/services/
+- Message
+- Channel (to switch between channels - all have seperate tokens obtained from Slack)
+
+Links:
 - [Slack API](https://api.slack.com)
 - [Example of use - React Slack Chat](https://www.npmjs.com/package/react-slack-chat)
 - [Example of use - React Slack Feedback](https://www.npmjs.com/package/react-slack-feedback)
@@ -607,7 +613,8 @@ Icons for ODEUM Code will use Material Design (MD) icons.
 - [Material Design icons](https://material.io/icons/)
 
 ## 7.1. Icons location
-- All icons are located in the "theme" experiment and will be included in the ODEUM ThemeBuilder App
+- All icons are will be located through the ODEUM UI NPM package (odeum-ui) and will be included in the ODEUM ThemeBuilder App
+- [Check available icons here](http://odeumicons.surge.sh)
 
 # 8. Future Technology ideas
 
