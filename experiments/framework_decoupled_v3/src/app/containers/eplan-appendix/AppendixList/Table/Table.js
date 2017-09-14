@@ -17,7 +17,18 @@ import * as colors from 'framework/assets/colors'
 import RowRenderer from './_rowRender'
 import moment from 'moment'
 import 'moment/locale/da'
+import { getFilteredAppdx } from 'app/store/selectors/eplan'
 
+function CellDataGetter({ dataKey, rowData }) {
+
+	if (rowData !== undefined) {
+		if (typeof rowData.get === "function") {
+			return rowData.get(dataKey)
+		} else {
+			return rowData[dataKey]
+		}
+	}
+}
 class AppendixTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
@@ -206,8 +217,9 @@ class AppendixTable extends Component {
 										dataKey='appendixId'
 										disableSort={!this._isSortEnabled()}
 										headerRenderer={this._headerRenderer}
+										cellDataGetter={CellDataGetter}
 										cellRenderer={
-											({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
+											({ cellData }) => (<Cell>{cellData}</Cell>)
 										}
 										width={width}
 										flexgrow={1}
@@ -221,8 +233,9 @@ class AppendixTable extends Component {
 									dataKey='name'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
+										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData ? rowData : 'error')}>{cellData}</Cell>)
 									}
 									flexgrow={1}
 								/>
@@ -234,6 +247,7 @@ class AppendixTable extends Component {
 									dataKey='number'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
@@ -246,6 +260,7 @@ class AppendixTable extends Component {
 									label='Oprettelsesdato'
 									dataKey='created'
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell onClick={() => this._cellClicked(rowData)}>{moment(cellData).format('LL')}</Cell>)
 									}
@@ -258,6 +273,7 @@ class AppendixTable extends Component {
 									label='Status'
 									dataKey='status'
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
 											(<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
@@ -271,6 +287,7 @@ class AppendixTable extends Component {
 									dataKey='responsible'
 									headerRenderer={this._headerRenderer}
 									disableSort={!this._isSortEnabled()}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
 											(<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
@@ -283,6 +300,7 @@ class AppendixTable extends Component {
 									label="Handlinger"
 									dataKey='actions'
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									disableSort
 									cellRenderer={
 										this._actionRowRenderer
@@ -377,10 +395,14 @@ class AppendixTable extends Component {
 		dataKey,
 		rowData, rowIndex
 	}) {
-		return <Cell onClick={(e) => { }}>
-			<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
-			<ListAction><div onClick={() => this.openExportModal(rowData)}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></div></ListAction>
-		</Cell>
+		if (rowData !== undefined) {
+			return <Cell onClick={(e) => { }}>
+				<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
+				<ListAction><div onClick={() => this.openExportModal(rowData)}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></div></ListAction>
+			</Cell>
+		}
+		else
+			return null
 	}
 
 	_headerRenderer({
@@ -452,7 +474,7 @@ class AppendixTable extends Component {
 	}
 }
 const mapStateToProps = (state, ownProps) => ({
-	list: List(state.eplan.appendixes)
+	list: getFilteredAppdx(state).size !== 0 ? getFilteredAppdx(state) : List([])
 })
 function mapDispatchToProps(dispatch) {
 	return {
@@ -463,4 +485,4 @@ function mapDispatchToProps(dispatch) {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (AppendixTable)
+export default connect(mapStateToProps, mapDispatchToProps)(AppendixTable)
