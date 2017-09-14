@@ -20,32 +20,18 @@ class AppendixContainer extends Component {
 		}
 		this.tabs = this.tabs.bind(this)
 	}
-	tab() {
-		return {
-			id: this.props.param,
-			label: this.props.param,
-			location: "/eplan/list/" + this.props.param + "/edit",
-			icon: "mode_edit",
-			fixed: false,
-			isLoading: true,
-			closeLink: '/eplan/list'
-		}
+	tab = {
+		id: this.props.param,
+		label: this.props.param,
+		location: "/eplan/list/" + this.props.param + "/edit",
+		icon: "mode_edit",
+		fixed: false,
+		isLoading: false,
+		closeLink: '/eplan/list'
 	}
 
 	componentWillMount() {
-		this.props.onMount(
-			this.props.id,
-			{
-				id: this.props.param,
-				label: this.props.param,
-				location: "/eplan/list/" + this.props.param + "/edit",
-				icon: "mode_edit",
-				fixed: false,
-				isLoading: false,
-				closeLink: '/eplan/list'
-			},
-			this.props.param
-		)
+		this.props.onMount(this.props.id, this.tab, this.props.param)
 		this.tabs()
 	}
 
@@ -59,7 +45,7 @@ class AppendixContainer extends Component {
 					location: "/eplan/list/" + this.props.param + "/edit",
 					icon: "info",
 					fixed: true,
-					isLoading: true,
+					isLoading: false,
 					closeLink: ''
 				},
 				rammer: {
@@ -109,7 +95,6 @@ function mapDispatchToProps(dispatch) {
 				isScene: false,
 				tabs: tabs
 			}))
-			// dispatch(tabChange(id, tabs[0].label))
 		},
 		onMount: (id, tab) => {
 			dispatch(addTab('eplan', tab))

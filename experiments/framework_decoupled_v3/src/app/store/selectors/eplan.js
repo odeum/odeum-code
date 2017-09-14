@@ -1,6 +1,24 @@
 import { List } from 'immutable'
-
+import { createSelector } from 'reselect'
 var _ = require('lodash')
+
+const getFilterText = (state) => state.eplan.filterText
+const getAppendixes = (state) => state.eplan.appendixes
+
+export const getFilteredAppdx = createSelector(
+	[getAppendixes, getFilterText],
+	(appendixes, filterText) => {
+		// console.log(appendixes, filterText)
+		if (appendixes) {
+			var filtered = appendixes.filter(t => t.name.includes(filterText))
+			console.log('filter', filtered)
+			return (
+				filtered === [] ? [] : filtered)
+		}
+		else
+			return []
+	}
+)
 
 export const getConfigSel = state => state.eplan.conf
 
@@ -8,17 +26,16 @@ export const getAppendixSel = (state, id, props) => {
 	var appendix = _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
 	var config = getConfigSel(state)
 	var filter = null
-	if (appendix && config)
-	{ filter = _.intersectionBy(appendix.fields, config.editFields, 'id') }
+	if (appendix && config) { filter = _.intersectionBy(appendix.fields, config.editFields, 'id') }
 	// console.log(filter)
 	return filter ? filter : undefined
 }
+
 export const getAppendixCreateSel = (state, id, props) => {
 	var appendix = _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
 	var config = getConfigSel(state)
 	var filter = null
-	if (appendix && config)
-	{ filter = _.intersectionBy(appendix.fields, config.createFields, 'id') }
+	if (appendix && config) { filter = _.intersectionBy(appendix.fields, config.createFields, 'id') }
 	console.log(filter)
 	return filter ? filter : undefined
 }
@@ -27,8 +44,7 @@ export const getAppendixDates = (state, id, props) => {
 	var appendix = _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
 	var config = getConfigSel(state)
 	var filter = null
-	if (appendix && config)
-	{ filter = _.intersectionBy(appendix.fields, config.propertiesFields, 'id') }
+	if (appendix && config) { filter = _.intersectionBy(appendix.fields, config.propertiesFields, 'id') }
 	// console.log(filter)
 	return filter ? filter : undefined
 }
@@ -43,7 +59,7 @@ export const getFrameFieldsSel = (state, id) => {
 	var filter = null
 	if (openFrame && config) {
 		filter = []
-		_.forEach(config.editFields, function(value, key) {
+		_.forEach(config.editFields, function (value, key) {
 			filter[filter.length] = openFrame.fields[key]
 		})
 	}

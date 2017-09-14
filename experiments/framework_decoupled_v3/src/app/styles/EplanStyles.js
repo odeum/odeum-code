@@ -124,7 +124,8 @@ export const AppendixHeader = styled.div`
 `
 
 export const AppendixButtonPanel = styled.div`
-    float: right;
+    display:flex;
+    flex-flow: row wrap;
     margin-bottom: 20px;
 `
 
