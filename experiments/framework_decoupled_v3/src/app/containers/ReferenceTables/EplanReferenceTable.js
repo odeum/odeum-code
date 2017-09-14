@@ -9,7 +9,7 @@ const sceneProp = { id: 'ref_table' }
 class EplanReferenceTable extends Component {
 	async componentWillMount() {
 		this.props.onMount()
-		// await this.props.getList()
+		 await this.props.getList()
 	}
     
 	render() {

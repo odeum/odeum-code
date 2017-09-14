@@ -59,12 +59,12 @@ class ReferenceTableList extends Component {
 	}
 
 	componentWillUpdate(nextProps, nextState) {
-		console.log('Mikkel, your component list is updating like mad')
-		console.log(nextProps.referencetablesIsLoading)
-		 		if (nextProps.referencetablesIsLoading !== undefined) {
-					if (nextProps.referencetablesIsLoading !== true && nextProps.referencetables !== null)
-						this.props.tabisLoading(this.props.id, this.tab, false)
-				} 
+		// console.log('')
+		// console.log(nextProps.referencetablesIsLoading)
+		//  		if (nextProps.referencetablesIsLoading !== undefined) {
+		// 			if (nextProps.referencetablesIsLoading !== true && nextProps.referencetables !== null)
+		// 				this.props.tabisLoading(this.props.id, this.tab, false)
+		// 		} 
 	}
 
 	componentDidUpdate(prevProps, prevState) {
