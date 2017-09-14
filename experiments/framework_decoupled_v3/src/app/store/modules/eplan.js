@@ -27,6 +27,7 @@ const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
 const DELETE_REFERENCE_TABLE_DATA = '@@EPLAN/DELETE_REFERENCE_TABLE_DATA'
 const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 const APPENDIX_IS_LOADING = '@@EPLAN/APPENDIX_IS_LOADING'
+// const REFERENCE_TABLE_IS_LOADING = '@@EPLAN/REF_TABLE_IS_LOADING'
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
 const getAppendix = (data) => ({ type: GET_APPENDIX, payload: data })
@@ -48,7 +49,7 @@ const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, paylo
 const deleteRefTableData = (data) => ({ type: DELETE_REFERENCE_TABLE_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
 const appendixIsLoading = (id, data) => ({ type: APPENDIX_IS_LOADING, payload: { id: id, isLoading: data } })
-
+// const referencetablesIsLoading = (id, data) => ({ type: REFERENCE_TABLE_IS_LOADING }, payload:{ id: id, isLoading: data })
 /* Middleware */
 export function removeOpenApdx(id) {
 	return dispatch => {
@@ -183,13 +184,12 @@ export async function createAppendixPdfAsync() {
 
 export function getReferenceTableListAsync() {
 	return async dispatch => {
-		await getReferenceTableList().then(
-			(result) => {
-				dispatch(getRefTableList(result))
-			}
-		)
+		var data = await getReferenceTableList()
+		dispatch(getRefTableList(data))
 	}
+
 }
+
 
 export function getReferenceTableEntryAsync(id) {
 	return async dispatch => {
@@ -284,7 +284,6 @@ function eplan(state = initState, action) {
 				}
 			}
 		case ADD_APPENDIX:
-			console.log(action.payload)
 			return {
 				...state,
 				appendixes: state.appendixes.concat(action.payload.result),

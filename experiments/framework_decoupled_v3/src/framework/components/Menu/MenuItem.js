@@ -7,7 +7,8 @@ import {
 	Arrow
 }
 	from '../styles/MenuStyles'
-import * as Icons from 'react-icons/lib/md'
+//Refactor get rid of library
+import { MdKeyboardArrowRight } from 'react-icons/lib/md'
 
 const MenuItem = ({ name, id, icon, location, active, onLoad }) => {
 	return (
@@ -21,7 +22,7 @@ const MenuItem = ({ name, id, icon, location, active, onLoad }) => {
 					<StyledIcon icon={icon} active={true} size={18} />
 				</StyledIconDiv>
 				{name}
-				<Arrow><Icons.MdKeyboardArrowRight /></Arrow>
+				<Arrow><MdKeyboardArrowRight /></Arrow>
 
 			</MenuLink>
 		</MenuPanelDiv>

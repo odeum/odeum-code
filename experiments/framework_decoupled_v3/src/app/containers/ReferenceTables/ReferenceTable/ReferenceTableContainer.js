@@ -15,26 +15,26 @@ import { addTab, tabChange } from 'framework/store/modules/tabs'
 
 /* -------- END IMPORT ---------- */
 class ReferenceTableContainer extends Component {
+	tab = {
+		id: this.props.referenceTableId,
+		label: this.props.referenceTableId,
+		location: '/reference/list/' + this.props.referenceTableId + '/edit',
+		icon: 'mode_edit',
+		fixed: false,
+		isLoading: true,
+		closeLocation: '/reference/list'
+	}
 	constructor(props) {
 		super(props)
 		this.state = {}
 	}
 	async componentWillMount() {
-
+		//ADD TAB LOADING HERE
 		if (!this.props.referencetables) {
 			await this.props.getList()
 		}
 
-		this.props.onMount(
-			this.props.id,
-			{
-				label: this.props.referenceTableId, //this.props.referenceTableLabel ? this.props.referenceTableLabel : this.props.referenceTableId,
-				icon: 'mode_edit',
-				location: '/reference/list/' + this.props.referenceTableId + '/edit',
-				fixed: false,
-				closeLink: '/reference/list'
-			}
-		)
+		this.props.onMount(this.props.id, this.tab)
 	}
 
 	render() {
@@ -57,7 +57,7 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
-			dispatch(addTab(id, tab))
+		//	dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
 		},
 		getReferenceTable: (id) => {

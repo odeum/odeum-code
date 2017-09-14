@@ -9,7 +9,7 @@ const sceneProp = { id: 'ref_table' }
 class EplanReferenceTable extends Component {
 	async componentWillMount() {
 		this.props.onMount()
-		await this.props.getList()
+		// await this.props.getList()
 	}
     
 	render() {
@@ -21,8 +21,8 @@ class EplanReferenceTable extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	referencetables: state.eplan.referencetables,
-	referencetablesIsLoading: state.eplan.referencetablesIsLoading
+	/* referencetables: state.eplan.referencetables,
+	referencetablesIsLoading: state.eplan.referencetablesIsLoading */
 })
 
 function mapDispatchToProps(dispatch) {
