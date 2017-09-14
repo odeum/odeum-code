@@ -525,6 +525,8 @@ With Styled-Components:
 ### 5.3.33. ODEUM Slack Service
 - Creating a Slack App for posting messages from ODEUM Apps to a team Slack channel
 - [Slack API](https://api.slack.com)
+- [Example of use - React Slack Chat](https://www.npmjs.com/package/react-slack-chat)
+- [Example of use - React Slack Feedback](https://www.npmjs.com/package/react-slack-feedback)
 
 ### 5.3.34. ODEUM Code Tutorial Site
 - An App that can display simple markdown files from the ODEUM Code repo and run as a tutorial site
