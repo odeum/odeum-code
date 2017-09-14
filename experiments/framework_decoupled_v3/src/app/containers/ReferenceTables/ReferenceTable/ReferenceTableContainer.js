@@ -7,7 +7,7 @@ import { getReferenceTableListAsync, getReferenceTableEntryAsync } from 'app/sto
 // import { getReferenceTableLabel } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { addTab, tabChange } from 'framework/store/modules/tabs'
+import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 
