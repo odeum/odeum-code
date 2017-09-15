@@ -41,6 +41,7 @@ class AppendixList extends Component {
 		}
 		await this.props.getList()
 
+
 	}
 	
 	componentWillUpdate(nextProps, nextState) {
@@ -101,6 +102,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 			dispatch(tabChange(id, tab.label))
+			dispatch(setAppendixFilterText(''))
 		},
 		onClickButton: (location) => {
 			dispatch(push('/eplan/list/' + location + '/edit'))
