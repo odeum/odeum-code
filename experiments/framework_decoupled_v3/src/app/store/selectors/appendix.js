@@ -15,8 +15,8 @@ export const getFilteredAppdx = createSelector(
 	[getAppendixes, getAppendixFilterText],
 	(appendixes, appendixFilterText) => {
 		return appendixes ? (
-			appendixes.filter(t => t.name.includes(appendixFilterText)) === [] ? [] :
-				appendixes.filter(t => t.name.includes(appendixFilterText))) : []
+			appendixes.filter(t => t.name.toLowerCase().includes(appendixFilterText.toLowerCase())) === [] ? [] :
+				appendixes.filter(t => t.name.toLowerCase().includes(appendixFilterText.toLowerCase()))) : []
 	}
 )
 
