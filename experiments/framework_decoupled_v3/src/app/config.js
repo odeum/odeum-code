@@ -14,7 +14,7 @@ var tabSystem = {
 				icon: 'assignment_turned_in',
 				fixed: true,
 				isLoading: null,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
 	}, */
@@ -33,7 +33,7 @@ var tabSystem = {
 				icon: "assignment",
 				fixed: true,
 				isLoading: false,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
 	},
@@ -52,7 +52,7 @@ var tabSystem = {
 				icon: 'grid_on',
 				fixed: true,
 				isLoading: true,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
 	},
@@ -71,7 +71,7 @@ var tabSystem = {
 				icon: 'settings',
 				fixed: true,
 				isLoading: false,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
 	}, */
@@ -88,7 +88,7 @@ var tabSystem = {
 				icon: "info",
 				fixed: true,
 				isLoading: true,
-				closeLocation: '/dashboard/general'
+				closeLink: '/dashboard/general'
 			}
 		}
 	} */

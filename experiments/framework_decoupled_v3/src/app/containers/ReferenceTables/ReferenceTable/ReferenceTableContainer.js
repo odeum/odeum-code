@@ -22,7 +22,7 @@ class ReferenceTableContainer extends Component {
 		icon: 'mode_edit',
 		fixed: false,
 		isLoading: true,
-		closeLocation: '/reference/list'
+		closeLink: '/reference/list'
 	}
 	constructor(props) {
 		super(props)

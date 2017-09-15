@@ -26,7 +26,7 @@ class ReferenceTableList extends Component {
 		icon: 'grid_on',
 		fixed: true,
 		isLoading: true,
-		closeLocation: ''
+		closeLink: ''
 	}
 	constructor(props) {
 		super(props)

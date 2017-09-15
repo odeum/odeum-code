@@ -76,7 +76,7 @@ const initState = {
 					icon: "error",
 					fixed: true,
 					isLoading: null,
-					closeLocation: ''
+					closeLink: ''
 				}
 			}
 		}

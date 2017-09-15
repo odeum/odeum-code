@@ -19,7 +19,7 @@ class AppendixList extends Component {
 		icon: "assignment",
 		fixed: true,
 		isLoading: true,
-		closeLocation: ''
+		closeLink: ''
 	}
 	constructor(props) {
 		super(props)

@@ -13,7 +13,7 @@ import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
 // import { getReferenceTableLabel } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { tabChange } from 'framework/store/modules/tabs'
+import { tabChange, addTab } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer } from 'app/styles'
@@ -34,6 +34,15 @@ import ReferenceTableEditModal from '../../ReferenceTableEditModal'
 // var _ = require('lodash')
 
 class ReferenceTableEdit extends Component {
+	tab = {
+		id: this.props.referenceTableId,
+		label: this.props.referenceTableId,
+		location: '/reference/list/' + this.props.referenceTableId + '/edit',
+		icon: 'info',
+		fixed: false,
+		isLoading: true,
+		closeLink: '/reference/list'
+	}
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -92,8 +101,8 @@ class ReferenceTableEdit extends Component {
 			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 		}
 		this.props.onMount(
-		 	this.props.id,
-		 	this.props.referenceTableId
+			this.props.id,
+			this.tab
 		)
 	}
 
@@ -121,21 +130,21 @@ class ReferenceTableEdit extends Component {
 						reftableId: this.props.referenceTableId
 					})}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
-				{this.props.referenceTableValues === null || this.props.referenceTable === undefined  ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
+				{this.props.referenceTableValues === null || this.props.referenceTable === undefined ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
 					saveSettingsModal={this.saveSettingsModal}
 					referenceTableSelectValues={this.props.referenceTableSelectValues}
 					referenceTableId={this.props.referenceTableId}
-					 />
+				/>
 				<ReferenceTableEditModal
 					editModalIsOpen={this.state.editModalIsOpen}
 					editData={this.state.editData}
 					closeEditModal={this.closeEditModal}
 					saveEditModal={this.saveEditModal}
 					referenceTableId={this.props.referenceTableId}
-					 />
+				/>
 				{/* <Confirm ref={(c) => this._confirm = c} /> */}
 				{/* {this.state.confirm} */}
 			</PrimaryContainer>
@@ -147,13 +156,16 @@ const mapStateToProps = (state, ownProps) => ({
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
 	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId],
-	referenceTableValues: state.eplan.referenceTableValues[ownProps.referenceTableId] || null,
+	referenceTableValues: state.eplan.referenceTableValues[ownProps.referenceTableId] ||  null,
 })
 
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, param) => {
-			dispatch(tabChange(id, param))
+			console.log('id', id)
+			console.log('param', param)
+			dispatch(addTab(id, param))
+			dispatch(tabChange(id, param.label))
 		},
 		unMount: (param) => {
 			//TODO Remove Open Appendix when *CLOSED* not when unmounted
