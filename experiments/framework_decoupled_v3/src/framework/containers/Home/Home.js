@@ -70,7 +70,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(getAppendixCfg())
-			dispatch(replace('/eplan/list'))
+			// dispatch(replace('/eplan/list'))
 		}
 	}
 
