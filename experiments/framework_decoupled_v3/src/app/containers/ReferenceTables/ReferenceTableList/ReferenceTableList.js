@@ -32,6 +32,7 @@ class ReferenceTableList extends Component {
 		super(props)
 		this.state = {
 			settingsModalIsOpen: false,
+			tabIsLoading: true
 		}
 
 		this.openSettingsModal = this.openSettingsModal.bind(this)
@@ -44,32 +45,24 @@ class ReferenceTableList extends Component {
 	}
 
 	async componentWillMount() {
-
-		console.log(this.props.referencetablesIsLoading)
 		this.props.onMount(this.props.id, props.name)
-		/* 	if (this.props.referencetablesIsLoading === true) {
-			} */
-		console.log(this.props.id)
-		this.props.tabisLoading(this.props.id, this.tab, true)
 		if (!this.props.referencetables) {
+			this.props.tabisLoading(this.props.id, this.tab, true)
 			await this.props.getList()
 			this.props.tabisLoading(this.props.id, this.tab, false)
-			// console.log(this.props.referencetablesIsLoading)
 		}
 	}
 
 	componentWillUpdate(nextProps, nextState) {
-		// console.log('')
-		// console.log(nextProps.referencetablesIsLoading)
-		//  		if (nextProps.referencetablesIsLoading !== undefined) {
-		// 			if (nextProps.referencetablesIsLoading !== true && nextProps.referencetables !== null)
-		// 				this.props.tabisLoading(this.props.id, this.tab, false)
-		// 		} 
+		if (nextProps.referencetablesIsLoading === false && nextState.tabIsLoading === true) {
+			this.setState({
+				tabIsLoading: false
+			})
+			this.props.tabisLoading(this.props.id, this.tab, false)
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-	/* 	if (prevProps.referencetables !== null)
-			this.props.tabisLoading(this.props.id, this.tab, false) */
 	}
 
 
