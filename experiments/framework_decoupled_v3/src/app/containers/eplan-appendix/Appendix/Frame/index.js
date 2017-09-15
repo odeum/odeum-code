@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-// import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 
 /* Framework */
 import { addTab, tabChange } from 'framework/store/modules/tabs'

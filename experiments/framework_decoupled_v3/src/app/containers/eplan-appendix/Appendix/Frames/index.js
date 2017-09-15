@@ -5,7 +5,7 @@ import { List } from 'immutable'
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
 import { getAppendixAsync } from 'app/store/modules/eplan'
-import { getAppendix } from 'app/store/selectors/eplan' //getAppendixSel
+import { getAppendix } from 'app/store/selectors/appendix' //getAppendixSel
 
 /* Framework */
 import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'

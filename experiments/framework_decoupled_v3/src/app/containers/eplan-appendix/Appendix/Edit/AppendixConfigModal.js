@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { getAppendixDates } from 'app/store/selectors/eplan'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'

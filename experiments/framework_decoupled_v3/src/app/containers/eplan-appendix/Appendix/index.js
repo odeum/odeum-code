@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-// import { getAppendixSel, getAppendix } from 'app/store/selectors/eplan'
 import { getFrameConfigAsync } from 'app/store/modules/eplan'
 
 /* Framework */

@@ -10,7 +10,7 @@ import NewAppendixModal from './NewAppendixModal'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import Input from 'framework/components/Widgets/Input/Input'
-// import { getFilteredAppdx } from 'app/store/selectors/eplan'
+
 class AppendixList extends Component {
 	tab = {
 		id: 'eplan_oversigt',

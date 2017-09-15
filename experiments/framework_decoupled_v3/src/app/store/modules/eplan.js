@@ -247,7 +247,7 @@ const initState = {
 	conf: null,
 	appendixIsSaving: false,
 	ApdxLoading: {},
-	filterText: ''
+	appendixFilterText: ''
 }
 
 function eplan(state = initState, action) {
@@ -255,7 +255,7 @@ function eplan(state = initState, action) {
 		case SET_FILTER_TEXT: {
 			return {
 				...state,
-				filterText: action.payload
+				appendixFilterText: action.payload
 			}
 		}
 		case CLOSE_APPENDIX: {

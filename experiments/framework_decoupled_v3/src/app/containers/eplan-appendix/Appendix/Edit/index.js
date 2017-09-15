@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAppendixAsync, updateAppendix, removeOpenApdx, exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
 import { Field, reduxForm } from 'redux-form'
-import { getAppendixSel, getAppendix, getAppendixDates } from 'app/store/selectors/eplan'
+import { getAppendixEdit, getAppendix, getAppendixDates } from 'app/store/selectors/appendix'
 
 /* Framework */
 import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
@@ -370,7 +370,7 @@ const mapStateToProps = (state, ownProps) => ({
 	param: ownProps.param,
 	appendix: getAppendix(state, ownProps.param, ownProps) || null,
 	initialValues: {
-		fields: getAppendixSel(state, ownProps.param, ownProps)
+		fields: getAppendixEdit(state, ownProps.param, ownProps)
 	} || null,
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
 import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
-import { getFrameFieldsSel } from 'app/store/selectors/eplan'
+import { getFramesFields } from 'app/store/selectors/appendix'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
@@ -83,6 +83,7 @@ class EditFrame extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		console.log(nextProps.initialValues.fields)
 	}
 
 	componentWillUnmount = () => {
@@ -142,7 +143,7 @@ const mapStateToProps = (state, ownProps) => ({
 	openFrame: state.eplan.openFrames[ownProps.frameId] || null,
 	form: 'EditFrame_form_' + ownProps.frameId,
 	initialValues: {
-		fields: getFrameFieldsSel(state, ownProps.frameId)
+		fields: getFramesFields(state, ownProps.frameId)
 	} || null,
 	conf: state.eplan.conf
 })
