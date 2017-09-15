@@ -81,7 +81,7 @@ const initState = {
 			}
 		}
 	},
-	activeScene: tabSystemConfig['dashboard'].sceneID
+	activeScene: tabSystemConfig[Object.keys(tabSystemConfig)[0]].sceneID
 }
 
 export default function tabReducer(state = initState, action) {

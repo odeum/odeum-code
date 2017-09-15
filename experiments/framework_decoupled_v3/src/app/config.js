@@ -1,5 +1,5 @@
 var tabSystem = {
-	dashboard: {
+	/* dashboard: {
 		sceneID: 'dashboard',
 		icon: 'dashboard',
 		name: 'Dashboard',
@@ -17,7 +17,7 @@ var tabSystem = {
 				closeLocation: ''
 			}
 		}
-	},
+	}, */
 	eplan: {
 		sceneID: 'eplan',
 		location: '/eplan/list',
@@ -56,7 +56,7 @@ var tabSystem = {
 			}
 		}
 	},
-	settings: {
+/* 	settings: {
 		sceneID: 'settings',
 		name: 'Indstillinger', 
 		location: '/settings',
@@ -74,8 +74,8 @@ var tabSystem = {
 				closeLocation: ''
 			}
 		}
-	},
-	general: {
+	}, */
+/* 	general: {
 		sceneID: 'general',
 		location: '/dashboard/general/subtab/100',
 		activeTab: 'SubTab',
@@ -91,6 +91,6 @@ var tabSystem = {
 				closeLocation: '/dashboard/general'
 			}
 		}
-	}
+	} */
 }
 export default tabSystem

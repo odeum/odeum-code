@@ -68,8 +68,8 @@ class ReferenceTableList extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (prevProps.referencetables !== null)
-			this.props.tabisLoading(this.props.id, this.tab, false)
+	/* 	if (prevProps.referencetables !== null)
+			this.props.tabisLoading(this.props.id, this.tab, false) */
 	}
 
 

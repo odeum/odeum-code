@@ -16,7 +16,7 @@ import FooterContainer from '../Footer/Footer'
 //Redux+Router
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import { replace } from 'react-router-redux'
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
@@ -70,6 +70,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(getAppendixCfg())
+			dispatch(replace('/eplan/list'))
 		}
 	}
 
