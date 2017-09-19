@@ -27,7 +27,8 @@ const UPDATE_REFERENCE_TABLE_DATA = '@@EPLAN/UPDATE_REFERENCE_TABLE_DATA'
 const DELETE_REFERENCE_TABLE_DATA = '@@EPLAN/DELETE_REFERENCE_TABLE_DATA'
 const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 const APPENDIX_IS_LOADING = '@@EPLAN/APPENDIX_IS_LOADING'
-const SET_FILTER_TEXT = '@@EPLAN/APPENDIX_LIST_FILTER'
+const APDX_SET_FILTER_TEXT = '@@EPLAN/APPENDIX_LIST_FILTER'
+const REF_SET_FILTER_TEXT = '@@EPLAN/REFTABLE_LIST_FILTER'
 // const REFERENCE_TABLE_IS_LOADING = '@@EPLAN/REF_TABLE_IS_LOADING'
 /* Actions */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -50,7 +51,9 @@ const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, paylo
 const deleteRefTableData = (data) => ({ type: DELETE_REFERENCE_TABLE_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
 const appendixIsLoading = (id, data) => ({ type: APPENDIX_IS_LOADING, payload: { id: id, isLoading: data } })
-export const setAppendixFilterText = (data) => ({ type: SET_FILTER_TEXT, payload: data })
+
+export const setAppendixFilterText = (data) => ({ type: APDX_SET_FILTER_TEXT, payload: data })
+export const setRefFilterText = (data) => ({ type: REF_SET_FILTER_TEXT, payload: data })
 // const referencetablesIsLoading = (id, data) => ({ type: REFERENCE_TABLE_IS_LOADING }, payload:{ id: id, isLoading: data })
 /* Middleware */
 export function removeOpenApdx(id) {
@@ -247,15 +250,22 @@ const initState = {
 	conf: null,
 	appendixIsSaving: false,
 	ApdxLoading: {},
-	appendixFilterText: ''
+	appendixFilterText: '',
+	referenceTableFilterText: ''
 }
 
 function eplan(state = initState, action) {
 	switch (action.type) {
-		case SET_FILTER_TEXT: {
+		case APDX_SET_FILTER_TEXT: {
 			return {
 				...state,
 				appendixFilterText: action.payload
+			}
+		}
+		case REF_SET_FILTER_TEXT: {
+			return {
+				...state,
+				referenceTableFilterText: action.payload
 			}
 		}
 		case CLOSE_APPENDIX: {

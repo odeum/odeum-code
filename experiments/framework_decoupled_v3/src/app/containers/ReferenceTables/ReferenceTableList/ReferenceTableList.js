@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
-import { getReferenceTableListAsync } from 'app/store/modules/eplan'
-import { getReferenceTableSelectValues, getReferences } from 'app/store/selectors/eplan'
+import { getReferenceTableListAsync, setRefFilterText } from 'app/store/modules/eplan'
+import { getReferenceTableSelectValues, /* getReferences, */ getFilteredRefs } from 'app/store/selectors/eplan'
 
 import { /* DescriptionDiv, */ AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { PrimaryContainer } from 'app/styles/'
@@ -15,6 +15,7 @@ import ReferenceTableSettingsModal from '../ReferenceTableSettingsModal'
 import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
+import Input from 'framework/components/Widgets/Input/Input'
 
 const props = { name: 'Oversigt' }
 
@@ -40,7 +41,7 @@ class ReferenceTableList extends Component {
 		this.saveSettingsModal = this.saveSettingsModal.bind(this)
 		// this.handleSetting = this.handleSetting.bind(this)
 		this.handleSettingsSubmit = this.handleSettingsSubmit.bind(this)
-
+		this.setFilter = this.setFilter.bind(this)
 		this.onClickButton = this.onClickButton.bind(this)
 	}
 
@@ -89,12 +90,16 @@ class ReferenceTableList extends Component {
 	onClickButton(index) {
 		this.props.onClickButton(index)
 	}
-
+	setFilter(event) {
+		this.props.setFilterText(event.target.value)
+		console.log(this.props.referencetables)
+	}
 	render() {
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
+					<Input value={this.props.FilterText} autoFocus placeholder={'Type here to filter list by name'} onChange={this.setFilter} />
 					<Button icon={iconname.ICON_ADD_CIRCLE} onClick={this.openSettingsModal} size={18}>Opret ny reference tabel</Button>
 				</AppendixButtonPanel>
 				{this.props.referencetablesIsLoading ? null : <ReferenceTable list={this.props.referencetables} settingsModalIsOpen={this.state.settingsModalIsOpen} onClickButton={this.onClickButton} />}
@@ -114,10 +119,8 @@ class ReferenceTableList extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	referencetables: getReferences(state),
 	referencetablesIsLoading: state.eplan.referencetablesIsLoading,
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
-
 })
 
 function mapDispatchToProps(dispatch) {
@@ -133,6 +136,9 @@ function mapDispatchToProps(dispatch) {
 		},
 		getList: async () => {
 			dispatch(await getReferenceTableListAsync())
+		},
+		setFilterText: (text) => {
+			dispatch(setRefFilterText(text))
 		}
 
 	}

@@ -13,9 +13,18 @@ import RowRenderer from './_rowRender'
 // import moment from 'moment'
 import { connect } from 'react-redux'
 // import { List } from 'immutable'
-import { getReferences } from 'app/store/selectors/eplan'
+import { /* getReferences,  */getFilteredRefs } from 'app/store/selectors/eplan'
 
+function CellDataGetter({ dataKey, rowData }) {
 
+	if (rowData !== undefined) {
+		if (typeof rowData.get === "function") {
+			return rowData.get(dataKey)
+		} else {
+			return rowData[dataKey]
+		}
+	}
+}
 class ReferenceTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
@@ -108,6 +117,7 @@ class ReferenceTable extends Component {
 										dataKey='id'
 										disableSort={!this._isSortEnabled()}
 										headerRenderer={this._headerRenderer}
+										cellDataGetter={CellDataGetter}
 										cellRenderer={
 											({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 										}
@@ -123,6 +133,7 @@ class ReferenceTable extends Component {
 									dataKey='name'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
@@ -136,6 +147,7 @@ class ReferenceTable extends Component {
 									dataKey='action'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 									}
@@ -242,7 +254,7 @@ class ReferenceTable extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	list: getReferences(state)
+	list: getFilteredRefs(state)
 })
 
 function mapDispatchToProps(dispatch) {

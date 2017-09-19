@@ -1,12 +1,23 @@
 import { List } from 'immutable'
-// import { createSelector } from 'reselect'
+import { createSelector } from 'reselect'
 var _ = require('lodash')
 
 export const getConfigSel = state => state.eplan.conf
+const getReferenceTableFilterText = state => state.eplan.referenceTableFilterText
+export const getReferences = (state) => {
+	var referenceTable = List(_.map(state.eplan.referenceTables))
+	return referenceTable
+}
 
+export const getFilteredRefs = createSelector(
+	[getReferences, getReferenceTableFilterText],
+	(refs, text) => {
+		return refs ? (
+			refs.filter(t => t.name.toLowerCase().includes(text.toLowerCase())) === [] ? [] :
+				refs.filter(t => t.name.toLowerCase().includes(text.toLowerCase()))) : []
+	}
+)
 export const getReferenceTable = (state, id) => {
-
-
 	var referenceTable = _.find(state.eplan.openReferenceTables, (referenceTable) => {
 		return referenceTable.id === parseInt(id, 10)
 	})
@@ -47,10 +58,7 @@ export const getReferenceTableEntry = (state, id) => {
 	let referenceTable = state.eplan.referenceTables[id]
 	return referenceTable ? referenceTable : undefined
 }
-export const getReferences = (state) => {
-	var referenceTable = List(_.map(state.eplan.referenceTables))
-	return referenceTable
-}
+
 export const getReferenceTableSelectValues = (state) => {
 	let referenceTableSelectValues = []
 	referenceTableSelectValues[referenceTableSelectValues.length] = { value: -1, label: 'ingen valgt' }
