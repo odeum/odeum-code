@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
 import { getReferenceTableListAsync, setRefFilterText } from 'app/store/modules/eplan'
-import { getReferenceTableSelectValues, /* getReferences, */ getFilteredRefs } from 'app/store/selectors/eplan'
+import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
 
 import { /* DescriptionDiv, */ AppendixButtonPanel } from 'app/styles/EplanStyles'
 import { PrimaryContainer } from 'app/styles/'
