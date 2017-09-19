@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getAppendixAsync, updateAppendix, removeOpenApdx, exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
+
+import {
+	getAppendixAsync, updateAppendix,
+	removeOpenApdx, exportAppendixToPlansystemAsync
+} from 'app/store/modules/eplan'
+
 import { Field, reduxForm } from 'redux-form'
-import { getAppendixEdit, getAppendix, getAppendixDates } from 'app/store/selectors/appendix'
+
+import {
+	getAppendixEdit, getAppendix,
+	getAppendixDates
+} from 'app/store/selectors/appendix'
 
 /* Framework */
 import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
@@ -90,7 +99,7 @@ class EditAppendix extends Component {
 	}
 	componentDidUpdate(nextProps, nextState) {
 		if (this.props.appendixIsLoading !== undefined) {
-			if (this.props.appendixIsLoading !== true ) {
+			if (this.props.appendixIsLoading !== true) {
 				this.props.tabisLoading(this.props.param, this.tab, false)
 			}
 		}
@@ -101,7 +110,7 @@ class EditAppendix extends Component {
 	async componentDidMount() {
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
-			
+
 		}
 		if (this.props.appendixIsLoading !== true) {
 			this.props.tabisLoading(this.props.param, this.tab, false)

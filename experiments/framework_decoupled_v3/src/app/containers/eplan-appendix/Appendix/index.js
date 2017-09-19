@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
 import { getFrameConfigAsync } from 'app/store/modules/eplan'
-
+import { getListAsync } from 'app/store/modules/eplan'
+import { getAppendixMetaData } from 'app/store/selectors/appendix'
 /* Framework */
 import { addTab, tabChange, addInstance, tabIsLoading } from 'framework/store/modules/tabs'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
@@ -21,7 +22,7 @@ class AppendixContainer extends Component {
 	}
 	tab = {
 		id: this.props.param,
-		label: this.props.param,
+		label: '',
 		location: "/eplan/list/" + this.props.param + "/edit",
 		icon: "mode_edit",
 		fixed: false,
@@ -29,9 +30,16 @@ class AppendixContainer extends Component {
 		closeLink: '/eplan/list'
 	}
 
-	componentWillMount() {
-		this.props.onMount(this.props.id, this.tab, this.props.param)
+	async componentWillMount() {
+		this.props.onMount(this.props.id, this.tab)
+		this.props.tabisLoading(this.props.id, this.tab, true)
 		this.tabs()
+		if (this.props.appendixName === null)
+			await this.props.getList()
+		if (this.props.appendixName) { 
+			this.tab.label = this.props.appendixName.name
+			this.props.onMount(this.props.id, this.tab) }
+
 	}
 
 	tabs() {
@@ -62,12 +70,14 @@ class AppendixContainer extends Component {
 
 	render() {
 		let key = this.props.location.pathname
-		console.log(this.props.param.toString())
+		// console.log(this.props.param.toString())
 		return (
-			<div>
-				<TabsContainer instanceID={this.props.param.toString()} />
 
-				{React.cloneElement(this.props.children, { param: this.props.param, key: key })}
+			<div>
+				{this.props.appendixName !== null ? <div>
+					<TabsContainer instanceID={this.props.param.toString()} />
+					{React.cloneElement(this.props.children, { param: this.props.param, key: key })}
+				</div> : null}
 			</div>
 		)
 	}
@@ -79,6 +89,7 @@ const mapStateToProps = (state, ownProps) => ({
 	// initialValues: {
 	// 	fields: getAppendixSel(state, ownProps.params.id, ownProps)
 	// } || null,
+	appendixName: getAppendixMetaData(state, ownProps.params.id),
 	conf: state.eplan.conf
 })
 
@@ -96,12 +107,15 @@ function mapDispatchToProps(dispatch) {
 			}))
 		},
 		onMount: (id, tab) => {
-			dispatch(addTab('eplan', tab))
+			dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
 			dispatch(getFrameConfigAsync())
 		},
 		tabisLoading: (id, tab, isLoading) => {
 			dispatch(tabIsLoading(id, tab, isLoading))
+		},
+		getList: async () => {
+			return dispatch(await getListAsync())
 		}
 	}
 }

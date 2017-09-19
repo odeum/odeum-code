@@ -1,4 +1,6 @@
 // import { List } from 'immutable'
+//TODO: https://github.com/reactjs/reselect/blob/master/README.md#sharing-selectors-with-props-across-multiple-components
+// Memoization between all comps
 import { createSelector } from 'reselect'
 var _ = require('lodash')
 
@@ -47,5 +49,16 @@ export const getFramesFields = createSelector(
 		}
 		return filter ? filter : undefined
 
+	}
+)
+const getId = (state, props) =>  props
+export const getAppendixMetaData = createSelector(
+	[getAppendixes, getId],
+	(appendixes, id) => {
+		var appdx = null
+		appendixes.filter(t => {
+			return t.appendixId === parseInt(id, 10) ? appdx = t : null
+		})
+		return appdx
 	}
 )

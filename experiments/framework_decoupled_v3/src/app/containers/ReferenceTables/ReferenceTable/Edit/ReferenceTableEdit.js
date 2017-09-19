@@ -38,7 +38,7 @@ class ReferenceTableEdit extends Component {
 		id: this.props.referenceTableId,
 		label: this.props.referenceTableId,
 		location: '/reference/list/' + this.props.referenceTableId + '/edit',
-		icon: 'info',
+		icon: 'mode_edit',
 		fixed: false,
 		isLoading: false,
 		closeLink: '/reference/list'

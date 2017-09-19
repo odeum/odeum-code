@@ -90,14 +90,14 @@ export function getAppendixAsync(id) {
 	}
 }
 
-export function getListAsync() {
+export async function getListAsync() {
 	return async dispatch => {
-		await getAppendixList().then(
-			(result) => {
-				dispatch(getList(result))
-			}
-		)
+		var d = await getAppendixList()
+		dispatch(getList(d))
+		console.log('eplan d', d)
+		return d
 	}
+
 }
 
 export function getFramesListAsync(id) {

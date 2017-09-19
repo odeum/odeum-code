@@ -7,7 +7,7 @@ import { getReferenceTableListAsync, getReferenceTableEntryAsync } from 'app/sto
 // import { getReferenceTableLabel } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { tabChange } from 'framework/store/modules/tabs'
+// import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 
@@ -21,7 +21,7 @@ class ReferenceTableContainer extends Component {
 		location: '/reference/list/' + this.props.referenceTableId + '/edit',
 		icon: 'mode_edit',
 		fixed: false,
-		isLoading: true,
+		isLoading: false,
 		closeLink: '/reference/list'
 	}
 	constructor(props) {
@@ -29,8 +29,8 @@ class ReferenceTableContainer extends Component {
 		this.state = {}
 	}
 	async componentWillMount() {
-		//ADD TAB LOADING HERE
 		if (!this.props.referencetables) {
+
 			await this.props.getList()
 		}
 
@@ -58,7 +58,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 		//	dispatch(addTab(id, tab))
-			dispatch(tabChange(id, tab.label))
+		//  dispatch(tabChange(id, tab.label))
 		},
 		getReferenceTable: (id) => {
 			dispatch(getReferenceTableEntryAsync(id))
