@@ -3,11 +3,8 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { List } from 'immutable'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, /* ContentBox, */ Cell } from 'app/styles/TableStyles' //InputRow
-//import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
-//import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
+import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, Cell } from 'app/styles/TableStyles'
 import { ListLink, ListAction } from 'app/styles/EplanStyles'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import { exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
@@ -283,10 +280,8 @@ class AppendixTable extends Component {
 		document.getElementById('exportCloseButton').style.display = 'none'
 		document.getElementById('exportStepTwo').style.display = 'block'
 		document.getElementById('exportLoadingDiv').style.display = 'block'
-		// console.log(this.state.exportAppendix.appendixId)
 		try {
 			await this.props.exportToPlanSystem(this.state.exportAppendix.appendixId).then((response) => {
-				// console.log('Export result this:', response)
 
 				document.getElementById('exportLoadingDiv').style.display = 'none'
 				document.getElementById('exportCloseButton').style.display = 'block'
@@ -391,7 +386,6 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		exportToPlanSystem: async (id) => {
-			// console.log('exportToPlanSystem table.js')
 			return dispatch(await exportAppendixToPlansystemAsync(id))
 		}
 	}

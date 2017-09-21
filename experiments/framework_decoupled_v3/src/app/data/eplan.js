@@ -17,7 +17,6 @@ export async function postAppendix(appendix, commit) {
 	var app = JSON.stringify(appendix)
 	var data = await api.put('/rest/eplan/kpt/appendix/' + appendix.appendixId, app)
 		.then((response) => {
-			// console.log(response.data)
 			return response.data
 		})
 	return data
@@ -27,8 +26,6 @@ export async function addAppendix(appendix) {
 	var app = JSON.stringify(appendix)
 	var data = await api.post('/rest/eplan/kpt/appendix', app)
 		.then((response) => {
-			// console.log('addAppendix then')
-			// console.log(response.data)
 			return response.data
 		})
 	return data
@@ -39,8 +36,6 @@ export async function getAppendixConfig() {
 		.then((response) => {
 			return response.data
 		})
-	/*   console.log('-----Config-----')
-        console.log(data) */
 	return data
 }
 
@@ -54,12 +49,8 @@ export async function getAppendixList() {
 }
 
 export async function getAppendixById(id) {
-	/*    console.log('-----API Instance -----')
-    console.log(api) */
 	var appendix = await api.get('rest/eplan/kpt/appendix/' + id)
 		.then((response) => {
-			/*  console.log("-------Data/Eplan/GetAppendixByID------")
-            console.log(response) */
 			return response.data
 		})
 	return appendix
@@ -89,7 +80,6 @@ export async function createCompleteAppendixPdf(id) {
 		.then((response) => {
 			return response.data
 		})
-
 	return result
 }
 
@@ -195,7 +185,6 @@ export async function deleteReferenceTableValue(referenceTableEntry) {
 export async function getImagesList(folder) {
 	var data = await api.get('/rest/core/files/images/' + encodeURIComponent(folder))
 		.then((response) => {
-			// console.log(response.data)
 			return response.data
 		})
 	return data

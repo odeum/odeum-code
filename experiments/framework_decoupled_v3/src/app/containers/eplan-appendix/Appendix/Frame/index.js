@@ -43,10 +43,6 @@ class FrameContainer extends Component {
 const mapStateToProps = (state, ownProps) => ({
 	appendixId: ownProps.params.id,
 	frameId: ownProps.params.frameid,
-	// appendix: getAppendix(state, ownProps.params.id, ownProps) || null,
-	// initialValues: {
-	//   fields: getAppendixSel(state, ownProps.params.id, ownProps)
-	// } || null,
 	conf: state.eplan.conf
 })
 

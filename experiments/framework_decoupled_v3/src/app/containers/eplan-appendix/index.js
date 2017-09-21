@@ -3,8 +3,6 @@ import { changeInstance } from 'framework/store/modules/tabs'
 import { connect } from 'react-redux'
 import { getListAsync } from 'app/store/modules/eplan'
 const sceneProp = { id: 'eplan' }
-// const tabProp = {id:'eplan-list'}
-
 
 class EplanAppendix extends Component {
 	async componentWillMount() {
