@@ -47,8 +47,11 @@ justify-content:center;
 `
 
 export const Arrow = styled.div`
-margin-left: auto;
-margin-right: 5px;
+max-width: ${props => props.close ? '' : '0px'};
+overflow:  hidden;
+transition: all 300ms ease;
+margin-left: ${props => props.close ? 'auto' : ''};
+margin-right: ${props => props.close ? '5px' : ''};
 font-size: 25px;
 `
 
@@ -60,4 +63,12 @@ width:100%;
 height:100%;
 display:flex;
 align-items:center;
+`
+
+export const MenuItemCont = styled.div`
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
 `

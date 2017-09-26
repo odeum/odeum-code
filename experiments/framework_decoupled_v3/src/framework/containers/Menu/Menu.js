@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import MenuItem from 'framework/components/Menu/MenuItem'
 import PropTypes from 'prop-types'
 //Styles
-//import { MenuDiv } from 'framework/components/styles/MenuStyles'
+import { MenuDiv, MenuHeader, MenuIconDiv } from './StyledMenu'
 //Redux
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { changeInstance } from 'framework/store/modules/tabs'
 import { getMenuItems } from 'framework/store/selectors/menuSelector'
 import Icon from 'framework/assets/Icon'
-//import { MenuPanelDiv } from 'framework/components/styles/MenuStyles'
-import { MenuDiv, MenuHeader, MenuIconDiv } from './StyledMenu'
+
 
 
 class MenuContainer extends Component {
@@ -37,7 +36,7 @@ class MenuContainer extends Component {
 		const { close } = this.state
 		return (
 			<MenuDiv close={close}>
-				<MenuHeader><MenuIconDiv onClick={this.switch}><Icon icon={'menu'} size={18} active={true} /></MenuIconDiv></MenuHeader>
+				<MenuHeader close={close}><MenuIconDiv onClick={this.switch}><Icon icon={'menu'} size={18} active={true} /></MenuIconDiv></MenuHeader>
 				{Object.keys(scenes).map((scene, index) => (
 					<MenuItem name={scenes[scene].name}
 						icon={scenes[scene].icon}
