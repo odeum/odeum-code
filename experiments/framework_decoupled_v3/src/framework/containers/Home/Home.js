@@ -43,7 +43,7 @@ class Home extends Component {
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
-							<div style={{ display: 'flex', flex: 1, height: '100%' }}>
+							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
 								<MenuContainer />
 								<WorkspaceContainer>
 									<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
