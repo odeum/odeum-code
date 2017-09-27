@@ -3,9 +3,8 @@ import { Link } from 'react-router'
 
 import { getColor } from 'framework/assets/colors'
 
-export const PanelDiv = styled.div`
+/* export const PanelDiv = styled.div`
     height: calc(100vh - 240px);
-    /*padding: 20px;*/
     font-family: ${(props) => props.theme.font};
     font-style: normal;
     font-weight: 400;
@@ -13,12 +12,13 @@ export const PanelDiv = styled.div`
     background-color: #fff;
     border-radius: 0px 4px 4px 4px;
     overflow: scroll;
-`
-export const TabText = styled.p`
+` */
+
+/* export const TabText = styled.p`
 ${props => props.active === true && css`
     color:white;
 `}
-`
+` */
 export const TabLink = styled(Link)`
     display:flex;
     text-decoration: none;
@@ -107,7 +107,7 @@ export const TabIconDiv = TabLoaderDiv.extend`
     `}
  `
 
-export const TabWrapperDiv = styled.div`
+/* export const TabWrapperDiv = styled.div`
     clear: both;
     width: 100%;
-`
+` */

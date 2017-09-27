@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from '../styles/TabStyles'
+import { TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
