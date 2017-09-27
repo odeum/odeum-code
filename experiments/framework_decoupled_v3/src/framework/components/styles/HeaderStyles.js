@@ -6,7 +6,8 @@ export const HeaderDiv = styled.div`
     height: 100px;
     width: 100%;
     background-color: ${colors.CARD_HEADER};
-    display: block;
+    display: flex;
+    flex-flow: row nowrap;
 ` 
 
 export const LogoImg = styled.img`
@@ -18,12 +19,9 @@ export const LogoLink = styled(Link) `
 `
 
 export const LogoDiv = styled.div`
-    float: left;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    padding-left: 20px;
-    height: 40px;
     user-select: none;
+    align-self: center;
+    margin-left: 10px;
 `
 
 export const SearchBarDiv = styled.div`
