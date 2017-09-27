@@ -19,15 +19,15 @@ background-color: #3b97d3;
 border-bottom: 1px solid #3087bf;
 font-size:15px;
 width:100%;
-justify-content: ${props => props.close ? '' : 'center'};
 `
 export const MenuIconDiv = styled.div`
 width:20px;
 height:20px;
 display:flex;
+justify-content: center;
 cursor:pointer;
-margin: 3px 10px 0px 10px;
-justify-content:center;
+margin: 0px 15px 0px 15px;
+transition: margin 300ms ease;
 &:hover {
     background-color: #81c1ea;
 }

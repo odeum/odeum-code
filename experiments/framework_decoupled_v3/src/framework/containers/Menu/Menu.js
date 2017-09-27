@@ -36,7 +36,7 @@ class MenuContainer extends Component {
 		const { close } = this.state
 		return (
 			<MenuDiv close={close}>
-				<MenuHeader close={close}><MenuIconDiv onClick={this.switch}><Icon icon={'menu'} size={18} active={true} /></MenuIconDiv></MenuHeader>
+				<MenuHeader close={close}><MenuIconDiv close={close} onClick={this.switch}><Icon icon={'menu'} size={18} active={true} /></MenuIconDiv></MenuHeader>
 				{Object.keys(scenes).map((scene, index) => (
 					<MenuItem name={scenes[scene].name}
 						icon={scenes[scene].icon}

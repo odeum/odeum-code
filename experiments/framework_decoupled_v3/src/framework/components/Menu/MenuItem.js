@@ -9,7 +9,7 @@ const MenuItem = ({ name, id, icon, location, active, onLoad, close }) => {
 		<MenuItemDiv close={close} onClick={_onClick} active={active}>
 			<MenuLink to={location}>
 				<MenuItemCont close={close}>
-				<MenuIconDiv><Icon icon={icon} active={true} size={18} /></MenuIconDiv>
+				<MenuIconDiv close={close}><Icon icon={icon} active={true} size={18} /></MenuIconDiv>
 				<MenuLabel close={close}>{name}</MenuLabel>
 				<Arrow close={close}><MdKeyboardArrowRight /></Arrow>
 				</MenuItemCont>
