@@ -2,15 +2,24 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'//InputRow
-//import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
-//import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
-//import Icon from 'framework/assets/Icon'
-//import { ICON_SEARCH } from 'framework/assets/icons'
+import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'
 import RowRenderer from './_rowRender'
 import moment from 'moment'
+import { getFilteredFrames } from 'app/store/selectors/frames'
+import { connect } from 'react-redux'
 
-export default class FramesTable extends Component {
+function CellDataGetter({ dataKey, rowData }) {
+
+	if (rowData !== undefined) {
+		if (typeof rowData.get === "function") {
+			return rowData.get(dataKey)
+		} else {
+			return rowData[dataKey]
+		}
+	}
+}
+
+class FramesTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
 	};
@@ -40,7 +49,11 @@ export default class FramesTable extends Component {
 		this._sort = this._sort.bind(this)
 		this._rowClicked = this._rowClicked.bind(this)
 	}
-
+	componentWillUpdate = (nextProps, nextState) => {
+		if (this.props.list.size !== nextProps.list.size) {
+			this._onRowCountChange(nextProps.list.size)
+		}
+	}
 	render() {
 		const {
 				disableHeader,
@@ -70,94 +83,6 @@ export default class FramesTable extends Component {
 		return (
 			<div style={{ width: '100%', height: '100%', clear: 'both' }}>
 				<ContentBox>
-					{/*  <label>
-            <input
-             aria-label='Hide header?'
-              checked={disableExtraRows}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ disableExtraRows: event.target.checked })}
-              />
-              Hide debug options?
-          </label>
-          {!disableExtraRows &&
-          <div>
-                      <label className={'checkboxLabel'}>
-            <input
-              aria-label='Hide index?'
-              checked={hideIndexRow}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ hideIndexRow: event.target.checked })}
-            />
-            Hide index?
-          </label>
-
-          <label className={'checkboxLabel'}>
-            <input
-              aria-label='Hide header?'
-              checked={disableHeader}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ disableHeader: event.target.checked })}
-            />
-            Hide header?&nbsp;
-          </label> */}
-					{/*
-          <InputRow>
-
-            Row numbers display 
-            <SpanRowNr>
-              <Label>Vis</Label>
-              <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
-                <option value={50}> 50</option>
-                <option value={100}> 100</option>
-                <option value={150}> 150</option>
-              </SelectRowNr>
-            </SpanRowNr>
-            <SearchDiv>
-              <SearchInput /><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true} /></SearchButtonDiv>
-            </SearchDiv>
-*/}
-					{/* SearchBar replace */}
-					{/*   <div>
-          <label>Scroll to:</label> <br/>
-          <LabeledInput
-            label='Scroll to'
-            name='onScrollToRow'
-            placeholder='Index...'
-            onChange={this._onScrollToRowChange}
-            value={scrollToIndex || ''}
-          /></div>
-
-          <div><label>Row Height</label><br/>
-          <LabeledInput
-            disabled={useDynamicRowHeight}
-            label='Row height'
-            name='rowHeight'
-            onChange={event => this.setState({ rowHeight: parseInt(event.target.value, 10) || 1 })}
-            value={rowHeight}
-          />
-          </div>
-           
-          <div><label>Header Height</label><br/>
-          <LabeledInput
-            label='Header height'
-            name='headerHeight'
-            onChange={event => this.setState({ headerHeight: parseInt(event.target.value, 10) || 1 })}
-            value={headerHeight}
-          />
-          </div>
-            <div><label>Header Height</label><br/>
-          <LabeledInput
-            label='Overscan'
-            name='overscanRowCount'
-            onChange={event => this.setState({ overscanRowCount: parseInt(event.target.value, 10) || 0 })}
-            value={overscanRowCount}
-          />
-          </div> */}
-					{/* </InputRow></div> */}
-
 				</ContentBox>
 				<AutoSizerDiv>
 					<AutoSizer >
@@ -187,6 +112,7 @@ export default class FramesTable extends Component {
 										dataKey='frameId'
 										disableSort={!this._isSortEnabled()}
 										headerRenderer={this._headerRenderer}
+										cellDataGetter={CellDataGetter}
 										cellRenderer={
 											({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 										}
@@ -201,6 +127,7 @@ export default class FramesTable extends Component {
 									dataKey='name'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 									}
@@ -212,6 +139,7 @@ export default class FramesTable extends Component {
 									dataKey='number'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 									}
@@ -222,6 +150,7 @@ export default class FramesTable extends Component {
 									label='Oprettelsesdato'
 									dataKey='created'
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell>{moment(cellData).format('LL')}</Cell>)
 									}
@@ -308,9 +237,8 @@ export default class FramesTable extends Component {
 		)
 	}
 
-	_onRowCountChange(event) {
-		const rowCount = parseInt(event.target.value, 10) || 0
-
+	_onRowCountChange(listSize) {
+		const rowCount = parseInt(listSize, 10) || 0
 		this.setState({ rowCount })
 	}
 
@@ -342,4 +270,17 @@ export default class FramesTable extends Component {
 			useDynamicRowHeight: value
 		})
 	}
+
 }
+const mapStateToProps = (state, ownProps) => {
+	console.log(ownProps)
+	return {
+		list: getFilteredFrames(state, ownProps.id, ownProps)
+	}
+}
+function mapDispatchToProps(dispatch) {
+	return {
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FramesTable)

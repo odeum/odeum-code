@@ -2,36 +2,23 @@ import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
 import { removeOpenApdx } from 'app/store/modules/eplan'
-// import { Field, reduxForm } from 'redux-form'
 
 import { getReferenceTableEntryAsync, updateReferenceTable } from 'app/store/modules/eplan'
 import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
-
-// import { List } from 'immutable'
-
-// import { Field, reduxForm } from 'redux-form'
-// import { getReferenceTableLabel } from 'app/store/selectors/eplan'
 
 /* Framework */
 import { tabChange, addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer } from 'app/styles'
-import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
 
 /* Components */
 import ReferenceTableEditList from './Table/Table'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
-
-// import ReferenceTableSettingsForm from './ReferenceTableSettingsForm'
-
 import ReferenceTableSettingsModal from '../../ReferenceTableSettingsModal'
 import ReferenceTableEditModal from '../../ReferenceTableEditModal'
-
-// import Confirm from 'framework/components/Dialogs/Confirm/Confirm'
-
-// var _ = require('lodash')
 
 class ReferenceTableEdit extends Component {
 	tab = {

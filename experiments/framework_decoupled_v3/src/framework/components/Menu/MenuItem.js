@@ -1,32 +1,22 @@
 import React from 'react'
-import {
-	MenuPanelDiv,
-	MenuLink,
-	StyledIcon,
-	StyledIconDiv,
-	Arrow
-}
-	from '../styles/MenuStyles'
-//Refactor get rid of library
+import { MenuItemDiv, MenuIconDiv, MenuLabel, Arrow, MenuLink, MenuItemCont } from './StyledMenuItem'
 import { MdKeyboardArrowRight } from 'react-icons/lib/md'
+import Icon from 'framework/assets/Icon'
 
-const MenuItem = ({ name, id, icon, location, active, onLoad }) => {
+const MenuItem = ({ name, id, icon, location, active, onLoad, close }) => {
+	let _onClick = () =>  onLoad(id)
 	return (
-		<MenuPanelDiv
-			className={active}
-			onClick={(e) => {
-				e.preventDefault(); onLoad(id)
-			}}>
+		<MenuItemDiv close={close} onClick={_onClick} active={active}>
 			<MenuLink to={location}>
-				<StyledIconDiv>
-					<StyledIcon icon={icon} active={true} size={18} />
-				</StyledIconDiv>
-				{name}
-				<Arrow><MdKeyboardArrowRight /></Arrow>
-
+				<MenuItemCont close={close}>
+				<MenuIconDiv><Icon icon={icon} active={true} size={18} /></MenuIconDiv>
+				<MenuLabel close={close}>{name}</MenuLabel>
+				<Arrow close={close}><MdKeyboardArrowRight /></Arrow>
+				</MenuItemCont>
 			</MenuLink>
-		</MenuPanelDiv>
+		</MenuItemDiv >
 	)
 }
 
 export default MenuItem
+

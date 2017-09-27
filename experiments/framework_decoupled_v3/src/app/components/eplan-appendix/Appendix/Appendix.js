@@ -5,8 +5,6 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import { AppendixForm } from 'app/styles/EplanStyles'
 
-// import SaveModal from './Save'
-
 const Appendix = ({ handleSubmit, handleSubmitAndCommit, renderFields, appendix }) => {
 	return (
 		<AppendixForm onSubmit={handleSubmit}>

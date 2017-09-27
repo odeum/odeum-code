@@ -70,7 +70,6 @@ class AppendixContainer extends Component {
 
 	render() {
 		let key = this.props.location.pathname
-		// console.log(this.props.param.toString())
 		return (
 
 			<div>
@@ -85,10 +84,6 @@ class AppendixContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
 	param: ownProps.params.id,
-	// appendix: getAppendix(state, ownProps.params.id, ownProps) || null,
-	// initialValues: {
-	// 	fields: getAppendixSel(state, ownProps.params.id, ownProps)
-	// } || null,
 	appendixName: getAppendixMetaData(state, ownProps.params.id),
 	conf: state.eplan.conf
 })

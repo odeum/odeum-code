@@ -24,8 +24,10 @@ export const HomeDiv = styled.div`
 `
 
 export const WorkspaceContainer = styled.div`
-    float: left;
-    width: calc(100% - 250px);
+    display:flex;
+    flex-flow: column nowrap;
+    flex:1;
+    width: 100%;
     align-items: stretch;
     margin: 20px;
     overflow: hidden;

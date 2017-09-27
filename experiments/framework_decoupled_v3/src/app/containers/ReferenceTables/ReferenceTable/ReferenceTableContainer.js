@@ -4,10 +4,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getReferenceTableListAsync, getReferenceTableEntryAsync } from 'app/store/modules/eplan'
-// import { getReferenceTableLabel } from 'app/store/selectors/eplan'
 
 /* Framework */
-// import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 
@@ -57,8 +55,6 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
-		//	dispatch(addTab(id, tab))
-		//  dispatch(tabChange(id, tab.label))
 		},
 		getReferenceTable: (id) => {
 			dispatch(getReferenceTableEntryAsync(id))

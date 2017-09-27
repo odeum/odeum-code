@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import {
 	getAppendixAsync, updateAppendix,
-	removeOpenApdx, exportAppendixToPlansystemAsync
+	exportAppendixToPlansystemAsync
 } from 'app/store/modules/eplan'
 
 import { Field, reduxForm } from 'redux-form'
@@ -32,7 +32,6 @@ import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import fileDownload from 'react-file-download'
-// var fileDownload = require('react-file-download')
 
 let renderFields = ({ fields }) => {
 	return (
@@ -72,10 +71,7 @@ class EditAppendix extends Component {
 			configModalIsOpen: false,
 			exportModalIsOpen: false,
 			pdfIsLoading: false,
-			// pdfModalIsOpen: false,
-			// pdfFile: '',
-			dates: [],
-			//appendixIsLoading: true
+			dates: []
 		}
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
@@ -95,7 +91,6 @@ class EditAppendix extends Component {
 			this.props.param,
 			this.tab
 		)
-		// this.props.tabisLoading(this.props.param, this.tab, true)
 	}
 	componentDidUpdate(nextProps, nextState) {
 		if (this.props.appendixIsLoading !== undefined) {
@@ -152,8 +147,6 @@ class EditAppendix extends Component {
 	}
 
 	async saveConfigModal(values) {
-		//TODO: Save changes
-		// console.log(values.dates)
 		this.setState({
 			configModalIsOpen: false
 		})
@@ -279,7 +272,6 @@ class EditAppendix extends Component {
 			closeConfigModal, saveConfigModal,
 			closeExportModal, onClickExportAppendix, handlePdfChange,
 			handleViewAppendix } = this
-		// closePdfModal, onDocumentComplete, onPageComplete
 		const pdfOptions = [
 			{ value: 'create', label: 'Opret PDF af tillæg' },
 			{ value: 'download', label: 'Download PDF' }
@@ -398,10 +390,6 @@ function mapDispatchToProps(dispatch) {
 		},
 		updateApd: async (appendix, id, commit) => {
 			dispatch(await updateAppendix(appendix, id, commit))
-		},
-		unMount: (param) => {
-			//TODO Remove Open Appendix when *CLOSED* not when unmounted
-			dispatch(removeOpenApdx(param))
 		},
 		exportToPlanSystem: async (id) => {
 			return dispatch(await exportAppendixToPlansystemAsync(id))

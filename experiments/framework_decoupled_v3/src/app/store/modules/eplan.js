@@ -1,4 +1,11 @@
-import { getAppendixList, getAppendixById, getAppendixConfig, postAppendix, addAppendix, exportAppendixToPlansystem, getReferenceTableList, getReferenceTableEntry, saveReferenceTable, saveReferenceTableValue, deleteReferenceTableValue, getFrameConfig, getFrameData, setFrameData } from 'app/data/eplan' //getAppendixFramesList
+import {
+	getAppendixList, getAppendixById,
+	getAppendixConfig, postAppendix, addAppendix,
+	exportAppendixToPlansystem, getReferenceTableList,
+	getReferenceTableEntry, saveReferenceTable,
+	saveReferenceTableValue, deleteReferenceTableValue,
+	getFrameConfig, getFrameData, setFrameData
+} from 'app/data/eplan'
 import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
 
@@ -29,8 +36,12 @@ const APPENDIX_IS_SAVING = '@@EPLAN/APPENDIX_IS_SAVING'
 const APPENDIX_IS_LOADING = '@@EPLAN/APPENDIX_IS_LOADING'
 const APDX_SET_FILTER_TEXT = '@@EPLAN/APPENDIX_LIST_FILTER'
 const REF_SET_FILTER_TEXT = '@@EPLAN/REFTABLE_LIST_FILTER'
+const FRAME_SET_FILTER_TEXT = '@@EPLAN/FRAMETABLE_LIST_FILTER'
+
 // const REFERENCE_TABLE_IS_LOADING = '@@EPLAN/REF_TABLE_IS_LOADING'
 /* Actions */
+
+/*Appendixes */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
 const getAppendix = (data) => ({ type: GET_APPENDIX, payload: data })
 const getApdCfg = (data) => ({ type: GET_APPENDIX_CONFIG, payload: data })
@@ -44,20 +55,27 @@ const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data
 const actionGetFrameConfig = (data) => ({ type: GET_APPENDIX_FRAME_CONFIG, payload: data })
 const actionGetFrameData = (data) => ({ type: GET_APPENDIX_FRAME_DATA, payload: data })
 const actionSetFrameData = (data) => ({ type: SET_APPENDIX_FRAME_DATA, payload: data })
+const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
+const appendixIsLoading = (id, data) => ({ type: APPENDIX_IS_LOADING, payload: { id: id, isLoading: data } })
+
+/* References */
 const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: data })
 const getRefTableEntry = (data) => ({ type: GET_REFERENCE_TABLE_ENTRY, payload: data })
 const updateRefTable = (data) => ({ type: UPDATE_REFERENCE_TABLE, payload: data })
 const updateRefTableData = (data) => ({ type: UPDATE_REFERENCE_TABLE_DATA, payload: data })
 const deleteRefTableData = (data) => ({ type: DELETE_REFERENCE_TABLE_DATA, payload: data })
-const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
-const appendixIsLoading = (id, data) => ({ type: APPENDIX_IS_LOADING, payload: { id: id, isLoading: data } })
 
+/* Filter Table */
 export const setAppendixFilterText = (data) => ({ type: APDX_SET_FILTER_TEXT, payload: data })
 export const setRefFilterText = (data) => ({ type: REF_SET_FILTER_TEXT, payload: data })
+export const setFrameFilterText = (data) => ({ type: FRAME_SET_FILTER_TEXT, payload: data })
+
 // const referencetablesIsLoading = (id, data) => ({ type: REFERENCE_TABLE_IS_LOADING }, payload:{ id: id, isLoading: data })
+
 /* Middleware */
 export function removeOpenApdx(id) {
 	return dispatch => {
+		//TODO: Remove from server also
 		dispatch(removeApdx(id))
 	}
 }
@@ -73,8 +91,6 @@ export async function addAppendixAsync(appendix) {
 	return async dispatch => {
 		dispatch(appendixIsSaving())
 		await addAppendix(appendix).then((result) => {
-			console.log('addAppendixAsync save')
-			console.log(result)
 			dispatch(addApd({ result }))
 			dispatch(push('/eplan/list/' + result.appendixId + '/edit'))
 		})
@@ -95,10 +111,9 @@ export function getAppendixAsync(id) {
 
 export async function getListAsync() {
 	return async dispatch => {
-		var d = await getAppendixList()
-		dispatch(getList(d))
-		console.log('eplan d', d)
-		return d
+		var result = await getAppendixList()
+		dispatch(getList(result))
+		return result
 	}
 
 }
@@ -158,10 +173,9 @@ export function getAppendixCfg() {
 }
 
 export async function exportAppendixToPlansystemAsync(id) {
-
 	return async dispatch => {
 		var test = await exportAppendixToPlansystem(id).then((result) => {
-			console.log(result)
+			// console.log(result)
 			dispatch(exportAppendix())
 			return result
 		})
@@ -239,8 +253,6 @@ const initState = {
 	openAppendix: [],
 	openFrames: [],
 	configFrames: [],
-	// referencetables: [],
-	// openReferenceTables: [],
 	referenceTables: [],
 	referenceTableValues: [],
 	isLoading: true,
@@ -251,7 +263,8 @@ const initState = {
 	appendixIsSaving: false,
 	ApdxLoading: {},
 	appendixFilterText: '',
-	referenceTableFilterText: ''
+	referenceTableFilterText: '',
+	framesTableFilterText: ''
 }
 
 function eplan(state = initState, action) {
@@ -266,6 +279,12 @@ function eplan(state = initState, action) {
 			return {
 				...state,
 				referenceTableFilterText: action.payload
+			}
+		}
+		case FRAME_SET_FILTER_TEXT: {
+			return {
+				...state,
+				framesTableFilterText: action.payload
 			}
 		}
 		case CLOSE_APPENDIX: {

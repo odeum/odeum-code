@@ -79,7 +79,6 @@ class EditFrame extends Component {
 		if (this.props.openFrame === null) {
 			await this.props.getFrameData(this.props.frameId)
 		}
-		// this.props.dispatch(initialize('EditFrame_form_' + this.props.frameId, this.props.initialValues, true))
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -90,7 +89,6 @@ class EditFrame extends Component {
 	}
 	
 	componentDidMount() {
-		// this.props.dispatch(initialize('EditFrame_form_' + this.props.frameId, this.props.initialValues, true))
 	}
 	submitUpdate(values) {
 		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
@@ -98,7 +96,6 @@ class EditFrame extends Component {
 
 
 	render() {
-		// this.props.dispatch(initialize('EditFrame_form_' + this.props.frameId, this.props.initialValues, true))
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
@@ -158,15 +155,7 @@ function mapDispatchToProps(dispatch) {
 		},
 		setFrameData: (frameId, data, frameData) => {
 			dispatch(setFrameDataAsync(frameId, data, frameData))
-		},
-		unMount: (param) => {
-			//TODO Remove Open Appendix when *CLOSED* not when unmounted
-			console.log(param)
-			// dispatch(removeOpenApdx(param))
-		},
-		// publishToPlanSystem: async (id) => {
-		// 	return dispatch(await exportAppendixToPlansystemAsync(id))
-		// }
+		}
 	}
 }
 

@@ -75,12 +75,10 @@ export const HeaderRow = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 10px;
-    // margin-bottom: 3px;
     color: white;
     fill: white;
     overflow: hidden;
     align-items: center;
-    // border-bottom: 1px solid #e0e0e0;
     font-family: Source Sans Pro;
     font-style: normal;
     font-size: 15px;
@@ -126,7 +124,6 @@ export const SearchInput = styled.input`
     font-family: 'Source Sans Pro';
     font-size: 16px;
     font-weight: 300;
-    //   color: #fff;
     outline: none;
     -webkit-appearance: none;
 
