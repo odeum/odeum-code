@@ -155,6 +155,7 @@ class EditAppendix extends Component {
 		}
 
 		await this.props.updateApd(appendix, this.props.param, false)
+		toast.success('Dine ændringer er gemt')
 	}
 
 	async handlePdfChange(option) {
