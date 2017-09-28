@@ -96,7 +96,8 @@ class Editor extends Component {
 						removed_menuitems: 'newdocument',
 						file_browser_callback: this.openMediaBrowser,
 						width: "calc(100% - 2px)",
-						height: '300px'
+						height: '300px',
+						entity_encoding: 'raw'
 					}}
 					onBlur={(e) => {
           				this.props.onBlur()
