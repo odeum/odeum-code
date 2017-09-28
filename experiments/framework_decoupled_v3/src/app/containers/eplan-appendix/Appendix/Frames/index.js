@@ -11,12 +11,15 @@ import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* App */
 import FramesTable from './FramesTable/Table'
-import { AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { AppendixButtonPanel, ToastContainerStyled } from 'app/styles/EplanStyles'
 import { PrimaryContainer } from 'app/styles/'
 import * as iconname from 'framework/assets/icons'
 import Button from 'framework/components/Widgets/Button'
 import AddFrameModal from 'app/components/eplan-appendix/Frames/AddFrameModal'
 import Input from 'framework/components/Widgets/Input/Input'
+
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 class Frames extends Component {
 	tab = {
@@ -75,6 +78,7 @@ class Frames extends Component {
 	addNewFrame() {
 		alert("TODO")
 		this.closeAddFrameModal()
+		toast.success('Rammen tilføjet korrekt')
 	}
 	setFilter(event) {
 		this.props.setFilterText(event.target.value)
@@ -95,6 +99,14 @@ class Frames extends Component {
 					addFrameModalIsOpen={addFrameModalIsOpen}
 					closeAddFrameModal={closeAddFrameModal}
 					addNewFrame={addNewFrame}
+				/>
+				<ToastContainerStyled
+					position="top-right"
+					autoClose={5000}
+					hideProgressBar={true}
+					newestOnTop={true}
+					closeOnClick
+					pauseOnHover
 				/>
 			</PrimaryContainer>
 		)

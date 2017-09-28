@@ -6,10 +6,8 @@ const sceneProp = { id: 'eplan' }
 
 class EplanAppendix extends Component {
 	async componentWillMount() {
-		var d = await this.props.getList()
-		console.log('d', d)
-		if (d) {
-			
+		var data = await this.props.getList()
+		if (data) {
 			this.props.onMount()
 		}
 	}

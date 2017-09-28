@@ -11,7 +11,7 @@ import { tabChange, addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer } from 'app/styles'
-import { PulseLoader, AppendixButtonPanel } from 'app/styles/EplanStyles'
+import { AppendixButtonPanel } from 'app/styles/EplanStyles'
 
 /* Components */
 import ReferenceTableEditList from './Table/Table'
@@ -119,7 +119,7 @@ class ReferenceTableEdit extends Component {
 						reftableId: this.props.referenceTableId
 					})}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
-				{this.props.referenceTableValues === null || this.props.referenceTable === undefined ? <PulseLoader size="15px" color={'royalblue'} /> : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
+				{this.props.referenceTableValues === null || this.props.referenceTable === undefined ? null : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}

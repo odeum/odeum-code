@@ -138,7 +138,6 @@ export default function tabReducer(state = initState, action) {
 		}
 		case ADD_TAB:
 			{
-				//console.log(action.payload)
 				return {
 					...state,
 					tabSystem: {

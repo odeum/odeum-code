@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FramesForm } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */  AppendixButtonPanel, FramesForm, ToastContainerStyled } from 'app/styles/EplanStyles'
 
 /* Components */
 import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
@@ -19,6 +19,9 @@ import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
 
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
+
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 const required = value => (value ? undefined : 'Required')
 
@@ -92,6 +95,7 @@ class EditFrame extends Component {
 	}
 	submitUpdate(values) {
 		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
+		toast.success('Dine ændringer er gemt')
 	}
 
 
@@ -104,7 +108,7 @@ class EditFrame extends Component {
 					{/* <Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Knap 2</Button> */}
 				</AppendixButtonPanel>
 				{this.props.openFrame === null ? 
-					<PulseLoader size="15px" color={'royalblue'} /> : 
+					null : 
 					<PrimaryContainer>
 						<FramesForm form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
 							<FieldArray name={'fields'} component={renderFields}/>
@@ -129,7 +133,15 @@ class EditFrame extends Component {
 				referenceTableId={this.props.referenceTableId}
 				 /> */}
 				 
-			</PrimaryContainer>
+			<ToastContainerStyled
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={true}
+				newestOnTop={true}
+				closeOnClick
+				pauseOnHover
+			 />
+		 </PrimaryContainer>
 
 		)
 	}

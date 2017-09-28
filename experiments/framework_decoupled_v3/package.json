@@ -8,7 +8,6 @@
     "draft": "^0.2.3",
     "draft-js": "^0.10.1",
     "grid-styled": "^2.0.0-10",
-    "halogen": "^0.2.0",
     "immutable": "^3.8.1",
     "lodash": "^4.17.4",
     "polished": "^1.4.0",

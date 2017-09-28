@@ -160,7 +160,7 @@ class FramesTable extends Component {
 						)}
 					</AutoSizer>
 				</AutoSizerDiv>
-				<div style={{ marginTop: '30px' }}> 1,2,3......</div>
+				{/* <div style={{ marginTop: '30px' }}> 1,2,3......</div> */}
 			</div>
 		)
 	}
@@ -273,7 +273,6 @@ class FramesTable extends Component {
 
 }
 const mapStateToProps = (state, ownProps) => {
-	console.log(ownProps)
 	return {
 		list: getFilteredFrames(state, ownProps.id, ownProps)
 	}

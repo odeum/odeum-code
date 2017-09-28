@@ -19,7 +19,7 @@ import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
-import { Animation, AppendixHeader, PulseLoader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { Animation, AppendixHeader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -155,6 +155,7 @@ class EditAppendix extends Component {
 		}
 
 		await this.props.updateApd(appendix, this.props.param, false)
+		toast.success('Dine ændringer er gemt')
 	}
 
 	async handlePdfChange(option) {
@@ -292,7 +293,7 @@ class EditAppendix extends Component {
 				{appendix !== null && appendixDates !== undefined ?
 
 					<Animation>
-						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> :
+						{this.props.appendixIsSaving || this.state.pdfIsLoading ? null :
 							<div>
 								<div>
 									<Flex wrap>

@@ -25,7 +25,7 @@ box-sizing: border-box;
 overflow: hidden;
 `
 export const MenuLabel = styled.div`
-max-width: ${props => props.close ? '250px' : '0px'};
+max-width: ${props => props.close ? '200px' : '0px'};
 overflow:  hidden;
 line-height: 50px;
 white-space: nowrap;
@@ -39,14 +39,13 @@ font-size:20px;
 cursor:pointer;
 margin: 0px 15px 0px 15px;
 align-items:center;
-justify-content:center;
 &:hover {
     background-color: #81c1ea;
 }
 `
 
 export const Arrow = styled.div`
-max-width: ${props => props.close ? '250px' : '0px'};
+max-width: ${props => props.close ? '30px' : '0px'};
 overflow:  hidden;
 transition: all 300ms ease;
 margin-left: ${props => props.close ? 'auto' : '0px'};
@@ -69,5 +68,4 @@ width:${props => props.close ? '100%' : '50px'};
 height:100%;
 display:flex;
 align-items:center;
-justify-content: center;
 `

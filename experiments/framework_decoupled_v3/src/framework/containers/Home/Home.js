@@ -16,7 +16,7 @@ import FooterContainer from '../Footer/Footer'
 //Redux+Router
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-// import { replace } from 'react-router-redux'
+import { push } from 'react-router-redux'
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
@@ -30,8 +30,14 @@ class Home extends Component {
 			loggedIn: true
 		}
 		this.handleLogin = this.handleLogin.bind(this)
-		this.props.onMount()
+
 	}
+	componentWillMount = () => {
+		this.props.onMount()
+		if (this.props.location.pathname === '/')
+			this.props.Redirect()
+	}
+
 	handleLogin() {
 		this.setState({ loggedIn: true })
 	}
@@ -39,8 +45,10 @@ class Home extends Component {
 		return (
 
 			<ThemeProvider theme={theme}>
+
 				{this.state.loggedIn ?
 					<div>
+
 						<HomeDiv>
 							<HeaderContainer />
 							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
@@ -70,7 +78,10 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(getAppendixCfg())
-			// dispatch(replace('/eplan/list'))
+
+		},
+		Redirect: () => {
+			dispatch(push('/eplan/list'))
 		}
 	}
 

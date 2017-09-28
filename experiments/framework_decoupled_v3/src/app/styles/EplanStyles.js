@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { CLOUDY_DARK } from 'framework/assets/colors'
-import Loader from 'halogen/PulseLoader'
+// import Loader from 'halogen/PulseLoader'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import DatePicker from 'react-datepicker'
@@ -48,18 +48,18 @@ export const Label = styled.label`
     margin-left: 10px;
 `
 
-export const PulseLoader = styled(Loader) `
-    color: ${CLOUDY_DARK};
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1em;
-`
+// export const PulseLoader = styled(Loader) `
+//     color: ${CLOUDY_DARK};
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     font-size: 1em;
+// `
 
 export const SelectRowNr = styled.select`
     background: #e3e5e5;
