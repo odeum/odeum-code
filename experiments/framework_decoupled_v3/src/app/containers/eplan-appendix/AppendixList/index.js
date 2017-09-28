@@ -10,7 +10,7 @@ import NewAppendixModal from './NewAppendixModal'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import Input from 'framework/components/Widgets/Input/Input'
-// import { getFilteredAppdx } from 'app/store/selectors/eplan'
+
 class AppendixList extends Component {
 	tab = {
 		id: 'eplan_oversigt',
@@ -19,7 +19,7 @@ class AppendixList extends Component {
 		icon: "assignment",
 		fixed: true,
 		isLoading: true,
-		closeLocation: ''
+		closeLink: ''
 	}
 	constructor(props) {
 		super(props)
@@ -35,11 +35,11 @@ class AppendixList extends Component {
 	}
 	async componentWillMount() {
 		this.props.onMount(this.props.id, this.tab)
-		// if (this.props.appendixes.size < 1) {
 		if (this.props.isLoading === true) {
 			this.props.tabisLoading(this.props.id, this.tab, true)
 		}
 		await this.props.getList()
+
 
 	}
 	
@@ -80,7 +80,7 @@ class AppendixList extends Component {
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 
 				<AppendixButtonPanel>
-					<Input autoFocus placeholder={'Type here to filter list by name'} onChange={this.setFilter} />
+					<Input value={this.props.appendixFilterText} autoFocus placeholder={'Type here to filter list by name'} onChange={this.setFilter} />
 					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
 				</AppendixButtonPanel>
 				{this.props.isLoading ? null : <AppendixTable onClickButton={this.onClickButton} />}
@@ -94,13 +94,15 @@ class AppendixList extends Component {
 	}
 }
 const mapStateToProps = (state, ownProps) => ({
-	isLoading: state.eplan.isLoading
+	isLoading: state.eplan.isLoading,
+	appendixFilterText: state.eplan.appendixFilterText
 })
 
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 			dispatch(tabChange(id, tab.label))
+			// dispatch(setAppendixFilterText(''))
 		},
 		onClickButton: (location) => {
 			dispatch(push('/eplan/list/' + location + '/edit'))

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { getAppendixDates } from 'app/store/selectors/eplan'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
@@ -30,7 +29,6 @@ let renderFields = ({ fields }) => {
 	)
 }
 let renderForm = ({ input }) => {
-	// console.log(input)
 	return (
 		<DatePickerStyled
 			selected={dateChecker(input.value)}
@@ -45,7 +43,6 @@ let renderForm = ({ input }) => {
 	)
 }
 function dateChecker(date) {
-	// console.log(date)
 	var momentDate = moment(date)
 	return momentDate._isValid ? momentDate : null
 }
@@ -53,14 +50,12 @@ class AppendixConfigModal extends Component {
 	constructor(props) {
 		super(props)
 		this.dateChecker = this.dateChecker.bind(this)
-		// console.log(props)
 	}
 	dateChecker(date) {
 		var momentDate = moment(date)
 		return momentDate._isValid ? momentDate : null
 	}
 	render() {
-		// const { dateChecker } = this
 		const { configModalIsOpen, closeConfigModal, statusOptions, handleStatusChange, saveConfigModal } = this.props
 		return (
 			<div>

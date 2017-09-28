@@ -2,27 +2,41 @@ import React, { Component } from 'react'
 import MenuItem from 'framework/components/Menu/MenuItem'
 import PropTypes from 'prop-types'
 //Styles
-import { MenuDiv } from 'framework/components/styles/MenuStyles'
+import { MenuDiv, MenuHeader, MenuIconDiv } from './StyledMenu'
 //Redux
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { changeInstance } from 'framework/store/modules/tabs'
 import { getMenuItems } from 'framework/store/selectors/menuSelector'
+import Icon from 'framework/assets/Icon'
+
+
+
 class MenuContainer extends Component {
 	constructor(props) {
 		super(props)
+		this.state = {
+			close: true
+		}
 		this.active = this.active.bind(this)
+		this.switch = this.switch.bind(this)
 	}
 	active(sceneName) {
 		if (sceneName === this.props.active)
-			return 'active'
+			return true
 		else
-			return ''
+			return false
+	}
+	switch = () => {
+		if (this.state.close) { this.setState({ close: false }) }
+		else { this.setState({ close: true }) }
 	}
 	render() {
 		const { scenes } = this.props
+		const { close } = this.state
 		return (
-			<MenuDiv>
+			<MenuDiv close={close}>
+				<MenuHeader close={close}><MenuIconDiv close={close} onClick={this.switch}><Icon icon={'menu'} size={18} active={true} /></MenuIconDiv></MenuHeader>
 				{Object.keys(scenes).map((scene, index) => (
 					<MenuItem name={scenes[scene].name}
 						icon={scenes[scene].icon}
@@ -31,6 +45,7 @@ class MenuContainer extends Component {
 						key={index}
 						onLoad={this.props.changeInstance}
 						id={scenes[scene].sceneID}
+						close={this.state.close}
 					/>))}
 			</MenuDiv>
 		)

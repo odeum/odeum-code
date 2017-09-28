@@ -11,12 +11,25 @@ import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'a
 //import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
 // import moment from 'moment'
+import { connect } from 'react-redux'
+// import { List } from 'immutable'
+import { /* getReferences,  */getFilteredRefs } from 'app/store/selectors/eplan'
 
-export default class ReferenceTable extends Component {
+function CellDataGetter({ dataKey, rowData }) {
+
+	if (rowData !== undefined) {
+		if (typeof rowData.get === "function") {
+			return rowData.get(dataKey)
+		} else {
+			return rowData[dataKey]
+		}
+	}
+}
+class ReferenceTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
 	};
-	
+
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
@@ -42,8 +55,7 @@ export default class ReferenceTable extends Component {
 	}
 
 	componentWillUpdate = (nextProps, nextState) => {
-		if (this.props.list.size !== nextProps.list.size)
-		{
+		if (this.props.list.size !== nextProps.list.size) {
 			this._onRowCountChange(nextProps.list.size)
 		}
 	}
@@ -105,6 +117,7 @@ export default class ReferenceTable extends Component {
 										dataKey='id'
 										disableSort={!this._isSortEnabled()}
 										headerRenderer={this._headerRenderer}
+										cellDataGetter={CellDataGetter}
 										cellRenderer={
 											({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 										}
@@ -120,6 +133,7 @@ export default class ReferenceTable extends Component {
 									dataKey='name'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
 									}
@@ -133,6 +147,7 @@ export default class ReferenceTable extends Component {
 									dataKey='action'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
+									cellDataGetter={CellDataGetter}
 									cellRenderer={
 										({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 									}
@@ -237,3 +252,14 @@ export default class ReferenceTable extends Component {
 		})
 	}
 }
+
+const mapStateToProps = (state, ownProps) => ({
+	list: getFilteredRefs(state)
+})
+
+function mapDispatchToProps(dispatch) {
+	return {
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReferenceTable)

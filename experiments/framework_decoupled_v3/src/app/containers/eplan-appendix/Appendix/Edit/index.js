@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getAppendixAsync, updateAppendix, removeOpenApdx, exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
+
+import {
+	getAppendixAsync, updateAppendix,
+	exportAppendixToPlansystemAsync
+} from 'app/store/modules/eplan'
+
 import { Field, reduxForm } from 'redux-form'
-import { getAppendixSel, getAppendix, getAppendixDates } from 'app/store/selectors/eplan'
+
+import {
+	getAppendixEdit, getAppendix,
+	getAppendixDates
+} from 'app/store/selectors/appendix'
 
 /* Framework */
 import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
@@ -22,8 +31,7 @@ import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/epla
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
-import fileDownload from 'react-file-download'
-// var fileDownload = require('react-file-download')
+import fileDownload from 'js-file-download'
 
 let renderFields = ({ fields }) => {
 	return (
@@ -63,10 +71,7 @@ class EditAppendix extends Component {
 			configModalIsOpen: false,
 			exportModalIsOpen: false,
 			pdfIsLoading: false,
-			// pdfModalIsOpen: false,
-			// pdfFile: '',
-			dates: [],
-			//appendixIsLoading: true
+			dates: []
 		}
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
@@ -86,11 +91,10 @@ class EditAppendix extends Component {
 			this.props.param,
 			this.tab
 		)
-		// this.props.tabisLoading(this.props.param, this.tab, true)
 	}
 	componentDidUpdate(nextProps, nextState) {
 		if (this.props.appendixIsLoading !== undefined) {
-			if (this.props.appendixIsLoading !== true ) {
+			if (this.props.appendixIsLoading !== true) {
 				this.props.tabisLoading(this.props.param, this.tab, false)
 			}
 		}
@@ -101,7 +105,7 @@ class EditAppendix extends Component {
 	async componentDidMount() {
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
-			
+
 		}
 		if (this.props.appendixIsLoading !== true) {
 			this.props.tabisLoading(this.props.param, this.tab, false)
@@ -143,8 +147,6 @@ class EditAppendix extends Component {
 	}
 
 	async saveConfigModal(values) {
-		//TODO: Save changes
-		// console.log(values.dates)
 		this.setState({
 			configModalIsOpen: false
 		})
@@ -153,6 +155,7 @@ class EditAppendix extends Component {
 		}
 
 		await this.props.updateApd(appendix, this.props.param, false)
+		toast.success('Dine ændringer er gemt')
 	}
 
 	async handlePdfChange(option) {
@@ -270,7 +273,6 @@ class EditAppendix extends Component {
 			closeConfigModal, saveConfigModal,
 			closeExportModal, onClickExportAppendix, handlePdfChange,
 			handleViewAppendix } = this
-		// closePdfModal, onDocumentComplete, onPageComplete
 		const pdfOptions = [
 			{ value: 'create', label: 'Opret PDF af tillæg' },
 			{ value: 'download', label: 'Download PDF' }
@@ -370,7 +372,7 @@ const mapStateToProps = (state, ownProps) => ({
 	param: ownProps.param,
 	appendix: getAppendix(state, ownProps.param, ownProps) || null,
 	initialValues: {
-		fields: getAppendixSel(state, ownProps.param, ownProps)
+		fields: getAppendixEdit(state, ownProps.param, ownProps)
 	} || null,
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,
@@ -389,10 +391,6 @@ function mapDispatchToProps(dispatch) {
 		},
 		updateApd: async (appendix, id, commit) => {
 			dispatch(await updateAppendix(appendix, id, commit))
-		},
-		unMount: (param) => {
-			//TODO Remove Open Appendix when *CLOSED* not when unmounted
-			dispatch(removeOpenApdx(param))
 		},
 		exportToPlanSystem: async (id) => {
 			return dispatch(await exportAppendixToPlansystemAsync(id))

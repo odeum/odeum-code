@@ -83,17 +83,14 @@ class NewAppendixModal extends Component {
 			'doCommit': 1,
 			'fields': values.fields
 		}
-		// console.log(appendix)
 		await this.props.addApd(appendix).then(() => {
 			console.log('addApd then')
-			// setTimeout(this.props.saveNewAppendix, 2000 )
 			this.props.saveNewAppendix()
 		})
 	}
 
 	render() {
 		const { newAppendixModalIsOpen, closeNewAppendixModal } = this.props
-		// console.log(this.props)
 		return (
 			<div>
 				<ModalWindow isOpen={newAppendixModalIsOpen} onRequestClose={closeNewAppendixModal} contentLabel="Tilføj tillæg">

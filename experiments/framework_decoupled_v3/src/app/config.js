@@ -1,5 +1,5 @@
 var tabSystem = {
-	dashboard: {
+	/* dashboard: {
 		sceneID: 'dashboard',
 		icon: 'dashboard',
 		name: 'Dashboard',
@@ -14,10 +14,10 @@ var tabSystem = {
 				icon: 'assignment_turned_in',
 				fixed: true,
 				isLoading: null,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
-	},
+	}, */
 	eplan: {
 		sceneID: 'eplan',
 		location: '/eplan/list',
@@ -33,7 +33,7 @@ var tabSystem = {
 				icon: "assignment",
 				fixed: true,
 				isLoading: false,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
 	},
@@ -52,11 +52,11 @@ var tabSystem = {
 				icon: 'grid_on',
 				fixed: true,
 				isLoading: true,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
 	},
-	settings: {
+/* 	settings: {
 		sceneID: 'settings',
 		name: 'Indstillinger', 
 		location: '/settings',
@@ -71,11 +71,11 @@ var tabSystem = {
 				icon: 'settings',
 				fixed: true,
 				isLoading: false,
-				closeLocation: ''
+				closeLink: ''
 			}
 		}
-	},
-	general: {
+	}, */
+/* 	general: {
 		sceneID: 'general',
 		location: '/dashboard/general/subtab/100',
 		activeTab: 'SubTab',
@@ -88,9 +88,9 @@ var tabSystem = {
 				icon: "info",
 				fixed: true,
 				isLoading: true,
-				closeLocation: '/dashboard/general'
+				closeLink: '/dashboard/general'
 			}
 		}
-	}
+	} */
 }
 export default tabSystem

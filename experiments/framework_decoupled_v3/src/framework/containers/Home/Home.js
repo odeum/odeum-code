@@ -16,7 +16,7 @@ import FooterContainer from '../Footer/Footer'
 //Redux+Router
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+// import { replace } from 'react-router-redux'
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
@@ -43,7 +43,7 @@ class Home extends Component {
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
-							<div style={{ display: 'flex', height: 'calc(100vh - 140px)' }}>
+							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
 								<MenuContainer />
 								<WorkspaceContainer>
 									<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
@@ -70,6 +70,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(getAppendixCfg())
+			// dispatch(replace('/eplan/list'))
 		}
 	}
 

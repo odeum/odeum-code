@@ -76,12 +76,12 @@ const initState = {
 					icon: "error",
 					fixed: true,
 					isLoading: null,
-					closeLocation: ''
+					closeLink: ''
 				}
 			}
 		}
 	},
-	activeScene: tabSystemConfig['dashboard'].sceneID
+	activeScene: tabSystemConfig[Object.keys(tabSystemConfig)[0]].sceneID
 }
 
 export default function tabReducer(state = initState, action) {
@@ -138,7 +138,7 @@ export default function tabReducer(state = initState, action) {
 		}
 		case ADD_TAB:
 			{
-				console.log(action.payload)
+				//console.log(action.payload)
 				return {
 					...state,
 					tabSystem: {

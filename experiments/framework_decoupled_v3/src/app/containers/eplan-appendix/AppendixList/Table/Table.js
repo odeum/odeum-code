@@ -3,11 +3,8 @@ import Immutable from 'immutable'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { List } from 'immutable'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
-//import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
-//import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
+import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, Cell } from 'app/styles/TableStyles'
 import { ListLink, ListAction } from 'app/styles/EplanStyles'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import { exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
@@ -17,7 +14,7 @@ import * as colors from 'framework/assets/colors'
 import RowRenderer from './_rowRender'
 import moment from 'moment'
 import 'moment/locale/da'
-import { getFilteredAppdx } from 'app/store/selectors/eplan'
+import { getFilteredAppdx } from 'app/store/selectors/appendix'
 
 function CellDataGetter({ dataKey, rowData }) {
 
@@ -100,96 +97,8 @@ class AppendixTable extends Component {
 
 		return (
 			<div style={{ clear: 'both' }}>
-				<ContentBox>
-					{/*  <label>
-            <input
-             aria-label='Hide header?'
-              checked={disableExtraRows}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ disableExtraRows: event.target.checked })}
-              />
-              Hide debug options?
-          </label>
-          {!disableExtraRows &&
-          <div>
-                      <label className={'checkboxLabel'}>
-            <input
-              aria-label='Hide index?'
-              checked={hideIndexRow}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ hideIndexRow: event.target.checked })}
-            />
-            Hide index?
-          </label>
-
-          <label className={'checkboxLabel'}>
-            <input
-              aria-label='Hide header?'
-              checked={disableHeader}
-              className={'checkbox'}
-              type='checkbox'
-              onChange={event => this.setState({ disableHeader: event.target.checked })}
-            />
-            Hide header?&nbsp;
-          </label> */}
-					{/*<InputRow>*/}
-
-					{/* Row numbers display */}
-					{/*<SpanRowNr>
-              <Label>Vis</Label>
-              <SelectRowNr name="rowNumber" onChange={this._onRowCountChange}>
-                <option value={50}> 50</option>
-                <option value={100}> 100</option>
-                <option value={150}> 150</option>
-              </SelectRowNr>
-            </SpanRowNr>
-            <SearchDiv>
-              <SearchInput /><SearchButtonDiv><Icon icon={ICON_SEARCH} size={20} active={true} /></SearchButtonDiv>
-            </SearchDiv>*/}
-
-					{/* SearchBar replace */}
-					{/*   <div>
-          <label>Scroll to:</label> <br/>
-          <LabeledInput
-            label='Scroll to'
-            name='onScrollToRow'
-            placeholder='Index...'
-            onChange={this._onScrollToRowChange}
-            value={scrollToIndex || ''}
-          /></div>
-
-          <div><label>Row Height</label><br/>
-          <LabeledInput
-            disabled={useDynamicRowHeight}
-            label='Row height'
-            name='rowHeight'
-            onChange={event => this.setState({ rowHeight: parseInt(event.target.value, 10) || 1 })}
-            value={rowHeight}
-          />
-          </div>
-           
-          <div><label>Header Height</label><br/>
-          <LabeledInput
-            label='Header height'
-            name='headerHeight'
-            onChange={event => this.setState({ headerHeight: parseInt(event.target.value, 10) || 1 })}
-            value={headerHeight}
-          />
-          </div>
-            <div><label>Header Height</label><br/>
-          <LabeledInput
-            label='Overscan'
-            name='overscanRowCount'
-            onChange={event => this.setState({ overscanRowCount: parseInt(event.target.value, 10) || 0 })}
-            value={overscanRowCount}
-          />
-          </div> */}
-					{/*</InputRow>*/}
-					{/* </div> */}
-
-				</ContentBox>
+{/* 				<ContentBox>
+				</ContentBox> */}
 				<AutoSizerDiv>
 					<AutoSizer >
 						{({ height, width }) => (
@@ -371,10 +280,8 @@ class AppendixTable extends Component {
 		document.getElementById('exportCloseButton').style.display = 'none'
 		document.getElementById('exportStepTwo').style.display = 'block'
 		document.getElementById('exportLoadingDiv').style.display = 'block'
-		// console.log(this.state.exportAppendix.appendixId)
 		try {
 			await this.props.exportToPlanSystem(this.state.exportAppendix.appendixId).then((response) => {
-				// console.log('Export result this:', response)
 
 				document.getElementById('exportLoadingDiv').style.display = 'none'
 				document.getElementById('exportCloseButton').style.display = 'block'
@@ -474,12 +381,11 @@ class AppendixTable extends Component {
 	}
 }
 const mapStateToProps = (state, ownProps) => ({
-	list: getFilteredAppdx(state).size !== 0 ? getFilteredAppdx(state) : List([])
+	list: getFilteredAppdx(state)
 })
 function mapDispatchToProps(dispatch) {
 	return {
 		exportToPlanSystem: async (id) => {
-			// console.log('exportToPlanSystem table.js')
 			return dispatch(await exportAppendixToPlansystemAsync(id))
 		}
 	}

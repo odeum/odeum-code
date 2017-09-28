@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FooterDiv } from 'framework/components/styles/FooterStyles'
+import { FooterDiv } from './FooterStyles'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 // import * as GlobalActions from 'store/actions/global'

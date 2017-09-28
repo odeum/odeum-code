@@ -8,22 +8,15 @@ import { deleteReferenceTableData } from 'app/store/modules/eplan'
 import Immutable, { List, Map } from 'immutable'
 
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
-import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
+import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'
 
 import Icon from 'framework/assets/Icon'
-import { ListAction } from 'app/styles/EplanStyles'
+import { ListAction, ToastContainerStyled } from 'app/styles/EplanStyles'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
-
-//import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
-//import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
-// import { ListLink } from 'app/styles/EplanStyles'
-//import Icon from 'framework/assets/Icon'
-//import { ICON_SEARCH } from 'framework/assets/icons'
 import RowRenderer from './_rowRender'
-// import moment from 'moment'
-
-// var _ = require('lodash')
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 class ReferenceTableEditList extends Component {
 	static propTypes = {
@@ -194,6 +187,14 @@ class ReferenceTableEditList extends Component {
 						)}
 					</AutoSizer>
 				</AutoSizerDiv>
+				<ToastContainerStyled
+					position="top-right"
+					autoClose={5000}
+					hideProgressBar={true}
+					newestOnTop={true}
+					closeOnClick
+					pauseOnHover
+				/>
 			</div>
 		)
 	}
@@ -292,6 +293,7 @@ class ReferenceTableEditList extends Component {
 	_deleteReferenceTableValue(data) {
 		if (window.confirm('Er du sikker på du vil slette: ' + data.valueKey + ' ' + data.value)) {
 			this.props.deleteReferenceTableValue(this.props.referenceTableId, data.id)
+			toast.success('Værdien er hermed slettet')
 		}
 	}
 }

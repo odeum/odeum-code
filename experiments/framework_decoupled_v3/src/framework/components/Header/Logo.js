@@ -7,7 +7,7 @@ import { LogoLink, LogoDiv, LogoImg } from '../styles/HeaderStyles'
 const Logo = () => {
 	return (
 		<LogoDiv>
-			<LogoLink to="/dashboard/general">
+			<LogoLink to="/">
 				<LogoImg src={logo} alt="Logo"/>
 			</LogoLink>
 		</LogoDiv>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
 import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
-import { getFrameFieldsSel } from 'app/store/selectors/eplan'
+import { getFramesFields } from 'app/store/selectors/appendix'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FramesForm } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ PulseLoader, AppendixButtonPanel, FramesForm, ToastContainerStyled } from 'app/styles/EplanStyles'
 
 /* Components */
 import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
@@ -19,6 +19,9 @@ import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
 
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
+
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 const required = value => (value ? undefined : 'Required')
 
@@ -79,25 +82,24 @@ class EditFrame extends Component {
 		if (this.props.openFrame === null) {
 			await this.props.getFrameData(this.props.frameId)
 		}
-		// this.props.dispatch(initialize('EditFrame_form_' + this.props.frameId, this.props.initialValues, true))
 	}
 
 	componentWillReceiveProps(nextProps) {
+		console.log(nextProps.initialValues.fields)
 	}
 
 	componentWillUnmount = () => {
 	}
 	
 	componentDidMount() {
-		// this.props.dispatch(initialize('EditFrame_form_' + this.props.frameId, this.props.initialValues, true))
 	}
 	submitUpdate(values) {
 		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
+		toast.success('Dine ændringer er gemt')
 	}
 
 
 	render() {
-		// this.props.dispatch(initialize('EditFrame_form_' + this.props.frameId, this.props.initialValues, true))
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
@@ -131,7 +133,15 @@ class EditFrame extends Component {
 				referenceTableId={this.props.referenceTableId}
 				 /> */}
 				 
-			</PrimaryContainer>
+			<ToastContainerStyled
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={true}
+				newestOnTop={true}
+				closeOnClick
+				pauseOnHover
+			 />
+		 </PrimaryContainer>
 
 		)
 	}
@@ -142,7 +152,7 @@ const mapStateToProps = (state, ownProps) => ({
 	openFrame: state.eplan.openFrames[ownProps.frameId] || null,
 	form: 'EditFrame_form_' + ownProps.frameId,
 	initialValues: {
-		fields: getFrameFieldsSel(state, ownProps.frameId)
+		fields: getFramesFields(state, ownProps.frameId)
 	} || null,
 	conf: state.eplan.conf
 })
@@ -157,15 +167,7 @@ function mapDispatchToProps(dispatch) {
 		},
 		setFrameData: (frameId, data, frameData) => {
 			dispatch(setFrameDataAsync(frameId, data, frameData))
-		},
-		unMount: (param) => {
-			//TODO Remove Open Appendix when *CLOSED* not when unmounted
-			console.log(param)
-			// dispatch(removeOpenApdx(param))
-		},
-		// publishToPlanSystem: async (id) => {
-		// 	return dispatch(await exportAppendixToPlansystemAsync(id))
-		// }
+		}
 	}
 }
 

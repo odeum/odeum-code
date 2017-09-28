@@ -1,5 +1,4 @@
 import React from 'react'
-// import Modal from 'react-modal'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
 import { DropdownSelect, DatePickerStyled } from 'app/styles/EplanStyles'
