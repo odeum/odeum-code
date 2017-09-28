@@ -16,7 +16,6 @@ import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import RowRenderer from './_rowRender'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 class ReferenceTableEditList extends Component {
 	static propTypes = {

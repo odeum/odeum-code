@@ -21,7 +21,6 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 const required = value => (value ? undefined : 'Required')
 

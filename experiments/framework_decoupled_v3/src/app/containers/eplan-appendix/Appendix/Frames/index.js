@@ -19,7 +19,6 @@ import AddFrameModal from 'app/components/eplan-appendix/Frames/AddFrameModal'
 import Input from 'framework/components/Widgets/Input/Input'
 
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 class Frames extends Component {
 	tab = {

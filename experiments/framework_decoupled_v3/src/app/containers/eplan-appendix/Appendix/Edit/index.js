@@ -30,7 +30,6 @@ import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 import fileDownload from 'js-file-download'
 
 let renderFields = ({ fields }) => {
