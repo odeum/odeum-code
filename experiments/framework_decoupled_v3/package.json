@@ -16,7 +16,7 @@
     "react-addons-shallow-compare": "^15.6.0",
     "react-datepicker": "^0.53.0",
     "react-dom": "^15.5.0",
-    "react-file-download": "^0.3.4",
+    "js-file-download": "^0.4.1",
     "react-icons": "^2.2.3",
     "react-modal": "^2.2.4",
     "react-quill": "^1.1.0",
