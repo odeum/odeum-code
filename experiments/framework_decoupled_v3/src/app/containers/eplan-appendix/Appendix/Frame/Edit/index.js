@@ -10,7 +10,7 @@ import { tabChange } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */  AppendixButtonPanel, FramesForm, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv, */ AppendixButtonPanel, FramesForm, ToastContainerStyled } from 'app/styles/EplanStyles'
 
 /* Components */
 import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
@@ -21,7 +21,6 @@ import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
 
 const required = value => (value ? undefined : 'Required')
 

@@ -102,8 +102,8 @@ class ImageBrowser extends Component {
 	render() {
 		const folderOptions = [
 			{ value: 'upload', label: 'Upload billede' },
-			{ value: 'rename', label: 'Omdøb folder' },
-			{ value: 'delete', label: 'Slet folder' }
+			// { value: 'rename', label: 'Omdøb folder' },
+			// { value: 'delete', label: 'Slet folder' }
 		]
 
 		const {
@@ -158,7 +158,7 @@ class ImageBrowser extends Component {
 								onChange={this.handleFunctionSelectChange}
 								searchable={false}
 								clearable={false}
-								placeholder="Folder funktioner"
+								placeholder="Funktioner"
 							/>
 						</Box>
 					</Flex>
