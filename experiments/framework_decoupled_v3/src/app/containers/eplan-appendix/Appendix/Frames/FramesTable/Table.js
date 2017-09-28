@@ -160,7 +160,7 @@ class FramesTable extends Component {
 						)}
 					</AutoSizer>
 				</AutoSizerDiv>
-				<div style={{ marginTop: '30px' }}> 1,2,3......</div>
+				{/* <div style={{ marginTop: '30px' }}> 1,2,3......</div> */}
 			</div>
 		)
 	}
