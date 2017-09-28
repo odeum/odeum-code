@@ -52,24 +52,24 @@ ODEUM Code is a React-based UI framework for building Web & Mobile Applications.
 		- [5.3.26. JavaScript Style Guide](#5326-javascript-style-guide)
 		- [5.3.27. Debugging with Chrome in VS Code](#5327-debugging-with-chrome-in-vs-code)
 		- [5.3.28. Test setup scenarios](#5328-test-setup-scenarios)
-		- [5.3.29. Help Server (Help Items)](#5329-help-server-help-items)
-		- [5.3.30. Responsiveness](#5330-responsiveness)
-		- [5.3.31. Search Server](#5331-search-server)
-		- [5.3.32. Filename Refactoring (VSCode Extension)](#5332-filename-refactoring-vscode-extension)
-		- [5.3.33. ODEUM Slack Service](#5333-odeum-slack-service)
-		- [5.3.34. ODEUM Code Tutorial Site](#5334-odeum-code-tutorial-site)
+		- [5.3.29. Responsiveness](#5329-responsiveness)
+		- [5.3.30. Filename Refactoring (VSCode Extension)](#5330-filename-refactoring-vscode-extension)
+		- [5.3.31. ODEUM Slack Service](#5331-odeum-slack-service)
+		- [5.3.32. ODEUM Code Tutorial Site](#5332-odeum-code-tutorial-site)
 - [6. Apps](#6-apps)
 	- [6.1. ODEUM ThemeBuilder](#61-odeum-themebuilder)
-	- [6.2. ODEUM HelpBuilder](#62-odeum-helpbuilder)
-	- [6.3. ODEUM AppBuilder](#63-odeum-appbuilder)
-	- [6.4. ODEUM ComponentBuilder](#64-odeum-componentbuilder)
-	- [6.5. GeoCloud2 (GC2) porting](#65-geocloud2-gc2-porting)
-	- [6.6. ODEUM NPM package examples](#66-odeum-npm-package-examples)
-	- [6.7. ODEUM Dashboard](#67-odeum-dashboard)
-	- [6.8. ODEUM Help Server](#68-odeum-help-server)
-	- [6.9. ODEUM Search Server](#69-odeum-search-server)
-	- [6.10. ODEUM Backup Services](#610-odeum-backup-services)
-	- [6.11. ODEUM Native App (Electron)](#611-odeum-native-app-electron)
+	- [6.2. ODEUM Help Server](#62-odeum-help-server)
+	- [6.3. ODEUM HelpBuilder](#63-odeum-helpbuilder)
+	- [6.4. ODEUM Search Server](#64-odeum-search-server)
+	- [6.5. ODEUM AppBuilder](#65-odeum-appbuilder)
+	- [6.6. ODEUM ComponentBuilder](#66-odeum-componentbuilder)
+	- [6.7. GeoCloud2 (GC2) porting](#67-geocloud2-gc2-porting)
+	- [6.8. ODEUM NPM package examples](#68-odeum-npm-package-examples)
+	- [6.9. ODEUM Dashboard](#69-odeum-dashboard)
+	- [6.10. ODEUM Help Server](#610-odeum-help-server)
+	- [6.11. ODEUM Search Server](#611-odeum-search-server)
+	- [6.12. ODEUM Backup Services](#612-odeum-backup-services)
+	- [6.13. ODEUM Native App (Electron)](#613-odeum-native-app-electron)
 - [7. Icons](#7-icons)
 	- [7.1. Icons location](#71-icons-location)
 - [8. Future Technology ideas](#8-future-technology-ideas)
@@ -504,25 +504,16 @@ and "password" to resolve which server to communicate with.
 - [Mocha](https://mochajs.org/)
 - [Chai](http://chaijs.com/)
 
-### 5.3.29. Help Server (Help Items)
-- The App platform for displaying context-sensitive helpitems based upon views in scenes. 
-- Apps using ODEUM Code can introduce their own helpitems which are displayed by the framework. 
-- Helpitems should be indexed and very easy to localize.
-
-### 5.3.30. Responsiveness
+### 5.3.29. Responsiveness
 With Styled-Components:
 - [Grid Styled](http://jxnblk.com/grid-styled/)
 - [Grid Styled Github](https://github.com/jxnblk/grid-styled)
 
-### 5.3.31. Search Server
-- The App platform for displaying helpitems based upon connected views in scenes and components 
-- Apps using ODEUM Code can introduce their own helpitems which are displayed by the framework
-
-### 5.3.32. Filename Refactoring (VSCode Extension)
+### 5.3.30. Filename Refactoring (VSCode Extension)
 - A VSCode extension made in NodeJS and follwoing the Microsoft instructions set out here:
 - [Extending Visual Studio Code](https://code.visualstudio.com/docs/extensions/overview)
 
-### 5.3.33. ODEUM Slack Service
+### 5.3.31. ODEUM Slack Service
 Create a Slack App for posting messages from ODEUM Apps to a team Slack channel. Can be astablished pretty easy with Slack webhooks (already created for odeum-code channel). We will need a NodeJS service (server - test on surge.sh to hide the tokens from Slack. Setup up of easy NodeJS boilerplate with Express webserver to exhibit API which should contain:
 
 - Base URL to Slack webhooks: https://hooks.slack.com/services/
@@ -534,7 +525,7 @@ Links:
 - [Example of use - React Slack Chat](https://www.npmjs.com/package/react-slack-chat)
 - [Example of use - React Slack Feedback](https://www.npmjs.com/package/react-slack-feedback)
 
-### 5.3.34. ODEUM Code Tutorial Site
+### 5.3.32. ODEUM Code Tutorial Site
 - An App that can display simple markdown files from the ODEUM Code repo and run as a tutorial site
 - Convert markdown to HTML
 - [Example 1 in React](https://github.com/acdlite/react-remarkable) (3395 original library)
@@ -550,57 +541,68 @@ Links:
 - Examples of different themes
 - Publish theme components to NPM
 - Icon components selected runtime through constants from the theme (of available icons)
-http://stackoverflow.com/questions/29875869/react-jsx-dynamic-component-name
 
 The ThemeBuilder (or an AppChecker) needs to have an available Material Design Icon name checker so you do not overwrite the created constants from the ThemeBuilder with invalid icon names.
 
-## 6.2. ODEUM HelpBuilder
-- Build an App to construct an indexed and localized help file for an App using ODEUM Code and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
+## 6.2. ODEUM Help Server
+- The App platform for displaying help items based upon connected views and components in scenes
+- Apps build on ODEUM Code can introduce their own help items which are displayed by the framework through ODEUM Help Server
 
-## 6.3. ODEUM AppBuilder
+
+## 6.3. ODEUM HelpBuilder
+- Build an App to construct an indexed and localized help file for an App using ODEUM Code and the ODEUM Help Server. App should obviously be multilingual in terms of creating localization of help files 
+- The App platform for displaying context-sensitive help items based upon views in scenes. 
+- Apps using ODEUM Code can introduce their own help items which are displayed by the framework. 
+- Help items should be indexed and very easy to localize.
+
+## 6.4. ODEUM Search Server
+- The App platform for displaying search results based upon connected views and components in scenes
+- Apps using ODEUM Code can introduce their own help items which are displayed by the framework through ODEUM Search Server
+
+## 6.5. ODEUM AppBuilder
 - Build an App to invoke a boilerplate to set up scenes (menus) for an app
 - Import a theme from ThemeBuilder
-- Import help from HelpBuilder
+- Import help from Help Server
 - Import search from Search Server
 - Insert developer scene in framework
 - Hot Reload in developer mode
 - Workspace Page Templates (Design system guidelines - see Grommet templates examples [Grommet templates](https://grommet.github.io/aruba/docs/templates))
 - [Inspiration from Structor](https://hackernoon.com/creating-react-components-in-structor-react-ui-builder-f7c5026edfbd)
 
-## 6.4. ODEUM ComponentBuilder
+## 6.6. ODEUM ComponentBuilder
 - Build an App to construct a JavaScript file with a new component
 - Use dropdown menues and checkboxes to select type and default values and innerworkings
 
-## 6.5. GeoCloud2 (GC2) porting
+## 6.7. GeoCloud2 (GC2) porting
 - Support Mapcentia in porting GC2 to ODEUM Code
 
-## 6.6. ODEUM NPM package examples
+## 6.8. ODEUM NPM package examples
 - Demo of creating and managing a React component as an NPM module + Travis CI deployment
 - [odeum-connect](https://github.com/odeum/odeum-connect)
 - [wrapwrap](https://github.com/odeum/wrapwrap)
 
-## 6.7. ODEUM Dashboard
+## 6.9. ODEUM Dashboard
 - Dashboard for Global User Registry on odeum.com
 - Visualizes live and historic stats of active user tokens (login) - User, Timestamps, Site, App
 - Kick user
 - Chat with user
 
-## 6.8. ODEUM Help Server
+## 6.10. ODEUM Help Server
 - Global Help Index for all connected apps
 - Should have own ticketing system (issue tracker)
 - Ability to integrate with Slack through ODEUM Slack Service 
 
-## 6.9. ODEUM Search Server
+## 6.11. ODEUM Search Server
 - Global Search Index for all connected apps
 - Elastic Search
 - Connected to ODEUM Help Server for returning help items 
 
-## 6.10. ODEUM Backup Services
+## 6.12. ODEUM Backup Services
 - Manage access to external Dropbox and Flickr accounts for managing remote backup/restore from/to these services
 - [Flickr API](https://github.com/flickr/flickr-sdk)
 - [Dropbox API](https://github.com/dropbox/dropbox-sdk-js)
 
-## 6.11. ODEUM Native App (Electron)
+## 6.13. ODEUM Native App (Electron)
 - Native Mac App
 - Native Windows App
 - Native Linux App
