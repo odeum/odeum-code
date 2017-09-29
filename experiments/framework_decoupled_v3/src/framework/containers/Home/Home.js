@@ -16,7 +16,8 @@ import FooterContainer from '../Footer/Footer'
 //Redux+Router
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+// import { push } from 'react-router-redux'
+
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
