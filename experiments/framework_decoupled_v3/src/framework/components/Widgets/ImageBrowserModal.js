@@ -72,7 +72,7 @@ class ImageBrowser extends Component {
 
 		let xhr = new XMLHttpRequest()
 		//TODO: Get api url in correct way
-		xhr.open("POST", 'http://horsenskp.dev.webhouse.dk/rest/core/files/image/' + encodeURIComponent(this.state.data.uploadLocation + file.name))
+		xhr.open("POST", 'https://horsenskp.dev.webhouse.dk/rest/core/files/image/' + encodeURIComponent(this.state.data.uploadLocation + file.name))
 		xhr.setRequestHeader("Accept", 'application/json')
 
 		// xhr.upload.addEventListener("progress", function(e) {

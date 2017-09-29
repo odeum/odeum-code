@@ -2,7 +2,7 @@ import { create } from 'apisauce'
 import { List } from 'immutable'
 
 export var api = create({
-	baseURL: 'http://horsenskp.dev.webhouse.dk/',
+	baseURL: 'https://horsenskp.dev.webhouse.dk/',
 	timeout: 10000,
 	headers: {
 		'Content-Type': 'application/json',
