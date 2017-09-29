@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 import rootRoute from './rootRoute'
+// import 'react-toastify/dist/ReactToastify.min.css'
 require('typeface-source-sans-pro')
+
 class AppContainer extends Component {
 	render() {
 		return (

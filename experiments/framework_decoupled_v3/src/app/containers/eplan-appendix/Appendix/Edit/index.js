@@ -19,7 +19,7 @@ import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
-import { Animation, AppendixHeader, PulseLoader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { Animation, AppendixHeader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -30,8 +30,7 @@ import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.min.css'
-import fileDownload from 'react-file-download'
+import fileDownload from 'js-file-download'
 
 let renderFields = ({ fields }) => {
 	return (
@@ -155,6 +154,7 @@ class EditAppendix extends Component {
 		}
 
 		await this.props.updateApd(appendix, this.props.param, false)
+		toast.success('Dine ændringer er gemt')
 	}
 
 	async handlePdfChange(option) {
@@ -292,7 +292,7 @@ class EditAppendix extends Component {
 				{appendix !== null && appendixDates !== undefined ?
 
 					<Animation>
-						{this.props.appendixIsSaving || this.state.pdfIsLoading ? <PulseLoader color="royalblue" /> :
+						{this.props.appendixIsSaving || this.state.pdfIsLoading ? null :
 							<div>
 								<div>
 									<Flex wrap>

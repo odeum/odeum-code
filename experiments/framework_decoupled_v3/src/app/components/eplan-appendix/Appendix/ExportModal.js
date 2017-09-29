@@ -1,6 +1,6 @@
 import React from 'react'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
-import { ExportStepTwoDiv, ExportLoadingDiv, PulseLoader } from 'app/styles/EplanStyles'
+import { ExportStepTwoDiv, ExportLoadingDiv } from 'app/styles/EplanStyles'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
@@ -29,8 +29,8 @@ const ExportModal = ({ exportModalIsOpen, closeExportModal, customStyles, append
 						</div>
 						<ExportStepTwoDiv id="exportStepTwo">
 							<ExportLoadingDiv id="exportLoadingDiv">
-								<PulseLoader color="royalblue" />
-							</ExportLoadingDiv>
+{/* 								<PulseLoader color="royalblue" />
+ */}							</ExportLoadingDiv>
 							<div id="exportStatusText"></div>
 							<ModalButtonPanel>
 								<Button id="exportCloseButton" onClick={(e) => { e.preventDefault(); closeExportModal() }} icon={iconname.ICON_CLOSE} size={18}>Luk</Button>

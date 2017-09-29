@@ -12,11 +12,14 @@ import FormFieldArticle from 'framework/components/ReduxForm/FormFieldArticle'
 
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
+import { ToastContainerStyled } from 'app/styles/EplanStyles'
 import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
+
+import { toast } from 'react-toastify'
 
 const required = value => (value ? undefined : 'Required')
 
@@ -30,6 +33,7 @@ class ReferenceTableEditModal extends Component {
 	async submitUpdate(values) {
 		await this.props.updateReferenceTableData(values, this.props.referenceTableId)
 		this.props.saveEditModal()
+		toast.success('Dine ændringer er gemt')
 	}
 
 	getField1TypeComponent() {
@@ -120,6 +124,14 @@ class ReferenceTableEditModal extends Component {
 						</ModalButtonPanel>
 					</ModalContent>
 				</ModalWindow>
+				<ToastContainerStyled
+					position="top-right"
+					autoClose={5000}
+					hideProgressBar={true}
+					newestOnTop={true}
+					closeOnClick
+					pauseOnHover
+				/>
 			</div>
 		)
 	}

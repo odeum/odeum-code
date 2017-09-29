@@ -92,7 +92,6 @@ class ReferenceTableList extends Component {
 	}
 	setFilter(event) {
 		this.props.setFilterText(event.target.value)
-		console.log(this.props.referencetables)
 	}
 	render() {
 		return (
