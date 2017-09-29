@@ -4,10 +4,11 @@ import {
 	exportAppendixToPlansystem, getReferenceTableList,
 	getReferenceTableEntry, saveReferenceTable,
 	saveReferenceTableValue, deleteReferenceTableValue,
-	getFrameConfig, getFrameData, setFrameData
+	getFrameConfig, getFrameData, setFrameData, backendLogin, getAuth, api
 } from 'app/data/eplan'
 import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
+import Cookies from 'universal-cookie'
 
 /*Lodash*/
 var _ = require('lodash')
@@ -38,8 +39,12 @@ const APDX_SET_FILTER_TEXT = '@@EPLAN/APPENDIX_LIST_FILTER'
 const REF_SET_FILTER_TEXT = '@@EPLAN/REFTABLE_LIST_FILTER'
 const FRAME_SET_FILTER_TEXT = '@@EPLAN/FRAMETABLE_LIST_FILTER'
 
+const EPLAN_LOGIN = '@@EPLAN/EPLAN_LOGIN'
+
 // const REFERENCE_TABLE_IS_LOADING = '@@EPLAN/REF_TABLE_IS_LOADING'
 /* Actions */
+
+export const eplanLogin = (data) => ({ type: EPLAN_LOGIN, payload: data })
 
 /*Appendixes */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -72,7 +77,31 @@ export const setFrameFilterText = (data) => ({ type: FRAME_SET_FILTER_TEXT, payl
 
 // const referencetablesIsLoading = (id, data) => ({ type: REFERENCE_TABLE_IS_LOADING }, payload:{ id: id, isLoading: data })
 
+const cookies = new Cookies()
+
 /* Middleware */
+export async function doMyLogin(data) {
+	return async dispatch => {
+		var res = await backendLogin(data)
+		if (res && res.isLoggedIn) {
+			api.setHeader('ODEUMAuthToken', res.sessionID)
+			cookies.set('ODEUMAuthToken', res.sessionID, { path: '/' })
+			// console.log('Cookie', cookies.get('ODEUMAuthToken'))
+		}
+		dispatch(eplanLogin(res))
+	}
+}
+export async function doCookieLogin() {
+	return async dispatch => {
+		let token = cookies.get('ODEUMAuthToken')
+		var res = await getAuth(token)
+		if (res && res.isLoggedIn) {
+			api.setHeader('ODEUMAuthToken', res.sessionID)
+			cookies.set('ODEUMAuthToken', res.sessionID, { path: '/' })
+		}
+		dispatch(eplanLogin(res))
+	}
+}
 export function removeOpenApdx(id) {
 	return dispatch => {
 		//TODO: Remove from server also
@@ -206,7 +235,6 @@ export function getReferenceTableListAsync() {
 		var data = await getReferenceTableList()
 		dispatch(getRefTableList(data))
 	}
-
 }
 
 
@@ -264,11 +292,18 @@ const initState = {
 	ApdxLoading: {},
 	appendixFilterText: '',
 	referenceTableFilterText: '',
-	framesTableFilterText: ''
+	framesTableFilterText: '',
+	authObj: null
 }
 
 function eplan(state = initState, action) {
 	switch (action.type) {
+		case EPLAN_LOGIN: {
+			return {
+				...state,
+				authObj: action.payload
+			}
+		}
 		case APDX_SET_FILTER_TEXT: {
 			return {
 				...state,

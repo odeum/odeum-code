@@ -68,7 +68,7 @@ export const Input = styled.input`
     font-family: 'Source Sans Pro';
     font-size: 16px;
     font-weight: 300;
-    color: #fff;
+    color: #000;
     outline: none;
     -webkit-appearance: none;
 

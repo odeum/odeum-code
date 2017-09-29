@@ -16,39 +16,31 @@ import FooterContainer from '../Footer/Footer'
 //Redux+Router
 // import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+// import { push } from 'react-router-redux'
+
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
 //REFACTOR
-import { getAppendixCfg } from 'app/store/modules/eplan'
+import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			loggedIn: true
-		}
-		this.handleLogin = this.handleLogin.bind(this)
-
-	}
-	componentWillMount = () => {
+	componentWillMount = async () => {
 		this.props.onMount()
+		await this.props.auth()
 		if (this.props.location.pathname === '/')
 			this.props.Redirect()
 	}
 
-	handleLogin() {
-		this.setState({ loggedIn: true })
+	handleLogin = async (data) => {
+		await this.props.login(data)
 	}
 	render() {
 		return (
 
 			<ThemeProvider theme={theme}>
-
-				{this.state.loggedIn ?
+				{this.props.loggedIn ?
 					<div>
-
 						<HomeDiv>
 							<HeaderContainer />
 							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
@@ -71,17 +63,23 @@ Home.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	activeScene: state.tabReducer.activeScene
+	activeScene: state.tabReducer.activeScene,
+	authObj: state.eplan.authObj,
+	loggedIn: (state.eplan.authObj) ? state.eplan.authObj.isLoggedIn : false
 })
 
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(getAppendixCfg())
-
+			// dispatch(replace('/eplan/list'))
 		},
-		Redirect: () => {
-			dispatch(push('/eplan/list'))
+		login: async (data) => {
+			dispatch(await doMyLogin(data))
+		},
+		auth: async () => {
+			dispatch(await doCookieLogin())
+			
 		}
 	}
 

@@ -1,7 +1,7 @@
 import { create } from 'apisauce'
 import { List } from 'immutable'
 
-const api = create({
+export var api = create({
 	baseURL: 'http://horsenskp.dev.webhouse.dk/',
 	timeout: 10000,
 	headers: {
@@ -184,6 +184,22 @@ export async function deleteReferenceTableValue(referenceTableEntry) {
 //TODO: Should be moved to framework
 export async function getImagesList(folder) {
 	var data = await api.get('/rest/core/files/images/' + encodeURIComponent(folder))
+		.then((response) => {
+			return response.data
+		})
+	return data
+}
+
+export async function backendLogin(obj) {
+	let app = JSON.stringify(obj)
+	let data = await api.post('/rest/odeum/auth/basic', app)
+		.then((response) => {
+			return response.data
+		})
+	return data
+}
+export async function getAuth(token) {
+	let data = await api.get('/rest/odeum/auth/' + token)
 		.then((response) => {
 			return response.data
 		})
