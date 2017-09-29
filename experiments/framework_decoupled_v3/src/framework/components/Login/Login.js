@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Img, LoginLabel, BackgroundDiv, HeaderDiv, Input, InputDiv, LoginButton } from 'framework/components/styles/LoginStyles'
 import HeaderLogo from '../../assets/eplan_logo.png'
 
@@ -27,11 +28,13 @@ class Login extends React.Component {
 			username: '',
 			password: ''
 		}
-		this.handleInputChange = this.handleInputChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
-	handleInputChange(event) {
+	componentDidMount = () => {
+		this.usernameInput.focus()
+	}
+
+	handleInputChange = (event) => {
 		const target = event.target
 		const value = target.type === 'checkbox' ? target.checked : target.value
 		const name = target.name
@@ -41,9 +44,20 @@ class Login extends React.Component {
 		})
 	}
 
-	handleSubmit(event) {
+	handleSubmit = (event) => {
 		event.preventDefault()
-		this.props.onSubmit({ ...this.state })
+		let doSubmit = true
+		if (this.state.username === '') {
+			this.usernameInput.focus()
+			doSubmit = false
+		}
+		if (doSubmit && this.state.password === '') {
+			this.passwordInput.focus()
+			doSubmit = false
+		}
+		if (doSubmit) {
+			this.props.onSubmit({ ...this.state })
+		}
 	  }
 
 	render() {
@@ -51,9 +65,11 @@ class Login extends React.Component {
 			<BackgroundDiv>
 				<form>
 				<HeaderDiv><Img src={HeaderLogo}/></HeaderDiv>
+				{this.props.errorLogin ? <div> {this.props.errorLogin}</div> : null}
 				<InputDiv>
 					<LoginLabel>Username</LoginLabel>
-					<Input 
+					<Input
+						innerRef={(input) => { this.usernameInput = input }}
 						name="username"
 						type="text"
 						value={this.state.username}
@@ -61,7 +77,8 @@ class Login extends React.Component {
 				</InputDiv>
 				<InputDiv>
 					<LoginLabel>Password</LoginLabel>
-					<Input 
+					<Input
+						innerRef={(input) => { this.passwordInput = input }} 
 						name="password"
 						type="password"
 						value={this.state.password}
@@ -74,5 +91,8 @@ class Login extends React.Component {
 	}
 }
 
+Login.PropTypes = {
+	handleLogin: PropTypes.func.isRequired
+}
 
 export default Login

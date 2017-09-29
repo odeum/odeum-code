@@ -25,6 +25,7 @@ import LoginContainer from 'framework/containers/Login/Login'
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
+
 	async componentWillMount() {
 		this.props.onMount()
 		await this.props.auth()
@@ -39,12 +40,11 @@ class Home extends Component {
 			this.props.Redirect()
 	}
 
-	async handleLogin(data) {
+	handleLogin = async (data) => {
 		await this.props.login(data)
 	}
 	render() {
 		return (
-
 			<ThemeProvider theme={theme}>
 				{this.props.loggedIn ?
 					<div>
@@ -60,7 +60,7 @@ class Home extends Component {
 							<FooterContainer />
 						</HomeDiv>
 					</div>
-					: <LoginContainer handleLogin={this.handleLogin} />}
+					: <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin}/>}
 			</ThemeProvider>
 		)
 	}
@@ -72,8 +72,9 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	// loggedIn: (state.eplan.authObj) ? state.eplan.authObj.isLoggedIn : false
-	loggedIn: true
+	loggedIn: (state.eplan.authObj) ? state.eplan.authObj.isLoggedIn : false,
+	errorLogin: 'Message'
+	//loggedIn: true
 })
 
 function mapDispatchToProps(dispatch) {

@@ -2,7 +2,7 @@ import { create } from 'apisauce'
 import { List } from 'immutable'
 
 export var api = create({
-	baseURL: 'http://horsenskp.dev.webhouse.dk/',
+	baseURL: 'https://horsenskp.dev.webhouse.dk/',
 	timeout: 10000,
 	headers: {
 		'Content-Type': 'application/json',
@@ -192,16 +192,16 @@ export async function getImagesList(folder) {
 
 export async function backendLogin(obj) {
 	let app = JSON.stringify(obj)
-	let data = await api.post('/rest/odeum/auth/basic', app)
+	let response = await api.post('/rest/odeum/auth/basic', app)
 		.then((response) => {
-			return response.data
+			return response
 		})
-	return data
+	return response
 }
 export async function getAuth(token) {
-	let data = await api.get('/rest/odeum/auth/' + token)
+	let response = await api.get('/rest/odeum/auth/' + token)
 		.then((response) => {
-			return response.data
+			return response
 		})
-	return data
+	return response
 }

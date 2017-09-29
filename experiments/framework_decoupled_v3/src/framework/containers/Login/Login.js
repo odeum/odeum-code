@@ -11,7 +11,8 @@ class LoginContainer extends Component {
 	render() {
 		return (
 			<div>
-				<Login onSubmit = {this.props.handleLogin}/>
+
+				<Login onSubmit = {this.props.handleLogin} errorLogin={this.props.errorLogin}/>
 			</div>
 		)
 	}
