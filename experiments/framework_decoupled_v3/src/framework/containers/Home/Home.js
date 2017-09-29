@@ -25,12 +25,6 @@ import LoginContainer from 'framework/containers/Login/Login'
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
-	// constructor(props) {
-	// 	super(props)
-	// 	// this.state = {
-	// 	// 	loggedIn: false
-	// 	// }
-	// }
 	componentWillMount = async () => {
 		this.props.onMount()
 		await this.props.auth()
