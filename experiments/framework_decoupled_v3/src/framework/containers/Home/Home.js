@@ -25,14 +25,12 @@ import LoginContainer from 'framework/containers/Login/Login'
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			loggedIn: false
-		}
-		this.handleLogin = this.handleLogin.bind(this)
-
-	}
+	// constructor(props) {
+	// 	super(props)
+	// 	// this.state = {
+	// 	// 	loggedIn: false
+	// 	// }
+	// }
 	componentWillMount = async () => {
 		this.props.onMount()
 		await this.props.auth()
@@ -40,7 +38,7 @@ class Home extends Component {
 			this.props.Redirect()
 	}
 
-	async handleLogin(data) {
+	handleLogin = async (data) => {
 		await this.props.login(data)
 	}
 	render() {
@@ -49,7 +47,6 @@ class Home extends Component {
 			<ThemeProvider theme={theme}>
 				{this.props.loggedIn ?
 					<div>
-
 						<HomeDiv>
 							<HeaderContainer />
 							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
