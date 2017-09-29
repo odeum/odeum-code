@@ -40,11 +40,14 @@ const REF_SET_FILTER_TEXT = '@@EPLAN/REFTABLE_LIST_FILTER'
 const FRAME_SET_FILTER_TEXT = '@@EPLAN/FRAMETABLE_LIST_FILTER'
 
 const EPLAN_LOGIN = '@@EPLAN/EPLAN_LOGIN'
+const EPLAN_LOGIN_FAIL = '@@EPLAN/EPLAN_LOGIN_FAIL'
 
 // const REFERENCE_TABLE_IS_LOADING = '@@EPLAN/REF_TABLE_IS_LOADING'
 /* Actions */
 
-export const eplanLogin = (data) => ({ type: EPLAN_LOGIN, payload: data })
+/* Login */
+const eplanLogin = (data) => ({ type: EPLAN_LOGIN, payload: data })
+const eplanLoginFail = (data) => ({ type: EPLAN_LOGIN_FAIL, payload: data })
 
 /*Appendixes */
 const getList = (data) => ({ type: GET_APPENDIX_LIST, payload: data })
@@ -80,28 +83,53 @@ export const setFrameFilterText = (data) => ({ type: FRAME_SET_FILTER_TEXT, payl
 const cookies = new Cookies()
 
 /* Middleware */
+
+/* Login functions */
 export async function doMyLogin(data) {
 	return async dispatch => {
 		var res = await backendLogin(data)
-		if (res && res.isLoggedIn) {
-			api.setHeader('ODEUMAuthToken', res.sessionID)
-			cookies.set('ODEUMAuthToken', res.sessionID, { path: '/' })
-			// console.log('Cookie', cookies.get('ODEUMAuthToken'))
+		switch (res.status) {
+			case 404:
+				console.log('404', res.problem)
+				cookies.remove('ODEUMAuthToken')
+				api.deleteHeader('ODEUMAuthToken')
+				dispatch(eplanLoginFail(res.problem))
+				break
+			case 200:
+				api.setHeader('ODEUMAuthToken', res.data.sessionID)
+				cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })	
+				dispatch(eplanLogin(res.data))
+				break
+			default:
+				console.log(res)
+				break
 		}
-		dispatch(eplanLogin(res))
 	}
 }
 export async function doCookieLogin() {
 	return async dispatch => {
 		let token = cookies.get('ODEUMAuthToken')
-		var res = await getAuth(token)
-		if (res && res.isLoggedIn) {
-			api.setHeader('ODEUMAuthToken', res.sessionID)
-			cookies.set('ODEUMAuthToken', res.sessionID, { path: '/' })
+		if (token !== undefined) {
+			var res = await getAuth(token)
+			switch (res.status) {
+				case 404:
+					console.log('404', res.problem)
+					cookies.remove('ODEUMAuthToken')
+					api.deleteHeader('ODEUMAuthToken')
+					dispatch(eplanLoginFail(res.problem))
+					break
+				default:
+				case 200:
+					api.setHeader('ODEUMAuthToken', res.data.sessionID)
+					cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })	
+					dispatch(eplanLogin(res.data))
+					break
+			}
 		}
-		dispatch(eplanLogin(res))
 	}
 }
+
+
 export function removeOpenApdx(id) {
 	return dispatch => {
 		//TODO: Remove from server also
@@ -302,6 +330,12 @@ function eplan(state = initState, action) {
 			return {
 				...state,
 				authObj: action.payload
+			}
+		}
+		case EPLAN_LOGIN_FAIL: {
+			return {
+				...state,
+				authObj: null
 			}
 		}
 		case APDX_SET_FILTER_TEXT: {

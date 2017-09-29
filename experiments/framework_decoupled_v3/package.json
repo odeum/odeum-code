@@ -14,7 +14,7 @@
     "polished": "^1.4.0",
     "react": "15.6.1",
     "react-addons-shallow-compare": "^15.6.0",
-    "react-cookie": "^2.1.1",
+    "universal-cookie": "^2.1.0",
     "react-datepicker": "^0.53.0",
     "react-dom": "^15.5.0",
     "react-icons": "^2.2.3",

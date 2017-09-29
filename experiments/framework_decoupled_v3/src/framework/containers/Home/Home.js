@@ -31,13 +31,11 @@ class Home extends Component {
 		if (this.props.location.pathname === '/')
 			this.props.Redirect()
 	}
-
 	handleLogin = async (data) => {
 		await this.props.login(data)
 	}
 	render() {
 		return (
-
 			<ThemeProvider theme={theme}>
 				{this.props.loggedIn ?
 					<div>
