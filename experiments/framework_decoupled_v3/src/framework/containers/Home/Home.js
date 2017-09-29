@@ -34,6 +34,7 @@ class Home extends Component {
 	}
 
 	componentWillUpdate(nextProps, nextState) {
+		//Header Redirect
 		if (nextProps.location.pathname === '/' && this.props.loggedIn === true)
 			this.props.Redirect()
 	}
