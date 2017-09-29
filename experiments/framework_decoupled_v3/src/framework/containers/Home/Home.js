@@ -33,14 +33,11 @@ class Home extends Component {
 		this.handleLogin = this.handleLogin.bind(this)
 
 	}
-	componentWillMount = () => {
+	componentWillMount = async () => {
 		this.props.onMount()
+		await this.props.auth()
 		if (this.props.location.pathname === '/')
 			this.props.Redirect()
-	}
-
-	async componentWillMount() {
-		await this.props.auth()
 	}
 
 	async handleLogin(data) {
