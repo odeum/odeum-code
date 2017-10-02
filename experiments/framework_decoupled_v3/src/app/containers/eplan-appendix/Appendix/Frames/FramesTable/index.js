@@ -18,7 +18,6 @@ import Button from 'framework/components/Widgets/Button'
 import AddFrameModal from 'app/components/eplan-appendix/Frames/AddFrameModal'
 import Input from 'framework/components/Widgets/Input/Input'
 
-
 import { toast } from 'react-toastify'
 
 class Frames extends Component {
