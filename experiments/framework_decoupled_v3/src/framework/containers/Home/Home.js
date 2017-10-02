@@ -30,14 +30,17 @@ class Home extends Component {
 		this.props.onMount()
 		await this.props.auth()
 		//Redirect only if logged in
-		if (this.props.location.pathname === '/' && this.props.loggedIn === true)
+		if (this.props.location.pathname === '/' && this.props.loggedIn === true) {
 			this.props.Redirect()
+		}
 	}
 
 	componentWillUpdate(nextProps, nextState) {
 		//Header Redirect
-		if (nextProps.location.pathname === '/' && this.props.loggedIn === true)
+		if (nextProps.location.pathname === '/' && nextProps.loggedIn === true) {
 			this.props.Redirect()
+		}
+			
 	}
 
 	handleLogin = async (data) => {
@@ -72,9 +75,9 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	//loggedIn: (state.eplan.authObj) ? state.eplan.authObj.isLoggedIn : false,
-	errorLogin: 'Message',
-	loggedIn: true
+	loggedIn: (state.eplan.authObj) ? (state.eplan.authObj.isLoggedIn === 1) ? true : false : false,
+	errorLogin: state.eplan.loginErrorMessage
+	//loggedIn: true
 })
 
 function mapDispatchToProps(dispatch) {
@@ -88,7 +91,6 @@ function mapDispatchToProps(dispatch) {
 		},
 		auth: async () => {
 			dispatch(await doCookieLogin())
-
 		},
 		Redirect: () => {
 			dispatch(push('/eplan/list'))
