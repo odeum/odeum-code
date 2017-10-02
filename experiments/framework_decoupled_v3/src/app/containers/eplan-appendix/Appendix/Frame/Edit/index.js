@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getFrameDataAsync, setFrameDataAsync, getAppendixAsync } from 'app/store/modules/eplan'
+import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
 import { getFramesFields, openFrames, getFrameMetaData } from 'app/store/selectors/frames'
-import { getAppendix } from 'app/store/selectors/appendix'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
