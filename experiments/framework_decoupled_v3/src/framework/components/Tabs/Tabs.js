@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabText, TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
+import { TabCont, TabText, TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
@@ -8,6 +8,7 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 	let active = (tab) => {
 		return tab.label === activeTab ? true : false
 	}
+
 	function isFixed(tab) {
 		if (tab.fixed === undefined) {
 			return null
@@ -18,7 +19,7 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 					e.preventDefault()
 					OnCloseClick(instanceID, tab)
 				}}>
-					<Icon icon={ICON_CLOSE} active={active(tab)} size={13} />
+					<Icon icon={ICON_CLOSE} active={active(tab)} size={15} />
 				</TabClose>
 			</TabCloseLink>
 		}
@@ -28,10 +29,11 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 			{Object.keys(tabs).map((tab, index) => {
 				return (
 					<TabLabel key={index} active={active(tabs[tab])}>
-						<div onClick={(e) => {
-							e.preventDefault()
-							onTabClick(instanceID, tabs[tab].label)
-						}}>
+						<TabCont
+							onClick={(e) => {
+								e.preventDefault()
+								onTabClick(instanceID, tabs[tab].label)
+							}}>
 							<TabLink to={tabs[tab].location} className={active(tabs[tab])}>
 								<TabDiv>
 									{!tabs[tab].isLoading ?
@@ -40,8 +42,8 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 									<TabText>{tabs[tab].label}</TabText>
 								</TabDiv>
 							</TabLink>
-						</div>
-						{isFixed(tabs[tab])}
+							{isFixed(tabs[tab])}
+						</TabCont>
 					</TabLabel>
 				)
 			})}

@@ -11,7 +11,7 @@ cursor: pointer;
 color: #fff;
 font-family: 'Source Sans Pro';
 font-size: 15px;
-font-weight: 400;
+font-weight: 300;
 text-decoration: none;
 user-select: none;
 width:100%;
