@@ -40,7 +40,7 @@ class Home extends Component {
 		if (nextProps.location.pathname === '/' && nextProps.loggedIn === true) {
 			this.props.Redirect()
 		}
-			
+
 	}
 
 	handleLogin = async (data) => {
@@ -63,7 +63,7 @@ class Home extends Component {
 							<FooterContainer />
 						</HomeDiv>
 					</div>
-					: <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin}/>}
+					: this.props.loggedIn === false ? <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} /> : null}
 			</ThemeProvider>
 		)
 	}
@@ -75,7 +75,7 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	loggedIn: (state.eplan.authObj) ? (state.eplan.authObj.isLoggedIn === 1) ? true : false : false,
+	loggedIn: (state.eplan.authObj) ? (state.eplan.authObj.isLoggedIn === 1) ? true : false : null,
 	errorLogin: state.eplan.loginErrorMessage
 	//loggedIn: true
 })
