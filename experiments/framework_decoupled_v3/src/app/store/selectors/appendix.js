@@ -7,11 +7,11 @@ var _ = require('lodash')
 const getAppendixFilterText = (state) => state.eplan.appendixFilterText
 const getAppendixes = (state) => state.eplan.appendixes
 
-export const openFrames = (state, id) =>  state.eplan.openFrames[id]
-const framesConfig = (state) => state.eplan.configFrames
+// export const openFrames = (state, id) =>  state.eplan.openFrames[id]
+// const framesConfig = (state) => state.eplan.configFrames
 
 const getConfig = state => state.eplan.conf
-export const getAppendix = (state, id, props) => _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
+export const getAppendix = (state, id) => _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
 
 export const getFilteredAppdx = createSelector(
 	[getAppendixes, getAppendixFilterText],
@@ -37,20 +37,20 @@ export const getAppendixDates = createSelector(
 	}
 )
 
-export const getFramesFields = createSelector(
-	[framesConfig, openFrames],
-	(config, openFrame) => {
-		var filter = []
-		if (openFrame && config) {
-			filter = []
-			_.forEach(config.editFields, function (value, key) {
-				filter[filter.length] = openFrame.fields[key]
-			})
-		}
-		return filter ? filter : undefined
+// export const getFramesFields = createSelector(
+// 	[framesConfig, openFrames],
+// 	(config, openFrame) => {
+// 		var filter = []
+// 		if (openFrame && config) {
+// 			filter = []
+// 			_.forEach(config.editFields, function (value, key) {
+// 				filter[filter.length] = openFrame.fields[key]
+// 			})
+// 		}
+// 		return filter ? filter : undefined
 
-	}
-)
+// 	}
+// )
 const getId = (state, props) =>  props
 export const getAppendixMetaData = createSelector(
 	[getAppendixes, getId],

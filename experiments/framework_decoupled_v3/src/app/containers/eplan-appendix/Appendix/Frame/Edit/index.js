@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
-import { getFramesFields, openFrames } from 'app/store/selectors/appendix'
+import { getFrameDataAsync, setFrameDataAsync, getAppendixAsync } from 'app/store/modules/eplan'
+import { getFramesFields, openFrames, getFrameMetaData } from 'app/store/selectors/frames'
+import { getAppendix } from 'app/store/selectors/appendix'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
-import { tabChange, addTab } from 'framework/store/modules/tabs'
+import { tabChange, addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
@@ -77,7 +78,7 @@ class EditFrame extends Component {
 		location: '/eplan/list/' + this.props.appendixId + '/frames/' + this.props.frameId + '/edit',
 		icon: 'mode_edit',
 		fixed: false,
-		isLoading: true,
+		isLoading: false,
 		closeLink: '/eplan/list/' + this.props.appendixId + '/frames'
 	}
 	/* 
@@ -90,15 +91,21 @@ class EditFrame extends Component {
 		//this.submitUpdate = this.submitUpdate.bind(this)
 	} */
 	async componentWillMount() {
-		// console.log('-----props-----')
-		// console.log(this.props)
-		await this.props.getFrameData(this.props.frameId)
-		this.props.onMount(this.props.appendixId, this.tab, this.props.frameId)
+		const { appendixId, frameId } = this.props
+		this.props.onMount(appendixId, this.tab)
+		this.props.tabisLoading(appendixId, this.tab, true)
+		await this.props.getFrameData(frameId)
+		if (this.props.openFrame !== null) {
+			this.tab.label = this.props.openFrame.name
+			this.props.onMount(appendixId, this.tab)
+			this.props.tabisLoading(appendixId, this.tab, false)
 
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps.initialValues.fields)
+		// if (nextProps.openFrame !== null)
+		// 	this.props.tabisLoading(this.props.appendixId, this.tab, false)
 	}
 
 	componentWillUnmount = () => {
@@ -170,7 +177,8 @@ const mapStateToProps = (state, ownProps) => {
 		initialValues: {
 			fields: getFramesFields(state, ownProps.params.frameid)
 		} || null,
-		conf: state.eplan.conf
+		conf: state.eplan.conf,
+		framemeta: getFrameMetaData(state, ownProps.params.id, ownProps.params.frameid)
 	}
 }
 
@@ -178,7 +186,6 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
-			console.log(id, tab)
 			dispatch(tabChange(id, tab.label))
 		},
 		getFrameData: async (frameId) => {
@@ -186,6 +193,9 @@ function mapDispatchToProps(dispatch) {
 		},
 		setFrameData: (frameId, data, frameData) => {
 			dispatch(setFrameDataAsync(frameId, data, frameData))
+		},
+		tabisLoading: (id, tab, isLoading) => {
+			dispatch(tabIsLoading(id, tab, isLoading))
 		}
 	}
 }

@@ -31,12 +31,15 @@ export const TabLink = styled(Link)`
     font-weight: 300;
     &:hover{
         color:white;
+        max-width: 600px;
     }
     ${props => props.className === true && css`
         color: white;
     `}
     padding-left: 20px;
     padding-right: 20px;
+    max-width: 200px;
+    transition: max-width 300ms ease;
 `
 export const TabCloseLink = styled(Link)`
     display:flex;
@@ -53,19 +56,31 @@ export const TabCloseLink = styled(Link)`
     `}
 `
 
+export const TabText = styled.div`
+text-overflow: "...";
+overflow:hidden;
+white-space: nowrap;
+&:hover{
+    overflow:visible;
+}
+transition: overflow 300ms ease;
+`
 export const TabDiv = styled.div`
-display: flex;
-flex-direction: row;
-align-items:center;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    white-space: nowrap;
+    overflow: hidden;
 `
 export const TabList = styled.ul`
     height: 40px;
+    max-height:45px;
     margin: 0;
     padding: 0;
     /*padding: 20px 0px 0px 20px;*/
-    overflow-y: hidden;
     display: flex;
     flex-direction: row;
+    transition: all 300ms ease;
 `
 export const TabClose = styled.div`
     position: absolute;
@@ -76,8 +91,10 @@ export const TabClose = styled.div`
     `}
 `
 export const TabLabel = styled.li`
-    display: inline-flex;
+    display: flex;
+    flex-flow: row nowrap;
     height: 40px;
+    min-height:40px;
     line-height: 40px;
     background-color:${(props) => props.theme.tabs.TAB};
     border-radius: 5px 5px 0px 0px;
@@ -88,7 +105,6 @@ export const TabLabel = styled.li`
         background-color: ${(props) => props.theme.tabs.TAB_SELECTED};
         color: ${(props) => props.theme.tabs.TAB_TEXT_SELECTED};
     `}
-   
     position:relative;
     margin-right: 1px;
 `
@@ -106,8 +122,3 @@ export const TabIconDiv = TabLoaderDiv.extend`
          color: white;
     `}
  `
-
-/* export const TabWrapperDiv = styled.div`
-    clear: both;
-    width: 100%;
-` */

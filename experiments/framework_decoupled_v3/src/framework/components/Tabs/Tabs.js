@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
+import { TabText, TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
@@ -37,7 +37,7 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 									{!tabs[tab].isLoading ?
 										<TabIconDiv><Icon icon={tabs[tab].icon} active={active(tabs[tab])} /> </TabIconDiv>
 										: <TabLoaderDiv><SmoothLoader size='xxs' velocity='fast' /> </TabLoaderDiv>}
-									{tabs[tab].label}
+									<TabText>{tabs[tab].label}</TabText>
 								</TabDiv>
 							</TabLink>
 						</div>
