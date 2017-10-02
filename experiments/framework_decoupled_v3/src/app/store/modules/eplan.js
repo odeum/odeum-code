@@ -321,7 +321,8 @@ const initState = {
 	appendixFilterText: '',
 	referenceTableFilterText: '',
 	framesTableFilterText: '',
-	authObj: null
+	authObj: null,
+	loginErrorMessage: ''
 }
 
 function eplan(state = initState, action) {
@@ -329,13 +330,15 @@ function eplan(state = initState, action) {
 		case EPLAN_LOGIN: {
 			return {
 				...state,
-				authObj: action.payload
+				authObj: action.payload,
+				loginErrorMessage: ''
 			}
 		}
 		case EPLAN_LOGIN_FAIL: {
 			return {
 				...state,
-				authObj: null
+				authObj: null,
+				loginErrorMessage: 'Error - login failed...'
 			}
 		}
 		case APDX_SET_FILTER_TEXT: {
