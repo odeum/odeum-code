@@ -104,6 +104,8 @@ export async function getFrameData(id) {
 		.then((response) => {
 			return response.data
 		})
+	console.log('-----data - eplan-----')
+	console.log(data)
 	return data
 }
 export async function setFrameData(id, frameData) {
@@ -171,9 +173,9 @@ export async function saveReferenceTableValue(referenceTableEntry) {
 export async function deleteReferenceTableValue(referenceTableEntry) {
 	// let data = 
 	await api.delete('/rest/eplan/kpt/reftable/value/' + referenceTableEntry.referenceTableValueId)
-		// .then((response) => {
-		// 	return response.data
-		// })
+	// .then((response) => {
+	// 	return response.data
+	// })
 	return referenceTableEntry
 }
 /**

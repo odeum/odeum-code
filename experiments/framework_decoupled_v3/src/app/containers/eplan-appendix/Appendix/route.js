@@ -5,7 +5,7 @@ module.exports = {
 			cb(null, [
 				require('./Edit/route.js'),
 				require('./Frames/route.js'),
-				require('./Frame/route.js'),
+				require('./Frame/Edit/route.js'),
 			])
 		})
 	},

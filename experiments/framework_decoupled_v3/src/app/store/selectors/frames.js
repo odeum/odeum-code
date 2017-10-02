@@ -15,3 +15,4 @@ export const getFilteredFrames = createSelector(
 				framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase()))) : []
 		)}
 )
+

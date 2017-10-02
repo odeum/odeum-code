@@ -11,12 +11,13 @@ import { addTab, tabChange } from 'framework/store/modules/tabs'
 
 /* -------- END IMPORT ---------- */
 class FrameContainer extends Component {
+
 	constructor(props) {
 		super(props)
 		this.state = {}
 	}
 	componentWillMount() {
-		 this.props.onMount(
+		this.props.onMount(
 			this.props.appendixId,
 			{
 				id: this.props.frameId,
@@ -50,6 +51,8 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
+			console.log('-----id, tab-----')
+			console.log(id, tab)
 			dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
 		}

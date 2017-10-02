@@ -7,7 +7,7 @@ var _ = require('lodash')
 const getAppendixFilterText = (state) => state.eplan.appendixFilterText
 const getAppendixes = (state) => state.eplan.appendixes
 
-const openFrames = (state, id) => state.eplan.openFrames[id]
+export const openFrames = (state, id) =>  state.eplan.openFrames[id]
 const framesConfig = (state) => state.eplan.configFrames
 
 const getConfig = state => state.eplan.conf
