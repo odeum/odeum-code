@@ -8,8 +8,9 @@ align-self:left;
 background-color: #3b97d3;
 color:white;
 height:100%;
-transition: all 300ms ease;
+transition: width 300ms ease;
 width: ${props => props.close ? '250px' : '50px'};
+overflow:hidden;
 `
 export const MenuHeader = styled.div`
 height:50px;
@@ -28,7 +29,4 @@ justify-content: center;
 cursor:pointer;
 margin: 0px 15px 0px 15px;
 transition: margin 300ms ease;
-&:hover {
-    background-color: #81c1ea;
-}
 `
