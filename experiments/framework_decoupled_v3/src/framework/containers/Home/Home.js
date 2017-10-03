@@ -99,6 +99,7 @@ class Home extends Component {
 
 	}
 }
+
 Home.propTypes = {
 	activeScene: PropTypes.string.isRequired
 }
