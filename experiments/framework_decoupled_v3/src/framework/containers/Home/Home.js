@@ -21,18 +21,41 @@ import { push } from 'react-router-redux'
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
+//Loader
+import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
+
 //REFACTOR
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			loggedIn: null
+		}
+	}
+
 
 	async componentWillMount() {
 		this.props.onMount()
-		await this.props.auth()
+		// var log = await this.props.auth()
+		// console.log('-----log-----')
+		// console.log(log)
+		// if (log === null) { 
+
+		// }
 		//Redirect only if logged in
 		if (this.props.location.pathname === '/' && this.props.loggedIn === true) {
 			this.props.Redirect()
 		}
+	}
+	componentDidMount = async () => {
+		var loggedIn = await this.props.auth()
+		console.log(loggedIn)
+		if (loggedIn.isLoggedIn === 1)
+			this.setState({ loggedIn: true })
+		else
+			this.setState({ loggedIn: false })
 	}
 
 	componentWillUpdate(nextProps, nextState) {
@@ -47,9 +70,14 @@ class Home extends Component {
 		await this.props.login(data)
 	}
 	render() {
+
+		// console.log('-----this.props.authObj-----')
+		// console.log(this.props.authObj)
+		// console.log('-----this.props.loggedIn-----')
+		// console.log(this.props.loggedIn)
 		return (
 			<ThemeProvider theme={theme}>
-				{this.props.loggedIn ?
+				{this.state.loggedIn === true ?
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
@@ -63,9 +91,12 @@ class Home extends Component {
 							<FooterContainer />
 						</HomeDiv>
 					</div>
-					: this.props.loggedIn === false ? <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} /> : null}
+					: this.state.loggedIn ? <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} />
+						: <div style={{ height: '100vh', display: 'flex', flex: '1', alignItems: 'center', justifyContent: 'center' }}><SmoothLoader size='l' velocity='fast' color='gray' /></div>
+				}
 			</ThemeProvider>
 		)
+
 	}
 }
 Home.propTypes = {
@@ -75,9 +106,9 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	//loggedIn: (state.eplan.authObj) ? (state.eplan.authObj.isLoggedIn === 1) ? true : false : false,
+	//loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : null),
 	errorLogin: state.eplan.loginErrorMessage,
-	loggedIn: true
+	//loggedIn: true
 })
 
 function mapDispatchToProps(dispatch) {
@@ -90,7 +121,7 @@ function mapDispatchToProps(dispatch) {
 			dispatch(await doMyLogin(data))
 		},
 		auth: async () => {
-			dispatch(await doCookieLogin())
+			return dispatch(await doCookieLogin())
 		},
 		Redirect: () => {
 			dispatch(push('/eplan/list'))

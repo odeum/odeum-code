@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 /* Redux */
 import { push } from 'react-router-redux'
 import { connect } from 'react-redux'
-import { getAppendixAsync, setFrameFilterText } from 'app/store/modules/eplan'
+import { getAppendixAsync, setFrameFilterText, addFrame } from 'app/store/modules/eplan'
 // import { getAppendix } from 'app/store/selectors/appendix'
 /* Framework */
 import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
@@ -46,8 +46,6 @@ class Frames extends Component {
 	}
 
 	async componentWillMount() {
-		console.log(this.props.frameIsLoading)
-
 		this.props.onMount(this.props.param, this.tab)
 		if (this.props.framesIsLoading === true) {
 			this.props.tabisLoading(this.props.param, this.tab, true)
@@ -75,8 +73,8 @@ class Frames extends Component {
 		})
 	}
 
-	addNewFrame() {
-		alert("TODO")
+	async addNewFrame() {
+		await this.props.addAppendixFrame(this.props.param)
 		this.closeAddFrameModal()
 		toast.success('Rammen tilføjet korrekt')
 	}
@@ -135,7 +133,10 @@ function mapDispatchToProps(dispatch) {
 		},
 		setFilterText: (text) => {
 			dispatch(setFrameFilterText(text))
-		}
+		},
+		addAppendixFrame: async (appendixId) => {
+			dispatch(await addFrame(appendixId))
+		},
 	}
 }
 

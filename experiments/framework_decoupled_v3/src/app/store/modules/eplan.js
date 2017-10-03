@@ -1,10 +1,11 @@
 import {
-	getAppendixList, getAppendixById,
+	api, getAppendixList, getAppendixById,
 	getAppendixConfig, postAppendix, addAppendix,
 	exportAppendixToPlansystem, getReferenceTableList,
 	getReferenceTableEntry, saveReferenceTable,
 	saveReferenceTableValue, deleteReferenceTableValue,
-	getFrameConfig, getFrameData, setFrameData, backendLogin, getAuth, api
+	getFrameConfig, getFrameData, setFrameData, backendLogin, 
+	getAuth, addNewFrame
 } from 'app/data/eplan'
 import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
@@ -99,6 +100,7 @@ export async function doMyLogin(data) {
 				api.setHeader('ODEUMAuthToken', res.data.sessionID)
 				cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 				dispatch(eplanLogin(res.data))
+				console.log(res.data)
 				break
 			default:
 				console.log(res)
@@ -118,14 +120,18 @@ export async function doCookieLogin() {
 					api.deleteHeader('ODEUMAuthToken')
 					dispatch(eplanLoginFail(res.problem))
 					break
-				default:
 				case 200:
 					api.setHeader('ODEUMAuthToken', res.data.sessionID)
 					cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 					dispatch(eplanLogin(res.data))
 					break
+				default:
+					console.log(res)
+					break
 			}
 		}
+		else
+			return null
 	}
 }
 
@@ -173,6 +179,16 @@ export async function getListAsync() {
 		return result
 	}
 
+}
+
+export async function addFrame(id) {
+	return async dispatch => {
+		dispatch(appendixIsLoading(id, true))
+		let result = await addNewFrame(id)
+		dispatch(getAppendix(result))
+		dispatch(appendixIsLoading(id, false))
+		return result
+	}
 }
 
 export function getFramesListAsync(id) {
@@ -383,15 +399,24 @@ function eplan(state = initState, action) {
 		}
 		case UPDATE_APPENDIX:
 			{
-				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
-				orig.fields.map((field) => {
-					return action.payload.appendix.fields.map((afield) => {
-						return field.id === afield.id ? field.value = afield.value : field
-					})
+				let newFields = {}
+				_.forEach(action.payload.appendix.fields, function (value, key) {
+					newFields[value.id] = value
 				})
-				postAppendix(orig, action.payload.commit)
+				let newAppendix = {
+					...state.openAppendix[action.payload.id],
+					fields: {
+						...state.openAppendix[action.payload.id].fields,
+						...newFields
+					}
+				}
+				postAppendix(newAppendix, action.payload.commit)
 				return {
 					...state,
+					openAppendix: {
+						...state.openAppendix,
+						[action.payload.id]: newAppendix
+					},
 					appendixIsSaving: false
 				}
 			}
@@ -416,12 +441,12 @@ function eplan(state = initState, action) {
 			}
 		case GET_APPENDIX:
 			{
-				var findAppendix = _.find(state.openAppendix, (apdx) => (apdx.appendixId === action.payload.appendixId))
-				if (findAppendix !== undefined)
-					return state
-				else return {
+				return {
 					...state,
-					openAppendix: state.openAppendix.concat(action.payload),
+					openAppendix: {
+						...state.openAppendix,
+						[action.payload.appendixId]: action.payload
+					},
 					framesIsLoading: false
 				}
 			}

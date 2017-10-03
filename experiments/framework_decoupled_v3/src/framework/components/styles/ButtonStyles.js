@@ -5,7 +5,6 @@ import * as colors from 'framework/assets/colors'
 const StyledButton = styled.button`
     display: flex;
     align-items: center;
-    float: left;
     border-radius: 4px;
     font-family: ${(props) => props.theme.font || 'Source Sans Pro'};
     font-size: ${(props) => props.theme.buttonSize.default.size || '18px'};
@@ -17,7 +16,6 @@ const StyledButton = styled.button`
     padding: ${(props) => props.theme.buttonSize.default.padding || '0 20px 0 15px'};
     height: 37px;
     margin-right: 0.7rem;
-    margin-top: 3px;
     border: none;
     text-decoration: none;
     cursor: pointer;
