@@ -95,13 +95,13 @@ export async function doMyLogin(data) {
 				cookies.remove('ODEUMAuthToken')
 				api.deleteHeader('ODEUMAuthToken')
 				dispatch(eplanLoginFail(res.problem))
-				break
+				return 'error404'
 			case 200:
 				api.setHeader('ODEUMAuthToken', res.data.sessionID)
 				cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 				dispatch(eplanLogin(res.data))
 				console.log(res.data)
-				break
+				return 'valid'
 			default:
 				console.log(res)
 				break
@@ -119,19 +119,19 @@ export async function doCookieLogin() {
 					cookies.remove('ODEUMAuthToken')
 					api.deleteHeader('ODEUMAuthToken')
 					dispatch(eplanLoginFail(res.problem))
-					break
+					return 'error404'
 				case 200:
 					api.setHeader('ODEUMAuthToken', res.data.sessionID)
 					cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 					dispatch(eplanLogin(res.data))
-					break
+					return 'valid'
 				default:
 					console.log(res)
 					break
 			}
 		}
 		else
-			return null
+			return 'token_missing'
 	}
 }
 

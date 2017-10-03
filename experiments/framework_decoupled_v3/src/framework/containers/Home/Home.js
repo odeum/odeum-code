@@ -38,7 +38,7 @@ class Home extends Component {
 
 	async componentWillMount() {
 		this.props.onMount()
-		await this.props.auth()
+		this.setState({ loggedIn: await this.props.auth() })
 		// console.log('-----log-----')
 		// console.log(log)
 		// if (log === null) { 
@@ -59,42 +59,38 @@ class Home extends Component {
 		// 	this.setState({ loggedIn: false })
 	}
 
-	componentWillUpdate(nextProps, nextState) {
+	async componentWillUpdate(nextProps, nextState) {
 		//Header Redirect
 		if (nextProps.location.pathname === '/' && nextProps.loggedIn === true) {
 			this.props.Redirect()
 		}
 
 	}
+	renderHome = () => {
+		return <HomeDiv>
+			<HeaderContainer />
+			<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
+				<MenuContainer />
+				<WorkspaceContainer>
+					<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
+					{this.props.children}
+				</WorkspaceContainer>
+			</div>
+			<FooterContainer />
+		</HomeDiv>
+	}
+	renderLogin = () => {
+		return <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} />
+	}
 
 	handleLogin = async (data) => {
-		await this.props.login(data)
+		var login = await this.props.login(data)
+		this.setState({ loggedIn: login })
 	}
 	render() {
-
-		// console.log('-----this.props.authObj-----')
-		// console.log(this.props.authObj)
-		// console.log('-----this.props.loggedIn-----')
-		// console.log(this.props.loggedIn)
 		return (
 			<ThemeProvider theme={theme}>
-				{this.props.loggedIn === true ?
-					<div>
-						<HomeDiv>
-							<HeaderContainer />
-							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
-								<MenuContainer />
-								<WorkspaceContainer>
-									<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
-									{this.props.children}
-								</WorkspaceContainer>
-							</div>
-							<FooterContainer />
-						</HomeDiv>
-					</div>
-					: this.props.loggedIn === null ? <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} />
-						: <div style={{ height: '100vh', display: 'flex', flex: '1', alignItems: 'center', justifyContent: 'center' }}><SmoothLoader size='l' velocity='fast' color='gray' /></div>
-				}
+				{this.state.loggedIn === 'token_missing' ? this.renderLogin() : this.renderHome()}
 			</ThemeProvider>
 		)
 
@@ -108,7 +104,7 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : null),
+	loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : false),
 	errorLogin: state.eplan.loginErrorMessage,
 	//loggedIn: true
 })
