@@ -75,9 +75,9 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	//loggedIn: (state.eplan.authObj) ? (state.eplan.authObj.isLoggedIn === 1) ? true : false : false,
+	loggedIn: (state.eplan.authObj) ? (state.eplan.authObj.isLoggedIn === 1) ? true : false : false,
 	errorLogin: state.eplan.loginErrorMessage,
-	loggedIn: true
+	//loggedIn: true
 })
 
 function mapDispatchToProps(dispatch) {
