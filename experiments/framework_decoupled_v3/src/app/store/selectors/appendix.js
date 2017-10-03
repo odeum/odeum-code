@@ -11,7 +11,7 @@ const openFrames = (state, id) => state.eplan.openFrames[id]
 const framesConfig = (state) => state.eplan.configFrames
 
 const getConfig = state => state.eplan.conf
-export const getAppendix = (state, id, props) => _.find(state.eplan.openAppendix, (appendix) => { return appendix.appendixId === parseInt(id, 10) })
+export const getAppendix = (state, id, props) => state.eplan.openAppendix[id]
 
 export const getFilteredAppdx = createSelector(
 	[getAppendixes, getAppendixFilterText],

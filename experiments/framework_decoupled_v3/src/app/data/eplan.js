@@ -49,12 +49,10 @@ export async function getAppendixList() {
 }
 
 export async function getAppendixById(id) {
-	var appendix = await api.get('rest/eplan/kpt/appendix/' + id)
-		.then((response) => {
-			return response.data
-		})
-	return appendix
+	let appendix = await api.get('rest/eplan/kpt/appendix/' + id)
+	return appendix.data
 }
+
 
 export async function exportAppendixToPlansystem(id) {
 	var result = await api.get('rest/eplan/kpt/appendix/publish/' + id)
@@ -90,6 +88,12 @@ export async function getAppendixFramesList(id) {
 		})
 	const dataList = List(data)
 	return dataList
+}
+
+export async function addNewFrame(id) {
+	await api.post('/rest/eplan/kpt/frame/' + id)
+	let data = await getAppendixById(id)
+	return data
 }
 
 export async function getFrameConfig() {
