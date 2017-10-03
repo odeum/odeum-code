@@ -20,6 +20,8 @@ export const TabLink = styled(Link) `
     font-style: normal;
     font-size: 15px;
     font-weight: 300;
+    user-select: none;
+    
     &:hover{
         color:white;
       
@@ -31,6 +33,7 @@ export const TabLink = styled(Link) `
 `
 export const TabCloseLink = styled(Link) `
     display:flex;
+    user-select: none;
     text-decoration: none;
     height:100%;
     outline: 0;
