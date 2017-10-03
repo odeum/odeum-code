@@ -38,7 +38,7 @@ class Home extends Component {
 
 	async componentWillMount() {
 		this.props.onMount()
-		// var log = await this.props.auth()
+		await this.props.auth()
 		// console.log('-----log-----')
 		// console.log(log)
 		// if (log === null) { 
@@ -50,12 +50,13 @@ class Home extends Component {
 		}
 	}
 	componentDidMount = async () => {
-		var loggedIn = await this.props.auth()
-		console.log(loggedIn)
-		if (loggedIn.isLoggedIn === 1)
-			this.setState({ loggedIn: true })
-		else
-			this.setState({ loggedIn: false })
+		// var loggedIn = await this.props.auth()
+		// console.log(loggedIn)
+		// if (loggedIn === null) { this.setState({ loggedIn: false }) }
+		// if (loggedIn.isLoggedIn === 1)
+		// 	this.setState({ loggedIn: true })
+		// else
+		// 	this.setState({ loggedIn: false })
 	}
 
 	componentWillUpdate(nextProps, nextState) {
@@ -77,7 +78,7 @@ class Home extends Component {
 		// console.log(this.props.loggedIn)
 		return (
 			<ThemeProvider theme={theme}>
-				{this.state.loggedIn === true ?
+				{this.props.loggedIn === true ?
 					<div>
 						<HomeDiv>
 							<HeaderContainer />
@@ -91,7 +92,7 @@ class Home extends Component {
 							<FooterContainer />
 						</HomeDiv>
 					</div>
-					: this.state.loggedIn ? <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} />
+					: this.props.loggedIn === null ? <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} />
 						: <div style={{ height: '100vh', display: 'flex', flex: '1', alignItems: 'center', justifyContent: 'center' }}><SmoothLoader size='l' velocity='fast' color='gray' /></div>
 				}
 			</ThemeProvider>
@@ -107,7 +108,7 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	//loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : null),
+	loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : null),
 	errorLogin: state.eplan.loginErrorMessage,
 	//loggedIn: true
 })
