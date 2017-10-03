@@ -22,7 +22,7 @@ import { push } from 'react-router-redux'
 import LoginContainer from 'framework/containers/Login/Login'
 
 //Loader
-import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
+// import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
 
 //REFACTOR
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
