@@ -39,13 +39,8 @@ class Home extends Component {
 	async componentWillMount() {
 		this.props.onMount()
 		this.setState({ loggedIn: await this.props.auth() })
-		// console.log('-----log-----')
-		// console.log(log)
-		// if (log === null) { 
-
-		// }
 		//Redirect only if logged in
-		if (this.props.location.pathname === '/' && this.props.loggedIn === true) {
+		if (this.props.location.pathname === '/' && this.state.loggedIn === 'valid') {
 			this.props.Redirect()
 		}
 	}
@@ -61,7 +56,7 @@ class Home extends Component {
 
 	async componentWillUpdate(nextProps, nextState) {
 		//Header Redirect
-		if (nextProps.location.pathname === '/' && nextProps.loggedIn === true) {
+		if (nextProps.location.pathname === '/' && nextState.loggedIn === 'valid') {
 			this.props.Redirect()
 		}
 
