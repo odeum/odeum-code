@@ -98,7 +98,7 @@ export async function doMyLogin(data) {
 				break
 			case 200:
 				api.setHeader('ODEUMAuthToken', res.data.sessionID)
-				cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })	
+				cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 				dispatch(eplanLogin(res.data))
 				break
 			default:
@@ -121,7 +121,7 @@ export async function doCookieLogin() {
 					break
 				case 200:
 					api.setHeader('ODEUMAuthToken', res.data.sessionID)
-					cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })	
+					cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 					dispatch(eplanLogin(res.data))
 					break
 				default:
@@ -197,11 +197,13 @@ export function getFramesListAsync(id) {
 		)
 	}
 }
-export function getFrameDataAsync(id) {
+export async function getFrameDataAsync(id) {
 	return async dispatch => {
-		await getFrameData(id).then((result) => {
-			dispatch(actionGetFrameData(result))
-		})
+		var data = await getFrameData(id)
+		console.log('-----data - redux-----')
+		console.log(data)
+		dispatch(actionGetFrameData(data))
+		return data
 
 	}
 }

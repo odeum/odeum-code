@@ -3,19 +3,18 @@ import Modal from 'react-modal'
 import * as colors from 'framework/assets/colors'
 
 const fadeModal = keyframes`
-@keyframes  {
-    from {
+    0% {
         opacity: 0;
         top: 0%;
         left: 50%;
     }
-    to {
+    100% {
         opacity: 1;
         top: 50%;
         left: 50%;
     }
-}
 `
+
 export const ModalWindow = styled(Modal)`
     border-radius: 4px;
     border: none;
@@ -30,7 +29,7 @@ export const ModalWindow = styled(Modal)`
     min-height: 500px;
     max-height: 700px;
     transform: translate(-50%, -50%);
-    animation: ${fadeModal} 1s ease-in-out;
+    /* animation: 1s ${fadeModal} ease-in-out; */
     background-color: white;
     outline: none;
     box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5);

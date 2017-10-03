@@ -73,16 +73,16 @@ class EditAppendix extends Component {
 			dates: []
 		}
 		/* Bind functions to this component */
-		this.submitUpdate = this.submitUpdate.bind(this)
-		this.submitUpdateAndCommit = this.submitUpdateAndCommit.bind(this)
-		this.openConfigModal = this.openConfigModal.bind(this)
-		this.closeConfigModal = this.closeConfigModal.bind(this)
-		this.saveConfigModal = this.saveConfigModal.bind(this)
-		this.openExportModal = this.openExportModal.bind(this)
-		this.closeExportModal = this.closeExportModal.bind(this)
-		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
-		this.handlePdfChange = this.handlePdfChange.bind(this)
-		this.handleViewAppendix = this.handleViewAppendix.bind(this)
+		//this.submitUpdate = this.submitUpdate.bind(this)
+		//this.submitUpdateAndCommit = this.submitUpdateAndCommit.bind(this)
+		// this.openConfigModal = this.openConfigModal.bind(this)
+		// this.closeConfigModal = this.closeConfigModal.bind(this)
+		// this.saveConfigModal = this.saveConfigModal.bind(this)
+		// this.openExportModal = this.openExportModal.bind(this)
+		// this.closeExportModal = this.closeExportModal.bind(this)
+		// this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
+		// this.handlePdfChange = this.handlePdfChange.bind(this)
+		// this.handleViewAppendix = this.handleViewAppendix.bind(this)
 	}
 
 	componentWillMount() {
@@ -111,41 +111,41 @@ class EditAppendix extends Component {
 		}
 	}
 
-	async submitUpdate(values) {
+	submitUpdate = async (values) => {
 		await this.props.updateApd(values, this.props.param, false)
 		toast.success('Dine ændringer er gemt')
 	}
 
-	async submitUpdateAndCommit(values) {
+	submitUpdateAndCommit = async (values) => {
 		await this.props.updateApd(values, this.props.param, true)
 		toast.success('Dine ændringer er gemt')
 	}
 
-	openExportModal() {
+	openExportModal = () => {
 		this.setState({
 			exportModalIsOpen: true
 		})
 	}
 
-	closeExportModal() {
+	closeExportModal = () => {
 		this.setState({
 			exportModalIsOpen: false
 		})
 	}
 
-	openConfigModal() {
+	openConfigModal = () => {
 		this.setState({
 			configModalIsOpen: true
 		})
 	}
 
-	closeConfigModal() {
+	closeConfigModal = () => {
 		this.setState({
 			configModalIsOpen: false
 		})
 	}
 
-	async saveConfigModal(values) {
+	saveConfigModal = async (values) => {
 		this.setState({
 			configModalIsOpen: false
 		})
@@ -157,7 +157,7 @@ class EditAppendix extends Component {
 		toast.success('Dine ændringer er gemt')
 	}
 
-	async handlePdfChange(option) {
+	handlePdfChange = async (option) => {
 		this.setState({ pdfIsLoading: true })
 		if (option.value === 'create') {
 			try {
@@ -187,13 +187,13 @@ class EditAppendix extends Component {
 		this.setState({ pdfIsLoading: false })
 	}
 
-	handleViewAppendix(option) {
+	handleViewAppendix = (option) => {
 		if (option.value === 'viewpublic') {
 			window.open(this.props.appendix.folderUrl, '_viewappendix')
 		}
 	}
 
-	async onClickExportAppendix() {
+	onClickExportAppendix = async () => {
 		document.getElementById('exportStepOne').style.display = 'none'
 		document.getElementById('exportButton').style.display = 'none'
 		document.getElementById('exportCloseButton').style.display = 'none'

@@ -3,24 +3,6 @@ import PropTypes from 'prop-types'
 import { Img, LoginLabel, BackgroundDiv, HeaderDiv, Input, InputDiv, LoginButton } from 'framework/components/styles/LoginStyles'
 import HeaderLogo from '../../assets/eplan_logo.png'
 
-
-// const Login__ = ({ onSubmit }) => {
-// 	return (
-// 		<BackgroundDiv>
-// 			<HeaderDiv><Img src={HeaderLogo}/></HeaderDiv>
-// 			<InputDiv>
-// 				<LoginLabel>Username</LoginLabel>
-// 				<Input id="username"/>
-// 			</InputDiv>
-// 			<InputDiv>
-// 				<LoginLabel>Password</LoginLabel>
-// 				<Input type='password'/>
-// 			</InputDiv>
-// 			<LoginButton onClick={(e) => {e.preventDefault();onSubmit()}}>Login</LoginButton>
-// 		</BackgroundDiv>
-// 	)
-// }
-
 class Login extends React.Component {
 	constructor(props) {
 		super(props)
