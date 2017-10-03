@@ -11,7 +11,7 @@ padding: 0;
 padding-left: 10px;
 font-family: 'Source Sans Pro';
 font-size: 16px;
-font-weight: 300;
+font-weight: 400;
 color: #000;
 outline: none;
 -webkit-appearance: none;
@@ -20,16 +20,16 @@ transition: border 0.3s;
     border: 1px solid #3B97D3;
 }
 &::placeholder {
-    color: #dedede;
+    color: gray;
 }
 &:-ms-input-placeholder {
-    color: #dedede;
+    color: gray;
 }
 &::-webkit-input-placeholder {
-    color: #dedede;
+    color: gray;
 }
 &::-moz-placeholder {
-    color: #dedede;
+    color: gray;
     opacity: 1;
 }
 `

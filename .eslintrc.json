@@ -1,36 +1,74 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "sourceType": "module"
-    },
-    "rules": {
-        "no-const-assign": "warn",
-        "no-this-before-super": "warn",
-        "no-undef": "warn",
-        "no-unreachable": "warn",
-        "no-unused-vars": "warn",
-        "constructor-super": "warn",
-        "valid-typeof": "warn",
-        "semi": ["error", "never"],
-        "indent": ["error", "tab", {"SwitchCase": 1}],
-        "comma-spacing": ["error", {"before": false, "after": true}],
-        "keyword-spacing": ["error", {"before": true, "after": true}],
-        "key-spacing": ["error", {"beforeColon": false, "afterColon": true}],
-        "object-curly-spacing": ["error", "always"],
-        "space-infix-ops": "error",
-        "space-before-blocks": "error",
-        "arrow-spacing": "error",
-        "react/display-name": 0
-    },
-       "extends": [
-        "react-app"
-    ]
+	"env": {
+		"browser": true,
+		"commonjs": true,
+		"es6": true,
+		"node": true
+	},
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"sourceType": "module"
+	},
+	"rules": {
+		"no-const-assign": "warn",
+		"no-this-before-super": "warn",
+		"no-undef": "warn",
+		"no-unreachable": "warn",
+		"no-unused-vars": "warn",
+		"constructor-super": "warn",
+		"valid-typeof": "warn",
+		"semi": [
+			"error",
+			"never"
+		],
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"comma-spacing": [
+			"error",
+			{
+				"before": false,
+				"after": true
+			}
+		],
+		"keyword-spacing": [
+			"error",
+			{
+				"before": true,
+				"after": true
+			}
+		],
+		"key-spacing": [
+			"error",
+			{
+				"beforeColon": false,
+				"afterColon": true
+			}
+		],
+		"object-curly-spacing": [
+			"error",
+			"always"
+		],
+		"space-infix-ops": "error",
+		"space-before-blocks": "error",
+		"arrow-spacing": "error",
+		"react/display-name": 0,
+		"react/jsx-no-bind": [
+			2,
+			{
+				"ignoreRefs": true,
+				"allowArrowFunctions": true,
+				"allowBind": false
+			}
+		]
+	},
+	"extends": [
+		"react-app"
+	]
 }

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+
 /* Redux */
+
 import { connect } from 'react-redux'
 import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
-import { getFramesFields } from 'app/store/selectors/appendix'
+import { getFramesFields, openFrames, getFrameMetaData } from 'app/store/selectors/frames'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
-import { tabChange } from 'framework/store/modules/tabs'
+import { tabChange, addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
@@ -71,32 +73,53 @@ let renderFields = ({ fields }) => {
 }
 
 class EditFrame extends Component {
+	tab = {
+		id: this.props.frameId,
+		label: "",
+		location: '/eplan/list/' + this.props.appendixId + '/frames/' + this.props.frameId + '/edit',
+		icon: 'mode_edit',
+		fixed: false,
+		isLoading: false,
+		closeLink: '/eplan/list/' + this.props.appendixId + '/frames'
+	}
+	/* 
 	constructor(props) {
 		super(props)
-
-		/* Bind functions to this component */
-		this.submitUpdate = this.submitUpdate.bind(this)
-	}
+		this.state = {
+			blank: null
+		}
+		Bind functions to this component 
+		//this.submitUpdate = this.submitUpdate.bind(this)
+	} */
 	async componentWillMount() {
-		if (this.props.openFrame === null) {
-			await this.props.getFrameData(this.props.frameId)
+		const { appendixId, frameId } = this.props
+		this.props.onMount(appendixId, this.tab)
+		this.props.tabisLoading(appendixId, this.tab, true)
+		await this.props.getFrameData(frameId)
+		if (this.props.openFrame !== null) {
+			this.tab.label = this.props.openFrame.name
+			this.props.onMount(appendixId, this.tab)
+			this.props.tabisLoading(appendixId, this.tab, false)
+
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps.initialValues.fields)
+		// if (nextProps.openFrame !== null)
+		// 	this.props.tabisLoading(this.props.appendixId, this.tab, false)
 	}
 
 	componentWillUnmount = () => {
 	}
-	
+
 	componentDidMount() {
+
 	}
-	submitUpdate(values) {
+
+	submitUpdate = (values) => {
 		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
 		toast.success('Dine ændringer er gemt')
 	}
-
 
 	render() {
 		return (
@@ -106,13 +129,13 @@ class EditFrame extends Component {
 					<Button icon={iconname.ICON_CLOUD} size={18} >Exporter til plansystem</Button>
 					{/* <Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Knap 2</Button> */}
 				</AppendixButtonPanel>
-				{this.props.openFrame === null ? 
-					null : 
+				{this.props.openFrame === null ?
+					null :
 					<PrimaryContainer>
 						<FramesForm form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
-							<FieldArray name={'fields'} component={renderFields}/>
+							<FieldArray name={'fields'} component={renderFields} />
 							<div>
-							<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
+								<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
 							</div>
 						</FramesForm>
 					</PrimaryContainer>
@@ -131,41 +154,49 @@ class EditFrame extends Component {
 				saveEditModal={this.saveEditModal}
 				referenceTableId={this.props.referenceTableId}
 				 /> */}
-				 
-			<ToastContainerStyled
-				position="top-right"
-				autoClose={5000}
-				hideProgressBar={true}
-				newestOnTop={true}
-				closeOnClick
-				pauseOnHover
-			 />
-		 </PrimaryContainer>
+
+				<ToastContainerStyled
+					position="top-right"
+					autoClose={5000}
+					hideProgressBar={true}
+					newestOnTop={true}
+					closeOnClick
+					pauseOnHover
+				/>
+			</PrimaryContainer>
 
 		)
 	}
 }
 
-const mapStateToProps = (state, ownProps) => ({
-	frameId: ownProps.frameId,
-	openFrame: state.eplan.openFrames[ownProps.frameId] || null,
-	form: 'EditFrame_form_' + ownProps.frameId,
-	initialValues: {
-		fields: getFramesFields(state, ownProps.frameId)
-	} || null,
-	conf: state.eplan.conf
-})
+const mapStateToProps = (state, ownProps) => {
+	return {
+		appendixId: ownProps.params.id,
+		frameId: ownProps.params.frameid,
+		openFrame: openFrames(state, ownProps.params.frameid) || null,
+		form: 'EditFrame_form_' + ownProps.params.frameid,
+		initialValues: {
+			fields: getFramesFields(state, ownProps.params.frameid)
+		} || null,
+		conf: state.eplan.conf,
+		framemeta: getFrameMetaData(state, ownProps.params.id, ownProps.params.frameid)
+	}
+}
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: (id, param) => {
-			dispatch(tabChange(id, param))
+		onMount: (id, tab) => {
+			dispatch(addTab(id, tab))
+			dispatch(tabChange(id, tab.label))
 		},
-		getFrameData: (frameId) => {
-			dispatch(getFrameDataAsync(frameId))
+		getFrameData: async (frameId) => {
+			return dispatch(await getFrameDataAsync(frameId))
 		},
 		setFrameData: (frameId, data, frameData) => {
 			dispatch(setFrameDataAsync(frameId, data, frameData))
+		},
+		tabisLoading: (id, tab, isLoading) => {
+			dispatch(tabIsLoading(id, tab, isLoading))
 		}
 	}
 }

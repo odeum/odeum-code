@@ -22,17 +22,17 @@ const sizes = {
 		diameter: '25px',
 		border: '5px'
 	},
-	small: {
+	s: {
 		diameter: '50px',
 		border: '10px'
 
 	},
-	medium: {
+	m: {
 		diameter: '80px',
 		border: '12px'
 
 	},
-	large: {
+	l: {
 		diameter: '120px',
 		border: '16px'
 
@@ -55,14 +55,15 @@ width: ${({ size }) => sizes[size].diameter};
 height: ${({ size }) => sizes[size].diameter};
 border-style: solid;
 border-color: rgba(0,0,0,0);
-border-top-color: #EEEDED;
+border-top-color: ${({ color }) => color };
 border-width: 2px 0px 0px 0px;
 border-radius: 50%;
 animation: ${spin} ${({ velocity }) => velocities[velocity]} infinite linear;
 `
 
 StyledSmoothLoader.defaultProps = {
-	size: 'medium',
-	velocity: 'fast'
+	size: 'm',
+	velocity: 'fast',
+	color: '#EEEDED'
 }
 export default StyledSmoothLoader

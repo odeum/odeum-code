@@ -21,50 +21,77 @@ import { push } from 'react-router-redux'
 //Login
 import LoginContainer from 'framework/containers/Login/Login'
 
+//Loader
+// import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
+
 //REFACTOR
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			loggedIn: null
+		}
+	}
+
 
 	async componentWillMount() {
 		this.props.onMount()
-		await this.props.auth()
+		this.setState({ loggedIn: await this.props.auth() })
 		//Redirect only if logged in
-		if (this.props.location.pathname === '/' && this.props.loggedIn === true)
+		if (this.props.location.pathname === '/' && this.state.loggedIn === 'valid') {
 			this.props.Redirect()
+		}
+	}
+	componentDidMount = async () => {
+		// var loggedIn = await this.props.auth()
+		// console.log(loggedIn)
+		// if (loggedIn === null) { this.setState({ loggedIn: false }) }
+		// if (loggedIn.isLoggedIn === 1)
+		// 	this.setState({ loggedIn: true })
+		// else
+		// 	this.setState({ loggedIn: false })
 	}
 
-	componentWillUpdate(nextProps, nextState) {
+	async componentWillUpdate(nextProps, nextState) {
 		//Header Redirect
-		if (nextProps.location.pathname === '/' && this.props.loggedIn === true)
+		if (nextProps.location.pathname === '/' && nextState.loggedIn === 'valid') {
 			this.props.Redirect()
+		}
+
+	}
+	renderHome = () => {
+		return <HomeDiv>
+			<HeaderContainer />
+			<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
+				<MenuContainer />
+				<WorkspaceContainer>
+					<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
+					{this.props.children}
+				</WorkspaceContainer>
+			</div>
+			<FooterContainer />
+		</HomeDiv>
+	}
+	renderLogin = () => {
+		return <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin} />
 	}
 
 	handleLogin = async (data) => {
-		await this.props.login(data)
+		var login = await this.props.login(data)
+		this.setState({ loggedIn: login })
 	}
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				{this.props.loggedIn ?
-					<div>
-						<HomeDiv>
-							<HeaderContainer />
-							<div style={{ display: 'flex', flex: 1, height: '100%', overflow: 'auto' }}>
-								<MenuContainer />
-								<WorkspaceContainer>
-									<TabsContainer style={{ border: 'solid 1px blue' }} instanceID={this.props.activeScene} />
-									{this.props.children}
-								</WorkspaceContainer>
-							</div>
-							<FooterContainer />
-						</HomeDiv>
-					</div>
-					: <LoginContainer handleLogin={this.handleLogin} errorLogin={this.props.errorLogin}/>}
+				{this.state.loggedIn === 'token_missing' ? this.renderLogin() : this.renderHome()}
 			</ThemeProvider>
 		)
+
 	}
 }
+
 Home.propTypes = {
 	activeScene: PropTypes.string.isRequired
 }
@@ -72,8 +99,8 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	loggedIn: (state.eplan.authObj) ? state.eplan.authObj.isLoggedIn : false,
-	errorLogin: 'Message'
+	loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : false),
+	errorLogin: state.eplan.loginErrorMessage,
 	//loggedIn: true
 })
 
@@ -87,8 +114,7 @@ function mapDispatchToProps(dispatch) {
 			dispatch(await doMyLogin(data))
 		},
 		auth: async () => {
-			dispatch(await doCookieLogin())
-
+			return dispatch(await doCookieLogin())
 		},
 		Redirect: () => {
 			dispatch(push('/eplan/list'))
