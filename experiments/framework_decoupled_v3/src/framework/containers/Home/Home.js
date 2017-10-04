@@ -28,35 +28,19 @@ import LoginContainer from 'framework/containers/Login/Login'
 import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			loggedIn: null
-		}
-	}
-
-
 	async componentWillMount() {
+		console.log(this.props.authObj)
 		this.props.onMount()
-		this.setState({ loggedIn: await this.props.auth() })
+		await this.props.auth()
 		//Redirect only if logged in
-		if (this.props.location.pathname === '/' && this.state.loggedIn === 'valid') {
+		if (this.props.location.pathname === '/' && this.props.loggedIn === 'valid') {
 			this.props.Redirect()
 		}
-	}
-	componentDidMount = async () => {
-		// var loggedIn = await this.props.auth()
-		// console.log(loggedIn)
-		// if (loggedIn === null) { this.setState({ loggedIn: false }) }
-		// if (loggedIn.isLoggedIn === 1)
-		// 	this.setState({ loggedIn: true })
-		// else
-		// 	this.setState({ loggedIn: false })
 	}
 
 	async componentWillUpdate(nextProps, nextState) {
 		//Header Redirect
-		if (nextProps.location.pathname === '/' && nextState.loggedIn === 'valid') {
+		if (nextProps.location.pathname === '/' && nextProps.loggedIn === 'valid') {
 			this.props.Redirect()
 		}
 
@@ -79,13 +63,13 @@ class Home extends Component {
 	}
 
 	handleLogin = async (data) => {
-		var login = await this.props.login(data)
-		this.setState({ loggedIn: login })
+		await this.props.login(data)
 	}
+
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				{this.state.loggedIn === 'token_missing' ? this.renderLogin() : this.renderHome()}
+				{this.props.loggedIn === 'valid' ? this.renderHome() : this.props.loggedIn === 'notvalid' ? this.renderLogin() : <div/>}
 			</ThemeProvider>
 		)
 
@@ -99,7 +83,7 @@ Home.propTypes = {
 const mapStateToProps = (state, ownProps) => ({
 	activeScene: state.tabReducer.activeScene,
 	authObj: state.eplan.authObj,
-	loggedIn: (state.eplan.authObj ? (state.eplan.authObj.isLoggedIn === 1 ? true : false) : false),
+	loggedIn: state.eplan.authObj ? state.eplan.authObj.loginState  : 'active',
 	errorLogin: state.eplan.loginErrorMessage,
 	//loggedIn: true
 })
