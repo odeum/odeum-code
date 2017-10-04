@@ -104,7 +104,6 @@ export async function doMyLogin(data) {
 				cookies.set('ODEUMAuthToken', res.data.sessionID, { path: '/' })
 				res.data.loginState = 'valid'
 				dispatch(eplanLogin(res.data))
-				console.log(res.data)
 				break
 			default:
 				console.log(res)
@@ -361,7 +360,6 @@ function eplan(state = initState, action) {
 			}
 		}
 		case EPLAN_LOGIN_FAIL: {
-			console.log('fail')
 			return {
 				...state,
 				authObj: {

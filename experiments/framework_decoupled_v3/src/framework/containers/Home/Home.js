@@ -29,9 +29,10 @@ import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/epla
 
 class Home extends Component {
 	async componentWillMount() {
-		console.log(this.props.authObj)
 		this.props.onMount()
-		await this.props.auth()
+		if (this.props.loggedIn !== 'valid') {
+			await this.props.auth()
+		}
 		//Redirect only if logged in
 		if (this.props.location.pathname === '/' && this.props.loggedIn === 'valid') {
 			this.props.Redirect()
@@ -85,7 +86,6 @@ const mapStateToProps = (state, ownProps) => ({
 	authObj: state.eplan.authObj,
 	loggedIn: state.eplan.authObj ? state.eplan.authObj.loginState  : 'active',
 	errorLogin: state.eplan.loginErrorMessage,
-	//loggedIn: true
 })
 
 function mapDispatchToProps(dispatch) {
