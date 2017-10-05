@@ -64,6 +64,15 @@ export async function exportAppendixToPlansystem(id) {
 	return result
 }
 
+export async function exportFrameToPlansystem(id) {
+	var result = await api.get('rest/eplan/kpt/frame/publish/' + id)
+		.then((response) => {
+			console.log('export frame', response)
+			return response.data
+		})
+	return result
+}
+
 export async function getCompleteAppendixPdf(id) {
 	var result = await api.get('rest/eplan/kpt/appendix/appendixpdf/' + id)
 		.then((response) => {

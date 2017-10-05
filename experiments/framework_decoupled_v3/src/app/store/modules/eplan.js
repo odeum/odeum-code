@@ -5,7 +5,7 @@ import {
 	getReferenceTableEntry, saveReferenceTable,
 	saveReferenceTableValue, deleteReferenceTableValue,
 	getFrameConfig, getFrameData, setFrameData, backendLogin, 
-	getAuth, addNewFrame
+	getAuth, addNewFrame, exportFrameToPlansystem
 } from 'app/data/eplan'
 import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
@@ -23,6 +23,7 @@ const UPDATE_APPENDIX = '@@EPLAN/UPDATE_APPENDIX'
 const ADD_APPENDIX = '@@EPLAN/ADD_APPENDIX'
 const CLOSE_APPENDIX = '@@EPLAN/CLOSE_OPEN_APPENDIX'
 const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
+const PUBLISH_FRAME_PLANSYSTEM = '@@EPLAN/PUBLISH_FRAME_PLANSYSTEM'
 const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
 const CREATE_APPENDIX_PDF = '@@EPLAN/CREATE_APPENDIX_PDF'
 const GET_APPENDIX_FRAMES_LIST = '@@EPLAN/GET_APPENDIX_FRAMES_LIST'
@@ -60,6 +61,7 @@ const updateApd = (data) => ({ type: UPDATE_APPENDIX, payload: data })
 const addApd = (data) => ({ type: ADD_APPENDIX, payload: data })
 const removeApdx = (data) => ({ type: CLOSE_APPENDIX, payload: data })
 const exportAppendix = () => ({ type: PUBLISH_APPENDIX_PLANSYSTEM })
+const exportFrame = () => ({ type: PUBLISH_FRAME_PLANSYSTEM })
 const getAppendixPdf = () => ({ type: GET_APPENDIX_PDF })
 const createAppendixPdf = () => ({ type: CREATE_APPENDIX_PDF })
 const getFramesList = (data) => ({ type: GET_APPENDIX_FRAMES_LIST, payload: data })
@@ -243,6 +245,18 @@ export function getFrameConfigAsync() {
 
 	}
 }
+
+export async function exportFrameToPlansystemAsync(id) {
+	return async dispatch => {
+		var test = await exportFrameToPlansystem(id).then((result) => {
+			console.log(result)
+			dispatch(exportFrame())
+			return result
+		})
+		return test
+	}
+}
+
 export function getAppendixCfg() {
 	return async dispatch => {
 		await getAppendixConfig().then((result) => {
