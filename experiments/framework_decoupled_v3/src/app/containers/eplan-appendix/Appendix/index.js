@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
-import { getFrameConfigAsync } from 'app/store/modules/eplan'
+import { getFrameConfigAsync, getAppendixCfg } from 'app/store/modules/eplan'
 import { getListAsync } from 'app/store/modules/eplan'
 import { getAppendixMetaData } from 'app/store/selectors/appendix'
 /* Framework */
@@ -104,6 +104,7 @@ function mapDispatchToProps(dispatch) {
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
+			dispatch(getAppendixCfg())
 			dispatch(getFrameConfigAsync())
 		},
 		tabisLoading: (id, tab, isLoading) => {
