@@ -25,11 +25,10 @@ import LoginContainer from 'framework/containers/Login/Login'
 // import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
 
 //REFACTOR
-import { getAppendixCfg, doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
+import { doMyLogin, doCookieLogin } from 'app/store/modules/eplan'
 
 class Home extends Component {
 	async componentWillMount() {
-		this.props.onMount()
 		if (this.props.loggedIn !== 'valid') {
 			await this.props.auth()
 		}
@@ -90,10 +89,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: () => {
-			dispatch(getAppendixCfg())
-			// dispatch(replace('/eplan/list'))
-		},
 		login: async (data) => {
 			dispatch(await doMyLogin(data))
 		},

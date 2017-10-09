@@ -15,6 +15,7 @@ const StyledButton = styled.button`
     padding: 0;
     padding: ${(props) => props.theme.buttonSize.default.padding || '0 20px 0 15px'};
     height: 37px;
+    margin-top: 3px;   
     margin-right: 0.7rem;
     border: none;
     text-decoration: none;

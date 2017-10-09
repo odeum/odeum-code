@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 /* Redux */
 
 import { connect } from 'react-redux'
-import { getFrameDataAsync, setFrameDataAsync } from 'app/store/modules/eplan'
+import { getFrameDataAsync, setFrameDataAsync, getAppendixAsync, exportFrameToPlansystemAsync } from 'app/store/modules/eplan'
 import { getFramesFields, openFrames, getFrameMetaData } from 'app/store/selectors/frames'
+// import { getAppendix } from 'app/store/selectors/appendix'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
@@ -18,6 +19,8 @@ import { /* DescriptionDiv, */ AppendixButtonPanel, FramesForm, ToastContainerSt
 import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
 import FormFieldTextarea from 'framework/components/ReduxForm/FormFieldTextarea'
 import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
+import ExportModal from 'app/components/eplan-appendix/Frames/ExportModal'
+
 
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
@@ -82,25 +85,24 @@ class EditFrame extends Component {
 		isLoading: false,
 		closeLink: '/eplan/list/' + this.props.appendixId + '/frames'
 	}
-	/* 
+
 	constructor(props) {
 		super(props)
 		this.state = {
+			exportModalIsOpen: false,
 			blank: null
 		}
-		Bind functions to this component 
-		//this.submitUpdate = this.submitUpdate.bind(this)
-	} */
+	}
 	async componentWillMount() {
 		const { appendixId, frameId } = this.props
 		this.props.onMount(appendixId, this.tab)
 		this.props.tabisLoading(appendixId, this.tab, true)
+		await this.props.getAppendix(appendixId)
 		await this.props.getFrameData(frameId)
 		if (this.props.openFrame !== null) {
 			this.tab.label = this.props.openFrame.name
 			this.props.onMount(appendixId, this.tab)
 			this.props.tabisLoading(appendixId, this.tab, false)
-
 		}
 	}
 
@@ -121,15 +123,50 @@ class EditFrame extends Component {
 		toast.success('Dine ændringer er gemt')
 	}
 
+	openExportModal = () => {
+		this.setState({
+			exportModalIsOpen: true
+		})
+	}
+
+	closeExportModal = () => {
+		this.setState({
+			exportModalIsOpen: false
+		})
+	}
+	onClickExportFrame = async () => {
+		document.getElementById('exportStepOne').style.display = 'none'
+		document.getElementById('exportButton').style.display = 'none'
+		document.getElementById('exportCloseButton').style.display = 'none'
+		document.getElementById('exportStepTwo').style.display = 'block'
+		document.getElementById('exportLoadingDiv').style.display = 'block'
+
+		try {
+			await this.props.exportToPlanSystem(this.props.frameId).then((response) => {
+				document.getElementById('exportLoadingDiv').style.display = 'none'
+				document.getElementById('exportCloseButton').style.display = 'block'
+
+				console.log('onClickExportFrame', response)
+				if (response.errors === 0) {
+					document.getElementById('exportStatusText').innerText = 'Rammen blev indmeldt korrekt'
+				} else {
+					document.getElementById('exportStatusText').innerText = 'Rammen blev ikke indmeldt, fik følgende fejl: ' + response.result
+				}
+			})
+		} catch (e) {
+			console.log('Error:' + e)
+		}
+	}
+
 	render() {
 		return (
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
-					<Button icon={iconname.ICON_CLOUD} size={18} >Exporter til plansystem</Button>
+					<Button icon={iconname.ICON_CLOUD} onClick={this.openExportModal} size={18} >Exporter til plansystem</Button>
 					{/* <Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Knap 2</Button> */}
 				</AppendixButtonPanel>
-				{this.props.openFrame === null ?
+				{this.props.openFrame === null || this.props.appendix === null ?
 					null :
 					<PrimaryContainer>
 						<FramesForm form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
@@ -154,7 +191,13 @@ class EditFrame extends Component {
 				saveEditModal={this.saveEditModal}
 				referenceTableId={this.props.referenceTableId}
 				 /> */}
-
+				 <ExportModal
+					exportModalIsOpen={this.state.exportModalIsOpen}
+					closeExportModal={this.closeExportModal}
+					frame={this.props.openFrame}
+					appendix={this.props.appendix}
+					onClickExportFrame={this.onClickExportFrame}
+				/>
 				<ToastContainerStyled
 					position="top-right"
 					autoClose={5000}
@@ -173,6 +216,8 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		appendixId: ownProps.params.id,
 		frameId: ownProps.params.frameid,
+		appendix: state.eplan.openAppendix[ownProps.params.id] || null,
+		// app2: state.eplan.openAppendix[ownProps.params.id], // getAppendix(state, ownProps.param.id, ownProps) || null,
 		openFrame: openFrames(state, ownProps.params.frameid) || null,
 		form: 'EditFrame_form_' + ownProps.params.frameid,
 		initialValues: {
@@ -189,11 +234,18 @@ function mapDispatchToProps(dispatch) {
 			dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
 		},
+		getAppendix: async (appendixId) => {
+			console.log('getAppendix: ' + appendixId)
+			dispatch(await getAppendixAsync(appendixId))
+		},
 		getFrameData: async (frameId) => {
 			return dispatch(await getFrameDataAsync(frameId))
 		},
 		setFrameData: (frameId, data, frameData) => {
 			dispatch(setFrameDataAsync(frameId, data, frameData))
+		},
+		exportToPlanSystem: async (id) => {
+			return dispatch(await exportFrameToPlansystemAsync(id))
 		},
 		tabisLoading: (id, tab, isLoading) => {
 			dispatch(tabIsLoading(id, tab, isLoading))
