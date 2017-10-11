@@ -34,7 +34,8 @@
     "reselect": "^3.0.1",
     "styled-components": "^2.1.2",
     "styled-normalize": "^2.2.1",
-    "typeface-source-sans-pro": "^0.0.35"
+    "typeface-source-sans-pro": "^0.0.35",
+    "moment": "2.18.0"
   },
   "homepage": "",
   "devDependencies": {
