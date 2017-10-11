@@ -14,7 +14,7 @@ import Cookies from 'universal-cookie'
 /*Lodash*/
 var _ = require('lodash')
 
-/* Action Types */
+//region Action Types
 
 const GET_APPENDIX_LIST = '@@EPLAN/GET_EPLAN_LIST'
 const GET_APPENDIX = '@@EPLAN/GET_APPENDIX'
@@ -46,7 +46,9 @@ const EPLAN_DOING_LOGIN = '@@EPLAN/EPLAN_DOING_LOGIN'
 const EPLAN_LOGIN_FAIL = '@@EPLAN/EPLAN_LOGIN_FAIL'
 
 // const REFERENCE_TABLE_IS_LOADING = '@@EPLAN/REF_TABLE_IS_LOADING'
-/* Actions */
+//endregion
+
+//region Actions
 
 /* Login */
 const eplanLogin = (data) => ({ type: EPLAN_LOGIN, payload: data })
@@ -87,7 +89,9 @@ export const setFrameFilterText = (data) => ({ type: FRAME_SET_FILTER_TEXT, payl
 
 const cookies = new Cookies()
 
-/* Middleware */
+//endregion
+
+//region Middleware
 
 /* Login functions */
 export async function doMyLogin(data) {
@@ -338,9 +342,12 @@ export function deleteReferenceTableData(referenceTableId, referenceTableValueId
 		)
 	}
 }
+//endregion
 
+//region Reducer
 
 /* Reducer */
+
 const initState = {
 	appendixes: List([]),
 	openAppendix: [],
@@ -571,5 +578,7 @@ function eplan(state = initState, action) {
 			return state
 	}
 }
+
+//endregion
 
 export default eplan

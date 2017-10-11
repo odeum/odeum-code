@@ -11,6 +11,28 @@ export var api = create({
 	mode: 'no-cors'
 })
 
+//region PDF
+export async function getCompleteAppendixPdf(id) {
+	var result = await api.get('rest/eplan/kpt/appendix/appendixpdf/' + id)
+		.then((response) => {
+			return response.data
+		})
+
+	return result
+}
+
+export async function createCompleteAppendixPdf(id) {
+	var result = await api.post('rest/eplan/kpt/appendix/appendixpdf/' + id)
+		.then((response) => {
+			return response.data
+		})
+	return result
+}
+
+//endregion
+
+//region Appendix
+
 export async function postAppendix(appendix, commit) {
 	appendix = { ...appendix, doCommit: commit } // add commit parameter true|false
 
@@ -63,28 +85,14 @@ export async function exportAppendixToPlansystem(id) {
 
 	return result
 }
+//#endregion
+
+//region Frames
 
 export async function exportFrameToPlansystem(id) {
 	var result = await api.get('rest/eplan/kpt/frame/publish/' + id)
 		.then((response) => {
 			console.log('export frame', response)
-			return response.data
-		})
-	return result
-}
-
-export async function getCompleteAppendixPdf(id) {
-	var result = await api.get('rest/eplan/kpt/appendix/appendixpdf/' + id)
-		.then((response) => {
-			return response.data
-		})
-
-	return result
-}
-
-export async function createCompleteAppendixPdf(id) {
-	var result = await api.post('rest/eplan/kpt/appendix/appendixpdf/' + id)
-		.then((response) => {
 			return response.data
 		})
 	return result
@@ -130,10 +138,9 @@ export async function setFrameData(id, frameData) {
 	return data
 }
 
+//#endregion
 
-/**
- * REFERENCE TABLE FUNCTIONS BEGIN
- */
+//region Reference Table
 export async function getReferenceTableList() {
 	let data = await api.get('/rest/eplan/kpt/reftable/list')
 		.then((response) => {
@@ -191,11 +198,10 @@ export async function deleteReferenceTableValue(referenceTableEntry) {
 	// })
 	return referenceTableEntry
 }
-/**
- * REFERENCE TABLE FUNCTIONS END
- */
 
+//endregion
 
+//region ImageList
 //TODO: Should be moved to framework
 export async function getImagesList(folder) {
 	var data = await api.get('/rest/core/files/images/' + encodeURIComponent(folder))
@@ -220,3 +226,4 @@ export async function getAuth(token) {
 		})
 	return response
 }
+//endregion
