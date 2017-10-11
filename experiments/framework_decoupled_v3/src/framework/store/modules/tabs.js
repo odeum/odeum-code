@@ -1,5 +1,4 @@
 import tabSystemConfig from 'app/config'
-import { push } from 'react-router-redux'
 
 /*
 	Action Types
@@ -27,7 +26,6 @@ export const addTab = (instanceID, tab) => ({
 export function tabClose(instanceID, tab) {
 	return dispatch => {
 		dispatch(tabCloseAction(instanceID, tab))
-		dispatch(push(tab.closeLink))
 	}
 }
 export const tabCloseAction = (instanceID, tab) => ({

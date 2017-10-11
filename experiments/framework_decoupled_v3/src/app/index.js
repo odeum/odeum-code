@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Div } from 'app/styles/index'
 import { connect } from 'react-redux'
-// import { replace } from 'react-router-redux'
-
 class index extends Component {
 	componentWillMount() {
 		this.props.onMount()
@@ -21,7 +19,6 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
-			// return dispatch(replace('/eplan/list'))
 		}
 	}
 }
