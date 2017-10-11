@@ -87,7 +87,6 @@ const mapStateToProps = (state, ownProps) => ({
 	appendixName: getAppendixMetaData(state, ownProps.params.id),
 	conf: state.eplan.conf
 })
-
 function mapDispatchToProps(dispatch) {
 	return {
 		tabConfig: (id, tabs) => {
