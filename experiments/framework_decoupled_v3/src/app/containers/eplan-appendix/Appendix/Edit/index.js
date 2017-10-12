@@ -342,7 +342,8 @@ class EditAppendix extends Component {
 									closeConfigModal={closeConfigModal}
 									saveConfigModal={saveConfigModal}
 									dates={appendixDates}
-									statusOptions={statusOptions} />
+									statusOptions={statusOptions} 
+									appendixId={appendix.appendixId}/>
 								<ExportModal
 									exportModalIsOpen={exportModalIsOpen}
 									closeExportModal={closeExportModal}

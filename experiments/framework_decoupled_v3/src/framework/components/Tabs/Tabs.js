@@ -54,7 +54,6 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 	)
 }
 const Tab = ({ instance, tab, active, onTabClick, onCloseClick }) => {
-	console.log(instance, tab)
 	let TabClick = () => {
 		onTabClick(instance, tab.label)
 	}
@@ -62,7 +61,6 @@ const Tab = ({ instance, tab, active, onTabClick, onCloseClick }) => {
 		onCloseClick(instance, tab)
 	}
 	let isFixed = () => {
-		console.log(tab)
 		if (tab.fixed === undefined) {
 			return null
 		}

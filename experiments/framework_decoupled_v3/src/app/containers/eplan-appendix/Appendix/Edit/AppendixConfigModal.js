@@ -18,10 +18,10 @@ let renderFields = ({ fields }) => {
 		<Box>
 			{fields.map((field, index) => {
 				return (
-						<DatePickerStyledWrapper key={fields.get(index).id}>
-							<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
-							<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
-						</DatePickerStyledWrapper>
+					<DatePickerStyledWrapper key={fields.get(index).id}>
+						<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
+						<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
+					</DatePickerStyledWrapper>
 				)
 			})}
 
@@ -66,7 +66,7 @@ class AppendixConfigModal extends Component {
 								<Icon icon={iconname.ICON_SETTINGS} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 							</ModalHeaderIcon>
 							<ModalHeaderTitle>Indstillinger</ModalHeaderTitle>
-							<ModalHeaderClose onClick={(e) => { e.preventDefault(); closeConfigModal() }}>
+							<ModalHeaderClose onClick={closeConfigModal}>
 								<Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 							</ModalHeaderClose>
 						</ModalHeader>
@@ -74,7 +74,7 @@ class AppendixConfigModal extends Component {
 							<form>
 								<Flex wrap>
 									<Box width={[1 / 2]}>
-									<FieldLabel for="name">Vælg fase:</FieldLabel>
+										<FieldLabel for="name">Vælg fase:</FieldLabel>
 										<DropdownSelect
 											className="statusSelect"
 											name="statusSelect"
@@ -85,8 +85,8 @@ class AppendixConfigModal extends Component {
 											clearable={false}
 											placeholder="Vælg status"
 										/>
-									<FieldArray name={'dates'} component={renderFields} />
-										
+										<FieldArray name={'dates'} component={renderFields} />
+
 									</Box>
 								</Flex>
 							</form>
@@ -101,7 +101,8 @@ class AppendixConfigModal extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-	initialValues: { dates: ownProps.dates }
+	initialValues: { dates: ownProps.dates },
+	form: 'appendixDates_' + ownProps.appendixId
 })
 
 function mapDispatchToProps(dispatch) {
@@ -112,8 +113,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 AppendixConfigModal = reduxForm({
-	form: 'appendixDates',
-	enableReinitialize: true
+	enableReinitialize: true,
+	destroyOnUnmount: false,
+	keepDirtyOnReinitialize: true
 })(AppendixConfigModal)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppendixConfigModal)

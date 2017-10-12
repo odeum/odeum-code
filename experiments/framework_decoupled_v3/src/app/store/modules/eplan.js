@@ -214,8 +214,8 @@ export function getFramesListAsync(id) {
 export async function getFrameDataAsync(id) {
 	return async dispatch => {
 		var data = await getFrameData(id)
-		console.log('-----data - redux-----')
-		console.log(data)
+		// console.log('-----data - redux-----')
+		// console.log(data)
 		dispatch(actionGetFrameData(data))
 		return data
 

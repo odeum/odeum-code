@@ -79,7 +79,7 @@ export async function getAppendixById(id) {
 export async function exportAppendixToPlansystem(id) {
 	var result = await api.get('rest/eplan/kpt/appendix/publish/' + id)
 		.then((response) => {
-			console.log('export', response)
+			// console.log('export', response)
 			return response.data
 		})
 
@@ -92,7 +92,7 @@ export async function exportAppendixToPlansystem(id) {
 export async function exportFrameToPlansystem(id) {
 	var result = await api.get('rest/eplan/kpt/frame/publish/' + id)
 		.then((response) => {
-			console.log('export frame', response)
+			// console.log('export frame', response)
 			return response.data
 		})
 	return result
@@ -125,8 +125,8 @@ export async function getFrameData(id) {
 		.then((response) => {
 			return response.data
 		})
-	console.log('-----data - eplan-----')
-	console.log(data)
+	// console.log('-----data - eplan-----')
+	// console.log(data)
 	return data
 }
 export async function setFrameData(id, frameData) {
