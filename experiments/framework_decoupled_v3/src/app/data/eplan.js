@@ -62,12 +62,14 @@ export async function getAppendixConfig() {
 }
 
 export async function getAppendixList() {
+
 	var data = await api.get('/rest/eplan/kpt/appendix/list')
 		.then((response) => {
 			return response.data
 		})
-	const dataList = List(data)
-	return dataList
+
+	//const dataList = List(data)
+	return data
 }
 
 export async function getAppendixById(id) {

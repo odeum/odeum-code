@@ -11,7 +11,7 @@ import { Field, reduxForm } from 'redux-form'
 
 import {
 	getAppendixEdit, getAppendix,
-	getAppendixDates
+	getAppendixDates, getAppendixStatus
 } from 'app/store/selectors/appendix'
 
 /* Framework */
@@ -40,7 +40,7 @@ let renderFields = ({ fields }) => {
 					<div key={fields.get(index).id}>
 						<Flex wrap>
 							<Box width={[1, 1, 1, 1, 7 / 12]}>
-								<Field index={index} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).caption} />
+								<Field index={index} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).mandatory ? fields.get(index).caption + ' *' : fields.get(index).caption} />
 								{/* <FormPanel index={index} input={fields.get(index)} /> */}
 								{/* name={`${field}.value`} label={fields.get(index).caption} */}
 
@@ -152,7 +152,8 @@ class EditAppendix extends Component {
 		var appendix = {
 			fields: values.dates
 		}
-
+		appendix.fields.push(values.status)
+		console.log(appendix)
 		await this.props.updateApd(appendix, this.props.param, false)
 		toast.success('Dine ændringer er gemt')
 	}
@@ -342,8 +343,9 @@ class EditAppendix extends Component {
 									closeConfigModal={closeConfigModal}
 									saveConfigModal={saveConfigModal}
 									dates={appendixDates}
-									statusOptions={statusOptions} 
-									appendixId={appendix.appendixId}/>
+									statusOptions={statusOptions}
+									appendixId={appendix.appendixId}
+								/>
 								<ExportModal
 									exportModalIsOpen={exportModalIsOpen}
 									closeExportModal={closeExportModal}
@@ -377,6 +379,7 @@ const mapStateToProps = (state, ownProps) => ({
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,
 	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
+	// appendixStatus: getAppendixStatus(state, ownProps.param, ownProps),
 	form: 'appendix_' + ownProps.param,
 	appendixIsLoading: state.eplan.ApdxLoading[ownProps.param]
 })

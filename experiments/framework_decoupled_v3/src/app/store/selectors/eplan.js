@@ -1,7 +1,9 @@
 import { List } from 'immutable'
 import { createSelector } from 'reselect'
 var _ = require('lodash')
+
 //TODO: Rename to Refs selectors
+
 export const getConfigSel = state => state.eplan.conf
 const getReferenceTableFilterText = state => state.eplan.referenceTableFilterText
 export const getReferences = (state) => {

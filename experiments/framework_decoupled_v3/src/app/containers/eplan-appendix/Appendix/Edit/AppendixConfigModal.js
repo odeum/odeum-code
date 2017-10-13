@@ -12,7 +12,21 @@ import Icon from 'framework/assets/Icon'
 import { Flex, Box } from 'grid-styled'
 import moment from 'moment'
 import 'moment/locale/da'
+let renderDropdownStatus = ({ onChange, value, statusOptions }) => {
 
+	// console.log('-----props-----')
+	// console.log(props)
+	return <DropdownSelect
+		className="statusSelect"
+		name="status"
+		value={value}
+		options={statusOptions}
+		searchable={false}
+		clearable={false}
+		placeholder="Vælg status"
+		onChange={onChange}
+	/>
+}
 let renderFields = ({ fields }) => {
 	return (
 		<Box>
@@ -75,15 +89,22 @@ class AppendixConfigModal extends Component {
 								<Flex wrap>
 									<Box width={[1 / 2]}>
 										<FieldLabel for="name">Vælg fase:</FieldLabel>
-										<DropdownSelect
-											className="statusSelect"
-											name="statusSelect"
-											value="one"
+										{/* <DropdownSelect
+											className="status"
+											name="status"
+											value="one	"
 											options={statusOptions}
 											onChange={handleStatusChange}
 											searchable={false}
 											clearable={false}
 											placeholder="Vælg status"
+										/>  */}
+										<Field
+											name='status'
+											component={renderDropdownStatus}
+											handleStatusChange={handleStatusChange}
+											statusOptions={statusOptions}
+											label='Dropdown Status'
 										/>
 										<FieldArray name={'dates'} component={renderFields} />
 
@@ -100,11 +121,13 @@ class AppendixConfigModal extends Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => ({
-	initialValues: { dates: ownProps.dates },
-	form: 'appendixDates_' + ownProps.appendixId
-})
-
+const mapStateToProps = (state, ownProps) => {
+	// console.log(ownProps)
+	return ({
+		initialValues: { dates: ownProps.dates, status: ownProps.status },
+		form: 'appendixDates_' + ownProps.appendixId
+	})
+}
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, param) => {

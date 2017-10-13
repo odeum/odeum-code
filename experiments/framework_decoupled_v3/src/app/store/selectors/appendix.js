@@ -1,12 +1,16 @@
-// import { List } from 'immutable'
-//TODO: https://github.com/reactjs/reselect/blob/master/README.md#sharing-selectors-with-props-across-multiple-components
-// Memoization between all comps
+import { List } from 'immutable'
 import { createSelector } from 'reselect'
 var _ = require('lodash')
 
-const getAppendixFilterText = (state) => state.eplan.appendixFilterText
-const getAppendixes = (state) => state.eplan.appendixes
+//TODO: https://github.com/reactjs/reselect/blob/master/README.md#sharing-selectors-with-props-across-multiple-components
+// Memoization between all comps
 
+const getAppendixFilterText = (state) => state.eplan.appendixFilterText
+const getAppendixesRaw = (state) => state.eplan.appendixes
+const getAppendixes = (state) => {
+	var appendixes = List(_.map(state.eplan.appendixes))
+	return appendixes
+}
 // export const openFrames = (state, id) =>  state.eplan.openFrames[id]
 // const framesConfig = (state) => state.eplan.configFrames
 
@@ -25,6 +29,13 @@ export const getFilteredAppdx = createSelector(
 export const getAppendixEdit = createSelector(
 	[getConfig, getAppendix],
 	(config, appendix) => {
+		var x = appendix && config ? _.intersectionBy(appendix.fields, config.editFields, 'id') : undefined
+		console.log('-----appendix-----')
+		console.log(appendix)
+		console.log('-----config-----')
+		console.log(config)
+		console.log('-----x-----')
+		console.log(x)
 		return appendix && config ? _.intersectionBy(appendix.fields, config.editFields, 'id') : undefined
 	}
 )
@@ -51,14 +62,35 @@ export const getAppendixDates = createSelector(
 
 // 	}
 // )
-const getId = (state, props) =>  props
+const getId = (state, props) => props
+
+//TODO: Refactor to accomodate object
 export const getAppendixMetaData = createSelector(
-	[getAppendixes, getId],
+	[getAppendixesRaw, getId],
 	(appendixes, id) => {
 		var appdx = null
-		appendixes.filter(t => {
-			return t.appendixId === parseInt(id, 10) ? appdx = t : null
-		})
+		// appendixes.filter(t => {
+		// 	return t.appendixId === parseInt(id, 10) ? appdx = t : null
+		// })
+		console.log(appendixes)
+		console.log(id)
+		appdx = appendixes[id]
+		console.log('---appdx---')
+		console.log(appdx)
 		return appdx
+	}
+)
+
+export const getAppendixStatus = createSelector(
+	[getAppendix],
+	(appendix) => {
+		console.log('-----appendix-----')
+		console.log(appendix)
+		// var status = null
+		return appendix ? (appendix.fields.filter(t => {
+			return t.caption === 'Status'
+		})
+		) : null
+		
 	}
 )
