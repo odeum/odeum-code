@@ -40,7 +40,7 @@ let renderFields = ({ fields }) => {
 					<div key={fields.get(index).id}>
 						<Flex wrap>
 							<Box width={[1, 1, 1, 1, 7 / 12]}>
-								<Field index={index} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).caption} />
+								<Field index={index} name={`${field}.value`} type="text" component={FormPanel} label={fields.get(index).mandatory ? fields.get(index).caption + ' *' : fields.get(index).caption} />
 								{/* <FormPanel index={index} input={fields.get(index)} /> */}
 								{/* name={`${field}.value`} label={fields.get(index).caption} */}
 

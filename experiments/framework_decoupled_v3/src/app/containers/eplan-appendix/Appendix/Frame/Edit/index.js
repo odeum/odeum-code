@@ -38,7 +38,7 @@ let renderFields = ({ fields }) => {
 					case 'TEXT':
 						_field = (fields.get(index).caption !== '') ? (
 							<div key={fields.get(index).id}>
-								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}{fields.get(index).mandatory ? ' *' : ''}</FieldLabel>
 								<Field name={`${field}.value`} type="text" component={FormFieldInput} label={fields.get(index).caption} validate={fields.get(index).mandatory ? [required] : []} />
 							</div>
 						) : ''
@@ -46,7 +46,7 @@ let renderFields = ({ fields }) => {
 					case 'TEXTAREA':
 						_field = (fields.get(index).caption !== '') ? (
 							<div key={fields.get(index).id}>
-								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}{fields.get(index).mandatory ? ' *' : ''}</FieldLabel>
 								<Field name={`${field}.value`} type="text" component={FormFieldTextarea} label={fields.get(index).caption} validate={fields.get(index).mandatory ? [required] : []} />
 							</div>
 						) : ''
@@ -54,7 +54,7 @@ let renderFields = ({ fields }) => {
 					case 'SELECT':
 						_field = (
 							<div key={fields.get(index).id}>
-								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}</FieldLabel>
+								<FieldLabel for={`${field}.value`}>{fields.get(index).caption}{fields.get(index).mandatory ? ' *' : ''}</FieldLabel>
 								<Field name={`${field}.value`} component={FormFieldSelect} label={fields.get(index).caption} validate={fields.get(index).mandatory ? [required] : []}>
 									{
 										fields.get(index).options.map((opt, index) => {
