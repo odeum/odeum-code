@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { changeInstance } from 'framework/store/modules/tabs'
 import { connect } from 'react-redux'
-import { getListAsync } from 'app/store/modules/eplan'
+import { getListAsync, getAppendixCfg } from 'app/store/modules/eplan'
 const sceneProp = { id: 'eplan' }
 
 class EplanAppendix extends Component {
@@ -28,6 +28,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
 			dispatch(changeInstance(sceneProp.id))
+			dispatch(getAppendixCfg())
 		},
 		getList: async () => {
 			return await dispatch(await getListAsync())
