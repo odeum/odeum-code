@@ -43,7 +43,13 @@ export const getAppendixEdit = createSelector(
 export const getAppendixDates = createSelector(
 	[getConfig, getAppendix],
 	(config, appendix) => {
-		return appendix && config ? _.intersectionBy(appendix.fields, config.propertiesFields, 'id') : undefined
+		var intersection = {}
+		if (config && appendix)
+			for (var propField in config.propertiesFields) {
+				intersection[propField] = appendix.fields[propField]
+			}
+		
+		return intersection
 
 	}
 )
@@ -66,8 +72,6 @@ export const getAppendixMetaData = createSelector(
 export const getAppendixStatus = createSelector(
 	[getAppendix],
 	(appendix) => {
-		console.log('-----appendix-----')
-		console.log(appendix)
 		return appendix ? (appendix.fields[111520000000609]) : null
 
 	}

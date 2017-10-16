@@ -36,7 +36,6 @@ let renderFields = (props) => {
 	let renderF = (fields) => {
 		var Fields = []
 		Object.keys(fields).map((field, index) => {
-			console.log(field)
 			return Fields.push(
 				<div key={fields[field].id}>
 					<Flex wrap>
@@ -156,7 +155,8 @@ class EditAppendix extends Component {
 		var appendix = {
 			fields: values.dates
 		}
-		appendix.fields.push(values.status)
+
+		appendix.fields[values.status.id] = values.status
 		console.log(appendix)
 		await this.props.updateApd(appendix, this.props.param, false)
 		toast.success('Dine ændringer er gemt')
@@ -271,7 +271,7 @@ class EditAppendix extends Component {
 		/* State */
 		const { configModalIsOpen, exportModalIsOpen } = this.state
 		/* Props */
-		const { appendix, handleSubmit, appendixDates } = this.props
+		const { appendix, handleSubmit, appendixDates, appendixStatus } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
 			closeConfigModal, saveConfigModal,
@@ -286,10 +286,11 @@ class EditAppendix extends Component {
 		]
 
 		const statusOptions = [
-			{ value: '1', label: 'Kladde' },
-			{ value: '2', label: 'Udkast' },
-			{ value: '3', label: 'Intern høring' },
-			{ value: '4', label: 'Forslag' }
+			{ value: '-1', label: '' },
+			{ value: "aflyst", label: "Aflyst" },
+			{ value: "forslag", label: "Forslag" },
+			{ value: "kladde", label: "Kladde" },
+			{ value: "vedtaget", label: "Vedtaget" }
 		]
 
 		return (
@@ -347,6 +348,7 @@ class EditAppendix extends Component {
 									closeConfigModal={closeConfigModal}
 									saveConfigModal={saveConfigModal}
 									dates={appendixDates}
+									status={appendixStatus}
 									statusOptions={statusOptions}
 									appendixId={appendix.appendixId}
 								/>

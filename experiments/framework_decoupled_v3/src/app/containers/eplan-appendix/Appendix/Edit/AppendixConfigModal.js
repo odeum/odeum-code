@@ -12,47 +12,75 @@ import Icon from 'framework/assets/Icon'
 import { Flex, Box } from 'grid-styled'
 import moment from 'moment'
 import 'moment/locale/da'
-let renderDropdownStatus = ({ onChange, value, statusOptions }) => {
 
-	// console.log('-----props-----')
-	// console.log(props)
+let renderDropdownStatus = ({ statusOptions, input }) => {
+	let onChng = (value) => {
+		input.onChange(value.value)
+	}
+	console.log(input)
 	return <DropdownSelect
 		className="statusSelect"
 		name="status"
-		value={value}
+		value={input.value}
 		options={statusOptions}
 		searchable={false}
 		clearable={false}
 		placeholder="Vælg status"
-		onChange={onChange}
+		onChange={onChng}
 	/>
 }
+
+/* let renderFields = (props) => {
+	let renderF = (fields) => {
+		var Fields = []
+		Object.keys(fields).map((field, index) => {
+			return Fields.push(
+				<div key={fields[field].id}>
+					<Flex wrap>
+						<Box width={[1, 1, 1, 1, 7 / 12]}>
+							<Field index={index} name={`fields.${field}.value`} type="text" component={FormPanel} label={fields[field].mandatory ? fields[field].caption + ' *' : fields[field].caption} />
+						</Box>
+					</Flex>
+				</div>
+			)
+		})
+		return Fields
+	} */
 let renderFields = ({ fields }) => {
+	// console.log(fields.getAll())
+	var allFields = fields.getAll()
+	var DateFields = []
+	Object.keys(allFields).map((field, index) => {
+		// console.log('-----field,index-----')
+		// console.log(field, index)
+		return DateFields.push(
+			<DatePickerStyledWrapper key={allFields[field].id}>
+				<FieldLabel for="name">{allFields[field].caption}</FieldLabel>
+				<Field index={index} name={`dates.${field}.value`} type="text" component={renderForm} />
+			</DatePickerStyledWrapper>
+		)
+	})
 	return (
 		<Box>
-			{fields.map((field, index) => {
-				return (
-					<DatePickerStyledWrapper key={fields.get(index).id}>
-						<FieldLabel for="name">{fields.get(index).caption}</FieldLabel>
-						<Field index={index} name={`${field}.value`} type="text" component={renderForm} />
-					</DatePickerStyledWrapper>
-				)
-			})}
-
+			{DateFields}
 		</Box>
 	)
 }
 let renderForm = ({ input }) => {
+	// console.log(input)
+	let pickDate = (value) => {
+		input.onChange(value !== null ? value.format() : '')
+	}
+	/* (value, event) => {
+				input.onChange(value !== null ? value.format() : '')
+			} */
 	return (
 		<DatePickerStyled
 			selected={dateChecker(input.value)}
 			autoOk={true}
 			dateFormat="DD/MM/YYYY"
 			showWeekNumbers
-			onChange={(value, event) => {
-				input.onChange(value !== null ? value.format() : '')
-			}
-			}
+			onChange={pickDate}
 		/>
 	)
 }
@@ -70,6 +98,8 @@ class AppendixConfigModal extends Component {
 		return momentDate._isValid ? momentDate : null
 	}
 	render() {
+		// console.log('-----this.props-----')
+		// console.log(this.props)
 		const { configModalIsOpen, closeConfigModal, statusOptions, handleStatusChange, saveConfigModal } = this.props
 		return (
 			<div>
@@ -100,11 +130,12 @@ class AppendixConfigModal extends Component {
 											placeholder="Vælg status"
 										/>  */}
 										<Field
-											name='status'
+											name="status.value"
 											component={renderDropdownStatus}
 											handleStatusChange={handleStatusChange}
 											statusOptions={statusOptions}
 											label='Dropdown Status'
+											value="value"
 										/>
 										<FieldArray name={'dates'} component={renderFields} />
 
@@ -122,7 +153,8 @@ class AppendixConfigModal extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-	// console.log(ownProps)
+	// console.log('---OwnProps.Status---')
+	// console.log(ownProps.status)
 	return ({
 		initialValues: { dates: ownProps.dates, status: ownProps.status },
 		form: 'appendixDates_' + ownProps.appendixId
