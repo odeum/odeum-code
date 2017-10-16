@@ -37,7 +37,7 @@ let renderFields = (props) => {
 		var Fields = []
 		Object.keys(fields).map((field, index) => {
 			console.log(field)
-			Fields.push(
+			return Fields.push(
 				<div key={fields[field].id}>
 					<Flex wrap>
 						<Box width={[1, 1, 1, 1, 7 / 12]}>
@@ -383,7 +383,7 @@ const mapStateToProps = (state, ownProps) => ({
 	conf: state.eplan.conf,
 	appendixIsSaving: state.eplan.appendixIsSaving,
 	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
-	// appendixStatus: getAppendixStatus(state, ownProps.param, ownProps),
+	appendixStatus: getAppendixStatus(state, ownProps.param, ownProps),
 	form: 'appendix_' + ownProps.param,
 	appendixIsLoading: state.eplan.ApdxLoading[ownProps.param]
 })

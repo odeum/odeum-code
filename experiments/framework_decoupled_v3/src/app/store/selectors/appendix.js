@@ -68,10 +68,7 @@ export const getAppendixStatus = createSelector(
 	(appendix) => {
 		console.log('-----appendix-----')
 		console.log(appendix)
-		return appendix ? (appendix.fields.filter(t => {
-			return t.caption === 'Status'
-		})
-		) : null
+		return appendix ? (appendix.fields[111520000000609]) : null
 
 	}
 )
