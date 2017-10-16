@@ -29,14 +29,14 @@ export const getFilteredAppdx = createSelector(
 export const getAppendixEdit = createSelector(
 	[getConfig, getAppendix],
 	(config, appendix) => {
-		var x = appendix && config ? _.intersectionBy(appendix.fields, config.editFields, 'id') : undefined
-		console.log('-----appendix-----')
-		console.log(appendix)
-		console.log('-----config-----')
-		console.log(config)
-		console.log('-----x-----')
-		console.log(x)
-		return appendix && config ? _.intersectionBy(appendix.fields, config.editFields, 'id') : undefined
+		if (appendix && config) {
+			var editFields = {}
+			for (var field in config.editFields) {
+				editFields[field] = appendix.fields[field]
+			}
+			return editFields
+		}
+		else return undefined
 	}
 )
 
@@ -48,20 +48,7 @@ export const getAppendixDates = createSelector(
 	}
 )
 
-// export const getFramesFields = createSelector(
-// 	[framesConfig, openFrames],
-// 	(config, openFrame) => {
-// 		var filter = []
-// 		if (openFrame && config) {
-// 			filter = []
-// 			_.forEach(config.editFields, function (value, key) {
-// 				filter[filter.length] = openFrame.fields[key]
-// 			})
-// 		}
-// 		return filter ? filter : undefined
 
-// 	}
-// )
 const getId = (state, props) => props
 
 //TODO: Refactor to accomodate object
@@ -69,14 +56,9 @@ export const getAppendixMetaData = createSelector(
 	[getAppendixesRaw, getId],
 	(appendixes, id) => {
 		var appdx = null
-		// appendixes.filter(t => {
-		// 	return t.appendixId === parseInt(id, 10) ? appdx = t : null
-		// })
-		console.log(appendixes)
-		console.log(id)
+
 		appdx = appendixes[id]
-		console.log('---appdx---')
-		console.log(appdx)
+
 		return appdx
 	}
 )
@@ -86,11 +68,10 @@ export const getAppendixStatus = createSelector(
 	(appendix) => {
 		console.log('-----appendix-----')
 		console.log(appendix)
-		// var status = null
 		return appendix ? (appendix.fields.filter(t => {
 			return t.caption === 'Status'
 		})
 		) : null
-		
+
 	}
 )

@@ -438,7 +438,7 @@ function eplan(state = initState, action) {
 		}
 		case UPDATE_APPENDIX:
 			{
-				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
+/* 				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
 				orig.fields.map((field) => {
 					return action.payload.appendix.fields.map((afield) => {
 						return field.id === afield.id ? field.value = afield.value : field
@@ -452,9 +452,9 @@ function eplan(state = initState, action) {
 						[action.payload.id]: orig
 					},
 					appendixIsSaving: false
-				}
+				} */
 				//INFO: For when the Appendix will be an complete object with no arrays
-				/* let newFields = {}
+				 let newFields = {}
 				_.forEach(action.payload.appendix.fields, function (value, key) {
 					newFields[value.id] = value
 				})
@@ -473,7 +473,7 @@ function eplan(state = initState, action) {
 						[action.payload.id]: newAppendix
 					},
 					appendixIsSaving: false
-				} */
+				}
 			}
 		case ADD_APPENDIX:
 			return {
