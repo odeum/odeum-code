@@ -84,6 +84,9 @@ class ReferenceTableEdit extends Component {
 	}
 
 	async componentWillMount() {
+		if (this.props.referenceTable) {
+			this.tab.label = this.props.referenceTable.name
+		}
 		this.props.onMount(
 			this.props.id,
 			this.tab
@@ -95,12 +98,12 @@ class ReferenceTableEdit extends Component {
 		}
 	}
 
-	// __confirm(h) {
-	// 	let _confirm = new Confirm({ header: 'hej', content: 'hej hej', icon: iconname.ICON_SETTINGS })
-	// 	let confirm = _confirm.render()
-
-	// 	this.setState({ confirm })
-	// }
+	componentWillUpdate(nextProps, nextState) {
+		if (nextProps.referenceTable !== this.props.referenceTable) {
+			this.tab.label = nextProps.referenceTable.name
+			this.props.changeTab(this.props.id, this.tab)
+		}
+	}
 
 	render() {
 		return (
@@ -144,19 +147,23 @@ class ReferenceTableEdit extends Component {
 const mapStateToProps = (state, ownProps) => ({
 	referenceTableSelectValues: getReferenceTableSelectValues(state),
 	referenceTableId: ownProps.referenceTableId,
-	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId],
+	referenceTable: state.eplan.referenceTables[ownProps.referenceTableId] || null,
 	referenceTableValues: state.eplan.referenceTableValues[ownProps.referenceTableId] ||  null,
+	mystate: state
 })
 
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, param) => {
 			dispatch(addTab(id, param))
-			dispatch(tabChange(id, param.label))
+			dispatch(tabChange(id, param))
 		},
 		unMount: (param) => {
 			//TODO Remove Open Appendix when *CLOSED* not when unmounted
 			dispatch(removeOpenApdx(param))
+		},
+		changeTab: (id, param) => {
+			dispatch(addTab(id, param))
 		},
 		tabisLoading: (instanceID, tab, isLoading) => {
 			dispatch(tabIsLoading(instanceID, tab, isLoading))
