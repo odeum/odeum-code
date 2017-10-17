@@ -35,22 +35,29 @@ class ReferenceTableEdit extends Component {
 		this.state = {
 			settingsModalIsOpen: false,
 			editModalIsOpen: false,
-			editData: {},
+			editData: {
+				id: null,
+				parentKey: "",
+				valueKey: "",
+				value: "",
+				value2: "",
+				reftableId: this.props.referenceTableId
+			},
 			confirm: ''
 		}
 
 		/* Bind functions to this component */
-		this.openSettingsModal = this.openSettingsModal.bind(this)
+		// this.openSettingsModal = this.openSettingsModal.bind(this)
 		this.closeSettingsModal = this.closeSettingsModal.bind(this)
 		this.saveSettingsModal = this.saveSettingsModal.bind(this)
 
-		this.openEditModal = this.openEditModal.bind(this)
+		// this.openEditModal = this.openEditModal.bind(this)
 		this.closeEditModal = this.closeEditModal.bind(this)
 		this.saveEditModal = this.saveEditModal.bind(this)
 
 		// this.__confirm = this.__confirm.bind(this)
 	}
-	openSettingsModal() {
+	openSettingsModal = () => {
 		this.setState({
 			settingsModalIsOpen: true,
 			// settingData: this.props.referenceTableEntry
@@ -66,10 +73,13 @@ class ReferenceTableEdit extends Component {
 			settingsModalIsOpen: false
 		})
 	}
-	openEditModal(data) {
+	openEditModalInit = () => {
+		this.openEditModal(this.state.editData)
+	}
+	openEditModal = (_data) => {
 		this.setState({
 			editModalIsOpen: true,
-			editData: data
+			editData: _data
 		})
 	}
 	closeEditModal() {
@@ -112,15 +122,8 @@ class ReferenceTableEdit extends Component {
 				<AppendixButtonPanel>
 					{/* <Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.__confirm('hej hej')}>Test</Button> */}
 					{/* <Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this._confirm.open()}>Test</Button> */}
-					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.openSettingsModal()}>Egenskaber</Button>
-					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={() => this.openEditModal({
-						id: null,
-						parentKey: "",
-						valueKey: "",
-						value: "",
-						value2: "",
-						reftableId: this.props.referenceTableId
-					})}>Tilføj ny værdi</Button>
+					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={this.openSettingsModal}>Egenskaber</Button>
+					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={this.openEditModalInit}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
 				{this.props.referenceTableValues === null || this.props.referenceTable === undefined ? null : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
