@@ -9,6 +9,7 @@ import Immutable, { List, Map } from 'immutable'
 
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'
+import OnClickCell from 'app/components/eplan-appendix/OnClickCell'
 
 import Icon from 'framework/assets/Icon'
 import { ListAction, ToastContainerStyled } from 'app/styles/EplanStyles'
@@ -16,22 +17,6 @@ import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import RowRenderer from './_rowRender'
 import { toast } from 'react-toastify'
-
-
-class MyCell extends Component {
-	static propTypes = {
-		cellClicked: PropTypes.func.isRequired,
-		data: PropTypes.object.isRequired
-	}
-
-	handleClick = () => {
-		this.props.cellClicked(this.props.data.rowData)
-	}
-
-	render() {
-		return (<Cell onClick={this.handleClick}>{this.props.children}</Cell>)
-	}
-}
 
 class ReferenceTableEditList extends Component {
 	static propTypes = {
@@ -129,7 +114,7 @@ class ReferenceTableEditList extends Component {
 										dataKey='id'
 										disableSort={!this._isSortEnabled()}
 										headerRenderer={this._headerRenderer}
-										cellRenderer={this._cellRenderer_id}
+										cellRenderer={this._cellRenderer_default}
 										width={width}
 										flexgrow={1}
 									/>
@@ -142,7 +127,7 @@ class ReferenceTableEditList extends Component {
 									dataKey='valueKey'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
-									cellRenderer={this._cellRenderer_valueKey}
+									cellRenderer={this._cellRenderer_click}
 									flexgrow={1}
 								/>
 
@@ -153,7 +138,7 @@ class ReferenceTableEditList extends Component {
 									dataKey='value'
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
-									cellRenderer={this._cellRenderer_value}
+									cellRenderer={this._cellRenderer_click}
 									flexgrow={1}
 								/>
 								{!hideValue2 &&
@@ -235,22 +220,15 @@ class ReferenceTableEditList extends Component {
 		)
 	}
 
-	_cellRenderer_id = ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
-	_cellRenderer_valueKey = ({ cellData, columnData, dataKey, rowData }) => {
-		return (<MyCell data={{ cellData, columnData, dataKey, rowData }} cellClicked={this._cellClicked}>{cellData}</MyCell>)
+	_cellRenderer_default = ({ cellData }) => (<Cell>{cellData}</Cell>)
+	_cellRenderer_click = ({ cellData, rowData }) => {
+		return (<OnClickCell data={rowData} cellOnClick={this._cellClicked}>{cellData}</OnClickCell>)
 	}
-	_cellRenderer_value = ({ cellData, columnData, dataKey, rowData }) => (<Cell>{cellData}</Cell>)
 	_cellRenderer_value2 = ({ cellData, columnData, dataKey, rowData }) => {
-		// console.log('cellRenderer 2 did render')
-		let resultData = cellData
-		if (this.props.data.field2Type === 3) {
-			resultData = cellData.replace(/<\/?[^>]+(>|$)/g, "")
-			//(<div dangerouslySetInnerHTML={{ __html: cellData }} />)
-		}
-		return (<Cell>{resultData}</Cell>)
+		return (<Cell>{cellData.replace(/<\/?[^>]+(>|$)/g, "")}</Cell>)
 	}
-	_cellRenderer_actions = ({ cellData, columnData, dataKey, rowData }) => (<Cell>
-			<ListAction><MyCell data={{ cellData, columnData, dataKey, rowData }} cellClicked={this._deleteReferenceTableValue}><Icon icon={iconname.ICON_DELETE} size={20} color={colors.ICON_DEFAULT_COLOR} /></MyCell></ListAction>
+	_cellRenderer_actions = ({ rowData }) => (<Cell>
+			<ListAction><OnClickCell data={rowData} cellOnClick={this._deleteReferenceTableValue}><Icon icon={iconname.ICON_DELETE} size={20} color={colors.ICON_DEFAULT_COLOR} /></OnClickCell></ListAction>
 		</Cell>)
 
 	_isSortEnabled() {
@@ -304,7 +282,6 @@ class ReferenceTableEditList extends Component {
 	}
 
 	_deleteReferenceTableValue = (data) => {
-		console.log(this)
 		if (window.confirm('Er du sikker på du vil slette: ' + data.valueKey + ' ' + data.value)) {
 			this.props.deleteReferenceTableValue(this.props.referenceTableId, data.id)
 			toast.success('Værdien er hermed slettet')
