@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles' //InputRow
-import OnClickCell from 'app/components/eplan-appendix/OnClickCell'
 
 //import { SearchDiv, SearchButtonDiv, SearchInput } from 'app/styles/TableStyles'
 //import { SelectRowNr, SpanRowNr, Label } from 'app/styles/EplanStyles'
@@ -53,7 +52,6 @@ class ReferenceTable extends Component {
 		this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
-		this._cellClicked = this._cellClicked.bind(this)
 	}
 
 	componentWillUpdate = (nextProps, nextState) => {
@@ -157,7 +155,8 @@ class ReferenceTable extends Component {
 		)
 	}
 
-	_cellClicked(rowData) {
+	_cellClicked = (rowData) => (e) => {
+		e.preventDefault()
 		this.props.onClickButton(rowData.id)
 	}
 	_defaultHeaderRowRenderer({
@@ -200,7 +199,7 @@ class ReferenceTable extends Component {
 
 	_cellRenderer_default = ({ cellData }) => (<Cell>{cellData}</Cell>)
 	_cellRenderer_click = ({ cellData, rowData }) => {
-		return (<OnClickCell data={rowData} cellOnClick={this._cellClicked}>{cellData}</OnClickCell>)
+		return (<Cell onClick={this._cellClicked(rowData)}>{cellData}</Cell>)
 	}
 
 	_isSortEnabled() {
