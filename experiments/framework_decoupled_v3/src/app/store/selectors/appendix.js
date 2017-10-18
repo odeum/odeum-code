@@ -62,9 +62,7 @@ export const getAppendixMetaData = createSelector(
 	[getAppendixesRaw, getId],
 	(appendixes, id) => {
 		var appdx = null
-
 		appdx = appendixes[id]
-
 		return appdx
 	}
 )

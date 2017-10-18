@@ -14,12 +14,7 @@ import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 
 /* -------- END IMPORT ---------- */
 class AppendixContainer extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-		}
-		this.tabs = this.tabs.bind(this)
-	}
+
 	tab = {
 		id: this.props.param,
 		label: '',
@@ -34,7 +29,7 @@ class AppendixContainer extends Component {
 		this.props.onMount(this.props.id, this.tab)
 		this.props.tabisLoading(this.props.id, this.tab, true)
 		this.tabs()
-		if (this.props.appendixName === null)
+		if (this.props.appendixName === undefined)
 			await this.props.getList()
 		if (this.props.appendixName) { 
 			this.tab.label = this.props.appendixName.name
@@ -42,7 +37,7 @@ class AppendixContainer extends Component {
 
 	}
 
-	tabs() {
+	tabs = () => {
 		this.props.tabConfig(
 			this.props.param,
 			{
@@ -103,6 +98,8 @@ function mapDispatchToProps(dispatch) {
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
 			dispatch(tabChange(id, tab.label))
+			console.log('-----tab-----')
+			console.log(tab)
 			dispatch(getAppendixCfg())
 			dispatch(getFrameConfigAsync())
 		},

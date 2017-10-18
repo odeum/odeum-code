@@ -72,20 +72,8 @@ class EditAppendix extends Component {
 		this.state = {
 			configModalIsOpen: false,
 			exportModalIsOpen: false,
-			pdfIsLoading: false,
-			dates: []
+			pdfIsLoading: false
 		}
-		/* Bind functions to this component */
-		//this.submitUpdate = this.submitUpdate.bind(this)
-		//this.submitUpdateAndCommit = this.submitUpdateAndCommit.bind(this)
-		// this.openConfigModal = this.openConfigModal.bind(this)
-		// this.closeConfigModal = this.closeConfigModal.bind(this)
-		// this.saveConfigModal = this.saveConfigModal.bind(this)
-		// this.openExportModal = this.openExportModal.bind(this)
-		// this.closeExportModal = this.closeExportModal.bind(this)
-		// this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
-		// this.handlePdfChange = this.handlePdfChange.bind(this)
-		// this.handleViewAppendix = this.handleViewAppendix.bind(this)
 	}
 
 	componentWillMount() {
@@ -102,8 +90,6 @@ class EditAppendix extends Component {
 		}
 
 	}
-
-
 	async componentDidMount() {
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
