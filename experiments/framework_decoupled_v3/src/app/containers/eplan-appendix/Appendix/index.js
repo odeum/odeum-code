@@ -6,7 +6,7 @@ import { getFrameConfigAsync, getAppendixCfg } from 'app/store/modules/eplan'
 import { getListAsync } from 'app/store/modules/eplan'
 import { getAppendixMetaData } from 'app/store/selectors/appendix'
 /* Framework */
-import { addTab, tabChange, addInstance, tabIsLoading } from 'framework/store/modules/tabs'
+import { addTab, addInstance, tabIsLoading } from 'framework/store/modules/tabs'
 import TabsContainer from 'framework/containers/Tabs/TabsContainer'
 /* Styling */
 
@@ -97,9 +97,6 @@ function mapDispatchToProps(dispatch) {
 		},
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
-			dispatch(tabChange(id, tab.label))
-			console.log('-----tab-----')
-			console.log(tab)
 			dispatch(getAppendixCfg())
 			dispatch(getFrameConfigAsync())
 		},

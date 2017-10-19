@@ -142,9 +142,10 @@ export default function tabReducer(state = initState, action) {
 						...state.tabSystem,
 						[action.payload.instanceID]: {
 							...state.tabSystem[action.payload.instanceID],
+							activeTab: action.payload.tab.label,
 							tabs: {
 								...state.tabSystem[action.payload.instanceID].tabs,
-								[action.payload.tab.id]: action.payload.tab
+								[action.payload.tab.id]: action.payload.tab,
 							}
 						}
 					}

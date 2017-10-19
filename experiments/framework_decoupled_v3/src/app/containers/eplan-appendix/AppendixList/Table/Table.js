@@ -55,7 +55,7 @@ class AppendixTable extends Component {
 		this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
-		this._rowClicked = this._rowClicked.bind(this)
+		// this._rowClicked = this._rowClicked.bind(this)
 		this._cellClicked = this._cellClicked.bind(this)
 		this.openExportModal = this.openExportModal.bind(this)
 		this.closeExportModal = this.closeExportModal.bind(this)
@@ -97,7 +97,7 @@ class AppendixTable extends Component {
 
 		return (
 			<div style={{ clear: 'both' }}>
-{/* 				<ContentBox>
+				{/* 				<ContentBox>
 				</ContentBox> */}
 				<AutoSizerDiv>
 					<AutoSizer >
@@ -144,7 +144,7 @@ class AppendixTable extends Component {
 									headerRenderer={this._headerRenderer}
 									cellDataGetter={CellDataGetter}
 									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData ? rowData : 'error')}>{cellData}</Cell>)
+										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData ? rowData : console.log('error'))}>{cellData}</Cell>)
 									}
 									flexgrow={1}
 								/>
@@ -229,37 +229,35 @@ class AppendixTable extends Component {
 			</div>
 		)
 	}
-	_rowClicked({
-		event,
-		index,
-		rowData
-	}) {
+	/* 	_rowClicked({
+			event,
+			index,
+			rowData
+		}) {
+			this.props.onClickButton(rowData.appendixId)
+			console.log('rowClicked')
+		} */
+	_cellClicked = (rowData) => {
 		this.props.onClickButton(rowData.appendixId)
+		console.log('cellClicked')
 	}
-	_cellClicked(rowData) {
-		this.props.onClickButton(rowData.appendixId)
-	}
-	_defaultHeaderRowRenderer({
-		className,
-		columns,
-		style
-	}) {
+	_defaultHeaderRowRenderer = ({ className, columns, style }) => {
 		return <HeaderRow width={style.width}>
 			{columns}
 		</HeaderRow>
 	}
 
-	_getDatum(list, index) {
+	_getDatum = (list, index) => {
 		return list.get(index % list.size)
 	}
 
-	_getRowHeight({ index }) {
-		const { list } = this.props
+	_getRowHeight = ({ index }) => this._getDatum(this.props.list, index).size
 
-		return this._getDatum(list, index).size
-	}
-
-	openExportModal(rowData) {
+	openExportModal = (rowData) => {
+		console.log(rowData.target)
+		console.log(rowData.target.getAttribute('value'))
+		console.log(rowData.target.getAttribute('rowData'))
+		
 		this.setState({
 			exportAppendix: rowData
 		})
@@ -268,7 +266,7 @@ class AppendixTable extends Component {
 		})
 	}
 
-	closeExportModal() {
+	closeExportModal = () => {
 		this.setState({
 			exportModalIsOpen: false
 		})
@@ -297,15 +295,11 @@ class AppendixTable extends Component {
 		}
 	}
 
-	_actionRowRenderer({ cellData,
-		columnData,
-		dataKey,
-		rowData, rowIndex
-	}) {
+	_actionRowRenderer = ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
 		if (rowData !== undefined) {
-			return <Cell onClick={(e) => { }}>
+			return <Cell /* onClick={(e) => { }} */>
 				<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
-				<ListAction><div onClick={() => this.openExportModal(rowData)}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></div></ListAction>
+				<ListAction onClick={this.openExportModal} data-value={rowData}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListAction>
 			</Cell>
 		}
 		else
@@ -313,13 +307,13 @@ class AppendixTable extends Component {
 	}
 
 	_headerRenderer({
-		columnData,
+	columnData,
 		dataKey,
 		disableSort,
 		label,
 		sortBy,
 		sortDirection
-	}) {
+}) {
 		return (
 			<HeaderCell>
 				{label}

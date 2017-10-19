@@ -7,7 +7,7 @@ import { getReferenceTableEntryAsync, updateReferenceTable } from 'app/store/mod
 import { getReferenceTableSelectValues } from 'app/store/selectors/eplan'
 
 /* Framework */
-import { tabChange, addTab, tabIsLoading } from 'framework/store/modules/tabs'
+import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer } from 'app/styles'
@@ -23,7 +23,7 @@ import ReferenceTableEditModal from '../../ReferenceTableEditModal'
 class ReferenceTableEdit extends Component {
 	tab = {
 		id: this.props.referenceTableId,
-		label: this.props.referenceTableId,
+		label: '',
 		location: '/reference/list/' + this.props.referenceTableId + '/edit',
 		icon: 'mode_edit',
 		fixed: false,
@@ -157,19 +157,19 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		onMount: (id, param) => {
-			dispatch(addTab(id, param))
-			dispatch(tabChange(id, param))
+		onMount: (instanceID, tab) => {
+			dispatch(addTab(instanceID, tab))
 		},
 		unMount: (param) => {
 			//TODO Remove Open Appendix when *CLOSED* not when unmounted
 			dispatch(removeOpenApdx(param))
 		},
-		changeTab: (id, param) => {
-			dispatch(addTab(id, param))
+		changeTab: (instanceID, tab) => {
+			dispatch(addTab(instanceID, tab))
 		},
 		tabisLoading: (instanceID, tab, isLoading) => {
 			dispatch(tabIsLoading(instanceID, tab, isLoading))
+			// dispatch(tabChange(instanceID, tab.label))			
 		},
 		getReferenceTableEntry: (id) => {
 			dispatch(getReferenceTableEntryAsync(id))

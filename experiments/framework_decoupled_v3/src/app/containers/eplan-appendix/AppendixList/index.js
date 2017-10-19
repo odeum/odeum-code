@@ -77,8 +77,6 @@ class AppendixList extends Component {
 
 		return (
 			<PrimaryContainer>
-				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
-
 				<AppendixButtonPanel>
 					<Input value={this.props.appendixFilterText} autoFocus placeholder={'Type here to filter list by name'} onChange={this.setFilter} />
 					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
