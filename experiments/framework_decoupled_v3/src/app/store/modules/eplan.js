@@ -307,7 +307,7 @@ export function getReferenceTableListAsync() {
 }
 
 
-export function getReferenceTableEntryAsync(id) {
+export function  getReferenceTableEntryAsync(id) {
 	return async dispatch => {
 		await getReferenceTableEntry(id).then(
 			(result) => {

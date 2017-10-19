@@ -106,7 +106,8 @@ class ReferenceTableEdit extends Component {
 		)
 		if (!this.props.referenceTableValues) {
 			this.props.tabisLoading(this.props.id, this.tab, true)
-			await this.props.getReferenceTableEntry(this.props.referenceTableId)
+			var d = await this.props.getReferenceTableEntry(this.props.referenceTableId)
+			console.log(d)
 			this.props.tabisLoading(this.props.id, this.tab, false)
 		}
 	}
@@ -170,11 +171,11 @@ function mapDispatchToProps(dispatch) {
 			dispatch(tabIsLoading(instanceID, tab, isLoading))
 			// dispatch(tabChange(instanceID, tab.label))			
 		},
-		getReferenceTableEntry: (id) => {
-			dispatch(getReferenceTableEntryAsync(id))
+		getReferenceTableEntry: async (id) => {
+			await dispatch(await getReferenceTableEntryAsync(id))
 		},
-		updateReferenceTable: (referenceTableSettings, id) => {
-			dispatch(updateReferenceTable(referenceTableSettings, id))
+		updateReferenceTable: async (referenceTableSettings, id) => {
+			await dispatch(await updateReferenceTable(referenceTableSettings, id))
 		},
 	}
 }
