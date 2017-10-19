@@ -382,13 +382,13 @@ function mapDispatchToProps(dispatch) {
 			dispatch(addTab(instanceID, tab))
 		},
 		getAppendix: async (param) => {
-			dispatch(await getAppendixAsync(param))
+			await dispatch(await getAppendixAsync(param))
 		},
 		updateApd: async (appendix, id, commit) => {
-			dispatch(await updateAppendix(appendix, id, commit))
+			await dispatch(await updateAppendix(appendix, id, commit))
 		},
 		exportToPlanSystem: async (id) => {
-			return dispatch(await exportAppendixToPlansystemAsync(id))
+			return await dispatch(await exportAppendixToPlansystemAsync(id))
 		},
 		tabisLoading: (id, tab, isLoading) => {
 			dispatch(tabIsLoading(id, tab, isLoading))

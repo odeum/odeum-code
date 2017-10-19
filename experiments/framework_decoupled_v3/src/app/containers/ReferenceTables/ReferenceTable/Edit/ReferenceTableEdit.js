@@ -106,8 +106,7 @@ class ReferenceTableEdit extends Component {
 		)
 		if (!this.props.referenceTableValues) {
 			this.props.tabisLoading(this.props.id, this.tab, true)
-			var d = await this.props.getReferenceTableEntry(this.props.referenceTableId)
-			console.log(d)
+			await this.props.getReferenceTableEntry(this.props.referenceTableId)
 			this.props.tabisLoading(this.props.id, this.tab, false)
 		}
 	}
