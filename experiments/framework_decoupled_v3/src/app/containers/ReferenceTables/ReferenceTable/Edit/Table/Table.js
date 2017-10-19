@@ -9,7 +9,6 @@ import Immutable, { List, Map } from 'immutable'
 
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, ContentBox, Cell } from 'app/styles/TableStyles'
-import OnClickCell from 'app/components/eplan-appendix/OnClickCell'
 
 import Icon from 'framework/assets/Icon'
 import { ListAction, ToastContainerStyled } from 'app/styles/EplanStyles'
@@ -47,7 +46,6 @@ class ReferenceTableEditList extends Component {
 		this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
 		this._rowClassName = this._rowClassName.bind(this)
 		this._sort = this._sort.bind(this)
-		this._cellClicked = this._cellClicked.bind(this)
 	}
 
 	componentWillUpdate = (nextProps, nextState) => {
@@ -179,9 +177,11 @@ class ReferenceTableEditList extends Component {
 		)
 	}
 
-	_cellClicked(rowData) {
+	_cellClicked = (rowData) => (e) => {
+		e.preventDefault()
 		this.props.onClickButton(rowData)
 	}
+	
 	_defaultHeaderRowRenderer({
 		className,
 		columns,
@@ -220,16 +220,20 @@ class ReferenceTableEditList extends Component {
 		)
 	}
 
-	_cellRenderer_default = ({ cellData }) => (<Cell>{cellData}</Cell>)
+	_cellRenderer_default = ({ cellData }) => {
+		return (<Cell>{cellData}</Cell>)
+	}
 	_cellRenderer_click = ({ cellData, rowData }) => {
-		return (<OnClickCell data={rowData} cellOnClick={this._cellClicked}>{cellData}</OnClickCell>)
+		return (<Cell onClick={this._cellClicked(rowData)}>{cellData}</Cell>)
 	}
 	_cellRenderer_value2 = ({ cellData, columnData, dataKey, rowData }) => {
 		return (<Cell>{cellData.replace(/<\/?[^>]+(>|$)/g, "")}</Cell>)
 	}
-	_cellRenderer_actions = ({ rowData }) => (<Cell>
-			<ListAction><OnClickCell data={rowData} cellOnClick={this._deleteReferenceTableValue}><Icon icon={iconname.ICON_DELETE} size={20} color={colors.ICON_DEFAULT_COLOR} /></OnClickCell></ListAction>
+	_cellRenderer_actions = ({ rowData }) => {
+		return (<Cell>
+			<ListAction><Cell onClick={this._deleteReferenceTableValue(rowData)}><Icon icon={iconname.ICON_DELETE} size={20} color={colors.ICON_DEFAULT_COLOR} /></Cell></ListAction>
 		</Cell>)
+	}
 
 	_isSortEnabled() {
 		const { list } = this.props
@@ -281,7 +285,8 @@ class ReferenceTableEditList extends Component {
 		})
 	}
 
-	_deleteReferenceTableValue = (data) => {
+	_deleteReferenceTableValue = (data) => (e) => {
+		e.preventDefault()
 		if (window.confirm('Er du sikker på du vil slette: ' + data.valueKey + ' ' + data.value)) {
 			this.props.deleteReferenceTableValue(this.props.referenceTableId, data.id)
 			toast.success('Værdien er hermed slettet')

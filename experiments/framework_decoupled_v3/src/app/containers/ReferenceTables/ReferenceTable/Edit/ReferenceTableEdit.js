@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 /* Redux */
 import { connect } from 'react-redux'
 import { removeOpenApdx } from 'app/store/modules/eplan'
@@ -47,20 +48,14 @@ class ReferenceTableEdit extends Component {
 		}
 
 		/* Bind functions to this component */
-		// this.openSettingsModal = this.openSettingsModal.bind(this)
 		this.closeSettingsModal = this.closeSettingsModal.bind(this)
 		this.saveSettingsModal = this.saveSettingsModal.bind(this)
-
-		// this.openEditModal = this.openEditModal.bind(this)
 		this.closeEditModal = this.closeEditModal.bind(this)
 		this.saveEditModal = this.saveEditModal.bind(this)
-
-		// this.__confirm = this.__confirm.bind(this)
 	}
 	openSettingsModal = () => {
 		this.setState({
 			settingsModalIsOpen: true,
-			// settingData: this.props.referenceTableEntry
 		})
 	}
 	closeSettingsModal() {
@@ -89,7 +84,15 @@ class ReferenceTableEdit extends Component {
 	}
 	saveEditModal() {
 		this.setState({
-			editModalIsOpen: false
+			editModalIsOpen: false,
+			editData: {
+				id: null,
+				parentKey: "",
+				valueKey: "",
+				value: "",
+				value2: "",
+				reftableId: this.props.referenceTableId
+			}
 		})
 	}
 
@@ -120,12 +123,10 @@ class ReferenceTableEdit extends Component {
 			<PrimaryContainer>
 				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
-					{/* <Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this.__confirm('hej hej')}>Test</Button> */}
-					{/* <Button icon={iconname.ICON_SETTINGS} size={18} onClick={() => this._confirm.open()}>Test</Button> */}
 					<Button icon={iconname.ICON_SETTINGS} size={18} onClick={this.openSettingsModal}>Egenskaber</Button>
 					<Button icon={iconname.ICON_ADD_CIRCLE} size={18} onClick={this.openEditModalInit}>Tilføj ny værdi</Button>
 				</AppendixButtonPanel>
-				{this.props.referenceTableValues === null || this.props.referenceTable === undefined ? null : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
+				{this.props.referenceTableValues === null || this.props.referenceTable === null ? null : <ReferenceTableEditList referenceTableId={this.props.referenceTableId} onClickButton={this.openEditModal} />}
 				<ReferenceTableSettingsModal
 					settingsModalIsOpen={this.state.settingsModalIsOpen}
 					closeSettingsModal={this.closeSettingsModal}
@@ -140,8 +141,6 @@ class ReferenceTableEdit extends Component {
 					saveEditModal={this.saveEditModal}
 					referenceTableId={this.props.referenceTableId}
 				/>
-				{/* <Confirm ref={(c) => this._confirm = c} /> */}
-				{/* {this.state.confirm} */}
 			</PrimaryContainer>
 		)
 	}
