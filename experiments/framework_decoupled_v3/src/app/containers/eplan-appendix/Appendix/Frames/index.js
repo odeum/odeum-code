@@ -38,14 +38,17 @@ class Frames extends Component {
 			addFrameModalIsOpen: false,
 		}
 
-		this.onClickButton = this.onClickButton.bind(this)
-		this.openAddFrameModal = this.openAddFrameModal.bind(this)
-		this.closeAddFrameModal = this.closeAddFrameModal.bind(this)
-		this.addNewFrame = this.addNewFrame.bind(this)
-		this.setFilter = this.setFilter.bind(this)
+		// this.onClickButton = this.onClickButton.bind(this)
+		// this.openAddFrameModal = this.openAddFrameModal.bind(this)
+		// this.closeAddFrameModal = this.closeAddFrameModal.bind(this)
+		// this.addNewFrame = this.addNewFrame.bind(this)
+		// this.setFilter = this.setFilter.bind(this)
 	}
 
+	//#region Lifecycle methods
+
 	async componentWillMount() {
+		
 		this.props.onMount(this.props.param, this.tab)
 		if (this.props.framesIsLoading === true) {
 			this.props.tabisLoading(this.props.param, this.tab, true)
@@ -57,28 +60,31 @@ class Frames extends Component {
 		if (this.props.framesIsLoading !== true || nextProps.frameIsLoading !== true)
 			this.props.tabisLoading(this.props.param, this.tab, false)
 	}
-	onClickButton(index) {
+
+	//#endregion
+
+	onClickButton = (index) => {
 		this.props.onClickButton(index, this.props.param)
 	}
 
-	openAddFrameModal() {
+	openAddFrameModal = () => {
 		this.setState({
 			addFrameModalIsOpen: true
 		})
 	}
 
-	closeAddFrameModal() {
+	closeAddFrameModal = () => {
 		this.setState({
 			addFrameModalIsOpen: false
 		})
 	}
 
-	async addNewFrame() {
+	addNewFrame = async () => {
 		await this.props.addAppendixFrame(this.props.param)
 		this.closeAddFrameModal()
 		toast.success('Rammen tilføjet korrekt')
 	}
-	setFilter(event) {
+	setFilter = (event) => {
 		this.props.setFilterText(event.target.value)
 	}
 	render() {
@@ -92,7 +98,7 @@ class Frames extends Component {
 					<Input value={framesFilterText} onChange={this.setFilter} />
 					<Button onClick={openAddFrameModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny ramme</Button>
 				</AppendixButtonPanel>
-				{this.props.framesIsLoading ? null : <FramesTable onClickButton={this.onClickButton} id={this.props.param}/>}
+				{this.props.framesIsLoading ? null : <FramesTable onClickButton={this.onClickButton} id={this.props.param} />}
 				<AddFrameModal
 					addFrameModalIsOpen={addFrameModalIsOpen}
 					closeAddFrameModal={closeAddFrameModal}
@@ -110,9 +116,9 @@ class Frames extends Component {
 		)
 	}
 }
+
 const mapStateToProps = (state, ownProps) => ({
 	param: ownProps.param,
-	//appendix: getAppendix(state, ownProps.param, ownProps) || null,
 	framesIsLoading: state.eplan.framesIsLoading,
 	framesFilterText: state.eplan.framesTableFilterText
 })
@@ -125,8 +131,8 @@ function mapDispatchToProps(dispatch) {
 		onClickButton: (frameId, appendixId) => {
 			dispatch(push('/eplan/list/' + appendixId + '/frames/' + frameId + '/edit'))
 		},
-		getAppendix: (param) => {
-			dispatch(getAppendixAsync(param))
+		getAppendix: async (param) => {
+			await dispatch(await getAppendixAsync(param))
 		},
 		tabisLoading: (instanceID, tab, isLoading) => {
 			dispatch(tabIsLoading(instanceID, tab, isLoading))
@@ -135,7 +141,7 @@ function mapDispatchToProps(dispatch) {
 			dispatch(setFrameFilterText(text))
 		},
 		addAppendixFrame: async (appendixId) => {
-			dispatch(await addFrame(appendixId))
+			await dispatch(await addFrame(appendixId))
 		},
 	}
 }

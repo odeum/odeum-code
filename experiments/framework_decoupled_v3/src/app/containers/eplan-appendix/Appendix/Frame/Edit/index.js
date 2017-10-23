@@ -106,18 +106,6 @@ class EditFrame extends Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
-		// if (nextProps.openFrame !== null)
-		// 	this.props.tabisLoading(this.props.appendixId, this.tab, false)
-	}
-
-	componentWillUnmount = () => {
-	}
-
-	componentDidMount() {
-
-	}
-
 	submitUpdate = (values) => {
 		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
 		toast.success('Dine ændringer er gemt')

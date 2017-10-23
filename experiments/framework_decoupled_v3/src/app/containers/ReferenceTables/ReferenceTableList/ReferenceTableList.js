@@ -125,9 +125,11 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, name) => {
+			console.log(id, name)
 			dispatch(tabChange(id, name))
 		},
 		tabisLoading: (instanceID, tab, isLoading) => {
+			console.log(instanceID)
 			dispatch(tabIsLoading(instanceID, tab, isLoading))
 		},
 		onClickButton: (location) => {

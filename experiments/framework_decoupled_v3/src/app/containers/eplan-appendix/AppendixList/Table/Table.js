@@ -26,6 +26,7 @@ function CellDataGetter({ dataKey, rowData }) {
 		}
 	}
 }
+
 class AppendixTable extends Component {
 	static propTypes = {
 		list: PropTypes.instanceOf(Immutable.List).isRequired
