@@ -3,7 +3,7 @@
 </a>
 <br />
 
-**ODEUM Code** is a React-based UI for building Web & Mobile Applications
+**ODEUM Code** is a React-based JavaScript UI framework for building Web & Mobile Applications
 -----------------------------------------------------------------------
 
 [![Build Status](https://travis-ci.org/odeum/odeum-codejs.svg?branch=development/alpha)](https://travis-ci.org/odeum/odeum-codejs)
