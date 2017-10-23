@@ -12,7 +12,7 @@ import Icon from 'framework/assets/Icon'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import RowRenderer from './_rowRender'
-import moment from 'moment'
+// import moment from 'moment'
 import 'moment/locale/da'
 import { getFilteredAppdx } from 'app/store/selectors/appendix'
 
@@ -47,19 +47,19 @@ class AppendixTable extends Component {
 			exportModalIsOpen: false,
 			exportAppendix: null
 		}
-		this._actionRowRenderer = this._actionRowRenderer.bind(this)
-		this._getRowHeight = this._getRowHeight.bind(this)
-		this._headerRenderer = this._headerRenderer.bind(this)
-		this._noRowsRenderer = this._noRowsRenderer.bind(this)
-		this._onRowCountChange = this._onRowCountChange.bind(this)
-		this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
-		this._rowClassName = this._rowClassName.bind(this)
-		this._sort = this._sort.bind(this)
-		// this._rowClicked = this._rowClicked.bind(this)
-		this._cellClicked = this._cellClicked.bind(this)
-		this.openExportModal = this.openExportModal.bind(this)
-		this.closeExportModal = this.closeExportModal.bind(this)
-		this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
+		// this._actionRowRenderer = this._actionRowRenderer.bind(this)
+		// this._getRowHeight = this._getRowHeight.bind(this)
+		// this._headerRenderer = this._headerRenderer.bind(this)
+		// this._noRowsRenderer = this._noRowsRenderer.bind(this)
+		// this._onRowCountChange = this._onRowCountChange.bind(this)
+		// this._onScrollToRowChange = this._onScrollToRowChange.bind(this)
+		// this._rowClassName = this._rowClassName.bind(this)
+		// this._sort = this._sort.bind(this)
+		// // this._rowClicked = this._rowClicked.bind(this)
+		// // this._cellClicked = this._cellClicked.bind(this)
+		// this.openExportModal = this.openExportModal.bind(this)
+		// this.closeExportModal = this.closeExportModal.bind(this)
+		// this.onClickExportAppendix = this.onClickExportAppendix.bind(this)
 	}
 
 	componentWillUpdate = (nextProps, nextState) => {
@@ -95,6 +95,7 @@ class AppendixTable extends Component {
 
 		const rowGetter = ({ index }) => this._getDatum(sortedList, index)
 
+
 		return (
 			<div style={{ clear: 'both' }}>
 				{/* 				<ContentBox>
@@ -127,9 +128,7 @@ class AppendixTable extends Component {
 										disableSort={!this._isSortEnabled()}
 										headerRenderer={this._headerRenderer}
 										cellDataGetter={CellDataGetter}
-										cellRenderer={
-											({ cellData }) => (<Cell>{cellData}</Cell>)
-										}
+										cellRenderer={this._cellRender}
 										width={width}
 										flexgrow={1}
 									/>
@@ -143,9 +142,7 @@ class AppendixTable extends Component {
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
 									cellDataGetter={CellDataGetter}
-									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData ? rowData : console.log('error'))}>{cellData}</Cell>)
-									}
+									cellRenderer={this._cellRender}
 									flexgrow={1}
 								/>
 
@@ -157,9 +154,7 @@ class AppendixTable extends Component {
 									disableSort={!this._isSortEnabled()}
 									headerRenderer={this._headerRenderer}
 									cellDataGetter={CellDataGetter}
-									cellRenderer={
-										({ cellData, columnData, dataKey, rowData }) => (<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
-									}
+									cellRenderer={this._cellRender}
 									flexgrow={1}
 								/>
 
@@ -170,9 +165,7 @@ class AppendixTable extends Component {
 									dataKey='created'
 									headerRenderer={this._headerRenderer}
 									cellDataGetter={CellDataGetter}
-									cellRenderer={
-										({ cellData, columnData, dataKey, rowData, rowIndex }) => (<Cell onClick={() => this._cellClicked(rowData)}>{moment(cellData).format('LL')}</Cell>)
-									}
+									cellRenderer={this._cellRender}
 									flexgrow={1}
 								/>
 
@@ -183,10 +176,7 @@ class AppendixTable extends Component {
 									dataKey='status'
 									headerRenderer={this._headerRenderer}
 									cellDataGetter={CellDataGetter}
-									cellRenderer={
-										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-											(<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
-									}
+									cellRenderer={this._cellRender}
 								/>
 
 								<Column
@@ -197,10 +187,7 @@ class AppendixTable extends Component {
 									headerRenderer={this._headerRenderer}
 									disableSort={!this._isSortEnabled()}
 									cellDataGetter={CellDataGetter}
-									cellRenderer={
-										({ cellData, columnData, dataKey, rowData, rowIndex }) =>
-											(<Cell onClick={() => this._cellClicked(rowData)}>{cellData}</Cell>)
-									}
+									cellRenderer={this._cellRender}
 								/>
 
 								<Column
@@ -237,10 +224,14 @@ class AppendixTable extends Component {
 			this.props.onClickButton(rowData.appendixId)
 			console.log('rowClicked')
 		} */
-	_cellClicked = (rowData) => {
+	_cellClicked = (rowData) => (e) => {
+		e.preventDefault()
 		this.props.onClickButton(rowData.appendixId)
 		console.log('cellClicked')
 	}
+	_cellRender = ({ cellData, columnData, dataKey, rowData, rowIndex }) =>
+		(<Cell onClick={this._cellClicked(rowData)}>{cellData}</Cell>)
+
 	_defaultHeaderRowRenderer = ({ className, columns, style }) => {
 		return <HeaderRow width={style.width}>
 			{columns}
@@ -253,15 +244,10 @@ class AppendixTable extends Component {
 
 	_getRowHeight = ({ index }) => this._getDatum(this.props.list, index).size
 
-	openExportModal = (rowData) => {
-		console.log(rowData.target)
-		console.log(rowData.target.getAttribute('value'))
-		console.log(rowData.target.getAttribute('rowData'))
-		
+	openExportModal = (rowData) => (e) => {
+		e.preventDefault() 
 		this.setState({
-			exportAppendix: rowData
-		})
-		this.setState({
+			exportAppendix: rowData,
 			exportModalIsOpen: true
 		})
 	}
@@ -272,7 +258,7 @@ class AppendixTable extends Component {
 		})
 	}
 	//REFACTOR: No document.*function* , replace with styled components + state variables passed to the 
-	async onClickExportAppendix() {
+	onClickExportAppendix = async () => {
 		document.getElementById('exportStepOne').style.display = 'none'
 		document.getElementById('exportButton').style.display = 'none'
 		document.getElementById('exportCloseButton').style.display = 'none'
@@ -299,21 +285,14 @@ class AppendixTable extends Component {
 		if (rowData !== undefined) {
 			return <Cell /* onClick={(e) => { }} */>
 				<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
-				<ListAction onClick={this.openExportModal} data-value={rowData}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListAction>
+				<ListAction onClick={this.openExportModal(rowData)} data-value={rowData}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListAction>
 			</Cell>
 		}
 		else
 			return null
 	}
 
-	_headerRenderer({
-	columnData,
-		dataKey,
-		disableSort,
-		label,
-		sortBy,
-		sortDirection
-}) {
+	_headerRenderer = ({ columnData, dataKey, disableSort, label, sortBy, sortDirection }) => {
 		return (
 			<HeaderCell>
 				{label}
@@ -324,14 +303,14 @@ class AppendixTable extends Component {
 		)
 	}
 
-	_isSortEnabled() {
+	_isSortEnabled = () => {
 		const { list } = this.props
 		const { rowCount } = this.state
 
 		return rowCount <= list.size
 	}
 
-	_noRowsRenderer() {
+	_noRowsRenderer = () => {
 		return (
 			<NoRows>
 				No rows
@@ -339,13 +318,13 @@ class AppendixTable extends Component {
 		)
 	}
 
-	_onRowCountChange(listSize) {
+	_onRowCountChange = (listSize) => {
 		const rowCount = parseInt(listSize, 10) || 0
 
 		this.setState({ rowCount })
 	}
 
-	_onScrollToRowChange(event) {
+	_onScrollToRowChange = (event) => {
 		const { rowCount } = this.state
 		let scrollToIndex = Math.min(rowCount - 1, parseInt(event.target.value, 10))
 
@@ -356,7 +335,7 @@ class AppendixTable extends Component {
 		this.setState({ scrollToIndex })
 	}
 
-	_rowClassName({ index }) {
+	_rowClassName = ({ index }) => {
 		if (index < 0) {
 			return 'evenRow'
 		} else {
@@ -364,11 +343,11 @@ class AppendixTable extends Component {
 		}
 	}
 
-	_sort({ sortBy, sortDirection }) {
+	_sort = ({ sortBy, sortDirection }) => {
 		this.setState({ sortBy, sortDirection })
 	}
 
-	_updateUseDynamicRowHeight(value) {
+	_updateUseDynamicRowHeight = (value) => {
 		this.setState({
 			useDynamicRowHeight: value
 		})

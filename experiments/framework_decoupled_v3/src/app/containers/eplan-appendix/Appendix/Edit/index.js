@@ -89,11 +89,10 @@ class EditAppendix extends Component {
 			}
 		}
 
-	}
+	}	
 	async componentDidMount() {
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
-
 		}
 		if (this.props.appendixIsLoading !== true) {
 			this.props.tabisLoading(this.props.param, this.tab, false)

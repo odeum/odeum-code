@@ -21,7 +21,7 @@ class Editor extends Component {
 		this.openMediaBrowser = this.openMediaBrowser.bind(this)
 		this.closeImageBrowserModal = this.closeImageBrowserModal.bind(this)
 		this.insertImage = this.insertImage.bind(this)
-		
+
 		// this.modules = {
 		// 	toolbar: {
 		// 		container: [
@@ -80,7 +80,10 @@ class Editor extends Component {
 		// var range = this.reactQuillRef.getEditor().getSelection()
 		// this.reactQuillRef.getEditor().insertEmbed(range.index, 'image', imageUri)
 	}
-
+	onBlur = (e) => {
+		this.props.onBlur()
+		this.props.onChange(e.target.getContent())
+	}
 	render() {
 		return (
 			<div style={this.editorStyle}>
@@ -99,10 +102,7 @@ class Editor extends Component {
 						height: '300px',
 						entity_encoding: 'raw'
 					}}
-					onBlur={(e) => {
-          				this.props.onBlur()
-          				this.props.onChange(e.target.getContent())
-        			}}				
+					onBlur={ this.onBlur }
 				/>
 
 				{this.state.imagesList !== null ? <ImageBrowserModal
