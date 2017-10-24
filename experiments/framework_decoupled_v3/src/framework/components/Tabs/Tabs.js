@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabCont, TabText, TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
+import { TabCont, TabText, TabTextLoad, TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
@@ -8,22 +8,22 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 	let active = (tab) => {
 		return tab.label === activeTab ? true : false
 	}
-/* 
-	function isFixed(tab) {
-		if (tab.fixed === undefined) {
-			return null
-		}
-		if (!tab.fixed) {
-			return <TabCloseLink to="/">
-				<TabClose active={active(tab)} onClick={(e) => {
-					e.preventDefault()
-					OnCloseClick(instanceID, tab)
-				}}>
-					<Icon icon={ICON_CLOSE} active={active(tab)} size={15} />
-				</TabClose>
-			</TabCloseLink>
-		}
-	} */
+	/* 
+		function isFixed(tab) {
+			if (tab.fixed === undefined) {
+				return null
+			}
+			if (!tab.fixed) {
+				return <TabCloseLink to="/">
+					<TabClose active={active(tab)} onClick={(e) => {
+						e.preventDefault()
+						OnCloseClick(instanceID, tab)
+					}}>
+						<Icon icon={ICON_CLOSE} active={active(tab)} size={15} />
+					</TabClose>
+				</TabCloseLink>
+			}
+		} */
 	/* <TabLabel key={index} active={active(tabs[tab])}>
 			<TabCont>
 				<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center' }}
@@ -83,7 +83,7 @@ const Tab = ({ instance, tab, active, onTabClick, onCloseClick }) => {
 							{!tab.isLoading ?
 								<TabIconDiv><Icon icon={tab.icon} active={active} /> </TabIconDiv>
 								: <TabLoaderDiv><SmoothLoader size='xxs' velocity='fast' color='#EEEDED' /> </TabLoaderDiv>}
-							<TabText>{tab.label}</TabText>
+							{tab.label === '' ? null : tab.fixed ? <TabText>{tab.label}</TabText> : <TabTextLoad>{tab.label}</TabTextLoad>}
 						</TabDiv>
 					</TabLink>
 				</div>

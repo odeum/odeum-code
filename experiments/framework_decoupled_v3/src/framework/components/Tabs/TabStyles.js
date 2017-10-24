@@ -1,8 +1,26 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Link } from 'react-router'
 
 import { getColor } from 'framework/assets/colors'
 
+const onEnterText = keyframes`
+    from{
+        width:0%;
+    }
+    to{
+        width:100%
+    }
+`
+const onEnter = keyframes`
+        from {
+            opacity:0.5;
+            max-width:0px;
+        }
+        to {
+            opacity:1;
+            max-width:200px;
+        }
+    `
 export const TabCont = styled.div`
     width:100%;
     height:100%;
@@ -10,6 +28,7 @@ export const TabCont = styled.div`
     flex-flow: row nowrap;
     align-items: center;
 `
+
 export const TabLink = styled(Link) `
     display:flex;
     text-decoration: none;
@@ -21,15 +40,13 @@ export const TabLink = styled(Link) `
     font-size: 15px;
     font-weight: 300;
     user-select: none;
-    
     &:hover{
         color:white;
       
     }
     ${props => props.className === true && css`
         color: white;
-    `}
-
+    `}    
 `
 export const TabCloseLink = styled(Link) `
     display:flex;
@@ -64,6 +81,9 @@ export const TabText = styled.div`
         overflow:visible;   
     }
     transition: overflow 300ms ease;
+`
+export const TabTextLoad = TabText.extend`
+    animation: ${onEnterText} 300ms ease-in-out;    
 `
 export const TabDiv = styled.div`
     display: flex;
@@ -110,6 +130,7 @@ export const TabLabel = styled.li`
     position:relative;
     margin-right: 1px;
     transition: max-width 300ms ease;
+    animation: ${onEnter} 300ms ease;
 `
 export const TabLoaderDiv = styled.div`
     width: 15px;
