@@ -49,7 +49,7 @@ class ReferenceTableSettingsModal extends Component {
 							<Icon icon={iconname.ICON_SETTINGS} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 						</ModalHeaderIcon>
 						<ModalHeaderTitle>Egenskaber</ModalHeaderTitle>
-						<ModalHeaderClose onClick={(e) => { e.preventDefault(); closeSettingsModal() }}>
+						<ModalHeaderClose onClick={closeSettingsModal}>
 							<Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 						</ModalHeaderClose>
 					</ModalHeader>

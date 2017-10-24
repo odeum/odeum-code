@@ -93,7 +93,7 @@ class ReferenceTableEditModal extends Component {
 	render() {
 		/* Props */
 		const { editModalIsOpen, closeEditModal, handleSubmit } = this.props
-
+		console.log('this one')
 		return (
 			<div>
 				<ModalWindow isOpen={editModalIsOpen} onRequestClose={closeEditModal} contentLabel="Indstillinger">
@@ -102,7 +102,7 @@ class ReferenceTableEditModal extends Component {
 							<Icon icon={iconname.ICON_SETTINGS} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 						</ModalHeaderIcon>
 						<ModalHeaderTitle>Rediger</ModalHeaderTitle>
-						<ModalHeaderClose onClick={(e) => { e.preventDefault(); closeEditModal() }}>
+						<ModalHeaderClose onClick={closeEditModal}>
 							<Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 						</ModalHeaderClose>
 					</ModalHeader>
