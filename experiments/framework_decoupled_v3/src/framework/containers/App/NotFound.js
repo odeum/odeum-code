@@ -3,6 +3,7 @@ import { Div, ImgDiv, E404, ErrMsg, ErrMsg2, Img } from '../styles/NotFoundStyle
 import HeaderLogo from '../../assets/eplan_logo.png'
 import { connect } from 'react-redux'
 import { replace } from 'react-router-redux'
+
 class NotFound extends Component {
   
 	componentWillMount() {
@@ -23,9 +24,11 @@ class NotFound extends Component {
 		)
 	}
 }
+
 const mapStateToProps = state => {
 	return {}
 }
+
 function mapDispatchToProps(dispatch) {
 	return {
 		onMount: () => {
@@ -33,4 +36,5 @@ function mapDispatchToProps(dispatch) {
 		}
 	}
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(NotFound)
