@@ -28,9 +28,9 @@ class ReferenceTableSettingsModal extends Component {
 		super(props)
 		/* Bind functions to this component */
 		this.submitUpdate = this.submitUpdate.bind(this)
-	
+
 	}
-	
+
 	submitUpdate(values) {
 		this.props.updateReferenceTable(values, this.props.referenceTableId)
 		this.props.saveSettingsModal()
@@ -79,7 +79,7 @@ class ReferenceTableSettingsModal extends Component {
 								placeholder="Felttype"
 								validate={[required]}
 							>
-            					<option value="1">Dropdown</option>
+								<option value="1">Dropdown</option>
 								<option value="2">Dropdown (multipel valg)</option>
 							</Field>
 							<FieldLabel for="name">Tekst værdi 1 type *</FieldLabel>
@@ -146,8 +146,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		updateReferenceTable: (referenceTableEntry, id) => {
-			dispatch(updateReferenceTable(referenceTableEntry, id))
+		updateReferenceTable: async (referenceTableEntry, id) => {
+			await dispatch(updateReferenceTable(referenceTableEntry, id))
 			dispatch(reset('eplan.referencetables'))
 		},
 	}

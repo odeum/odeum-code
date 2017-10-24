@@ -171,10 +171,10 @@ function mapDispatchToProps(dispatch) {
 			// dispatch(tabChange(instanceID, tab.label))			
 		},
 		getReferenceTableEntry: async (id) => {
-			await dispatch(await getReferenceTableEntryAsync(id))
+			await dispatch(getReferenceTableEntryAsync(id))
 		},
 		updateReferenceTable: async (referenceTableSettings, id) => {
-			await dispatch(await updateReferenceTable(referenceTableSettings, id))
+			await dispatch(updateReferenceTable(referenceTableSettings, id))
 		},
 	}
 }

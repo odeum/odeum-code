@@ -56,11 +56,11 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 		},
-		getReferenceTable: (id) => {
-			dispatch(getReferenceTableEntryAsync(id))
+		getReferenceTable: async (id) => {
+			await dispatch(getReferenceTableEntryAsync(id))
 		},
-		getList: () => {
-			dispatch(getReferenceTableListAsync())
+		getList: async () => {
+			await dispatch(getReferenceTableListAsync())
 		}
 	}
 }

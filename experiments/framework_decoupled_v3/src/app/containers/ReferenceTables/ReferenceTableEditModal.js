@@ -145,8 +145,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
 	return {
-		updateReferenceTableData: (referenceTableEntry, id) => {
-			dispatch(updateReferenceTableData(referenceTableEntry, id))
+		updateReferenceTableData: async (referenceTableEntry, id) => {
+			await dispatch(updateReferenceTableData(referenceTableEntry, id))
 			dispatch(reset('eplan.referencetabledata'))
 		},
 	}

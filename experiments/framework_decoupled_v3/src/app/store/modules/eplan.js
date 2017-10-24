@@ -94,7 +94,7 @@ const cookies = new Cookies()
 //region Middleware
 
 /* Login functions */
-export async function doMyLogin(data) {
+export function doMyLogin(data) {
 	return async dispatch => {
 		eplanDoingLogin()
 		var res = await backendLogin(data)
@@ -117,7 +117,7 @@ export async function doMyLogin(data) {
 		}
 	}
 }
-export async function doCookieLogin() {
+export function doCookieLogin() {
 	return async dispatch => {
 		eplanDoingLogin()
 		let token = cookies.get('ODEUMAuthToken')
@@ -154,14 +154,14 @@ export function removeOpenApdx(id) {
 	}
 }
 
-export async function updateAppendix(appendix, id, commit) {
-	return dispatch => {
+export function updateAppendix(appendix, id, commit) {
+	return async dispatch => {
 		dispatch(appendixIsSaving())
-		dispatch(updateApd({ appendix, id, commit }))
+		dispatch(await updateApd({ appendix, id, commit }))
 	}
 }
 
-export async function addAppendixAsync(appendix) {
+export function addAppendixAsync(appendix) {
 	return async dispatch => {
 		dispatch(appendixIsSaving())
 		await addAppendix(appendix).then((result) => {
@@ -175,15 +175,14 @@ export async function addAppendixAsync(appendix) {
 export function getAppendixAsync(id) {
 	return async dispatch => {
 		dispatch(appendixIsLoading(id, true))
-		await getAppendixById(id).then((result) => {
-			dispatch(getAppendix(result))
-			dispatch(appendixIsLoading(id, false))
-		})
+		var apdx = await getAppendixById(id)
+		dispatch(getAppendix(apdx))
+		dispatch(appendixIsLoading(id, false))
 
 	}
 }
 
-export async function getListAsync() {
+export function getListAsync() {
 	return async dispatch => {
 		var result = await getAppendixList()
 		dispatch(getList(result))
@@ -192,7 +191,7 @@ export async function getListAsync() {
 
 }
 
-export async function addFrame(id) {
+export function addFrame(id) {
 	return async dispatch => {
 		dispatch(appendixIsLoading(id, true))
 		let result = await addNewFrame(id)
@@ -211,7 +210,7 @@ export function getFramesListAsync(id) {
 		)
 	}
 }
-export async function getFrameDataAsync(id) {
+export function getFrameDataAsync(id) {
 	return async dispatch => {
 		var data = await getFrameData(id)
 		// console.log('-----data - redux-----')
@@ -250,7 +249,7 @@ export function getFrameConfigAsync() {
 	}
 }
 
-export async function exportFrameToPlansystemAsync(id) {
+export function exportFrameToPlansystemAsync(id) {
 	return async dispatch => {
 		var test = await exportFrameToPlansystem(id).then((result) => {
 			console.log(result)
@@ -270,7 +269,7 @@ export function getAppendixCfg() {
 	}
 }
 
-export async function exportAppendixToPlansystemAsync(id) {
+export function exportAppendixToPlansystemAsync(id) {
 	return async dispatch => {
 		var test = await exportAppendixToPlansystem(id).then((result) => {
 			// console.log(result)
@@ -307,7 +306,7 @@ export function getReferenceTableListAsync() {
 }
 
 
-export function  getReferenceTableEntryAsync(id) {
+export function getReferenceTableEntryAsync(id) {
 	return async dispatch => {
 		await getReferenceTableEntry(id).then(
 			(result) => {
@@ -372,6 +371,7 @@ const initState = {
 }
 
 function eplan(state = initState, action) {
+	console.log(action)
 	switch (action.type) {
 		case EPLAN_LOGIN: {
 			return {
@@ -438,23 +438,23 @@ function eplan(state = initState, action) {
 		}
 		case UPDATE_APPENDIX:
 			{
-/* 				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
-				orig.fields.map((field) => {
-					return action.payload.appendix.fields.map((afield) => {
-						return field.id === afield.id ? field.value = afield.value : field
-					})
-				})
-				postAppendix(orig, action.payload.commit)
-				return {
-					...state,
-					openAppendix: {
-						...state.openAppendix,
-						[action.payload.id]: orig
-					},
-					appendixIsSaving: false
-				} */
+				/* 				let orig = state.openAppendix.find((apdx) => (apdx.appendixId === parseInt(action.payload.id, 10)))
+								orig.fields.map((field) => {
+									return action.payload.appendix.fields.map((afield) => {
+										return field.id === afield.id ? field.value = afield.value : field
+									})
+								})
+								postAppendix(orig, action.payload.commit)
+								return {
+									...state,
+									openAppendix: {
+										...state.openAppendix,
+										[action.payload.id]: orig
+									},
+									appendixIsSaving: false
+								} */
 				//INFO: For when the Appendix will be an complete object with no arrays
-				 let newFields = {}
+				let newFields = {}
 				_.forEach(action.payload.appendix.fields, function (value, key) {
 					newFields[value.id] = value
 				})

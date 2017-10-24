@@ -97,6 +97,7 @@ function mapDispatchToProps(dispatch) {
 		},
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
+			//TODO: move them somewhere else
 			dispatch(getAppendixCfg())
 			dispatch(getFrameConfigAsync())
 		},
@@ -104,7 +105,7 @@ function mapDispatchToProps(dispatch) {
 			dispatch(tabIsLoading(id, tab, isLoading))
 		},
 		getList: async () => {
-			return dispatch(await getListAsync())
+			return await dispatch(getListAsync())
 		}
 	}
 }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-
 /* Redux */
-
 import { connect } from 'react-redux'
 import { getFrameDataAsync, setFrameDataAsync, getAppendixAsync, exportFrameToPlansystemAsync } from 'app/store/modules/eplan'
 import { getFramesFields, openFrames, getFrameMetaData } from 'app/store/selectors/frames'
@@ -9,7 +7,7 @@ import { getFramesFields, openFrames, getFrameMetaData } from 'app/store/selecto
 import { Field, FieldArray, reduxForm } from 'redux-form'
 
 /* Framework */
-import { tabChange, addTab, tabIsLoading } from 'framework/store/modules/tabs'
+import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
@@ -149,10 +147,8 @@ class EditFrame extends Component {
 	render() {
 		return (
 			<PrimaryContainer>
-				{/* <DescriptionDiv>Small description placeholder</DescriptionDiv> */}
 				<AppendixButtonPanel>
 					<Button icon={iconname.ICON_CLOUD} onClick={this.openExportModal} size={18} >Exporter til plansystem</Button>
-					{/* <Button icon={iconname.ICON_ADD_CIRCLE} size={18}>Knap 2</Button> */}
 				</AppendixButtonPanel>
 				{this.props.openFrame === null || this.props.appendix === null ?
 					null :
@@ -165,20 +161,6 @@ class EditFrame extends Component {
 						</FramesForm>
 					</PrimaryContainer>
 				}
-				{/* <ReferenceTableSettingsModal
-				settingsModalIsOpen={this.state.settingsModalIsOpen}
-				closeSettingsModal={this.closeSettingsModal}
-				saveSettingsModal={this.saveSettingsModal}
-				referenceTableSelectValues={this.props.referenceTableSelectValues}
-				referenceTableId={this.props.referenceTableId}
-				 /> */}
-				{/* <ReferenceTableEditModal
-				editModalIsOpen={this.state.editModalIsOpen}
-				editData={this.state.editData}
-				closeEditModal={this.closeEditModal}
-				saveEditModal={this.saveEditModal}
-				referenceTableId={this.props.referenceTableId}
-				 /> */}
 				 <ExportModal
 					exportModalIsOpen={this.state.exportModalIsOpen}
 					closeExportModal={this.closeExportModal}
@@ -205,7 +187,6 @@ const mapStateToProps = (state, ownProps) => {
 		appendixId: ownProps.params.id,
 		frameId: ownProps.params.frameid,
 		appendix: state.eplan.openAppendix[ownProps.params.id] || null,
-		// app2: state.eplan.openAppendix[ownProps.params.id], // getAppendix(state, ownProps.param.id, ownProps) || null,
 		openFrame: openFrames(state, ownProps.params.frameid) || null,
 		form: 'EditFrame_form_' + ownProps.params.frameid,
 		initialValues: {
@@ -220,20 +201,19 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 			dispatch(addTab(id, tab))
-			dispatch(tabChange(id, tab.label))
+			// dispatch(tabChange(id, tab.label))
 		},
 		getAppendix: async (appendixId) => {
-			console.log('getAppendix: ' + appendixId)
-			dispatch(await getAppendixAsync(appendixId))
+			await dispatch(getAppendixAsync(appendixId))
 		},
 		getFrameData: async (frameId) => {
-			return dispatch(await getFrameDataAsync(frameId))
+			return await dispatch(getFrameDataAsync(frameId))
 		},
-		setFrameData: (frameId, data, frameData) => {
-			dispatch(setFrameDataAsync(frameId, data, frameData))
+		setFrameData: async (frameId, data, frameData) => {
+			await dispatch(setFrameDataAsync(frameId, data, frameData))
 		},
 		exportToPlanSystem: async (id) => {
-			return dispatch(await exportFrameToPlansystemAsync(id))
+			return await dispatch(exportFrameToPlansystemAsync(id))
 		},
 		tabisLoading: (id, tab, isLoading) => {
 			dispatch(tabIsLoading(id, tab, isLoading))

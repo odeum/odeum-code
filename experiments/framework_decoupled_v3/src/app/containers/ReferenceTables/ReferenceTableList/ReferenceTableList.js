@@ -136,7 +136,7 @@ function mapDispatchToProps(dispatch) {
 			dispatch(push('/reference/list/' + location + '/edit'))
 		},
 		getList: async () => {
-			dispatch(await getReferenceTableListAsync())
+			await dispatch(getReferenceTableListAsync())
 		},
 		setFilterText: (text) => {
 			dispatch(setRefFilterText(text))

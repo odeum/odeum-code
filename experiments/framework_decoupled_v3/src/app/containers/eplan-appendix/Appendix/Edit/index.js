@@ -19,7 +19,7 @@ import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
-import { Animation, AppendixHeader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { AppendixHeader, DropdownSelect, ToastContainerStyled } from 'app/styles/EplanStyles'
 import * as Icons from 'react-icons/lib/md'
 
 /* Components */
@@ -89,7 +89,7 @@ class EditAppendix extends Component {
 			}
 		}
 
-	}	
+	}
 	async componentDidMount() {
 		if (this.props.appendix === null) {
 			await this.props.getAppendix(this.props.param)
@@ -279,84 +279,76 @@ class EditAppendix extends Component {
 		]
 
 		return (
-			<SecondaryContainer>
-				{appendix !== null && appendixDates !== undefined ?
-
-					<Animation>
-						{this.props.appendixIsSaving || this.state.pdfIsLoading ? null :
-							<div>
-								<div>
-									<Flex wrap>
-										<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
-											<AppendixHeader>{appendix.name}</AppendixHeader>
-										</Box>
-										<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
-											<Flex wrap>
-												<Box width={[1, 1, 1, 1, 9 / 12]}>
-													<Flex wrap>
-														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
-															<DropdownSelect
-																className="pdfSelect"
-																name="pdfSelect"
-																value="one"
-																options={pdfOptions}
-																onChange={handlePdfChange}
-																searchable={false}
-																clearable={false}
-																placeholder="PDF"
-															/>
-														</Box>
-														<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
-															<DropdownSelect
-																className="viewAppendixSelect"
-																name="viewAppendixSelect"
-																value="one"
-																options={viewOptions}
-																onChange={handleViewAppendix}
-																searchable={false}
-																clearable={false}
-																placeholder="Vis plan"
-															/>
-														</Box>
-													</Flex>
-												</Box>
-												<Box width={[1, 1, 1, 1, 3 / 12]}>
-													<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
-													<IconButton onClick={openExportModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
-												</Box>
-											</Flex>
-										</Box>
-									</Flex>
-								</div>
-								<AppendixConfigModal
-									configModalIsOpen={configModalIsOpen}
-									closeConfigModal={closeConfigModal}
-									saveConfigModal={saveConfigModal}
-									dates={appendixDates}
-									status={appendixStatus}
-									statusOptions={statusOptions}
-									appendixId={appendix.appendixId}
-								/>
-								<ExportModal
-									exportModalIsOpen={exportModalIsOpen}
-									closeExportModal={closeExportModal}
-									appendix={appendix}
-									onClickExportAppendix={onClickExportAppendix}
-								/>
-								<ToastContainerStyled
-									position="top-right"
-									autoClose={5000}
-									hideProgressBar={true}
-									newestOnTop={true}
-									closeOnClick
-									pauseOnHover
-								/>
-								<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
-							</div>}
-					</Animation>
-					: null
-				}
-			</SecondaryContainer>
+			(appendix !== null && appendixDates !== undefined) ?
+				(this.props.appendixIsSaving || this.state.pdfIsLoading) ? null :
+					<SecondaryContainer>
+						<Flex wrap>
+							<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
+								<AppendixHeader>{appendix.name}</AppendixHeader>
+							</Box>
+							<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
+								<Flex wrap>
+									<Box width={[1, 1, 1, 1, 9 / 12]}>
+										<Flex wrap>
+											<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
+												<DropdownSelect
+													className="pdfSelect"
+													name="pdfSelect"
+													value="one"
+													options={pdfOptions}
+													onChange={handlePdfChange}
+													searchable={false}
+													clearable={false}
+													placeholder="PDF"
+												/>
+											</Box>
+											<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
+												<DropdownSelect
+													className="viewAppendixSelect"
+													name="viewAppendixSelect"
+													value="one"
+													options={viewOptions}
+													onChange={handleViewAppendix}
+													searchable={false}
+													clearable={false}
+													placeholder="Vis plan"
+												/>
+											</Box>
+										</Flex>
+									</Box>
+									<Box width={[1, 1, 1, 1, 3 / 12]}>
+										<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
+										<IconButton onClick={openExportModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
+									</Box>
+								</Flex>
+							</Box>
+						</Flex>
+						<AppendixConfigModal
+							configModalIsOpen={configModalIsOpen}
+							closeConfigModal={closeConfigModal}
+							saveConfigModal={saveConfigModal}
+							dates={appendixDates}
+							status={appendixStatus}
+							statusOptions={statusOptions}
+							appendixId={appendix.appendixId}
+						/>
+						<ExportModal
+							exportModalIsOpen={exportModalIsOpen}
+							closeExportModal={closeExportModal}
+							appendix={appendix}
+							onClickExportAppendix={onClickExportAppendix}
+						/>
+						<ToastContainerStyled
+							position="top-right"
+							autoClose={5000}
+							hideProgressBar={true}
+							newestOnTop={true}
+							closeOnClick
+							pauseOnHover
+						/>
+						<Appendix appendix={appendix} handleSubmit={handleSubmit(submitUpdate)} handleSubmitAndCommit={handleSubmit(submitUpdateAndCommit)} renderFields={renderFields} />
+					</SecondaryContainer>
+				: null
 		)
 	}
 }
@@ -381,13 +373,13 @@ function mapDispatchToProps(dispatch) {
 			dispatch(addTab(instanceID, tab))
 		},
 		getAppendix: async (param) => {
-			await dispatch(await getAppendixAsync(param))
+			await dispatch(getAppendixAsync(param))
 		},
 		updateApd: async (appendix, id, commit) => {
-			await dispatch(await updateAppendix(appendix, id, commit))
+			await dispatch( updateAppendix(appendix, id, commit))
 		},
 		exportToPlanSystem: async (id) => {
-			return await dispatch(await exportAppendixToPlansystemAsync(id))
+			return await dispatch(exportAppendixToPlansystemAsync(id))
 		},
 		tabisLoading: (id, tab, isLoading) => {
 			dispatch(tabIsLoading(id, tab, isLoading))

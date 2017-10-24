@@ -360,7 +360,7 @@ const mapStateToProps = (state, ownProps) => ({
 function mapDispatchToProps(dispatch) {
 	return {
 		exportToPlanSystem: async (id) => {
-			return dispatch(await exportAppendixToPlansystemAsync(id))
+			return await dispatch(exportAppendixToPlansystemAsync(id))
 		}
 	}
 }

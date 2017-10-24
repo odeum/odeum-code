@@ -12,7 +12,6 @@ const framesConfig = (state) => state.eplan.configFrames
 export const getFilteredFrames = createSelector(
 	[getAppendixFrames, getFramesFilterText],
 	(framesTable, FilterText) => {
-		// console.log('filtered', framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase())))
 		return List(framesTable ? (
 			framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase())) === [] ? [] :
 				framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase()))) : []

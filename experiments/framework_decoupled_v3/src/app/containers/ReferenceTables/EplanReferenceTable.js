@@ -30,8 +30,8 @@ function mapDispatchToProps(dispatch) {
 		onMount: () => {
 			dispatch(changeInstance(sceneProp.id))
 		},
-		getList: () => {
-			dispatch(getReferenceTableListAsync())
+		getList: async () => {
+			await dispatch(getReferenceTableListAsync())
 		}
 	}
     
