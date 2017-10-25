@@ -48,7 +48,7 @@ export const getAppendixDates = createSelector(
 			for (var propField in config.propertiesFields) {
 				intersection[propField] = appendix.fields[propField]
 			}
-		
+
 		return intersection
 
 	}
@@ -62,7 +62,8 @@ export const getAppendixMetaData = createSelector(
 	[getAppendixesRaw, getId],
 	(appendixes, id) => {
 		var appdx = null
-		appdx = appendixes[id]
+		if (appendixes)
+			appdx = appendixes[id]
 		return appdx
 	}
 )

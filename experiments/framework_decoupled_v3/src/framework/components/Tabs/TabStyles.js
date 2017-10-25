@@ -34,6 +34,7 @@ export const TabLink = styled(Link) `
     text-decoration: none;
     overflow: hidden;
     outline: 0;
+    padding: 0px 20px 0px 20px;
     color: ${(props) => props.theme.tabs.TAB_TEXT};
     font-family:  ${(props) => props.theme.font};
     font-style: normal;
@@ -114,7 +115,6 @@ export const TabLabel = styled.li`
     max-width:200px;
     background-color:${(props) => props.theme.tabs.TAB};
     border-radius: 5px 5px 0px 0px;
-    padding: 0px 20px 0px 20px;
     ${props => props.active === true && css`
         background-color: ${(props) => props.theme.tabs.TAB_SELECTED};
         color: ${(props) => props.theme.tabs.TAB_TEXT_SELECTED};

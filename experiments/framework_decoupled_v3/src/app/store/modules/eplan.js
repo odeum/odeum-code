@@ -371,7 +371,6 @@ const initState = {
 }
 
 function eplan(state = initState, action) {
-	console.log(action)
 	switch (action.type) {
 		case EPLAN_LOGIN: {
 			return {
