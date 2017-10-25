@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import * as Icons from 'react-icons/lib/md'
 import * as iconname from './icons'
-import { ICON_DEFAULT_COLOR, ICON_ACTIVE_COLOR } from './colors'
+import { /* ICON_DEFAULT_COLOR */ ICON_ACTIVE_COLOR } from './colors'
 
 
 class Icon extends React.Component {
@@ -14,7 +14,7 @@ class Icon extends React.Component {
 		this.defaultProps = {
 			icon: 'info',
 			size: 15,
-			color: ICON_DEFAULT_COLOR,
+			// color: ICON_DEFAULT_COLOR,
 			active: false,
 			style: {
 				// verticalAlign: '-5px', /* -5px*/

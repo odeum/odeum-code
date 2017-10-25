@@ -1,5 +1,5 @@
 import React from 'react'
-import { TabCont, TabText, TabTextLoad, TabClose, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
+import { TabCont, TabText, TabTextLoad, TabClose, TabIcon, TabCloseLink, TabDiv, TabLabel, TabList, TabLink, TabIconDiv, TabLoaderDiv } from './TabStyles'
 import { ICON_CLOSE } from 'framework/assets/icons'
 import Icon from 'framework/assets/Icon'
 import SmoothLoader from 'framework/components/Widgets/SmoothLoader/SmoothLoader'
@@ -79,18 +79,14 @@ const Tab = ({ instance, tab, active, onTabClick, onCloseClick }) => {
 				<TabCont>
 					<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center' }}
 						onClick={TabClick}>
-
 						<TabDiv>
 							{!tab.isLoading ?
-								<TabIconDiv><Icon icon={tab.icon} active={active} /> </TabIconDiv>
+								<TabIconDiv><TabIcon icon={tab.icon} active={active} /> </TabIconDiv>
 								: <TabLoaderDiv><SmoothLoader size='xxs' velocity='fast' color='#EEEDED' /> </TabLoaderDiv>}
 							{tab.label === '' ? null : tab.fixed ? <TabText title={tab.label}>{tab.label}</TabText> : <TabTextLoad title={tab.label}>{tab.label}</TabTextLoad>}
 						</TabDiv>
-
 					</div>
-
 				</TabCont>
-
 			</TabLink>
 			{isFixed()}
 		</TabLabel>

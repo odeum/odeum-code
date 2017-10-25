@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from 'styled-components'
 import { Link } from 'react-router'
-
+import Icon from 'framework/assets/Icon'
 // import { getColor } from 'framework/assets/colors'
 
 const onEnterText = keyframes`
@@ -28,7 +28,11 @@ export const TabCont = styled.div`
     flex-flow: row nowrap;
     align-items: center;
 `
-
+export const TabIcon = styled(Icon)`
+ &:hover{
+     color:white;
+ }
+`
 export const TabLink = styled(Link) `
     display:flex;
     text-decoration: none;
@@ -103,6 +107,9 @@ export const TabClose = styled.div`
     ${props => props.active === true && css`
       color:white;
     `}
+    &:hover{
+        color:white;
+    }
     display:flex;
 
 `
