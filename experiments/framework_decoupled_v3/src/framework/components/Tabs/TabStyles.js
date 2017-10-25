@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from 'styled-components'
 import { Link } from 'react-router'
 
-import { getColor } from 'framework/assets/colors'
+// import { getColor } from 'framework/assets/colors'
 
 const onEnterText = keyframes`
     from{
@@ -52,35 +52,31 @@ export const TabCloseLink = styled(Link) `
     display:flex;
     user-select: none;
     text-decoration: none;
-    height:100%;
     outline: 0;
-    height:15px;
     color: ${(props) => props.theme.tabs.TAB_TEXT};
     font-family:  ${(props) => props.theme.font};
     font-style: normal;
     font-size: 14px;
     font-weight: 300;
-    margin-left: 5px;
     flex-flow:row;
-    border-radius:5px;
+    border-radius:2px;
     ${props => props.on === true && css`
         color: white;
     `}
     &:hover {
-        background-color: firebrick;
+        background-color: #2C3E50;
         
     }
     transition: background 100ms ease;
+    position:absolute;
+    top:2px;
+    right:2px;
 `
 
 export const TabText = styled.div`
     text-overflow: ellipsis;
     overflow:hidden;
     white-space: nowrap;
-    &:hover{
-        overflow:visible;   
-    }
-    transition: overflow 300ms ease;
 `
 export const TabTextLoad = TabText.extend`
     animation: ${onEnterText} 300ms ease-in-out;    
@@ -119,28 +115,27 @@ export const TabLabel = styled.li`
     background-color:${(props) => props.theme.tabs.TAB};
     border-radius: 5px 5px 0px 0px;
     padding: 0px 20px 0px 20px;
-     &:hover{
-        /* background-color: ${getColor('TAB_COLOR_1')}; */
-        max-width: 600px;
-    }
     ${props => props.active === true && css`
         background-color: ${(props) => props.theme.tabs.TAB_SELECTED};
         color: ${(props) => props.theme.tabs.TAB_TEXT_SELECTED};
     `}
+    &:hover{
+        background-color:#81C1EA;
+    }
     position:relative;
     margin-right: 1px;
-    transition: max-width 300ms ease;
     animation: ${onEnter} 300ms ease;
 `
 export const TabLoaderDiv = styled.div`
     width: 15px;
     margin: 0;
     margin-top:1px;
-    margin-right:1px;
+    margin-right:5px;
     font-size: 18px;
 `
 export const TabIconDiv = TabLoaderDiv.extend`
     margin-top: -3px;
+    margin-right:5px;
     padding: 0;
     ${props => props.active === true && css`
          color: white;

@@ -14,10 +14,10 @@ export function hexToRgbA(hex) {
 	if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
 		c = hex.substring(1).split('')
 		if (c.length === 3) {
-			c= [c[0], c[0], c[1], c[1], c[2], c[2]]
+			c = [c[0], c[0], c[1], c[1], c[2], c[2]]
 		}
 		c = '0x' + c.join('')
-		return 'rgba(' + [(c>>16)&255, (c>>8)&255, c&255].join(', ') + ', 1)'
+		return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(', ') + ', 1)'
 	}
 	throw new Error('Invalid Hex value')
 }
@@ -33,7 +33,7 @@ export const FOOTER = '#F7F7F7'
 export const WORKSPACE = '#ECF0F1'
 
 // SECONDARY COLORS
-export const MENUBAR_SELECTED = '#81C1EA' 
+export const MENUBAR_SELECTED = '#81C1EA'
 
 export const TAB = '#E3E5E5'
 export const TAB_HOVER = '#81C1EA'

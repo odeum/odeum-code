@@ -31,8 +31,8 @@ class ReferenceTableSettingsModal extends Component {
 
 	}
 
-	submitUpdate(values) {
-		this.props.updateReferenceTable(values, this.props.referenceTableId)
+	async submitUpdate(values) {
+		await this.props.updateReferenceTable(values, this.props.referenceTableId)
 		this.props.saveSettingsModal()
 		toast.success('Dine ændringer er gemt')
 	}

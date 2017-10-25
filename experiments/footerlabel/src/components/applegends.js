@@ -2,10 +2,10 @@ export const APP_TITLE = 'ODEUM Report'
 // The title of the app
 
 export const APP_ID = 'Some_Unique_App_Id'
-// App must obtain a unique App ID to be listed in the ODEUN AppMarket
+// App must obtain a unique App ID to be listed in the ODEUM AppMarket
 
 export const APP_TOKEN = 'Some_Unique_App_Token'
-// App must obtain a unique App TOKEN to be listed in the ODEUN AppMarket
+// App must obtain a unique App TOKEN to be listed in the ODEUM AppMarket
 
 export const APP_VERSION = 'v2.0.0'
 // The version of the app, should correlate with the GitHub version if the app is committed to GitHub

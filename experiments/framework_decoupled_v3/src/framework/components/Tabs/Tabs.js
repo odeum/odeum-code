@@ -74,22 +74,24 @@ const Tab = ({ instance, tab, active, onTabClick, onCloseClick }) => {
 		if (tab.fixed === true) { return null }
 	}
 	return (
+		<TabLink to={tab.location} className={active}>
 		<TabLabel active={active}>
 			<TabCont>
 				<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center' }}
 					onClick={TabClick}>
-					<TabLink to={tab.location} className={active}>
+					
 						<TabDiv>
 							{!tab.isLoading ?
 								<TabIconDiv><Icon icon={tab.icon} active={active} /> </TabIconDiv>
 								: <TabLoaderDiv><SmoothLoader size='xxs' velocity='fast' color='#EEEDED' /> </TabLoaderDiv>}
-							{tab.label === '' ? null : tab.fixed ? <TabText>{tab.label}</TabText> : <TabTextLoad>{tab.label}</TabTextLoad>}
+							{tab.label === '' ? null : tab.fixed ? <TabText title={tab.label}>{tab.label}</TabText> : <TabTextLoad title={tab.label}>{tab.label}</TabTextLoad>}
 						</TabDiv>
-					</TabLink>
+				
 				</div>
 				{isFixed()}
 			</TabCont>
 		</TabLabel>
+		</TabLink>
 	)
 }
 export default Tabs

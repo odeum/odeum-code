@@ -176,7 +176,7 @@ class EditFrame extends Component {
 					closeOnClick
 					pauseOnHover
 				/>
-			</PrimaryContainer>
+		</PrimaryContainer>
 
 		)
 	}
