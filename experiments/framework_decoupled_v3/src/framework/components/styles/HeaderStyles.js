@@ -11,6 +11,7 @@ export const HeaderDiv = styled.div`
 ` 
 
 export const LogoImg = styled.img`
+	height: ${(props) => props.size || '100px'};
 `
 
 export const LogoLink = styled(Link) `
