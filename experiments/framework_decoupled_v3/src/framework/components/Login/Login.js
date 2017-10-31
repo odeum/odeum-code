@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Img, LoginLabel, BackgroundDiv, HeaderDiv, Input, InputDiv, LoginButton } from 'framework/components/styles/LoginStyles'
-import HeaderLogo from '../../assets/eplan_logo.png'
+import HeaderLogo from '../../assets/odeum_eplan_logo.svg'
 
 class Login extends React.Component {
 	constructor(props) {
