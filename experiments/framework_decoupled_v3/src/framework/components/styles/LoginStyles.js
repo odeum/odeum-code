@@ -25,12 +25,13 @@ export const LoginButton = styled.button`
     margin: 0;
     border: none;
     text-decoration: none;
-        &:hover {
-            background: ${getColor('TAB_SELECTED')};
+
+    &:hover {
+        background: ${getColor('TAB_SELECTED')};
     }
-        &:active{
+    &:active{
         background: ${getColor('TAB_HOVER')};
-        } 
+    } 
 `
 export const Img = styled.img`
     margin-top: 30px;
