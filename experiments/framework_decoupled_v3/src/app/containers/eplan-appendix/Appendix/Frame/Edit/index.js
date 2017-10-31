@@ -11,13 +11,13 @@ import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { PrimaryContainer, FieldLabel } from 'app/styles'
-import { /* DescriptionDiv, */ AppendixButtonPanel, FramesForm, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { /* DescriptionDiv,  AppendixButtonPanel,*/ FramesForm, ToastContainerStyled } from 'app/styles/EplanStyles'
 
 /* Components */
 import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
 import FormFieldTextarea from 'framework/components/ReduxForm/FormFieldTextarea'
 import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
-import ExportModal from 'app/components/eplan-appendix/Frames/ExportModal'
+// import ExportModal from 'app/components/eplan-appendix/Frames/ExportModal'
 
 
 import Button from 'framework/components/Widgets/Button'
@@ -109,47 +109,47 @@ class EditFrame extends Component {
 		toast.success('Dine ændringer er gemt')
 	}
 
-	openExportModal = () => {
-		this.setState({
-			exportModalIsOpen: true
-		})
-	}
+	// openExportModal = () => {
+	// 	this.setState({
+	// 		exportModalIsOpen: true
+	// 	})
+	// }
 
-	closeExportModal = () => {
-		this.setState({
-			exportModalIsOpen: false
-		})
-	}
-	onClickExportFrame = async () => {
-		document.getElementById('exportStepOne').style.display = 'none'
-		document.getElementById('exportButton').style.display = 'none'
-		document.getElementById('exportCloseButton').style.display = 'none'
-		document.getElementById('exportStepTwo').style.display = 'block'
-		document.getElementById('exportLoadingDiv').style.display = 'block'
+	// closeExportModal = () => {
+	// 	this.setState({
+	// 		exportModalIsOpen: false
+	// 	})
+	// }
+	// onClickExportFrame = async () => {
+	// 	document.getElementById('exportStepOne').style.display = 'none'
+	// 	document.getElementById('exportButton').style.display = 'none'
+	// 	document.getElementById('exportCloseButton').style.display = 'none'
+	// 	document.getElementById('exportStepTwo').style.display = 'block'
+	// 	document.getElementById('exportLoadingDiv').style.display = 'block'
 
-		try {
-			await this.props.exportToPlanSystem(this.props.frameId).then((response) => {
-				document.getElementById('exportLoadingDiv').style.display = 'none'
-				document.getElementById('exportCloseButton').style.display = 'block'
+	// 	try {
+	// 		await this.props.exportToPlanSystem(this.props.frameId).then((response) => {
+	// 			document.getElementById('exportLoadingDiv').style.display = 'none'
+	// 			document.getElementById('exportCloseButton').style.display = 'block'
 
-				console.log('onClickExportFrame', response)
-				if (response.errors === 0) {
-					document.getElementById('exportStatusText').innerText = 'Rammen blev indmeldt korrekt'
-				} else {
-					document.getElementById('exportStatusText').innerText = 'Rammen blev ikke indmeldt, fik følgende fejl: ' + response.result
-				}
-			})
-		} catch (e) {
-			console.log('Error:' + e)
-		}
-	}
+	// 			console.log('onClickExportFrame', response)
+	// 			if (response.errors === 0) {
+	// 				document.getElementById('exportStatusText').innerText = 'Rammen blev indmeldt korrekt'
+	// 			} else {
+	// 				document.getElementById('exportStatusText').innerText = 'Rammen blev ikke indmeldt, fik følgende fejl: ' + response.result
+	// 			}
+	// 		})
+	// 	} catch (e) {
+	// 		console.log('Error:' + e)
+	// 	}
+	// }
 
 	render() {
 		return (
 			<PrimaryContainer>
-				<AppendixButtonPanel>
+				{/* <AppendixButtonPanel>
 					<Button icon={iconname.ICON_CLOUD} onClick={this.openExportModal} size={18} >Exporter til plansystem</Button>
-				</AppendixButtonPanel>
+				</AppendixButtonPanel> */}
 				{this.props.openFrame === null || this.props.appendix === null ?
 					null :
 					<PrimaryContainer>
@@ -161,13 +161,13 @@ class EditFrame extends Component {
 						</FramesForm>
 					</PrimaryContainer>
 				}
-				 <ExportModal
+				 {/* <ExportModal
 					exportModalIsOpen={this.state.exportModalIsOpen}
 					closeExportModal={this.closeExportModal}
 					frame={this.props.openFrame}
 					appendix={this.props.appendix}
 					onClickExportFrame={this.onClickExportFrame}
-				/>
+				/> */}
 				<ToastContainerStyled
 					position="top-right"
 					autoClose={5000}
