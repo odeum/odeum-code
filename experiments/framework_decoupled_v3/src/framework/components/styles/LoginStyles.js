@@ -25,6 +25,7 @@ export const LoginButton = styled.button`
     margin: 0;
     border: none;
     text-decoration: none;
+    cursor: pointer;
 
     &:hover {
         background: ${getColor('TAB_SELECTED')};
