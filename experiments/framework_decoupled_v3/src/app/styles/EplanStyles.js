@@ -372,6 +372,29 @@ export const FormPanelHeader = styled.div`
     cursor: pointer;
     user-select: none;
     border-radius: 4px;
+
+    .arrowUp {
+        display: inline-block;
+        float: right;
+        border: none;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        padding: 5px;
+        margin-top: 17px;
+        margin-right: 20px;
+        transform: rotate(225deg);
+    }
+    .arrowDown {
+        display: inline-block;
+        float: right;
+        border: none;
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        padding: 5px;
+        margin-top: 11px;
+        margin-right: 20px;
+        transform: rotate(45deg);
+    }
 `
 
 // export const ReactQuillStyled = styled(ReactQuill)`

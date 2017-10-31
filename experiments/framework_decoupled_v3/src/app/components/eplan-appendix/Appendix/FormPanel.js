@@ -13,15 +13,18 @@ class FormPanel extends Component {
 			panelStyle: {
 				borderBottomLeftRadius: (this.props.index === 0) ? '0' : '4px',
 				borderBottomRightRadius: (this.props.index === 0) ? '0' : '4px',
-			}
+			},
+			arrowClass: (this.props.index === 0) ? 'arrowUp' : 'arrowDown'
 		}
 	}
 
 	handleOnClick = () => {
 		if (this.state.panellIsOpen) {
 			this.setState({ panellIsOpen: false })
+			this.setState({ arrowClass: 'arrowDown' })
 		} else {
 			this.setState({ panellIsOpen: true })
+			this.setState({ arrowClass: 'arrowUp' })
 		}
 		this.setState({ 
 			panelStyle: {
@@ -43,6 +46,7 @@ class FormPanel extends Component {
 		return (
 			<FormPanelWrapper>
 				<FormPanelHeader onClick={this.handleOnClick} style={this.state.panelStyle}>
+					<span className={this.state.arrowClass} />
 					{this.props.label}
 				</FormPanelHeader>
 				{field}
