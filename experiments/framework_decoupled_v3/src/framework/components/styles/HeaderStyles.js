@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import * as colors from 'framework/assets/colors'
 
 export const HeaderDiv = styled.div`
-    min-height: 100px;
+    min-height: 80px;
     width: 100%;
     background-color: ${colors.CARD_HEADER};
     display: flex;
