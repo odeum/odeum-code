@@ -130,7 +130,7 @@ All current development code is located in development/alpha.
 ## 1.2. ODEUM Code Contributors
 
 * Core Software Developemt Team
-	* [Andrei Tudor](at@webhouse.dk) (AT) (Phone: +45 50 25 70 47) - Framework, Apps
+	* [Andrei Tudor](mailto:at@webhouse.dk) (AT) (Phone: +45 50 25 70 47) - Framework, Apps
 	* [Christian Broberg](cb@webhouse.dk) (CB) (Phone: +45 22 68 08 80) - Project Management
 	* [Henrik Hansen](hh@webhouse.dk) (HH) (Phone: +45 22 68 08 86) - API, Apps
 	* [Mikkel Broberg](mb@webhouse.dk) (MB) (Phone: +45 22 68 08 81) - API, Apps
