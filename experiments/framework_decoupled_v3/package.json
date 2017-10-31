@@ -11,6 +11,7 @@
     "immutable": "^3.8.1",
     "js-file-download": "^0.4.1",
     "lodash": "^4.17.4",
+    "odeum-ui": "^0.1.24",
     "polished": "^1.4.0",
     "react": "15.6.1",
     "react-addons-shallow-compare": "^15.6.0",

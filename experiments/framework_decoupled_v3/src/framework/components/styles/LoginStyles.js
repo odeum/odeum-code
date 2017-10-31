@@ -22,7 +22,7 @@ export const LoginButton = styled.button`
     color: white;
     background: ${getColor('ASPHALT_LIGHT')};
     padding: 9px 20px 9px 20px;
-    margin: 0.7rem;
+    margin: 0;
     border: none;
     text-decoration: none;
         &:hover {
@@ -33,10 +33,10 @@ export const LoginButton = styled.button`
         } 
 `
 export const Img = styled.img`
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 30px;
-    height: 28px;
-    width: 240px;
+    height: 31px;
+    width: 220px;
 `
 
 export const HeaderDiv = styled.div`
