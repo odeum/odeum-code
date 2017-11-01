@@ -27,7 +27,9 @@ import AppendixConfigModal from './AppendixConfigModal'
 import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
+import DeleteModal from 'app/components/eplan-appendix/Appendix/DeleteModal'
 import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
+import { deleteAppendixAsync } from 'app/store/modules/eplan'
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
 import fileDownload from 'js-file-download'
@@ -72,6 +74,7 @@ class EditAppendix extends Component {
 		this.state = {
 			configModalIsOpen: false,
 			exportModalIsOpen: false,
+			deleteModalIsOpen: false,
 			pdfIsLoading: false
 		}
 	}
@@ -121,6 +124,24 @@ class EditAppendix extends Component {
 		})
 	}
 
+	openDeleteModal = () => {
+		this.setState({
+			deleteModalIsOpen: true
+		})
+	}
+
+	closeDeleteModal = () => {
+		this.setState({
+			deleteModalIsOpen: false
+		})
+	}
+
+	onClickDeleteAppendix = async () => {
+		console.log('onClickDeleteAppendix')
+		// await this.props.deleteAppendix(this.props.appendix.appendixId)
+		this.closeDeleteModal()
+	}
+
 	openConfigModal = () => {
 		this.setState({
 			configModalIsOpen: true
@@ -145,6 +166,64 @@ class EditAppendix extends Component {
 		console.log(appendix)
 		await this.props.updateApd(appendix, this.props.param, false)
 		toast.success('Dine ændringer er gemt')
+	}
+
+	handleActionChange = async (option) => {
+
+		switch (option.value) {
+			case 'plansettings':
+				console.log('plansettings', option)
+				this.openConfigModal()
+				break
+			case 'planexport':
+				console.log('planexport', option)
+				this.openExportModal()
+				break
+			case 'planviewpublic':
+				console.log('planviewpublic', option)
+				window.open(this.props.appendix.folderUrl, '_viewappendix')
+				break
+			case 'plandelete':
+				console.log('plandelete', option)
+				this.openDeleteModal()
+				break
+			case 'pdfcreate':
+				console.log('pdfcreate', option)	
+				this.setState({ pdfIsLoading: true })
+				try {
+					await createCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+						if (response.errorcode) {
+							alert(response.description)
+						} else {
+							fileDownload(atob(response.result), 'test.pdf')
+						}
+					})
+				} catch (e) {
+					console.log('Error:' + e)
+				}
+				this.setState({ pdfIsLoading: false })
+				break
+			case 'pdfdownload':
+				console.log('pdfdownload', option)
+				this.setState({ pdfIsLoading: true })
+				try {
+					await getCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+						if (response.errorcode) {
+							alert(response.description)
+						} else {
+							fileDownload(atob(response.result), 'test.pdf')
+						}
+					})
+				} catch (e) {
+					console.log('Error:' + e)
+				}
+				this.setState({ pdfIsLoading: false })
+				break
+			default:
+				console.log('default', option)
+				break
+		}
+
 	}
 
 	handlePdfChange = async (option) => {
@@ -178,6 +257,7 @@ class EditAppendix extends Component {
 	}
 
 	handleViewAppendix = (option) => {
+		console.log(option)
 		if (option.value === 'viewpublic') {
 			window.open(this.props.appendix.folderUrl, '_viewappendix')
 		}
@@ -254,22 +334,25 @@ class EditAppendix extends Component {
 
 	render() {
 		/* State */
-		const { configModalIsOpen, exportModalIsOpen } = this.state
+		const { configModalIsOpen, exportModalIsOpen, deleteModalIsOpen } = this.state
 		/* Props */
 		const { appendix, handleSubmit, appendixDates, appendixStatus } = this.props
 		/* Functions */
-		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
-			closeConfigModal, saveConfigModal,
-			closeExportModal, onClickExportAppendix, handlePdfChange,
-			handleViewAppendix } = this
-		const pdfOptions = [
-			{ value: 'create', label: 'Opret PDF af tillæg' },
-			{ value: 'download', label: 'Download PDF' }
-		]
-		const viewOptions = [
-			{ value: 'viewpublic', label: 'Vis offentlig udgave' }
-		]
+		const { submitUpdate, submitUpdateAndCommit, 
+			closeConfigModal, saveConfigModal, onClickDeleteAppendix, closeDeleteModal,
+			closeExportModal, onClickExportAppendix, handleActionChange } = this
 
+		const actionOptions = [
+			{ value: 'planheader', label: '--- PLAN ---', disabled: true },
+			{ value: 'plansettings', label: 'Indstillinger' },
+			{ value: 'planexport', label: 'Eksportér til plansystem' },
+			{ value: 'planviewpublic', label: 'Vis offentlig udgave' },
+			// { value: 'plandelete', label: 'Slet tillæg' },
+			{ value: 'pdfheader', label: '--- PDF ---', disabled: true },
+			{ value: 'pdfcreate', label: 'Opret PDF af tillæg' },
+			{ value: 'pdfdownload', label: 'Download PDF' }
+		]
+	
 		const statusOptions = [
 			{ value: '-1', label: '' },
 			{ value: "aflyst", label: "Aflyst" },
@@ -283,44 +366,20 @@ class EditAppendix extends Component {
 				(this.props.appendixIsSaving || this.state.pdfIsLoading) ? null :
 					<SecondaryContainer>
 						<Flex wrap>
-							<Box width={[1, 1, 1, 1, 8 / 12]} mb={10}>
+							<Box width={[1, 1, 1, 9 / 12, 9 / 12]} mb={10}>
 								<AppendixHeader>{appendix.name}</AppendixHeader>
 							</Box>
-							<Box width={[1, 1, 1, 1, 4 / 12]} mb={20}>
-								<Flex wrap>
-									<Box width={[1, 1, 1, 1, 9 / 12]}>
-										<Flex wrap>
-											<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pr={[0, 0, 0, 0, 15]}>
-												<DropdownSelect
-													className="pdfSelect"
-													name="pdfSelect"
-													value="one"
-													options={pdfOptions}
-													onChange={handlePdfChange}
-													searchable={false}
-													clearable={false}
-													placeholder="PDF"
-												/>
-											</Box>
-											<Box width={[1, 1, 1, 1, 6 / 12]} pb={[15, 15, 15, 15, 0]} pl={[0, 0, 0, 0, 15]}>
-												<DropdownSelect
-													className="viewAppendixSelect"
-													name="viewAppendixSelect"
-													value="one"
-													options={viewOptions}
-													onChange={handleViewAppendix}
-													searchable={false}
-													clearable={false}
-													placeholder="Vis plan"
-												/>
-											</Box>
-										</Flex>
-									</Box>
-									<Box width={[1, 1, 1, 1, 3 / 12]}>
-										<IconButton onClick={openConfigModal} style={{ float: 'right' }}><Icons.MdSettings size="40" color="#3b97d3" /></IconButton>
-										<IconButton onClick={openExportModal} style={{ float: 'right' }}><Icons.MdCloudUpload size="40" color="#3b97d3" /></IconButton>
-									</Box>
-								</Flex>
+							<Box width={[1, 1, 1, 3 / 12, 3 / 12]} mb={20}>
+								<DropdownSelect
+									className="pdfSelect"
+									name="pdfSelect"
+									value="one"
+									options={actionOptions}
+									onChange={handleActionChange}
+									searchable={false}
+									clearable={false}
+									placeholder="Handlinger"
+								/>
 							</Box>
 						</Flex>
 						<AppendixConfigModal
@@ -338,6 +397,13 @@ class EditAppendix extends Component {
 							appendix={appendix}
 							onClickExportAppendix={onClickExportAppendix}
 						/>
+						<DeleteModal
+							deleteModalIsOpen={deleteModalIsOpen}
+							closeDeleteModal={closeDeleteModal}
+							appendix={appendix}
+							onClickDeleteAppendix={onClickDeleteAppendix}
+						/>
+
 						<ToastContainerStyled
 							position="top-right"
 							autoClose={5000}
@@ -380,6 +446,9 @@ function mapDispatchToProps(dispatch) {
 		},
 		exportToPlanSystem: async (id) => {
 			return await dispatch(exportAppendixToPlansystemAsync(id))
+		},
+		deleteAppendix: async (id) => {
+			return await dispatch(deleteAppendixAsync(id))
 		},
 		tabisLoading: (id, tab, isLoading) => {
 			dispatch(tabIsLoading(id, tab, isLoading))

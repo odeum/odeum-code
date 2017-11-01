@@ -113,7 +113,7 @@ export const SpanRowNr = styled.span`
 
 export const AppendixHeader = styled.div`
     float: left;
-    max-width: 80%;
+    max-width: 95%;
     font-family: 'Source Sans Pro';
     font-size: 35px;
     font-weight: 400;
