@@ -13,8 +13,10 @@ export const getFilteredFrames = createSelector(
 	[getAppendixFrames, getFramesFilterText],
 	(framesTable, FilterText) => {
 		return List(framesTable ? (
-			framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase())) === [] ? [] :
-				framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase()))) : []
+			framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase())
+				|| t.number.toLowerCase().includes(FilterText.toLowerCase())) === [] ? [] :
+				framesTable.frames.filter(t => t.name.toLowerCase().includes(FilterText.toLowerCase())
+				|| t.number.toLowerCase().includes(FilterText.toLowerCase()))) : []
 		)
 	}
 )
