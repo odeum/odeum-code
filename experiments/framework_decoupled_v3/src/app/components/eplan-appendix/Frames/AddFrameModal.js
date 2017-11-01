@@ -1,9 +1,9 @@
 import React from 'react'
-import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'framework/components/styles/ModalStyles'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
 import * as iconname from 'framework/assets/icons'
-import Button from 'framework/components/Widgets/Button'
+import { Button, ButtonPanel } from 'odeum-ui'
 
 const AddFrameModal = ({ addFrameModalIsOpen, closeAddFrameModal, addNewFrame }) => {
 	return (
@@ -20,10 +20,10 @@ const AddFrameModal = ({ addFrameModalIsOpen, closeAddFrameModal, addNewFrame })
 				</ModalHeader>
 				<ModalContent>
                     Er du sikker på du vil tilføje en ny ramme?
-					<ModalButtonPanel>
-						<Button onClick={addNewFrame} icon={iconname.ICON_ADD_CIRCLE} size={18}>Ja</Button>
-						<Button onClick={closeAddFrameModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Nej</Button>
-					</ModalButtonPanel>
+					<ButtonPanel justify="left">
+						<Button onClick={closeAddFrameModal} icon="add_circle" label="Nej" />
+						<Button onClick={addNewFrame} icon="add_circle" label="Ja" />
+					</ButtonPanel>
 				</ModalContent>
 			</ModalWindow>
 		</div>
