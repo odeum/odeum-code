@@ -44,9 +44,11 @@ export const getAppendixDates = createSelector(
 	[getConfig, getAppendix],
 	(config, appendix) => {
 		var intersection = {}
+		console.log(config)
 		if (config && appendix)
 			for (var propField in config.propertiesFields) {
-				intersection[propField] = appendix.fields[propField]
+				if (config.propertiesFields[propField].type === 'DATEPICKER')
+					intersection[propField] = appendix.fields[propField]
 			}
 
 		return intersection
@@ -73,5 +75,12 @@ export const getAppendixStatus = createSelector(
 	(appendix) => {
 		return appendix ? (appendix.fields[111520000000609]) : null
 
+	}
+)
+
+export const getAppendixPlanID = createSelector(
+	[getAppendix],
+	(appendix) => {
+		return appendix ? (appendix.fields[111520000000560]) : null
 	}
 )

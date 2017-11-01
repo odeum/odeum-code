@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 import {
 	getAppendixAsync, updateAppendix,
@@ -11,11 +12,11 @@ import { Field, reduxForm } from 'redux-form'
 
 import {
 	getAppendixEdit, getAppendix,
-	getAppendixDates, getAppendixStatus
+	getAppendixDates, getAppendixStatus, getAppendixPlanID
 } from 'app/store/selectors/appendix'
 
 /* Framework */
-import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
+import { addTab, tabIsLoading, tabClose } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
@@ -136,10 +137,23 @@ class EditAppendix extends Component {
 		})
 	}
 
+	closeTabOnDelete = () => {
+		console.log('closeTabOnDelete')
+		// this.props.closeTab(this.props.param, this.tab)
+	}
+
 	onClickDeleteAppendix = async () => {
 		console.log('onClickDeleteAppendix')
-		// await this.props.deleteAppendix(this.props.appendix.appendixId)
 		this.closeDeleteModal()
+		let res = await this.props.deleteAppendix(this.props.appendix.appendixId)
+		if (res.errors === 0 && res.result === 'Success') {
+		// toast.success('Tillæg er slettet', { onClose: (abc) => {console.log(abc)} })
+			this.props.closeTab(this.props.param, this.tab)
+		} else {
+			
+		}
+
+		
 	}
 
 	openConfigModal = () => {
@@ -162,7 +176,7 @@ class EditAppendix extends Component {
 			fields: values.dates
 		}
 
-		appendix.fields[values.status.id] = values.status
+		// appendix.fields[values.status.id] = values.status
 		console.log(appendix)
 		await this.props.updateApd(appendix, this.props.param, false)
 		toast.success('Dine ændringer er gemt')
@@ -338,7 +352,7 @@ class EditAppendix extends Component {
 		/* State */
 		const { configModalIsOpen, exportModalIsOpen, deleteModalIsOpen } = this.state
 		/* Props */
-		const { appendix, handleSubmit, appendixDates, appendixStatus } = this.props
+		const { appendix, handleSubmit, appendixDates, appendixStatus, appendixPlanID } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, 
 			closeConfigModal, saveConfigModal, onClickDeleteAppendix, closeDeleteModal,
@@ -349,18 +363,10 @@ class EditAppendix extends Component {
 			{ value: 'plansettings', label: 'Indstillinger' },
 			{ value: 'planexport', label: 'Eksportér til plansystem' },
 			{ value: 'planviewpublic', label: 'Vis offentlig udgave' },
-			// { value: 'plandelete', label: 'Slet tillæg' },
+			{ value: 'plandelete', label: 'Slet tillæg' },
 			{ value: 'pdfheader', label: '--- PDF ---', disabled: true },
 			{ value: 'pdfcreate', label: 'Opret PDF af tillæg' },
 			{ value: 'pdfdownload', label: 'Download PDF' }
-		]
-	
-		const statusOptions = [
-			{ value: '-1', label: '' },
-			{ value: "aflyst", label: "Aflyst" },
-			{ value: "forslag", label: "Forslag" },
-			{ value: "kladde", label: "Kladde" },
-			{ value: "vedtaget", label: "Vedtaget" }
 		]
 
 		return (
@@ -390,7 +396,7 @@ class EditAppendix extends Component {
 							saveConfigModal={saveConfigModal}
 							dates={appendixDates}
 							status={appendixStatus}
-							statusOptions={statusOptions}
+							planID={appendixPlanID}
 							appendixId={appendix.appendixId}
 						/>
 						<ExportModal
@@ -431,6 +437,7 @@ const mapStateToProps = (state, ownProps) => ({
 	appendixIsSaving: state.eplan.appendixIsSaving,
 	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
 	appendixStatus: getAppendixStatus(state, ownProps.param, ownProps),
+	appendixPlanID: getAppendixPlanID(state, ownProps.param, ownProps),
 	form: 'appendix_' + ownProps.param,
 	appendixIsLoading: state.eplan.ApdxLoading[ownProps.param]
 })
@@ -439,6 +446,10 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, tab) => {
 			dispatch(addTab(instanceID, tab))
+		},
+		closeTab: (instanceID, tab) => {
+			dispatch(tabClose(instanceID, tab))
+			dispatch(push('/eplan/list/'))
 		},
 		getAppendix: async (param) => {
 			await dispatch(getAppendixAsync(param))

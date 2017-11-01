@@ -188,11 +188,11 @@ export function deleteAppendixAsync(id) {
 	return async dispatch => {
 		dispatch(appendixIsLoading(id, true))
 		var apdx = await deleteAppendixById(id)
-		console.log(apdx)
 		if (apdx.errors === 0 && apdx.result === 'Success') {
 			dispatch(deleteAppendix(id))
 		}
 		dispatch(appendixIsLoading(id, false))
+		return apdx
 	}
 }
 
