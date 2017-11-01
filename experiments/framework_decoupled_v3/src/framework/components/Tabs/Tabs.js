@@ -8,41 +8,6 @@ const Tabs = ({ tabs, instanceID, activeTab, onTabClick, OnCloseClick }) => {
 	let active = (tab) => {
 		return tab.label === activeTab ? true : false
 	}
-	/* 
-		function isFixed(tab) {
-			if (tab.fixed === undefined) {
-				return null
-			}
-			if (!tab.fixed) {
-				return <TabCloseLink to="/">
-					<TabClose active={active(tab)} onClick={(e) => {
-						e.preventDefault()
-						OnCloseClick(instanceID, tab)
-					}}>
-						<Icon icon={ICON_CLOSE} active={active(tab)} size={15} />
-					</TabClose>
-				</TabCloseLink>
-			}
-		} */
-	/* <TabLabel key={index} active={active(tabs[tab])}>
-			<TabCont>
-				<div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center' }}
-					onClick={(e) => {
-						e.preventDefault()
-						onTabClick(instanceID, tabs[tab].label)
-					}}>
-					<TabLink to={tabs[tab].location} className={active(tabs[tab])}>
-						<TabDiv>
-							{!tabs[tab].isLoading ?
-								<TabIconDiv><Icon icon={tabs[tab].icon} active={active(tabs[tab])} /> </TabIconDiv>
-								: <TabLoaderDiv><SmoothLoader size='xxs' velocity='fast' color='#EEEDED' /> </TabLoaderDiv>}
-							<TabText>{tabs[tab].label}</TabText>
-						</TabDiv>
-					</TabLink>
-				</div>
-				{isFixed(tabs[tab])}
-			</TabCont>
-		</TabLabel> */
 	return (
 		<TabList>
 			{Object.keys(tabs).map((tab, index) => {
