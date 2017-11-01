@@ -3,12 +3,10 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
-import { /* DescriptionDiv */ /* PulseLoader ,*/ AppendixButtonPanel } from 'app/styles/EplanStyles'
-import { getListAsync, setAppendixFilterText } from 'app/store/modules/eplan'
+import { getListAsync, setAppendixFilterText, getAppendixCfg } from 'app/store/modules/eplan'
 import { PrimaryContainer } from 'app/styles/'
 import NewAppendixModal from './NewAppendixModal'
-import Button from 'framework/components/Widgets/Button'
-import * as iconname from 'framework/assets/icons'
+import { Button, ButtonPanel } from 'odeum-ui'
 import Input from 'framework/components/Widgets/Input/Input'
 
 class AppendixList extends Component {
@@ -77,10 +75,10 @@ class AppendixList extends Component {
 
 		return (
 			<PrimaryContainer>
-				<AppendixButtonPanel>
-					<Input value={this.props.appendixFilterText} autoFocus placeholder={'Type here to filter list by name'} onChange={this.setFilter} />
-					<Button onClick={openNewAppendixModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Opret nyt tillæg</Button>
-				</AppendixButtonPanel>
+				<ButtonPanel justify="right">
+					<Button onClick={openNewAppendixModal} icon="add_circle" label="Opret nyt tillæg" />
+				</ButtonPanel>
+				<Input value={this.props.appendixFilterText} autoFocus placeholder="Filtrer liste på navn" onChange={this.setFilter} width="20%" />
 				{this.props.isLoading ? null : <AppendixTable onClickButton={this.onClickButton} />}
 				<NewAppendixModal
 					newAppendixModalIsOpen={newAppendixModalIsOpen}
@@ -100,6 +98,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 			dispatch(tabChange(id, tab.label))
+			dispatch(getAppendixCfg())
 			// dispatch(setAppendixFilterText(''))
 		},
 		onClickButton: (location) => {

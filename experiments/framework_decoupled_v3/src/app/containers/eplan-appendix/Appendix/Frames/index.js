@@ -11,14 +11,11 @@ import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
 
 /* App */
 import FramesTable from './FramesTable/Table'
-import { AppendixButtonPanel, ToastContainerStyled } from 'app/styles/EplanStyles'
+import { ToastContainerStyled } from 'app/styles/EplanStyles'
 import { PrimaryContainer } from 'app/styles/'
-import * as iconname from 'framework/assets/icons'
-import Button from 'framework/components/Widgets/Button'
 import AddFrameModal from 'app/components/eplan-appendix/Frames/AddFrameModal'
 import Input from 'framework/components/Widgets/Input/Input'
-
-
+import { Button, ButtonPanel } from 'odeum-ui'
 import { toast } from 'react-toastify'
 
 class Frames extends Component {
@@ -94,10 +91,10 @@ class Frames extends Component {
 		// console.log('framesTable', this.props.framesTable)
 		return (
 			<PrimaryContainer>
-				<AppendixButtonPanel>
-					<Input value={framesFilterText} onChange={this.setFilter} />
-					<Button onClick={openAddFrameModal} icon={iconname.ICON_ADD_CIRCLE} size={18}>Tilføj ny ramme</Button>
-				</AppendixButtonPanel>
+				<ButtonPanel justify="right">
+					<Button onClick={openAddFrameModal} icon="add_circle" label="Tilføj ny ramme" />
+				</ButtonPanel>
+				<Input value={framesFilterText} onChange={this.setFilter} placeholder="Filtrer liste på navn" width="20%" />
 				{this.props.framesIsLoading ? null : <FramesTable onClickButton={this.onClickButton} id={this.props.param} />}
 				<AddFrameModal
 					addFrameModalIsOpen={addFrameModalIsOpen}

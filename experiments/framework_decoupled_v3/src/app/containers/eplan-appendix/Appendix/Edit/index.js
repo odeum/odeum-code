@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 import {
 	getAppendixAsync, updateAppendix,
@@ -15,7 +16,7 @@ import {
 } from 'app/store/selectors/appendix'
 
 /* Framework */
-import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
+import { addTab, tabIsLoading, tabClose } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
@@ -28,7 +29,7 @@ import { Flex, Box } from 'grid-styled'
 import Appendix from 'app/components/eplan-appendix/Appendix/Appendix'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import DeleteModal from 'app/components/eplan-appendix/Appendix/DeleteModal'
-import { getCompleteAppendixPdf, createCompleteAppendixPdf } from 'app/data/eplan'
+import { getAppendixPdf, createAppendixPdf } from 'app/data/eplan'
 import { deleteAppendixAsync } from 'app/store/modules/eplan'
 import FormPanel from 'app/components/eplan-appendix/Appendix/FormPanel'
 import { toast } from 'react-toastify'
@@ -137,9 +138,11 @@ class EditAppendix extends Component {
 	}
 
 	onClickDeleteAppendix = async () => {
-		console.log('onClickDeleteAppendix')
-		// await this.props.deleteAppendix(this.props.appendix.appendixId)
 		this.closeDeleteModal()
+		let res = await this.props.deleteAppendix(this.props.appendix.appendixId)
+		if (res.errors === 0 && res.result === 'Success') {
+			this.props.closeTab('eplan', { id: res.appendixId })
+		}
 	}
 
 	openConfigModal = () => {
@@ -191,11 +194,13 @@ class EditAppendix extends Component {
 				console.log('pdfcreate', option)	
 				this.setState({ pdfIsLoading: true })
 				try {
-					await createCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+					await createAppendixPdf(this.props.appendix.appendixId).then((response) => {
 						if (response.errorcode) {
-							alert(response.description)
+							toast.success(response.description)
+						} else if (response.message) {
+							toast.success(response.message)
 						} else {
-							fileDownload(atob(response.result), 'test.pdf')
+							//fileDownload(atob(response.result), 'test.pdf')
 						}
 					})
 				} catch (e) {
@@ -207,9 +212,9 @@ class EditAppendix extends Component {
 				console.log('pdfdownload', option)
 				this.setState({ pdfIsLoading: true })
 				try {
-					await getCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+					await getAppendixPdf(this.props.appendix.appendixId).then((response) => {
 						if (response.errorcode) {
-							alert(response.description)
+							toast.success(response.description)
 						} else {
 							fileDownload(atob(response.result), 'test.pdf')
 						}
@@ -230,7 +235,7 @@ class EditAppendix extends Component {
 		this.setState({ pdfIsLoading: true })
 		if (option.value === 'create') {
 			try {
-				await createCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+				await createAppendixPdf(this.props.appendix.appendixId).then((response) => {
 					if (response.errorcode) {
 						alert(response.description)
 					} else {
@@ -242,7 +247,7 @@ class EditAppendix extends Component {
 			}
 		} else if (option.value === 'download') {
 			try {
-				await getCompleteAppendixPdf(this.props.appendix.appendixId).then((response) => {
+				await getAppendixPdf(this.props.appendix.appendixId).then((response) => {
 					if (response.errorcode) {
 						alert(response.description)
 					} else {
@@ -347,7 +352,7 @@ class EditAppendix extends Component {
 			{ value: 'plansettings', label: 'Indstillinger' },
 			{ value: 'planexport', label: 'Eksportér til plansystem' },
 			{ value: 'planviewpublic', label: 'Vis offentlig udgave' },
-			// { value: 'plandelete', label: 'Slet tillæg' },
+			{ value: 'plandelete', label: 'Slet tillæg' },
 			{ value: 'pdfheader', label: '--- PDF ---', disabled: true },
 			{ value: 'pdfcreate', label: 'Opret PDF af tillæg' },
 			{ value: 'pdfdownload', label: 'Download PDF' }
@@ -430,6 +435,10 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, tab) => {
 			dispatch(addTab(instanceID, tab))
+		},
+		closeTab: (instanceID, tab) => {
+			dispatch(tabClose(instanceID, tab))
+			dispatch(push('/eplan/list/'))
 		},
 		getAppendix: async (param) => {
 			await dispatch(getAppendixAsync(param))

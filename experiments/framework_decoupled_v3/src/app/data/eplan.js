@@ -3,7 +3,7 @@ import { List } from 'immutable'
 
 export var api = create({
 	baseURL: 'https://horsenskp.dev.webhouse.dk/',
-	timeout: 10000,
+	timeout: 30000,
 	headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json'
@@ -12,7 +12,7 @@ export var api = create({
 })
 
 //region PDF
-export async function getCompleteAppendixPdf(id) {
+export async function getAppendixPdf(id) {
 	var result = await api.get('rest/eplan/kpt/appendix/appendixpdf/' + id)
 		.then((response) => {
 			return response.data
@@ -21,7 +21,7 @@ export async function getCompleteAppendixPdf(id) {
 	return result
 }
 
-export async function createCompleteAppendixPdf(id) {
+export async function createAppendixPdf(id) {
 	var result = await api.post('rest/eplan/kpt/appendix/appendixpdf/' + id)
 		.then((response) => {
 			return response.data
