@@ -137,23 +137,12 @@ class EditAppendix extends Component {
 		})
 	}
 
-	closeTabOnDelete = () => {
-		console.log('closeTabOnDelete')
-		// this.props.closeTab(this.props.param, this.tab)
-	}
-
 	onClickDeleteAppendix = async () => {
-		console.log('onClickDeleteAppendix')
 		this.closeDeleteModal()
 		let res = await this.props.deleteAppendix(this.props.appendix.appendixId)
 		if (res.errors === 0 && res.result === 'Success') {
-		// toast.success('Tillæg er slettet', { onClose: (abc) => {console.log(abc)} })
-			this.props.closeTab(this.props.param, this.tab)
-		} else {
-			
+			this.props.closeTab('eplan', { id: res.appendixId })
 		}
-
-		
 	}
 
 	openConfigModal = () => {

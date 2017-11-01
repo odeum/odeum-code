@@ -189,6 +189,7 @@ export function deleteAppendixAsync(id) {
 		dispatch(appendixIsLoading(id, true))
 		var apdx = await deleteAppendixById(id)
 		if (apdx.errors === 0 && apdx.result === 'Success') {
+			apdx.appendixId = id
 			dispatch(deleteAppendix(id))
 		}
 		dispatch(appendixIsLoading(id, false))
@@ -436,18 +437,10 @@ function eplan(state = initState, action) {
 			}
 		}
 		case DELETE_APPENDIX: {
-			console.log(action.payload)
-
-			// referenceTableValues: {
-			// 	...state.referenceTableValues,
-			// 	[action.payload.referenceTableId]: {
-			// 		...state.referenceTableValues[action.payload.referenceTableId],
-			// 		data: Map(state.referenceTableValues[action.payload.referenceTableId].data).delete(action.payload.referenceTableValueId.toString()).toObject()
-			// 	}
-			// }
-
 			return {
 				...state,
+				openAppendix: Map(state.openAppendix).delete(action.payload.toString()).toObject(),
+				appendixes: Map(state.appendixes).delete(action.payload.toString()).toObject()
 			}
 		}
 		case APPENDIX_IS_SAVING:
