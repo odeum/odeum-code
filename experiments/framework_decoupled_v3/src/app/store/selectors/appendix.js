@@ -20,12 +20,19 @@ export const getAppendix = (state, id, props) => state.eplan.openAppendix[id]
 export const getFilteredAppdx = createSelector(
 	[getAppendixes, getAppendixFilterText],
 	(appendixes, appendixFilterText) => {
-		return appendixes ? (
-			appendixes.filter(t => t.name.toLowerCase().includes(appendixFilterText.toLowerCase())) === [] ? [] :
-				appendixes.filter(t => t.name.toLowerCase().includes(appendixFilterText.toLowerCase()))) : []
+
+		return appendixes ?
+			appendixes.filter(t => t.name.toLowerCase().includes(appendixFilterText.toLowerCase())
+				|| t.status.toLowerCase().includes(appendixFilterText.toLowerCase())
+				|| t.responsible.toLowerCase().includes(appendixFilterText.toLowerCase())
+				|| t.number.toLowerCase().includes(appendixFilterText.toLowerCase())) === [] ?
+				[] : appendixes.filter(t => t.name.toLowerCase().includes(appendixFilterText.toLowerCase())
+					|| t.status.toLowerCase().includes(appendixFilterText.toLowerCase())
+					|| t.responsible.toLowerCase().includes(appendixFilterText.toLowerCase())
+					|| t.number.toLowerCase().includes(appendixFilterText.toLowerCase())) : []
+
 	}
 )
-
 export const getAppendixEdit = createSelector(
 	[getConfig, getAppendix],
 	(config, appendix) => {
