@@ -113,7 +113,7 @@ export const SpanRowNr = styled.span`
 
 export const AppendixHeader = styled.div`
     float: left;
-    max-width: 80%;
+    max-width: 95%;
     font-family: 'Source Sans Pro';
     font-size: 35px;
     font-weight: 400;
@@ -246,6 +246,7 @@ export const DropdownSelect = styled(Select) `
         border-radius: 3px;
         height: 37px;
         cursor: pointer;
+        margin-bottom: 15px;
         /*box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.33);*/
 
         .Select-placeholder {
@@ -263,6 +264,7 @@ export const DropdownSelect = styled(Select) `
 
         .Select-value-label {
             line-height: 37px;
+            color: #fff !important;
         }
 
         .Select-input {

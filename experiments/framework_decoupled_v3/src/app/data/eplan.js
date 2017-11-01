@@ -77,6 +77,11 @@ export async function getAppendixById(id) {
 	return appendix.data
 }
 
+export async function deleteAppendixById(id) {
+	let appendix = await api.delete('rest/eplan/kpt/appendix/' + id)
+	console.log(appendix)
+	return appendix.data
+}
 
 export async function exportAppendixToPlansystem(id) {
 	var result = await api.get('rest/eplan/kpt/appendix/publish/' + id)

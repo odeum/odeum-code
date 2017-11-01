@@ -5,7 +5,7 @@ import {
 	getReferenceTableEntry, saveReferenceTable,
 	saveReferenceTableValue, deleteReferenceTableValue,
 	getFrameConfig, getFrameData, setFrameData, backendLogin,
-	getAuth, addNewFrame, exportFrameToPlansystem
+	getAuth, addNewFrame, exportFrameToPlansystem, deleteAppendixById
 } from 'app/data/eplan'
 import { push } from 'react-router-redux'
 import { List, Map } from 'immutable'
@@ -22,6 +22,7 @@ const GET_APPENDIX_CONFIG = '@@EPLAN/GET_APPENDIX_CONFIG'
 const UPDATE_APPENDIX = '@@EPLAN/UPDATE_APPENDIX'
 const ADD_APPENDIX = '@@EPLAN/ADD_APPENDIX'
 const CLOSE_APPENDIX = '@@EPLAN/CLOSE_OPEN_APPENDIX'
+const DELETE_APPENDIX = '@@EPLAN/DELETE_APPENDIX'
 const PUBLISH_APPENDIX_PLANSYSTEM = '@@EPLAN/PUBLISH_APPENDIX_PLANSYSTEM'
 const PUBLISH_FRAME_PLANSYSTEM = '@@EPLAN/PUBLISH_FRAME_PLANSYSTEM'
 const GET_APPENDIX_PDF = '@@EPLAN/GET_APPENDIX_PDF'
@@ -72,6 +73,7 @@ const actionGetFrameData = (data) => ({ type: GET_APPENDIX_FRAME_DATA, payload: 
 const actionSetFrameData = (data) => ({ type: SET_APPENDIX_FRAME_DATA, payload: data })
 const appendixIsSaving = () => ({ type: APPENDIX_IS_SAVING })
 const appendixIsLoading = (id, data) => ({ type: APPENDIX_IS_LOADING, payload: { id: id, isLoading: data } })
+const deleteAppendix = (data) => ({ type: DELETE_APPENDIX, payload: data })
 
 /* References */
 const getRefTableList = (data) => ({ type: GET_REFERENCE_TABLE_LIST, payload: data })
@@ -179,6 +181,18 @@ export function getAppendixAsync(id) {
 		dispatch(getAppendix(apdx))
 		dispatch(appendixIsLoading(id, false))
 
+	}
+}
+
+export function deleteAppendixAsync(id) {
+	return async dispatch => {
+		dispatch(appendixIsLoading(id, true))
+		var apdx = await deleteAppendixById(id)
+		console.log(apdx)
+		if (apdx.errors === 0 && apdx.result === 'Success') {
+			dispatch(deleteAppendix(id))
+		}
+		dispatch(appendixIsLoading(id, false))
 	}
 }
 
@@ -419,6 +433,21 @@ function eplan(state = initState, action) {
 			return {
 				...state,
 				openAppendix: state.openAppendix.filter((item) => item === action.payload)
+			}
+		}
+		case DELETE_APPENDIX: {
+			console.log(action.payload)
+
+			// referenceTableValues: {
+			// 	...state.referenceTableValues,
+			// 	[action.payload.referenceTableId]: {
+			// 		...state.referenceTableValues[action.payload.referenceTableId],
+			// 		data: Map(state.referenceTableValues[action.payload.referenceTableId].data).delete(action.payload.referenceTableValueId.toString()).toObject()
+			// 	}
+			// }
+
+			return {
+				...state,
 			}
 		}
 		case APPENDIX_IS_SAVING:

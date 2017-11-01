@@ -50,6 +50,7 @@ let renderForm = ({ input }) => {
 			dateFormat="DD/MM/YYYY"
 			showWeekNumbers
 			onChange={pickDate}
+			locale="da"
 		/>
 	)
 }
