@@ -5,10 +5,10 @@ const FormFieldInput = ({
 	input,
 	label,
 	type,
-	meta: { touched, error, warning }
-  }) => 
-  	<div>
-		<StyledFormFieldInput meta={{ touched, error, warning }} {...input} placeholder={label} type={type} />
+	meta: { touched, error, warning },
+	disabled }) =>
+	<div>
+		<StyledFormFieldInput meta={{ touched, error, warning }} {...input} placeholder={label} type={type} disabled={disabled}/>
 		{touched &&
 			((error &&
 				<span>

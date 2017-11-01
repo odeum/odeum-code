@@ -11,7 +11,7 @@ import { Field, reduxForm } from 'redux-form'
 
 import {
 	getAppendixEdit, getAppendix,
-	getAppendixDates, getAppendixStatus
+	getAppendixDates, getAppendixStatus, getAppendixPlanID
 } from 'app/store/selectors/appendix'
 
 /* Framework */
@@ -141,7 +141,7 @@ class EditAppendix extends Component {
 			fields: values.dates
 		}
 
-		appendix.fields[values.status.id] = values.status
+		// appendix.fields[values.status.id] = values.status
 		console.log(appendix)
 		await this.props.updateApd(appendix, this.props.param, false)
 		toast.success('Dine ændringer er gemt')
@@ -256,7 +256,7 @@ class EditAppendix extends Component {
 		/* State */
 		const { configModalIsOpen, exportModalIsOpen } = this.state
 		/* Props */
-		const { appendix, handleSubmit, appendixDates, appendixStatus } = this.props
+		const { appendix, handleSubmit, appendixDates, appendixStatus, appendixPlanID } = this.props
 		/* Functions */
 		const { submitUpdate, submitUpdateAndCommit, openConfigModal, openExportModal,
 			closeConfigModal, saveConfigModal,
@@ -270,13 +270,13 @@ class EditAppendix extends Component {
 			{ value: 'viewpublic', label: 'Vis offentlig udgave' }
 		]
 
-		const statusOptions = [
+	/* 	const statusOptions = [
 			{ value: '-1', label: '' },
 			{ value: "aflyst", label: "Aflyst" },
 			{ value: "forslag", label: "Forslag" },
 			{ value: "kladde", label: "Kladde" },
 			{ value: "vedtaget", label: "Vedtaget" }
-		]
+		] */
 
 		return (
 			(appendix !== null && appendixDates !== undefined) ?
@@ -329,7 +329,7 @@ class EditAppendix extends Component {
 							saveConfigModal={saveConfigModal}
 							dates={appendixDates}
 							status={appendixStatus}
-							statusOptions={statusOptions}
+							planID={appendixPlanID}
 							appendixId={appendix.appendixId}
 						/>
 						<ExportModal
@@ -363,6 +363,7 @@ const mapStateToProps = (state, ownProps) => ({
 	appendixIsSaving: state.eplan.appendixIsSaving,
 	appendixDates: getAppendixDates(state, ownProps.param, ownProps),
 	appendixStatus: getAppendixStatus(state, ownProps.param, ownProps),
+	appendixPlanID: getAppendixPlanID(state, ownProps.param, ownProps),
 	form: 'appendix_' + ownProps.param,
 	appendixIsLoading: state.eplan.ApdxLoading[ownProps.param]
 })
