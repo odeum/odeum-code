@@ -3,7 +3,7 @@ import { List } from 'immutable'
 
 export var api = create({
 	baseURL: 'https://horsenskp.dev.webhouse.dk/',
-	timeout: 10000,
+	timeout: 30000,
 	headers: {
 		'Content-Type': 'application/json',
 		'Accept': 'application/json'
