@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Table, SortDirection, SortIndicator, Column, AutoSizer } from 'react-virtualized'
 import { NoRows, HeaderCell, HeaderRow, AutoSizerDiv, Cell } from 'app/styles/TableStyles'
-import { ListLink, ListAction } from 'app/styles/EplanStyles'
+import { ListAction } from 'app/styles/EplanStyles'
 import ExportModal from 'app/components/eplan-appendix/Appendix/ExportModal'
 import { exportAppendixToPlansystemAsync } from 'app/store/modules/eplan'
 import Icon from 'framework/assets/Icon'
@@ -282,15 +282,20 @@ class AppendixTable extends Component {
 		}
 	}
 
+	openAppendixUrl = (rowData) => (e) => {
+		e.preventDefault()
+		window.open(rowData.folderUrl, '_viewappendix')
+	}
+
 	_actionRowRenderer = ({ cellData, columnData, dataKey, rowData, rowIndex }) => {
 		if (rowData !== undefined) {
 			return <Cell /* onClick={(e) => { }} */>
-				<ListAction><ListLink href={rowData.folderUrl} target="_blank"><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListLink></ListAction>
+				<ListAction onClick={this.openAppendixUrl(rowData)}><Icon icon={iconname.ICON_VISIBILITY} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListAction>
 				<ListAction onClick={this.openExportModal(rowData)} data-value={rowData}><Icon icon={iconname.ICON_CLOUD_UPLOAD} size={20} color={colors.ICON_DEFAULT_COLOR} /></ListAction>
 			</Cell>
-		}
-		else
+		} else {
 			return null
+		}
 	}
 
 	_headerRenderer = ({ columnData, dataKey, disableSort, label, sortBy, sortDirection }) => {
