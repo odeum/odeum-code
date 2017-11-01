@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { tabChange, tabIsLoading } from 'framework/store/modules/tabs'
 import AppendixTable from './Table/Table'
-import { getListAsync, setAppendixFilterText } from 'app/store/modules/eplan'
+import { getListAsync, setAppendixFilterText, getAppendixCfg } from 'app/store/modules/eplan'
 import { PrimaryContainer } from 'app/styles/'
 import NewAppendixModal from './NewAppendixModal'
 import { Button, ButtonPanel } from 'odeum-ui'
@@ -98,6 +98,7 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (id, tab) => {
 			dispatch(tabChange(id, tab.label))
+			dispatch(getAppendixCfg())
 			// dispatch(setAppendixFilterText(''))
 		},
 		onClickButton: (location) => {
