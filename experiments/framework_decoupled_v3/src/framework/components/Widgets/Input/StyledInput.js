@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const StyledInput = styled.input`
 flex:1;
 margin-right:5px;
+width: ${(props) => props.width || '100%'};
 height: 37px;
 border: 1px solid #dedede;
 border-radius: 3px;
