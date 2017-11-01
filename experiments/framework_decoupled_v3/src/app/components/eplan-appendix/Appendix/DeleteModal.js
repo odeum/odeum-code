@@ -15,7 +15,7 @@ const DeleteModal = ({ deleteModalIsOpen, closeDeleteModal, customStyles, append
 							<Icon icon={iconname.ICON_DELETE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 						</ModalHeaderIcon>
 						<ModalHeaderTitle>Eksportér til plansystem</ModalHeaderTitle>
-						<ModalHeaderClose onClick={(e) => { e.preventDefault(); closeDeleteModal() }}>
+						<ModalHeaderClose onClick={closeDeleteModal}>
 							<Icon icon={iconname.ICON_CLOSE} size={30} color={colors.MODAL_HEADER_ICON} active={true} />
 						</ModalHeaderClose>
 					</ModalHeader>
@@ -23,8 +23,8 @@ const DeleteModal = ({ deleteModalIsOpen, closeDeleteModal, customStyles, append
 						<div id="exportStepOne">
                         Slet tillæg {appendix.name}!
 							<ModalButtonPanel>                            
-								<Button id="deleteButton" onClick={async (e) => { e.preventDefault(); await onClickDeleteAppendix() }} icon={iconname.ICON_DELETE} size={18}>OK</Button>
-								<Button id="deleteCloseButton" onClick={(e) => { e.preventDefault(); closeDeleteModal() }} icon={iconname.ICON_CLOSE} size={18}>Luk</Button>
+								<Button id="deleteButton" onClick={onClickDeleteAppendix} icon={iconname.ICON_DELETE} size={18}>OK</Button>
+								<Button id="deleteCloseButton" onClick={closeDeleteModal} icon={iconname.ICON_CLOSE} size={18}>Luk</Button>
 							</ModalButtonPanel>
 						</div>
 					</ModalContent>

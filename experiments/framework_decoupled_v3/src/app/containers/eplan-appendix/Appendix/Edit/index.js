@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 /* Redux */
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 
 import {
 	getAppendixAsync, updateAppendix,
@@ -15,7 +16,7 @@ import {
 } from 'app/store/selectors/appendix'
 
 /* Framework */
-import { addTab, tabIsLoading } from 'framework/store/modules/tabs'
+import { addTab, tabIsLoading, tabClose } from 'framework/store/modules/tabs'
 
 /* Styling */
 import { SecondaryContainer, IconButton } from 'app/styles'
@@ -136,10 +137,23 @@ class EditAppendix extends Component {
 		})
 	}
 
+	closeTabOnDelete = () => {
+		console.log('closeTabOnDelete')
+		// this.props.closeTab(this.props.param, this.tab)
+	}
+
 	onClickDeleteAppendix = async () => {
 		console.log('onClickDeleteAppendix')
-		// await this.props.deleteAppendix(this.props.appendix.appendixId)
 		this.closeDeleteModal()
+		let res = await this.props.deleteAppendix(this.props.appendix.appendixId)
+		if (res.errors === 0 && res.result === 'Success') {
+		// toast.success('Tillæg er slettet', { onClose: (abc) => {console.log(abc)} })
+			this.props.closeTab(this.props.param, this.tab)
+		} else {
+			
+		}
+
+		
 	}
 
 	openConfigModal = () => {
@@ -347,7 +361,7 @@ class EditAppendix extends Component {
 			{ value: 'plansettings', label: 'Indstillinger' },
 			{ value: 'planexport', label: 'Eksportér til plansystem' },
 			{ value: 'planviewpublic', label: 'Vis offentlig udgave' },
-			// { value: 'plandelete', label: 'Slet tillæg' },
+			{ value: 'plandelete', label: 'Slet tillæg' },
 			{ value: 'pdfheader', label: '--- PDF ---', disabled: true },
 			{ value: 'pdfcreate', label: 'Opret PDF af tillæg' },
 			{ value: 'pdfdownload', label: 'Download PDF' }
@@ -437,6 +451,10 @@ function mapDispatchToProps(dispatch) {
 	return {
 		onMount: (instanceID, tab) => {
 			dispatch(addTab(instanceID, tab))
+		},
+		closeTab: (instanceID, tab) => {
+			dispatch(tabClose(instanceID, tab))
+			dispatch(push('/eplan/list/'))
 		},
 		getAppendix: async (param) => {
 			await dispatch(getAppendixAsync(param))
