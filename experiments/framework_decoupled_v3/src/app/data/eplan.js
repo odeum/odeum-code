@@ -131,7 +131,9 @@ export async function getFrameData(id) {
 	// console.log(data)
 	return data
 }
-export async function setFrameData(id, frameData) {
+export async function setFrameData(id, commit, frameData) {
+	frameData = { ...frameData, doCommit: commit } // add commit parameter true|false
+
 	let app = JSON.stringify(frameData)
 	let data = await api.put('/rest/eplan/kpt/frame/' + id, app)
 		.then((response) => {

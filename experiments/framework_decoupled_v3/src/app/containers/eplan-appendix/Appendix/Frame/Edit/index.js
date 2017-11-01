@@ -18,10 +18,7 @@ import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
 import FormFieldTextarea from 'framework/components/ReduxForm/FormFieldTextarea'
 import FormFieldSelect from 'framework/components/ReduxForm/FormFieldSelect'
 // import ExportModal from 'app/components/eplan-appendix/Frames/ExportModal'
-
-
-import Button from 'framework/components/Widgets/Button'
-import * as iconname from 'framework/assets/icons'
+import { Button, ButtonPanel } from 'odeum-ui'
 
 import { toast } from 'react-toastify'
 
@@ -105,7 +102,12 @@ class EditFrame extends Component {
 	}
 
 	submitUpdate = (values) => {
-		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame)
+		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame, false)
+		toast.success('Dine ændringer er gemt')
+	}
+
+	submitUpdateAndCommit = (values) => {
+		this.props.setFrameData(this.props.frameId, values.fields, this.props.openFrame, true)
 		toast.success('Dine ændringer er gemt')
 	}
 
@@ -155,9 +157,10 @@ class EditFrame extends Component {
 					<PrimaryContainer>
 						<FramesForm form={'EditFrame_form_' + this.props.frameId} onSubmit={this.props.handleSubmit(this.submitUpdate)}>
 							<FieldArray name={'fields'} component={renderFields} />
-							<div>
-								<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
-							</div>
+							<ButtonPanel justify='left'>
+								<Button type="button" onClick={this.props.handleSubmit(this.submitUpdate)} icon="check_circle" label='Gem ændringer' />
+								<Button type="button" onClick={this.props.handleSubmit(this.submitUpdateAndCommit)} icon="check_circle" label='Gem og godkend ændringer' />
+							</ButtonPanel>
 						</FramesForm>
 					</PrimaryContainer>
 				}
@@ -209,8 +212,8 @@ function mapDispatchToProps(dispatch) {
 		getFrameData: async (frameId) => {
 			return await dispatch(getFrameDataAsync(frameId))
 		},
-		setFrameData: async (frameId, data, frameData) => {
-			await dispatch(setFrameDataAsync(frameId, data, frameData))
+		setFrameData: async (frameId, data, frameData, commit) => {
+			await dispatch(setFrameDataAsync(frameId, data, frameData, commit))
 		},
 		exportToPlanSystem: async (id) => {
 			return await dispatch(exportFrameToPlansystemAsync(id))

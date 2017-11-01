@@ -220,15 +220,15 @@ export function getFrameDataAsync(id) {
 
 	}
 }
-export function setFrameDataAsync(frameId, fields, openFrame) {
+export function setFrameDataAsync(frameId, fields, openFrame, commit) {
 	let newFields = {}
 	_.forEach(fields, function (value, key) {
 		newFields[value.id] = value
 	})
 
 	return async dispatch => {
-		dispatch(actionSetFrameData({ frameId, fields }))
-		await setFrameData(frameId, {
+		dispatch(actionSetFrameData({ frameId, commit, fields  }))
+		await setFrameData(frameId, commit, {
 			...openFrame,
 			fields: {
 				...openFrame.fields,
