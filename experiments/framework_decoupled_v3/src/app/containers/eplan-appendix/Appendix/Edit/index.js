@@ -42,7 +42,7 @@ let renderFields = (props) => {
 			return Fields.push(
 				<div key={fields[field].id}>
 					<Flex wrap>
-						<Box width={[1, 1, 1, 1, 7 / 12]}>
+						<Box width={[1, 1, 1, 1, 1]}>
 							<Field index={index} name={`fields.${field}.value`} type="text" component={FormPanel} label={fields[field].mandatory ? fields[field].caption + ' *' : fields[field].caption} />
 						</Box>
 					</Flex>
