@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import 'react-datepicker/dist/react-datepicker.css'
-import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
+import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose } from 'framework/components/styles/ModalStyles'
 import { DropdownSelect, DatePickerStyled, DatePickerStyledWrapper } from 'app/styles/EplanStyles'
 import { FieldLabel } from 'app/styles/'
-import Button from 'framework/components/Widgets/Button'
+import { Button, ButtonPanel } from 'odeum-ui'
 import * as iconname from 'framework/assets/icons'
 import * as colors from 'framework/assets/colors'
 import Icon from 'framework/assets/Icon'
@@ -123,9 +123,10 @@ class AppendixConfigModal extends Component {
 									</Box>
 								</Flex>
 							</form>
-							<ModalButtonPanel>
-								<Button onClick={this.props.handleSubmit(saveConfigModal)} icon={iconname.ICON_CHECK_CIRCLE} size={18}>Gem ændringer</Button>
-							</ModalButtonPanel>
+							<ButtonPanel justify='left'>
+								<Button onClick={this.props.handleSubmit(closeConfigModal)} icon="close" label="Annullér" />
+								<Button onClick={this.props.handleSubmit(saveConfigModal)} icon="check_circle" label="Gem ændringer" />
+							</ButtonPanel>
 						</ModalContent>
 					</ModalWindow> : null}
 			</div>
