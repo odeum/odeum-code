@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import 'react-datepicker/dist/react-datepicker.css'
 import { ModalWindow, ModalHeader, ModalContent, ModalHeaderIcon, ModalHeaderTitle, ModalHeaderClose, ModalButtonPanel } from 'framework/components/styles/ModalStyles'
-import { DatePickerStyled, DatePickerStyledWrapper } from 'app/styles/EplanStyles'
+import { DropdownSelect, DatePickerStyled, DatePickerStyledWrapper } from 'app/styles/EplanStyles'
 import { FieldLabel } from 'app/styles/'
 import Button from 'framework/components/Widgets/Button'
 import * as iconname from 'framework/assets/icons'
@@ -14,11 +14,28 @@ import moment from 'moment'
 import 'moment/locale/da'
 import FormFieldInput from 'framework/components/ReduxForm/FormFieldInput'
 
+let renderDropdownStatus = ({ statusOptions, input }) => {
+	let onChng = (value) => {
+		input.onChange(value.value)
+	}
+	console.log(input)
+	return <DropdownSelect
+				className="statusSelect"
+				name="status"
+				value={input.value}
+				options={statusOptions}
+				searchable={false}
+				clearable={false}
+				placeholder="Vælg status"
+				onChange={onChng}
+			/>
+}
+
 let renderSingleField = ({ input, label, meta }) => {
 
 	return <div>
 		<FieldLabel for="name">{label}</FieldLabel>
-		<FormFieldInput input={input} label={label} meta={meta} disabled/>
+		<FormFieldInput input={input} label={label} meta={meta} />
 	</div>
 }
 
@@ -68,7 +85,7 @@ class AppendixConfigModal extends Component {
 		return momentDate._isValid ? momentDate : null
 	}
 	render() {
-		const { configModalIsOpen, closeConfigModal, statusOptions, saveConfigModal } = this.props
+		const { configModalIsOpen, closeConfigModal, statusOptions, handleStatusChange, saveConfigModal } = this.props
 		return (
 			<div>
 				{this.props.dates !== undefined ?
@@ -90,7 +107,8 @@ class AppendixConfigModal extends Component {
 									
 										<Field
 											name="status.value"
-											component={renderSingleField}
+											component={renderDropdownStatus}
+											handleStatusChange={handleStatusChange}
 											statusOptions={statusOptions}
 											label='Status'
 											value="value"

@@ -358,6 +358,14 @@ class EditAppendix extends Component {
 			{ value: 'pdfdownload', label: 'Download PDF' }
 		]
 
+		const statusOptions = [
+			{ value: '-1', label: '' },
+			{ value: "aflyst", label: "Aflyst" },
+			{ value: "forslag", label: "Forslag" },
+			{ value: "kladde", label: "Kladde" },
+			{ value: "vedtaget", label: "Vedtaget" }
+		]
+
 		return (
 			(appendix !== null && appendixDates !== undefined) ?
 				(this.props.appendixIsSaving || this.state.pdfIsLoading) ? null :
@@ -385,6 +393,7 @@ class EditAppendix extends Component {
 							saveConfigModal={saveConfigModal}
 							dates={appendixDates}
 							status={appendixStatus}
+							statusOptions={statusOptions}
 							planID={appendixPlanID}
 							appendixId={appendix.appendixId}
 						/>
