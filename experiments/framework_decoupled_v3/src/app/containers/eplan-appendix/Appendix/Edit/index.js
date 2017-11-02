@@ -42,7 +42,7 @@ let renderFields = (props) => {
 			return Fields.push(
 				<div key={fields[field].id}>
 					<Flex wrap>
-						<Box width={[1, 1, 1, 1, 7 / 12]}>
+						<Box width={[1, 1, 1, 1, 1]}>
 							<Field index={index} name={`fields.${field}.value`} type="text" component={FormPanel} label={fields[field].mandatory ? fields[field].caption + ' *' : fields[field].caption} />
 						</Box>
 					</Flex>
@@ -358,6 +358,14 @@ class EditAppendix extends Component {
 			{ value: 'pdfdownload', label: 'Download PDF' }
 		]
 
+		const statusOptions = [
+			{ value: '-1', label: '' },
+			{ value: "aflyst", label: "Aflyst" },
+			{ value: "forslag", label: "Forslag" },
+			{ value: "kladde", label: "Kladde" },
+			{ value: "vedtaget", label: "Vedtaget" }
+		]
+
 		return (
 			(appendix !== null && appendixDates !== undefined) ?
 				(this.props.appendixIsSaving || this.state.pdfIsLoading) ? null :
@@ -385,6 +393,7 @@ class EditAppendix extends Component {
 							saveConfigModal={saveConfigModal}
 							dates={appendixDates}
 							status={appendixStatus}
+							statusOptions={statusOptions}
 							planID={appendixPlanID}
 							appendixId={appendix.appendixId}
 						/>
