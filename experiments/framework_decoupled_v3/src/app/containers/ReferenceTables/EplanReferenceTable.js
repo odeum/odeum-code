@@ -12,7 +12,7 @@ class EplanReferenceTable extends Component {
 		this.props.onMount()
 		await this.props.getList()
 	}
-	componentDidMount = () => window.location.pathname === '/reference' ? this.props.onIncompletePath() : null
+	componentDidMount = () => (window.location.pathname === '/reference' || window.location.pathname === '/reference/' ) ? this.props.onIncompletePath() : null
 
 	render() {
 		return (

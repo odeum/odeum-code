@@ -9,7 +9,7 @@ class EplanAppendix extends Component {
 	async componentWillMount() {
 		this.props.onMount()
 	}
-	componentDidMount = () => this.props.location.pathname === '/eplan' ? this.props.onIncompletePath() : null
+	componentDidMount = () => (this.props.location.pathname === '/eplan' || this.props.location.pathname === '/eplan/') ? this.props.onIncompletePath() : null
 
 	render() {
 		return (
