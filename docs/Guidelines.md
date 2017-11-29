@@ -36,7 +36,7 @@ ODEUM Code is a React-based UI framework for building Web & Mobile Applications.
 		- [5.3.13. PDF Generator](#5313-pdf-generator)
 		- [5.3.14. GraphQL + Redux](#5314-graphql--redux)
 		- [5.3.15. Creating NPM packages containing our framework](#5315-creating-npm-packages-containing-our-framework)
-			- [5.3.15.1. Multi Component NPM package default import (odeum-codejs)](#53151-multi-component-npm-package-default-import-odeum-codejs)
+			- [5.3.15.1. Multi Component NPM package default import (odeum-code)](#53151-multi-component-npm-package-default-import-odeum-code)
 			- [5.3.15.2. Multi components as named exports from single NPM package](#53152-multi-components-as-named-exports-from-single-npm-package)
 			- [5.3.15.3. Single/Multiple components from multiple NPM packages](#53153-singlemultiple-components-from-multiple-npm-packages)
 		- [5.3.16. Demo App to Connect to the ODEUM Code framework](#5316-demo-app-to-connect-to-the-odeum-code-framework)
@@ -109,12 +109,12 @@ ODEUM Code is a React-based UI framework for building Web & Mobile Applications.
 <!-- /TOC -->
 
 # 1. ODEUM Code Github repository
-- Find it here: [ODEUM Code Github Repository](https://github.com/odeum/odeum-codejs)
+- Find it here: [ODEUM Code Github Repository](https://github.com/odeum/odeum-code)
 
 From the command line execute the following:
 
 ```sh
-git clone https://github.com/odeum/odeum-codejs
+git clone https://github.com/odeum/odeum-code
 ```
 
 ## 1.1. Github branches
@@ -219,7 +219,7 @@ We have created and maintain our own copy of CRA for ODEUM Code experiments, wit
 To create a new experiment using [create-project](https://github.com/cbroberg/create-project) from the command line:
 
 ```sh
-cd odeum-codejs/experiments
+cd odeum-code/experiments
 git clone https://github.com/cbroberg/create-project.git my-react-app
 cd my-react-app
 yarn install
@@ -380,19 +380,19 @@ A big question is whether ODEUM Code UI framework should transform into an NPM m
 
 - Which parts if not all can be packaged?
 
-#### 5.3.15.1. Multi Component NPM package default import (odeum-codejs)
+#### 5.3.15.1. Multi Component NPM package default import (odeum-code)
 
 ```js
-import App from 'odeum-codejs/components/App'
-import Icon from 'odeum-codejs/components/Icon'
-import Button from 'odeum-codejs/components/Button'
-import Tabs from 'odeum-codejs/components/Tabs'
-import TabsList from 'odeum-codejs/components/TabsList'
-import Search from 'odeum-codejs/components/Search'
-import Help from 'odeum-codejs/components/Help'
-import Header from 'odeum-codejs/components/Header'
-import Notifications from 'odeum-codejs/components/Notifications'
-import Telemetry from 'odeum-codejs/components/Telemetry'
+import App from 'odeum-code/components/App'
+import Icon from 'odeum-code/components/Icon'
+import Button from 'odeum-code/components/Button'
+import Tabs from 'odeum-code/components/Tabs'
+import TabsList from 'odeum-code/components/TabsList'
+import Search from 'odeum-code/components/Search'
+import Help from 'odeum-code/components/Help'
+import Header from 'odeum-code/components/Header'
+import Notifications from 'odeum-code/components/Notifications'
+import Telemetry from 'odeum-code/components/Telemetry'
 
 <App>
     {contents}
@@ -401,7 +401,7 @@ import Telemetry from 'odeum-codejs/components/Telemetry'
 #### 5.3.15.2. Multi components as named exports from single NPM package
 
 ```js
-import { App, Icon, Tabs, Search ... } from 'odeum-codejs'
+import { App, Icon, Tabs, Search ... } from 'odeum-code'
 
 <App>
     {contents}
@@ -485,7 +485,7 @@ and "password" to resolve which server to communicate with.
 
 ### 5.3.24. ODEUM Code website
 - Design and setup the ODEUM Code website
-- Experiment "framework" is currently running at www.odeum-codejs.com
+- Experiment "framework" is currently running at www.odeumcode.com
 
 ### 5.3.25. Deployment
 - How to deploy ODEUM Code client updates to different customer clients and locations. We PULL with mandatory pulls for critical errors and minor hotfixes. Large updates is initiated by the client (customer). 
@@ -634,7 +634,7 @@ Icons for ODEUM Code will use Material Design (MD) icons.
 - When delivering the entire app in one render-blocking package, you might run into JS code loading errors. Don't make JS your app's single point of failure."
 
 ## 8.4. Using a failover loader
-- The first render should be on the server, and give the user some content if that JS fails to load. The code that loads the “App” (odeum-codejs) container should be an HTML file which loads a container to control whether our JS code is actually running and is accessible on the server. If not, there should be static HTML package loading a temporary app setup displaying the errors and tries to reload the main app container until no errors are reported.
+- The first render should be on the server, and give the user some content if that JS fails to load. The code that loads the “App” (odeum-code) container should be an HTML file which loads a container to control whether our JS code is actually running and is accessible on the server. If not, there should be static HTML package loading a temporary app setup displaying the errors and tries to reload the main app container until no errors are reported.
 
 ## 8.5. Offline-first approach
 - Offline-first – hence treating the network as an enhancement with JS tools like Service Worker and IndexedDB – has become the new standard for building fast, resilient websites. It is possible to do both traditional progressive enhancement and offline-first, but it's not easy. We should prioritize offline-first over works-without-JS."
