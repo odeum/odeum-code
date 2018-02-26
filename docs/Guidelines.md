@@ -559,11 +559,12 @@ The ThemeBuilder (or an AppChecker) needs to have an available Material Design I
 - Apps using ODEUM Code can introduce their own help items which are displayed by the framework through ODEUM Search Server
 
 ## 6.5. ODEUM AppBuilder
-- Build an App to invoke a boilerplate to set up scenes (menus) for an app
-- Import a theme from ThemeBuilder
-- Import help from Help Server
-- Import search from Search Server
-- Insert developer scene in framework
+ODEUM AppBuilder constructs a React boilerplate package with all files needed to kick-start building a new ODEUM App. You can connect to your GitHub account to optionally have ODEUM AppBuilder create a repository for your new app project. Alternatively to automatically push the app project to GitHub you will be able to download a .ZIP file package with the project.
+
+- Build an App to invoke a boilerplate to set up menus and tabs for an ODEUM App
+- Import a theme from ODEUM ThemeBuilder
+- Import help from ODEUM Help Server
+- Import search from ODEUM Search Server
 - Hot Reload in developer mode
 - Workspace Page Templates (Design system guidelines - see Grommet templates examples [Grommet templates](https://grommet.github.io/aruba/docs/templates))
 - [Inspiration from Structor](https://hackernoon.com/creating-react-components-in-structor-react-ui-builder-f7c5026edfbd)
